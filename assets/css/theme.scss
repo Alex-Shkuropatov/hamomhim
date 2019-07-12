@@ -1,0 +1,95 @@
+.th-btn {
+
+
+  &:disabled {
+
+  }
+  &:hover {
+
+  }
+}
+
+.th-btn-sm {
+
+}
+
+//transparent
+.th-btn-empty {
+  
+  &:hover {
+
+  }
+
+  &.th-btn {
+
+  }
+}
+
+//arrow btn
+.th-btn-empty-arr {
+  @extend .th-btn-empty;
+
+
+}
+
+.th-list {
+  li {
+    padding-left: 20px;
+    position: relative;
+    &::before {
+      content: '●';
+      vertical-align: middle;
+      color: $clr-blue;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+}
+
+.th-list-ln {
+  position: relative;
+  li {
+    padding-left: 20px;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 2px;
+      background: $grad-blue;
+    }
+  }
+}
+
+.th-input {
+
+  &::placeholder {
+
+  }
+}
+
+.th-radio {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #E0E0E0;
+  position: relative;
+  border-radius: 50%;
+  background: #fff;
+  &:checked {
+    &::before {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 8px;
+      height: 8px;
+      margin-top: -4px;
+      margin-left: -4px;
+      background: $clr-blue;
+      content: '';
+      border-radius: 50%;
+    }
+  }
+}
