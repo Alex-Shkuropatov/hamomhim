@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div class="text-input">
     <input
       @input="$emit('input', $event.target.value)"

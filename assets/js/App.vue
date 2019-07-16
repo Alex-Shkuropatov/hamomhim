@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div id="wrapper">
     <navigation/>
     <transition name="cool">

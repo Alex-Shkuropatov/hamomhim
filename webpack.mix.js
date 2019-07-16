@@ -21,3 +21,6 @@ mix
 		}
   })
 	.sass('assets/css/app.scss', 'static/css');
+
+
+mix.browserSync('hamomhim.test');

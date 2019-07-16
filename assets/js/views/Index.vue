@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <main>
     <first-frame/>
     <second-frame/>
@@ -8,14 +8,10 @@
 
 <script>
 import FirstFrame from './../components/index/FirstFrame.vue';
-import SecondFrame from './../components/index/SecondFrame.vue';
-import ThirdFrame from './../components/index/ThirdFrame.vue';
 
 export default {
   components: {
     FirstFrame,
-    SecondFrame,
-    ThirdFrame,
   }
 }
 </script>

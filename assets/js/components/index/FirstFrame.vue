@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
 
 </template>
 
@@ -7,7 +7,7 @@
 export default {
   data() {
     return {
-      
+
     };
   },
 
