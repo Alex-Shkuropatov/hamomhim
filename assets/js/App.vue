@@ -2,7 +2,7 @@
   <div id="wrapper">
     <navigation/>
     <transition name="cool">
-      <router-view v-if="$store.state.user.loaded" id="content"/>
+      <router-view id="content"/>
     </transition>
     <underground/>
   </div>

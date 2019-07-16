@@ -19,12 +19,12 @@ const routes = [
     name: 'index',
   },
   {
-    path: '/',
+    path: '/about-us',
     component: AboutUs,
     name: 'about-us',
   },
   {
-    path: '/',
+    path: '/contact-us',
     component: ContactUs,
     name: 'contact-us',
   },
