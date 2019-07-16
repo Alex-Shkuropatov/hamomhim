@@ -1,8 +1,6 @@
 <template>
   <main>
     <first-frame/>
-    <second-frame/>
-    <third-frame/>
   </main>
 </template>
 

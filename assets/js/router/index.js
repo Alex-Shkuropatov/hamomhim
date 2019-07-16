@@ -9,12 +9,24 @@ import auth from './auth';
 import account from './account';
 
 import Index from './../views/Index.vue';
+import AboutUs from './../views/AboutUs.vue';
+import ContactUs from './../views/ContactUs.vue';
 
 const routes = [
   {
     path: '/',
     component: Index,
     name: 'index',
+  },
+  {
+    path: '/',
+    component: AboutUs,
+    name: 'about-us',
+  },
+  {
+    path: '/',
+    component: ContactUs,
+    name: 'contact-us',
   },
 ];
 
