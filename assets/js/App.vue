@@ -2,7 +2,7 @@
   <div id="wrapper">
     <navigation/>
     <transition name="cool">
-      <router-view id="content"/>
+      <router-view />
     </transition>
     <underground/>
   </div>

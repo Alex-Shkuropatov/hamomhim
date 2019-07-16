@@ -1,31 +1,31 @@
 <template>
     <header class="header">
         <div class="h-container">
-            <router-link :to="{ name: 'about-us' }">test</router-link>
             <a href="#" class="logo-wrap">
                 <img src="/static/images/logo/logo-blue.png" alt="">
             </a>
 
             <ul class="desktop-menu">
                 <li class="menu-item">
-                    <router-link>דף</router-link>
+                    <router-link :to="{ name: 'index'}">דף</router-link>
                 </li>
                 <li class="menu-item">
-                    <router-link>אודות</router-link>
+                    <router-link :to="{ name: 'index'}">אודות</router-link>
                 </li>
                 <li class="menu-item">
-                    <router-link>בלוג</router-link>
+                    <router-link :to="{ name: 'index'}">בלוג</router-link>
                 </li>
                 <li class="menu-item">
-                    <router-link>איך זה עובד</router-link>
+                    <router-link :to="{ name: 'index'}">איך זה עובד</router-link>
                 </li>
                 <li class="menu-item">
-                    <router-link>צור קשר</router-link>
+                    <router-link :to="{ name: 'index'}">צור קשר</router-link>
                 </li>
             </ul>
 
             <div class="auth-btns">
-
+              <button class="th-btn th-btn-blue th-btn-sm" @click="openLogin">התחברות למערכת</button>
+              <button class="th-btn th-btn-empty th-btn-sm" @click="openReg">הרשמה למערכת</button>
             </div>
         </div>
     </header>
@@ -35,6 +35,10 @@
 
 export default {
   components: {
+  },
+  methods: {
+      openReg(){},
+      openLogin(){},
   }
 }
 </script>
@@ -46,10 +50,36 @@ export default {
 .header{
     height: 110px;
     background: #fff;
+    display: flex;
+    -ms-align-items: center;
+    align-items: center;
     .h-container{
         display: flex;
+        -ms-align-items: center;
+        align-items: center;
         justify-content: space-between;
     }
+}
+.auth-btns{
+  .th-btn{
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+
+.desktop-menu{
+  display: flex;
+  font-size: 24px;
+  margin: 0;
+  .menu-item{
+    margin-left: 37px;
+    &:last-child{
+      margin-left: 0;
+    }
+  }
+  a{
+    color: $clr-dark;
+  }
 }
 
 

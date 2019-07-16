@@ -23,4 +23,7 @@ mix
 	.sass('assets/css/app.scss', 'static/css');
 
 
-mix.browserSync('hamomhim.test');
+mix.browserSync({
+	proxy: 'hamomhim.test',
+	files: ["static/css/app.css", "static/js/*.js"],
+});
