@@ -29,6 +29,16 @@
   padding-right: 30px;
   padding-left: 30px;
 }
+.th-btn-md {
+  height: 50px;
+  font-size: 22px;
+  font-weight: bold;
+}
+.th-btn-lg {
+  height: 70px;
+  font-size: 22px;
+  font-weight: bold;
+}
 
 
 //transparent
@@ -47,6 +57,10 @@
 
 .th-btn-blue{
   background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
+  color: #fff;
+}
+.th-btn-yellow{
+  background: #F2C94C;
   color: #fff;
 }
 
@@ -87,7 +101,10 @@
 }
 
 .th-input {
-
+  height: 50px;
+  border-radius: 50px;
+  padding-right: 25px;
+  padding-left: 25px;
   &::placeholder {
 
   }
@@ -126,13 +143,13 @@
   &.th-slider-arrow-left{
     background: url('/static/images/icons/slider-arrow-left.svg') no-repeat center !important;
     background-size: cover;
-    left: -50px;
+    left: -65px;
     right: auto;
   }
   &.th-slider-arrow-right{
     background: url('/static/images/icons/slider-arrow-right.svg') no-repeat center !important;
     background-size: cover;
-    right: -50px;
+    right: -65px;
     left: auto;
   }
 }

@@ -96,6 +96,8 @@ export default {
 }
 .categories-slider{
   margin-bottom: 34px;
+  margin-right: -15px;
+  margin-left: -15px;
 }
 .slide-outer{
   padding: 15px;

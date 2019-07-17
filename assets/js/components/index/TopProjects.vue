@@ -69,6 +69,10 @@ export default {
 .slide-outer{
     padding: 32px 20px 20px 20px;
 }
+.top-pojects{
+  margin-right: -20px;
+  margin-left: -20px;
+}
 .slide-inner{
     display: flex;
     -webkit-flex-direction: column;

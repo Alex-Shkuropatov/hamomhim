@@ -1,0 +1,80 @@
+<template>
+  <div class="feedback-section">
+    <div class="th-heading text-center">מימון פרויקטים</div>
+    <div class="feedback-form">
+      <div class="form-group">
+        <label class="label">
+          <div class="caption">Lorem Ipsum</div>
+          <input type="text" class="th-input" placeholder="Lorem Ipsum">
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="label">
+          <div class="caption">Lorem Ipsum</div>
+          <input type="text" class="th-input" placeholder="Lorem Ipsum">
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="label">
+          <div class="caption">Lorem Ipsum</div>
+          <input type="text" class="th-input" placeholder="Lorem Ipsum">
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="label">
+          <div class="caption">Lorem Ipsum</div>
+          <input type="text" class="th-input" placeholder="Lorem Ipsum">
+        </label>
+      </div>
+      <div class="form-group">
+        <button class="th-btn th-btn-md th-btn-yellow text-center">לבלוג</button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+}
+</script>
+
+<style lang="scss" scoped>
+@import '~@/vars.scss';
+.feedback-section{
+  background: url('/static/images/main-page/bg3.png') no-repeat center;
+  -webkit-background-size: cover;
+  background-size: cover;
+  padding: 25px 75px 50px;
+  color: #fff;
+  font-size: 24px;
+}
+.th-heading{
+  color: #fff;
+  margin-bottom: 0;
+  line-height: 1.1;
+}
+.feedback-form{
+  display: flex;
+  .form-group{
+    padding: 0 12px;
+    width: 20%;
+    &:last-child{
+      margin-top: auto;
+    }
+    .th-input{
+      border: 1px solid #fff;
+      background: transparent;
+      width: 100%;
+      color: #fff;
+    }
+    .th-btn{
+      width: 100%;
+      justify-content: center;
+    }
+    .caption{
+      font-weight: bold;
+      padding-right: 25px;
+    }
+  }
+}
+</style>
