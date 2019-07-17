@@ -5,6 +5,11 @@
     <top-projects/>
     <client-reviews/>
     <feedback-form/>
+    <div class="stats-section h-container">
+      <div class="th-heading text-center">קצת עלינו במספרים</div>
+      <stats/>
+    </div>
+    <news-slider/>
   </main>
 </template>
 
@@ -14,6 +19,8 @@ import CategoriesSlider from './../components/index/CategoriesSlider.vue';
 import TopProjects from './../components/index/TopProjects.vue';
 import ClientReviews from './../components/index/ClientReviews.vue';
 import FeedbackForm from './../components/index/FeedbackForm.vue';
+import Stats from './../components/Stats.vue';
+import NewsSlider from './../components/index/NewsSlider.vue';
 
 export default {
   components: {
@@ -21,11 +28,18 @@ export default {
     CategoriesSlider,
     TopProjects,
     ClientReviews,
-    FeedbackForm
+    FeedbackForm,
+    Stats,
+    NewsSlider
   }
 }
 </script>
 
 <style lang="scss" scoped>
-
+  .stats-section{
+    margin-top: 60px;
+    .th-heading{
+      margin-bottom: 60px;
+    }
+  }
 </style>
