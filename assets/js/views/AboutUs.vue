@@ -98,7 +98,7 @@ margin-left: 70px;
         width: 750px;
         height: 457px;
         @media screen and (max-width:1584px){
-            margin-top: 30px    ;
+            margin: 30px 0 0 0;
         }
         .title{
             direction: rtl;
@@ -146,6 +146,13 @@ margin-left: 70px;
             position: absolute;
             right: 0;
             bottom: -157px;
+            @media screen and (max-width: 1919px){
+                opacity: 0.6;
+                right: -45px;
+            }
+            @media screen and (max-width: 1439px){
+                display: none;
+            }
         }
         .left_elem{
             display: block;
@@ -158,13 +165,16 @@ margin-left: 70px;
             position: absolute;
             left: 0;
             top: 0;
+
+            @media screen and (max-width: 1439px){
+                display: none;
+            }
         }
         .statsInfo{
             z-index: 5;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 0 415px  0 440px;
             .title{
                 margin: 0;
                 font-family: Assistant;
@@ -294,3 +304,4 @@ margin-left: 70px;
         }
     }
 </style>
+
