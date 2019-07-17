@@ -8,11 +8,11 @@
                     קבוצת המומחים לאדריכלים’ הוא מיזם המאגד בתוכו את כל בעלי המקצוע מתחום הבנייה תחת קורת גג אחת, בהם אדריכלים, מעצבי פנים, קבלנים וספקים מובחרים מהתחום. המיזם פונה לאדריכלים ומעצבי פנים ומאפשר להם לבצע שיתופי פעולה רווחיים, ומאידך לחסוך בזמן וכסף על ידי קבלת עד 5 הצעות מחיר מבעלי מקצוע הדרושים לפרויקט.
                 </div>
             </div>
-           <img src="../../../static/images/aboutUs/ytImage.jpg" alt="" class="videoYT">
+           <img src="/static/images/aboutUs/ytImage.jpg" alt="" class="videoYT">
        </div>
        <div class="secondBlock">
-           <img src="../../../static/images/aboutUs/buildPlan.png" alt="" class="left_elem">
-           <img src="../../../static/images/aboutUs/building.png" alt="" class="right_elem">
+           <img src="/static/images/aboutUs/buildPlan.png" alt="" class="left_elem">
+           <img src="/static/images/aboutUs/building.png" alt="" class="right_elem">
            <div class="statsInfo">
         <h3 class="title">קצת עלינו במספרים</h3>
            <div class="description">
@@ -20,19 +20,19 @@
            </div>
            <div class="stats">
                <div class="stats_element">
-                   <img src="../../../static/images/aboutUs/worker.png" alt="worker">
+                   <img src="/static/images/aboutUs/worker.png" alt="worker">
                    <span class="stats_numbers">307</span>
                    <span class="stats_txt">קבלנים</span>
                </div>
                <hr class="line">
                <div class="stats_element">
-                   <img src="../../../static/images/aboutUs/case.png" alt="case">
+                   <img src="/static/images/aboutUs/case.png" alt="case">
                     <span class="stats_numbers">1869</span>
                    <span class="stats_txt">הצעות שעברו באתר</span>
                </div>
                <hr class="line">
                <div class="stats_element">
-                   <img src="../../../static/images/aboutUs/community.png" alt="community">
+                   <img src="/static/images/aboutUs/community.png" alt="community">
                    <span class="stats_numbers">1357</span>
                    <span class="stats_txt">משתמשים</span>
                </div>
@@ -55,7 +55,7 @@
                           מאחורי המיזם עומד בעל מקצוע מומחה בתחומי הבנייה, בעל ניסיון של מעל 25 שנה המכיר את התחום מכל צידיו. מטרתו לחבר בין בעלי המקצוע השונים בענף הבנייה ולמקסם את הרווחים לכל הצדדים. המערכת נבנתה ותוכננה על ידי מיטב מומחים, היא ידידותית ונוחה לשימוש, ומאפשרת להכניס את כל הפרטים הרלוונטיים אודות העבודה הדרושה ואף לעלות תמונות של הפרויקט למערכת, בכדי לאמוד את עלויות העבודה בצורה מדויקת. מגיע לכם להרוויח יותר, הרבה יותר!
                       </div>
                   </div>
-                  <img src="../../../static/images/aboutUs/builders.png" alt="">
+                  <img src="/static/images/aboutUs/builders.png" alt="">
               </div>
           </div>
    </div>
@@ -98,7 +98,7 @@ margin-left: 70px;
         width: 750px;
         height: 457px;
         @media screen and (max-width:1584px){
-            margin-top: 30px    ;
+            margin: 30px 0 0 0;
         }
         .title{
             direction: rtl;
@@ -146,6 +146,13 @@ margin-left: 70px;
             position: absolute;
             right: 0;
             bottom: -157px;
+            @media screen and (max-width: 1919px){
+                opacity: 0.6;
+                right: -45px;
+            }
+            @media screen and (max-width: 1439px){
+                display: none;
+            }
         }
         .left_elem{
             display: block;
@@ -158,13 +165,16 @@ margin-left: 70px;
             position: absolute;
             left: 0;
             top: 0;
+
+            @media screen and (max-width: 1439px){
+                display: none;
+            }
         }
         .statsInfo{
             z-index: 5;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 0 415px  0 440px;
             .title{
                 margin: 0;
                 font-family: Assistant;
@@ -243,7 +253,7 @@ margin-left: 70px;
         z-index: 0;
 
         .blockWrapper {
-            background: url("../../../static/images/aboutUs/bgBuild.png");
+            background: url("/static/images/aboutUs/bgBuild.png");
             .contentBlock {
                 padding: 166px 0 143px 0;
                 display: flex;
@@ -294,3 +304,4 @@ margin-left: 70px;
         }
     }
 </style>
+

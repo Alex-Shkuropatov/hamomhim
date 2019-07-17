@@ -3,4 +3,4 @@ node_modules/*
 mix-manifest.json
 static/css/*
 static/js/*
-.idea
+.idea/
