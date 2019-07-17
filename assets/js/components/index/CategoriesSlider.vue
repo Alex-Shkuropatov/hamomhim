@@ -13,15 +13,22 @@
             </div>
           </swiper-slide>
         </swiper>
-        <div class="swiper-button-prev th-slider-arrow th-slider-arrow-right" slot="button-prev"></div>
-        <div class="swiper-button-next th-slider-arrow th-slider-arrow-left" slot="button-next"></div>
+        <div class="swiper-button-next th-slider-arrow th-slider-arrow-left" slot="button-next" data-uid="1"></div>
+        <div class="swiper-button-prev th-slider-arrow th-slider-arrow-right" slot="button-prev" data-uid="2"></div>
       </div>
     </div>
+
+    <banner-section></banner-section>
   </div>
 </template>
 
 <script>
+import BannerSection from './BannerSection.vue';
+
 export default {
+  components: {
+    BannerSection
+  },
   data(){
     return {
       sliderOptions: {
@@ -29,8 +36,8 @@ export default {
         slidesPerView: 8,
         slidesPerColumn: 2,
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+          nextEl: '.swiper-button-next[data-uid="1"]',
+          prevEl: '.swiper-button-prev[data-uid="2"]',
         }
       },
       categories: [
@@ -73,7 +80,7 @@ export default {
         'םיטקיורפ ילהנמ',
       ],
     }
-  }
+  },
 }
 </script>
 

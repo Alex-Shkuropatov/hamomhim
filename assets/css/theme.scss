@@ -11,6 +11,9 @@
 
 .th-btn {
   border-radius: 50px;
+  display: inline-flex;
+  text-align: center;
+  align-items: center;
   &:disabled {
 
   }
@@ -23,6 +26,8 @@
   height: 40px;
   font-size: 14px;
   font-weight: bold;
+  padding-right: 30px;
+  padding-left: 30px;
 }
 
 

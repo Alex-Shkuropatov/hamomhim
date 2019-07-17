@@ -2,17 +2,20 @@
   <main>
     <first-frame/>
     <categories-slider/>
+    <top-projects/>
   </main>
 </template>
 
 <script>
 import FirstFrame from './../components/index/FirstFrame.vue';
 import CategoriesSlider from './../components/index/CategoriesSlider.vue';
+import TopProjects from './../components/index/TopProjects.vue';
 
 export default {
   components: {
     FirstFrame,
-    CategoriesSlider
+    CategoriesSlider,
+    TopProjects
   }
 }
 </script>
