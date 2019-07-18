@@ -1,25 +1,23 @@
 <template>
-
       <div class="stats">
         <div class="stats_element">
           <img src="/static/images/aboutUs/worker.png" alt="worker">
           <span class="stats_numbers">307</span>
-          <span class="stats_txt">קבלנים</span>
+          <span class="stats_txt">םינלבק</span>
         </div>
         <hr class="line">
         <div class="stats_element">
           <img src="/static/images/aboutUs/case.png" alt="case" class="caseImg">
           <span class="stats_numbers">1869</span>
-          <span class="stats_txt">הצעות שעברו באתר</span>
+          <span class="stats_txt">רתאב ורבעש תועצה</span>
         </div>
         <hr class="line">
         <div class="stats_element">
           <img src="/static/images/aboutUs/community.png" alt="community">
           <span class="stats_numbers">1357</span>
-          <span class="stats_txt">משתמשים</span>
+          <span class="stats_txt">םישמתשמ</span>
         </div>
       </div>
-
 </template>
 
 
@@ -41,7 +39,6 @@
       flex-direction: column;
       align-items: center;
       flex-wrap: wrap;
-
       .stats_numbers {
         font-family: Assistant;
         font-style: normal;
@@ -54,7 +51,6 @@
         -webkit-text-fill-color: transparent;
         margin-top: 18px;
       }
-
       .stats_txt {
         text-align: center;
         margin-top: 12px;
@@ -67,8 +63,11 @@
         color: #828282;
       }
       .caseImg{
-        @media screen and (max-width:1110px ){
+        @media screen and (max-width:900px ){
           margin-top: 61px;
+        }
+        @media screen and (max-width:1110px ){
+          margin-top:0;
         }
       }
     }

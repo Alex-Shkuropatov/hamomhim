@@ -2,14 +2,12 @@
   <div class="content">
     <div class="firstBlock">
       <div class="firstBlock_element">
-        <h3 class="title">אודות</h3>
-        <span class="description">אודות קבוצת המומחים</span>
+        <h3 class="title">תודוא</h3>
+        <span class="description">םיחמומה תצובק תודוא</span>
         <div class="txt">
-          קבוצת המומחים לאדריכלים’ הוא מיזם המאגד בתוכו את כל בעלי המקצוע מתחום הבנייה תחת קורת גג אחת, בהם
-          אדריכלים, מעצבי פנים, קבלנים וספקים מובחרים מהתחום. המיזם פונה לאדריכלים ומעצבי פנים ומאפשר להם לבצע
-          שיתופי פעולה רווחיים, ומאידך לחסוך בזמן וכסף על ידי קבלת עד 5 הצעות מחיר מבעלי מקצוע הדרושים
-          לפרויקט.
-        </div>
+
+          קבוצת המומחים לאדריכלים’ הוא מיזם המאגד בתוכו את כל בעלי המקצוע מתחום הבנייה תחת קורת גג אחת, בהם אדריכלים, מעצבי פנים, קבלנים וספקים מובחרים מהתחום. המיזם פונה לאדריכלים ומעצבי פנים ומאפשר להם לבצע שיתופי פעולה רווחיים, ומאידך לחסוך בזמן וכסף על ידי קבלת עד 5 הצעות מחיר מבעלי מקצוע הדרושים לפרויקט.
+               </div>
       </div>
       <img src="/static/images/aboutUs/ytImage.jpg" alt="" class="videoYT">
     </div>
@@ -17,14 +15,14 @@
       <img src="/static/images/aboutUs/buildPlan.png" alt="" class="left_elem">
       <img src="/static/images/aboutUs/building.png" alt="" class="right_elem">
       <div class="statsInfo">
-        <h3 class="title">קצת עלינו במספרים</h3>
+        <h3 class="title">םירפסמב ונילע תצק</h3>
         <div class="description">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
           et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
         </div>
 
          <stats class="statsW" />
-
+        
       </div>
     </div>
     <div class="thirdBlock">
@@ -34,19 +32,12 @@
 
           <div class="contentBlockInfo">
             <div class="title">
-              מתודולוגיית העבודה של קבוצת המומחים נבנתה על פי מטרה ברורה – לאפשר לאדריכלים ומעצבי פנים
-              לקבל הצעות מחיר מספקים דרך מערכת ידידותית, ומצד שני לקבל עמלה בעבור שיתוף הפעולה – ישירות
-              לחשבון הבנק, ללא כל התעסקות.
+              מתודולוגיית העבודה של קבוצת המומחים נבנתה על פי מטרה ברורה – לאפשר לאדריכלים ומעצבי פנים לקבל הצעות מחיר מספקים דרך מערכת ידידותית, ומצד שני לקבל עמלה בעבור שיתוף הפעולה – ישירות לחשבון הבנק, ללא כל התעסקות.
             </div>
             <hr>
             <div class="description">
-              למעשה, קבוצת המומחים מאפשרת לכולם לצאת נשכרים, קבלנים וספקי שירות יוכלו להגדיל את רווחי העסק
-              על ידי קבלת פרויקטים, ולשלם עמלה לאדריכל או למעצב הפנים כמקובל בשוק.
-              מאחורי המיזם עומד בעל מקצוע מומחה בתחומי הבנייה, בעל ניסיון של מעל 25 שנה המכיר את התחום מכל
-              צידיו. מטרתו לחבר בין בעלי המקצוע השונים בענף הבנייה ולמקסם את הרווחים לכל הצדדים. המערכת
-              נבנתה ותוכננה על ידי מיטב מומחים, היא ידידותית ונוחה לשימוש, ומאפשרת להכניס את כל הפרטים
-              הרלוונטיים אודות העבודה הדרושה ואף לעלות תמונות של הפרויקט למערכת, בכדי לאמוד את עלויות
-              העבודה בצורה מדויקת. מגיע לכם להרוויח יותר, הרבה יותר!
+              למעשה, קבוצת המומחים מאפשרת לכולם לצאת נשכרים, קבלנים וספקי שירות יוכלו להגדיל את רווחי העסק על ידי קבלת פרויקטים, ולשלם עמלה לאדריכל או למעצב הפנים כמקובל בשוק.
+              מאחורי המיזם עומד בעל מקצוע מומחה בתחומי הבנייה, בעל ניסיון של מעל 25 שנה המכיר את התחום מכל צידיו. מטרתו לחבר בין בעלי המקצוע השונים בענף הבנייה ולמקסם את הרווחים לכל הצדדים. המערכת נבנתה ותוכננה על ידי מיטב מומחים, היא ידידותית ונוחה לשימוש, ומאפשרת להכניס את כל הפרטים הרלוונטיים אודות העבודה הדרושה ואף לעלות תמונות של הפרויקט למערכת, בכדי לאמוד את עלויות העבודה בצורה מדויקת. מגיע לכם להרוויח יותר, הרבה יותר!
             </div>
           </div>
           <img src="/static/images/aboutUs/builders.png" alt="">
@@ -64,6 +55,7 @@
        Stats
      }
    }
+
 </script>
 
 <style lang="scss" scoped>
@@ -141,6 +133,7 @@
       color: #333333;
       @media screen and (max-width: 500px){
         font-size: 24px;
+        line-height: 32px;
       }
     }
   }
@@ -151,7 +144,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    @media screen and (max-width: 480px){
+      padding-top: 40px;
+      }
     .right_elem {
       display: block;
       max-width: 358px;
@@ -225,6 +220,7 @@
         @media screen and (max-width: 1115px){
           width:  82%;
           height: auto;
+          margin-bottom: 60px;
         }
       }
     }
@@ -235,12 +231,14 @@
   //
   .thirdBlock {
     background: linear-gradient(90deg, rgb(40, 113, 215) 0%, rgb(50, 105, 182) 100%);
-    border: 1px solid #000000;
+
     box-sizing: border-box;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
     margin-top: 146px;
     z-index: 0;
-
+    @media screen and (max-width:480px) {
+      margin-top: 80px;
+    }
     .blockWrapper {
       background: url("/static/images/aboutUs/bgBuild.png");
       background-repeat: no-repeat;
@@ -251,9 +249,16 @@
         flex-direction: row;
         align-items: center;
         justify-content: flex-end;
-        @media screen and (max-width: 1100px) {
+
+        @media screen and (max-width: 1440px) {
           flex-direction: column-reverse;
           justify-content: center;
+        }
+        @media screen and (max-width: 550px) {
+          padding: 80px 0 80px 0;
+        }
+        @media screen and (max-width: 480px) {
+          padding: 10px 0 80px 0;
         }
         img {
           @media screen and (min-width: 2555px) {
@@ -272,15 +277,23 @@
           height: 477px;
           @media screen and (max-width: 1820px) {
             text-align: center;
-            margin-left: 0;
+            margin: 0 20px 0 20px;
           }
-          @media screen and (max-width: 950px) {
+          @media screen and (max-width: 1600px) {
             width: 90%;
             display: flex;
             flex-direction: column;
             align-items: center;
-
             height: auto;
+          }
+          @media screen and (max-width: 1440px) {
+            width: 720px;
+            line-height: 33px;
+          }
+          @media screen and (max-width: 750px) {
+            width: 100%;
+            line-height: 28px;
+            padding: 0 5px 0 5px;
           }
           .title {
             font-family: Assistant;
@@ -290,12 +303,15 @@
             line-height: 40px;
             text-align: right;
             color: #FFFFFF;
-            @media screen and (max-width: 1110px) {
+            @media screen and (max-width: 1600px) {
               text-align: center;
               margin-top: 50px;
+              line-height: 34px;
+            }
+            @media screen and (max-width: 750px) {
+              font-size: 26px;
             }
           }
-
           hr {
             margin-left: 381px;
             height: 0;
@@ -308,9 +324,10 @@
             @media screen and (max-width: 1820px) {
               margin-left: 184px;
             }
-            @media screen and (max-width: 950px){
+            @media screen and (max-width: 1600px){
               width: 72%;
               margin: unset;
+              margin-top: 10px;
             }
           }
           .description {
@@ -324,6 +341,10 @@
             @media screen and (max-width: 1820px) {
               text-align: center;
             }
+            @media screen and (max-width: 600px) {
+              line-height: 30px;
+            }
+
           }
         }
       }
