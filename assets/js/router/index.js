@@ -11,6 +11,7 @@ import account from './account';
 import Index from './../views/Index.vue';
 import AboutUs from './../views/AboutUs.vue';
 import ContactUs from './../views/ContactUs.vue';
+import Blog from './../views/Blog.vue';
 
 const routes = [
   {
@@ -27,6 +28,11 @@ const routes = [
     path: '/contact-us',
     component: ContactUs,
     name: 'contact-us',
+  },
+  {
+    path: '/blog',
+    component: Blog,
+    name: 'blog',
   },
 ];
 

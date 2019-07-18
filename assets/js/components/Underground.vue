@@ -8,7 +8,7 @@
         </div>
         <div class="copyright1">2019 םיחמומה תצובקל תורומש תויוכזה לכ</div>
         <div class="copyright2">רתאה ןונקת שומישה יאנת</div>
-        <a href="" class="th-btn th-brn-blue th-btn-md">םימושר תוחוקלל הסינכ</a>
+        <a href="#" class="th-btn th-btn-blue th-btn-md">םימושר תוחוקלל הסינכ</a>
       </div>
 
       <div class="footer-col areas-col">
@@ -24,7 +24,7 @@
 
       <div class="footer-col services-cats">
         <p class="col-caption">סוגי שירות</p>
-        <div>
+        <div class="two-cols">
           <ul>
             <li><a href="/?category=638">קבלן שלד</a></li>
             <li><a href="/?category=639">שיפוצים</a></li>
@@ -63,6 +63,7 @@
       </div>
 
     </div>
+    <div class="footer-endline"></div>
   </footer>
 </template>
 
@@ -74,11 +75,72 @@ export default {
 <style lang="scss" scoped>
 
 @import '~@/vars.scss';
-
+.footer-container{
+  border-top: 4px solid #F2F2F2;
+  padding-top: 40px;
+  display: flex;
+  justify-content: space-between;
+}
 .logo-wrap{
+  margin-bottom: 20px;
   img{
     width: 275px;
   }
+}
+.logo-col{
+  flex-grow: 2;
+}
+.footer-col{
+  flex-grow: 1;
+  a{
+    color: $clr-dark;
+    text-decoration: none;
+  }
+  p{
+    margin: 0;
+  }
+}
+.copyright1,
+.copyright2{
+  margin-bottom: 10px;
+}
+.col-caption{
+  margin-bottom: 16px;
+}
+.copyright1,
+.copyright2,
+.col-caption{
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.services-cats .two-cols{
+  display: flex;
+  ul{
+    margin: 0;
+  }
+  ul:first-child{
+    margin-left: 19px;
+  }
+}
+
+.contact-col .contact-item{
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  font-size: 24px;
+  p, a{
+    font-weight: bold;
+  }
+
+}
+
+.footer-endline{
+  height: 21px;
+  background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
+  margin-top: 50px;
+  //margin-bottom: 300px;
 }
 
 </style>
