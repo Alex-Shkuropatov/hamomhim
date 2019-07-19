@@ -24,8 +24,9 @@
 </div>
 
   <div class="mapW">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1881.2244956489853!2d-99.15884129732498!3d19.436199370379086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f8cdc19e3477%3A0xe98bef6360302321!2sUVM+Campus+San+Rafael!5e0!3m2!1sru!2sua!4v1563356851952!5m2!1sru!2sua" width="100%" height="529px" frameborder="0" style="border:0" allowfullscreen></iframe>
-  </div>
+    <iframe class="medium" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1881.2244956489853!2d-99.15884129732498!3d19.436199370379086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f8cdc19e3477%3A0xe98bef6360302321!2sUVM+Campus+San+Rafael!5e0!3m2!1sru!2sua!4v1563356851952!5m2!1sru!2sua" width="100%" height="529px" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <img src="/static/images/how-it-works/mapCrop.png" class="googleMap" alt="map">
+    </div>
 </div>
 </template>
 
@@ -62,16 +63,38 @@ export default {
       }
     }
   }
-
 }
 </script>
 
 <style lang="scss" scoped>
 
+  @keyframes hiding {
+    0% {
+       opacity: 1;
+    }
+    30% {
+       opacity: 1;
+    }
+    60% {
+      opacity: 0.8;
+    }
+    75%{
+      opacity: 0.6;
+    }
+    80%{
+      opacity: 0.4;
+    }
+    90%{
+      opacity: 0.2;
+    }
+    100% {
+       opacity: 0;
+    }
+  }
 
 
 .formWrapper{
-  pointer-events: none;
+
   background: url("/static/images/aboutUs/team.png");
   background-position: left -87px ;
   background-size: cover;
@@ -229,7 +252,12 @@ export default {
 }
   .mapW{
     width: 100%;
-    height: 529px;
+    max-height: 529px;
+    iframe{
+      @media screen and (max-width: 480px){
+        display: none;
+      }
+    }
 
   }
 button:active, button:focus {
@@ -278,8 +306,7 @@ button::-moz-focus-inner {
   top: 53%;
   width: 628px;
   right: 24%;
-  animation-delay: 2s;
-
+  animation: hiding 3s forwards ;
   .msg{
     width: 300px;
     @media screen and (max-width: 1440px) {
@@ -293,7 +320,7 @@ button::-moz-focus-inner {
 
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
     border-radius: 50px;
-    background:   rgb(220,220,220, 0.5);
+    background:   rgb(220,220,220, 1);
     width: 566px;
     height: 72px;
   }
@@ -301,4 +328,11 @@ button::-moz-focus-inner {
     width: 270px;
   }
 }
+  .googleMap{
+    display: none;
+    @media screen and (max-width: 480px){
+      display: block;
+      object-fit: cover;
+    }
+  }
 </style>

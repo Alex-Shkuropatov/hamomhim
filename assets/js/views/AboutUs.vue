@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <page-subheader v-bind="dat"/>
+    <page-subheader v-bind="subhead"/>
     <div class="firstBlock">
       <div class="firstBlock_element">
         <h3 class="title">אודות</h3>
@@ -9,7 +9,12 @@
           קבוצת המומחים לאדריכלים’ הוא מיזם המאגד בתוכו את כל בעלי המקצוע מתחום הבנייה תחת קורת גג אחת, בהם אדריכלים, מעצבי פנים, קבלנים וספקים מובחרים מהתחום. המיזם פונה לאדריכלים ומעצבי פנים ומאפשר להם לבצע שיתופי פעולה רווחיים, ומאידך לחסוך בזמן וכסף על ידי קבלת עד 5 הצעות מחיר מבעלי מקצוע הדרושים לפרויקט.
                </div>
       </div>
-      <img src="/static/images/aboutUs/ytImage.jpg" alt="" class="videoYT">
+
+      <div class="ytImage">
+        <img src="/static/images/aboutUs/ytImage.jpg" alt="">
+      </div>
+
+
     </div>
     <div class="secondBlock">
       <img src="/static/images/aboutUs/buildPlan.png" alt="" class="left_elem">
@@ -40,7 +45,9 @@
               מאחורי המיזם עומד בעל מקצוע מומחה בתחומי הבנייה, בעל ניסיון של מעל 25 שנה המכיר את התחום מכל צידיו. מטרתו לחבר בין בעלי המקצוע השונים בענף הבנייה ולמקסם את הרווחים לכל הצדדים. המערכת נבנתה ותוכננה על ידי מיטב מומחים, היא ידידותית ונוחה לשימוש, ומאפשרת להכניס את כל הפרטים הרלוונטיים אודות העבודה הדרושה ואף לעלות תמונות של הפרויקט למערכת, בכדי לאמוד את עלויות העבודה בצורה מדויקת. מגיע לכם להרוויח יותר, הרבה יותר!
             </div>
           </div>
+        <div class="buildersImg">
           <img src="/static/images/aboutUs/builders.png" alt="">
+        </div>
         </div>
       </div>
     </div>
@@ -53,7 +60,7 @@
    export default {
      data : function(){
         return{
-         dat : {
+          subhead : {
            title : '',
            image : '/static/images/aboutUs/head.png'
          }
@@ -69,7 +76,7 @@
 
 <style lang="scss" scoped>
   .content {
-    pointer-events: none;
+
   }
   .firstBlock {
     padding-top: 70px;
@@ -82,27 +89,29 @@
       flex-wrap: wrap-reverse;
       text-align: center;
     }
-
-    img {
-      /*object-fit: cover;*/
-      /*width: 100%;*/
-      height: 396px;
-      @media screen and (max-width: 700px) {
-        padding: 0 10px 0 10px;
-        object-fit: cover;
-        width: 100%;
-        height: auto;
+    .ytImage{
+      img {
+        /*object-fit: cover;*/
+        /*width: 100%;*/
+        height: 396px;
+        @media screen and (max-width: 700px) {
+          padding: 0 10px 0 10px;
+          object-fit: cover;
+          width: 100%;
+          height: auto;
+        }
       }
     }
-
   }
-
   .firstBlock_element {
+    pointer-events: none;
     margin-left: 70px;
     width: 750px;
     height: 457px;
     @media screen and (max-width: 1584px) {
       margin: 30px 0 0 0;
+      width: 70%;
+      height: auto;
     }
     @media screen and (max-width: 700px) {
       width: 100%;
@@ -112,6 +121,7 @@
     }
 
     .title {
+      pointer-events: none;
       direction: rtl;
       margin: 0;
       font-family: Assistant;
@@ -125,6 +135,7 @@
     }
 
     .description {
+      pointer-events: none;
       font-family: Assistant;
       font-style: normal;
       font-weight: bold;
@@ -134,6 +145,7 @@
     }
 
     .txt {
+      pointer-events: none;
       font-family: Assistant;
       font-style: normal;
       font-weight: normal;
@@ -148,6 +160,7 @@
   }
 
   .secondBlock {
+    pointer-events: none;
     padding-top: 71px;
     position: relative;
     display: flex;
@@ -169,7 +182,7 @@
       z-index: 0;
       position: absolute;
       right: 0;
-      bottom: -157px;
+      bottom: -121px;
       @media screen and (max-width: 1919px) {
         opacity: 0.6;
         right: -45px;
@@ -197,12 +210,14 @@
     }
 
     .statsInfo {
+      pointer-events: none;
       z-index: 5;
       display: flex;
       flex-direction: column;
       align-items: center;
 
       .title {
+        pointer-events: none;
         margin: 0;
         font-family: Assistant;
         font-style: normal;
@@ -242,6 +257,7 @@
   //
   //
   .thirdBlock {
+    pointer-events: none;
     background: linear-gradient(90deg, rgb(40, 113, 215) 0%, rgb(50, 105, 182) 100%);
 
     box-sizing: border-box;
@@ -272,17 +288,21 @@
         @media screen and (max-width: 480px) {
           padding: 10px 0 80px 0;
         }
-        img {
-          @media screen and (min-width: 2555px) {
-            width:  836px;
-          }
-          @media screen and (max-width: 750px){
-            width: 100%;
-            padding: 0 10px 0 10px;
-            height: auto;
-            object-fit: cover;
+        .buildersImg{
+          img {
+
+            @media screen and (min-width: 2555px) {
+              width:  836px;
+            }
+            @media screen and (max-width: 750px){
+              width: 100%;
+              padding: 0 10px 0 10px;
+              height: auto;
+              object-fit: cover;
+            }
           }
         }
+
         .contentBlockInfo {
           margin-left: 120px;
           width: 880px;
@@ -299,7 +319,7 @@
             height: auto;
           }
           @media screen and (max-width: 1440px) {
-            width: 720px;
+            width: 80%;
             line-height: 33px;
           }
           @media screen and (max-width: 750px) {
