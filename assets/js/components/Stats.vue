@@ -1,28 +1,65 @@
 <template>
-      <div class="stats">
+      <div class="stats" id="stat">
         <div class="stats_element">
           <img src="/static/images/aboutUs/worker.png" alt="worker">
-          <span class="stats_numbers">307</span>
+          <animated-number class="stats_numbers" :value="statsF" :formatValue="formatToPrice" :duration="duration"/>
           <span class="stats_txt">קבלנים</span>
         </div>
         <hr class="line">
         <div class="stats_element">
           <img src="/static/images/aboutUs/case.png" alt="case" class="caseImg">
-          <span class="stats_numbers">1869</span>
+          <animated-number class="stats_numbers" :value="statsS" :formatValue="formatToPrice" :duration="duration"/>
           <span class="stats_txt hw_txt">הצעות שעברו באתר</span>
         </div>
         <hr class="line">
         <div class="stats_element">
           <img src="/static/images/aboutUs/community.png" alt="community">
-          <span class="stats_numbers">1357</span>
+          <animated-number class="stats_numbers" :value="statsT" :formatValue="formatToPrice" :duration="duration"/>
           <span class="stats_txt">משתמשים</span>
         </div>
       </div>
 </template>
 
-
 <script>
-  export default {}
+  import AnimatedNumber from "animated-number-vue";
+  export default {
+    components: {
+      AnimatedNumber
+    },
+    data() {
+      return {
+        statsF: 307,
+        statsS: 1869,
+        statsT: 1357,
+        duration: 4000,
+
+      };
+    },
+    methods: {
+      formatToPrice(value) {
+        return `${value.toFixed(0)}`;
+      }
+    },
+
+    mounted() {
+
+    },
+    created () {
+      // document.addEventListener('scroll', ()=> {
+      //   let pageY = window.pageYOffset || document.documentElement.scrollTop;
+      //   console.log(pageY);
+      //   if(pageY===1990){
+      //     console.log('here');
+      //     this.formatToPrice(this.statsF);
+      //     this.formatToPrice(this.statsS);
+      //     this.formatToPrice(this.statsT);
+      //   }
+      // });
+    },
+    destroyed () {
+
+    }
+  };
 </script>
 
 <style lang="scss" scoped>

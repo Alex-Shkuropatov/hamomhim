@@ -353,6 +353,7 @@
      }
    }
    .workerImg{
+     pointer-events: none;
        z-index: 0;
     left: 0; bottom: 0;
      position: absolute;
