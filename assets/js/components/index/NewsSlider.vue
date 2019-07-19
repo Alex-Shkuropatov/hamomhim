@@ -56,6 +56,8 @@ export default {
 }
 .slider-wrap{
   position: relative;
+  padding-right: 2px;
+  padding-left: 2px;
 }
 .news-slider{
   margin: ceil($scale1 * -15px);
