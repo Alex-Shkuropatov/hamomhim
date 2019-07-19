@@ -1,26 +1,26 @@
 <template>
 <div class="contact">
 <div class="formWrapper" v-bind:class="{'setH': isHidden}">
-  <form action="" id="contactForm" v-bind:class="{'hide': isHidden}">
-    <h2 class="title">רשק רוצ</h2>
+  <form action="" id="contactForm" v-show="isShowed" >
+    <h2 class="title">צור קשר</h2>
     <div class="textWrapper">
       <div class="row">
-        <input type="text" v-model.trim="name" placeholder="" class="marge">
-        <input type="text" v-model.trim="mail"  placeholder="ליימ" >
+        <input type="text" v-model.trim="name" placeholder="שם מלא" class="marge">
+        <input type="text" v-model.trim="mail"  placeholder="מייל" >
       </div>
       <div class="row">
 
-        <input type="text" v-model.trim="phone" placeholder="דיינ רפסמ" class="marge">
-        <input type="text" v-model.trim="area" placeholder="רוזיא">
+        <input type="text" v-model.trim="phone" placeholder="מספר נייד" class="marge">
+        <input type="text" v-model.trim="area" placeholder="איזור">
       </div>
-      <textarea name="msg" v-model.trim="message" id="" cols="30" placeholder="תישפוח העדוה" rows="10"></textarea>
+      <textarea name="msg" v-model.trim="message" id="" cols="30" placeholder="הודעה חופשית" rows="10"></textarea>
     </div>
 
-    <button class="th-btn th-btn-blue th-btn-sm" v-on:click="sendDate">העדוה תחילש </button>
+    <button class="th-btn th-btn-blue th-btn-sm" v-on:click="sendDate">שליחת הודעה</button>
   </form>
 
 
-  <div class="notification" v-bind:class="{'show': isHidden}"><img src="/static/images/aboutUs/sendM.svg" alt=""> <div class="msg">תודה על ההודעה שלך!</div></div>
+  <div class="notification" v-bind:class="{'show': isHidden}"><img src="/static/images/aboutUs/sendM.svg" alt=""> <div class="msg">!ךלש העדוהה לע הדות</div></div>
 </div>
 
   <div class="mapW">
@@ -38,13 +38,15 @@ export default {
       area: '',
       phone: '',
       message: '',
-      isHidden: false
+      isHidden: false,
+      isShowed : true
     }
   },
   methods: {
     sendDate: function (e) {
       e.preventDefault();
       this.isHidden = !this.isHidden;
+      this.isShowed = !this.isShowed;
       let dateArr = [this.name, this.mail, this.area, this.phone, this.message];
       console.log(dateArr);
       dateArr.forEach((field) => {
@@ -69,6 +71,7 @@ export default {
 
 
 .formWrapper{
+  pointer-events: none;
   background: url("/static/images/aboutUs/team.png");
   background-position: left -87px ;
   background-size: cover;
@@ -86,7 +89,6 @@ export default {
 
   }
   #contactForm{
-
 
     .title{
       margin: 0;
@@ -136,9 +138,11 @@ export default {
         text-align: right;
         color: #FFFFFF;
       }
-
+      @media screen and (max-width: 1440px){
+        width: 100%;
+      }
       @media screen and (max-width: 600px){
-        width: 90%;
+        background: rgba( 71,74,81, 0.4);
       }
     }
     textarea{
@@ -174,6 +178,7 @@ export default {
       }
       @media screen and (max-width: 600px){
         width: 100%;
+        background: rgba( 71,74,81, 0.4);
       }
     }
     }
@@ -257,23 +262,43 @@ button::-moz-focus-inner {
   @media screen and (max-width: 1440px) {
     display: none;
   }
-
 }
 .notification{
   display: none;
 
 }
-
 .show{
   position: absolute;
   display: flex;
   flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
   z-index: 10;
   color: white;
   top: 53%;
+  width: 628px;
   right: 24%;
+  animation-delay: 2s;
+
   .msg{
-    margin-left: 140px;
+    width: 300px;
+    @media screen and (max-width: 1440px) {
+
+    }
+  }
+  @media screen and (max-width: 1440px) {
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+    background:   rgb(220,220,220, 0.5);
+    width: 566px;
+    height: 72px;
+  }
+  @media screen and (max-width: 480px){
+    width: 270px;
   }
 }
 </style>

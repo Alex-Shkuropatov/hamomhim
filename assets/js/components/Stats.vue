@@ -3,19 +3,19 @@
         <div class="stats_element">
           <img src="/static/images/aboutUs/worker.png" alt="worker">
           <span class="stats_numbers">307</span>
-          <span class="stats_txt">םינלבק</span>
+          <span class="stats_txt">קבלנים</span>
         </div>
         <hr class="line">
         <div class="stats_element">
           <img src="/static/images/aboutUs/case.png" alt="case" class="caseImg">
           <span class="stats_numbers">1869</span>
-          <span class="stats_txt">רתאב ורבעש תועצה</span>
+          <span class="stats_txt">הצעות שעברו באתר</span>
         </div>
         <hr class="line">
         <div class="stats_element">
           <img src="/static/images/aboutUs/community.png" alt="community">
           <span class="stats_numbers">1357</span>
-          <span class="stats_txt">םישמתשמ</span>
+          <span class="stats_txt">משתמשים</span>
         </div>
       </div>
 </template>
@@ -27,6 +27,7 @@
 
 <style lang="scss" scoped>
   .stats {
+    pointer-events: none;
     display: flex;
     flex-direction: row;
     align-items: center;

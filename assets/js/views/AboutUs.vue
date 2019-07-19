@@ -1,11 +1,11 @@
 <template>
   <div class="content">
+    <page-subheader v-bind="dat"/>
     <div class="firstBlock">
       <div class="firstBlock_element">
-        <h3 class="title">תודוא</h3>
-        <span class="description">םיחמומה תצובק תודוא</span>
+        <h3 class="title">אודות</h3>
+        <span class="description">אודות קבוצת המומחים</span>
         <div class="txt">
-
           קבוצת המומחים לאדריכלים’ הוא מיזם המאגד בתוכו את כל בעלי המקצוע מתחום הבנייה תחת קורת גג אחת, בהם אדריכלים, מעצבי פנים, קבלנים וספקים מובחרים מהתחום. המיזם פונה לאדריכלים ומעצבי פנים ומאפשר להם לבצע שיתופי פעולה רווחיים, ומאידך לחסוך בזמן וכסף על ידי קבלת עד 5 הצעות מחיר מבעלי מקצוע הדרושים לפרויקט.
                </div>
       </div>
@@ -15,13 +15,13 @@
       <img src="/static/images/aboutUs/buildPlan.png" alt="" class="left_elem">
       <img src="/static/images/aboutUs/building.png" alt="" class="right_elem">
       <div class="statsInfo">
-        <h3 class="title">םירפסמב ונילע תצק</h3>
+        <h3 class="title">קצת עלינו במספרים</h3>
         <div class="description">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
           et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
         </div>
 
-         <stats class="statsW" />
+         <stats/>
         
       </div>
     </div>
@@ -46,13 +46,22 @@
     </div>
   </div>
 </template>
-
 <script>
   import Stats from './../components/Stats.vue';
+  import PageSubheader from './../components/PageSubheader.vue';
 
    export default {
+     data : function(){
+        return{
+         dat : {
+           title : '',
+           image : '/static/images/aboutUs/head.png'
+         }
+        }
+     },
      components : {
-       Stats
+       Stats,
+       PageSubheader
      }
    }
 
@@ -60,10 +69,10 @@
 
 <style lang="scss" scoped>
   .content {
-    padding-top: 70px;
+    pointer-events: none;
   }
-
   .firstBlock {
+    padding-top: 70px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -144,6 +153,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    @media screen and (max-width: 1440px) {
+      padding-top: 53px;
+    }
     @media screen and (max-width: 480px){
       padding-top: 40px;
       }
@@ -218,7 +230,7 @@
         text-align: center;
         color: #828282;
         @media screen and (max-width: 1115px){
-          width:  82%;
+          width: 88%;
           height: auto;
           margin-bottom: 60px;
         }
@@ -310,6 +322,9 @@
             }
             @media screen and (max-width: 750px) {
               font-size: 26px;
+            }
+            @media screen and (max-width: 480px) {
+              margin-top: 36px;
             }
           }
           hr {

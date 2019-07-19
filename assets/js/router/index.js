@@ -12,7 +12,9 @@ import Index from './../views/Index.vue';
 import AboutUs from './../views/AboutUs.vue';
 import ContactUs from './../views/ContactUs.vue';
 import Blog from './../views/Blog.vue';
+
 import BlogPost from './../views/BlogPost.vue';
+import HowItWorks from './../views/HowItWorks.vue';
 
 const routes = [
   {
@@ -40,6 +42,11 @@ const routes = [
     component: BlogPost,
     name: 'blog-post',
   },
+  {
+    path: '/how-it-works',
+    component: HowItWorks,
+    name: 'how-it-works',
+  }
 ];
 
 //routes.push(auth);
