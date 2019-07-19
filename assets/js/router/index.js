@@ -12,6 +12,7 @@ import Index from './../views/Index.vue';
 import AboutUs from './../views/AboutUs.vue';
 import ContactUs from './../views/ContactUs.vue';
 import Blog from './../views/Blog.vue';
+import HowItWorks from './../views/HowItWorks.vue';
 
 const routes = [
   {
@@ -33,6 +34,11 @@ const routes = [
     path: '/blog',
     component: Blog,
     name: 'blog',
+  },
+  {
+    path: '/how-it-works',
+    component: HowItWorks,
+    name: 'how-it-works',
   },
 ];
 
