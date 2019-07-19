@@ -36,10 +36,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '~@/vars.scss';
   .stats-section{
-    margin-top: 60px;
+    margin-top: ceil($scale1 * 40px);
     .th-heading{
-      margin-bottom: 60px;
+      margin-bottom: ceil($scale1 * 40px);
     }
   }
 </style>

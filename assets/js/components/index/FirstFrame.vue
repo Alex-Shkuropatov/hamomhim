@@ -74,7 +74,7 @@ export default {
   font-weight: bold;
   padding-left: ceil($scale1 * 70px);
   padding-right: ceil($scale1 * 40px);
-  background: url('/static/images/icons/search.svg') no-repeat ceil($scale1 * 45px) center, linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
+  background: url('/static/images/icons/search.svg') no-repeat ceil($scale1 * 36px) center, linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
   -webkit-background-size: ceil($scale1 * 25px) ceil($scale1 * 25px), cover;
   background-size: ceil($scale1 * 25px) ceil($scale1 * 25px), cover;
 }
