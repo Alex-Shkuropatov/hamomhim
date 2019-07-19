@@ -9,7 +9,7 @@
         <div class="stats_element">
           <img src="/static/images/aboutUs/case.png" alt="case" class="caseImg">
           <span class="stats_numbers">1869</span>
-          <span class="stats_txt">הצעות שעברו באתר</span>
+          <span class="stats_txt hw_txt">הצעות שעברו באתר</span>
         </div>
         <hr class="line">
         <div class="stats_element">
@@ -31,7 +31,9 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin: 0 auto;
     padding: 0 25px 0 25px;
+    width: 827px; //0.8
     @media screen and (max-width: 900px) {
       flex-direction: column;
     }
@@ -44,8 +46,8 @@
         font-family: Assistant;
         font-style: normal;
         font-weight: bold;
-        font-size: 72px;
-        line-height: 65px;
+        font-size: 57.6px; //72
+        line-height: 52px; //65
         letter-spacing: -0.02em;
         background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
         -webkit-background-clip: text;
@@ -58,8 +60,9 @@
         font-family: Assistant;
         font-style: normal;
         font-weight: normal;
-        font-size: 48px;
+        font-size: 38.4px; //48
         line-height: 65px;
+        height: 65px;
         letter-spacing: -0.02em;
         color: #828282;
       }
@@ -74,7 +77,7 @@
     }
 
     .line {
-      width: 195px;
+      width: 156px; //195
       height: 0px;
       border: 1px solid #BDBDBD;
       transform: rotate(90deg);
@@ -88,5 +91,10 @@
       }
     }
   }
+.hw_txt{
+  width : 272px;
+  @media screen {
 
+  }
+}
 </style>
