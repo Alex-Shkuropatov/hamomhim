@@ -32,6 +32,11 @@ export default {
           navigation: {
             nextEl: '.swiper-button-next[data-uid="3"]',
             prevEl: '.swiper-button-prev[data-uid="4"]',
+          },
+          breakpoints: {
+            1700: {
+              slidesPerView: 3
+            }
           }
       },
       projects: [
@@ -60,18 +65,18 @@ export default {
 <style lang="scss" scoped>
 @import '~@/vars.scss';
 .top-projects-section{
-  padding: 30px 0;
+  padding: ceil($scale1 * 25px) 0 0 0;
   width: 100%;
 }
 .top-projects-slider-wrap{
   position: relative;
 }
 .slide-outer{
-    padding: 32px 20px 20px 20px;
+    padding: ceil($scale1 * 32px) ceil($scale1 * 20px) ceil($scale1 * 20px) ceil($scale1 * 20px);
 }
 .top-pojects{
-  margin-right: -20px;
-  margin-left: -20px;
+  margin-right: ceil($scale1 * -20px);
+  margin-left: ceil($scale1 * -20px);
 }
 .slide-inner{
     display: flex;
@@ -82,17 +87,17 @@ export default {
     align-items: center;
     text-align: center;
     background: #FFFFFF;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px ceil($scale1 * 4px) ceil($scale1 * 20px) rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    padding: 35px 16px 24px;
+    padding: ceil($scale1 * 35px) ceil($scale1 * 16px) ceil($scale1 * 24px);
     color: $clr-dark;
     text-decoration: none;
     position: relative;
     .creator-avatar{
         position: absolute;
-        top: -32px;
-        width: 65px;
-        height: 65px;
+        top: ceil($scale1 * -32px);
+        width: ceil($scale1 * 65px);
+        height: ceil($scale1 * 65px);
         border-radius: 50%;
         img{
             width: 100%;
@@ -100,15 +105,15 @@ export default {
         }
     }
     .title{
-        font-size: 24px;
+        font-size: ceil($scale1 * 24px);
         font-weight: bold;
     }
     .category{
         font-weight: bold;
     }
     .description{
-        font-size: 14px;
-        margin-bottom: 25px;
+        font-size: ceil($scale1 * 14px);
+        margin-bottom: ceil($scale1 * 25px);
     }
 }
 </style>

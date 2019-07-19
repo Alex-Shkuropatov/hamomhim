@@ -51,34 +51,22 @@ export default {
 <style lang="scss" scoped>
 @import '~@/vars.scss';
 .news-section{
-  margin-top: 65px;
-  margin-bottom: 65px;
+  margin-top: ceil($scale1 * 65px);
+  margin-bottom: ceil($scale1 * 65px);
 }
 .slider-wrap{
   position: relative;
 }
 .news-slider{
-  margin: -15px;
+  margin: ceil($scale1 * -15px);
 }
 .slide-outer{
-  padding: 15px;
+  padding: ceil($scale1 * 15px);
 }
-.slide-inner::v-deep{
-  padding: 25px 30px;
-  font-size: 24px;
-  img{
-    margin-bottom: 15px;
-  }
-  .title{
-    font-size: 36px;
-  }
-  .meta, .excerpt, .title{
-    margin-bottom: 10px;
-  }
-}
+
 .blog-link{
-  margin-top: 35px;
-  padding-right: 140px;
-  padding-left: 140px;
+  margin-top: ceil($scale1 * 35px);
+  padding-right: ceil($scale1 * 140px);
+  padding-left: ceil($scale1 * 140px);
 }
 </style>

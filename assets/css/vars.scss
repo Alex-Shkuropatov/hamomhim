@@ -8,6 +8,26 @@ $def-font-size: 18px;
 
 //$grad-blue: linear-gradient(270deg, #6991C7 0%, #A3BDED 100%);
 
-$container-width: 1560px;
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+$gutters: 15px;
+$container-width: 1560px;//width of content 1530px
+
+$breakpoint1: 8000px;
+$container-width1: 1260px;
+
+$breakpoint2: 1300px;
+$container-width2: 1260px;
+
+// $scale: strip-unit($container-width2) / strip-unit($container-width);
+$scale1: $container-width1 / $container-width;
+$scale2: $container-width2 / $container-width1;
+
 
 $mobile: 992px;

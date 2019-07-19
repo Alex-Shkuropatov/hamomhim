@@ -76,15 +76,15 @@ export default {
 
 @import '~@/vars.scss';
 .footer-container{
-  border-top: 4px solid #F2F2F2;
-  padding-top: 40px;
+  border-top: ceil($scale1 * 4px) solid #F2F2F2;
+  padding-top: ceil($scale1 * 40px);
   display: flex;
   justify-content: space-between;
 }
 .logo-wrap{
-  margin-bottom: 20px;
+  margin-bottom: ceil($scale1 * 20px);
   img{
-    width: 275px;
+    width: ceil($scale1 * 275px);
   }
 }
 .logo-col{
@@ -102,15 +102,15 @@ export default {
 }
 .copyright1,
 .copyright2{
-  margin-bottom: 10px;
+  margin-bottom: ceil($scale1 * 10px);
 }
 .col-caption{
-  margin-bottom: 16px;
+  margin-bottom: ceil($scale1 * 16px);
 }
 .copyright1,
 .copyright2,
 .col-caption{
-  font-size: 24px;
+  font-size: ceil($scale1 * 24px);
   font-weight: bold;
 }
 
@@ -120,7 +120,7 @@ export default {
     margin: 0;
   }
   ul:first-child{
-    margin-left: 19px;
+    margin-left: ceil($scale1 * 19px);
   }
 }
 
@@ -129,17 +129,16 @@ export default {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  font-size: 24px;
+  font-size: ceil($scale1 * 24px);
   p, a{
     font-weight: bold;
   }
-
 }
 
 .footer-endline{
-  height: 21px;
+  height: ceil($scale1 * 21px);
   background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
-  margin-top: 50px;
+  margin-top: ceil($scale1 * 50px);
   //margin-bottom: 300px;
 }
 

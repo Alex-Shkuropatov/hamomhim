@@ -1,33 +1,36 @@
 <template>
   <div class="feedback-section">
-    <div class="th-heading text-center">מימון פרויקטים</div>
-    <div class="feedback-form">
-      <div class="form-group">
-        <label class="label">
-          <div class="caption">Lorem Ipsum</div>
-          <input type="text" class="th-input" placeholder="Lorem Ipsum">
-        </label>
-      </div>
-      <div class="form-group">
-        <label class="label">
-          <div class="caption">Lorem Ipsum</div>
-          <input type="text" class="th-input" placeholder="Lorem Ipsum">
-        </label>
-      </div>
-      <div class="form-group">
-        <label class="label">
-          <div class="caption">Lorem Ipsum</div>
-          <input type="text" class="th-input" placeholder="Lorem Ipsum">
-        </label>
-      </div>
-      <div class="form-group">
-        <label class="label">
-          <div class="caption">Lorem Ipsum</div>
-          <input type="text" class="th-input" placeholder="Lorem Ipsum">
-        </label>
-      </div>
-      <div class="form-group">
-        <button class="th-btn th-btn-md th-btn-yellow text-center">לבלוג</button>
+    <div class="section-container">
+
+      <div class="th-heading text-center">מימון פרויקטים</div>
+      <div class="feedback-form">
+        <div class="form-group">
+          <label class="label">
+            <div class="caption">Lorem Ipsum</div>
+            <input type="text" class="th-input" placeholder="Lorem Ipsum">
+          </label>
+        </div>
+        <div class="form-group">
+          <label class="label">
+            <div class="caption">Lorem Ipsum</div>
+            <input type="text" class="th-input" placeholder="Lorem Ipsum">
+          </label>
+        </div>
+        <div class="form-group">
+          <label class="label">
+            <div class="caption">Lorem Ipsum</div>
+            <input type="text" class="th-input" placeholder="Lorem Ipsum">
+          </label>
+        </div>
+        <div class="form-group">
+          <label class="label">
+            <div class="caption">Lorem Ipsum</div>
+            <input type="text" class="th-input" placeholder="Lorem Ipsum">
+          </label>
+        </div>
+        <div class="form-group">
+          <button class="th-btn th-btn-md th-btn-yellow text-center">לבלוג</button>
+        </div>
       </div>
     </div>
   </div>
@@ -40,23 +43,29 @@ export default {
 
 <style lang="scss" scoped>
 @import '~@/vars.scss';
+.section-container{
+  width: $container-width1 + 130px * $scale1;
+  margin-right: auto;
+  margin-left: auto;
+}
 .feedback-section{
   background: url('/static/images/main-page/bg3.png') no-repeat center;
   -webkit-background-size: cover;
   background-size: cover;
-  padding: 25px 75px 50px;
+  padding: ceil($scale1 * 25px) 0 ceil($scale1 * 50px);
   color: #fff;
-  font-size: 24px;
+  font-size: ceil($scale1 * 24px);
 }
 .th-heading{
   color: #fff;
   margin-bottom: 0;
   line-height: 1.1;
+  margin-bottom: ceil($scale1 * 10px);
 }
 .feedback-form{
   display: flex;
   .form-group{
-    padding: 0 12px;
+    padding: 0 ceil($scale1 * 12px);
     width: 20%;
     &:last-child{
       margin-top: auto;
@@ -73,7 +82,7 @@ export default {
     }
     .caption{
       font-weight: bold;
-      padding-right: 25px;
+      padding-right: ceil($scale1 * 25px);
     }
   }
 }

@@ -33,11 +33,14 @@ export default {
     return {
       sliderOptions: {
         // spaceBetween: 30,
-        slidesPerView: 8,
+        slidesPerView: 6,
         slidesPerColumn: 2,
         navigation: {
           nextEl: '.swiper-button-next[data-uid="1"]',
           prevEl: '.swiper-button-prev[data-uid="2"]',
+        },
+        breakpoints: {
+          
         }
       },
       categories: [
@@ -95,22 +98,29 @@ export default {
   position: relative;
 }
 .categories-slider{
-  margin-bottom: 34px;
-  margin-right: -15px;
-  margin-left: -15px;
+  margin-bottom: ceil($scale1 * 34px);
+  margin-right: ceil($scale1 * -15px);
+  margin-left: ceil($scale1 * -15px);
+}
+.th-headeing{
+  margin-bottom: 0;
 }
 .slide-outer{
-  padding: 15px;
+  padding: ceil($scale1 * 15px);
 }
 .slide-inner{
   text-align: center;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px ceil($scale1 * 20px) rgba(0, 0, 0, 0.1);
   background: #fff;
-  padding-top: 35px;
-  padding-bottom: 13px;
-  font-size: 18px;
+  padding-top: ceil($scale1 * 35px);
+  padding-bottom: ceil($scale1 * 13px);
+  font-size: ceil($scale1 * 18px);
   .cat-img{
-    margin-bottom: 15px;
+    width: ceil($scale1 * 50px);
+    margin-bottom: ceil($scale1 * 15px);
+    margin-right: auto;
+    margin-left: auto;
   }
 }
+
 </style>

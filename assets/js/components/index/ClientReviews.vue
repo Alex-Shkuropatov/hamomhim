@@ -1,35 +1,35 @@
 <template>
   <div class="client-reviews-section">
-    <div class="h-container">
-
-      <div class="th-heading clr-blue text-center">פרויקט נבחר</div>
-      <div class="content-container">
-
-        <swiper :options="reviewsSliderOptions" class="reviews-slider" ref="reviewsSlider">
-          <swiper-slide class="slide-outer" v-for="review in reviews" :key="review.id">
-            <div class="slide-inner">
-              <div class="name clr-blue">{{review.name}}</div>
-              <div class="text">{{review.text}}</div>
-              <div class="socials">
-                <a :href="review.facebook" class="facebook">Lorem ipsum dolor sit amet</a>
-              </div>
-            </div>
-          </swiper-slide>
-        </swiper>
-        <div class="photos-slider-row">
-          <swiper :options="photosSliderOptions" class="photos-slider" ref="photosSlider">
+    <div class="th-heading clr-blue text-center h-container">פרויקט נבחר</div>
+    <div class="sec-outer">
+      <div class="h-container">
+        <div class="content-container">
+          <swiper :options="reviewsSliderOptions" class="reviews-slider" ref="reviewsSlider">
             <swiper-slide class="slide-outer" v-for="review in reviews" :key="review.id">
               <div class="slide-inner">
-                <img :src="review.avatar" alt="">
+                <div class="name clr-blue">{{review.name}}</div>
+                <div class="text">{{review.text}}</div>
+                <div class="socials">
+                  <a :href="review.facebook" class="facebook">Lorem ipsum dolor sit amet</a>
+                </div>
               </div>
             </swiper-slide>
           </swiper>
-          <div class="controls">
-            <div class="swiper-button-next slider-arrow" slot="button-next" data-uid="5"></div>
-            <div class="swiper-button-prev slider-arrow" slot="button-prev" data-uid="6"></div>
+          <div class="photos-slider-row">
+            <swiper :options="photosSliderOptions" class="photos-slider" ref="photosSlider">
+              <swiper-slide class="slide-outer" v-for="review in reviews" :key="review.id">
+                <div class="slide-inner">
+                  <img :src="review.avatar" alt="">
+                </div>
+              </swiper-slide>
+            </swiper>
+            <div class="controls">
+              <div class="swiper-button-next slider-arrow" slot="button-next" data-uid="5"></div>
+              <div class="swiper-button-prev slider-arrow" slot="button-prev" data-uid="6"></div>
+            </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </div>
     <banner-section class="banner"></banner-section>
@@ -72,32 +72,31 @@ export default {
 
 <style lang="scss" scoped>
 @import '~@/vars.scss';
-.client-reviews-section{
+.sec-outer{
   background: url('/static/images/main-page/bg-house.png') no-repeat top left;
-  -webkit-background-size: calc(100vw - $container-width) auto;
-  background-size: calc(100vw - $container-width + ($container-width * 0.3)) auto;
+  background-size: calc((100vw - #{$container-width1}) / 2 + (#{$container-width1} * 0.18)) auto;
 }
 .content-container{
   width: 66%;
 }
 
 .reviews-slider{
-  margin: -20px;
+  margin: ceil($scale1 * -20px);
   color: #000;
   .slide-outer{
-    padding: 20px;
+    padding: ceil($scale1 * 20px);
   }
   .slide-inner{
     background: #FFFFFF;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
-    padding: 35px 50px 15px 75px;
+    box-shadow: 0px ceil($scale1 * 4px) ceil($scale1 * 20px) rgba(0, 0, 0, 0.2);
+    padding: ceil($scale1 * 35px) ceil($scale1 * 50px) ceil($scale1 * 15px) ceil($scale1 * 75px);
   }
   .name{
-    font-size: 36px;
+    font-size: ceil($scale1 * 36px);
     font-weight: bold;
   }
   .text{
-    font-size: 24px;
+    font-size: ceil($scale1 * 24px);
   }
   .socials,
   .socials a{
@@ -108,12 +107,12 @@ export default {
   .socials{
     .facebook{
       display: block;
-      min-height: 50px;
-      line-height: 50px;
-      padding-right: 60px;
+      min-height: ceil($scale1 * 50px);
+      line-height: ceil($scale1 * 50px);
+      padding-right: ceil($scale1 * 60px);
       background: url('/static/images/icons/facebook.svg') no-repeat right center;
-      -webkit-background-size: 36px;
-      background-size: 36px;
+      -webkit-background-size: ceil($scale1 * 36px);
+      background-size: ceil($scale1 * 36px);
     }
   }
 }
@@ -137,22 +136,22 @@ export default {
     }
     .slider-arrow{
       position: static;
-      height: 114px;
-      width: 82px;
+      height: ceil($scale1 * 114px);
+      width: ceil($scale1 * 82px);
       margin: 0;
       &.swiper-button-next{
         background: url('/static/images/icons/arrow-left.svg') no-repeat center !important;
-        background-size: 25px;
+        background-size: ceil($scale1 * 25px);
       }
       &.swiper-button-prev{
         background: url('/static/images/icons/arrow-right.svg') no-repeat center !important;
-        background-size: 25px;
+        background-size: ceil($scale1 * 25px);
       }
     }
   }
 }
 .photos-slider{
-  width: 470px;
+  width: ceil($scale1 * 470px);
   margin: 0;
   img{
     width: 100%;
@@ -161,7 +160,62 @@ export default {
 }
 
 .banner{
-  margin-top: 75px;
-  margin-bottom: 30px;
+  margin-top: ceil($scale1 * 30px);
+  margin-bottom: ceil($scale1 * 30px);
+}
+
+@media(max-width: $breakpoint2){
+  .sec-outer{
+    background-size: calc((100vw - #{$container-width2}) / 2 + (#{$container-width2} * 0.3)) auto;
+  }
+  .th-heading{
+    margin-bottom: 15px;
+  }
+  .reviews-slider{
+    .slide-inner{
+      padding: ceil($scale2 * 35px) ceil($scale2 * 50px) 15px ceil($scale2 * 75px);
+    }
+    .name{
+      font-size: ceil($scale2 * 36px);
+    }
+    .text{
+      font-size: ceil($scale2 * 22px);
+    }
+    .socials{
+      .facebook{
+        min-height: ceil($scale2 * 50px);
+        line-height: ceil($scale2 * 50px);
+        padding-right: ceil($scale2 * 60px);
+        -webkit-background-size: ceil($scale2 * 36px);
+        background-size: ceil($scale2 * 36px);
+      }
+    }
+  }
+
+  //photos slider
+  .photos-slider-row{
+    display: flex;
+    .controls{
+      .slider-arrow{
+        height: ceil($scale2 * 114px);
+        width: ceil($scale2 * 82px);
+        &.swiper-button-next{
+          background: url('/static/images/icons/arrow-left.svg') no-repeat center !important;
+          background-size: ceil($scale2 * 25px);
+        }
+        &.swiper-button-prev{
+          background: url('/static/images/icons/arrow-right.svg') no-repeat center !important;
+          background-size: ceil($scale2 * 25px);
+        }
+      }
+    }
+  }
+  .photos-slider{
+    width: ceil($scale2 * 470px);
+  }
+
+  .banner{
+    margin-top: ceil($scale2 * 75px);
+  }
 }
 </style>

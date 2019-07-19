@@ -48,7 +48,7 @@ export default {
 @import '~@/vars.scss';
 
 .header{
-    height: 110px;
+    height: ceil($scale1 * 100px);//80px//
     background: #fff;
     display: flex;
     -ms-align-items: center;
@@ -60,25 +60,47 @@ export default {
         justify-content: space-between;
     }
 }
+.logo-wrap{
+  width: ceil($scale1 * 220px);
+  img{
+    width: 100%;
+    height: auto;
+  }
+}
 .auth-btns{
   .th-btn{
-    padding-right: 40px;
-    padding-left: 40px;
+    padding-right: ceil($scale1 * 40px);
+    padding-left: ceil($scale1 * 40px);
   }
 }
 
 .desktop-menu{
   display: flex;
-  font-size: 24px;
+  font-size: ceil($scale1 * 24px);
   margin: 0;
   .menu-item{
-    margin-left: 37px;
+    margin-left: ceil($scale1 * 37px);
     &:last-child{
       margin-left: 0;
     }
   }
   a{
     color: $clr-dark;
+  }
+}
+
+@media (max-width: $breakpoint2){
+  .header{
+    height: ceil($scale2 * 110px);
+  }
+  .logo-wrap{
+    width: ceil($scale2 * 220px);
+  }
+  .desktop-menu{
+    font-size: ceil($scale2 * 24px);
+    .menu-item{
+      margin-left: ceil($scale2 * 37px);
+    }
   }
 }
 

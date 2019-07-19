@@ -1,7 +1,12 @@
 .h-container {
-  width: $container-width;//width of content 1530px
+  width: $container-width1;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 $gutters;
+}
+@media (max-width: $breakpoint2){
+  .h-container{
+    width: $container-width2;
+  }
 }
 
 .d-flex{
