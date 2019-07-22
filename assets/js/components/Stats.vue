@@ -32,7 +32,6 @@
         statsS: 1869,
         statsT: 1357,
         duration: 4000,
-
       };
     },
     methods: {
