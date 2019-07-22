@@ -19,6 +19,7 @@
   display: inline-flex;
   text-align: center;
   align-items: center;
+  overflow: hidden;
   &:disabled {
 
   }
@@ -73,18 +74,62 @@
   background: transparent;
   border: 2px solid $clr-blue;
   color: $clr-blue;
-  &:hover {
 
+  //animation
+  transition: all .3s ease-out;
+  position: relative;
+  transform: perspective(1px) translateZ(0);
+  &:before{
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: $clr-blue;
+    transform: scaleX(0);
+    transform-origin: 100% 50%;
+    transition: transform .3s ease-out;
+  }
+  &:hover{
+    color: #fff;
+    //background: $clr-blue;
+    &:before{
+      transform: scaleX(1);
+    }
   }
 
-  &.th-btn {
-
-  }
 }
 
 .th-btn-blue{
   background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
+  border: 2px solid $clr-blue;
   color: #fff;
+
+  //animation
+  transition: all .3s ease-out;
+  position: relative;
+  transform: perspective(1px) translateZ(0);
+  &:before{
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    transform: scaleX(0);
+    transform-origin: 100% 50%;
+    transition: transform .3s ease-out;
+  }
+  &:hover{
+    color: $clr-blue;
+    &:before{
+      transform: scaleX(1);
+    }
+  }
 }
 .th-btn-yellow{
   background: #F2C94C;
