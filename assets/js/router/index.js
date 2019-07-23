@@ -15,7 +15,7 @@ import Blog from './../views/Blog.vue';
 
 import BlogPost from './../views/BlogPost.vue';
 import HowItWorks from './../views/HowItWorks.vue';
-
+import  EditProfile from './../views/EditProfile.vue'
 const routes = [
   {
     path: '/',
@@ -46,7 +46,12 @@ const routes = [
     path: '/how-it-works',
     component: HowItWorks,
     name: 'how-it-works',
-  }
+  },
+  {
+    path: '/profile/edit',
+    component: EditProfile,
+    name: 'profile-edit',
+  },
 ];
 
 //routes.push(auth);

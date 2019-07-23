@@ -1,20 +1,20 @@
 <template>
-      <div class="stats" id="stat">
+      <div class="stats" ref="stats" id="stat">
         <div class="stats_element">
           <img src="/static/images/aboutUs/worker.png" alt="worker">
-          <animated-number class="stats_numbers" :value="statsF" :formatValue="formatToPrice" :duration="duration"/>
+          <animated-number class="stats_numbers" id="stats_numbers" v-on:scroll.passive="onScroll" ref="statsF" :value="statsF" :formatValue="formatToPrice" :duration="duration"/>
           <span class="stats_txt">קבלנים</span>
         </div>
         <hr class="line">
         <div class="stats_element">
           <img src="/static/images/aboutUs/case.png" alt="case" class="caseImg">
-          <animated-number class="stats_numbers" :value="statsS" :formatValue="formatToPrice" :duration="duration"/>
+          <animated-number class="stats_numbers" ref="statsS" :value="statsS" :formatValue="formatToPrice" :duration="duration"/>
           <span class="stats_txt hw_txt">הצעות שעברו באתר</span>
         </div>
         <hr class="line">
         <div class="stats_element">
           <img src="/static/images/aboutUs/community.png" alt="community">
-          <animated-number class="stats_numbers" :value="statsT" :formatValue="formatToPrice" :duration="duration"/>
+          <animated-number class="stats_numbers" ref="statsT" :value="statsT" :formatValue="formatToPrice" :duration="duration"/>
           <span class="stats_txt">משתמשים</span>
         </div>
       </div>
@@ -26,34 +26,38 @@
     components: {
       AnimatedNumber
     },
-    data() {
+    data: function () {
       return {
-        statsF: 307,
-        statsS: 1869,
-        statsT: 1357,
-        duration: 4000,
-      };
+        statsArr : [307, 1869, 1357],
+        statsF: 0,
+        statsS: 0,
+        statsT: 0,
+        duration: 0,
+      }
     },
     methods: {
       formatToPrice(value) {
         return `${value.toFixed(0)}`;
+      },
+      checkCord(){
+        let coordY =  this.$refs.stats.getBoundingClientRect().y ; // delete event listener
+
+        if(coordY<600){
+
+          this.duration = 3400;
+          this.statsF =this.statsArr[0];
+          this.statsS = this.statsArr[1];
+          this.statsT = this.statsArr[2];
+          document.removeEventListener('scroll', this.checkCord, false);
+        }
       }
     },
 
     mounted() {
-
+    document.addEventListener('scroll',  this.checkCord)
     },
     created () {
-      // document.addEventListener('scroll', ()=> {
-      //   let pageY = window.pageYOffset || document.documentElement.scrollTop;
-      //   console.log(pageY);
-      //   if(pageY===1990){
-      //     console.log('here');
-      //     this.formatToPrice(this.statsF);
-      //     this.formatToPrice(this.statsS);
-      //     this.formatToPrice(this.statsT);
-      //   }
-      // });
+
     },
     destroyed () {
 
