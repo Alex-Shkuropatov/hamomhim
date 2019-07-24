@@ -83,15 +83,12 @@
       position: absolute;
       animation: forwards;
       animation-duration: 1s;
-
+      cursor: pointer;
         &:hover{
           path {
             fill: #2970D5;
           }
-
         }
-
-
     }
     .messageFooter{
       position: absolute;

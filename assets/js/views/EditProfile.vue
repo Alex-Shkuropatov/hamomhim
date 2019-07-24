@@ -132,6 +132,7 @@ export default {
    reader.readAsDataURL(file);
   },
    open(e) {
+   e.stopImmediatePropagation();
     this.isActive = !this.isActive;
     console.log('show');
    },
@@ -331,6 +332,7 @@ export default {
   left: 0;
   top: 0;
   z-index: 200;
+
   .wrapper {
    overflow-y: auto;
    width: 100%;
@@ -348,6 +350,8 @@ export default {
     top: 0;
     left: 0;
     background: rgba(0, 0, 0, 0.3);
+    transition-property: background;
+    transition-duration: 3s;
     position: absolute;
     cursor: pointer;
    }

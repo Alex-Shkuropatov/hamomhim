@@ -41,9 +41,7 @@
       },
       checkCord(){
         let coordY =  this.$refs.stats.getBoundingClientRect().y ; // delete event listener
-
         if(coordY<600){
-
           this.duration = 3400;
           this.statsF =this.statsArr[0];
           this.statsS = this.statsArr[1];
@@ -52,16 +50,12 @@
         }
       }
     },
-
+    destroyed() {
+      document.removeEventListener('scroll', this.checkCord, false);
+    },
     mounted() {
     document.addEventListener('scroll',  this.checkCord)
     },
-    created () {
-
-    },
-    destroyed () {
-
-    }
   };
 </script>
 

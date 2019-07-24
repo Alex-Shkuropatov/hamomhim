@@ -16,6 +16,7 @@ import Blog from './../views/Blog.vue';
 import BlogPost from './../views/BlogPost.vue';
 import HowItWorks from './../views/HowItWorks.vue';
 import  EditProfile from './../views/EditProfile.vue'
+import Projects from "./../views/Projects.vue";
 const routes = [
   {
     path: '/',
@@ -51,6 +52,11 @@ const routes = [
     path: '/profile/edit',
     component: EditProfile,
     name: 'profile-edit',
+  },
+  {
+    path: '/projects',
+    component: Projects,
+    name: 'projects',
   },
 ];
 
