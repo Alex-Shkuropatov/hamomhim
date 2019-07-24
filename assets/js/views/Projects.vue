@@ -73,7 +73,7 @@ export default {
         imageBg : '/static/images/bg-header-projects.png',
       user : {
         title : 'שמתשמ םש',
-        imageProfile: '/static/images/profile/defPic.png',
+        imageProfile: '/static/images/profile/defPicCutted.png',
         position: 'האדר שייכל'
       }
       }

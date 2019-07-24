@@ -138,11 +138,10 @@ export default {
   }
 }
 .userImage{
-  margin-bottom: -23px;
-  margin-top: 36px;
-  width: 226px;
-  height: 226px;
-  border-radius: 100px;
+  margin-top: 46px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
 }
 
 </style>
