@@ -137,6 +137,7 @@ export default {
     }
   }
 }
+
 .userImage{
   margin-top: 46px;
   width: 200px;
