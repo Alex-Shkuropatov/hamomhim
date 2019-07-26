@@ -31,19 +31,11 @@
     <input class="foemField" v-model.trim="company.name" placeholder="שם העסק"  type="text">
     <span>אזור עבודה</span>
      <div class="selectWrapper">
-      <select class="foemField" v-model="company.selectedZone">
-       <option disabled value="">אזור עבודה</option>
-       <option>אזור עבודה</option>
-       <option>אזור עבודה</option>
-      </select>
+      <drop-down placeholder="אזור עבודה" v-model="select.value" :items="select.categories"/>
      </div>
     <span>קטגוריות</span>
     <div class="selectWrapper">
-     <select class="foemField" v-model="company.selectedCategory">
-      <option disabled value="">נא בחר קטגוריה אחת</option>
-      <option>1</option>
-      <option>2</option>
-     </select>
+     <drop-down placeholder="נא בחר קטגוריה אחת" v-model="select.value" :items="select.items"/>
     </div>
     <span>פקס</span>
     <input class="foemField" v-model.trim="company.fax" placeholder="פקס"  type="text" >
@@ -80,11 +72,12 @@
   // import PopUp from './components/PopUp.vue';
 
   import AlertModal from '../components/common/modals/Alert.vue';
-
+  import DropDown from '../components/common/DropDown.vue';
 
 export default {
  components: {
   AlertModal,
+  DropDown,
 
  },
  data: function () {
@@ -106,8 +99,11 @@ export default {
     passCurrent: '',
     passConfirm: ''
    },
-    isActive: false,
-
+   select: {
+    items: [ { label: 'נא בחר קטגוריה אחת', value: 1 },{ label: 'נא בחר קטגוריה אחת', value: 2 },{ label: 'נא בחר קטגוריה אחת', value: 3 } ],
+    categories: [{ label: 'אזור עבודה', value: 1 },{ label: 'אזור עבודה', value: 2 }],
+    value: '',
+   }
   }
  },
  methods: {
@@ -170,6 +166,7 @@ export default {
   align-items: center;
  }
 }
+
   .editP_section{
    margin-top: 24px;
    height: 449px;
@@ -218,7 +215,7 @@ export default {
   -webkit-border-radius: 5px; /*закругляем углы для Chrome, Safari*/
   border-radius: 5px; /*закругляем углы для остальных браузеров*/
   padding-left: 20px; /*отступ слева от ввода, чтобы текст не был на картинке(выбирать по размеру картинки)*/
-  height: 20px; /*высота строки ввода*/
+  height: 24px;
   font-size: 13px; /*размер шрифта*/
   width: 35px;
  }
@@ -228,7 +225,7 @@ export default {
  }
  .foemField{
   background: #FFFFFF;
-  opacity: 0.5;
+
   border: 1px solid #BDBDBD;
   box-sizing: border-box;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
@@ -295,24 +292,26 @@ export default {
   cursor: pointer;
  }
 
- select{
-  padding-right: 23px;
- option{
-  font-family: Assistant;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 65px;
-  display: flex;
-  align-items: center;
-  text-align: right;
-  border: 1px solid #BDBDBD;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
 
-  color: rgba(51, 51, 51, 0.65);
-   }
- }
+ /*select{*/
+ /* padding-right: 23px;*/
+ /* border-radius: 50%;*/
+ /*option{*/
+ /* font-family: Assistant;*/
+ /* font-style: normal;*/
+ /* font-weight: normal;*/
+ /* font-size: 18px;*/
+ /* line-height: 65px;*/
+ /* display: flex;*/
+ /* align-items: center;*/
+ /* text-align: right;*/
+ /* border: 1px solid #BDBDBD;*/
+ /* box-sizing: border-box;*/
+ /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);*/
+ /* border-radius: 50%;*/
+ /* color: rgba(51, 51, 51, 0.65);*/
+ /*  }*/
+ /*}*/
 
 
 

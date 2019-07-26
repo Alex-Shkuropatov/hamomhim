@@ -22,7 +22,6 @@
                     <router-link :to="{ name: 'contact-us'}">צור קשר</router-link>
                 </li>
             </ul>
-
             <div class="auth-btns">
               <button class="th-btn th-btn-blue th-btn-sm" @click="openLogin">התחברות למערכת</button>
               <button class="th-btn th-btn-empty th-btn-sm" @click="openReg">הרשמה למערכת</button>
