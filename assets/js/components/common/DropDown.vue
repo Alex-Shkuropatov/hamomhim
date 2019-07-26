@@ -1,10 +1,10 @@
-<template lang="html">
+<template>
   <div @click="open" v-click-outside="() => opened = false" class="dropdown" :class="{ opened: opened }">
     <button class="th-input main" type="button" :class="{ placeholded: placeholded }">
       {{ current }}
       <div class="arr">
         <svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6 9L0.803847 9.78799e-07L11.1962 7.02746e-08L6 9Z" fill="#7298CD"/>
+          <path d="M6 9L0.803847 9.78799e-07L11.1962 7.02746e-08L6 9Z" fill="#E0E0E0"/>
         </svg>
       </div>
     </button>
@@ -73,15 +73,22 @@ export default {
 
 .dropdown {
   position: relative;
+  background: #FFFFFF;
+  border: 1px solid #BDBDBD;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
   .main {
+    margin-left: 148px;
+    width: 200px;
     font-size: 18px;
-    text-align: left;
+    text-align: right;
     position: relative;
     padding-right: 25px;
     font-weight: 300;
     .arr {
       position: absolute;
-      right: 0;
+      right: 310px;
       top: 0;
       width: 25px;
       height: 100%;
@@ -105,6 +112,17 @@ export default {
     border: 1px solid #E0E0E0;
     z-index: 1;
     padding-top: 25px;
+
+    top: 35px;
+    width: 101%;
+    position: absolute;
+    max-height: 300px;
+    overflow-y: auto;
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 20px;
+    padding-top: 6px;
+
     .slider {
       width: 100%;
       .item {
@@ -114,6 +132,17 @@ export default {
         font-weight: 300;
         padding: 5px 20px;
         text-align: left;
+        font-family: Assistant;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        text-align: right;
+        color: rgba(51, 51, 51, 0.65);
+        &:hover{
+          background-color: gainsboro;
+        }
       }
     }
 
