@@ -10,16 +10,16 @@
                     <router-link :to="{ name: 'index'}">דף</router-link>
                 </li>
                 <li class="menu-item">
-                    <router-link :to="{ name: 'index'}">אודות</router-link>
+                    <router-link :to="{ name: 'about-us'}">אודות</router-link>
                 </li>
                 <li class="menu-item">
-                    <router-link :to="{ name: 'index'}">בלוג</router-link>
+                    <router-link :to="{ name: 'blog'}">בלוג</router-link>
                 </li>
                 <li class="menu-item">
-                    <router-link :to="{ name: 'index'}">איך זה עובד</router-link>
+                    <router-link :to="{ name: 'how-it-works'}">איך זה עובד</router-link>
                 </li>
                 <li class="menu-item">
-                    <router-link :to="{ name: 'index'}">צור קשר</router-link>
+                    <router-link :to="{ name: 'contact-us'}">צור קשר</router-link>
                 </li>
             </ul>
 
