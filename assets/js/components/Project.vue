@@ -51,6 +51,7 @@
 
 <style lang="scss" scoped>
   .project-item{
+
     z-index: 1;
     position: relative;
     background: #FFFFFF;
@@ -58,6 +59,10 @@
     line-height: 1.16;
     width: 451px;
     height: 629px;
+    @media screen and (max-width:1700px){
+      width: 400px;
+      height: 600px;
+    }
     .close{
       left: 5px;
       top: 7px;
@@ -83,6 +88,7 @@
       padding: 32px 27px 0 27px;
 
     img{
+      pointer-events: none;
       width: 100%;
     }
     .title{
@@ -119,4 +125,5 @@
       }
   }
   }
+
 </style>

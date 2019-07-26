@@ -1,15 +1,9 @@
 <template>
  <div class="editWrapper">
 
-  <div class="modal" v-show="isActive">
-   <div class="wrapper">
-    <div class="bg" @click="close"></div>
-    <PopUp ref="popUp" :isHidden="isActive" @close="close"/>
-   </div>
-  </div>
+   <alert-modal/>
 
 <div class="editP">
-
 
  <h1 class="titleH">Edit profile</h1>
  <form action="" class="editForm">
@@ -55,7 +49,7 @@
     <input class="foemField" v-model.trim="company.fax" placeholder="פקס"  type="text" >
    </div>
   </div>
-  <button class="sendData th-btn th-btn-blue th-btn-sm" ref="sendData" style="text-align:center"   @click="open">שמור</button>
+  <button class="sendData th-btn th-btn-blue th-btn-sm" ref="sendData" style="text-align:center"   @click="openModal">שמור</button>
  </form>
 </div>
   <div class="editP_section editP">
@@ -75,7 +69,7 @@
      <input class="foemField" v-model.trim="user.passConfirm" placeholder="**********" type="password">
     </div>
     </div>
-    <button class="sendData th-btn th-btn-blue th-btn-sm"  @click="open">שמור</button>
+    <button class="sendData th-btn th-btn-blue th-btn-sm"  @click="openModal">שמור</button>
    </form>
   </div>
  </div>
@@ -83,13 +77,14 @@
 
 <script>
 
-  import PopUp from '../components/PopUp.vue';
+  // import PopUp from './components/PopUp.vue';
 
+  import AlertModal from '../components/common/modals/Alert.vue';
 
 
 export default {
  components: {
-  PopUp,
+  AlertModal,
 
  },
  data: function () {
@@ -131,14 +126,10 @@ export default {
    };
    reader.readAsDataURL(file);
   },
-   open(e) {
-   e.stopImmediatePropagation();
-    this.isActive = !this.isActive;
-    console.log('show');
-   },
-    close() {
-    this.isActive = !this.isActive;
-    },
+  openModal (e) {
+   e.preventDefault();
+   this.$store.commit('modals/alert/open');
+  }
  }
 }
 </script>
