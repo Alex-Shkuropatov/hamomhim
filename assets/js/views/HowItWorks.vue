@@ -177,7 +177,10 @@
     @media screen and (max-width:1440px){
       margin: 20px 0 20px 0;
     }
-
+    @media screen and (max-width:600px){
+      flex-direction: column;
+      text-align: center;
+    }
     .element_text{
       .title{
         font-family: Assistant;
@@ -190,6 +193,9 @@
         background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        @media screen and (max-width:600px){
+          text-align: center;
+        }
       }
       .description{
         width: 285px;
@@ -199,6 +205,9 @@
         @media screen and (max-width:1440px){
           width: 285px;
         }
+        @media screen and (max-width:600px){
+          text-align: center;
+        }
       }
     }
     img{
@@ -207,6 +216,9 @@
       transition: all .3s ease-out;
       &:hover{
        transform: scale(1.1);
+      }
+      @media screen and (max-width:600px){
+       margin: 0;
       }
     }
   }
@@ -222,6 +234,10 @@
      margin: 0 auto;
      padding: 0 25px 0 25px;
    }
+   @media screen and (max-width: 750px){
+     padding: 0 5px 0 5px;
+
+   }
    .howItWorks{
      position: relative;
      background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
@@ -233,6 +249,10 @@
    }
      .txt_wrapper{
        padding-right: 44px;
+       @media screen and (max-width: 750px){
+         text-align: center;
+         padding-right: 5px;
+       }
        .title{
          padding-top: 23px;
          font-family: Assistant;
@@ -245,7 +265,12 @@
          @media screen and (max-width: 1320px){
            text-align: center;
          }
+         @media screen and (max-width: 750px){
+           font-size: 40px;
+         }
        }
+
+
        .description{
          width: 966px;
          font-family: Assistant;
@@ -277,6 +302,13 @@
         width: 100%;
        height: auto;
       }
+     @media screen and (max-width: 750px){
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+     }
+
+
      .stage_wrapper{
        padding-top: 30px;
        margin-right: 30px;
@@ -300,11 +332,19 @@
            width: 98%;
            margin-top: 33px;
          }
+         @media screen and (max-width: 750px){
+           height: unset;
+           margin-top: 0;
+           flex-direction: column;
+         }
          .hoverBlock{
            position: absolute;
            width: 10px;
            height: 100px;
            background-color: white;
+           @media screen and (max-width: 750px) {
+             display: none;
+           }
          }
          .digit{
            margin-bottom: 71px;
@@ -319,6 +359,10 @@
            background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
            -webkit-background-clip: text;
            -webkit-text-fill-color: transparent;
+           @media screen and (max-width: 750px){
+             margin-top: 20px;
+             margin-bottom: 29px;
+           }
          }
          &:hover {
            background-color: white;
@@ -351,6 +395,11 @@
      @media screen and (max-width: 1320px) {
        margin-bottom: 40px;
      }
+     @media screen and (max-width:750px) {
+       width: 263px;
+       height: 68px;
+     }
+
    }
    .workerImg{
      pointer-events: none;
@@ -389,6 +438,9 @@
   text-align: right;
   letter-spacing: -0.02em;
   color: #4F4F4F;
+  @media screen and (max-width: 600px){
+    text-align: center;
+  }
 }
 
 </style>

@@ -10,9 +10,9 @@
                </div>
       </div>
 
-      <div class="ytImage">
-        <img src="/static/images/aboutUs/ytImage.jpg" alt="">
-      </div>
+
+        <iframe  class="ytImage"  src="https://www.youtube.com/embed/u8TEMCyrnho" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 
     </div>
@@ -89,18 +89,27 @@
       flex-wrap: wrap-reverse;
       text-align: center;
     }
-    .ytImage{
-      img {
+    iframe{
         /*object-fit: cover;*/
         /*width: 100%;*/
+      padding: 0 15px 0 15px;
+        width:709.46px;
         height: 396px;
-        @media screen and (max-width: 700px) {
+      @media screen and (max-width: 1584px) {
+        width: 100%;
+        height: 650px;
+      }
+        @media screen and (max-width: 1140px) {
           padding: 0 10px 0 10px;
           object-fit: cover;
-          width: 100%;
-          height: auto;
+          width: 600px;
+          height: 390px;
         }
+      @media screen and (max-width: 600px){
+        width: 100%;
+        height: 300px;
       }
+
     }
   }
   .firstBlock_element {

@@ -1,7 +1,7 @@
 <template>
  <div class="editWrapper">
 
-   <alert-modal/>
+   <alert-modal v-bind="modalContent"/>
 
 <div class="editP">
 
@@ -31,11 +31,11 @@
     <input class="foemField" v-model.trim="company.name" placeholder="שם העסק"  type="text">
     <span>אזור עבודה</span>
      <div class="selectWrapper">
-      <drop-down placeholder="אזור עבודה" v-model="select.value" :items="select.categories"/>
+      <drop-down placeholder="אזור עבודה" v-model="workArea.value" :items="workArea.items"/>
      </div>
     <span>קטגוריות</span>
     <div class="selectWrapper">
-     <drop-down placeholder="נא בחר קטגוריה אחת" v-model="select.value" :items="select.items"/>
+     <drop-down placeholder="נא בחר קטגוריה אחת" v-model="categories.value" :items="categories.items"/>
     </div>
     <span>פקס</span>
     <input class="foemField" v-model.trim="company.fax" placeholder="פקס"  type="text" >
@@ -69,7 +69,6 @@
 
 <script>
 
-  // import PopUp from './components/PopUp.vue';
 
   import AlertModal from '../components/common/modals/Alert.vue';
   import DropDown from '../components/common/DropDown.vue';
@@ -99,10 +98,18 @@ export default {
     passCurrent: '',
     passConfirm: ''
    },
-   select: {
-    items: [ { label: 'נא בחר קטגוריה אחת', value: 1 },{ label: 'נא בחר קטגוריה אחת', value: 2 },{ label: 'נא בחר קטגוריה אחת', value: 3 } ],
-    categories: [{ label: 'אזור עבודה', value: 1 },{ label: 'אזור עבודה', value: 2 }],
+   workArea: {
+    items: [ { label: 'אזור עבודה', value: 1 },{ label: 'אזור עבודה', value: 2 }],
     value: '',
+   },
+   categories: {
+    items: [ { label: 'נא בחר קטגוריה אחת', value: 1 },{ label: 'נא בחר קטגוריה אחת', value: 2 },{ label: 'נא בחר קטגוריה אחת', value: 3 } ],
+    value: '',
+   },
+   modalContent: {
+    title: 'New information have been saved',
+    text: 'Lorem Ipsum dolor set amet',
+    buttonText: 'חזור לאתר',
    }
   }
  },
@@ -210,7 +217,7 @@ export default {
   background-image: url('/static/images/profile/addPic.png');
   background-repeat: no-repeat;
   background-position: 4px;
-  outline: none; /*убираем стандартную обводку браузера*/
+  outline: none;
   -moz-border-radius: 5px; /*закругляем углы для Mozilla*/
   -webkit-border-radius: 5px; /*закругляем углы для Chrome, Safari*/
   border-radius: 5px; /*закругляем углы для остальных браузеров*/
