@@ -121,16 +121,7 @@
 
 <style lang="scss" scoped>
   .project-item{
-    z-index: 1;
-    position: relative;
-    background: #FFFFFF;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
-    line-height: 1.16;
-    width: 1330px;
-    height: 545px;
-    @media screen and (max-width:1700px){
-      width: 1169px;
-    }
+
     .close{
       left: 52px;
       top: 35px;
