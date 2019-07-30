@@ -1,8 +1,8 @@
 <template>
   <div class="projects-wrapper">
-    <add-proj1/>
+    <add-proj1 @add="add" />
 
-    <projects-header v-bind="header" />
+    <projects-header v-bind="header"  />
 
   <div class="projects">
 
@@ -45,8 +45,8 @@
         </div>
         <Project
           class="project-item"
-          v-for="post in posts" :key="post.id"
-          v-bind="post">
+          v-for="project in projects" :key="project.id"
+          v-bind="project">
         </Project>
       </div>
     </div>
@@ -63,7 +63,7 @@ import AddProj1 from "../components/common/modals/AddProj1";
 export default {
   data(){
     return {
-      posts: [
+      projects: [
         {id: 1, imgSrc: '/static/images/projects/1.png', title: 'םיטקיורפה םש', url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
         {id: 2, imgSrc: '/static/images/projects/2.png', title: 'םיטקיורפה םש',url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
         {id: 3, imgSrc: '/static/images/projects/1.png', title: 'םיטקיורפה םש',url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
@@ -74,7 +74,6 @@ export default {
         {id: 8, imgSrc: '/static/images/projects/8.png', title: 'םיטקיורפה םש',url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
       ],
       header : {
-
         imageBg : '/static/images/bg-header-projects.png',
       user : {
         title : 'שמתשמ םש',
@@ -93,6 +92,16 @@ export default {
     openModal (e) {
       e.preventDefault();
       this.$store.commit('modals/alert/open');
+    },
+    add(data) {
+      let post = {};
+     console.log(data.project);
+     post.id = this.projects.length+1;
+     post.imgSrc = data.project.image;
+     post.title = data.project.name;
+     post.url = '#';
+     post.description = data.project.description;
+     this.projects.push(post);
     },
   }
 }

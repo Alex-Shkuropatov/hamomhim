@@ -1,7 +1,7 @@
 <template>
 
     <div class="content-wrapper third-message">
-        <h2 class="title">Add new project</h2>
+        <h2 class="title">Add new order</h2>
         <p class="projectName">Select subcategory</p>
         <div class="selectWrapper">
             <drop-down placeholder="Work area" v-model="categories.value" :items="categories.items"/>
@@ -27,11 +27,12 @@
         },
         back () {
             this.$emit('back', {
-                modal : 2,
+                modal : 1,
             })
         },
         send () {
             let counter = this.categories.value;
+            console.log(this.categories.items);
             this.$emit('send', {
                 value : this.categories.items[counter-1]['label'],
                 modal : this.modal,
@@ -45,7 +46,7 @@
     },
     data : function () {
       return {
-        modal:4,
+        modal:3,
         categories: {
           items: [
             { label: 'Subcategories', value: 1 },

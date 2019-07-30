@@ -1,6 +1,6 @@
 <template>
   <transition name="slide-fade">
-  <modal v-if="$store.getters['modals/alert/isOpened']" @close="closeB"  >
+  <modal v-if="$store.getters['modals/alert/isOpened']" @close="closeB">
 
     <first-modal @send='onFirst' v-if="modalCount===0"  v-bind="prop" />
 
@@ -8,9 +8,7 @@
 
     <third-modal v-else-if="modalCount===2" @back="PrevModal" @send='onThird'  v-bind="prop" />
 
-    <fourth-modal v-else-if="modalCount===3" @back="PrevModal" @send='onFourth'  v-bind="prop"/>
-
-    <alert-modal  v-else-if="modalCount===4" @back="PrevModal"  @send='onMessage' v-bind="modalContent"/>
+    <alert-modal  v-else-if="modalCount===3" @back="PrevModal"  @send='onMessage' v-bind="modalContent"/>
 
   </modal>
   </transition>
@@ -18,16 +16,16 @@
 
 <script>
   import Modal from './../Modal';
-  import FirstModal from './../modals/modalsProject/FirstModal.vue'
-  import SecondModal from './../modals/modalsProject/SecondModal.vue'
-  import ThirdModal from './../modals/modalsProject/ThirdModal.vue'
-  import FourthModal from './../modals/modalsProject/FourthModal.vue'
-  import AlertModal from './../modals/modalsProject/Alert.vue'
+  import FirstModal from './../modals/modalsOrder/FirstModal.vue'
+  import SecondModal from './../modals/modalsOrder/SecondModal.vue'
+  import ThirdModal from './../modals/modalsOrder/ThirdModal.vue'
+  import AlertModal from './../modals/modalsOrder/Alert.vue'
+
   export default {
     data: function(){
       return {
         prop: {
-          modalQuantity: 4,
+          modalQuantity: 3,
         },
         modalCount: 0,
         project: {
@@ -52,7 +50,7 @@
     methods: {
       close() {
        this.modalCount++;
-       if(this.modalCount===4){
+       if(this.modalCount===3){
          this.$store.commit('modals/alert/close');
          this.modalCount=0;
        }
@@ -65,41 +63,30 @@
          this.modalCount= data.modal;
       },
       onFirst (data) {
-        this.project.name = data.name;
-        this.project.description = data.description;
-        this.modalCount=data.modal;
-      },
-      onSecond (data) {
         this.project.category = data.value;
+        console.log(this.project.category);
         this.modalCount=data.modal;
         this.project.order.name = data.name;
         this.project.order.description = data.description;
         this.project.image = data.image;
       },
-      onThird (data) {
+      onSecond (data) {
         this.project.order.category = data.value;
         this.modalCount=data.modal;
       },
-      onFourth (data) {
+      onThird (data) {
         this.project.order.subcategory = data.value;
         this.modalCount=data.modal;
-        this.add();
       },
       onMessage (data){
         this.modalCount=data.modal;
-      },
-      add () {
-        this.$emit('add', {
-          project: this.project,
-        })
-      },
+      }
     },
     components: {
       Modal,
       FirstModal,
       SecondModal,
       ThirdModal,
-      FourthModal,
       AlertModal
     },
 

@@ -2,9 +2,10 @@
     <header class="header">
         <div class="h-container">
             <a href="#" class="logo-wrap">
+                <router-link :to="{ name: 'index'}">
                 <img src="/static/images/logo/logo-blue.png" alt="">
+                </router-link>
             </a>
-
             <ul class="desktop-menu">
                 <li class="menu-item">
                     <router-link :to="{ name: 'index'}">דף</router-link>

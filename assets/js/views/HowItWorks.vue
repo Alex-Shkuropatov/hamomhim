@@ -347,7 +347,6 @@
            }
          }
          .digit{
-           margin-bottom: 71px;
            line-height: 65px;
            margin-right: 42px;
            margin-left: 33px;
