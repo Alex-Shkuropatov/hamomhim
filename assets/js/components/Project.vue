@@ -90,6 +90,7 @@
     img{
       pointer-events: none;
       width: 100%;
+      height: 289.67px;
     }
     .title{
       margin: 0;
@@ -120,6 +121,8 @@
         margin-top: 14px;
       }
       button{
+        position: absolute;
+        bottom: 57px;
         width: 167.51px;
         height: 36.78px;
       }

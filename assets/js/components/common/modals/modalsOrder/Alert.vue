@@ -1,5 +1,6 @@
 <template>
 
+
     <div class="content-wrapper">
       <svg class="msgOk" width="30" height="23" viewBox="0 0 30 23" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M11.4876 22.5569C11.2012 22.8413 10.8105 23 10.4046 23C9.99878 23 9.60808 22.8413 9.32171 22.5569L0.673149 14.0163C-0.224383 13.1302 -0.224383 11.6932 0.673149 10.8086L1.75608 9.73913C2.65389 8.85295 4.10761 8.85295 5.00514 9.73913L10.4046 15.0706L24.9949 0.664636C25.8927 -0.221545 27.3478 -0.221545 28.2439 0.664636L29.3269 1.73415C30.2244 2.62033 30.2244 4.05705 29.3269 4.94184L11.4876 22.5569Z" fill="url(#paint0_linear)"/>
@@ -12,8 +13,9 @@
       </svg>
       <h3>{{title}}</h3>
       <p>{{text}}</p>
-      <button class="sendData th-btn th-btn-blue th-btn-sm " style="text-align:center" @click='close' >{{buttonText}}</button>
+      <button class="sendData th-btn th-btn-blue th-btn-sm " style="text-align:center" @click='close' >חזור לאתר</button>
     </div>
+
 
 </template>
 
@@ -26,7 +28,7 @@
       close() {
         this.$store.commit('modals/alert/close');
         this.$emit('send', {
-          modal : 0,
+          modal : -1,
         })
       },
 
@@ -34,16 +36,16 @@
 
     props: {
       title : {
-        type: String,
-        required: ''
+        type: Number,
+        required: true
       },
       text : {
-        type: String,
-        required: ''
+        type: Number,
+        required: true
       },
       buttonText : {
-        type: String,
-        required: ''
+        type: Number,
+        required: true
       }
     },
     components: {

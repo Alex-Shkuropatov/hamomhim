@@ -17,6 +17,8 @@ import BlogPost from './../views/BlogPost.vue';
 import HowItWorks from './../views/HowItWorks.vue';
 import  EditProfile from './../views/EditProfile.vue'
 import Projects from "./../views/Projects.vue";
+import Orders from "./../views/Orders.vue";
+
 const routes = [
   {
     path: '/',
@@ -57,6 +59,11 @@ const routes = [
     path: '/projects',
     component: Projects,
     name: 'projects',
+  },
+  {
+    path: '/orders',
+    component: Orders,
+    name: 'orders',
   },
 ];
 

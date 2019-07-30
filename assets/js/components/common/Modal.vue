@@ -20,6 +20,9 @@
     },
     components: {
       ModalClose,
+    },
+    destroyed() {
+      this.$store.commit('modals/alert/close');
     }
   }
 </script>
