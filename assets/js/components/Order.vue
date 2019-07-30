@@ -16,7 +16,7 @@
      <div class="text-wrapper">
        <div class="title">{{title}}</div>
        <div class="actions-wrapper">
-         <div class="action-item">
+         <div class="action-item worker">
            <button class="item" type="button">
              <svg width="20" height="25" viewBox="0 0 20 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                <path d="M17.663 17.4465C17.1062 16.8326 16.4352 16.5328 15.5785 16.5328H13.7735L12.5884 15.3906C11.7175 16.1045 10.661 16.5185 9.51871 16.5185C8.44789 16.5185 7.43419 16.1473 6.60609 15.5048L5.54951 16.5185H3.67094C2.71435 16.5185 1.97192 16.8469 1.38654 17.518C-0.312489 19.4883 -0.026938 23.7002 0.10156 24.9994H19.1192C19.2193 23.6858 19.3906 19.374 17.663 17.4465Z" fill="url(#paint0_linear)"/>
@@ -45,8 +45,9 @@
            </button>
            <p class="describe">םידבוע</p>
          </div>
-         <div class="action-item">
-           <button class="item" type="button">
+         <hr>
+         <div class="action-item ">
+           <button class="item centered" type="button">
            <svg width="19" height="25" viewBox="0 0 19 25" fill="none" xmlns="http://www.w3.org/2000/svg">
              <path d="M13.2812 1.5625H11.5844C11.2625 0.653125 10.3938 0 9.375 0C8.35625 0 7.4875 0.653125 7.16406 1.5625H5.46875C5.0375 1.5625 4.6875 1.9125 4.6875 2.34375V5.46875C4.6875 5.9 5.0375 6.25 5.46875 6.25H13.2812C13.7125 6.25 14.0625 5.9 14.0625 5.46875V2.34375C14.0625 1.9125 13.7125 1.5625 13.2812 1.5625Z" fill="url(#paint0_linear)"/>
              <path d="M17.1875 3.125H15.625V5.46875C15.625 6.76094 14.5734 7.8125 13.2812 7.8125H5.46875C4.17656 7.8125 3.125 6.76094 3.125 5.46875V3.125H1.5625C0.701563 3.125 0 3.82656 0 4.6875V23.4375C0 24.3141 0.685938 25 1.5625 25H17.1875C18.0641 25 18.75 24.3141 18.75 23.4375V4.6875C18.75 3.81094 18.0641 3.125 17.1875 3.125ZM9.14688 16.9594L6.02188 20.0844C5.86875 20.2359 5.66875 20.3125 5.46875 20.3125C5.26875 20.3125 5.06875 20.2359 4.91562 20.0844L3.35312 18.5219C3.04844 18.2172 3.04844 17.7219 3.35312 17.4172C3.65781 17.1125 4.15313 17.1125 4.45781 17.4172L5.46875 18.4266L8.04062 15.8547C8.34531 15.55 8.84062 15.55 9.14531 15.8547C9.45 16.1594 9.45156 16.6531 9.14688 16.9594ZM9.14688 10.7094L6.02188 13.8344C5.86875 13.9859 5.66875 14.0625 5.46875 14.0625C5.26875 14.0625 5.06875 13.9859 4.91562 13.8344L3.35312 12.2719C3.04844 11.9672 3.04844 11.4719 3.35312 11.1672C3.65781 10.8625 4.15313 10.8625 4.45781 11.1672L5.46875 12.1766L8.04062 9.60469C8.34531 9.3 8.84062 9.3 9.14531 9.60469C9.45 9.90937 9.45156 10.4031 9.14688 10.7094ZM14.8438 18.75H11.7188C11.2875 18.75 10.9375 18.4 10.9375 17.9688C10.9375 17.5375 11.2875 17.1875 11.7188 17.1875H14.8438C15.275 17.1875 15.625 17.5375 15.625 17.9688C15.625 18.4 15.275 18.75 14.8438 18.75ZM14.8438 12.5H11.7188C11.2875 12.5 10.9375 12.15 10.9375 11.7188C10.9375 11.2875 11.2875 10.9375 11.7188 10.9375H14.8438C15.275 10.9375 15.625 11.2875 15.625 11.7188C15.625 12.15 15.275 12.5 14.8438 12.5Z" fill="url(#paint1_linear)"/>
@@ -64,6 +65,7 @@
            </button>
            <p class="describe">ףסונ עדימ</p>
          </div>
+         <hr>
          <div class="action-item">
            <button class="item" type="button">
            <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -127,10 +129,11 @@
     width: 1330px;
     height: 545px;
     @media screen and (max-width:1700px){
+      width: 1169px;
     }
     .close{
-      left: 54px;
-      top: 38px;
+      left: 52px;
+      top: 35px;
       position: absolute;
       z-index: 2;
        opacity: 1;
@@ -159,9 +162,11 @@
       height: 356.12px;
     }
       .text-wrapper{
+        width: 620px;
         margin-left: 75px;
         .title{
           margin: 0;
+          margin-right: 20px;
           font-family: Assistant;
           font-style: normal;
           font-weight: bold;
@@ -208,24 +213,35 @@
 .actions-wrapper{
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 284px;
+  height: 63px;
   .action-item{
     position: relative;
     width: 60px;
-    margin-left: 20px;
+
     height: 60px;
     .item {
       position: absolute;
-      left: 25px;
-      top: 20px;
-      width: 20px;
-      height: 20px;
+      left: 18px;
+      top: 10px;
+      width: 40px;
+      height: 30px;
       padding: 0;
     }
+
+    .centered{
+      left: 11px;
+    }
+  }
+  .worker{
+    margin-left: -1px;
   }
   .describe{
     top: 20px;
-    width: 82px;
-    position: absolute;
+    width: 69px;
+    position: relative;
     font-family: Assistant;
     font-style: normal;
     font-weight: normal;
@@ -237,5 +253,11 @@
     color: #828282;
   }
 }
-
+hr{
+  margin-top: 14px;
+  width: 50px;
+  height: 0px;
+  border: 1px solid #E0E0E0;
+  transform: rotate(90deg);
+}
 </style>

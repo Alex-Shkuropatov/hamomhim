@@ -35,15 +35,15 @@
     props: {
       title : {
         type: String,
-        required: true
+        required: ''
       },
       text : {
         type: String,
-        required: true
+        required: ''
       },
       buttonText : {
         type: String,
-        required: true
+        required: ''
       }
     },
     components: {

@@ -61,10 +61,10 @@ export default {
       let post = {};
      console.log(data.project);
      post.id = this.posts.length+1;
-     post.imgSrc = data.project.image;
-     post.title = data.project.name;
+     post.imgSrc = data.order.image;
+     post.title = data.order.name;
      post.url = '#';
-     post.description = data.project.description;
+     post.description = data.order.description;
      this.posts.push(post);
     },
   }
@@ -133,6 +133,9 @@ export default {
   line-height: 1.16;
   width: 1330px;
   height: 545px;
+  @media screen and (max-width:1700px){
+    width: 1169px;
+  }
   .content-wrapper{
     padding: 95px 300px 0 300px;
     display: flex;
