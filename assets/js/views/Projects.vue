@@ -1,8 +1,9 @@
 <template>
   <div class="projects-wrapper">
+    <add-proj1/>
 
     <projects-header v-bind="header" />
-    <add-proj1/>
+
   <div class="projects">
 
     <div class="projects-list-wrap h-container">
@@ -57,7 +58,6 @@
 
 import Project from './../components/Project';
 import ProjectsHeader from './../components/ProjectsHeader';
-
 import AddProj1 from "../components/common/modals/AddProj1";
 
 export default {
@@ -100,7 +100,8 @@ export default {
 
 <style lang="scss" scoped>
 .projects-wrapper{
-  width: 100%;
+  z-index: 0;
+  margin: 0 auto;
 }
 
 .projects-list-wrap{

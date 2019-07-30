@@ -2,7 +2,7 @@
     <div class="modal">
        <div class="bg" @click="close"></div>
        <div class="formMessage">
-
+         <modal-close class="closeB" @click="close"/>
          <slot></slot>
          <div class="messageFooter"></div>
        </div>
@@ -10,11 +10,16 @@
 </template>
 
 <script>
+  import  ModalClose from  './ModalClose.vue'
+
   export default {
     methods: {
       close(e) {
         this.$emit('close', e);
       }
+    },
+    components: {
+      ModalClose,
     }
   }
 </script>
@@ -25,7 +30,7 @@
     background: #FFFFFF;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
     z-index: 10;
-    width: 660px;
+    min-width: 660px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,9 +38,13 @@
   }
   .modal {
     position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    padding-top: 150px;
     z-index: 200;
     display: flex;
-    align-items: center;
     justify-content: center;
   }
   #closeWindow{
@@ -63,7 +72,6 @@
     position: absolute;
     cursor: pointer;
   }
-
 
 
   .messageFooter{
