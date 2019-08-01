@@ -21,7 +21,7 @@
     components: {
       ModalClose,
     },
-    destroyed() {
+    beforeDestroy() {
       this.$store.commit('modals/alert/close');
     }
   }
@@ -37,7 +37,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    @media screen and (max-width:1600px){
+      min-width: 400px;
+    }
   }
   .modal {
     position: fixed;

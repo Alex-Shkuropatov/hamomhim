@@ -1,10 +1,10 @@
 <template>
-  <transition name="slide-fade">
+  <transition v-bind:name="animaStyle">
   <modal v-if="$store.getters['modals/alert/isOpened']" @close="closeB"  >
 
-    <first-modal @send='onFirst' v-if="modalCount===0"  v-bind="prop" />
+    <first-modal  v-if="modalCount===0" @send='onFirst' v-bind="prop" />
 
-    <second-modal @send='onSecond' @back="PrevModal" v-else-if="modalCount===1"  v-bind="prop" />
+    <second-modal v-else-if="modalCount===1" @send='onSecond' @back="PrevModal"  v-bind="prop" />
 
     <third-modal v-else-if="modalCount===2" @back="PrevModal" @send='onThird'  v-bind="prop" />
 
@@ -12,8 +12,11 @@
 
     <alert-modal  v-else-if="modalCount===4" @back="PrevModal"  @send='onMessage' v-bind="modalContent"/>
 
+    <close-project v-else-if="modalCount===5" @click="closeProject"  />
+
   </modal>
   </transition>
+
 </template>
 
 <script>
@@ -23,18 +26,27 @@
   import ThirdModal from './../modals/modalsProject/ThirdModal.vue'
   import FourthModal from './../modals/modalsProject/FourthModal.vue'
   import AlertModal from './../modals/modalsProject/Alert.vue'
+  import CloseProject from './../modals/modalsProject/CloseProject.vue'
+
   export default {
+    props : {
+      modalCount: {
+        type: Number,
+        default: 0,
+      },
+    },
     data: function(){
       return {
         prop: {
           modalQuantity: 4,
         },
-        modalCount: 0,
+        animaStyle: 'slide-fade',
         project: {
           name: '',
           description: '',
           category: '',
           image: '',
+          price: '',
           order: {
             name : '',
             description: '',
@@ -50,16 +62,18 @@
       }
     },
     methods: {
-      close() {
-       this.modalCount++;
-       if(this.modalCount===4){
-         this.$store.commit('modals/alert/close');
-         this.modalCount=0;
-       }
-      },
       closeB() {
         this.$store.commit('modals/alert/close');
-        this.modalCount=0;
+
+        if(this.modalCount<5){
+          this.modalCount=0;
+        }else {
+          this.modalCount=5;
+        }
+      },
+      closeProject(data){
+        this.$store.commit('modals/alert/open');
+        this.modal = data.modal;
       },
       PrevModal(data){
          this.modalCount= data.modal;
@@ -83,10 +97,10 @@
       onFourth (data) {
         this.project.order.subcategory = data.value;
         this.modalCount=data.modal;
-        this.add();
       },
       onMessage (data){
         this.modalCount=data.modal;
+        this.add();
       },
       add () {
         this.$emit('add', {
@@ -100,9 +114,16 @@
       SecondModal,
       ThirdModal,
       FourthModal,
-      AlertModal
+      AlertModal,
+      CloseProject
     },
-
+    created(){
+      this.animaStyle='slide-fade';
+    },
+    destroyed() {
+      this.animaStyle='';
+      this.$store.commit('modals/alert/close');
+    }
   }
 </script>
 

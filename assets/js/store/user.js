@@ -9,23 +9,45 @@ export default {
     auth(state, token) {
       state.logged = true;
       localStorage.setItem('auth', token);
-      app.$http.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     },
     saveData(state, data) {
       state.data = data;
-    }
+    },
+    logout(state, data) {
+      state.data = {};
+      state.logged = false;
+      delete axios.defaults.headers.common['Authorization'];
+      localStorage.removeItem('auth');
+    },
   },
   actions: {
     updateData(context) {
-      return app.$http.get('/user/data').then(res => {
-        context.commit('auth', res.data);
+      return axios.get('/user/data').then(res => {
+        context.commit('saveData', res.data);
         return res.data;
       });
     }
   },
   getters: {
-    token() {
+    token(state) {
       return localStorage.getItem('auth');
-    }
+    },
+    auth(state, getters) {
+      if(getters.token) {
+        return `Bearer ${getters.token}`;
+      } else {
+        return null;
+      }
+    },
+    isLogged(state) {
+      return state.logged;
+    },
+    isLoaded(state) {
+      return state.loaded;
+    },
+    data(state) {
+      return state.data;
+    },
   }
-};;
+};

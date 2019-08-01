@@ -8,7 +8,7 @@
         </div>
         <div class="buttons-wrapper">
             <button class="saveB" style="text-align:center" @click='send' >Create</button>
-            <div class="modalNumber">{{modal}}/{{modalQuantity}}</div>
+            <div class="modalNumber">{{modalQuantity}}/{{modal}}</div>
             <button class="closeB" style="text-align:center" @click='back' >Previous step</button>
         </div>
     </div>
@@ -37,7 +37,6 @@
                 modal : this.modal,
             })
         },
-
     },
     components: {
       Modal,

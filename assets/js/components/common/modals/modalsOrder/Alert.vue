@@ -26,14 +26,11 @@
   export default {
     methods: {
       close() {
-        this.$store.commit('modals/alert/close');
         this.$emit('send', {
-          modal : -1,
+          modal : 0,
         })
       },
-
     },
-
     props: {
       title : {
         type: Number,
