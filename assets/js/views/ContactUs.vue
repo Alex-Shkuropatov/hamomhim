@@ -1,6 +1,9 @@
 <template>
+
 <div class="contact">
+
 <div class="formWrapper" v-bind:class="{'setH': isHidden}">
+
   <form action="" id="contactForm" v-show="isShowed" >
     <h2 class="title">צור קשר</h2>
     <div class="textWrapper">
@@ -28,6 +31,7 @@
     <img src="/static/images/how-it-works/mapCrop.png" class="googleMap" alt="map">
     </div>
 </div>
+
 </template>
 
 <script>

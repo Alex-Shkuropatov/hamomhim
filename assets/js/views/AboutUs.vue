@@ -1,4 +1,5 @@
 <template>
+
   <div class="content">
     <page-subheader v-bind="subhead"/>
     <div class="firstBlock">
@@ -11,8 +12,12 @@
       </div>
 
 
-        <iframe  class="ytImage"  src="https://www.youtube.com/embed/u8TEMCyrnho" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="video-wrap">
+        <div class="video-inner">
+          <iframe  class="ytImage"  src="https://www.youtube.com/embed/u8TEMCyrnho" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+        </div>
+      </div>
 
 
     </div>
@@ -75,6 +80,8 @@
 </script>
 
 <style lang="scss" scoped>
+
+
   .content {
 
   }
@@ -89,28 +96,38 @@
       flex-wrap: wrap-reverse;
       text-align: center;
     }
-    iframe{
-        /*object-fit: cover;*/
-        /*width: 100%;*/
+    .video-wrap {
       padding: 0 15px 0 15px;
-        width:709.46px;
-        height: 396px;
+      width:709.46px;
+      height: 396px;
       @media screen and (max-width: 1584px) {
         width: 100%;
         height: 650px;
       }
-        @media screen and (max-width: 1140px) {
-          padding: 0 10px 0 10px;
-          object-fit: cover;
-          width: 600px;
-          height: 390px;
-        }
-      @media screen and (max-width: 600px){
-        width: 100%;
-        height: 300px;
+      @media screen and (max-width: 1140px) {
+        padding: 0 10px 0 10px;
+        object-fit: cover;
+        width: 600px;
+        height: 390px;
       }
-
+      @media screen and (max-width:700px) {
+        width: 100%;
+      }
+      .video-inner{
+        width: 100%;
+        position: relative;
+        padding-bottom: 56.25%;
+        iframe{
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
     }
+
+
   }
   .firstBlock_element {
     pointer-events: none;

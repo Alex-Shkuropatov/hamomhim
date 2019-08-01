@@ -68,6 +68,11 @@
     &:hover {
       color:  #2871D7 ;
     }
+    @media screen and (max-width:1600px){
+      margin: 0 auto;
+      width: 190px;
+      height: 60px;
+    }
   }
   .content-wrapper{
     position: relative;

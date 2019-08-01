@@ -35,16 +35,16 @@
     props: {
       title : {
         type: String,
-        required: ''
+        required: '',
       },
       text : {
         type: String,
-        required: ''
+        required: '',
       },
       buttonText : {
         type: String,
-        required: ''
-      }
+        required: '',
+      },
     },
     components: {
       Modal,

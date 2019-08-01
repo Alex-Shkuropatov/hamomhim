@@ -30,26 +30,17 @@
 
 <script>
 export default {
-  props: {
-    imageBg: {
-      type: String,
-      required: true
-    },
-    user: {
-      title: {
-        type: String,
-        default: ''
-      },
-      position: {
-        type: String,
-        default: ''
-      },
-      imageProfile: {
-        type: String,
-        required: true
-      }
+  data() {
+    return{
+        imageBg : '/static/images/bg-header-projects.png',
+        user : {
+          title : 'שמתשמ םש',
+          imageProfile: '/static/images/profile/defPicCutted.png',
+          position: 'האדר שייכל'
+        }
     }
-  },
+  }
+  ,
   computed: {
     styles() {
       return {

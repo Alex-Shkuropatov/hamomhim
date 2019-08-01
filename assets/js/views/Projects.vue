@@ -1,8 +1,8 @@
 <template>
   <div class="projects-wrapper">
-    <add-proj1 @add="add" />
+    <add-proj1 @add="add" v-bind="changeModal" />
 
-    <projects-header v-bind="header"  />
+    <projects-header/>
 
   <div class="projects">
 
@@ -45,7 +45,7 @@
         </div>
         <Project
           class="project-item"
-          v-for="project in projects" :key="project.id"
+          v-for="project in projects" @onClose="onClose" :key="project.id"
           v-bind="project">
         </Project>
       </div>
@@ -59,7 +59,7 @@
 import Project from './../components/Project';
 import ProjectsHeader from './../components/ProjectsHeader';
 import AddProj1 from "../components/common/modals/AddProj1";
-
+import  CloseProject from  "../components/common/modals/modalsProject/CloseProject"
 export default {
   data(){
     return {
@@ -73,13 +73,8 @@ export default {
         {id: 7, imgSrc: '/static/images/projects/7.png', title: 'םיטקיורפה םש',url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
         {id: 8, imgSrc: '/static/images/projects/8.png', title: 'םיטקיורפה םש',url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
       ],
-      header : {
-        imageBg : '/static/images/bg-header-projects.png',
-      user : {
-        title : 'שמתשמ םש',
-        imageProfile: '/static/images/profile/defPicCutted.png',
-        position: 'האדר שייכל'
-      }
+      changeModal : {
+        modalCount : '',
       }
     };
   },
@@ -87,10 +82,12 @@ export default {
     Project,
     ProjectsHeader,
     AddProj1,
+    CloseProject,
   },
   methods: {
     openModal (e) {
       e.preventDefault();
+      this.changeModal.modalCount=0;
       this.$store.commit('modals/alert/open');
     },
     add(data) {
@@ -103,6 +100,13 @@ export default {
      post.description = data.project.description;
      this.projects.push(post);
     },
+    onClose(data){
+        this.changeModal.modalCount = data.modal;
+
+       this.$store.commit('modals/alert/open');
+
+        console.log(this.changeModal.modalCount);
+    },
   }
 }
 </script>
@@ -114,7 +118,7 @@ export default {
 }
 
 .projects-list-wrap{
-  padding-top: 50px;
+
   padding-bottom: 50px;
 }
 .projects{

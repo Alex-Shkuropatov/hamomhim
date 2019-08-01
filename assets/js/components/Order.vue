@@ -227,7 +227,7 @@
     }
   }
   .worker{
-    margin-left: -1px;
+    margin-left: -10px;
   }
   .describe{
     top: 20px;

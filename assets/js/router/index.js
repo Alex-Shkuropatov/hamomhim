@@ -18,6 +18,8 @@ import HowItWorks from './../views/HowItWorks.vue';
 import  EditProfile from './../views/EditProfile.vue'
 import Projects from "./../views/Projects.vue";
 import Orders from "./../views/Orders.vue";
+import ClosedProjects from "./../views/ClosedProjects.vue";
+import ClosedOrders from "./../views/ClosedOrders.vue";
 
 const routes = [
   {
@@ -65,6 +67,16 @@ const routes = [
     component: Orders,
     name: 'orders',
   },
+  {
+    path: '/projects/closed-projects',
+    component: ClosedProjects,
+    name: 'closed-projects',
+  },
+  {
+    path: '/orders/closed-orders',
+    component: ClosedOrders,
+    name: 'closed-orders',
+  },
 ];
 
 //routes.push(auth);
@@ -75,18 +87,15 @@ const router = new VueRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
-  // if(!store.state.user.loaded) {
-  //   console.log(store.getters.token);
-  //   if(store.state.user.token) {
-  //
-  //     await app.$http.get('/user/info', {
+  // if(!store.getters['user/isLoaded']) {
+  //   if(store.getters['user/token']) {
+  //     await axios.get('/user/data', {
   //       headers: {
-  //         'Authorization': store.state.user.token
+  //         'Authorization': `Bearer ${store.getters['user/token']}`
   //       }
   //     }).then(res => {
-  //       axios.defaults.headers.common['Authorization'] = 'Bearer ' + store.state.user.token;
-  //       store.state.user.data = res.data;
-  //       store.state.user.logged = true;
+  //       store.commit('user/auth', store.getters['user/token']);
+  //       store.commit('user/saveData', res.data);
   //     }).catch(res => {
   //       store.state.user.logged = false;
   //     });

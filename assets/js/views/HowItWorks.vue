@@ -350,6 +350,7 @@
            line-height: 65px;
            margin-right: 42px;
            margin-left: 33px;
+           margin-top: -70px;
            font-family: Assistant;
            font-style: normal;
            font-weight: bold;
@@ -361,6 +362,9 @@
            @media screen and (max-width: 750px){
              margin-top: 20px;
              margin-bottom: 29px;
+           }
+           @media screen and (max-width: 600px){
+             margin-right: 0;
            }
          }
          &:hover {
@@ -398,7 +402,9 @@
        width: 263px;
        height: 68px;
      }
-
+     @media screen and (max-width: 600px){
+       margin-right: 0;
+     }
    }
    .workerImg{
      pointer-events: none;
@@ -439,6 +445,7 @@
   color: #4F4F4F;
   @media screen and (max-width: 600px){
     text-align: center;
+    margin-right: 0;
   }
 }
 

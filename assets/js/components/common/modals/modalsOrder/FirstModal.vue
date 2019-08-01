@@ -30,7 +30,7 @@
       </div>
       <div class="buttons-wrapper">
         <button class="saveB" style="text-align:center" @click='send' >Save</button>
-        <div class="modalNumber">{{modal}}/{{modalQuantity}}</div>
+        <div class="modalNumber">{{modalQuantity}}/{{modal}}</div>
         <button class="closeB" style="text-align:center" @click='close' >Close</button>
       </div>
     </div>

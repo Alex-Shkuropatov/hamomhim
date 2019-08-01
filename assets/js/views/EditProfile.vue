@@ -1,4 +1,5 @@
 <template>
+
  <div class="editWrapper">
 
    <alert-modal v-bind="modalContent"/>
@@ -123,7 +124,6 @@ export default {
    let image = new Image();
    let reader = new FileReader();
    let vm = this;
-
    reader.onload = (e) => {
     vm.source = e.target.result;
    };
@@ -153,6 +153,9 @@ export default {
   @media screen and (max-width: 900px){
    width: 500px;
   }
+  @media screen and (max-width: 600px){
+   width: 100%;
+  }
 .editP{
  display: flex;
  flex-direction: column;
@@ -171,9 +174,11 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media screen and (max-width: 700px){
+   width: 100%;
+  }
  }
 }
-
   .editP_section{
    margin-top: 24px;
    height: 449px;
@@ -187,10 +192,9 @@ export default {
     align-items: center;
    }
   }
-
-
  }
  .titleH{
+
   margin: 0;
   margin-top: 35px;
   font-family: Assistant;
@@ -201,6 +205,9 @@ export default {
   text-align: center;
   letter-spacing: -0.02em;
   color : #333333;
+  @media screen and (max-width: 600px){
+   font-size: 42px;
+  }
  }
  .cLeft{
   margin-left: 8px;
@@ -209,6 +216,7 @@ export default {
   margin-right: 8px;
  }
  .profileImg{
+  margin-top: 20px;
   width: 189px;
   height: 189px;
   border-radius: 50%;
@@ -258,6 +266,10 @@ export default {
   @media screen and (max-width: 1440px) {
    margin-bottom: 25px;
   }
+  @media screen and (max-width: 400px) {
+   width: 283px;
+   padding-right: 113px;
+  }
   &:hover {
    color:  #2871D7 ;
   }
@@ -283,7 +295,11 @@ export default {
     text-align: right;
 
     color: #333333;
+    @media screen and (max-width: 400px) {
+     text-align: center;
+    }
    }
+
    input{
     padding-right: 25px;
    }
@@ -298,29 +314,6 @@ export default {
   display: block;
   cursor: pointer;
  }
-
-
- /*select{*/
- /* padding-right: 23px;*/
- /* border-radius: 50%;*/
- /*option{*/
- /* font-family: Assistant;*/
- /* font-style: normal;*/
- /* font-weight: normal;*/
- /* font-size: 18px;*/
- /* line-height: 65px;*/
- /* display: flex;*/
- /* align-items: center;*/
- /* text-align: right;*/
- /* border: 1px solid #BDBDBD;*/
- /* box-sizing: border-box;*/
- /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);*/
- /* border-radius: 50%;*/
- /* color: rgba(51, 51, 51, 0.65);*/
- /*  }*/
- /*}*/
-
-
 
  .modal {
   position: fixed;
@@ -370,7 +363,4 @@ export default {
    transition: opacity 0.3s ease;
   }
  }
-
-
-
 </style>
