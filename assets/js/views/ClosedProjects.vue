@@ -105,7 +105,7 @@ export default {
   .h-container{
     margin: 0 auto;
     width: 1473px;
-      @media screen and (max-width:1696px){
+      @media screen and (max-width:1697px){
       width: 1431px;
 
     }
