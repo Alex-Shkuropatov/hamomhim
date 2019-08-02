@@ -1,9 +1,8 @@
 <template>
-
             <div class="content-wrapper third-message">
                 <h2 class="title">סיכום פרויקט</h2>
                 <p class="projectName">נא הזן את סכום הפרויקט</p>
-                <input type="text" v-model="price">
+                <input type="text" class="container-value" v-model="price" placeholder="םוכס">
                 <div class="buttons-wrapper">
                   <button class="saveB"  style="text-align:center" @click='closeProject' >לוטיב</button>
                     <button class="closeB"  style="text-align:center" @click='close' > טקיורפ רוגס</button>
@@ -65,5 +64,41 @@
     }
     .content-wrapper{
         background-color: white;
+      .title{
+        margin:0;
+        margin-top: 27px;
+        font-family: Assistant;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 36px;
+        line-height: 40px;
+        text-align: center;
+        letter-spacing: -0.02em;
+        color: #333333;
+      }
+      .projectName{
+        margin:0;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        font-family: Assistant;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 40px;
+        text-align: center;
+        letter-spacing: -0.02em;
+        color: #828282;
+      }
+      .container-value{
+        background: #FFFFFF;
+        opacity: 0.5;
+        border: 1px solid #BDBDBD;
+        box-sizing: border-box;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+        border-radius: 50px;
+        width: 350.28px;
+        height: 46.47px;
+        padding-right: 20px;
+      }
     }
 </style>

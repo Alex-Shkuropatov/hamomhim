@@ -102,10 +102,7 @@ export default {
     },
     onClose(data){
         this.changeModal.modalCount = data.modal;
-
        this.$store.commit('modals/alert/open');
-
-        console.log(this.changeModal.modalCount);
     },
   }
 }

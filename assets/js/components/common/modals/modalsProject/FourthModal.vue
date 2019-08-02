@@ -4,7 +4,21 @@
         <h2 class="title">Add new project</h2>
         <p class="projectName">Select subcategory</p>
         <div class="selectWrapper">
-            <drop-down placeholder="Work area" v-model="categories.value" :items="categories.items"/>
+
+                <multiselect
+                        v-model="value"
+                        :options="options"
+                        :multiple="true"
+                        :close-on-select="false"
+                        :clear-on-select="false"
+                        placeholder="Pick some"
+                        label="name"
+                        track-by="value"
+                        :preselect-first="false"
+                        :show-labels="false"
+                >
+                </multiselect>
+
         </div>
         <div class="buttons-wrapper">
             <button class="saveB" style="text-align:center" @click='send' >Create</button>
@@ -18,7 +32,7 @@
 <script>
   import Modal from './../../Modal.vue';
   import DropDown from './../../DropDown.vue'
-
+  import Multiselect from 'vue-multiselect'
 
   export default {
     methods: {
@@ -31,9 +45,10 @@
             })
         },
         send () {
-            let counter = this.categories.value;
             this.$emit('send', {
-                value : this.categories.items[counter-1]['label'],
+                value : this.value.map( (item) => {
+                 return item.value;
+                }),
                 modal : this.modal,
             })
         },
@@ -41,18 +56,17 @@
     components: {
       Modal,
       DropDown,
+      Multiselect
     },
     data : function () {
       return {
         modal:4,
-        categories: {
-          items: [
-            { label: 'Subcategories', value: 1 },
-            { label: 'Subcategories', value: 2 },
-            { label: 'Subcategories', value: 3 }
-          ],
-          value: '',
-        }
+          value: [],
+          options: [
+              { name: 'Subcategory 1', value: 1 },
+              { name: 'Subcategory 2', value: 2 },
+              { name: 'Subcategory 3', value: 3 }
+          ]
       }
     },
       props:  {
@@ -63,8 +77,9 @@
       },
   }
 </script>
-
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style lang="scss" scoped>
+
 
     .buttons-wrapper{
         display: flex;

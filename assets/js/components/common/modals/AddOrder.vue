@@ -8,7 +8,9 @@
 
     <third-modal v-else-if="modalCount===2" @back="PrevModal" @send='onThird'  v-bind="prop" />
 
-    <alert-modal  v-else-if="modalCount===3" @back="PrevModal"  @send='onMessage' v-bind="modalContent"/>
+    <alert-modal  v-else-if="modalCount===3"  @send='onMessage' v-bind="modalContent"/>
+
+      <close-order  v-else-if="modalCount===-1" @click="closeOrder"  />
 
   </modal>
   </transition>
@@ -20,8 +22,14 @@
   import SecondModal from './../modals/modalsOrder/SecondModal.vue'
   import ThirdModal from './../modals/modalsOrder/ThirdModal.vue'
   import AlertModal from './../modals/modalsOrder/Alert.vue'
-
+  import CloseOrder from '../modals/modalsOrder/CloseOrder.vue'
   export default {
+    props : {
+      modalCount: {
+        type: Number,
+        default: 0,
+      },
+    },
     data: function(){
       return {
         prop: {
@@ -44,15 +52,11 @@
     },
     methods: {
       close() {
-       this.modalCount++;
-       if(this.modalCount===3){
-         this.$store.commit('modals/alert/close');
-         this.modalCount=0;
-       }
+
       },
       closeB() {
         this.$store.commit('modals/alert/close');
-        this.modalCount=0;
+
       },
       PrevModal(data){
          this.modalCount= data.modal;
@@ -70,25 +74,34 @@
       onThird (data) {
         this.order.subcategory = data.value;
         this.modalCount=data.modal;
-        this.add();
+
       },
       onMessage (data){
         this.modalCount=data.modal;
+        this.add();
+        this.$store.commit('modals/alert/close');
       },
       add () {
         this.$emit('add', {
           order: this.order,
         })
       },
+      closeOrder(data){
+        this.$store.commit('modals/alert/open');
+        this.modal = data.modal;
+      }
     },
     components: {
       Modal,
       FirstModal,
       SecondModal,
       ThirdModal,
-      AlertModal
+      AlertModal,
+      CloseOrder
     },
-
+    destroyed() {
+      this.$store.commit('modals/alert/close');
+    }
   }
 </script>
 

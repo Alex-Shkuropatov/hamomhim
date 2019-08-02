@@ -102,7 +102,7 @@
       height: 396px;
       @media screen and (max-width: 1584px) {
         width: 100%;
-        height: 650px;
+        height: 47%;
       }
       @media screen and (max-width: 1140px) {
         padding: 0 10px 0 10px;
@@ -112,6 +112,10 @@
       }
       @media screen and (max-width:700px) {
         width: 100%;
+      }
+      @media screen and (max-width:700px) {
+        width: 400px;
+        height: 230px;
       }
       .video-inner{
         width: 100%;

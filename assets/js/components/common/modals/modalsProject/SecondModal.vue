@@ -41,7 +41,7 @@
 <script>
   import Modal from './../../Modal.vue';
   import DropDown from './../../DropDown.vue'
-
+  import Multiselect from 'vue-multiselect'
 
   export default {
     methods: {
@@ -84,6 +84,7 @@
     components: {
       Modal,
       DropDown,
+      Multiselect
     },
     props:  {
       modalQuantity : {
@@ -105,6 +106,7 @@
           value: '',
         },
         source: '',
+
       }
     }
   }

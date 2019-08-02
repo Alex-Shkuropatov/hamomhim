@@ -1,10 +1,24 @@
 <template>
   <div class="projects-wrapper">
 
-    <add-order @add="add" />
+
     <projects-header  />
 
   <div class="projects">
+    <div class="backB">
+      <button @click="back">
+        <span class="phrase">Back</span>
+        <svg width="18" height="30" viewBox="0 0 18 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.5113 13.8294L3.87664 0.479264C3.56129 0.170243 3.14032 0 2.69146 0C2.24259 0 1.82162 0.170243 1.50627 0.479264L0.502173 1.46218C-0.1512 2.10267 -0.1512 3.14363 0.502173 3.78314L11.9515 14.9938L0.489469 26.2169C0.174116 26.5259 0 26.9378 0 27.3771C0 27.8168 0.174116 28.2288 0.489469 28.5381L1.49356 29.5207C1.80917 29.8298 2.22989 30 2.67875 30C3.12762 30 3.54859 29.8298 3.86394 29.5207L17.5113 16.1584C17.8274 15.8484 18.001 15.4345 18 14.9945C18.001 14.5528 17.8274 14.1392 17.5113 13.8294Z" fill="url(#paint0_linear)"/>
+          <defs>
+            <linearGradient id="paint0_linear" x1="-1.3411e-07" y1="15" x2="18" y2="15" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#2871D7"/>
+              <stop offset="1" stop-color="#3269B6"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </button>
+    </div>
     <h1 class="title">םיטקיורפ תמישר</h1>
     <div class="projects-list-wrap h-container">
       <div class="projects-list">
@@ -23,7 +37,7 @@
 
 import Order from './../components/Order';
 import ProjectsHeader from './../components/ProjectsHeader';
-import AddOrder from "../components/common/modals/AddOrder";
+
 
 export default {
   data(){
@@ -41,23 +55,12 @@ export default {
   components: {
     Order,
     ProjectsHeader,
-    AddOrder,
+
   },
   methods: {
-    openModal (e) {
-      e.preventDefault();
-      this.$store.commit('modals/alert/open');
-    },
-    add(data) {
-      let post = {};
-     console.log(data.project);
-     post.id = this.posts.length+1;
-     post.imgSrc = data.order.image;
-     post.title = data.order.name;
-     post.url = '#';
-     post.description = data.order.description;
-     this.posts.push(post);
-    },
+    back(){
+      this.$router.go(-1);
+    }
   }
 }
 </script>
@@ -72,6 +75,7 @@ export default {
   padding-bottom: 50px;
 }
 .projects{
+  position: relative;
   width: 100%;
   padding: 30px 230px 0 230px;
   @media screen and (max-width:1918px){
@@ -197,10 +201,8 @@ export default {
       }
       svg{
         margin-top: 16px;
-
       }
     }
-
     button{
       width: 167.51px;
       height: 36.78px;
@@ -211,6 +213,28 @@ export default {
     width: 416px;
     height: 286px;
   }
-
+.backB{
+  position: absolute;
+  top: 69px;
+  right: 15%;
+  button{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    .phrase{
+      font-family: Assistant;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 31px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+}
 
 </style>
