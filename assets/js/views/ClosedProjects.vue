@@ -1,6 +1,5 @@
 <template>
   <div class="projects-wrapper">
-    <add-proj1 @add="add" />
     <projects-header />
   <div class="projects">
     <div class="projects-list-wrap h-container">

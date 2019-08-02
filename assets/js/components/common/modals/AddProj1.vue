@@ -12,7 +12,7 @@
 
     <alert-modal  v-else-if="modalCount===4" @back="PrevModal"  @send='onMessage' v-bind="modalContent"/>
 
-    <close-project v-else-if="modalCount===5" @click="closeProject"  />
+    <close-project v-else-if="modalCount===-1" @click="closeProject"  />
 
   </modal>
   </transition>
@@ -65,10 +65,10 @@
       closeB() {
         this.$store.commit('modals/alert/close');
 
-        if(this.modalCount<5){
+        if(this.modalCount<4){
           this.modalCount=0;
         }else {
-          this.modalCount=5;
+          this.modalCount=-1;
         }
       },
       closeProject(data){

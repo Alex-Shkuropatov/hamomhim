@@ -1,7 +1,7 @@
 <template>
   <div class="projects-wrapper">
 
-    <add-order @add="add" />
+    <add-order @add="add" v-bind="changeModal" />
     <projects-header v-bind="header"  />
 
   <div class="projects">
@@ -11,10 +11,10 @@
       <div class="projects-list">
         <Order
           class="project-item"
-          v-for="post in posts" :key="post.id"
-          v-bind="post">
+          v-for="order in orders" @onClose="onClose" :key="order.id"
+          v-bind="order">
         </Order>
-      </div>
+      </div>order
     </div>
   </div>
   </div>
@@ -25,11 +25,11 @@
 import Order from './../components/Order';
 import ProjectsHeader from './../components/ProjectsHeader';
 import AddOrder from "../components/common/modals/AddOrder";
-
+import CloseOrder from '../components/common/modals/modalsOrder/CloseOrder.vue';
 export default {
   data(){
     return {
-      posts: [
+      orders: [
         {id: 1, imgSrc: '/static/images/orders/Photo1.jpg', title: '1 ףינס הקינפאג', url: '#',  description: 'אוה \'םוספיא םרול\' .םידבוע םתא וילע טקיורפה אשונ יפלםילימליכמהתירבעב תועמשמ רסח טסקט םכל וללוח\n' +
               '.יפוסה רצומל םתמאתהו םכלש טואאיילהו טנופה תקידבלדעוימוקמלממכ שמשמש לל\n' +
               'רבוע טסקטה ,םתרחבש אשונה יפל הידפיקיומ טסקט ךשומ ל טובור :דבוע רמוספיא־םרולה ללוחמ ךיא\n' +
@@ -44,6 +44,9 @@ export default {
         imageProfile: '/static/images/profile/defPicCutted.png',
         position: 'האדר שייכל'
       }
+      },
+      changeModal : {
+        modalCount : '',
       }
     };
   },
@@ -51,21 +54,31 @@ export default {
     Order,
     ProjectsHeader,
     AddOrder,
+    CloseOrder
+
   },
   methods: {
     openModal (e) {
       e.preventDefault();
+      this.changeModal.modalCount=0;
       this.$store.commit('modals/alert/open');
+
     },
     add(data) {
-      let post = {};
+      let order = {};
      console.log(data.project);
-     post.id = this.posts.length+1;
-     post.imgSrc = data.order.image;
-     post.title = data.order.name;
-     post.url = '#';
-     post.description = data.order.description;
-     this.posts.push(post);
+     order.id = this.orders.length+1;
+     order.imgSrc = data.order.image;
+     order.title = data.order.name;
+     order.url = '#';
+     order.description = data.order.description;
+     this.orders.push(order);
+    },
+    onClose(data){
+      this.changeModal.modalCount = data.modal;
+
+      this.$store.commit('modals/alert/open');
+
     },
   }
 }

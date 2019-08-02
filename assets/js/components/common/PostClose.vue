@@ -22,7 +22,7 @@
     methods:{
       onClose() {
         this.$emit('onClose', {
-          modal : 5,
+          modal : -1,
         })
       }
     }
