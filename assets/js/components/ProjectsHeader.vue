@@ -88,7 +88,9 @@ export default {
   width: 100%;
   display: flex;
 
-
+  @media screen and (max-width:1605px ){
+    height: 400px;
+  }
   flex-direction: row;
   justify-content: flex-start;
   -webkit-background-size: cover;
@@ -103,6 +105,9 @@ export default {
     flex-direction: row;
     align-items: center;
     text-align: center;
+    @media screen and (max-width:1605px ){
+
+    }
     @media screen and (max-width:1440px ){
       margin: 0 auto;
     }
@@ -184,6 +189,7 @@ export default {
     flex-direction: row;
     align-items: center;
     list-style: none;
+
 a{
 
   li{
@@ -197,9 +203,13 @@ a{
     align-items: center;
     text-align: center;
     color: #FFFFFF;
-    svg{
+    svg {
       margin-right: 12px;
     }
+      @media screen and (max-width:1605px ){
+        font-size: 20px;
+        line-height: 45px;
+      }
   }
   &:hover{
     text-decoration: underline;
@@ -209,6 +219,9 @@ a{
       width: 46px;
       border: 1px solid #FFFFFF;
       transform: rotate(90deg);
+    }
+    @media screen and (max-width:1605px){
+      width: 900px;
     }
   }
 }

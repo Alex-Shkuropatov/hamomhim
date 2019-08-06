@@ -16,6 +16,9 @@ export default {
   components: {
     Navigation,
     Underground,
+  },
+  methods: {
+
   }
 }
 </script>

@@ -1,20 +1,20 @@
 <template>
-  <div class="projects-wrapper">
+  <div class="orders-wrapper">
 
     <add-order @add="add" v-bind="changeModal" />
     <projects-header v-bind="header"  />
 
-  <div class="projects">
+  <div class="orders">
     <h1 class="title">םיטקיורפ תמישר</h1>
     <button class="addOrder" @click="openModal">תועצה ףסוה+</button>
-    <div class="projects-list-wrap h-container">
-      <div class="projects-list">
+    <div class="orders-list-wrap h-container">
+      <div class="orders-list">
         <Order
-          class="project-item"
+          class="orders-item"
           v-for="order in orders" @onClose="onClose" :key="order.id"
           v-bind="order">
         </Order>
-      </div>order
+      </div>
     </div>
   </div>
   </div>
@@ -85,15 +85,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.projects-wrapper{
+.orders-wrapper{
   z-index: 0;
 }
 
-.projects-list-wrap{
+.orders-list-wrap{
   padding-top: 50px;
   padding-bottom: 50px;
 }
-.projects{
+.orders{
   width: 100%;
   padding: 30px 230px 0 230px;
   @media screen and (max-width:1918px){
@@ -113,13 +113,13 @@ export default {
     color: #333333;
   }
 }
-.projects-list{
+.orders-list{
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.project-item{
+.orders-item{
   margin-right: 15px;
   margin-left: 15px;
 
@@ -138,7 +138,7 @@ export default {
     width: 100%;
     padding: 0;
   }
-.project-item{
+.orders-item{
   z-index: 1;
   position: relative;
   background: #FFFFFF;

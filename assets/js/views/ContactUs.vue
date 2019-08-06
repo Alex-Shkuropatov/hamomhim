@@ -95,10 +95,7 @@ export default {
        opacity: 0;
     }
   }
-
-
 .formWrapper{
-
   background: url("/static/images/aboutUs/team.png");
   background-position: left -87px ;
   background-size: cover;
@@ -127,6 +124,10 @@ export default {
       text-align: right;
       color: #FFFFFF;
       padding-top: 20px;
+      @media screen and (max-width: 1605px){
+        padding-top: 40px;
+        font-size: 40px;
+      }
       @media screen and (max-width: 1440px){
         text-align: center;
       }
@@ -150,6 +151,9 @@ export default {
       font-weight: bold;
       font-size: 24px;
       line-height: 65px;
+      @media screen and (max-width: 1605px){
+        font-size: 20px;
+      }
       &:focus {
         opacity: 1;
         background: #FFFFFF;
@@ -157,13 +161,18 @@ export default {
         border-radius: 50px;
       }
       &::placeholder{
-        font-family: Assistant;
-        font-style: normal;
         font-weight: bold;
         font-size: 24px;
         line-height: 65px;
         text-align: right;
         color: #FFFFFF;
+        @media screen and (max-width: 1605px){
+          font-size: 20px;
+        }
+      }
+      @media screen and (max-width: 1605px){
+        width: 350px;
+        height: 40px;
       }
       @media screen and (max-width: 1440px){
         width: 100%;
@@ -185,6 +194,9 @@ export default {
       font-weight: bold;
       font-size: 24px;
       line-height: 65px;
+      @media screen and (max-width: 1605px){
+        font-size: 20px;
+      }
       &:focus {
         opacity: 1;
         background: #FFFFFF;
@@ -196,9 +208,15 @@ export default {
         font-style: normal;
         font-weight: bold;
         font-size: 24px;
-
         text-align: right;
         color: #FFFFFF;
+        @media screen and (max-width: 1605px){
+          font-size: 20px;
+        }
+      }
+      @media screen and (max-width: 1605px){
+        width: 730px;
+        height: 200px;
       }
       @media screen and (max-width: 1440px){
         width: 600px;
@@ -222,11 +240,12 @@ export default {
       line-height: 31px;
       text-align: center;
       color: #FFFFFF;
-      @media screen and (max-width: 600px){
+      @media screen and (max-width: 1605px){
         width: 300px;
         height: 63px;
         padding-right: 86px;
       }
+
       &:hover {
         color: black;
     }

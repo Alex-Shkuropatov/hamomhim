@@ -20,7 +20,8 @@ import Projects from "./../views/Projects.vue";
 import Orders from "./../views/Orders.vue";
 import ClosedProjects from "./../views/ClosedProjects.vue";
 import ClosedOrders from "./../views/ClosedOrders.vue";
-
+import PreferWorker from "./../views/PreferWorker.vue";
+import Profile from "./../views/Profile.vue"
 const routes = [
   {
     path: '/',
@@ -76,6 +77,16 @@ const routes = [
     path: '/orders/closed-orders',
     component: ClosedOrders,
     name: 'closed-orders',
+  },
+  {
+    path: '/prefer-worker',
+    component: PreferWorker,
+    name: 'prefer-worker',
+  },
+  {
+    path: '/profile',
+    component: Profile,
+    name: 'profile',
   },
 ];
 
