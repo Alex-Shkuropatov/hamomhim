@@ -87,6 +87,9 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         margin-top: 18px;
+        @media screen and (max-width: 1605px) {
+          font-size: 40.6px;
+        }
       }
       .stats_txt {
         text-align: center;
@@ -96,9 +99,15 @@
         font-weight: normal;
         font-size: 38.4px; //48
         line-height: 65px;
-        height: 65px;
+
         letter-spacing: -0.02em;
         color: #828282;
+        @media screen and (max-width: 1605px) {
+          font-size: 30.6px;
+        }
+        @media screen and (max-width: 1605px) {
+          height: 40px;
+        }
       }
       .caseImg{
         @media screen and (max-width:900px ){
@@ -106,6 +115,12 @@
         }
         @media screen and (max-width:1110px ){
           margin-top:0;
+        }
+      }
+      img{
+        @media screen and (max-width: 1605px) {
+          width: 90px;
+          height: 83px;
         }
       }
     }

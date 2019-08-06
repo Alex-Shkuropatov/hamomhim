@@ -100,8 +100,8 @@
       padding: 0 15px 0 15px;
       width:709.46px;
       height: 396px;
-      @media screen and (max-width: 1584px) {
-        width: 100%;
+      @media screen and (max-width: 1605px) {
+        width: 50%;
         height: 47%;
       }
       @media screen and (max-width: 1140px) {
@@ -138,10 +138,12 @@
     margin-left: 70px;
     width: 750px;
     height: 457px;
-    @media screen and (max-width: 1584px) {
-      margin: 30px 0 0 0;
-      width: 70%;
+    @media screen and (max-width: 1605px) {
+      width: 558px;
       height: auto;
+    }
+    @media screen and(max-width: 1260px){
+      margin-left: 0;
     }
     @media screen and (max-width: 700px) {
       width: 100%;
@@ -157,11 +159,17 @@
       font-family: Assistant;
       font-style: normal;
       font-weight: bold;
-      font-size: 64px;
+      font-size: 45px;
       line-height: 65px;
       background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      @media screen and(max-width: 1600px){
+        line-height: 35px;
+      }
+      @media screen and(max-width: 1260px){
+        padding-top: 15px;
+      }
     }
 
     .description {
@@ -169,7 +177,7 @@
       font-family: Assistant;
       font-style: normal;
       font-weight: bold;
-      font-size: 48px;
+      font-size: 30px;
       line-height: 65px;
       color: #333333;
     }
@@ -179,7 +187,7 @@
       font-family: Assistant;
       font-style: normal;
       font-weight: normal;
-      font-size: 36px;
+      font-size: 25px;
       line-height: 40px;
       color: #333333;
       @media screen and (max-width: 500px){
@@ -252,7 +260,7 @@
         font-family: Assistant;
         font-style: normal;
         font-weight: bold;
-        font-size: 64px;
+        font-size: 45px;
         line-height: 65px;
         text-align: center;
         letter-spacing: -0.02em;
@@ -266,11 +274,11 @@
         margin-bottom: 102px;
         font-family: Assistant;
         margin-top: 25px;
-        width: 1065px;
+        width: 800px;
         height: 65px;
         font-style: normal;
         font-weight: normal;
-        font-size: 24px;
+        font-size: 20px;
         line-height: 31px;
         text-align: center;
         color: #828282;
@@ -324,6 +332,9 @@
             @media screen and (min-width: 2555px) {
               width:  836px;
             }
+            @media screen and (max-width: 1605px) {
+              width:  606px;
+            }
             @media screen and (max-width: 750px){
               width: 100%;
               padding: 0 10px 0 10px;
@@ -358,16 +369,15 @@
             padding: 0 5px 0 5px;
           }
           .title {
-            font-family: Assistant;
-            font-style: normal;
             font-weight: bold;
             font-size: 36px;
             line-height: 40px;
             text-align: right;
             color: #FFFFFF;
-            @media screen and (max-width: 1600px) {
+            @media screen and (max-width: 1605px) {
               text-align: center;
               margin-top: 50px;
+              font-size: 28px;
               line-height: 34px;
             }
             @media screen and (max-width: 750px) {
@@ -396,9 +406,6 @@
             }
           }
           .description {
-            font-family: Assistant;
-            font-style: normal;
-            font-weight: normal;
             font-size: 24px;
             line-height: 40px;
             text-align: right;
@@ -406,6 +413,10 @@
             @media screen and (max-width: 1820px) {
               text-align: center;
             }
+            @media screen and (max-width: 1605px) {
+              font-size: 20px;
+            }
+
             @media screen and (max-width: 600px) {
               line-height: 30px;
             }

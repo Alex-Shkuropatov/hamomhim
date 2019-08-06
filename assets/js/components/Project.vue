@@ -100,6 +100,8 @@
         line-height: 28px;
         text-align: right;
         color: #4F4F4F;
+        max-height: 160px;
+        overflow: auto;
       }
     .meta{
       color: #828282;
@@ -115,5 +117,8 @@
       }
   }
   }
-
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+  }
 </style>

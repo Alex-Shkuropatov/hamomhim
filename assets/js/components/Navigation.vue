@@ -1,5 +1,5 @@
 <template>
-    <header class="header">
+    <header class="header profile-header">
         <div class="h-container">
             <a href="#" class="logo-wrap">
                 <router-link :to="{ name: 'index'}">

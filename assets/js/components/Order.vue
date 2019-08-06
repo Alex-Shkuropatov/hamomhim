@@ -168,13 +168,17 @@ import PostClose from './../components/common/PostClose.vue'
         }
         .description{
           margin-top: 10px;
-          font-family: Assistant;
-          font-style: normal;
           font-weight: normal;
           font-size: 24px;
           line-height: 30px;
           text-align: right;
           color: #4F4F4F;
+          max-height: 214px;
+          overflow: auto;
+          @media screen and (max-width:1605px){
+            font-size: 20px;
+            line-height: 20px;
+          }
         }
         .meta{
           color: #828282;
@@ -251,4 +255,8 @@ hr{
   border: 1px solid #E0E0E0;
   transform: rotate(90deg);
 }
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+  }
 </style>

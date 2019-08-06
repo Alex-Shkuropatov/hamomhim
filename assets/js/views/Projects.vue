@@ -1,6 +1,9 @@
 <template>
   <div class="projects-wrapper">
-    <add-proj1 @add="add" v-bind="changeModal" />
+
+      <add-proj1 @add="add" v-bind="changeModal" />
+
+
 
     <projects-header/>
 
@@ -59,7 +62,7 @@
 import Project from './../components/Project';
 import ProjectsHeader from './../components/ProjectsHeader';
 import AddProj1 from "../components/common/modals/AddProj1";
-import  CloseProject from  "../components/common/modals/modalsProject/CloseProject"
+import CloseProject from  "../components/common/modals/modalsProject/CloseProject"
 export default {
   data(){
     return {
@@ -113,9 +116,7 @@ export default {
   z-index: 0;
   margin: 0 auto;
 }
-
 .projects-list-wrap{
-
   padding-bottom: 50px;
 }
 .projects{

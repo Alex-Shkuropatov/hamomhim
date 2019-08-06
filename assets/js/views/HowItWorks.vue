@@ -135,7 +135,7 @@
     data : function () {
       return {
         headData : {
-          title :'תודוא',
+          title :'אודות',
           image: './static/images/aboutUs/team.png'
         }
       }
@@ -193,16 +193,25 @@
         background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        @media screen and (max-width: 1605px){
+          font-size: 30px;
+        }
         @media screen and (max-width:600px){
           text-align: center;
         }
       }
       .description{
         width: 285px;
+        font-size: 24px;
+        line-height: 25px;
+        text-align: right;
+        letter-spacing: -0.02em;
+        color: #333333;
         @media screen and (max-width: 1900px){
           width: 100%;
         }
-        @media screen and (max-width:1440px){
+        @media screen and (max-width:1605px){
+          font-size:20px ;
           width: 285px;
         }
         @media screen and (max-width:600px){
@@ -211,11 +220,17 @@
       }
     }
     img{
-      margin-left: 30px;
+      width: 155px;
+      height: 155px;
+      margin-left: 9px;
       margin-right: 10px;
       transition: all .3s ease-out;
       &:hover{
        transform: scale(1.1);
+      }
+      @media screen and (max-width: 1615px){
+        width: 107px;
+        height: 107px;
       }
       @media screen and (max-width:600px){
        margin: 0;
@@ -262,6 +277,9 @@
          line-height: 40px;
          letter-spacing: -0.02em;
          color: #FFFFFF;
+         @media screen and (max-width: 1605px){
+           font-size: 40px;
+         }
          @media screen and (max-width: 1320px){
            text-align: center;
          }
@@ -281,6 +299,9 @@
          color: #FFFFFF;
          @media screen and (max-width: 1700px){
            width: 80%;
+         }
+         @media screen and (max-width: 1605px){
+           font-size: 20px;
          }
          @media screen and (max-width: 1320px){
            width: 98%;
@@ -375,6 +396,7 @@
 
            }
          }
+
        }
      }
    }
@@ -443,6 +465,11 @@
   text-align: right;
   letter-spacing: -0.02em;
   color: #4F4F4F;
+
+    @media screen and (max-width: 1605px){
+      font-size: 20px;
+      width: 100%;
+    }
   @media screen and (max-width: 600px){
     text-align: center;
     margin-right: 0;
