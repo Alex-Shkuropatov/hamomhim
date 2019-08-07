@@ -271,7 +271,8 @@ export default {
    padding-right: 113px;
   }
   &:hover {
-   color:  #2871D7 ;
+   color:  #2970D5 ;
+
   }
  }
  .textFields{

@@ -75,6 +75,7 @@
 </template>
 
 <script>
+
 import RateFlag from './common/RateFlag.vue';
 import  FavouriteIcon from './common/FavouriteIcon.vue';
 
@@ -226,9 +227,8 @@ margin-left: 7px;
 
     line-height: 30px;
     text-align: right;
-    background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color:#3269B6;
+
     width: 315px;
     padding-top: 38px;
     margin-top: 32px;

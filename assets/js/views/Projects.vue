@@ -3,8 +3,6 @@
 
       <add-proj1 @add="add" v-bind="changeModal" />
 
-
-
     <projects-header/>
 
   <div class="projects">
@@ -63,6 +61,7 @@ import Project from './../components/Project';
 import ProjectsHeader from './../components/ProjectsHeader';
 import AddProj1 from "../components/common/modals/AddProj1";
 import CloseProject from  "../components/common/modals/modalsProject/CloseProject"
+
 export default {
   data(){
     return {
@@ -102,6 +101,7 @@ export default {
      post.url = '#';
      post.description = data.project.description;
      this.projects.push(post);
+
     },
     onClose(data){
         this.changeModal.modalCount = data.modal;
