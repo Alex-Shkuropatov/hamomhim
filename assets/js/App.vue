@@ -1,6 +1,6 @@
 <template>
   <div id="wrapper">
-    <navigation/>
+    <navigation v-bind="header"/>
     <transition name="cool">
       <router-view />
     </transition>
@@ -13,12 +13,38 @@ import Navigation from './components/Navigation.vue';
 import Underground from './components/Underground.vue';
 
 export default {
+  data: function(){
+    return{
+      header: {
+        hideHeader: ['profile'],
+        headDefault: true,
+        headProfile: false,
+      }
+    }
+  },
   components: {
     Navigation,
     Underground,
   },
-  methods: {
+  methods:{
+    checkHeader(){
+      for(let i=0;i<this.header.hideHeader.length;i++ ) {
+        if(this.$route.name === this.header.hideHeader[i]){
+          this.header.headDefault=!this.header.headDefault;
+          this.header.headProfile=!this.header.headProfile;
+          return;
+        }
+        this.header.headDefault=true;
+        this.header.headProfile=false;
 
+      }
+    }
+  },
+  created() {
+   this.checkHeader();
+  },
+  beforeUpdate () {
+    this.checkHeader();
   }
 }
 </script>

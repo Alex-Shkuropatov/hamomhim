@@ -287,6 +287,9 @@
           height: auto;
           margin-bottom: 60px;
         }
+        @media screen and (max-width: 750px) {
+          width: 48%;
+        }
       }
     }
 

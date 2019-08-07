@@ -247,7 +247,7 @@ export default {
       }
 
       &:hover {
-        color: black;
+        color: #2970D5;
     }
     }
   }
