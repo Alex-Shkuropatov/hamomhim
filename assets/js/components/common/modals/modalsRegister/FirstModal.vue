@@ -100,7 +100,7 @@
   export default {
     methods: {
       close() {
-        this.$store.commit('modals/alert/close');
+        this.$store.commit('modals/reg/close');
       },
       back () {
         this.$emit('back', {

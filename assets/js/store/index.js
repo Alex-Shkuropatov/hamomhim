@@ -6,11 +6,12 @@ Vue.use(Vuex);
 import user from './user.js';
 import modals from './modals';
 
+
 const store = new Vuex.Store({
   modules: {
     user,
     modals,
-  },
+    },
   state: {
 
   },

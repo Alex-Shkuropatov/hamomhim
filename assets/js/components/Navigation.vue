@@ -32,7 +32,6 @@
     </div>
   </header>
 
-
   <header v-else-if="headProfile" class="header-n">
     <div class="nav-bar">
       <div class="social-links">
@@ -93,8 +92,10 @@
 </template>
 
 <script>
+
   import FavouriteIcon from './common/FavouriteIcon.vue'
   import Registration from './common/modals/Registration.vue'
+
   export default {
     data: function (){
       return {
@@ -121,7 +122,7 @@
       openReg(e){
         e.preventDefault();
         this.changeModal.modalCount=0;
-        this.$store.commit('modals/alert/open');
+        this.$store.commit('modals/reg/open');
       },
       openLogin(){},
     },

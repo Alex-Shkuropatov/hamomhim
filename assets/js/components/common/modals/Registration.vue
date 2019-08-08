@@ -1,6 +1,6 @@
 <template>
   <transition v-bind:name="animaStyle">
-  <modal v-if="$store.getters['modals/alert/isOpened']" @close="closeB"  >
+  <modal v-if="$store.getters['modals/reg/isOpened']" @close="closeB"  >
 
   <first-modal  v-if="modalCount===0" @send='onFirst' v-bind="prop" />
 
@@ -49,7 +49,7 @@
     },
     methods: {
       closeB() {
-        this.$store.commit('modals/alert/close');
+        this.$store.commit('modals/reg/close');
 
         if(this.modalCount<4){
           this.modalCount=0;
@@ -58,7 +58,7 @@
         }
       },
       closeProject(data){
-        this.$store.commit('modals/alert/open');
+        this.$store.commit('modals/reg/open');
         this.modal = data.modal;
       },
       PrevModal(data){
@@ -77,7 +77,7 @@
     },
     destroyed() {
       this.animaStyle='';
-      this.$store.commit('modals/alert/close');
+      this.$store.commit('modals/reg/close');
     }
   }
 </script>
