@@ -8,6 +8,7 @@
  <div class="profile-resume">
  <div class="block-wrapper">
 <div class="block-wrapper-element">
+ <div class="element-padd">
  <div class="title"> <span>בולואש ןויצ</span> <favourite-icon/> </div>
  <div class="stats-block">
   <div class="stats">
@@ -52,6 +53,54 @@
   </div>
   <hr>
  </div>
+ </div>
+  <div class="contacts">
+  <div class="contacts-element mail">
+
+   <svg width="34" height="24" viewBox="0 0 34 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16.7995 16.7995L12.6427 13.1611L0.757812 23.3492C1.18981 23.75 1.77302 23.9996 2.41622 23.9996H31.1827C31.8235 23.9996 32.4043 23.75 32.8339 23.3492L20.9563 13.1611L16.7995 16.7995Z" fill="url(#paint0_linear)"/>
+    <path d="M32.8412 0.650402C32.4092 0.247201 31.8284 0 31.1828 0H2.4163C1.7755 0 1.1947 0.249601 0.762695 0.655203L16.7996 14.4001L32.8412 0.650402Z" fill="url(#paint1_linear)"/>
+    <path d="M-0.000976562 2.10742V22.0467L11.5983 12.1899L-0.000976562 2.10742Z" fill="url(#paint2_linear)"/>
+    <path d="M22 12.1902L33.5992 22.0471V2.10059L22 12.1902Z" fill="url(#paint3_linear)"/>
+    <defs>
+     <linearGradient id="paint0_linear" x1="0.757812" y1="18.5804" x2="32.8339" y2="18.5804" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2871D7"/>
+      <stop offset="1" stop-color="#3269B6"/>
+     </linearGradient>
+     <linearGradient id="paint1_linear" x1="0.762695" y1="7.20003" x2="32.8412" y2="7.20003" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2871D7"/>
+      <stop offset="1" stop-color="#3269B6"/>
+     </linearGradient>
+     <linearGradient id="paint2_linear" x1="-0.000976649" y1="12.0771" x2="11.5983" y2="12.0771" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2871D7"/>
+      <stop offset="1" stop-color="#3269B6"/>
+     </linearGradient>
+     <linearGradient id="paint3_linear" x1="22" y1="12.0738" x2="33.5992" y2="12.0738" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2871D7"/>
+      <stop offset="1" stop-color="#3269B6"/>
+     </linearGradient>
+    </defs>
+   </svg>
+
+   <span>{{user.mail}} </span>
+  </div>
+   <div class="contacts-element phone">
+    <span>{{user.phone}}</span>
+    <svg width="28" height="26" viewBox="0 0 28 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+     <path d="M0.996429 20.519C0.941299 20.9414 1.07001 21.3086 1.38202 21.6207L5.04515 25.2562C5.21041 25.4398 5.42611 25.596 5.69235 25.7244C5.9586 25.853 6.2202 25.9356 6.47717 25.9723C6.49553 25.9723 6.55075 25.977 6.64261 25.9862C6.73428 25.9953 6.85363 26 7.00052 26C7.34948 26 7.91414 25.9403 8.69451 25.8209C9.47488 25.7015 10.4296 25.4077 11.5588 24.9396C12.6882 24.4714 13.9689 23.7689 15.401 22.8326C16.8332 21.8963 18.3572 20.6109 19.973 18.9767C21.2584 17.7097 22.3233 16.4979 23.168 15.3411C24.0126 14.1843 24.692 13.1147 25.2061 12.1324C25.7203 11.1501 26.1059 10.2595 26.3629 9.46079C26.62 8.66206 26.7944 7.9735 26.8862 7.39511C26.978 6.81672 27.0147 6.36228 26.9964 6.03177C26.978 5.70126 26.9688 5.51765 26.9688 5.48092C26.9321 5.22386 26.8495 4.96221 26.721 4.69597C26.5924 4.42972 26.4364 4.21398 26.2527 4.04872L22.5896 0.385593C22.3326 0.128531 22.0388 0 21.7083 0C21.4696 0 21.2584 0.0688558 21.0748 0.206567C20.8912 0.344279 20.7351 0.514123 20.6066 0.7161L17.6595 6.30719C17.4943 6.60098 17.4484 6.9223 17.5218 7.27117C17.5953 7.62004 17.7513 7.91383 17.99 8.15253L19.3396 9.5021C19.3763 9.53883 19.4085 9.5985 19.436 9.68113C19.4636 9.76375 19.4773 9.83261 19.4773 9.88769C19.4039 10.2733 19.2386 10.714 18.9816 11.2097C18.7612 11.6504 18.4215 12.1875 17.9625 12.821C17.5035 13.4544 16.8516 14.1843 16.007 15.0105C15.1807 15.8552 14.4463 16.5116 13.8036 16.9799C13.1611 17.4479 12.6238 17.7923 12.1923 18.0127C11.7608 18.233 11.4303 18.3661 11.2009 18.4119L10.8567 18.4808C10.82 18.4808 10.7601 18.467 10.6776 18.4395C10.595 18.4119 10.5353 18.3798 10.4985 18.3431L8.92867 16.7456C8.59798 16.4519 8.21256 16.305 7.77184 16.305C7.4596 16.305 7.21186 16.36 7.02824 16.4702H7.00075L1.68512 19.61C1.2994 19.8489 1.06992 20.1518 0.996429 20.519Z" fill="url(#paint0_linear)"/>
+     <defs>
+      <linearGradient id="paint0_linear" x1="27.001" y1="13" x2="0.984028" y2="13" gradientUnits="userSpaceOnUse">
+       <stop stop-color="#2871D7"/>
+       <stop offset="1" stop-color="#3269B6"/>
+      </linearGradient>
+     </defs>
+    </svg>
+
+
+   </div>
+  </div>
+ <button class="th-btn th-btn-blue th-btn-sm resume-b">רשק רוצ</button>
+ </div>
 
 </div>
   <div class="content-image">
@@ -60,19 +109,38 @@
  </div>
  </div>
 </div>
+ <div class="all-works">
+ <button>View all works</button>
+ <div class="last-projects">
+  םינורחא םיטקייורפ
+ </div>
+</div>
+ <div class="slider-wrap h-container-works">
+  <div class="swiper-button-prev th-slider-arrow th-slider-arrow-right" slot="button-prev" data-uid="8"></div>
+  <swiper :options="sliderOptions" class="works-slider" ref="newsSlider">
+   <swiper-slide class="slide-outer-post" v-for="post in posts" :key="post.id">
+    <work-post class="slide-inner-post" v-bind="post"></work-post>
+   </swiper-slide>
+  </swiper>
+  <div class="swiper-button-next th-slider-arrow th-slider-arrow-left" slot="button-next" data-uid="7"></div>
  </div>
 
+
 </div>
+
+
 </template>
 
 <script>
 
 import AlertModal from '../components/common/modals/Alert.vue';
 import FavouriteIcon from '../components/common/FavouriteIcon.vue'
+import WorkPost from '../components/profile/WorkPost.vue'
 export default {
  components: {
   AlertModal,
-  FavouriteIcon
+  FavouriteIcon,
+  WorkPost
  },
  data: function () {
   return {
@@ -82,8 +150,27 @@ export default {
     rating: '3',
     workArea: 'ץראה לכ ',
     description: '.יתוכיאו ןימא תוריש קינעמה יעוצקמ תווצ םע דבוע .ךמסומ יאלמשח לש הדועת לעבו למשח תודובעב החמתמ ףסונב .סבגו עבצ ,תוריק יופיח ,ףוציר ,היצלטסניא תודובע ,ןלבק ,בולואש ןויצ.יתוכיאו ןימא תוריש קינעמה יעוצקמ תווצ םע דבוע .ךמסומ יאלמשח לש הדועת לעבו למשח תודובעב החמתמ ףסונב .סבג',
+    phone: '+ 38 (098) 765 43 21',
+    mail: 'example@gmail.com',
+   },
+   sliderOptions: {
+    slidesPerView: 5,
+    navigation: {
+     nextEl: '.swiper-button-next[data-uid="7"]',
+     prevEl: '.swiper-button-prev[data-uid="8"]',
+    }
+   },
+   posts: [
+    {id: 1, imgSrc: '/static/images/profile/work-1.png', title: 'יללכ ץופיש', url: '#', description: 'למשחו היצלטסניא ,סבג ,ףוציר ,עבצ תודובע'},
+    {id: 3, imgSrc: '/static/images/profile/work-1.png', title: 'יללכ ץופיש', url: '#', description: 'למשחו היצלטסניא ,סבג ,ףוציר ,עבצ תודובע'},
+    {id: 4, imgSrc: '/static/images/profile/w-2.png', title: 'יללכ ץופיש', url: '#', description: 'למשחו היצלטסניא ,סבג ,ףוציר ,עבצ תודובע'},
+    {id: 5, imgSrc: '/static/images/profile/w-3.png', title: 'יללכ ץופיש', url: '#', description: 'למשחו היצלטסניא ,סבג ,ףוציר ,עבצ תודובע'},
+    {id: 6, imgSrc: '/static/images/profile/w-4.png', title: 'יללכ ץופיש', url: '#', description: 'למשחו היצלטסניא ,סבג ,ףוציר ,עבצ תודובע'},
+    {id: 7, imgSrc: '/static/images/profile/w-3.png', title: 'יללכ ץופיש', url: '#', description: 'למשחו היצלטסניא ,סבג ,ףוציר ,עבצ תודובע'},
+    {id: 8, imgSrc: '/static/images/profile/w-4.png', title: 'יללכ ץופיש', url: '#', description: 'למשחו היצלטסניא ,סבג ,ףוציר ,עבצ תודובע'},
+    {id: 9, imgSrc: '/static/images/profile/work-1.png', title: 'יללכ ץופיש', url: '#', description: 'למשחו היצלטסניא ,סבג ,ףוציר ,עבצ תודובע'},
+   ],
    }
-  }
  },
  methods: {
 
@@ -93,7 +180,10 @@ export default {
 
 <style lang="scss" scoped>
  @import '~@/vars.scss';
-
+.element-padd{
+ padding-right: 195px;
+ padding-left: 75px;
+}
  .profile-wrapper{
   width: 100%;
  .profile-about{
@@ -129,6 +219,7 @@ export default {
 .resume-wrapper{
  display: flex;
  flex-direction: row;
+ box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
  .profile-resume{
  }
 }
@@ -138,8 +229,7 @@ export default {
  justify-content: center;
 .block-wrapper-element{
  margin-right: 70px;
- padding-right: 195px;
- padding-left: 75px;
+
  display: flex;
  flex-direction: column;
  align-items: flex-start;
@@ -156,6 +246,8 @@ export default {
   margin-right:10px;
  }
 }
+
+}
  .content-image{
   position: absolute;
   width: 191px;
@@ -169,7 +261,6 @@ export default {
 
   }
  }
-}
  .stats {
   width: 66%;
   display: flex;
@@ -226,5 +317,46 @@ export default {
    border: 1px solid #E0E0E0;
    transform: rotate(180deg);
   }
+ }
+ .contacts{
+  display: flex;
+
+  .contacts-element{
+
+  }
+  .phone{
+   margin-right: 50px;
+   direction: ltr;
+   span{
+   }
+  }
+ }
+ .resume-b{
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 42px;
+ padding-right: 89px;
+  width: 295.06px;
+  height: 58.18px;
+ }
+ .slide-inner-post {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  line-height: 1.16;
+  margin: 0px 5px 0 5px;
+  height: 333px;
+ }
+ .slide-outer-post{
+  padding: 8px;
+ }
+ .h-container-works{
+  position: relative;
+  background-color: white;
+  margin: 0 auto;
+  padding: 0 229px 0 235px;
+  margin-bottom:40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
  }
 </style>
