@@ -22,6 +22,7 @@ import FeedbackForm from './../components/index/FeedbackForm.vue';
 import Stats from './../components/Stats.vue';
 import NewsSlider from './../components/index/NewsSlider.vue';
 
+
 export default {
   components: {
     FirstFrame,
