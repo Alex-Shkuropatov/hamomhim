@@ -25,6 +25,7 @@ export default {
   components: {
     Navigation,
     Underground,
+
   },
   methods:{
     checkHeader(){

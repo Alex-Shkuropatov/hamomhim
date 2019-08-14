@@ -95,26 +95,29 @@ const routes = [
 
 const router = new VueRouter({
   routes,
+  mode: 'history',
 });
 
 router.beforeEach(async (to, from, next) => {
-  // if(!store.getters['user/isLoaded']) {
-  //   if(store.getters['user/token']) {
-  //     await axios.get('/user/data', {
-  //       headers: {
-  //         'Authorization': `Bearer ${store.getters['user/token']}`
-  //       }
-  //     }).then(res => {
-  //       store.commit('user/auth', store.getters['user/token']);
-  //       store.commit('user/saveData', res.data);
-  //     }).catch(res => {
-  //       store.state.user.logged = false;
-  //     });
-  //   } else {
-  //     store.state.user.logged = false;
-  //   }
-  //   store.state.user.loaded = true;
-  // }
+  if(!store.getters['user/isLoaded']) {
+
+    if(store.getters['user/token']) {
+
+      await axios.get('/user', {
+        headers: {
+          'Authorization': `Bearer ${store.getters['user/token']}`
+        }
+      }).then(res => {
+        store.commit('user/auth', store.getters['user/token']);
+        store.commit('user/saveData', res.data);
+      }).catch(res => {
+        console.error('Wrong token!')
+      });
+    } else {
+      store.state.user.logged = false;
+    }
+    store.state.user.loaded = true;
+  }
 
   next();
 });

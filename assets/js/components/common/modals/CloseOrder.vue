@@ -1,4 +1,6 @@
 <template>
+    <transition name="slide-fade">
+    <modal v-if="$store.getters['modals/alert/isOpened']" @close="close">
     <div class="content-wrapper third-message">
         <h2 class="title">סיכום פרויקט</h2>
         <p class="projectName">נא הזן את סכום הפרויקט</p>
@@ -8,11 +10,12 @@
             <button class="closeB"  style="text-align:center" @click='close' > טקיורפ רוגס</button>
         </div>
     </div>
-
+    </modal>
+    </transition>
 </template>
 
 <script>
-    import ModalClose from '../../ModalClose'
+    import Modal from '../Modal.vue'
 
 
     export default {
@@ -27,7 +30,7 @@
 
         },
         components: {
-            ModalClose,
+            Modal
         },
         data: function () {
             return {
@@ -63,7 +66,12 @@
         }
     }
     .content-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         background-color: white;
+        margin-bottom: 20px;
         .title{
             margin:0;
             margin-top: 27px;
@@ -100,5 +108,16 @@
             height: 46.47px;
             padding-right: 20px;
         }
+    }
+    .slide-fade-enter-active {
+        transition: all .3s ease;
+    }
+    .slide-fade-leave-active {
+        transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .slide-fade-enter, .slide-fade-leave-to
+        /* .slide-fade-leave-active до версии 2.1.8 */ {
+        transform: translateX(10px);
+        opacity: 0;
     }
 </style>

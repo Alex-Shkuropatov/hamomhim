@@ -1,15 +1,14 @@
 <template>
 
     <div class="content-wrapper first-message">
-      <h2 class="title">Add new project</h2>
-      <p class="projectName">Enter project name</p>
+      <h2 class="title">שדח טקיורפ תפסוה</h2>
+      <p class="projectName"> טקיורפ םש ןזה</p>
       <form action="">
-        <input class="inputName" placeholder="Project name" v-model="name" type="text"  >
-        <textarea class="description" name="description" v-model="description" placeholder="Description" ></textarea>
+        <input class="inputName" placeholder=" טקיורפ םש" v-model="name" type="text"  >
+        <textarea class="description" name="description" v-model="description" placeholder="רואית" ></textarea>
       </form>
       <div class="buttons-wrapper">
         <button class="saveB" style="text-align:center" @click='send' >Save</button>
-        <div class="modalNumber">{{modalQuantity}}/{{modal}}</div>
         <button class="closeB" style="text-align:center" @click='close' >Close</button>
       </div>
     </div>
@@ -27,7 +26,6 @@
         this.$emit('send', {
           name: this.name,
           description: this.description,
-          modal: this.modal,
         })
       },
     },
@@ -38,15 +36,8 @@
       return {
         name : '',
         description: '',
-        modal: 1,
       }
     } ,
-    props:  {
-      modalQuantity : {
-        type: Number,
-        required: true
-      }
-    }
 
   }
 </script>
@@ -118,7 +109,7 @@
         border: 1px solid #BDBDBD;
         box-sizing: border-box;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-        border-radius: 50px;
+        border-radius: 10px;
       }
       textarea{
         padding: 10px 20px 0 0;

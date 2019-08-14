@@ -1,11 +1,13 @@
 <template>
     <div class="modal">
        <div class="bg" @click="close"></div>
+      <div class="formWrapper">
        <div class="formMessage">
          <modal-close class="closeB" @click="close"/>
          <slot></slot>
          <div class="messageFooter"></div>
        </div>
+      </div>
      </div>
 </template>
 
@@ -28,8 +30,14 @@
 </script>
 
 <style scoped>
+  .formWrapper{
+    position: relative;
+    overflow: auto;
+  }
   .formMessage{
-    position: fixed;
+
+    overflow-x: hidden;
+    overflow-y: auto !important;
     background: #FFFFFF;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
     z-index: 10;
@@ -37,9 +45,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    @media screen and (max-width:1600px){
-      min-width: 400px;
-    }
+    height: auto;
   }
   .modal {
     position: fixed;
@@ -52,11 +58,11 @@
     display: flex;
     justify-content: center;
   }
-  #closeWindow{
+  .closeB{
     fill:#BDBDBD;
     left: 25px;
     top: 25px;
-    position: absolute;
+    z-index: 100;
     animation: forwards;
     animation-duration: 1s;
     cursor: pointer;
@@ -80,8 +86,6 @@
 
 
   .messageFooter{
-    position: absolute;
-    bottom: 0;
     background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
     width: 100%;
     height: 13px;

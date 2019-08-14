@@ -77,11 +77,7 @@ export default {
 .projects{
   position: relative;
   width: 100%;
-  padding: 30px 230px 0 230px;
-  @media screen and (max-width:1918px){
   padding: 30px 0 0 0;
-
-}
   .title{
     margin: 0;
     margin-bottom: 30px;
@@ -111,10 +107,7 @@ export default {
   margin-left: 15px;
 
   margin-bottom: 30px;
-  @media screen and (max-width:1700px){
-    margin-right: 8px;
-    margin-left: 8px;
-  }
+
   ::v-deep .sendData  {
     display: none!important;
   }
@@ -137,11 +130,6 @@ export default {
   background: #FFFFFF;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
   line-height: 1.16;
-  width: 1330px;
-  height: 545px;
-  @media screen and (max-width:1700px){
-    width: 1169px;
-  }
   .content-wrapper{
     padding: 95px 300px 0 300px;
     display: flex;
@@ -165,9 +153,6 @@ export default {
     }
     .description{
       margin-top: 10px;
-      font-family: Assistant;
-      font-style: normal;
-      font-weight: normal;
       font-size: 18px;
       line-height: 28px;
       text-align: center;

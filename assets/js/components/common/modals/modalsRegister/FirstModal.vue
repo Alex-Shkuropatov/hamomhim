@@ -9,7 +9,7 @@
     </h4>
     <div class="content-role">
     <div class="architector role">
-      <button class="architectorB">
+      <button class="architectorB" @click="checkRole('architect')">
       <svg width="92" height="92" viewBox="0 0 92 92" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M19.7143 59.1429C19.7143 52.5714 19.7143 26.2857 19.7143 26.2857C19.7143 26.2857 19.7307 24.8071 20.4996 23C13.6686 23 6.57143 23 6.57143 23C6.57143 23 0 23 0 29.5714V52.5714C0 59.1429 6.57143 59.1429 6.57143 59.1429V92H26.2857V65.7143C26.2857 65.7143 19.7143 65.7143 19.7143 59.1429Z" fill="url(#paint0_linear)"/>
         <path d="M19.7143 19.7143C21.4229 19.7143 23.0033 19.2411 24.403 18.4789C24.5969 18.3606 24.8137 18.2554 25.0207 18.1404C27.7512 16.3891 29.5715 13.3433 29.5715 9.85714C29.5715 4.41271 25.1587 0 19.7143 0C14.2699 0 9.85718 4.41271 9.85718 9.85714C9.85718 15.3016 14.2699 19.7143 19.7143 19.7143Z" fill="url(#paint1_linear)"/>
@@ -54,7 +54,7 @@
       </button>
     </div>
       <div class="worker role">
-        <button class="workerB">
+        <button class="workerB" @click="checkRole('worker')">
         <svg width="70" height="92" viewBox="0 0 70 92" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M64.4733 63.6853C62.4408 61.4443 59.9915 60.3499 56.8644 60.3499H50.2757L45.9501 56.1808C42.771 58.7866 38.9145 60.2979 34.745 60.2979C30.8364 60.2979 27.1362 58.9429 24.1135 56.5977L20.2567 60.2979H13.3996C9.90787 60.2979 7.19786 61.4966 5.06112 63.9462C-0.496817 70.3914 -0.23667 83.4083 0.214845 89.4551C0.291419 90.4805 1.15433 91.2548 2.18267 91.2548H67.9352C68.9809 91.2548 69.8519 90.4552 69.9037 89.4108C70.2088 83.2587 70.1189 69.9841 64.4733 63.6853Z" fill="url(#paint0_linear)"/>
           <path d="M16.6813 31.0608C15.4305 32.1031 14.5967 33.7708 14.5967 35.6991C14.5967 38.5654 16.4728 40.9106 18.8702 41.3276C19.3913 45.6532 21.1632 49.4576 23.8211 52.2718C24.3942 52.8451 24.9675 53.4184 25.5929 53.8874C26.3748 54.5128 27.2085 55.034 28.0945 55.503C30.0748 56.5452 32.2635 57.1184 34.6089 57.1184C36.9541 57.1184 39.1431 56.5452 41.1234 55.503C42.0093 55.034 42.8432 54.5128 43.6249 53.8874C44.2505 53.4184 44.8236 52.8451 45.3968 52.2718C48.0026 49.4578 49.8267 45.7053 50.2957 41.3797C50.348 41.3797 50.3999 41.3797 50.4521 41.3797C53.2144 41.3797 55.403 38.826 55.403 35.6991C55.403 33.7708 54.5692 32.1031 53.3184 31.0608H16.6813Z" fill="url(#paint1_linear)"/>
@@ -95,54 +95,35 @@
 
 <script>
   import Modal from './../../Modal.vue';
-
-
   export default {
+    data: function(){
+     return{
+       role: '',
+       modal: 1,
+     }
+    },
     methods: {
       close() {
         this.$store.commit('modals/reg/close');
       },
-      back () {
-        this.$emit('back', {
-          modal : 0,
-        })
-      },
-      send () {
-        let counter = this.categories.value;
-        console.log(this.categories.items);
+      checkRole: function (role) {
+        this.role= role;
         this.$emit('send', {
-          value : this.categories.items[counter-1]['label'],
-          modal : this.modal,
-          image: this.source,
-          name : this.name,
-          description: this.description,
+          role: this.role,
+          modal: this.modal,
         })
       },
     },
     components: {
       Modal,
     },
-    props:  {
-      modalQuantity : {
-        type: Number,
-        required: true
-      }
-    },
-    data : function () {
-      return {
-        modal:2,
-        name: '',
-        description: '',
-        license: '',
-        source: '',
 
-      }
-    }
   }
 </script>
 
 <style lang="scss" scoped>
 .content-wrapper{
+  position: relative;
   .title{
     text-align: center;
     margin: 0;

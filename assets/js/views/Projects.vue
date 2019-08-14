@@ -11,22 +11,26 @@
       <div class="projects-list">
         <div class="project-item">
 
-          <svg width="97" class="add-new-project" @click="openModal" height="97" viewBox="0 0 38 38"  xmlns="http://www.w3.org/2000/svg">
-            <path d="M18.6123 0.793945C8.4616 0.793945 0.204102 9.04411 0.204102 19.1858C0.204102 29.3274 8.4616 37.5776 18.6123 37.5776C28.7629 37.5776 37.0204 29.3274 37.0204 19.1858C37.0204 9.04411 28.7629 0.793945 18.6123 0.793945ZM25.3912 23.7913C25.9909 24.3907 25.9909 25.3592 25.3912 25.9586C25.092 26.2575 24.6994 26.4077 24.3064 26.4077C23.9137 26.4077 23.521 26.2575 23.2219 25.9586L18.6123 21.3528L14.0026 25.9586C13.7035 26.2575 13.3108 26.4077 12.9181 26.4077C12.5252 26.4077 12.1325 26.2575 11.8334 25.9586C11.2337 25.3592 11.2337 24.3907 11.8334 23.7913L16.4433 19.1858L11.8334 14.5802C11.2337 13.9808 11.2337 13.0123 11.8334 12.4129C12.4333 11.8137 13.4027 11.8137 14.0026 12.4129L18.6123 17.0187L23.2219 12.4129C23.8219 11.8137 24.7912 11.8137 25.3912 12.4129C25.9909 13.0123 25.9909 13.9808 25.3912 14.5802L20.7813 19.1858L25.3912 23.7913Z" fill="url(#paint0_linear)"/>
-            <defs>
-              <linearGradient id="paint0_linear" x1="0.204101" y1="19.1858" x2="37.0204" y2="19.1858" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#2871D7"/>
-                <stop offset="1" stop-color="#3269B6"/>
-              </linearGradient>
-            </defs>
-          </svg>
+      <button class="add-project">
+        <svg width="53" class="add-new-project" @click="openModal" height="53" viewBox="0 0 38 38"  xmlns="http://www.w3.org/2000/svg">
+          <path d="M18.6123 0.793945C8.4616 0.793945 0.204102 9.04411 0.204102 19.1858C0.204102 29.3274 8.4616 37.5776 18.6123 37.5776C28.7629 37.5776 37.0204 29.3274 37.0204 19.1858C37.0204 9.04411 28.7629 0.793945 18.6123 0.793945ZM25.3912 23.7913C25.9909 24.3907 25.9909 25.3592 25.3912 25.9586C25.092 26.2575 24.6994 26.4077 24.3064 26.4077C23.9137 26.4077 23.521 26.2575 23.2219 25.9586L18.6123 21.3528L14.0026 25.9586C13.7035 26.2575 13.3108 26.4077 12.9181 26.4077C12.5252 26.4077 12.1325 26.2575 11.8334 25.9586C11.2337 25.3592 11.2337 24.3907 11.8334 23.7913L16.4433 19.1858L11.8334 14.5802C11.2337 13.9808 11.2337 13.0123 11.8334 12.4129C12.4333 11.8137 13.4027 11.8137 14.0026 12.4129L18.6123 17.0187L23.2219 12.4129C23.8219 11.8137 24.7912 11.8137 25.3912 12.4129C25.9909 13.0123 25.9909 13.9808 25.3912 14.5802L20.7813 19.1858L25.3912 23.7913Z" fill="url(#paint0_linear)"/>
+          <defs>
+            <linearGradient id="paint0_linear" x1="0.204101" y1="19.1858" x2="37.0204" y2="19.1858" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#2871D7"/>
+              <stop offset="1" stop-color="#3269B6"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </button>
 
           <div class="content-wrapper">
             <div class="thumb">
               <img class="addProj" src="/static/images/projects/addImg.png" alt="addProject">
             </div>
             <div class="title">הוסף פרויקט חדש</div>
-            <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </div>
+            <div class="description">
+              .יתימא טסקט היהיש דע - יפוסה יתימאה טסקטה םוקמב - 'וכו טנרטניא ירתא ,תועדומ ,םיניזגמ ,םינולע לש - תויבוציע תוציקסב םקוממ תויהל דעוימו - שירבי'...
+            </div>
 
             <div class="links-wrapper">
             <a href='#' >איך זה עובד?</a>
@@ -66,8 +70,8 @@ export default {
   data(){
     return {
       projects: [
-        {id: 1, imgSrc: '/static/images/projects/1.png', title: 'םיטקיורפה םש', url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 2, imgSrc: '/static/images/projects/2.png', title: 'םיטקיורפה םש',url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
+        {id: 1, imgSrc: '/static/images/projects/1.png', title: 'םיטקיורפה םש', url: '#',  description: '.יתימא טסקט היהיש דע - יפוסה יתימאה טסקטה םוקמב - \'וכו טנרטניא ירתא ,תועדומ ,םיניזגמ ,םינולע לש - תויבוציע תוציקסב םקוממ תויהל דעוימו - שירבי\'...'},
+        {id: 2, imgSrc: '/static/images/projects/2.png', title: 'םיטקיורפה םש',url: '#', description: '.יתימא טסקט היהיש דע - יפוסה יתימאה טסקטה םוקמב - \'וכו טנרטניא ירתא ,תועדומ ,םיניזגמ ,םינולע לש - תויבוציע תוציקסב םקוממ תויהל דעוימו - שירבי\'...'},
         {id: 3, imgSrc: '/static/images/projects/1.png', title: 'םיטקיורפה םש',url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
         {id: 4, imgSrc: '/static/images/projects/4.png', title: 'םיטקיורפה םש',url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
         {id: 5, imgSrc: '/static/images/projects/3.png', title: 'םיטקיורפה םש',url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
@@ -90,7 +94,7 @@ export default {
     openModal (e) {
       e.preventDefault();
       this.changeModal.modalCount=0;
-      this.$store.commit('modals/alert/open');
+      this.$store.commit('modals/newProject/open');
     },
     add(data) {
       let post = {};
@@ -101,7 +105,6 @@ export default {
      post.url = '#';
      post.description = data.project.description;
      this.projects.push(post);
-
     },
     onClose(data){
         this.changeModal.modalCount = data.modal;
@@ -115,12 +118,14 @@ export default {
 .projects-wrapper{
   z-index: 0;
   margin: 0 auto;
+  width: 100%;
 }
 .projects-list-wrap{
   padding-bottom: 50px;
 }
 .projects{
-  width: 100%;
+  margin: 0 auto;
+  width: 1064px;
   padding: 30px 230px 0 230px;
   @media screen and (max-width:1918px){
   padding: 30px 0 0 0;
@@ -133,7 +138,7 @@ export default {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 .project-item{
   margin-right: 15px;
@@ -160,18 +165,18 @@ export default {
   background: #FFFFFF;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
   line-height: 1.16;
-  width: 451px;
-  height: 629px;
+  width: 250px;
+  height: 350px;
 
-  .add-new-project{
+  .add-project{
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-    left: 177px;
-    top: 144px;
-    opacity: 0.4;
+    left: 90px;
+    top: 78px;
+    opacity: 0.5;
     position: absolute;
     z-index: 2;
     transition: all 0.5s ease-out;
@@ -190,7 +195,7 @@ export default {
     border-radius: 50%;
   }
   .content-wrapper{
-    padding: 32px 27px 0 27px;
+    padding: 16px 8px 0 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -200,39 +205,31 @@ export default {
     }
     .title{
       margin: 0;
-      margin-top: 18px;
-      font-family: Assistant;
-      font-style: normal;
       font-weight: bold;
-      font-size: 36px;
+      font-size: 24px;
       line-height: 40px;
-      text-align: right;
+      text-align: center;
       letter-spacing: -0.02em;
       color: #2871D7;
     }
     .description{
-      margin-top: 10px;
-      font-family: Assistant;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 18px;
-      line-height: 28px;
+      margin-top: 0;
+      font-size: 14px;
+      line-height: 15px;
       text-align: center;
-      color: #E0E0E0;
-      width: 375px;
+      color: #F6F6F6;
     }
     .meta{
       color: #828282;
     }
     .links-wrapper{
-      margin-top: 16px;
-      width: 164px;
+      margin-top:0px;
       display: flex;
       flex-direction: row-reverse;
       justify-content: space-around;
       align-items: center;
       a{
-        margin-top: 14px;
+
         font-family: Assistant;
         font-style: normal;
         font-weight: bold;
@@ -247,7 +244,9 @@ export default {
         }
       }
       svg{
-        margin-top: 16px;
+        margin-top: 5px;
+        margin-left: 5px;
+
 
       }
 
@@ -260,7 +259,7 @@ export default {
   }
 }
   .addProj{
-    width: 416px;
-    height: 286px;
+    width: 218px;
+    height: 160px;
   }
 </style>

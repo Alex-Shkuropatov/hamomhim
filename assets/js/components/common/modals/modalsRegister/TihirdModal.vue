@@ -6,75 +6,12 @@
     <form action="">
       <div class="wrapper">
         <div class="orderWrapper">
-
-          <p class="formItem" >אלמ םש</p>
-          <input type="text" placeholder="אלמ םש" v-model="name" class="inputName">
-        </div>
-        <div class="orderWrapper">
           <p class="formItem" >ליימ</p>
           <div>
-            <i class="fas " ref="mail" v-bind:class="[{ 'fa-spin': focusedMail}, focusedMail ? 'fa-sync-alt':icon]"  ></i>
-            <input type="text" ref="mail" id="mail"  placeholder="ליימ"  @focus="onFocus" @blur="onBlur" v-model="email" class="inputName">
+            <i class="fas " ref="mail" v-bind:class="[{ 'fa-spin': focusedPhone}, focusedPhone ? 'fa-sync-alt':icon]"  ></i>
+            <input type="text" ref="mail" id="phoneC"  placeholder="ליימ"  @focus="onFocus" @blur="onBlur" v-model="phoneCode" class="inputName">
           </div>
 
-        </div>
-
-      </div>
-      <div class="wrapper">
-        <div class="orderWrapper">
-          <p class="formItem" >םירוגמ ריע</p>
-          <input type="text" placeholder="םירוגמ ריע" v-model="city" class="inputName">
-        </div>
-        <div class="orderWrapper">
-          <p class="formItem" >ןופלט</p>
-          <div>
-            <i class="fas  "  v-bind:class="[{ 'fa-spin': focusedPhone}, focusedPhone ? 'fa-sync-alt':iconS]" ></i>
-            <input type="text" placeholder="ןופלט" id="phone" ref="phone" @focus="onFocus" @blur="onBlur"  v-model="phone" class="inputName">
-          </div>
-        </div>
-
-      </div>
-      <div class="wrapper">
-        <div class="orderWrapper">
-          <p class="formItem" >קסעה םש</p>
-          <input type="text" placeholder="קסעה םש" v-model="company" class="inputName">
-        </div>
-        <div class="orderWrapper">
-          <p class="formItem" >םינופלט יקסע</p>
-          <input type="text" placeholder="םינופלט יקסע" v-model="businessPhone" class="inputName">
-        </div>
-
-      </div>
-      <div class="wrapper">
-        <div class="orderWrapper">
-          <p class="formItem" >סקפ</p>
-          <input type="text" placeholder="סקפ" v-model="fax" class="inputName">
-        </div>
-        <div class="orderWrapper">
-          <p class="formItem" >תבותכ</p>
-          <input type="text" placeholder="תבותכ" v-model="adress" class="inputName">
-        </div>
-
-      </div>
-      <div class="wrapper">
-        <div class="selectWrapper">
-          <p class="formItem">הדובע רוזיא</p>
-          <drop-down placeholder="הדובע רוזיא" v-model="workArea.value" :items="workArea.items"/>
-        </div>
-        <div class="selectWrapper">
-          <p class="formItem">תוירוגטק</p>
-          <drop-down placeholder="םהמ דחא רחב" v-model="categories.value" :items="categories.items"/>
-        </div>
-      </div>
-      <hr>
-      <div class="last-field">
-        <div class="orderWrapper">
-          <p class="formItem" >(םילמס 6- מ רתוי) המסיס</p>
-          <input type="text" placeholder="המסיס" v-model="pass" class="inputName">
-        </div>
-        <div class="checkbox">
-          <input type="checkbox" id="check" value="check" v-model="license">
-          <label for="check">שומישה יאנת תא רשאמ ינא</label>
         </div>
       </div>
     </form>
@@ -98,56 +35,27 @@
         this.$store.commit('modals/reg/close');
       },
       send() {
-        console.log(this.categories.items);
+
         this.$emit('send', {
-          name: this.name ,
-          email: this.email ,
-          phone: this.phone ,
-          business_phone:this.businessPhone,
-          name_of_business: this.company,
-          fax: this.fax ,
-          address: this.adress ,
-          city:this.city  ,
-          working_area: this.workArea.value,
-          password: this.pass,
-          password_confirmation: this.pass,
+        phoneCode: this.phoneCode
         })
       },
-      onFocus(e) {
-        console.log(e.target);
-        let elem = e.target;
-        if(elem.id ==="mail"){
-          this.focusedMail = true;
-        } else {
+      onFocus() {
           this.focusedPhone = true;
-        }
       },
-      onBlur(e) {
-        let elem = e.target;
-        if(elem.id ==="mail"){
-          this.focusedMail = false;
-          this.icon = this.checkMail();
-        } else {
+      onBlur() {
           this.focusedPhone = false;
-          this.changeIcon(false);
           this.iconS = this.checkPhone();
-        }
       },
-      checkMail(){
-        let regMail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        let  check = regMail.test(this.email);
-        return this.changeIcon(check);
+      checkPhone() {
+        let check = this.phoneCode;
+        return this.changeIcon(true);
       },
-      checkPhone(){
-        let regMail = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
-       let check = regMail.test(this.phone);
-        return this.changeIcon(check);
-      },
-      changeIcon(value){
-        if (value){
+      changeIcon(value) {
+        if (value) {
           return 'fa-check'
         } else {
-          return  'fa-times'
+          return 'fa-times'
         }
       },
     },
@@ -155,43 +63,15 @@
       Modal,
       DropDown,
     },
-    data : function () {
+    data: function () {
       return {
-        focusedMail: false,
         focusedPhone: false,
         icon: "fa-sync-alt",
         iconS: 'fa-sync-alt',
-        modal:2,
-        name: '',
-        email:'',
-        license: '',
-        phone: '',
-        businessPhone : '',
-        fax: '',
-        adress: '',
-        company: '',
-        city: '',
-        check: '',
-        pass: '',
-        categories: {
-          items: [
-            { label: 'category 1', value: "1" },
-            { label: 'category 2', value: "2" },
-            { label: 'category 3', value: "3" }
-          ],
-          value: '',
-        },
-        workArea: {
-          items: [
-            { label: 'Work area 1', value: "1" },
-            { label: 'Work area 2', value: "2" },
-            { label: 'Work area 3', value: "3" }
-          ],
-          value: '',
-        },
-        source: '',
+        phoneCode: '',
+
       }
-    },
+    }
   }
 </script>
 
@@ -397,8 +277,4 @@ div{
     padding-left: 26px;
   }
 }
-  ::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; /* make scrollbar transparent */
-  }
 </style>
