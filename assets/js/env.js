@@ -1,5 +1,5 @@
 window.env = {
-  API_URL: 'http://motowelove.com:3001',
+  API_URL: 'http://api.hamomhim.coelix.online',
 
   MOBILE: (typeof window.orientation !== 'undefined') || (navigator.userAgent.indexOf('IEMobile') !== -1),
 

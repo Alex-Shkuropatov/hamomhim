@@ -1,9 +1,8 @@
 <template>
-  <div class="project-item">
+  <div class="order-item">
     <post-close class="closeB" @onClose="onClose"  />
     <div class="content-wrapper">
       <div class="thumb">
-
         <img :src="imgSrc" alt="">
       </div>
      <div class="text-wrapper">
@@ -77,7 +76,7 @@
 
        <div class="description">{{description}}</div>
 
-       <button :href="url" class="sendData th-btn th-btn-blue th-btn-sm"  >קרא את הפוסט הזה  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    +</button>
+       <button :href="url" class="sendData th-btn th-btn-blue th-btn-sm"  >קרא את הפוסט הזה  &nbsp;&nbsp;&nbsp;&nbsp;   +</button>
 
      </div>
     </div>
@@ -125,11 +124,11 @@ import PostClose from './../components/common/PostClose.vue'
 </script>
 
 <style lang="scss" scoped>
-  .project-item{
-
+  .order-item{
+    height: 410px;
     .closeB{
-      left: 52px;
-      top: 35px;
+      left: 13px;
+      top: 14px;;
       position: absolute;
       z-index: 2;
        opacity: 1;
@@ -137,20 +136,19 @@ import PostClose from './../components/common/PostClose.vue'
       &:hover {
         opacity: 0.8;
         path {
-
         }
      }
   }
     .content-wrapper{
       display: flex;
       flex-direction: row-reverse;
-
-      padding: 60px 75px 40px 75px;
+      width: 1059px;
+      padding: 36px 33px 40px 33px;
 
     img{
       pointer-events: none;
-      width: 485px;
-      height: 356.12px;
+      width: 460px;
+      height: 330.12px;
     }
       .text-wrapper{
         width: 620px;
@@ -173,7 +171,7 @@ import PostClose from './../components/common/PostClose.vue'
           line-height: 30px;
           text-align: right;
           color: #4F4F4F;
-          max-height: 214px;
+          max-height: 173px;
           overflow: auto;
           @media screen and (max-width:1605px){
             font-size: 20px;
@@ -188,9 +186,9 @@ import PostClose from './../components/common/PostClose.vue'
         }
         .sendData{
           position: absolute;
-          bottom: 57px;
-          width: 355px;
-          height: 70px;
+          bottom: 37px;
+          width: 285.8px;
+          height: 54.07px;
           font-family: Assistant;
           font-style: normal;
           font-weight: bold;

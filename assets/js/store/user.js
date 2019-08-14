@@ -14,7 +14,7 @@ export default {
     saveData(state, data) {
       state.data = data;
     },
-    logout(state, data) {
+    logout(state) {
       state.data = {};
       state.logged = false;
       delete axios.defaults.headers.common['Authorization'];
@@ -23,7 +23,7 @@ export default {
   },
   actions: {
     updateData(context) {
-      return axios.get('/user/data').then(res => {
+      return axios.get('/user').then(res => {
         context.commit('saveData', res.data);
         return res.data;
       });

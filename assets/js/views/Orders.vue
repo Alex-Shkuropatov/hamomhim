@@ -1,12 +1,15 @@
 <template>
   <div class="orders-wrapper">
 
-    <add-order @add="add" v-bind="changeModal" />
+    <close-order />
     <projects-header v-bind="header"  />
 
   <div class="orders">
     <h1 class="title">םיטקיורפ תמישר</h1>
-    <button class="addOrder" @click="openModal">תועצה ףסוה+</button>
+   <div class="add-order-wrapper">
+     <button class="addOrder"  >הדובעל םינלבק ףסוה    <span>+</span></button>
+     <div class="txt">1 ףינס הקינפאג</div>
+   </div>
     <div class="orders-list-wrap h-container">
       <div class="orders-list">
         <Order
@@ -24,8 +27,7 @@
 
 import Order from './../components/Order';
 import ProjectsHeader from './../components/ProjectsHeader';
-import AddOrder from "../components/common/modals/AddOrder";
-import CloseOrder from '../components/common/modals/modalsOrder/CloseOrder.vue';
+import CloseOrder from '../components/common/modals/CloseOrder.vue';
 export default {
   data(){
     return {
@@ -53,7 +55,6 @@ export default {
   components: {
     Order,
     ProjectsHeader,
-    AddOrder,
     CloseOrder
 
   },
@@ -95,11 +96,7 @@ export default {
 }
 .orders{
   width: 100%;
-  padding: 30px 230px 0 230px;
-  @media screen and (max-width:1918px){
   padding: 30px 0 0 0;
-
-}
   .title{
     margin: 0;
     margin-bottom: 30px;
@@ -120,13 +117,15 @@ export default {
   align-items: center;
 }
 .orders-item{
+  ::v-deep .actions-wrapper  {
+    display: none;
+  }
   margin-right: 15px;
   margin-left: 15px;
 
   margin-bottom: 30px;
-  @media screen and (max-width:1700px){
-    margin-right: 8px;
-    margin-left: 8px;
+  ::v-deep .sendData  {
+    display: none!important;
   }
 }
 .load-more-posts{
@@ -139,16 +138,14 @@ export default {
     padding: 0;
   }
 .orders-item{
+  ::v-deep .close {
+    display: none;
+  }
   z-index: 1;
   position: relative;
   background: #FFFFFF;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
   line-height: 1.16;
-  width: 1330px;
-  height: 545px;
-  @media screen and (max-width:1700px){
-    width: 1169px;
-  }
   .content-wrapper{
     padding: 95px 300px 0 300px;
     display: flex;
@@ -172,9 +169,6 @@ export default {
     }
     .description{
       margin-top: 10px;
-      font-family: Assistant;
-      font-style: normal;
-      font-weight: normal;
       font-size: 18px;
       line-height: 28px;
       text-align: center;
@@ -208,10 +202,8 @@ export default {
       }
       svg{
         margin-top: 16px;
-
       }
     }
-
     button{
       width: 167.51px;
       height: 36.78px;
@@ -222,11 +214,41 @@ export default {
     width: 416px;
     height: 286px;
   }
+  .add-order-wrapper{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+    width: 1059px;
+    height: 95px;
+    margin:0 auto;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    button{
+      margin-left: 40px;
+      width: 280px;
+      height: 54px;
+      font-weight: bold;
+      font-size: 24px;
+      color: #FFFFFF;
+      span{
+        font-weight: normal;
+        font-size: 28px;
+      }
+    }
+    .txt{
+      margin-right: 40px;
+      font-weight: bold;
+      font-size: 36px;
+      line-height: 30px;
+      text-align: right;
+      color: #333333;
+    }
+  }
   .addOrder{
-    top: 629px;
-    right: 17px;
     z-index: 10;
-    position: absolute;
     width: 141px;
     height: 47px;
     background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);

@@ -6,79 +6,31 @@
     <form action="">
       <div class="wrapper">
         <div class="orderWrapper">
-
-          <p class="formItem" >אלמ םש</p>
-          <input type="text" placeholder="אלמ םש" v-model="name" class="inputName">
+          <p class="formItem" >המסיס</p>
+          <input type="password" placeholder="המסיס" v-model="user.password"   class="inputName">
         </div>
         <div class="orderWrapper">
-          <p class="formItem" >ליימ</p>
+          <p class="formItem" >ליימיא</p>
           <div>
             <i class="fas " ref="mail" v-bind:class="[{ 'fa-spin': focusedMail}, focusedMail ? 'fa-sync-alt':icon]"  ></i>
-            <input type="text" ref="mail" id="mail"  placeholder="ליימ"  @focus="onFocus" @blur="onBlur" v-model="email" class="inputName">
-          </div>
-
-        </div>
-
-      </div>
-      <div class="wrapper">
-        <div class="orderWrapper">
-          <p class="formItem" >םירוגמ ריע</p>
-          <input type="text" placeholder="םירוגמ ריע" v-model="city" class="inputName">
-        </div>
-        <div class="orderWrapper">
-          <p class="formItem" >ןופלט</p>
-          <div>
-            <i class="fas  "  v-bind:class="[{ 'fa-spin': focusedPhone}, focusedPhone ? 'fa-sync-alt':iconS]" ></i>
-            <input type="text" placeholder="ןופלט" id="phone" ref="phone" @focus="onFocus" @blur="onBlur"  v-model="phone" class="inputName">
+            <input type="text" ref="mail" id="mail"  placeholder="E-mail"  @focus="onFocus" @blur="onBlur" v-model="user.email" class="inputName">
           </div>
         </div>
 
-      </div>
-      <div class="wrapper">
-        <div class="orderWrapper">
-          <p class="formItem" >קסעה םש</p>
-          <input type="text" placeholder="קסעה םש" v-model="company" class="inputName">
-        </div>
-        <div class="orderWrapper">
-          <p class="formItem" >םינופלט יקסע</p>
-          <input type="text" placeholder="םינופלט יקסע" v-model="businessPhone" class="inputName">
-        </div>
-
-      </div>
-      <div class="wrapper">
-        <div class="orderWrapper">
-          <p class="formItem" >סקפ</p>
-          <input type="text" placeholder="סקפ" v-model="fax" class="inputName">
-        </div>
-        <div class="orderWrapper">
-          <p class="formItem" >תבותכ</p>
-          <input type="text" placeholder="תבותכ" v-model="adress" class="inputName">
-        </div>
-
-      </div>
-      <div class="wrapper">
-        <div class="selectWrapper">
-          <p class="formItem">הדובע רוזיא</p>
-          <drop-down placeholder="הדובע רוזיא" v-model="workArea.value" :items="workArea.items"/>
-        </div>
-        <div class="selectWrapper">
-          <p class="formItem">תוירוגטק</p>
-          <drop-down placeholder="םהמ דחא רחב" v-model="categories.value" :items="categories.items"/>
-        </div>
-      </div>
-      <hr>
-      <div class="last-field">
-        <div class="orderWrapper">
-          <p class="formItem" >(םילמס 6- מ רתוי) המסיס</p>
-          <input type="text" placeholder="המסיס" v-model="pass" class="inputName">
-        </div>
-        <div class="checkbox">
-          <input type="checkbox" id="check" value="check" v-model="license">
-          <label for="check">שומישה יאנת תא רשאמ ינא</label>
-        </div>
       </div>
     </form>
+    <div class="wrapper-footer">
+      <div class="wrapper-element">
+        <i class="fas fa-key"></i>
+        <span class="underLine">Forgot password</span>
+      </div>
 
+        <div class="checkbox">
+          <input type="checkbox" id="check" value="check" v-model="user.remember">
+          <label for="check">Remember me</label>
+        </div>
+
+    </div>
     <div class="buttons-wrapper">
       <button class="closeB" style="text-align:center" @click="send">Send</button>
     </div>
@@ -89,28 +41,19 @@
 
 <script>
   import Modal from './../../Modal.vue';
-  import DropDown from './../../DropDown.vue';
+
 
   export default {
 
     methods: {
       close() {
-        this.$store.commit('modals/reg/close');
+        this.$store.commit('modals/login/close');
       },
       send() {
-        console.log(this.categories.items);
         this.$emit('send', {
-          name: this.name ,
-          email: this.email ,
-          phone: this.phone ,
-          business_phone:this.businessPhone,
-          name_of_business: this.company,
-          fax: this.fax ,
-          address: this.adress ,
-          city:this.city  ,
-          working_area: this.workArea.value,
-          password: this.pass,
-          password_confirmation: this.pass,
+          email: this.user.email ,
+          password: this.user.password,
+          remember_me: this.user.remember,
         })
       },
       onFocus(e) {
@@ -135,12 +78,7 @@
       },
       checkMail(){
         let regMail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        let  check = regMail.test(this.email);
-        return this.changeIcon(check);
-      },
-      checkPhone(){
-        let regMail = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
-       let check = regMail.test(this.phone);
+        let  check = regMail.test(this.user.email);
         return this.changeIcon(check);
       },
       changeIcon(value){
@@ -153,7 +91,6 @@
     },
     components: {
       Modal,
-      DropDown,
     },
     data : function () {
       return {
@@ -161,34 +98,11 @@
         focusedPhone: false,
         icon: "fa-sync-alt",
         iconS: 'fa-sync-alt',
-        modal:2,
-        name: '',
-        email:'',
-        license: '',
-        phone: '',
-        businessPhone : '',
-        fax: '',
-        adress: '',
-        company: '',
-        city: '',
-        check: '',
-        pass: '',
-        categories: {
-          items: [
-            { label: 'category 1', value: "1" },
-            { label: 'category 2', value: "2" },
-            { label: 'category 3', value: "3" }
-          ],
-          value: '',
-        },
-        workArea: {
-          items: [
-            { label: 'Work area 1', value: "1" },
-            { label: 'Work area 2', value: "2" },
-            { label: 'Work area 3', value: "3" }
-          ],
-          value: '',
-        },
+       user: {
+          email: '',
+          password: '',
+         remember: false,
+       },
         source: '',
       }
     },
@@ -244,7 +158,7 @@
     form{
       .wrapper{
         display: flex;
-        flex-direction: row;
+        flex-direction: row-reverse;
         align-items: center;
         padding: 11px 30px 0 30px;
         .orderWrapper{
@@ -340,19 +254,14 @@
       background: #E0E0E0;
       border-radius: 50px;
     }
-    .saveB{
-      margin-left: 10px;
-      background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
-      border-radius: 50px;
-    }
   }
   .checkbox{
+
     display: flex;
     align-items: center;
-    margin-top: 41px;
-    width: 230px;
+    width: 140px;
     justify-content: space-between;
-    margin-right: 47px;
+
     label{
       text-decoration: underline;
       color: #333333;
@@ -377,28 +286,46 @@
     }
   }
 
-div{
-  position: relative;
-  .fas {
-    position: absolute;
-    left: 37px;
-    top: 13px;
-    z-index: 2;
+.orderWrapper{
+  div{
+    position: relative;
+    .fas {
+      position: absolute;
+      left: 37px;
+      top: 13px;
+      z-index: 2;
 
-    width: 26px;
-    height: 26px;
-    line-height: 26px;
-    text-align: center;
-    margin-right: -26px;
-    float: left;
-  }
+      width: 26px;
+      height: 26px;
+      line-height: 26px;
+      text-align: center;
+      margin-right: -26px;
+      float: left;
+    }
 
-  .fas + input {
-    padding-left: 26px;
+    .fas + input {
+      padding-left: 26px;
+    }
   }
 }
-  ::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; /* make scrollbar transparent */
+  .wrapper-footer{
+    margin-top:20px;
+    width: 68%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    .wrapper-element{
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      i{
+        .fa-key{
+
+        }
+      }
+      .underLine{
+        margin-left: 10px;
+      }
+    }
   }
 </style>

@@ -1,14 +1,8 @@
 <template>
   <transition v-bind:name="animaStyle">
-  <modal v-if="$store.getters['modals/reg/isOpened']" @close="closeB"  >
+  <modal v-if="$store.getters['modals/login/isOpened']" @close="closeB"  >
 
-  <first-modal  v-if="modal===0" @send='onFirst'  />
-
-  <second-modal  v-if="modal===1" @send='onSecond' />
-
-    <third-modal v-if="modal===2"  @send='onThird' />
-
-  <alert v-if="modal===3" v-bind="modalContent"  @send='onFourth'   />
+  <first-modal  v-if="modalL===0" @send='onFirst'  />
 
   </modal>
   </transition>
@@ -17,28 +11,16 @@
 
 <script>
   import Modal from './../Modal';
-  import FirstModal from './modalsRegister/FirstModal.vue'
-  import SecondModal from './modalsRegister/SecondModal.vue'
-  import ThirdModal from './modalsRegister/TihirdModal.vue'
-  import  Alert from './../modals/modalsProject/Alert.vue'
+  import FirstModal from './modalsLogin/FirstModal.vue'
   import axios from 'axios';
+
   export default {
     data: function(){
       return {
-        modal:0,
+        modalL:0,
         animaStyle: 'slide-fade',
         user: {
-          name: '',
-          mail: '',
-          city: '',
-          adress: '',
-          company: '',
-          fax: '',
-          workArea: '',
-          phone: '',
-          category:'',
-          pass: '',
-          role: '',
+        token: ''
         },
         modalContent: {
           title: 'החלצהב עצוב תומיאה',
@@ -49,49 +31,33 @@
     },
     methods: {
       closeB() {
-        this.$store.commit('modals/reg/close');
-        this.modal = 0;
+        this.$store.commit('modals/login/close');
+        this.modalL = 0;
 
       },
       closeProject(data){
-        this.$store.commit('modals/reg/open');
-        this.modal = data.modal;
+        this.$store.commit('modals/login/open');
+        this.modalL = data.modal;
       },
       onFirst (data) {
-        this.user.role = data.role;
-        this.modal++;
-      },
-      onSecond (data) {
-        data.role = this.user.role;
-       this.modal++;
-        axios.post('/api/auth/signup', data)
+        console.log(data);
+        axios.post('/api/auth/login', data)
             .then((response) => {
-              console.log(response);
+
+              this.$store.commit('user/auth', response.data.access_token );
+              this.$store.commit('user/saveData' , data);
             })
             .catch((error) => {
               console.log(error.response.data);
             });
+        this.$store.commit('modals/login/close');
       },
-      onThird(data){
-        this.modal++;
-        console.log(data.phoneCode);
-      },
-      onFourth(data){
-        this.modal = data.modal;
-        this.$store.commit('modals/reg/close');
-      },
-      PrevModal(){
-         this.modal= 0;
-      },
-
     },
     components: {
       Modal,
       FirstModal,
-      SecondModal,
       axios,
-      Alert,
-      ThirdModal
+
 
     },
     created(){
