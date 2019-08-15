@@ -6,9 +6,9 @@
         <div class="logo-wrap">
           <img src="/static/images/logo/logo-blue.png" alt="">
         </div>
-        <div class="copyright1">2019 םיחמומה תצובקל תורומש תויוכזה לכ</div>
-        <div class="copyright2">רתאה ןונקת שומישה יאנת</div>
-        <a href="#" class="th-btn th-btn-blue th-btn-md">םימושר תוחוקלל הסינכ</a>
+        <div class="copyright1">כל הזכויות שמורות לקבוצת המומחים 2019</div>
+        <div class="copyright2">תנאי השימוש תקנון האתר</div>
+        <a href="#" class="th-btn th-btn-blue th-btn-md">כניסה ללקוחות רשומים</a>
       </div>
 
       <div class="footer-col areas-col">
