@@ -2,6 +2,7 @@
   <main>
     <first-frame/>
     <categories-slider/>
+    <banner-section/>
     <top-projects/>
     <client-reviews/>
     <feedback-form/>
@@ -15,6 +16,7 @@
 
 <script>
 import FirstFrame from './../components/index/FirstFrame.vue';
+import BannerSection from './../components/index/BannerSection.vue'
 import CategoriesSlider from './../components/index/CategoriesSlider.vue';
 import TopProjects from './../components/index/TopProjects.vue';
 import ClientReviews from './../components/index/ClientReviews.vue';
@@ -31,7 +33,8 @@ export default {
     ClientReviews,
     FeedbackForm,
     Stats,
-    NewsSlider
+    NewsSlider,
+    BannerSection
   }
 }
 </script>

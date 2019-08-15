@@ -50,7 +50,7 @@
            </defs>
          </svg>
        </button>
-        <button class="th-btn th-btn-empty th-btn-sm" >לחשבון שלי</button>
+        <button class="th-btn th-btn-empty th-btn-sm profileB" @click="profile" >לחשבון שלי</button>
       </div>
     </div>
   </header>
@@ -160,8 +160,8 @@
               console.log(error.response.data);
             });
       },
-      profile(e){
-
+      profile(){
+        this.$router.push('/projects');
       },
     },
 

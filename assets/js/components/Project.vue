@@ -1,6 +1,7 @@
 <template>
   <div class="project-item">
-  <post-close class="close" @onClose="onClose" />
+
+  <post-close class="close"  @click.native="close"  />
 
     <div class="content-wrapper">
       <div class="thumb">
@@ -43,22 +44,29 @@
       PostClose,
     },
     methods: {
-      onClose(data){
+      close(){
+        this.$store.commit('modals/projectPrice/open');
 
-        this.$emit('onClose', {
-          modal : data.modal,
-        })
       },
     }
   }
 </script>
 
 <style lang="scss" scoped>
+  .wrapperB{
+
+  }
   .close{
     top: 5px;
     left: 5px;
     width: 20px;
     height: 20px;
+    @media screen and(max-width: 480px){
+      top: 2px;
+      left: 0px;
+      width: 28px;
+      height: 20px;
+    }
   }
   .project-item{
     z-index: 1;
@@ -66,7 +74,6 @@
     background: #FFFFFF;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
     line-height: 1.16;
-
 
     .content-wrapper{
       padding: 16px 15px 0 16px;
@@ -110,6 +117,7 @@
       }
   }
   }
+
   ::-webkit-scrollbar {
     width: 0px;
     background: transparent; /* make scrollbar transparent */

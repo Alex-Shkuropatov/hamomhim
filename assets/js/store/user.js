@@ -10,6 +10,7 @@ export default {
       state.logged = true;
       localStorage.setItem('auth', token);
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
     },
     saveData(state, data) {
       state.data = data;
@@ -23,7 +24,7 @@ export default {
   },
   actions: {
     updateData(context) {
-      return axios.get('/user').then(res => {
+      return axios.get('/api/auth/user').then(res => {
         context.commit('saveData', res.data);
         return res.data;
       });
