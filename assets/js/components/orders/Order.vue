@@ -1,6 +1,6 @@
 <template>
   <div class="order-item">
-    <post-close class="closeB" @onClose="onClose"  />
+    <post-close class="closeB" @click.native="onClose"  />
     <div class="content-wrapper">
       <div class="thumb">
         <img :src="imgSrc" alt="">
@@ -84,7 +84,7 @@
 </template>
 
 <script>
-import PostClose from './../components/common/PostClose.vue'
+import PostClose from '../common/PostClose.vue'
   export default {
     props: {
       id: {
@@ -113,11 +113,7 @@ import PostClose from './../components/common/PostClose.vue'
     },
     methods: {
       onClose(data){
-        console.log('delete order');
-        this.$emit('onClose', {
-          modal : data.modal,
-
-        })
+        this.$store.commit('modals/workPrice/open');
       },
     }
   }

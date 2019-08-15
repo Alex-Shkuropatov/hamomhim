@@ -22,6 +22,7 @@ import ClosedProjects from "./../views/ClosedProjects.vue";
 import ClosedOrders from "./../views/ClosedOrders.vue";
 import PreferWorker from "./../views/PreferWorker.vue";
 import Profile from "./../views/Profile.vue"
+import NewOrder from "./../views/NewOrder.vue"
 const routes = [
   {
     path: '/',
@@ -88,6 +89,11 @@ const routes = [
     component: Profile,
     name: 'view-profile',
   },
+  {
+    path: '/orders/new-order',
+    component: NewOrder,
+    name: 'new-order',
+  },
 ];
 
 
@@ -104,7 +110,7 @@ router.beforeEach(async (to, from, next) => {
 
     if(store.getters['user/token']) {
 
-      await axios.get('/user', {
+      await axios.get('/api/auth/user', {
         headers: {
           'Authorization': `Bearer ${store.getters['user/token']}`
         }

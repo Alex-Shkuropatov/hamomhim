@@ -35,7 +35,7 @@
 
 <script>
 
-import Order from './../components/Order';
+import Order from '../components/orders/Order';
 import ProjectsHeader from './../components/ProjectsHeader';
 
 

@@ -28,7 +28,9 @@
         this.$store.commit('modals/newProject/close');
       },
       send () {
+        this.$store.commit('modals/newProject/close');
         this.$router.push('orders');
+
       },
     },
     components: {

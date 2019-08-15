@@ -7,7 +7,7 @@
   <div class="orders">
     <h1 class="title">רשימת פרויקטים</h1>
    <div class="add-order-wrapper">
-     <button class="addOrder"  >הוספת קבלנים לעבודה    <span>+</span></button>
+     <button class="addOrder" @click="newOrder" >הוספת קבלנים לעבודה    <span>+</span></button>
      <div class="txt">1 ףינס הקינפאג</div>
    </div>
     <div class="orders-list-wrap h-container">
@@ -25,7 +25,7 @@
 
 <script>
 
-import Order from './../components/Order';
+import Order from './../components/orders/Order.vue';
 import ProjectsHeader from './../components/ProjectsHeader';
 import CloseOrder from '../components/common/modals/CloseOrder.vue';
 export default {
@@ -66,20 +66,21 @@ export default {
 
     },
     add(data) {
-      let order = {};
-     console.log(data.project);
-     order.id = this.orders.length+1;
-     order.imgSrc = data.order.image;
-     order.title = data.order.name;
-     order.url = '#';
-     order.description = data.order.description;
-     this.orders.push(order);
+
+     //  let order = {};
+     // console.log(data.project);
+     // order.id = this.orders.length+1;
+     // order.imgSrc = data.order.image;
+     // order.title = data.order.name;
+     // order.url = '#';
+     // order.description = data.order.description;
+     // this.orders.push(order);
     },
     onClose(data){
-      this.changeModal.modalCount = data.modal;
-
-      this.$store.commit('modals/alert/open');
-
+      this.$store.commit('modals/workPrice/open');
+    },
+    newOrder(){
+      this.$router.push('/orders/new-order');
     },
   }
 }
@@ -117,16 +118,12 @@ export default {
   align-items: center;
 }
 .orders-item{
-  ::v-deep .actions-wrapper  {
-    display: none;
-  }
+
   margin-right: 15px;
   margin-left: 15px;
 
   margin-bottom: 30px;
-  ::v-deep .sendData  {
-    display: none!important;
-  }
+
 }
 .load-more-posts{
   margin-top: 50px;
@@ -138,9 +135,7 @@ export default {
     padding: 0;
   }
 .orders-item{
-  ::v-deep .close {
-    display: none;
-  }
+
   z-index: 1;
   position: relative;
   background: #FFFFFF;
