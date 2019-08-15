@@ -62,19 +62,20 @@ export default {
 
 .projects-wrapper{
   z-index: 0;
-
-
+  margin: 0 auto;
+  width: 100%;
 }
 
 .projects-list-wrap{
   padding-bottom: 50px;
-  margin: 0 auto;
 }
 .projects{
-  width: 100%;
+  margin: 0 auto;
+  width: 1065px;
   padding: 30px 0 0 0;
-  @media screen and (max-width:1918px){
-}
+  @media screen and (max-width: 1200px) {
+    width: 100%;
+  }
 }
 .projects-list{
   width: 100%;
@@ -85,7 +86,7 @@ export default {
   align-items: center;
   justify-content: flex-start;
   @media screen and (max-width:1440px){
-    justify-content: space-around;
+    justify-content: center;
   }
 }
 .project-item{
@@ -103,13 +104,8 @@ export default {
   }
 }
   .h-container{
-    margin: 0 auto;
-    width: 1473px;
-      @media screen and (max-width:1697px){
-      width: 1431px;
-
-    }
-    @media screen and (max-width:1440px){
+    padding: 0;
+    @media screen and (max-width: 1200px) {
       width: 100%;
     }
   }
@@ -119,37 +115,12 @@ export default {
   background: #FFFFFF;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
   line-height: 1.16;
-  width: 451px;
-  height: 629px;
+  width: 250px;
+  height: 350px;
 
-  .add-new-project{
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-    left: 177px;
-    top: 144px;
-    opacity: 0.4;
-    position: absolute;
-    z-index: 2;
-    transition: all 0.5s ease-out;
-    &:hover {
-      opacity: 1;
-      -webkit-transform: rotate(45deg);
-      -moz-transform: rotate(45deg);
-      -o-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-      transform: rotate(45deg);
 
-      path {
-
-      }
-    }
-    border-radius: 50%;
-  }
   .content-wrapper{
-    padding: 32px 27px 0 27px;
+    padding: 16px 8px 0 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -159,41 +130,30 @@ export default {
     }
     .title{
       margin: 0;
-      margin-top: 18px;
-      font-family: Assistant;
-      font-style: normal;
       font-weight: bold;
-      font-size: 36px;
+      font-size: 24px;
       line-height: 40px;
       text-align: right;
       letter-spacing: -0.02em;
       color: #2871D7;
     }
     .description{
-      margin-top: 10px;
-      font-family: Assistant;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 18px;
-      line-height: 28px;
+      margin-top: 0;
+      font-size: 14px;
+      line-height: 15px;
       text-align: center;
-      color: #E0E0E0;
-      width: 375px;
+      color: #F6F6F6;
     }
     .meta{
       color: #828282;
     }
     .links-wrapper{
-      margin-top: 16px;
-      width: 164px;
+      margin-top:0px;
       display: flex;
       flex-direction: row-reverse;
       justify-content: space-around;
       align-items: center;
       a{
-        margin-top: 14px;
-        font-family: Assistant;
-        font-style: normal;
         font-weight: bold;
         font-size: 18px;
         line-height: 65px;
@@ -206,8 +166,8 @@ export default {
         }
       }
       svg{
-        margin-top: 16px;
-
+        margin-top: 5px;
+        margin-left: 5px;
       }
 
     }
@@ -219,7 +179,7 @@ export default {
   }
 }
   .addProj{
-    width: 416px;
-    height: 286px;
+    width: 218px;
+    height: 160px;
   }
 </style>

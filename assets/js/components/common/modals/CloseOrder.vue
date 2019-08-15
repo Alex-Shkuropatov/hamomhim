@@ -1,6 +1,6 @@
 <template>
     <transition name="slide-fade">
-    <modal v-if="$store.getters['modals/alert/isOpened']" @close="close">
+    <modal v-if="$store.getters['modals/workPrice/isOpened']" @close="close">
     <div class="content-wrapper third-message">
         <h2 class="title">סיכום פרויקט</h2>
         <p class="projectName">נא הזן את סכום הפרויקט</p>
@@ -21,11 +21,13 @@
     export default {
         methods: {
             close() {
-                this.$store.commit('modals/alert/close');
+                this.$store.commit('modals/workPrice/close');
 
             },
             closeProject() {
+                this.$store.commit('modals/workPrice/close');
                 this.$router.push('/orders/closed-orders');
+
             },
 
         },
@@ -36,7 +38,10 @@
             return {
                 price: '',
             }
-        }
+        },
+        destroyed(){
+
+        },
     }
 </script>
 
@@ -46,6 +51,7 @@
         display: flex;
         flex-direction: row;
         margin-top: 30px;
+        margin-bottom: 30px;
         button{
             color: white;
             width: 250px;

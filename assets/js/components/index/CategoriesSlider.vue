@@ -17,17 +17,15 @@
         <div class="swiper-button-prev th-slider-arrow th-slider-arrow-right" slot="button-prev" data-uid="2"></div>
       </div>
     </div>
-
-    <banner-section></banner-section>
   </div>
 </template>
 
 <script>
-import BannerSection from './BannerSection.vue';
+
 
 export default {
   components: {
-    BannerSection
+
   },
   data(){
     return {

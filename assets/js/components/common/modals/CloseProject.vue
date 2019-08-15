@@ -1,4 +1,6 @@
 <template>
+  <transition name="slide-fade">
+    <modal v-if="$store.getters['modals/projectPrice/isOpened']" @close="close">
             <div class="content-wrapper third-message">
                 <h2 class="title">סיכום פרויקט</h2>
                 <p class="projectName">נא הזן את סכום הפרויקט</p>
@@ -8,26 +10,27 @@
                     <button class="closeB"  style="text-align:center" @click='close' > טקיורפ רוגס</button>
                 </div>
             </div>
-
+    </modal>
+  </transition>
 </template>
 
 <script>
-  import ModalClose from '../../ModalClose'
+  import Modal from '../Modal.vue'
 
 
   export default {
       methods: {
           close() {
-              this.$store.commit('modals/alert/close');
-
+              this.$store.commit('modals/projectPrice/close');
           },
           closeProject() {
+              this.$store.commit('modals/projectPrice/close');
               this.$router.push('projects/closed-projects');
           },
 
       },
       components: {
-          ModalClose,
+          Modal,
       },
       data: function () {
           return {
@@ -43,6 +46,7 @@
         display: flex;
         flex-direction: row;
         margin-top: 30px;
+      margin-bottom: 30px;
         button{
             color: white;
             width: 250px;
@@ -64,6 +68,9 @@
     }
     .content-wrapper{
         background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       .title{
         margin:0;
         margin-top: 27px;
@@ -100,5 +107,16 @@
         height: 46.47px;
         padding-right: 20px;
       }
+    }
+    .slide-fade-enter-active {
+      transition: all .3s ease;
+    }
+    .slide-fade-leave-active {
+      transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .slide-fade-enter, .slide-fade-leave-to
+      /* .slide-fade-leave-active до версии 2.1.8 */ {
+      transform: translateX(10px);
+      opacity: 0;
     }
 </style>
