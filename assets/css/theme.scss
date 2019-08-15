@@ -83,10 +83,10 @@
     content: '';
     position: absolute;
     z-index: -1;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
     background: $clr-blue;
     transform: scaleX(0);
     transform-origin: 100% 50%;
@@ -108,7 +108,7 @@
   color: #fff;
 
   //animation
-  transition: all .3s ease-out;
+  transition: color .3s ease-out;
   position: relative;
   transform: perspective(1px) translateZ(0);
   &:before{

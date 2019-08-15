@@ -105,6 +105,7 @@ export default {
     font-weight: bold;
   }
   .socials{
+    margin-top: 20px;
     .facebook{
       display: block;
       min-height: ceil($scale1 * 50px);
@@ -120,6 +121,10 @@ export default {
 //photos slider
 .photos-slider-row{
   display: flex;
+  justify-content: flex-end;
+  position: relative;
+  top: -50px;
+  left: -110px;
   .controls{
     position: relative;
     background: #333333;

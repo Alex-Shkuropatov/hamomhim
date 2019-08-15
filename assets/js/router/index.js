@@ -6,7 +6,7 @@ import store from './../store';
 Vue.use(VueRouter);
 
 import auth from './auth';
-import account from './account';
+import profile from './profile';
 
 import Index from './../views/Index.vue';
 import AboutUs from './../views/AboutUs.vue';
@@ -84,14 +84,15 @@ const routes = [
     name: 'prefer-worker',
   },
   {
-    path: '/profile',
+    path: '/view-profile',
     component: Profile,
-    name: 'profile',
+    name: 'view-profile',
   },
 ];
 
+
 //routes.push(auth);
-//routes.push(account);
+routes.push(profile);
 
 const router = new VueRouter({
   routes,
