@@ -5,9 +5,9 @@
     <projects-header v-bind="header"  />
 
   <div class="orders">
-    <h1 class="title">םיטקיורפ תמישר</h1>
+    <h1 class="title">רשימת פרויקטים</h1>
    <div class="add-order-wrapper">
-     <button class="addOrder"  >הדובעל םינלבק ףסוה    <span>+</span></button>
+     <button class="addOrder"  >הוספת קבלנים לעבודה    <span>+</span></button>
      <div class="txt">1 ףינס הקינפאג</div>
    </div>
     <div class="orders-list-wrap h-container">

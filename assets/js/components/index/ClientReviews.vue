@@ -1,6 +1,6 @@
 <template>
   <div class="client-reviews-section">
-    <div class="th-heading clr-blue text-center h-container">פרויקט נבחר</div>
+    <div class="th-heading clr-blue text-center h-container">פרויקטים שבועיים</div>
     <div class="sec-outer">
       <div class="h-container">
         <div class="content-container">

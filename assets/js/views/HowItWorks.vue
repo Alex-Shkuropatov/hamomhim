@@ -5,27 +5,27 @@
   <div class="ourGoals_element">
     <img src="/static/images/how-it-works/workerE.png" alt="workerLogo">
     <div class="element_text">
-      <div class="title">םיחוורל םיבייחתמ</div>
+      <div class="title">מתחייבים לרווחים</div>
       <div class="description">
-        .טקש שארב תויהל ולכותש ךכ ,קפסה/ןלבקה לומ הלמעה תייבג תא תעצבמ םיחמומה תצובק
+         קבוצת המומחים מבצעת את גביית העמלה מול הקבלן/הספק, כך שתוכלו להיות בראש שקט.
       </div>
     </div>
   </div>
   <div class="ourGoals_element">
     <img src="/static/images/how-it-works/painter.png" alt="paint brush">
     <div class="element_text">
-      <div class="title">תוסנכה תלדגה</div>
+      <div class="title">הגדלת הכנסות</div>
       <div class="description">
-        .קסעה תויחוור תא יתועמשמ ןפואב לידגהל ולכוי םינלבקו םינפ יבצעמ ,םילכירדא םיחמומ תצובק םע
+        עם קבוצת מומחים אדריכלים, מעצבי פנים וקבלנים יוכלו להגדיל באופן משמעותי את רווחיות העסק.
       </div>
     </div>
   </div>
   <div class="ourGoals_element">
     <img src="/static/images/how-it-works/moneyE.png" alt="$">
     <div class="element_text">
-      <div class="title">ןמזב םיכסוח</div>
+      <div class="title">חוסכים בזמן</div>
       <div class="description">
-        .רתאב ועצבתש זרכמ "ינימ" ידי לע היינבה תויולעב חוקלל ךוסחל םכל תרשפאמ םיחמומה תצובק
+        קבוצת המומחים מאפשרת לכם לחסוך ללקוח בעלויות הבנייה על ידי "מיני" מכרז שתבצעו באתר.
       </div>
     </div>
   </div>
@@ -34,10 +34,10 @@
   <div class="howItWorks">
     <div class="txt_wrapper">
       <div class="title">
-        חוקל דצ – דבוע הז ךיא
+        איך זה עובד – צד לקוח
       </div>
       <div class="description">
-        ?דבוע הז ךיא .שגפיהל םכנוצרב ימ םע רוחבלו ץופישה תויולע תא דומאל ולכות ,ריהמ ןולאש יולימ ידי לע .עוצקמה ילעב בטיממ תיבה ץופישל ריחמ תועצה 5 דע לבקל םכל תרשפאמ םיחמומה תצובק
+        קבוצת המומחים מאפשרת לכם לקבל עד 5 הצעות מחיר לשיפוץ הבית ממיטב בעלי המקצוע. על ידי מילוי שאלון מהיר, תוכלו לאמוד את עלויות השיפוץ ולבחור עם מי ברצונכם להיפגש. איך זה עובד?
       </div>
     </div>
 
@@ -119,7 +119,7 @@
          <img src="/static/images/how-it-works/worker1.png" alt="worker" class="workerImg">
 
       </div>
-      <button class="moreInfo">םיפסונ םיטסופ הלעה</button>
+      <button class="moreInfo">העלה פוסטים נוספים</button>
     </div>
   </div>
 

@@ -3,7 +3,7 @@
     <page-subheader v-bind="subHeader"/>
     <div class="post-page h-container">
       <div class="nav-line">
-        <a href="#" class="back-btn">Back</a>
+        <a href="#" class="back-btn">אחורה</a>
       </div>
       <div class="post-content">
         <div class="main-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</div>
