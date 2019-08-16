@@ -4,12 +4,12 @@
       <div class="th-heading text-center">בואו נתחיל! איזה בעל מקצוע דרוש לכם?</div>
       <div class="categories-slider-wrap">
         <swiper :options="sliderOptions" class="categories-slider" ref="categoriesSlider">
-          <swiper-slide class="slide-outer" v-for="(category, index) in categories" :key="index">
+          <swiper-slide class="slide-outer" v-for="category in categories" :key="category.id">
             <div class="slide-inner">
               <div class="cat-img">
                 <img src="/static/images/main-page/category-placeholder.svg" alt="">
               </div>
-              <div class="description">{{category}}</div>
+              <div class="description">{{category.name}}</div>
             </div>
           </swiper-slide>
         </swiper>
@@ -38,50 +38,25 @@ export default {
           prevEl: '.swiper-button-prev[data-uid="2"]',
         },
         breakpoints: {
-          
+
         }
       },
-      categories: [
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-        'םיטקיורפ ילהנמ',
-      ],
+      categories: [],
     }
   },
+  methods: {
+    getCategoriesFromApi(){
+      axios.post('api/admin/getAllCategories')
+        .then(response => {
+          if(response.data.success){
+            this.categories = response.data.value;
+          }
+        });
+    }
+  },
+  mounted(){
+    this.getCategoriesFromApi();
+  }
 }
 </script>
 

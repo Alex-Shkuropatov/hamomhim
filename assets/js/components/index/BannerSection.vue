@@ -23,8 +23,7 @@ export default {
 }
 img{
   width: 100%;
-  // width: auto;
-  height: 180px;
+  height: 100px;
 }
 
 @media(max-width: $breakpoint2){

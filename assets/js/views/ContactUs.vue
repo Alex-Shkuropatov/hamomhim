@@ -27,7 +27,7 @@
 </div>
 
   <div class="mapW">
-    <iframe class="medium" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1881.2244956489853!2d-99.15884129732498!3d19.436199370379086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f8cdc19e3477%3A0xe98bef6360302321!2sUVM+Campus+San+Rafael!5e0!3m2!1sru!2sua!4v1563356851952!5m2!1sru!2sua" width="100%" height="529px" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <iframe class="medium" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3380.611208800642!2d34.79760701516447!3d32.07976288118821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151d4bbc285cb811%3A0x8a630c87a0d074b0!2zQXJpZWwgU2hhcm9uIDQsIEdpdidhdGF5aW0sINCY0LfRgNCw0LjQu9GM!5e0!3m2!1sru!2sua!4v1565879212203!5m2!1sru!2sua" width="100%" height="529px" frameborder="0" style="border:0" allowfullscreen></iframe>
     <img src="/static/images/how-it-works/mapCrop.png" class="googleMap" alt="map">
     </div>
 </div>

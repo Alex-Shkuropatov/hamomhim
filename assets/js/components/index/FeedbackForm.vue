@@ -6,30 +6,30 @@
       <div class="feedback-form">
         <div class="form-group">
           <label class="label">
-            <div class="caption">Lorem Ipsum</div>
-            <input type="text" class="th-input" placeholder="Lorem Ipsum">
+            <div class="caption">שם מלא</div>
+            <input type="text" class="th-input" placeholder="שם מלא">
           </label>
         </div>
         <div class="form-group">
           <label class="label">
-            <div class="caption">Lorem Ipsum</div>
-            <input type="text" class="th-input" placeholder="Lorem Ipsum">
+            <div class="caption">טלפון</div>
+            <input type="text" class="th-input" placeholder="טלפון">
           </label>
         </div>
         <div class="form-group">
           <label class="label">
-            <div class="caption">Lorem Ipsum</div>
-            <input type="text" class="th-input" placeholder="Lorem Ipsum">
+            <div class="caption">מייל</div>
+            <input type="text" class="th-input" placeholder="מייל">
           </label>
         </div>
         <div class="form-group">
           <label class="label">
-            <div class="caption">Lorem Ipsum</div>
-            <input type="text" class="th-input" placeholder="Lorem Ipsum">
+            <div class="caption">סכום נדרש</div>
+            <input type="text" class="th-input" placeholder="סכום נדרש">
           </label>
         </div>
         <div class="form-group">
-          <button class="th-btn th-btn-md th-btn-yellow text-center">לבלוג</button>
+          <button class="th-btn th-btn-md th-btn-yellow text-center">שלח</button>
         </div>
       </div>
     </div>

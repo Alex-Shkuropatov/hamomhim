@@ -1,7 +1,7 @@
 <template>
   <div class="top-projects-section">
     <div class="h-container">
-      <div class="th-heading text-center">פרויקטי השבוע</div>
+      <div class="th-heading text-center">פרויקטים אחרונים</div>
       <div class="top-projects-slider-wrap">
         <swiper :options="sliderOptions" class="top-pojects" ref="topProjectsSlider">
           <swiper-slide class="slide-outer" v-for="project in projects" :key="project.id">

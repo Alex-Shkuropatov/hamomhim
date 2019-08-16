@@ -6,7 +6,7 @@
 
 <div class="editP">
 
- <h1 class="titleH">Edit profile</h1>
+ <h1 class="titleH">עריכת פרופיל</h1>
  <form action="" class="editForm">
   <div class="imageW">
    <label for="file-upload" class="custom-file-upload addPhoto">
@@ -19,7 +19,7 @@
   <div class="textFields">
    <div class="column cLeft">
     <span>שם מלא</span>
-    <input class="foemField" v-model.trim="user.fullName" placeholder="אלמ םש"  type="text">
+    <input class="foemField" v-model.trim="user.fullName" placeholder="שם מלא"  type="text">
     <span>אזור מגורים</span>
     <input class="foemField" v-model.trim="user.area" placeholder="אזור מגורים" type="text">
     <span>כתובת</span>
@@ -46,19 +46,19 @@
  </form>
 </div>
   <div class="editP_section editP">
-  <h2 class="titleH"> Change password</h2>
+  <h2 class="titleH">שינוי סיסמה</h2>
    <form action="" class="changePass">
     <div class="textFields">
     <div class="column cLeft">
-     <span>Email</span>
+     <span>אמייל</span>
      <input class="foemField" v-model.trim="user.mail" placeholder="example@gmail.com"  type="text">
-     <span>New password</span>
+     <span>סיסמה חדשה</span>
      <input class="foemField" v-model.trim="user.passNew" placeholder="**********" type="text">
     </div>
     <div class="column cRight">
-     <span>Current password</span>
+     <span>סיסמה נוכחית</span>
      <input class="foemField" v-model.trim="user.passCurrent" placeholder="**********" type="password">
-     <span>Confirm password</span>
+     <span>אישור סיסמה חדשה</span>
      <input class="foemField" v-model.trim="user.passConfirm" placeholder="**********" type="password">
     </div>
     </div>

@@ -1,6 +1,6 @@
 <template>
   <div class="client-reviews-section">
-    <div class="th-heading clr-blue text-center h-container">פרויקט נבחר</div>
+    <div class="th-heading clr-blue text-center h-container">פרויקטים שבועיים</div>
     <div class="sec-outer">
       <div class="h-container">
         <div class="content-container">
@@ -105,6 +105,7 @@ export default {
     font-weight: bold;
   }
   .socials{
+    margin-top: 20px;
     .facebook{
       display: block;
       min-height: ceil($scale1 * 50px);
@@ -120,6 +121,10 @@ export default {
 //photos slider
 .photos-slider-row{
   display: flex;
+  justify-content: flex-end;
+  position: relative;
+  top: -50px;
+  left: -110px;
   .controls{
     position: relative;
     background: #333333;
