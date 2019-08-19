@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <div class="footer-container h-container">
+    <div class="footer-container">
 
       <div class="logo-col">
         <div class="logo-wrap">

@@ -41,7 +41,6 @@
     background: #FFFFFF;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
     z-index: 10;
-    min-width: 660px;
     display: flex;
     flex-direction: column;
     align-items: center;

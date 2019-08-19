@@ -266,7 +266,7 @@
         letter-spacing: -0.02em;
         color: #333333;
         @media screen and (max-width: 500px) {
-          font-size: 49px;
+          font-size: 33px;
         }
       }
 
@@ -290,6 +290,10 @@
         @media screen and (max-width: 750px) {
           width: 48%;
         }
+        @media screen and (max-width: 480px) {
+          width: 303px;
+        }
+
       }
     }
 

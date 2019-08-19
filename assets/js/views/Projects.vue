@@ -122,9 +122,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .projects-wrapper{
   z-index: 0;
-  margin: 0 auto;
   width: 100%;
 }
 .projects-list-wrap{
