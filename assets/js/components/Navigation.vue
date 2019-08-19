@@ -179,14 +179,15 @@
   @import '~@/vars.scss';
 
   .header{
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     position: fixed;
     z-index: 3000;
     height: ceil($scale1 * 100px);//80px//
     width: 100%;
-    background: #fff;
+    background-color: rgba(255,255,255,0.95);
     display: flex;
+
     -ms-align-items: center;
     align-items: center;
     .h-container{
@@ -204,6 +205,9 @@
     img{
       width: 100%;
       height: auto;
+      @media screen and (max-width: 700px){
+        width: 65%;
+      }
     }
   }
   .auth-btns{
@@ -213,16 +217,21 @@
     }
     .th-btn-blue{
        margin-left:  6px;
+      @media screen and (max-width: 750px) {
+        margin-left:  0;
+        margin-top:  6px;
+      }
      }
-    @media screen and (max-width: 1300px) {
+
+    @media screen and (max-width: 750px) {
       display: flex;
-      flex-direction: row;
+      flex-direction: column-reverse;
       align-items: center;
     }
     .profile-links{
-      @media screen and (max-width: 1300px) {
+      @media screen and (max-width: 750px) {
         display: flex;
-        flex-direction: row;
+        flex-direction: column-reverse;
         align-items: center;
       }
   }
@@ -260,8 +269,6 @@
       }
     }
   }
-
-
   .header-n{
     background-image: url('/static/images/profile/header-image.png');
     height: 814px;
@@ -309,6 +316,12 @@
   }
   .logo-wrap{
     margin-left: 70px;
+    @media screen and (max-width: 700px){
+     margin: 0;
+    }
+    @media screen and (max-width: 600px){
+      display: none;
+    }
     svg{
 
     }
@@ -320,7 +333,6 @@
     flex-direction: column;
     align-items: center;
     .title{
-
       font-weight: bold;
       font-size: 64px;
       line-height: 30px;

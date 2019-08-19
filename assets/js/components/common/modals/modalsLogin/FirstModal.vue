@@ -120,6 +120,7 @@
     color: #BDBDBD;
   }
   .content-wrapper{
+    padding: 20px;
     margin-bottom: 49px;
     text-align: center;
     display: flex;
@@ -135,6 +136,10 @@
       text-align: center;
       letter-spacing: -0.02em;
       color: #333333;
+      @media screen and (max-width: 480px){
+        margin-top:30px;
+        font-size: 30px;
+      }
     }
     p{
       margin: 0;
@@ -161,6 +166,9 @@
         flex-direction: row-reverse;
         align-items: center;
         padding: 11px 30px 0 30px;
+        @media screen and (max-width: 1000px){
+          flex-direction: column;
+        }
         .orderWrapper{
           margin: 0 10px 0 10px;
           p{
@@ -177,6 +185,18 @@
           }
           .inputName{
             padding-right: 20px;
+            width: 350.28px;
+            height: 46.47px;
+            background: #FFFFFF;
+            opacity: 0.5;
+            border: 1px solid #BDBDBD;
+            box-sizing: border-box;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+            border-radius: 50px;
+            @media screen and (max-width: 480px){
+              width: 260.28px;
+            }
+
           }
         }
         .selectWrapper{
@@ -227,16 +247,7 @@
     text-align: right;
     color: #333333;
   }
-  .inputName{
-    width: 350.28px;
-    height: 46.47px;
-    background: #FFFFFF;
-    opacity: 0.5;
-    border: 1px solid #BDBDBD;
-    box-sizing: border-box;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-    border-radius: 50px;
-  }
+
   .buttons-wrapper{
     display: flex;
     flex-direction: row;
@@ -282,6 +293,7 @@
     }
       .inputName{
         padding-right: 20px;
+
       }
     }
   }
@@ -314,6 +326,11 @@
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-around;
+    @media screen and (max-width: 1000px){
+      flex-direction: column-reverse;
+      justify-content: center;
+      width: 154px;
+    }
     .wrapper-element{
       display: flex;
       flex-direction: row-reverse;
