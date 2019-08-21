@@ -38,7 +38,9 @@ export default {
           prevEl: '.swiper-button-prev[data-uid="2"]',
         },
         breakpoints: {
-
+          1340: {
+            slidesPerView: 5,
+          }
         }
       },
       categories: [],
@@ -89,11 +91,34 @@ export default {
   padding-bottom: ceil($scale1 * 13px);
   font-size: ceil($scale1 * 18px);
   .cat-img{
-    width: ceil($scale1 * 50px);
     margin-bottom: ceil($scale1 * 15px);
     margin-right: auto;
     margin-left: auto;
   }
+  img{
+    width: 100%;
+  }
 }
 
+@media (max-width: $breakpoint2){
+  .categories-slider{
+    margin-bottom: ceil($scale2 * 34px);
+    margin-right: ceil($scale2 * -15px);
+    margin-left: ceil($scale2 * -15px);
+  }
+  .slide-outer{
+    padding: ceil($scale2 * 15px);
+  }
+  .slide-inner{
+    box-shadow: 0px 0px ceil($scale2 * 20px) rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding-top: ceil($scale2 * 35px);
+    padding-bottom: ceil($scale2 * 13px);
+    font-size: ceil($scale2 * 18px);
+    .cat-img{
+      width: ceil($scale2 * 50px);
+      margin-bottom: ceil($scale2 * 15px);
+    }
+  }
+}
 </style>
