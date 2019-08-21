@@ -59,6 +59,13 @@
             &:hover  {
                 color:black;
             }
+            @media screen and (max-width: 650px) {
+                width: 170px;
+            }
+            @media screen and (max-width: 650px) {
+                width: 140px;
+                height: 40px;
+            }
         }
         .closeB{
             margin-right: 10px;
@@ -78,6 +85,13 @@
         align-items: center;
         background-color: white;
         margin-bottom: 20px;
+        width: 600px;
+        @media screen and (max-width: 650px) {
+            width: 450px;
+        }
+        @media screen and (max-width: 480px) {
+            width: 315px;
+        }
         .title{
             margin:0;
             margin-top: 27px;
@@ -113,6 +127,9 @@
             width: 350.28px;
             height: 46.47px;
             padding-right: 20px;
+            @media screen and (max-width: 650px) {
+                width: 250.28px;
+            }
         }
     }
     .slide-fade-enter-active {

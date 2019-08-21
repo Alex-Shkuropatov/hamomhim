@@ -54,6 +54,13 @@
             &:hover  {
                 color:black;
             }
+          @media screen and (max-width: 650px) {
+            width: 170px;
+          }
+          @media screen and (max-width: 650px) {
+            width: 140px;
+            height: 40px;
+          }
         }
         .closeB{
             margin-right: 10px;
@@ -71,6 +78,13 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      width: 600px;
+      @media screen and (max-width: 650px) {
+        width: 450px;
+      }
+      @media screen and (max-width: 480px) {
+        width: 315px;
+      }
       .title{
         margin:0;
         margin-top: 27px;
@@ -82,6 +96,7 @@
         text-align: center;
         letter-spacing: -0.02em;
         color: #333333;
+
       }
       .projectName{
         margin:0;
@@ -106,6 +121,9 @@
         width: 350.28px;
         height: 46.47px;
         padding-right: 20px;
+        @media screen and (max-width: 650px) {
+          width: 250.28px;
+        }
       }
     }
     .slide-fade-enter-active {

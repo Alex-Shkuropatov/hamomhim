@@ -72,6 +72,7 @@ export default {
 <style lang="scss" scoped>
 
 .dropdown {
+
   position: relative;
   background: #FFFFFF;
   border: 1px solid #BDBDBD;
@@ -89,13 +90,16 @@ export default {
     .arr {
       position: absolute;
       right: 310px;
-      top: 0;
+      top: 5px;
       width: 25px;
       height: 100%;
       display: flex;
       align-items: center;
       flex-direction: row;
       justify-content: flex-start;
+      @media screen and (max-width: 400px){
+        right: 231px;
+      }
     }
     &.placeholded {
       color: #BDBDBD;
@@ -110,7 +114,7 @@ export default {
     overflow-y: auto;
     background: #FFFFFF;
     border: 1px solid #E0E0E0;
-    z-index: 1;
+    z-index: 1000;
     padding-top: 25px;
 
     top: 35px;

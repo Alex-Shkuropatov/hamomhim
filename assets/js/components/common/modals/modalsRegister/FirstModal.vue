@@ -123,6 +123,7 @@
 
 <style lang="scss" scoped>
 .content-wrapper{
+
   position: relative;
   .title{
     text-align: center;
@@ -156,6 +157,10 @@
       button{
         width: 200px;
         height: 200px;
+        @media screen and (max-width: 700px){
+          width: 160px;
+          height: 160px;
+        }
         &:hover{
           box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
         }

@@ -125,12 +125,16 @@
     }
   }
   .content-wrapper{
+    width: 500px;
     margin-bottom: 49px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: Assistant;
+    @media screen  and (max-width: 550px){
+      width:unset;
+    }
     .title{
       margin: 0;
       font-style: normal;
