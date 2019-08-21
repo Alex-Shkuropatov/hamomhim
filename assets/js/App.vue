@@ -51,7 +51,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+@import '~@/vars.scss';
 #content {
   &.cool-enter {
     transform: scale(1.2) translateY(50px);
@@ -70,9 +70,9 @@ export default {
   }
 }
 .margin{
-  margin-top:  80px;
-  @media screen and (max-width: 1300px) {
-    margin-top: 106px!important;
+  margin-top:  ceil($scale1 * 100px);
+  @media screen and (max-width: $breakpoint2) {
+    margin-top: ceil($scale2 * 100px)!important;
   }
 }
 </style>

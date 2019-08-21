@@ -57,6 +57,7 @@ export default {
           nextEl: '.swiper-button-next[data-uid="5"]',
           prevEl: '.swiper-button-prev[data-uid="6"]',
         },
+        spaceBetween: 20,
       },
       reviews: [
         {id: 1, name: 'Name of client', avatar: '/static/images/main-page/client-review-avatar.png', text: 'Lorem ipsum dolor sit amet, vim at nemore elaboraret, qui ea expetenda vituperata. Ex esse percipit iracundia vel. Vim no ipsum quaeque detracto, antiopam definitionem in eum, inani habemus referrentur duo et. Mea affert discere mnesarchum ei, impedit inermis id sit. Ut error quaestio atomorum quo,r.', facebook: '#'},
@@ -66,6 +67,16 @@ export default {
       ]
 
     };
+  },
+  mounted(){
+    this.$refs.reviewsSlider.swiper.controller.control = this.$refs.photosSlider.swiper;
+    this.$refs.photosSlider.swiper.controller.control = this.$refs.reviewsSlider.swiper;
+
+    // setTranslate(a){
+    //   console.log(a);
+    //   console.log(this);
+    //   this.$refs.photosSlider.setTranslate(a);
+    // }
   }
 }
 </script>
