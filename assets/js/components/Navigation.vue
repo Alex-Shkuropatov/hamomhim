@@ -28,6 +28,7 @@
           <router-link :to="{ name: 'contact-us'}">צור קשר</router-link>
         </li>
       </ul>
+      <burger-menu/>
       <div class="auth-btns"  v-if="!$store.getters['user/isLogged']">
         <button class="th-btn th-btn-blue th-btn-sm" @click="openLogin">התחברות למערכת</button>
         <button class="th-btn th-btn-empty th-btn-sm" @click="openReg">הרשמה למערכת</button>
@@ -95,6 +96,8 @@
           </ul>
         </div>
 
+
+
         <a href="#" class="logo-wrap">
           <router-link :to="{ name: 'index'}">
             <img src="/static/images/logo/logo-white.png" alt="">
@@ -120,6 +123,7 @@
   import Registration from './common/modals/Registration.vue'
   import Login from './common/modals/Login.vue'
   import axios from 'axios';
+  import BurgerMenu from './common/BurgerMenu.vue'
   export default {
     data: function (){
       return {
@@ -140,7 +144,8 @@
       FavouriteIcon,
       Registration,
       Login,
-      axios
+      axios,
+      BurgerMenu
     },
     methods: {
       openReg(e){
@@ -174,9 +179,15 @@
   @import '~@/vars.scss';
 
   .header{
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    position: fixed;
+    z-index: 3000;
     height: ceil($scale1 * 100px);//80px//
-    background: #fff;
+    width: 100%;
+    background-color: rgba(255,255,255,0.95);
     display: flex;
+
     -ms-align-items: center;
     align-items: center;
     .h-container{
@@ -184,6 +195,9 @@
       -ms-align-items: center;
       align-items: center;
       justify-content: space-between;
+      @media screen and (max-width: 1240px){
+        justify-content: flex-end;
+      }
     }
   }
   .logo-wrap{
@@ -191,6 +205,9 @@
     img{
       width: 100%;
       height: auto;
+      @media screen and (max-width: 700px){
+        width: 65%;
+      }
     }
   }
   .auth-btns{
@@ -198,8 +215,28 @@
       padding-right: ceil($scale1 * 40px);
       padding-left: ceil($scale1 * 40px);
     }
+    .th-btn-blue{
+       margin-left:  6px;
+      @media screen and (max-width: 750px) {
+        margin-left:  0;
+        margin-top:  6px;
+      }
+     }
+
+    @media screen and (max-width: 750px) {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+    .profile-links{
+      @media screen and (max-width: 750px) {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+      }
   }
 
+}
   .desktop-menu{
     display: flex;
     font-size: ceil($scale1 * 24px);
@@ -212,6 +249,9 @@
     }
     a{
       color: $clr-dark;
+    }
+    @media screen and (max-width: 1240px) {
+      display: none;
     }
   }
 
@@ -229,8 +269,6 @@
       }
     }
   }
-
-
   .header-n{
     background-image: url('/static/images/profile/header-image.png');
     height: 814px;
@@ -278,6 +316,12 @@
   }
   .logo-wrap{
     margin-left: 70px;
+    @media screen and (max-width: 700px){
+     margin: 0;
+    }
+    @media screen and (max-width: 600px){
+      display: none;
+    }
     svg{
 
     }
@@ -289,7 +333,6 @@
     flex-direction: column;
     align-items: center;
     .title{
-
       font-weight: bold;
       font-size: 64px;
       line-height: 30px;

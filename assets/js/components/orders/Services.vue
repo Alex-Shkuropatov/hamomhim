@@ -37,7 +37,6 @@
       }
     },
     mounted() {
-
     }
   }
 </script>
@@ -77,7 +76,16 @@
    justify-content: space-between;
    align-items: center;
    flex-wrap:wrap;
-   width: 697px;
+   width:855px;
+   .service{
+     label{
+       font-size: 24px;
+       line-height: 40px;
+       text-align: center;
+       letter-spacing: -0.02em;
+       color: #000000;
+     }
+   }
  }
     .nextB{
       margin-top:30px;

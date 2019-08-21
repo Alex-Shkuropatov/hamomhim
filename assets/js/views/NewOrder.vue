@@ -3,6 +3,8 @@
   <categories-slider/>
 
   <services/>
+
+  <repair-works/>
 </div>
 
 </template>
@@ -10,6 +12,7 @@
 <script>
 import CategoriesSlider from '../components/index/CategoriesSlider.vue'
 import Services from '../components/orders/Services.vue'
+import RepairWorks from '../components/orders/RepairWorks.vue'
 export default {
   data(){
     return {
@@ -18,7 +21,8 @@ export default {
   },
   components: {
 CategoriesSlider,
-    Services
+    Services,
+    RepairWorks
   },
   methods: {
 

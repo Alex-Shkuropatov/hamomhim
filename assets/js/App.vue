@@ -2,7 +2,7 @@
   <div id="wrapper">
     <navigation v-bind="header"/>
     <transition name="cool">
-      <router-view />
+      <router-view class="margin" />
     </transition>
     <underground/>
   </div>
@@ -69,5 +69,7 @@ export default {
     transition: transform 0.5s ease, opacity 0.5s ease;
   }
 }
-
+.margin{
+  margin-top:  80px;
+}
 </style>

@@ -157,8 +157,6 @@ export default {
   }
   .summary-info{
     .sum{
-      font-family: Assistant;
-      font-style: normal;
       font-weight: bold;
       font-size: 24px;
       line-height: 65px;
@@ -167,6 +165,10 @@ export default {
       display: flex;
       align-items: center;
       color: #F2F2F2;
+      @media screen and (max-width: 450px) {
+        font-size: 20px;
+
+      }
       span{
         font-weight: normal;
       }
@@ -176,6 +178,9 @@ export default {
     }
     .valet{
       margin-top: -24px;
+      @media screen and (max-width: 450px) {
+        margin-top: -35px;
+      }
     }
   }
 }
@@ -235,6 +240,10 @@ a{
   width: 200px;
   height: 200px;
   border-radius: 50%;
+  @media screen and (max-width: 500px){
+    width: 130px;
+    height: 130px;
+  }
 }
 
 </style>
