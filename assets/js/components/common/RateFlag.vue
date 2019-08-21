@@ -33,9 +33,7 @@
 
 <style lang="scss" scoped>
   .rate-flag{
-    position: relative;
-    margin-top: -32px;
-    margin-left: 30px;
+
     .rate-number{
       position: absolute;
       z-index: 4;

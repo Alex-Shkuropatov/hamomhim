@@ -144,13 +144,16 @@ import FavouriteIcon from '../components/common/FavouriteIcon.vue'
 import WorkPost from '../components/profile/WorkPost.vue'
 import Download from '../components/profile/Download'
 import Feedback from '../components/profile/Feedback'
+
+
 export default {
  components: {
   AlertModal,
   FavouriteIcon,
   WorkPost,
   Download,
-  Feedback
+  Feedback,
+
  },
  data: function () {
   return {
