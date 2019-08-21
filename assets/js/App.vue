@@ -16,7 +16,7 @@ export default {
   data: function(){
     return{
       header: {
-        hideHeader: ['profile'],
+        hideHeader: ['view-profile'],
         headDefault: true,
         headProfile: false,
       }
@@ -71,5 +71,8 @@ export default {
 }
 .margin{
   margin-top:  80px;
+  @media screen and (max-width: 1300px) {
+    margin-top: 106px!important;
+  }
 }
 </style>

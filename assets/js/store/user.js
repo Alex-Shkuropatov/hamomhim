@@ -21,6 +21,7 @@ export default {
       delete axios.defaults.headers.common['Authorization'];
       localStorage.removeItem('auth');
     },
+
   },
   actions: {
     updateData(context) {
