@@ -91,6 +91,7 @@ export default {
   padding-bottom: ceil($scale1 * 13px);
   font-size: ceil($scale1 * 18px);
   .cat-img{
+    width: ceil($scale1 * 50px);
     margin-bottom: ceil($scale1 * 15px);
     margin-right: auto;
     margin-left: auto;
@@ -116,7 +117,7 @@ export default {
     padding-bottom: ceil($scale2 * 13px);
     font-size: ceil($scale2 * 18px);
     .cat-img{
-      width: ceil($scale2 * 50px);
+      //width: ceil($scale2 * 50px);
       margin-bottom: ceil($scale2 * 15px);
     }
   }

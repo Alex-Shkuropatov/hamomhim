@@ -17,7 +17,7 @@ export default {
   margin-right: auto;
   margin-left: auto;
   width: $container-width1 + $scale1 * 130px;
-  height: 180px;
+  max-width: calc(100% - 30px);
   overflow: hidden;
   text-align: center;
 }
@@ -28,7 +28,7 @@ img{
 
 @media(max-width: $breakpoint2){
   .banner-section{
-
+    width: $container-width2 + $scale2 * 130px;
   }
 }
 </style>
