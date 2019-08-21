@@ -48,6 +48,7 @@
 
 <style  lang="scss" scoped>
   .content-wrapper{
+
     margin-bottom: 49px;
     text-align: center;
     display: flex;
@@ -82,9 +83,16 @@
     }
   }
   .first-message{
+    width: 600px;
     font-style: normal;
     line-height: 40px;
     letter-spacing: -0.02em;
+    @media screen and (max-width: 950px) {
+      width: 400px;
+    }
+    @media screen and (max-width: 480px) {
+      width: 310px;
+    }
     .title{
 
       font-weight: bold;
@@ -93,6 +101,12 @@
       color: #333333;
       margin: 0;
       margin-top: 20px;
+      @media screen and (max-width: 950px) {
+        font-size: 30px;
+      }
+      @media screen and (max-width: 480px) {
+       margin-top: 50px;
+      }
     }
     .projectName{
       font-weight: normal;
@@ -101,6 +115,9 @@
       color: #828282;
       margin: 0;
       margin-top: 5px;
+      @media screen and (max-width: 950px) {
+        font-size: 20px;
+      }
     }
     form {
       input{
@@ -114,6 +131,10 @@
         box-sizing: border-box;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
         border-radius: 10px;
+        @media screen and (max-width: 950px) {
+          width: 300px;
+          height: 40px;
+        }
       }
       textarea{
         padding: 10px 20px 0 0;
@@ -127,6 +148,10 @@
         border-radius: 10px;
         width: 350px;
         height: 250px;
+        @media screen and (max-width: 950px) {
+          width: 300px;
+          height: 120px;
+        }
       }
     }
     .buttons-wrapper{
@@ -139,6 +164,10 @@
         height: 50px;
         &:hover  {
           color:black;
+        }
+        @media screen and (max-width: 950px) {
+          width: 140px;
+          height: 40px;
         }
       }
       .closeB{

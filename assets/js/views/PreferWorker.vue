@@ -4,7 +4,17 @@
     <projects-header/>
 
   <div class="workers-list">
+<div class="search-tab">
+  <button class="th-btn th-btn-blue th-btn-sm add-project">
+   <span class=" abs">+</span> Add new project
+  </button>
+  <drop-down class="dropDown" placeholder="הדובע רוזיא" v-model="work_area.value" :items="work_area.items"/>
+  <drop-down class="dropDown" placeholder="הדובע רוזיא" v-model="work_area1.value" :items="work_area1.items"/>
+  <button class=" th-btn th-btn-blue th-btn-sm add-project search-b" >
+    Search
+  </button>
 
+</div>
     <div class="projects-list-wrap h-container">
       <div class="projects-list">
         <Worker
@@ -22,6 +32,8 @@
 
 import Worker from './../components/Worker';
 import ProjectsHeader from './../components/ProjectsHeader';
+import DropDown from './../components/common/DropDown';
+
 export default {
   data(){
     return {
@@ -35,11 +47,21 @@ export default {
         {id: 7, imgSrc: '/static/images/projects/7.png',rate:'10',rating:'3' ,type:"םילכירדא", title: ' מ"עב םיצופיש ד.א',workArea:"ץראה לכ", url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
         {id: 8, imgSrc: '/static/images/projects/8.png',rate:'3',rating:'5' ,type:"םילכירדא", title: ' מ"עב םיצופיש ד.א',workArea:"ץראה לכ", url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
       ],
+      work_area: {
+        items: [ { label: ' הדובע רוזיא', value: 1 },{ label: ' הדובע רוזיא', value: 2 },{ label: ' הדובע רוזיא', value: 3 } ],
+        value: '',
+      },
+        work_area1: {
+      items: [ { label: ' הדובע רוזיא', value: 1 },{ label: ' הדובע רוזיא', value: 2 },{ label: ' הדובע רוזיא', value: 3 } ],
+          value: '',
+    },
+
     };
   },
   components: {
     ProjectsHeader,
     Worker,
+    DropDown
   },
   methods: {
 
@@ -63,7 +85,7 @@ export default {
 }
 }
 .projects-list{
-  margin-top: 30px;
+
   width: 100%;
   display: flex;
   -webkit-flex-wrap: wrap;
@@ -201,4 +223,37 @@ export default {
     width: 416px;
     height: 286px;
   }
+.search-tab{
+  margin: 50px auto;
+  width: 1371px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  .add-project{
+    position: relative;
+    background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
+    border-radius: 50px;
+    width: 280px;
+    height: 54px;
+    font-weight: bold;
+    font-size: 24px;
+    .abs{
+      position: absolute;
+      left: 25px;
+      font-size: 30px;
+      top: 8px;
+    }
+  }
+  .search-b {
+    display: inline-block;
+    text-align: center;
+  }
+  .dropDown{
+    border: 1px solid #BDBDBD;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+  }
+}
 </style>

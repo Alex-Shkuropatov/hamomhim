@@ -110,10 +110,12 @@
  </div>
 </div>
  <div class="all-works">
- <button>View all works</button>
+  <div class="last-projects-wrapper">
+  <hr class="line">
  <div class="last-projects">
   םינורחא םיטקייורפ
  </div>
+  </div>
 </div>
  <div class="slider-wrap h-container-works">
   <div class="swiper-button-prev th-slider-arrow th-slider-arrow-right" slot="button-prev" data-uid="8"></div>
@@ -126,6 +128,10 @@
  </div>
 
 
+<feedback/>
+
+<download />
+
 </div>
 
 
@@ -136,11 +142,15 @@
 import AlertModal from '../components/common/modals/Alert.vue';
 import FavouriteIcon from '../components/common/FavouriteIcon.vue'
 import WorkPost from '../components/profile/WorkPost.vue'
+import Download from '../components/profile/Download'
+import Feedback from '../components/profile/Feedback'
 export default {
  components: {
   AlertModal,
   FavouriteIcon,
-  WorkPost
+  WorkPost,
+  Download,
+  Feedback
  },
  data: function () {
   return {
@@ -161,7 +171,7 @@ export default {
     }
    },
    posts: [
-    {id: 1, imgSrc: '/static/images/profile/work-1.png', title: 'יללכ ץופיש', url: '#', description: 'למשחו היצלטסניא ,סבג ,ףוציר ,עבצ תודובע'},
+    {id: 1, imgSrc: '/static/images/profile/work-1.png', title: 'י ללכ ץופיש', url: '#', description: 'למשחו היצלטסניא ,סבג ,ףוציר ,עבצ תודובע'},
     {id: 3, imgSrc: '/static/images/profile/work-1.png', title: 'יללכ ץופיש', url: '#', description: 'למשחו היצלטסניא ,סבג ,ףוציר ,עבצ תודובע'},
     {id: 4, imgSrc: '/static/images/profile/w-2.png', title: 'יללכ ץופיש', url: '#', description: 'למשחו היצלטסניא ,סבג ,ףוציר ,עבצ תודובע'},
     {id: 5, imgSrc: '/static/images/profile/w-3.png', title: 'יללכ ץופיש', url: '#', description: 'למשחו היצלטסניא ,סבג ,ףוציר ,עבצ תודובע'},
@@ -180,6 +190,9 @@ export default {
 
 <style lang="scss" scoped>
  @import '~@/vars.scss';
+ .margin{
+  margin: 0;
+ }
 .element-padd{
  padding-right: 195px;
  padding-left: 75px;
@@ -358,5 +371,47 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  .swiper-button-prev{
+   right: 150px;
+  }
+  .swiper-button-next {
+   left: 164px;
+  }
+ }
+ .all-works{
+  width: 1315px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  .view-all{
+   color: #074DAC;
+   font-weight: bold;
+   font-size: 18px;
+   .fas{
+    margin-right: 10px;
+   }
+  }
+  .last-projects-wrapper{
+   display: flex;
+   flex-direction: row-reverse;
+   align-items: center;
+
+   .line{
+    width: 260px;
+    height: 0px;
+    border: 1px solid #333333;
+    transform: rotate(180deg);
+    margin-top: 38px;
+    margin-right: 35px;
+   }
+   .last-projects{
+    font-weight: bold;
+    font-size: 48px;
+    color: #333333;
+
+   }
+
+  }
  }
 </style>

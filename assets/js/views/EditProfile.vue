@@ -13,33 +13,32 @@
     <i class="fa fa-cloud-upload " ></i>
    </label>
    <input id="file-upload" type="file" @change="previewFiles"  accept="image/x-png,image/gif,image/jpeg"  />
-
-   <img :src="source" class="profileImg" alt="">
+   <img :src="user.avatar" class="profileImg" alt="">
   </div>
   <div class="textFields">
    <div class="column cLeft">
     <span>שם מלא</span>
-    <input class="foemField" v-model.trim="user.fullName" placeholder="שם מלא"  type="text">
+    <input class="foemField" v-model.trim="user.name" placeholder="שם מלא"  type="text">
     <span>אזור מגורים</span>
-    <input class="foemField" v-model.trim="user.area" placeholder="אזור מגורים" type="text">
+    <input class="foemField" v-model.trim="user.city" placeholder="אזור מגורים" type="text">
     <span>כתובת</span>
-    <input class="foemField" v-model.trim="user.adress" placeholder="כתובת" type="text">
+    <input class="foemField" v-model.trim="user.address" placeholder="כתובת" type="text">
     <span>טלפון</span>
     <input class="foemField" v-model.trim="user.phone" placeholder="טלפון" type="text">
    </div>
    <div class="column cRight">
     <span>שם העסק</span>
-    <input class="foemField" v-model.trim="company.name" placeholder="שם העסק"  type="text">
+    <input class="foemField" v-model.trim="user.name_of_business" placeholder="שם העסק"  type="text">
     <span>אזור עבודה</span>
      <div class="selectWrapper">
-      <drop-down placeholder="אזור עבודה" v-model="workArea.value" :items="workArea.items"/>
+      <drop-down class="dropDown" placeholder="אזור עבודה" v-model="workArea.value" :items="workArea.items"/>
      </div>
     <span>קטגוריות</span>
     <div class="selectWrapper">
-     <drop-down placeholder="נא בחר קטגוריה אחת" v-model="categories.value" :items="categories.items"/>
+     <drop-down class="dropDown" placeholder="נא בחר קטגוריה אחת" v-model="categories.value" :items="categories.items"/>
     </div>
     <span>פקס</span>
-    <input class="foemField" v-model.trim="company.fax" placeholder="פקס"  type="text" >
+    <input class="foemField" v-model.trim="user.fax" placeholder="פקס"  type="text" >
    </div>
   </div>
   <button class="sendData th-btn th-btn-blue th-btn-sm" ref="sendData" style="text-align:center"   @click="openModal">שמור</button>
@@ -51,18 +50,18 @@
     <div class="textFields">
     <div class="column cLeft">
      <span>אמייל</span>
-     <input class="foemField" v-model.trim="user.mail" placeholder="example@gmail.com"  type="text">
+     <input class="foemField" v-model.trim="user.email" placeholder="example@gmail.com"  type="text" disabled>
      <span>סיסמה חדשה</span>
-     <input class="foemField" v-model.trim="user.passNew" placeholder="**********" type="text">
+     <input class="foemField" v-model.trim="user.newPassword" placeholder="**********" type="password">
     </div>
     <div class="column cRight">
      <span>סיסמה נוכחית</span>
-     <input class="foemField" v-model.trim="user.passCurrent" placeholder="**********" type="password">
+     <input class="foemField" v-model.trim="user.oldPassword" placeholder="**********" type="password">
      <span>אישור סיסמה חדשה</span>
-     <input class="foemField" v-model.trim="user.passConfirm" placeholder="**********" type="password">
+     <input class="foemField" v-model.trim="user.confirmPassword" placeholder="**********" type="password">
     </div>
     </div>
-    <button class="sendData th-btn th-btn-blue th-btn-sm"  @click="openModal">שמור</button>
+    <button class="sendData th-btn th-btn-blue th-btn-sm"  @click="openModalPass">שמור</button>
    </form>
   </div>
  </div>
@@ -82,23 +81,23 @@ export default {
  },
  data: function () {
   return {
-   source: '/static/images/profile/defPic.png',
-   company: {
-    selectedZone: '',
-    selectedCategory: '',
-    name: '',
-    fax: '',
-   },
    user: {
-    fullName: '',
-    area: '',
-    adress: '',
+    avatar: '',
+    name: '',
+    city: '',
+    name_of_business: '',
+    address: '',
     phone: '',
-    mail: '',
-    passNew: '',
-    passCurrent: '',
-    passConfirm: ''
+    email: '',
+    newPassword: '',
+    oldPassword: '',
+    confirmPassword: '',
+    working_area: '',
+    fax: '',
+    userId: '',
+    business_phone: '09203234',
    },
+   preload: '',
    workArea: {
     items: [ { label: 'אזור עבודה', value: 1 },{ label: 'אזור עבודה', value: 2 }],
     value: '',
@@ -111,13 +110,34 @@ export default {
     title: 'New information have been saved',
     text: 'Lorem Ipsum dolor set amet',
     buttonText: 'חזור לאתר',
-   }
+   },
+
   }
+ },
+ computed: {
+  getData() {
+   return this.$store.getters['user/data'];
+  },
+  fillData(){
+   let data = this.getData;
+   console.log(data);
+           this.user.avatar= "http://api.hamomhim.coelix.online/"+data.avatar;
+           this.user.name= data.name;
+           this.user.city= data.city;
+           this.user.name_of_business= data.name_of_business;
+           this.user.address= data.address;
+           this.user.email= data.email;
+           this.user.phone= data.phone;
+           this.user.fax= data.fax;
+           this.workArea.value= data.working_area;
+           this.user.userId = data.id;
+   this.user.working_area =  this.workArea.value;
+  },
  },
  methods: {
   previewFiles(event) {
    let file = event.target.files;
-   console.log(event.target.files);
+   this.preload = file[0];
    this.createImage(file[0]);
   },
   createImage(file) {
@@ -125,14 +145,61 @@ export default {
    let reader = new FileReader();
    let vm = this;
    reader.onload = (e) => {
-    vm.source = e.target.result;
+vm.user.avatar= e.target.result;
    };
    reader.readAsDataURL(file);
   },
   openModal (e) {
    e.preventDefault();
    this.$store.commit('modals/alert/open');
-  }
+   this.changeInfo();
+  },
+  openModalPass (e) {
+   e.preventDefault();
+   this.$store.commit('modals/alert/open');
+   this.changePassword();
+  },
+  changeInfo(){
+   let data = this.setFromData();
+
+   axios.post('/api/changePersonalInfo', data)
+           .then((response) => {
+            console.log('sussass');
+            this.$store.dispatch('user/updateData');
+           })
+           .catch((error) => {
+            console.log(error.response.data);
+           });
+  },
+  changePassword(){
+
+   axios.post('/api/changePassword', this.user)
+           .then((response) => {
+            console.log(response);
+            this.$store.dispatch('user/updateData');
+           })
+           .catch((error) => {
+            console.log(error.response.data);
+           });
+  },
+  setFromData() {
+   let myFormData = new FormData();
+   myFormData.append('avatar', this.preload);
+   myFormData.append('name',  this.user.name);
+   myFormData.append('city',  this.user.city);
+   myFormData.append('name_of_business',  this.user.name_of_business);
+   myFormData.append('address', this.user.address);
+   myFormData.append('email', this.user.email);
+   myFormData.append('phone', this.user.phone);
+   myFormData.append('fax', this.user.fax);
+   myFormData.append('business_phone', '099012312');
+   myFormData.append('working_area', this.user.working_area );
+   myFormData.append('userId', this.user.userId);
+   return myFormData;
+  },
+ },
+ mounted() {
+  this.fillData;
  }
 }
 </script>
@@ -179,6 +246,16 @@ export default {
   }
  }
 }
+  .dropDown{
+   width: 350.28px;
+   height: 46.47px;
+   @media screen and (max-width: 900px){
+    width: 353px;
+   }
+   @media screen and (max-width: 400px) {
+    width: 270.28px;
+   }
+  }
   .editP_section{
    margin-top: 24px;
    height: 449px;
@@ -214,6 +291,9 @@ export default {
  }
  .cRight{
   margin-right: 8px;
+  @media screen and (max-width: 900px){
+   margin-right:0;
+  }
  }
  .profileImg{
   margin-top: 20px;
@@ -247,6 +327,9 @@ export default {
   border-radius: 50px;
   width: 350.28px;
   height: 46.47px;
+  @media screen and (max-width: 400px) {
+   width: 270.28px;
+  }
  }
  .sendData{
   padding-right: 141px;
@@ -280,6 +363,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   @media screen and (max-width: 900px){
    flex-direction: column;
   }

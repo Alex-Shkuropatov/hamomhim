@@ -43,9 +43,16 @@
         console.log(data);
         axios.post('/api/auth/login', data)
             .then((response) => {
-
               this.$store.commit('user/auth', response.data.access_token );
               this.$store.commit('user/saveData' , data);
+              axios.get('/api/auth/user')
+                  .then((response)=>{
+                    console.log(response.data);
+                    this.$store.commit('user/saveData' , response.data);
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  });
             })
             .catch((error) => {
               console.log(error.response.data);

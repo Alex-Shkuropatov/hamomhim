@@ -1,6 +1,6 @@
 <template>
 
-  <div class="content-wrapper second-message">
+  <div class="contentW second-message">
     <h2 class="title">םינלבק - רתאל המשרה</h2>
     <p class="projectName">תכרעמל המשרה</p>
     <form action="">
@@ -59,11 +59,11 @@
       <div class="wrapper">
         <div class="selectWrapper">
           <p class="formItem">הדובע רוזיא</p>
-          <drop-down placeholder="הדובע רוזיא" v-model="workArea.value" :items="workArea.items"/>
+          <drop-down class="dropDown" placeholder="הדובע רוזיא" v-model="workArea.value" :items="workArea.items"/>
         </div>
         <div class="selectWrapper">
           <p class="formItem">תוירוגטק</p>
-          <drop-down placeholder="םהמ דחא רחב" v-model="categories.value" :items="categories.items"/>
+          <drop-down class="dropDown" placeholder="םהמ דחא רחב" v-model="categories.value" :items="categories.items"/>
         </div>
       </div>
       <hr>
@@ -205,27 +205,35 @@
   .fa-sync-alt{
     color: #BDBDBD;
   }
-  .content-wrapper{
+  .contentW{
     margin-bottom: 49px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: Assistant;
+    width: 810px;
+    @media screen and (max-width: 700px){
+
+    }
     .title{
+      text-align: center;
       margin: 0;
-      font-style: normal;
+      margin-top: 30px;
       font-weight: bold;
       font-size: 36px;
       line-height: 40px;
       text-align: center;
       letter-spacing: -0.02em;
       color: #333333;
+      @media screen and (max-width:600px) {
+        margin-top: 46px;
+        font-size: 31px;
+      }
     }
-    p{
+    .projectName{
+      text-align: center;
       margin: 0;
-      font-style: normal;
-      font-weight: normal;
       font-size: 24px;
       line-height: 40px;
       text-align: center;
@@ -247,6 +255,9 @@
         flex-direction: row;
         align-items: center;
         padding: 11px 30px 0 30px;
+        @media screen and (max-width: 900px) {
+          flex-direction: column;
+        }
         .orderWrapper{
           margin: 0 10px 0 10px;
           p{
@@ -270,8 +281,12 @@
         }
       }
       hr{
+
         width: 90%;
         color: #80808030;
+        @media screen and (max-width: 900px) {
+          margin-top: 20px;
+        }
       }
     }
   }
@@ -322,6 +337,12 @@
     box-sizing: border-box;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
     border-radius: 50px;
+    @media screen and (max-width: 900px) {
+      height: 41.47px;
+    }
+    @media screen and (max-width: 480px) {
+      width: 300.28px;
+    }
   }
   .buttons-wrapper{
     display: flex;
@@ -339,6 +360,9 @@
       margin-right: 10px;
       background: #E0E0E0;
       border-radius: 50px;
+      @media screen and (max-width: 900px) {
+        margin: unset;
+      }
     }
     .saveB{
       margin-left: 10px;
@@ -353,6 +377,10 @@
     width: 230px;
     justify-content: space-between;
     margin-right: 47px;
+    @media screen and (max-width: 900px){
+      margin-left: 50px;
+      width: 209px;
+    }
     label{
       text-decoration: underline;
       color: #333333;
@@ -363,6 +391,9 @@
     flex-direction: row;
     align-items: center;
     width: 727px;
+    @media screen and (max-width: 900px) {
+      flex-direction: column;
+    }
     .orderWrapper {
     .formItem{
       margin: 0;
@@ -395,6 +426,20 @@ div{
 
   .fas + input {
     padding-left: 26px;
+  }
+}
+.dropDown{
+  @media screen and (max-width: 900px) {
+    height: 41.47px;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 304px;
+  }
+}
+.dropDown >>> .arr {
+  @media screen and (max-width: 480px) {
+    right: 267px;
   }
 }
   ::-webkit-scrollbar {
