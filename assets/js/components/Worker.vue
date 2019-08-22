@@ -3,7 +3,7 @@
 
     <div class="content-wrapper">
     <div class="content-block">
-      <rate-flag v-bind="rateFlag" />
+      <rate-flag class="rateFlag" v-bind="rateFlag" />
 
       <div class="stats">
         <div class="stats-element">
@@ -142,6 +142,11 @@ import  FavouriteIcon from './common/FavouriteIcon.vue';
   .close{
     top: 5px;
     left: 5px;
+  }
+  .rateFlag{
+    position: absolute;
+    top: -1px;
+    left: 42px;
   }
   .project-item{
     z-index: 1;

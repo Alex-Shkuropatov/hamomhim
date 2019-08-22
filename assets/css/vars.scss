@@ -1,5 +1,6 @@
 $clr-blue: #2970D5;
 $clr-dark: #4F4F4F;
+$clr-gray: #828282;
 
 $def-font-size: 18px;
 
@@ -22,12 +23,12 @@ $container-width: 1560px;//width of content 1530px
 $breakpoint1: 8000px;
 $container-width1: 1230px;
 
-$breakpoint2: 1300px;
-$container-width2: 1230px;
+$breakpoint2: 1340px;
+$container-width2: 960px;
 
 // $scale: strip-unit($container-width2) / strip-unit($container-width);
 $scale1: $container-width1 / $container-width;
-$scale2: $container-width2 / $container-width1;
+$scale2: $container-width2 / $container-width;
 
 
 $mobile: 992px;

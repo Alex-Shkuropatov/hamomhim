@@ -6,7 +6,7 @@
 }
 @media (max-width: $breakpoint2){
   .th-heading{
-    font-size: ceil($scale1 * 64px);
+    font-size: ceil($scale2 * 64px);
   }
 }
 
@@ -226,6 +226,11 @@
     right: ceil($scale1 * -65px);
     left: auto;
   }
+}
+
+// divider
+.th-divider{
+  border: 1px solid #F2F2F2;
 }
 
 
