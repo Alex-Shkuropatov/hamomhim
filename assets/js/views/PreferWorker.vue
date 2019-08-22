@@ -121,7 +121,7 @@ export default {
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
   line-height: 1.16;
   width: 1371px;
-  height: 293px;
+  height: 320px;
 
   .add-new-project{
     -webkit-transform: rotate(45deg);

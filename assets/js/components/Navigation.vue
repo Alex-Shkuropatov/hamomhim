@@ -96,8 +96,6 @@
           </ul>
         </div>
 
-
-
         <a href="#" class="logo-wrap">
           <router-link :to="{ name: 'index'}">
             <img src="/static/images/logo/logo-white.png" alt="">
@@ -166,10 +164,15 @@
             });
       },
       profile(){
-        this.$router.push('/projects');
+        let role  = this.getData.role;
+         role==='worker'?this.$router.push({name: 'projects'}) : this.$router.push({name: 'requests'})
       },
     },
-
+    computed: {
+      getData() {
+        return this.$store.getters['user/data'];
+      }
+    },
 
   }
 </script>
@@ -206,7 +209,7 @@
       width: 100%;
       height: auto;
       @media screen and (max-width: 700px){
-        width: 65%;
+        width: 90%;
       }
     }
   }
@@ -224,16 +227,15 @@
      }
 
     @media screen and (max-width: 750px) {
-      display: flex;
-      flex-direction: column-reverse;
-      align-items: center;
+      display: none;
     }
     .profile-links{
-      @media screen and (max-width: 750px) {
+
         display: flex;
         flex-direction: column-reverse;
         align-items: center;
-      }
+
+
   }
 
 }
@@ -316,12 +318,7 @@
   }
   .logo-wrap{
     margin-left: 70px;
-    @media screen and (max-width: 700px){
-     margin: 0;
-    }
-    @media screen and (max-width: 600px){
-      display: none;
-    }
+
     svg{
 
     }
@@ -375,7 +372,6 @@
     flex-direction: row-reverse;
     align-items: center;
     .logout{
-
       span{
         font-weight: bold;
         font-size: 20px;

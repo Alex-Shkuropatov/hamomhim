@@ -1,21 +1,25 @@
 <template>
   <div class="feedback-post">
  <div class="rate-wrapper">
-   <rate-flag v-bind="rateFlag" />
+   <rate-flag class="rate-flag" v-bind="rateFlag" />
+   <show-more class="show-more-b" @click="showMore" />
    <div class="show-more-element">
 
    </div>
  </div>
     <div class="content-wrapper">
       <div class="title">
-
+        {{title}}
       </div>
-      <div class="description">
-
+      <div class="description" v-bind:class="{openBlock:isOpen}">
+        {{description}}
       </div>
-      <div class="img-wrapper">
-        <img :src="img" alt="user-image">
+      <div class="post-date">
+        {{date}}
       </div>
+    </div>
+    <div class="img-wrapper">
+      <img :src="img" alt="user-image">
     </div>
     <hr>
   </div>
@@ -23,12 +27,14 @@
 
 <script>
 import RateFlag from './../common/RateFlag'
+import ShowMore from './../../components/profile/ShowMore'
   export default {
     data () {
       return {
         rateFlag: {
           rate: this.rate,
         },
+          isOpen: false,
       }
     },
     props: {
@@ -56,13 +62,15 @@ import RateFlag from './../common/RateFlag'
         default: '',
         type: String,
       },
-      url: {
-        default: '#',
-        type: String,
-      }
     },
     components: {
-      RateFlag
+      RateFlag,
+      ShowMore
+    },
+    methods: {
+      showMore(){
+        this.isOpen=!this.isOpen;
+      },
     }
   }
 </script>
@@ -70,16 +78,24 @@ import RateFlag from './../common/RateFlag'
 <style lang="scss" scoped>
   .img-wrapper{
     position: absolute;
-    width: 191px;
-    height: 191px;
+    width: 141px;
+    height: 140px;
     right: 42px;
     top: 72px;
     img{
-      width: 191px;
-      height: 191px;
+      width: 141px;
+      height: 140px;
       border-radius: 50%;
 
     }
+  }
+  .openBlock{
+    overflow-y: unset!important;
+  }
+  .rate-flag{
+    position: absolute;
+    left: 32px;
+    top: 0;
   }
 .document-wrapper{
 padding: 0 20px 0 20px;
@@ -92,17 +108,46 @@ padding: 0 20px 0 20px;
   flex-direction: row-reverse;
   align-items: center;
   justify-content: space-between;
+}
+.content-wrapper{
+  padding-right: 216px;
 
+  .title {
+    width: 750px;
+    font-weight: bold;
+    font-size: 36px;
+    text-align: right;
+    letter-spacing: -0.02em;
+    color: #333333;
+  }
+  .description{
+    width: 800px;
+    font-size: 24px;
+    text-align: right;
+    color: #4F4F4F;
+    max-height: 124px;
 
+  }
+}
+.post-date{
+  font-weight: bold;
+  font-size: 24px;
+  text-align: right;
+  letter-spacing: -0.02em;
+  color: #2871D7;
 }
   .feedback-post{
     position: relative;
-    height: 325px;
+    height: auto;
     hr{
       position: absolute;
-      width: 900px;
-      bottom:0;
+      width: 1120px;
+      bottom: -10px;
+      left: 16px;
     }
   }
-
+.show-more-b{
+  top: 120px;
+  left: 33px;
+}
 </style>
