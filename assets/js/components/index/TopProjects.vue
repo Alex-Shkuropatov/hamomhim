@@ -36,7 +36,10 @@ export default {
           breakpoints: {
             1700: {
               slidesPerView: 3
-            }
+            },
+            1023: {
+              slidesPerView: 2
+            },
           }
       },
       projects: [

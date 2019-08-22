@@ -108,4 +108,20 @@ export default {
     }
   }
 }
+
+@media(max-width: $breakpoint3){
+  .feedback-form{
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    .form-group{
+      width: 25%;
+      &:last-child{
+        margin-top: 20px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+    }
+  }
+}
 </style>

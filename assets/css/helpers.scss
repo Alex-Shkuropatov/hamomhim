@@ -9,6 +9,12 @@
   }
 }
 
+@media (max-width: $breakpoint3){
+  .h-container{
+    width: $container-width3;
+  }
+}
+
 .d-flex{
   display: -webkit-flex;
   display: -ms-flex;

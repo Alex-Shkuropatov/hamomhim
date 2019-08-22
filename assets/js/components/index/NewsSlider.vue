@@ -31,6 +31,11 @@ export default {
         navigation: {
           nextEl: '.swiper-button-next[data-uid="7"]',
           prevEl: '.swiper-button-prev[data-uid="8"]',
+        },
+        breakpoints: {
+          1023: {
+            slidesPerView: 2,
+          }
         }
       },
       posts: [

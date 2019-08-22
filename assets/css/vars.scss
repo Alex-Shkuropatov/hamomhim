@@ -26,9 +26,13 @@ $container-width1: 1230px;
 $breakpoint2: 1340px;
 $container-width2: 960px;
 
+$breakpoint3: 1023px;
+$container-width3: 740px;
+
 // $scale: strip-unit($container-width2) / strip-unit($container-width);
 $scale1: $container-width1 / $container-width;
 $scale2: $container-width2 / $container-width;
+$scale3: $container-width3 / $container-width;
 
 
 $mobile: 992px;

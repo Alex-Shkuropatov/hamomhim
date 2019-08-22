@@ -40,6 +40,9 @@ export default {
         breakpoints: {
           1340: {
             slidesPerView: 5,
+          },
+          1023: {
+            slidesPerView: 4,
           }
         }
       },
