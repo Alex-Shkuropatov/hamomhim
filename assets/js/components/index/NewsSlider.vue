@@ -1,7 +1,7 @@
 <template>
-  <div class="news-section">
+  <div class="news-section h-container">
     <div class="th-heading text-center">בלוג</div>
-    <div class="slider-wrap h-container">
+    <div class="slider-wrap">
 
       <swiper :options="sliderOptions" class="news-slider" ref="newsSlider">
         <swiper-slide class="slide-outer" v-for="post in posts" :key="post.id">
@@ -70,5 +70,15 @@ export default {
   margin-top: ceil($scale1 * 35px);
   padding-right: ceil($scale1 * 140px);
   padding-left: ceil($scale1 * 140px);
+}
+
+@media (max-width: $breakpoint2){
+  .news-section{
+    margin-top: ceil($scale2 * 40px);
+    margin-bottom: ceil($scale2 * 40px);
+  }
+  .slide-outer{
+    padding: ceil($scale2 * 15px);
+  }
 }
 </style>
