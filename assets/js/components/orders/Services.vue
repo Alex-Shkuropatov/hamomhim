@@ -15,7 +15,7 @@
         </div>
       </div>
       </div>
-      <button class="next-b th-btn th-btn-blue th-btn-md"><span>Next</span></button>
+      <button class="next-b th-btn th-btn-blue th-btn-md" @click="sendData"><span>Next</span></button>
     </div>
   </div>
 
@@ -38,6 +38,9 @@
         ],
         checkedServices: [],
       }
+    },
+    methods(){
+      
     },
     mounted() {
     }

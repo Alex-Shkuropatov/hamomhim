@@ -1,8 +1,8 @@
 <template>
 <div class="wrapper">
-  <categories-slider/>
+  <categories-slider  />
 
-  <services/>
+  <services  />
 
   <repair-works/>
 </div>

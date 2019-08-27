@@ -92,6 +92,7 @@
 <style lang="scss" scoped>
   @import '~@/vars.scss';
   .auth-btns{
+    margin-top: 30px;
     .th-btn{
       padding-right: ceil($scale1 * 40px);
       padding-left: ceil($scale1 * 40px);
@@ -340,4 +341,5 @@
     color: #FFFFFF;
   }
 }
+
 </style>
