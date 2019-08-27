@@ -70,6 +70,7 @@
     width: 827px; //0.8
     @media screen and (max-width: 900px) {
       flex-direction: column;
+      width: unset;
     }
     .stats_element {
       display: flex;

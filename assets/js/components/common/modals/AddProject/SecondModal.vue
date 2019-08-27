@@ -94,22 +94,23 @@
 </template>
 
 <script>
-  import Modal from '../../Modal.vue';
+  import Modal from './../../Modal.vue';
   export default {
     data: function(){
      return{
        role: '',
+       modal: 1,
      }
     },
     methods: {
       close() {
-        this.$store.commit('modals/login/close');
+        this.$store.commit('modals/reg/close');
       },
       checkRole: function (role) {
         this.role= role;
         this.$emit('send', {
           role: this.role,
-          modal: 1 ,
+          modal: this.modal,
         })
       },
     },

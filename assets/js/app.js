@@ -11,6 +11,7 @@ import App from './App.vue';
 
 import './env';
 import './preferences';
+import './heplers'
 
 import store from './store';
 import router from './router';

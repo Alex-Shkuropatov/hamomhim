@@ -29,8 +29,28 @@
       },
       send () {
         this.$store.commit('modals/newProject/close');
-        this.$router.push('orders');
+        let user = this.getData;
+          let data = {
+            name : this.name,
+            description: this.description,
+            status: 'open',        //delete in default request
+            user_id : user.id,    //delete in default request
+          };
+            axios.post('/api/admin/addNewProject', data)
+            .then((response) => {
+              console.log(response);
+              this.$router.push('orders');
+            })
+            .catch((error) => {
+              console.log(error.response.data);
+            });
 
+
+      },
+    },
+    computed: {
+      getData() {
+        return this.$store.getters['user/data'];
       },
     },
     components: {

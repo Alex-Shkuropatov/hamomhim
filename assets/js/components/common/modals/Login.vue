@@ -4,6 +4,8 @@
 
   <first-modal  v-if="modalL===0" @send='onFirst'  />
 
+    <second-modal v-if="modalL===1"  @send='onSecond' />
+
   </modal>
   </transition>
 
@@ -12,6 +14,7 @@
 <script>
   import Modal from './../Modal';
   import FirstModal from './modalsLogin/FirstModal.vue'
+  import SecondModal from './modalsLogin/SecondModal.vue'
   import axios from 'axios';
 
   export default {
@@ -22,6 +25,7 @@
         user: {
         token: ''
         },
+        role: '',
         modalContent: {
           title: 'החלצהב עצוב תומיאה',
           text: 'תכרעמב רשואמו תמוא ךלש ןובשחה',
@@ -33,16 +37,17 @@
       closeB() {
         this.$store.commit('modals/login/close');
         this.modalL = 0;
-
-      },
-      closeProject(data){
-        this.$store.commit('modals/login/open');
-        this.modalL = data.modal;
       },
       onFirst (data) {
+        this.role = data.role;
+        this.modalL=data.modal;
+      },
+      onSecond (data) {
         console.log(data);
+        data.role = this.role;
         axios.post('/api/auth/login', data)
             .then((response) => {
+
               this.$store.commit('user/auth', response.data.access_token );
               this.$store.commit('user/saveData' , data);
               axios.get('/api/auth/user')
@@ -57,12 +62,15 @@
             .catch((error) => {
               console.log(error.response.data);
             });
+
         this.$store.commit('modals/login/close');
+        this.modalL=0;
       },
     },
     components: {
       Modal,
       FirstModal,
+      SecondModal,
       axios,
 
 

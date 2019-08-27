@@ -6,7 +6,7 @@
     <top-projects/>
     <client-reviews/>
     <feedback-form/>
-    <div class="stats-section h-container">
+    <div class="stats-section">
       <div class="th-heading text-center">קצת עלינו במספרים</div>
       <stats/>
     </div>

@@ -110,6 +110,22 @@ export default {
     destroyed(){
 
     },
+  },
+  computed: {
+    getData() {
+      return this.$store.getters['user/data'];
+    },
+  },
+  mounted() {
+    let user = this.getData;
+    axios.post('/api/getAllProjectsByUser', {user_id:user.id})
+        .then((response) => {
+          console.log(response);
+          //this.projects = response.daata.value;
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+        });
   }
 }
 </script>
