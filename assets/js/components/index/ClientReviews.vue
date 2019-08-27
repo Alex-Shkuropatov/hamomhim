@@ -245,4 +245,5 @@ export default {
     justify-content: flex-start;
   }
 }
+
 </style>

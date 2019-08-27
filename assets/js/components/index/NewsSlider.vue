@@ -86,4 +86,21 @@ export default {
     padding: ceil($scale2 * 15px);
   }
 }
+@media(max-width: $breakpoint3){
+  .h-container{
+    width: $container-width3 - 30px;
+  }
+}
+
+@media(max-width: $breakpoint4){
+  .slide-outer{
+    padding: ceil($scale4 * 15px);
+  }
+  .slider-wrap{
+    padding: 0 8px;
+  }
+  .h-container{
+    width: $container-width4 - 30px;
+  }
+}
 </style>

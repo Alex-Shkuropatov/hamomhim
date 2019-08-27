@@ -43,6 +43,12 @@ export default {
           },
           1023: {
             slidesPerView: 4,
+          },
+          767: {
+            slidesPerView: 3,
+          },
+          570: {
+            slidesPerView: 2,
           }
         }
       },
@@ -67,11 +73,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '~@/vars.scss';
-.cats-section{
-  background: url('/static/images/main-page/bg2.png') no-repeat center top;
-  -webkit-background-size: cover;
-  background-size: cover;
-}
 .categories-slider-wrap{
   position: relative;
 }
@@ -79,9 +80,6 @@ export default {
   margin-bottom: ceil($scale1 * 34px);
   margin-right: ceil($scale1 * -15px);
   margin-left: ceil($scale1 * -15px);
-}
-.th-headeing{
-  margin-bottom: 0;
 }
 .slide-outer{
   padding: ceil($scale1 * 15px);
@@ -123,6 +121,27 @@ export default {
       //width: ceil($scale2 * 50px);
       margin-bottom: ceil($scale2 * 15px);
     }
+  }
+}
+
+@media (max-width: $breakpoint3){
+  .h-container{
+    width: $container-width3 - 30px;
+  }
+}
+@media (max-width: $breakpoint4){
+  .h-container{
+    width: $container-width4 - 30px;
+  }
+}
+
+@media (max-width: $breakpoint5){
+  .h-container{
+    width: calc(100% - (#{$gutters} * 3));
+  }
+  .th-heading{
+    margin-bottom: 0;
+    margin-top: 10px;
   }
 }
 </style>

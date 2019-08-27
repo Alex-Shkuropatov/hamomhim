@@ -110,17 +110,29 @@ export default {
 }
 
 @media(max-width: $breakpoint3){
+  .section-container{
+    width: $container-width3;
+  }
   .feedback-form{
     -webkit-flex-wrap: wrap;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     .form-group{
       width: 25%;
+      margin-bottom: 10px;
       &:last-child{
-        margin-top: 20px;
         margin-right: auto;
         margin-left: auto;
+        margin-top: 10px;
       }
+    }
+  }
+}
+
+@media (max-width: $breakpoint4){
+  .feedback-form{
+    .form-group{
+      width: 50%;
     }
   }
 }

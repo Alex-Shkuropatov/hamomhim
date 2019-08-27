@@ -14,7 +14,7 @@ html {
   min-width: 320px;
   color: $clr-dark;
   font-family: 'Assistant', sans-serif;
-  line-height: 1.7;
+  line-height: 1.35;
   font-size: $def-font-size;
   text-align: right;
 }
@@ -30,6 +30,12 @@ button {
 html, body {
   height: 100%;
   width: 100%;
+}
+
+@media (max-width: $breakpoint4){
+  html{
+    font-size: 14px;
+  }
 }
 
 #wrapper {

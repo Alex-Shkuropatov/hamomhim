@@ -31,7 +31,7 @@ export default {
 <style lang="scss" scoped>
 @import '~@/vars.scss';
 .page-subheader{
-  height: 320px;
+  height: ceil($scale1 * 250px);
   width: 100%;
   display: flex;
   -ms-align-items: center;
@@ -41,4 +41,21 @@ export default {
   background-size: cover;
   background-position: center;
 }
+@media(max-width: $breakpoint2){
+  .page-subheader{
+    height: ceil($scale2 * 250px);
+  }
+}
+
+@media(max-width: $breakpoint3){
+  .page-subheader{
+    height: ceil($scale3 * 250px);
+  }
+}
+@media(max-width: $breakpoint4){
+  .page-subheader{
+    height: ceil($scale4 * 250px);
+  }
+}
+
 </style>
