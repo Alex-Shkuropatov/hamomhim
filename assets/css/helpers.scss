@@ -9,6 +9,24 @@
   }
 }
 
+@media (max-width: $breakpoint3){
+  .h-container{
+    width: $container-width3;
+  }
+}
+
+@media (max-width: $breakpoint4){
+  .h-container{
+    width: $container-width4;
+  }
+}
+
+@media (max-width: $breakpoint5){
+  .h-container{
+    width: 100%;
+  }
+}
+
 .d-flex{
   display: -webkit-flex;
   display: -ms-flex;

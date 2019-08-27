@@ -71,4 +71,25 @@ export default {
   margin-right: auto;
   margin-left: auto;
 }
+
+@media(max-width: $breakpoint2){
+  .post-item{
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(33.33% - 20px);
+    margin-bottom: 20px;
+  }
+}
+
+@media(max-width: $breakpoint4){
+  .post-item{
+    width: calc(50% - 20px);
+  }
+}
+
+@media(max-width: $breakpoint5){
+  .post-item{
+    width: calc(100% - 20px);
+  }
+}
 </style>

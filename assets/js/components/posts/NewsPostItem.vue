@@ -51,7 +51,7 @@ export default {
 @import '~@/vars.scss';
 .post-item{
   background: #FFFFFF;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   padding: 20px 22px;
   line-height: 1.16;
   img{
@@ -68,6 +68,33 @@ export default {
   }
   .meta, .excerpt, .title{
     margin-bottom: 5px;
+  }
+}
+
+@media (max-width: $breakpoint2){
+  .post-item{
+    font-size: 16px;
+    padding: ceil($scale2 * 20px) ceil($scale2 * 22px);
+    .title{
+      font-size: ceil($scale1 * 24px);
+    }
+  }
+}
+@media (max-width: $breakpoint3){
+  .post-item{
+    padding: ceil($scale3 * 20px) ceil($scale3 * 22px);
+  }
+}
+
+@media (max-width: $breakpoint4){
+  .post-item{
+    padding: ceil($scale3 * 20px) ceil($scale3 * 22px);
+    .title{
+      font-size: ceil($scale2 * 24px);
+    }
+    .th-btn{
+      margin-top: 5px;
+    }
   }
 }
 </style>

@@ -36,7 +36,13 @@ export default {
           breakpoints: {
             1700: {
               slidesPerView: 3
-            }
+            },
+            1023: {
+              slidesPerView: 2
+            },
+            556: {
+              slidesPerView: 1
+            },
           }
       },
       projects: [
@@ -115,5 +121,23 @@ export default {
         font-size: ceil($scale1 * 14px);
         margin-bottom: ceil($scale1 * 25px);
     }
+}
+
+@media(max-width: $breakpoint3){
+  .h-container{
+    width: $container-width3 - 30px;
+  }
+}
+
+@media(max-width: $breakpoint4){
+  .h-container{
+  width: $container-width4 - 30px;
+  }
+}
+
+@media(max-width: $breakpoint5){
+  .h-container{
+    width: calc(100% - (#{$gutters} * 3));
+  }
 }
 </style>

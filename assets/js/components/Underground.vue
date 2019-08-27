@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <div class="footer-container">
+    <div class="footer-container h-container">
 
       <div class="logo-col">
         <div class="logo-wrap">
@@ -140,6 +140,39 @@ export default {
   background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
   margin-top: ceil($scale1 * 50px);
   //margin-bottom: 300px;
+}
+
+@media(max-width: $breakpoint3){
+  .footer-container{
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  .services-cats,
+  .areas-col{
+    order: -2;
+    width: 50%;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: $breakpoint4){
+  .contact-col{
+    //order: -1;
+    //margin-bottom: 20px;
+  }
+  .logo-col{
+    //width: 100%;
+  }
+  .copyright1,
+  .copyright2,
+  .col-caption{
+    font-size: ceil($scale2 * 24px);
+    font-weight: bold;
+  }
+  .contact-col .contact-item{
+    font-size: ceil($scale2 * 24px);
+  }
 }
 
 </style>

@@ -234,4 +234,16 @@ export default {
     margin-top: ceil($scale2 * 75px);
   }
 }
+
+@media(max-width: $breakpoint3){
+  .content-container{
+    width: 80%;
+  }
+  .photos-slider-row{
+    top: auto;
+    left: auto;
+    justify-content: flex-start;
+  }
+}
+
 </style>
