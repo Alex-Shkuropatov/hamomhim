@@ -67,7 +67,7 @@
     align-items: center;
     margin: 0 auto;
     padding: 0 25px 0 25px;
-    width: 827px; //0.8
+    //width: 827px; //0.8
     @media screen and (max-width: 900px) {
       flex-direction: column;
       width: unset;
