@@ -33,6 +33,7 @@ $breakpoint4: 767px;
 $container-width4: 540px;
 
 $breakpoint5: 570px;
+$container-width5: calc(100% - (#{$gutters} * 2));
 
 // $scale: strip-unit($container-width2) / strip-unit($container-width);
 $scale1: $container-width1 / $container-width;

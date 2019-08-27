@@ -130,9 +130,23 @@ export default {
 }
 
 @media (max-width: $breakpoint4){
+  .section-container{
+    width: $container-width4;
+  }
   .feedback-form{
     .form-group{
       width: 50%;
+    }
+  }
+}
+
+@media (max-width: $breakpoint5){
+  .section-container{
+    width: $container-width5;
+  }
+  .feedback-form{
+    .form-group{
+      width: 100%;
     }
   }
 }
