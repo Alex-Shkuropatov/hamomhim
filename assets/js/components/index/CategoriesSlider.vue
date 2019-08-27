@@ -5,7 +5,7 @@
       <div class="categories-slider-wrap">
         <swiper :options="sliderOptions" class="categories-slider" ref="categoriesSlider">
           <swiper-slide class="slide-outer" v-for="category in categories" :key="category.id">
-            <div class="slide-inner">
+            <div class="slide-inner" @click="onClickCategory(category)">
               <div class="cat-img">
                 <img src="/static/images/main-page/category-placeholder.svg" alt="">
               </div>
@@ -63,6 +63,10 @@ export default {
             this.categories = response.data.value;
           }
         });
+    },
+    onClickCategory(category){
+      console.log(category);
+      this.$emit('category:select', category);
     }
   },
   mounted(){
