@@ -86,4 +86,54 @@ export default {
     }
   }
 }
+
+@media (max-width: $breakpoint2){
+  .section-container{
+    width: $container-width2;
+  }
+  .feedback-section{
+    padding: ceil($scale2 * 25px) 0 ceil($scale2 * 50px);
+    font-size: ceil($scale2 * 24px);
+  }
+  .feedback-form{
+    .form-group{
+      padding: 0 ceil($scale2 * 12px);
+      .caption{
+        padding-right: ceil($scale2 * 25px);
+      }
+      .th-input{
+        height: 31px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media(max-width: $breakpoint3){
+  .section-container{
+    width: $container-width3;
+  }
+  .feedback-form{
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    .form-group{
+      width: 25%;
+      margin-bottom: 10px;
+      &:last-child{
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint4){
+  .feedback-form{
+    .form-group{
+      width: 50%;
+    }
+  }
+}
 </style>

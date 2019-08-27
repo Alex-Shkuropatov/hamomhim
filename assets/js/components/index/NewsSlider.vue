@@ -1,7 +1,7 @@
 <template>
-  <div class="news-section">
+  <div class="news-section h-container">
     <div class="th-heading text-center">בלוג</div>
-    <div class="slider-wrap h-container">
+    <div class="slider-wrap">
 
       <swiper :options="sliderOptions" class="news-slider" ref="newsSlider">
         <swiper-slide class="slide-outer" v-for="post in posts" :key="post.id">
@@ -31,6 +31,11 @@ export default {
         navigation: {
           nextEl: '.swiper-button-next[data-uid="7"]',
           prevEl: '.swiper-button-prev[data-uid="8"]',
+        },
+        breakpoints: {
+          1023: {
+            slidesPerView: 2,
+          }
         }
       },
       posts: [
@@ -70,5 +75,32 @@ export default {
   margin-top: ceil($scale1 * 35px);
   padding-right: ceil($scale1 * 140px);
   padding-left: ceil($scale1 * 140px);
+}
+
+@media (max-width: $breakpoint2){
+  .news-section{
+    margin-top: ceil($scale2 * 40px);
+    margin-bottom: ceil($scale2 * 40px);
+  }
+  .slide-outer{
+    padding: ceil($scale2 * 15px);
+  }
+}
+@media(max-width: $breakpoint3){
+  .h-container{
+    width: $container-width3 - 30px;
+  }
+}
+
+@media(max-width: $breakpoint4){
+  .slide-outer{
+    padding: ceil($scale4 * 15px);
+  }
+  .slider-wrap{
+    padding: 0 8px;
+  }
+  .h-container{
+    width: $container-width4 - 30px;
+  }
 }
 </style>
