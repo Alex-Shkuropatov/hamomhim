@@ -65,7 +65,6 @@ export default {
         });
     },
     onClickCategory(category){
-      console.log(category);
       this.$emit('category:select', category);
     }
   },

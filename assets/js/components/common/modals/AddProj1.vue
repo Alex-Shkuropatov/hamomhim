@@ -33,13 +33,11 @@
           let data = {
             name : this.name,
             description: this.description,
-            status: 'open',        //delete in default request
-            user_id : user.id,    //delete in default request
           };
-            axios.post('/api/admin/addNewProject', data)
+            axios.post('/api/addNewProject', data)
             .then((response) => {
               console.log(response);
-              this.$router.push('orders');
+              this.$router.push({ name: 'orders' })
             })
             .catch((error) => {
               console.log(error.response.data);
@@ -155,6 +153,10 @@
           width: 300px;
           height: 40px;
         }
+        @media screen and (max-width: 480px) {
+          width: 280px;
+          height: 35px;
+        }
       }
       textarea{
         padding: 10px 20px 0 0;
@@ -171,6 +173,9 @@
         @media screen and (max-width: 950px) {
           width: 300px;
           height: 120px;
+        }
+        @media screen and (max-width: 480px) {
+          width: 280px;
         }
       }
     }

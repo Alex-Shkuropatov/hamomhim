@@ -109,6 +109,9 @@ export default {
     text-align: center;
     letter-spacing: -0.02em;
     color: #333333;
+    @media screen and (max-width: 1440px) {
+      font-size: 53px;
+    }
   }
 }
 .orders-list{
@@ -221,13 +224,37 @@ export default {
     flex-direction: row-reverse;
     align-items: center;
     justify-content: space-between;
+    @media screen and (max-width: 1440px) {
+      width: 720px;
+    }
+    @media screen and (max-width: 850px){
+      width: 555px;
+    }
+      @media screen and (max-width: 650px){
+        width: 405px;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+      }
+
+    @media screen and (max-width: 480px){
+      width: 315px;
+    }
     button{
       margin-left: 40px;
       width: 280px;
       height: 54px;
       font-weight: bold;
       font-size: 24px;
+      background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
+      border-radius: 50px;
       color: #FFFFFF;
+      @media screen and (max-width: 650px){
+        margin: 10px 0 10px 0;
+        width: 235px;
+        font-size: 19px;
+
+      }
       span{
         font-weight: normal;
         font-size: 28px;
@@ -240,14 +267,13 @@ export default {
       line-height: 30px;
       text-align: right;
       color: #333333;
+      @media screen and (max-width: 1440px) {
+       font-size: 30px;
+      }
+      @media screen and (max-width: 650px){
+        margin: 0;
+      }
     }
   }
-  .addOrder{
-    z-index: 10;
-    width: 141px;
-    height: 47px;
-    background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
-    border-radius: 50px;
-    color: white;
-  }
+
 </style>

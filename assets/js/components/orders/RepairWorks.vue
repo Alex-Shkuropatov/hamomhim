@@ -10,21 +10,21 @@
      <div class="row-wrapper">
       <div class="row">
         <p class="formItem" >המוק הזיא</p>
-        <input type="text" placeholder="המוק הזיא" v-model="sex" class="inputName">
+        <input type="text" placeholder="המוק הזיא" v-model="formData.sex" class="inputName">
       </div>
          <div class="row" >
        <p class="formItem" >םירדח המכ</p>
-       <input type="text" placeholder="םירדח המכ" v-model="rooms" class="inputName">
+       <input type="text" placeholder="םירדח המכ" v-model="formData.rooms" class="inputName">
      </div>
      </div>
      <div class="row-wrapper">
        <div class="row" >
          <p class="formItem" > ץופיש רוזיא</p>
-         <input type="text" placeholder="ץופיש רוזיא" v-model="area" class="inputName">
+         <input type="text" placeholder="ץופיש רוזיא" v-model="formData.area" class="inputName">
        </div>
        <div class="row" >
          <p class="formItem" >ךרעב הרידה חטש</p>
-         <input type="text" placeholder="ךרעב הרידה חטש" v-model="apartments" class="inputName">
+         <input type="text" placeholder="ךרעב הרידה חטש" v-model="formData.apartments" class="inputName">
        </div>
      </div>
      <div class="add-files">
@@ -55,11 +55,11 @@
      </div>
      <div class="row">
        <div class="title">תוישפוח תורעה</div>
-       <textarea name="text" id="" cols="30" placeholder="ץופישה תודוא ןלבקל תורעהו טסקט םושרל ולכות ןאכ..." rows="10">
+       <textarea v-model="formData.description" name="text" id="" cols="30" placeholder="ץופישה תודוא ןלבקל תורעהו טסקט םושרל ולכות ןאכ..." rows="10">
 
        </textarea>
      </div>
-     <button class="next-b th-btn th-btn-blue th-btn-md"><span>Next</span></button>
+     <button class="next-b th-btn th-btn-blue th-btn-md" @click="sendOrder"><span>Next</span></button>
    </form>
  </div>
   </div>
@@ -74,11 +74,13 @@ import Document from './../orders/Document'
       return {
         files: [],
         currentFile: '',
-        formData: new FormData(),
-        sex: '',
-        rooms: '',
-        area: '',
-        apartments: '',
+        formData: {
+          sex: '',
+          rooms: '',
+          area: '',
+          apartments: '',
+          description: '',
+        },
         isDisabled: true,
       }
     },
@@ -96,9 +98,17 @@ import Document from './../orders/Document'
       },
       closeD(data){
         this.files = this.files.filter(file => file.id !== data.id);
-
       },
+      sendOrder(){
+        let myFormData = new FormData();
+        myFormData.append('files[]', this.files);
+        myFormData.append('name', this.formData.name);
+        myFormData.append('description', this.formData.description);
+        myFormData.append('work_area', this.formData.area);
 
+
+        this.$emit('send', myFormData)
+      },
     },
     mounted() {
     },
@@ -127,7 +137,7 @@ import Document from './../orders/Document'
   }
   .custom-file-upload {
     margin-right: -35px;
-    margin-top: -41px;
+    margin-top: -34px;
     color: #2871D7;
     display: block;
     cursor: pointer;
@@ -154,10 +164,24 @@ import Document from './../orders/Document'
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 1000px;
+  margin: 0 auto;
+  @media screen and (max-width:1440px) {
+    width: 710px;
+  }
+  @media screen and (max-width:767px) {
+    width: 510px;
+  }
+  @media screen and (max-width:480px) {
+    width: 318px;
+  }
   .row-wrapper{
 
     display: flex;
     flex-direction: row;
+    @media screen and (max-width:767px) {
+      flex-direction: column;
+    }
     .row{
       .formItem{
         margin: 0;
@@ -177,12 +201,28 @@ import Document from './../orders/Document'
        box-sizing: border-box;
        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
        border-radius: 50px;
+       @media screen and (max-width:1440px) {
+         width: 333px;
+         height: 60px;
+       }
+       @media screen and (max-width:767px) {
+         width: 450px;
+       }
+       @media screen and (max-width:480px) {
+         width: 300px;
+         height: 40px;
+       }
+
      }
     }
   }
 }
 .upload{
   margin-right: 40px;
+  @media screen and (max-width: 480px){
+    margin: 20px 0 0 0 ;
+
+  }
 }
   .add-files{
     display: flex;
@@ -190,6 +230,10 @@ import Document from './../orders/Document'
     margin-top: 50px;
     flex-direction: column;
     align-items: flex-start;
+
+    @media screen and (max-width:1440px) {
+      width: unset;
+    }
     .title{
       font-weight: bold;
       font-size: 24px;
@@ -202,6 +246,10 @@ import Document from './../orders/Document'
       font-size: 24px;
       text-align: right;
       color: #000000;
+      @media screen and (max-width: 480px){
+        flex-direction: column-reverse;
+        align-items: center;
+      }
       .upload-element{
         margin-right: 26px;
       }
@@ -213,6 +261,7 @@ import Document from './../orders/Document'
   .form{
     margin-bottom: 100px;
     .row{
+
       .title{
         font-weight: bold;
         font-size: 24px;
@@ -221,6 +270,7 @@ import Document from './../orders/Document'
         margin-right: 59px;
       }
       textarea {
+        margin: 0 auto;
         padding-top: 10px;
         padding-right: 20px;
         border: 1px solid #E0E0E0;
@@ -229,12 +279,29 @@ import Document from './../orders/Document'
         border-radius: 20px;
         width: 1070px;
         height: 239px;
+        @media screen and (max-width:1440px) {
+          width: 600px;
+          height: 200px;
+        }
+        @media screen and (max-width:767px) {
+          width: 450px;
+        }
+        @media screen and (max-width:480px) {
+          width: 300px;
+          height: 100px;
+        }
       }
     }
   }
   .next-b{
-    margin-top: 70px ;
+    margin-top: 40px ;
     width: 374px;
     height: 74.49px;
+    @media screen and (max-width:480px) {
+      width: 200px;
+      height: 50px;
+     margin: unset;
+      margin-top: 50px;
+    }
   }
 </style>

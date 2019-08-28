@@ -1,15 +1,14 @@
 <template>
-
   <div class="servives-wrapper">
     <img class="img-plan" src='/static/images/orders/AddOrderBg.png' alt="">
     <h2 class="title">םיתוריש ץופיש</h2>
     <h4 class="description">ץופישה גוס תא רחב אנ</h4>
     <div class="services">
       <div class="service-wrapper">
-      <div class="service" v-for="(service, index) in services" :key="index">
+      <div class="service" v-for="(subcategory, index) in subcategories" :key="index">
         <div class="checkbox">
-          <label class="container">{{service.service}}
-            <input type="checkbox" :value="index"  v-model="checkedServices">
+          <label class="container">{{subcategory.name}}
+            <input type="checkbox" :value="subcategory.id"  v-model="checkedServices">
             <span class="checkmark"></span>
           </label>
         </div>
@@ -23,24 +22,22 @@
 
 <script>
   export default {
+    props: {
+      subcategories: {
+    type: Array,
+  },
+    },
     data(){
       return {
-        services : [
-          {service: 'Lorem ipsum dolor sit amet, consectetur'},
-          {service: 'Lorem ipsum dolor sit amet, consectetur'},
-          {service: 'Lorem ipsum dolor sit amet, consectetur'},
-          {service: 'Lorem ipsum dolor sit amet, consectetur'},
-          {service: 'Lorem ipsum dolor sit amet, consectetur'},
-          {service: 'Lorem ipsum dolor sit amet, consectetur'},
-          {service: 'Lorem ipsum dolor sit amet, consectetur'},
-          {service: 'Lorem ipsum dolor sit amet, consectetur'},
-          {service: 'Lorem ipsum dolor sit amet, consectetur'},
-        ],
         checkedServices: [],
       }
     },
-    methods(){
-      
+    methods:{
+      sendData(){
+        this.$emit('send', {
+          checked: this.checkedServices ,
+        })
+      }
     },
     mounted() {
     }
@@ -160,13 +157,27 @@
     align-items: center;
     width: 1099px;
     height: auto;
+    @media screen and (max-width: 1440px) {
+      width: 700px;
+    }
+    @media screen and (max-width: 767px) {
+      width: 510px;
+    }
+    @media screen and (max-width: 480px) {
+      width: 318px;
+    }
  .service-wrapper{
    display: flex;
    flex-direction: row;
    justify-content: space-between;
    align-items: center;
    flex-wrap:wrap;
-   width:855px;
+   width: 80%;
+   margin-right: 55px;
+   @media screen and (max-width: 480px) {
+     flex-direction: column;
+     width: 300px;
+   }
    .service{
      label{
        font-family: Rubik;

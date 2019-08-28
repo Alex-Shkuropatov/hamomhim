@@ -18,6 +18,11 @@
   import PostClose from './../components/common/PostClose.vue';
 
   export default {
+    data(){
+      return{
+
+      }
+    },
     props: {
       id: {
         type: Number,
@@ -48,6 +53,9 @@
         this.$store.commit('modals/projectPrice/open');
 
       },
+    },
+    mounted() {
+
     }
   }
 </script>
