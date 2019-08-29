@@ -34,6 +34,10 @@ export default {
     },
     placeholder: {
 
+    },
+    labelKey: {
+      type: String,
+      default: 'label'
     }
   },
   data() {

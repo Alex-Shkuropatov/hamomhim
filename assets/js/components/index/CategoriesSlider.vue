@@ -57,12 +57,13 @@ export default {
   },
   methods: {
     getCategoriesFromApi(){
-      axios.post('api/admin/getAllCategories')
-        .then(response => {
-          if(response.data.success){
-            this.categories = response.data.value;
-          }
-        });
+      // axios.post('api/admin/getAllCategories')
+      //   .then(response => {
+      //     if(response.data.success){
+      //       this.categories = response.data.value;
+      //     }
+      //   });
+      this.categories = this.$store.getters['categories/data'];
     },
     onClickCategory(category){
       console.log(category);

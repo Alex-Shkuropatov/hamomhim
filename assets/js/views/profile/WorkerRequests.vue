@@ -49,7 +49,7 @@
             </div>
           </div>
           <div class="accept-actions">
-            <button class="accept">אשר בקשה</button>
+            <button class="accept" @click="openResponseForm">אשר בקשה</button>
             <button class="decline">בטל בקשה</button>
           </div>
         </div>
@@ -67,6 +67,11 @@ export default {
         {id: 1, name: 'Name of the order', phone: '972544594498+', date: '12.05.2019'},
       ]
     };
+  },
+  methods: {
+    openResponseForm(){
+      this.$store.commit('modals/responses/responseForm/open');
+    },
   }
 }
 </script>
