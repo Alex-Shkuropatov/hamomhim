@@ -49,7 +49,12 @@ export default {
     background-size: 100% auto;
   }
   .stats-section{
+    margin: 0 auto;
     margin-top: ceil($scale1 * 40px);
+    width: 860px;
+    @media  screen and (max-width: 900px){
+      width: unset;
+    }
     .th-heading{
       margin-bottom: ceil($scale1 * 40px);
     }

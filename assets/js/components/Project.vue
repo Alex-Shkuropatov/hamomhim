@@ -9,7 +9,7 @@
       </div>
       <div class="title">{{title}}</div>
       <div class="description">{{description}}</div>
-      <a :href="url" class="th-btn th-btn-empty th-btn-sm">קרא את הפוסט הזה</a>
+      <router-link :to="{name: 'orders', params:{id:id}}" class="th-btn th-btn-empty th-btn-sm"   >קרא את הפוסט הזה</router-link>
     </div>
   </div>
 </template>

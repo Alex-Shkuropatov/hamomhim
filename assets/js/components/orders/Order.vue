@@ -45,6 +45,7 @@
 
        <div class="description">{{description}}</div>
 
+
        <button :href="url" class="sendData th-btn th-btn-blue th-btn-sm"  >קרא את הפוסט הזה  &nbsp;&nbsp;&nbsp;&nbsp;   +</button>
 
      </div>

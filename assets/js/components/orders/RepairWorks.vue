@@ -59,7 +59,7 @@
 
        </textarea>
      </div>
-     <button class="next-b th-btn th-btn-blue th-btn-md" @click="sendOrder"><span>Next</span></button>
+     <button class="next-b th-btn th-btn-blue th-btn-md" @click.prevent="sendOrder"><span>Next</span></button>
    </form>
  </div>
   </div>
@@ -106,7 +106,7 @@ import Document from './../orders/Document'
         myFormData.append('description', this.formData.description);
         myFormData.append('work_area', this.formData.area);
 
-
+console.log(myFormData);
         this.$emit('send', myFormData)
       },
     },

@@ -40,9 +40,22 @@ export default {
       this.checked = data.checked;
     },
     onForm(data){
-      data.append('subcategories[]', this.category.subcategories);
+      data.append('subcategories[]', this.checked);
       data.append('categoryId', this.category.id);
-      console.log(data);
+      data.append('projectId', this.$route.params.id);
+
+      axios.post('/api/addNewOrder', data ,{
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }})
+          .then((response) => {
+
+            console.log(response);
+            this.$router.push({ name: 'orders' });
+          })
+          .catch((error) => {
+            console.log(error.response.data);
+          });
     },
   },
   components: {
@@ -50,6 +63,9 @@ CategoriesSlider,
     Services,
     RepairWorks
   },
+  mounted() {
+    console.log(this.$route.params.id);
+  }
 }
 </script>
 
