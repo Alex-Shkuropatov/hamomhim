@@ -229,15 +229,9 @@
         display: flex;
         flex-direction: column-reverse;
         align-items: center;
-        @media screen and (max-width: 900px) {
-          display: none;
-        }
       }
-
-      .profile-links {
-        display: flex;
-        flex-direction: column-reverse;
-        align-items: center;
+      @media screen and (max-width: 900px) {
+        display: none;
       }
     }
 

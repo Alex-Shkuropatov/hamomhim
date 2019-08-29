@@ -1,10 +1,10 @@
 <template>
 <div class="wrapper">
-  <categories-slider/>
+  <categories-slider @category:select='onCategory' />
 
-  <services/>
+  <services v-show="showServices" @send='OnCategories' v-bind="category" />
 
-  <repair-works/>
+  <repair-works v-show="showWorks" @send='onForm' />
 </div>
 
 </template>
@@ -14,18 +14,57 @@ import CategoriesSlider from '../components/index/CategoriesSlider.vue'
 import Services from '../components/orders/Services.vue'
 import RepairWorks from '../components/orders/RepairWorks.vue'
 export default {
-  data(){
+  data() {
     return {
-
+     category:{
+       name: '',
+       id : '',
+       subcategories : [] ,
+     },
+      showServices: false,
+      showWorks: false,
+      checked: '',
     };
+  },
+  methods:{
+    onCategory(data){
+      console.log(data);
+      console.log(data.subcategories);
+      this.category.subcategories = data.subcategories;
+      this.category.name = data.name;
+      this.category.id = data.id;
+      this.showServices= true;
+    },
+    OnCategories(data){
+      this.showWorks= true;
+      this.checked = data.checked;
+    },
+    onForm(data){
+      data.append('subcategories[]', this.checked);
+      data.append('categoryId', this.category.id);
+      data.append('projectId', this.$route.params.id);
+
+      axios.post('/api/addNewOrder', data ,{
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }})
+          .then((response) => {
+
+            console.log(response);
+            this.$router.push({ name: 'orders' });
+          })
+          .catch((error) => {
+            console.log(error.response.data);
+          });
+    },
   },
   components: {
 CategoriesSlider,
     Services,
     RepairWorks
   },
-  methods: {
-
+  mounted() {
+    console.log(this.$route.params.id);
   }
 }
 </script>

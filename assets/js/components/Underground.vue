@@ -175,4 +175,10 @@ export default {
   }
 }
 
+@media(max-width: $breakpoint5){
+  .logo-col{
+    margin-bottom: 10px;
+  }
+}
+
 </style>

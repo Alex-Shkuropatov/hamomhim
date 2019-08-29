@@ -74,6 +74,11 @@
   }
 }
 
+@media (max-width: $breakpoint3){
+  .th-btn-lg {
+    height: ceil($scale3 * 70px);
+  }
+}
 
 //transparent
 .th-btn-empty {

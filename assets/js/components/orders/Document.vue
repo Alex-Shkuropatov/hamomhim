@@ -11,7 +11,7 @@
   </div>
 
   <post-close class="close" @click.native="close" />
-//mob menu, profile, add-order, add-project,
+
 </div>
 </template>
 
@@ -46,6 +46,12 @@ import PostClose from '../common/PostClose'
     height: 90px;
     border-top: 2px solid gray;
     border-bottom: 2px solid gray;
+    @media screen and (max-width:1440px){
+      width: 500px;
+    }
+    @media screen and (max-width:480px){
+      width: 300px;
+    }
     .file-name{
       margin-right:50px;
     }
@@ -53,6 +59,11 @@ import PostClose from '../common/PostClose'
     }
     .close{
       top: 30px;
+      @media screen and (max-width: 480px) {
+        top:0;
+        left: 1px;
+        width: 30px;
+      }
     }
   }
 </style>

@@ -245,5 +245,19 @@ export default {
     justify-content: flex-start;
   }
 }
+@media(max-width: $breakpoint4){
+  .content-container{
+    width: 100%;
+  }
+  .reviews-slider{
+    .slide-inner{
+      padding: ceil($scale4 * 35px) ceil($scale4 * 50px) ceil($scale4 * 15px) ceil($scale4 * 75px);
+    }
+    .name{
+      font-size: ceil($scale3 * 36px);
+    }
+    
+  }
+}
 
 </style>

@@ -35,6 +35,9 @@ export default {
         breakpoints: {
           1023: {
             slidesPerView: 2,
+          },
+          570: {
+            slidesPerView: 1
           }
         }
       },
@@ -101,6 +104,17 @@ export default {
   }
   .h-container{
     width: $container-width4 - 30px;
+  }
+  .blog-link{
+    margin-top: ceil($scale2 * 35px);
+    padding-right: ceil($scale3 * 140px);
+    padding-left: ceil($scale3 * 140px);
+  }
+}
+
+@media(max-width: $breakpoint4){
+  .h-container{
+    width: calc(100% - 40px);
   }
 }
 </style>

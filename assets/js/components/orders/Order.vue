@@ -45,6 +45,7 @@
 
        <div class="description">{{description}}</div>
 
+
        <button :href="url" class="sendData th-btn th-btn-blue th-btn-sm"  >קרא את הפוסט הזה  &nbsp;&nbsp;&nbsp;&nbsp;   +</button>
 
      </div>
@@ -91,6 +92,9 @@ import PostClose from '../common/PostClose.vue'
 <style lang="scss" scoped>
   .order-item{
     height: 410px;
+    @media screen and (max-width:1440px){
+      height: unset;
+    }
     .closeB{
       left: 13px;
       top: 14px;;
@@ -98,6 +102,12 @@ import PostClose from '../common/PostClose.vue'
       z-index: 2;
        opacity: 1;
       transition: all 0.1s ease-out;
+      @media screen and (max-width: 480px) {
+        top: -4px;
+        width: 33px;
+        left: -3px;
+
+      }
       &:hover {
         opacity: 0.8;
         path {
@@ -107,40 +117,75 @@ import PostClose from '../common/PostClose.vue'
     .content-wrapper{
       display: flex;
       flex-direction: row-reverse;
-      width: 1059px;
+      width:1059px;
       padding: 36px 33px 40px 33px;
+@media screen and (max-width: 1440px) {
+  flex-direction: column;
+  align-items: center;
+  width:720px;
 
+}
+      @media screen and (max-width: 850px){
+        width: 555px;
+      }
+     @media screen and (max-width: 650px){
+       width: 405px;
+     }
+      @media screen and (max-width: 480px){
+        width: 315px;
+        padding: 10px 0 10px 0px;
+      }
     img{
       pointer-events: none;
       width: 460px;
       height: 330.12px;
+      @media screen and (max-width:1440px){
+        width: 360px;
+        height: unset;
+        max-height: 300px;
+      }
+      @media screen and (max-width:480px) {
+        width: 260px;
+      }
     }
       .text-wrapper{
         width: 620px;
         margin-left: 75px;
+        @media screen and (max-width: 1440px){
+          margin: unset;
+          width: 90%;
+        }
         .title{
           margin: 0;
           margin-right: 20px;
-          font-family: Assistant;
           font-style: normal;
           font-weight: bold;
           font-size: 36px;
           line-height: 30px;
           text-align: right;
           color: #333333;
+          @media screen and (max-width: 1440px){
+            text-align: center;
+          }
+          @media screen and (max-width: 850px){
+            margin: 10px;
+          }
         }
         .description{
-          margin-top: 10px;
           font-weight: normal;
           font-size: 24px;
           line-height: 30px;
           text-align: right;
           color: #4F4F4F;
-          max-height: 173px;
+          height: 160px;
+          max-height: 185px;
           overflow: auto;
           @media screen and (max-width:1605px){
             font-size: 20px;
             line-height: 20px;
+          }
+          @media screen and (max-width: 1440px){
+            text-align: center;
           }
         }
         .meta{
@@ -154,7 +199,6 @@ import PostClose from '../common/PostClose.vue'
           bottom: 37px;
           width: 285.8px;
           height: 54.07px;
-          font-family: Assistant;
           font-style: normal;
           font-weight: bold;
           font-size: 24px;
@@ -162,19 +206,30 @@ import PostClose from '../common/PostClose.vue'
           display: flex;
           align-items: center;
           text-align: center;
-
+          @media screen and (max-width: 1440px){
+            position: static;
+            margin: 0 auto;
+            margin-top: 37px;
+          }
+          @media screen and (max-width: 550px){
+            margin-top: 20px;
+          }
         }
       }
-
   }
   }
 .actions-wrapper{
+  margin-bottom: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   width: 284px;
   height: 63px;
+  @media screen and (max-width: 1440px) {
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
   .action-item{
     position: relative;
     width: 60px;
@@ -218,8 +273,4 @@ hr{
   border: 1px solid #E0E0E0;
   transform: rotate(90deg);
 }
-  ::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; /* make scrollbar transparent */
-  }
 </style>

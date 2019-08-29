@@ -118,7 +118,7 @@ export default {
   },
   mounted() {
     let user = this.getData;
-    axios.post('/api/getAllProjectsByUser', {user_id:user.id})
+    axios.post('/api/getAllProjects', {status:open})
         .then((response) => {
           console.log(response);
           //this.projects = response.daata.value;

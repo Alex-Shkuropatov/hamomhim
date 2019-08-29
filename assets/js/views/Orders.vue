@@ -7,7 +7,9 @@
   <div class="orders">
     <h1 class="title">רשימת פרויקטים</h1>
    <div class="add-order-wrapper">
-     <button class="addOrder" @click="newOrder" >הוספת קבלנים לעבודה    <span>+</span></button>
+     <router-link :to="{name: 'new-order',  }" class=" addOrder th-btn th-btn-blue th-btn-sm "   >  הוספת קבלנים לעבודה    <span>+</span>  </router-link>
+
+
      <div class="txt">1 ףינס הקינפאג</div>
    </div>
     <div class="orders-list-wrap h-container">
@@ -56,7 +58,6 @@ export default {
     Order,
     ProjectsHeader,
     CloseOrder
-
   },
   methods: {
     openModal (e) {
@@ -66,7 +67,6 @@ export default {
 
     },
     add(data) {
-
      //  let order = {};
      // console.log(data.project);
      // order.id = this.orders.length+1;
@@ -82,6 +82,9 @@ export default {
     newOrder(){
       this.$router.push('/orders/new-order');
     },
+  },
+  mounted() {
+
   }
 }
 </script>
@@ -109,6 +112,9 @@ export default {
     text-align: center;
     letter-spacing: -0.02em;
     color: #333333;
+    @media screen and (max-width: 1440px) {
+      font-size: 53px;
+    }
   }
 }
 .orders-list{
@@ -199,10 +205,27 @@ export default {
         margin-top: 16px;
       }
     }
-    button{
-      width: 167.51px;
-      height: 36.78px;
-    }
+
+  }
+}
+.addOrder{
+  margin-left: 40px;
+  width: 280px;
+  height: 54px;
+  font-weight: bold;
+  font-size: 24px;
+  background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
+  border-radius: 50px;
+
+  @media screen and (max-width: 650px){
+    margin: 10px 0 10px 0;
+    width: 235px;
+    font-size: 19px;
+
+  }
+  span{
+    font-weight: normal;
+    font-size: 28px;
   }
 }
   .addProj{
@@ -221,18 +244,23 @@ export default {
     flex-direction: row-reverse;
     align-items: center;
     justify-content: space-between;
-    button{
-      margin-left: 40px;
-      width: 280px;
-      height: 54px;
-      font-weight: bold;
-      font-size: 24px;
-      color: #FFFFFF;
-      span{
-        font-weight: normal;
-        font-size: 28px;
-      }
+    @media screen and (max-width: 1440px) {
+      width: 720px;
     }
+    @media screen and (max-width: 850px){
+      width: 555px;
+    }
+      @media screen and (max-width: 650px){
+        width: 405px;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+      }
+
+    @media screen and (max-width: 480px){
+      width: 315px;
+    }
+
     .txt{
       margin-right: 40px;
       font-weight: bold;
@@ -240,14 +268,13 @@ export default {
       line-height: 30px;
       text-align: right;
       color: #333333;
+      @media screen and (max-width: 1440px) {
+       font-size: 30px;
+      }
+      @media screen and (max-width: 650px){
+        margin: 0;
+      }
     }
   }
-  .addOrder{
-    z-index: 10;
-    width: 141px;
-    height: 47px;
-    background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
-    border-radius: 50px;
-    color: white;
-  }
+
 </style>

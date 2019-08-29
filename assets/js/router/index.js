@@ -65,7 +65,7 @@ const routes = [
     name: 'projects',
   },
   {
-    path: '/orders',
+    path: '/projects/:id/orders/',
     component: Orders,
     name: 'orders',
   },
@@ -75,7 +75,7 @@ const routes = [
     name: 'closed-projects',
   },
   {
-    path: '/orders/closed-orders',
+    path: '/projects/orders/closed-orders',
     component: ClosedOrders,
     name: 'closed-orders',
   },
@@ -90,7 +90,7 @@ const routes = [
     name: 'view-profile',
   },
   {
-    path: '/orders/new-order',
+    path: '/projects/:id/orders/new-order/',
     component: NewOrder,
     name: 'new-order',
   },
