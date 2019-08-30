@@ -52,24 +52,19 @@ export default {
           }
         }
       },
-      categories: [],
+    }
+  },
+  computed: {
+    categories(){
+      return this.$store.getters['categories/data'];
     }
   },
   methods: {
-    getCategoriesFromApi(){
-      axios.post('api/admin/getAllCategories')
-        .then(response => {
-          if(response.data.success){
-            this.categories = response.data.value;
-          }
-        });
-    },
     onClickCategory(category){
       this.$emit('category:select', category);
     }
   },
   mounted(){
-    this.getCategoriesFromApi();
   }
 }
 </script>
@@ -89,11 +84,12 @@ export default {
 }
 .slide-inner{
   text-align: center;
+  background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
   box-shadow: 0px 0px ceil($scale1 * 20px) rgba(0, 0, 0, 0.1);
-  background: #fff;
   padding-top: ceil($scale1 * 35px);
   padding-bottom: ceil($scale1 * 13px);
   font-size: ceil($scale1 * 18px);
+  color: #fff;
   .cat-img{
     width: ceil($scale1 * 50px);
     margin-bottom: ceil($scale1 * 15px);
@@ -116,7 +112,6 @@ export default {
   }
   .slide-inner{
     box-shadow: 0px 0px ceil($scale2 * 20px) rgba(0, 0, 0, 0.1);
-    background: #fff;
     padding-top: ceil($scale2 * 35px);
     padding-bottom: ceil($scale2 * 13px);
     font-size: ceil($scale2 * 18px);

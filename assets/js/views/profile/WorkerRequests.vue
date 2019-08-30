@@ -1,5 +1,6 @@
 <template>
   <div class="h-container requests-list">
+    <response-form></response-form>
     <template v-if="requests.length">
       <div class="request-item" v-for="request in requests">
         <div class="title-line">
@@ -49,7 +50,7 @@
             </div>
           </div>
           <div class="accept-actions">
-            <button class="accept">אשר בקשה</button>
+            <button class="accept" @click="openResponseForm">אשר בקשה</button>
             <button class="decline">בטל בקשה</button>
           </div>
         </div>
@@ -60,6 +61,9 @@
 </template>
 
 <script>
+
+import ResponseForm from './../../components/common/modals/responses/ResponseForm.vue';
+
 export default {
   data(){
     return {
@@ -67,6 +71,15 @@ export default {
         {id: 1, name: 'Name of the order', phone: '972544594498+', date: '12.05.2019'},
       ]
     };
+  },
+  components: {
+    ResponseForm
+  },
+  methods: {
+    openResponseForm(){
+      console.log('wowo');
+      this.$store.commit('modals/responseForm/open');
+    },
   }
 }
 </script>

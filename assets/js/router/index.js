@@ -126,6 +126,10 @@ router.beforeEach(async (to, from, next) => {
     store.state.user.loaded = true;
   }
 
+  if(!store.getters['categories/isLoaded']) {
+    store.dispatch('categories/updateData');
+  }
+
   next();
 });
 
