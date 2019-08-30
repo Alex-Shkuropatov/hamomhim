@@ -155,7 +155,7 @@
       },
       profile(){
         let role  = this.getData.role;
-         role==='worker'?this.$router.push({name: 'projects'}) : this.$router.push({name: 'requests'})
+         role==='worker'? this.$router.push({name: 'requests'}):this.$router.push({name: 'projects'}) ;
       },
     },
     computed: {

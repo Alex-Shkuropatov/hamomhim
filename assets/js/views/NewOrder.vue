@@ -28,8 +28,6 @@ export default {
   },
   methods:{
     onCategory(data){
-      console.log(data);
-      console.log(data.subcategories);
       this.category.subcategories = data.subcategories;
       this.category.name = data.name;
       this.category.id = data.id;
