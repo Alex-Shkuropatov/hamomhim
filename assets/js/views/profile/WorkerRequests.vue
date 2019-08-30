@@ -1,5 +1,6 @@
 <template>
   <div class="h-container requests-list">
+    <response-form></response-form>
     <template v-if="requests.length">
       <div class="request-item" v-for="request in requests">
         <div class="title-line">
@@ -60,6 +61,9 @@
 </template>
 
 <script>
+
+import ResponseForm from './../../components/common/modals/responses/ResponseForm.vue';
+
 export default {
   data(){
     return {
@@ -68,9 +72,13 @@ export default {
       ]
     };
   },
+  components: {
+    ResponseForm
+  },
   methods: {
     openResponseForm(){
-      this.$store.commit('modals/responses/responseForm/open');
+      console.log('wowo');
+      this.$store.commit('modals/responseForm/open');
     },
   }
 }

@@ -33,9 +33,9 @@
   .formWrapper{
     position: relative;
     overflow: auto;
+    max-height: 100%;
   }
   .formMessage{
-
     overflow-x: hidden;
     overflow-y: auto !important;
     background: #FFFFFF;
@@ -56,6 +56,7 @@
     z-index: 200;
     display: flex;
     justify-content: center;
+    align-items: flex-start;
   }
   .closeB{
     fill:#BDBDBD;

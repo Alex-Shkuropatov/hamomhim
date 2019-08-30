@@ -14,7 +14,7 @@
     <div v-if="opened" class="popup">
       <div class="slider">
         <button class="item" @click="select(item)" v-for="item in items" type="button">
-          {{ item.label }}
+          {{ item[labelKey] }}
         </button>
       </div>
     </div>
