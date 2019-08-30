@@ -12,7 +12,6 @@ export default {
     reg,
     login,
     newProject,
-    workPrice,
     projectPrice,
     responseForm,
     showOrder,
