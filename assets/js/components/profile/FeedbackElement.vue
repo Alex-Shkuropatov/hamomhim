@@ -4,7 +4,6 @@
    <rate-flag class="rate-flag" v-bind="rateFlag" />
    <show-more class="show-more-b" @click="showMore" />
    <div class="show-more-element">
-
    </div>
  </div>
     <div class="content-wrapper">

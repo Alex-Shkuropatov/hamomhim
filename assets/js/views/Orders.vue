@@ -1,22 +1,19 @@
 <template>
   <div class="orders-wrapper">
 
-    <close-order />
     <projects-header v-bind="header"  />
 
   <div class="orders">
     <h1 class="title">רשימת פרויקטים</h1>
    <div class="add-order-wrapper">
      <router-link :to="{name: 'new-order',  }" class=" addOrder th-btn th-btn-blue th-btn-sm "   >  הוספת קבלנים לעבודה    <span>+</span>  </router-link>
-
-
      <div class="txt">1 ףינס הקינפאג</div>
    </div>
     <div class="orders-list-wrap h-container">
       <div class="orders-list">
         <Order
           class="orders-item"
-          v-for="order in orders" @onClose="onClose" :key="order.id"
+          v-for="order in orders"   :key="order.id"
           v-bind="order">
         </Order>
       </div>
@@ -24,12 +21,11 @@
   </div>
   </div>
 </template>
-
 <script>
 
 import Order from './../components/orders/Order.vue';
 import ProjectsHeader from './../components/ProjectsHeader';
-import CloseOrder from '../components/common/modals/CloseOrder.vue';
+
 export default {
   data(){
     return {
@@ -57,7 +53,7 @@ export default {
   components: {
     Order,
     ProjectsHeader,
-    CloseOrder
+
   },
   methods: {
     openModal (e) {
@@ -67,17 +63,7 @@ export default {
 
     },
     add(data) {
-     //  let order = {};
-     // console.log(data.project);
-     // order.id = this.orders.length+1;
-     // order.imgSrc = data.order.image;
-     // order.title = data.order.name;
-     // order.url = '#';
-     // order.description = data.order.description;
-     // this.orders.push(order);
-    },
-    onClose(data){
-      this.$store.commit('modals/workPrice/open');
+
     },
     newOrder(){
       this.$router.push('/orders/new-order');
