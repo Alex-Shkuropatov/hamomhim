@@ -2,8 +2,8 @@ import alert from './alert'
 import reg from './reg'
 import login from './login'
 import newProject from './newProject'
-import workPrice from './workPrice'
 import projectPrice from './projectPrice'
+import showOrder from './showOrder'
 export default {
   namespaced: true,
   modules: {
@@ -11,8 +11,8 @@ export default {
     reg,
     login,
     newProject,
-    workPrice,
-    projectPrice
+    projectPrice,
+    showOrder,
   },
   state: {
 

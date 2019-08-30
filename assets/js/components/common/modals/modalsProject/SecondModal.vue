@@ -33,9 +33,7 @@
         <div class="modalNumber">{{modalQuantity}}/{{modal}}</div>
         <button class="closeB" style="text-align:center" @click='back' >Previous step</button>
       </div>
-
     </div>
-
 </template>
 
 <script>
