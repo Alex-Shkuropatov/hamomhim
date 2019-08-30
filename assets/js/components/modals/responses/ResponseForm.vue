@@ -4,7 +4,7 @@
     <div class="content-wrapper third-message">
         <h2 class="title">טקייורפה םש</h2>
         <div class="subtitle">נתוני אדריכל</div>
-        <drop-down v-bind="catSelect"></drop-down>
+        <drop-down v-bind="catSelect" :items="categories"></drop-down>
     </div>
     </modal>
     </transition>
@@ -29,13 +29,16 @@ export default {
       catSelect: {
         value: '',
         placeholder : '',
-        items: [],
         labelKey: 'name',
       }
     }
   },
+  computed: {
+    categories(){
+      return this.$store.getters['categories/get'];
+    }
+  }
   mounted(){
-    this.catSelect.items = this.$store.getters['categories/get'];
   },
   destroyed(){
 

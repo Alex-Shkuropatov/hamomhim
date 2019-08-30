@@ -62,7 +62,7 @@
 
 <script>
 
-import ResponseForm from './../../components/common/modals/responses/ResponseForm.vue';
+import ResponseForm from './../../components/modals/responses/ResponseForm.vue';
 
 export default {
   data(){
