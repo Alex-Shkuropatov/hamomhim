@@ -27,7 +27,7 @@
 
 import Order from './../components/orders/Order.vue';
 import ProjectsHeader from './../components/ProjectsHeader';
-import CloseOrder from '../components/common/modals/CloseOrder.vue';
+import CloseOrder from '../components/modals/CloseOrder.vue';
 export default {
   data(){
     return {

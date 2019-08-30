@@ -139,7 +139,7 @@
 
 <script>
 
-import AlertModal from '../components/common/modals/Alert.vue';
+import AlertModal from '../components/modals/Alert.vue';
 import FavouriteIcon from '../components/common/FavouriteIcon.vue'
 import WorkPost from '../components/profile/WorkPost.vue'
 import Download from '../components/profile/Download'

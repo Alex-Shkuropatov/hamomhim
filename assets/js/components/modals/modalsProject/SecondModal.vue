@@ -39,8 +39,8 @@
 </template>
 
 <script>
-  import Modal from './../../Modal.vue';
-  import DropDown from './../../DropDown.vue'
+  import Modal from './../../common/Modal.vue';
+  import DropDown from './../../common/DropDown.vue'
   import Multiselect from 'vue-multiselect'
 
   export default {

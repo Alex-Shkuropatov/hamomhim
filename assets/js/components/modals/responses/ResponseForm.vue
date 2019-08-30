@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import Modal from '../../Modal.vue'
-import DropDown from '../../DropDown.vue'
+import Modal from '../../common/Modal.vue'
+import DropDown from '../../common/DropDown.vue'
 
 export default {
   methods: {
@@ -37,7 +37,7 @@ export default {
     categories(){
       return this.$store.getters['categories/get'];
     }
-  }
+  },
   mounted(){
   },
   destroyed(){
