@@ -2,7 +2,7 @@
   <div class="feedback-post">
  <div class="rate-wrapper">
    <rate-flag class="rate-flag" v-bind="rateFlag" />
-   <show-more class="show-more-b" @click="showMore" />
+   <show-more class="show-more-b" @click.native="showMore" />
    <div class="show-more-element">
    </div>
  </div>
@@ -69,6 +69,7 @@ import ShowMore from './../../components/profile/ShowMore'
     methods: {
       showMore(){
         this.isOpen=!this.isOpen;
+        console.log('open');
       },
     }
   }
@@ -85,11 +86,11 @@ import ShowMore from './../../components/profile/ShowMore'
       width: 141px;
       height: 140px;
       border-radius: 50%;
-
     }
   }
   .openBlock{
-    overflow-y: unset!important;
+    max-height:max-content!important;
+    overflow: unset!important;
   }
   .rate-flag{
     position: absolute;
@@ -97,7 +98,9 @@ import ShowMore from './../../components/profile/ShowMore'
     top: 0;
   }
 .document-wrapper{
-padding: 0 20px 0 20px;
+
+
+  padding: 0 20px 0 20px;
  margin-top: 10px;
   height: 104px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
@@ -120,11 +123,16 @@ padding: 0 20px 0 20px;
     color: #333333;
   }
   .description{
+    animation-duration: 2s;
+    animation-timing-function: ease;
+    transition: all 0.8s;
+
     width: 800px;
     font-size: 24px;
     text-align: right;
     color: #4F4F4F;
     max-height: 124px;
+overflow-y: hidden;
 
   }
 }

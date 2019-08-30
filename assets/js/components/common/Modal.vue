@@ -56,7 +56,8 @@
     z-index: 200;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+
+
   }
   .closeB{
     fill:#BDBDBD;

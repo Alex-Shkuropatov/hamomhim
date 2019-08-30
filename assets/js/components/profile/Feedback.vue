@@ -1,16 +1,19 @@
 <template>
   <div class="feedback-wrapper">
- <div class="title">
-   <hr>
-   <span>םיכמסמ</span>
- </div>
+
 <div class="feedback-body">
+  <div class="title">
+    <hr>
+    <span>םיכמסמ</span>
+  </div>
+  <div class="head-wrapper">
   <div class="feedback-head"></div>
   <feedback-element
     class="post-item"
     v-for="post in posts" :key="post.id"
     v-bind="post">
   </feedback-element>
+  </div>
 </div>
   </div>
 </template>
@@ -60,18 +63,22 @@ import FeedbackElement from './FeedbackElement'
       color: #333333;
     }
   }
-.feedback-head{
+  .head-wrapper{
+    margin:  0 auto;
+    height: 978px;
+    overflow: hidden;
+    width: 1250px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    .feedback-head{
 
-  background-color: #64B049;
-  width: 100%;
-  height: 4px;
+      background-color: #64B049;
+      width: 100%;
+      height: 4px;
+    }
   }
+
 }
 .feedback-body{
-  margin:  0 auto;
-  height: 978px;
-overflow: hidden;
-  width: 1250px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+
 }
 </style>
