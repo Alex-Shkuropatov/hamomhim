@@ -2,29 +2,50 @@
   <transition name="slide-fade">
     <modal v-if="$store.getters['modals/showOrder/isOpened']" @close="close">
       <div class="content-wrapper">
-        <div class="title"></div>
-        <div class="architectData"></div>
+        <h2 class="title">טקייורפה םש</h2>
+        <h3 class="architectData">לכירדא ינותנ</h3>
         <form class="form">
          <div class="form-row">
-           <input type="text" v-model="architectName">
+          <div class="row">
+              <p>לכירדאה םש </p>
+            <input type="text" v-model="architectName">
+          </div>
+           <div class="row">
+             <p>ןופלט</p>
            <input type="text" v-model="phone" >
+           </div>
          </div>
           <div class="under-title">
             <h3 class="invitationData">הנמזה ינותנ</h3>
             <div class="form-row">
-              <input type="text" value="">
+              <div class="row">
+                <p>תוחמתה גוס</p>
+              <input type="text" v-model="specialisation">
+              </div>
+              <div class="row">
+                <p>הנשמ תוירוגטק</p>
               <input type="text" v-model="subcategories" >
+              </div>
             </div>
             <div class="form-row">
-             <input type="text" value="">
-             <div class="download-b">
-               <label></label>
-             </div>
+            <div class="row">
+              <p> הדובע רוזיא</p>
+              <input type="text"  >
             </div>
-            <textarea name="message" cols="30" rows="10"></textarea>
+              <div class="row">
+                <p>תופרוצמ תונומת</p>
+              <div class="download-b">
+                <button class="download" >
+                  <span>דרוה</span>
+                  <i class="fas fa-download"></i>
+                </button>
+              </div>
+              </div>
+            </div>
+            <textarea name="message" cols="30" rows="10" v-model="message"></textarea>
           </div>
         </form>
-        <button class="sendData th-btn th-btn-blue th-btn-sm " style="text-align:center" @click='close' >חזור לאתר</button>
+        <button class="sendData th-btn th-btn-blue th-btn-sm " style="text-align:center" >חזור לאתר</button>
       </div>
     </modal>
   </transition>
@@ -36,7 +57,7 @@
   export default {
     methods: {
       close() {
-        this.$store.commit('modals/alert/close');
+        this.$store.commit('modals/showOrder/close');
       }
     },
     props: {
@@ -62,6 +83,9 @@
         type: String,
       },
       subcategories: {
+        type: String,
+      },
+      specialisation: {
         type: String,
       }
     },
@@ -97,46 +121,76 @@
 
     }
   }
-
   .content-wrapper{
     position: relative;
     margin-bottom: 49px;
     text-align: center;
-    width: 555px;
+    width: 805px;
     @media screen and (max-width: 900px) {
       width: 440px;
     }
     @media screen and (max-width: 480px) {
       width: 310px;
     }
-    h3{
-      margin: 0;
-      margin-top: 26px;
-      font-weight: 800;
+    .title {
+      font-weight: bold;
       font-size: 40px;
-      line-height: 40px;
       text-align: center;
       color: #2871D7;
-      @media screen and (max-width: 600px) {
-        font-size: 30px;
-      }
-    }
-    p{
       margin:0;
+    }
+    .description{
       font-size: 24px;
-      line-height: 30px;
       text-align: center;
       color: #828282;
-      @media screen and (max-width: 600px) {
-        font-size: 25px;
-      }
+      margin:0;
     }
   }
-  .msgOk{
-    margin-top: 66px;
+.form{
+
+  .form-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+ .row{
+   margin-top: 11px;
+   p{
+     margin: 0;
+   }
+   input{
+     pointer-events:none;
+     width: 350.28px;
+     height: 46.47px;
+     border: 1px solid #BDBDBD;
+     box-sizing: border-box;
+     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+     border-radius: 10px;
+   }
+ }
   }
-
-
+}
+.download-b{
+  width: 350.28px;
+  .download{
+    .fa-download{
+      pointer-events:none;
+    }
+  }
+}
+.under-title{
+  textarea{
+    margin-top: 37px;
+    width: 650px;
+    height: 148px;
+    border: 1px solid #BDBDBD;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    font-size: 18px;
+    color: #4F4F4F;
+  }
+}
   .slide-fade-enter-active {
     transition: all .3s ease;
   }

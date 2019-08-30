@@ -10,6 +10,7 @@
         <textarea class="description" name="description" v-model="description" placeholder="רואית" ></textarea>
       </form>
       <div class="buttons-wrapper">
+
         <button class="saveB" style="text-align:center" @click='send' >Save</button>
         <button class="closeB" style="text-align:center" @click='closeB' >Close</button>
       </div>
@@ -36,8 +37,8 @@
           };
             axios.post('/api/addNewProject', data)
             .then((response) => {
-              console.log(response);
-              this.$router.push({ name: 'orders' })
+              console.log(response.data.value);
+              this.$router.push({ name: 'orders', params:{id:response.data.value} })
             })
             .catch((error) => {
               console.log(error.response.data);

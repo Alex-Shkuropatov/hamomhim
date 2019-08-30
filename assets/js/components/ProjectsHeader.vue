@@ -38,15 +38,15 @@
     <div class="nav">
       <ul class="nav-links" >
         <div class="row">
-    <li>   <a href="#">  פרויקטים  </a> </li>
-        <hr>
-     <li>  <a href="#">  פרויקטים שבוצעו  </a> </li>
+          <router-link :to="{name: 'profile-edit',  }" class=" link "   >  פרויקטים </router-link>
+          <hr>
+          <router-link :to="{name: 'prefer-worker',  }" class=" link "   >  ועצובש םיטקיורפ </router-link>
         </div>
         <hr>
         <div class="row">
-      <li> <a href="#"> הגדרות חשבון </a></li>
-        <hr>
-        <li> <a href="#">  קבלנים מועדפים </a></li>
+          <router-link :to="{name: 'closed-projects',  }" class=" link "   > הגדרות חשבון      </router-link>
+          <hr>
+          <router-link :to="{name: 'projects',  }" class=" link "   >     קבלנים מועדפים    </router-link>
         </div>
       </ul>
     </div>
@@ -54,6 +54,7 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return{
@@ -217,9 +218,9 @@ export default {
         }
       }
     }
-    li{
+    .link{
 
-      a{
+
     list-style-type: none;
     font-style: normal;
     font-weight: bold;
@@ -239,7 +240,7 @@ export default {
       margin-right: 12px;
     }
 
-  }
+
   &:hover{
     text-decoration: underline;
   }
