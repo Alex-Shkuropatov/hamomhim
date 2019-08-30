@@ -52,7 +52,6 @@
               this.$store.commit('user/saveData' , data);
               axios.get('/api/auth/user')
                   .then((response)=>{
-                    console.log(response.data);
                     this.$store.commit('user/saveData' , response.data);
                   })
                   .catch((error) => {
@@ -106,6 +105,7 @@
     }
   }
   .content-wrapper{
+
     margin-bottom: 49px;
     text-align: center;
     display: flex;
