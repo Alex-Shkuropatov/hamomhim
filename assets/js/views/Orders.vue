@@ -1,6 +1,8 @@
 <template>
   <div class="orders-wrapper">
 
+    <show-order />
+
     <projects-header v-bind="header"  />
 
   <div class="orders">
@@ -25,17 +27,19 @@
 
 import Order from './../components/orders/Order.vue';
 import ProjectsHeader from './../components/ProjectsHeader';
+import ShowOrder from './../components/common/modals/ShowOrder';
+import CloseOrder from '../components/modals/CloseOrder.vue';
 
 export default {
   data(){
     return {
       orders: [
-        {id: 1, imgSrc: '/static/images/orders/Photo1.jpg',phone: '+38050995412', title: '1 ףינס הקינפאג', url: '#',  description: 'אוה \'םוספיא םרול\' .םידבוע םתא וילע טקיורפה אשונ יפלםילימליכמהתירבעב תועמשמ רסח טסקט םכל וללוח\n' +
+        {id: 1, imgSrc: '/static/images/orders/Photo1.jpg',phone: '+38050995412', name: '1 ףינס הקינפאג', url: '#',  description: 'אוה \'םוספיא םרול\' .םידבוע םתא וילע טקיורפה אשונ יפלםילימליכמהתירבעב תועמשמ רסח טסקט םכל וללוח\n' +
               '.יפוסה רצומל םתמאתהו םכלש טואאיילהו טנופה תקידבלדעוימוקמלממכ שמשמש לל\n' +
               'רבוע טסקטה ,םתרחבש אשונה יפל הידפיקיומ טסקט ךשומ ל טובור :דבוע רמוספיא־םרולה ללוחמ ךיא\n' +
               '.ונהתו וסנ .יתריציה םכשומישל המד־טסקטכ ןאכ גצומ זאו ,תינדיתע ללח תייגולונכט תרזעב היצמרופסנרט'},
-        {id: 2, imgSrc: '/static/images/orders/Photo2.jpg',phone: '+38050995412', title: '1 ףינס הקינפאג',url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 3, imgSrc: '/static/images/orders/Photo3.jpg',phone: '+38050995412', title: '1 ףינס הקינפאג',url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
+        {id: 2, imgSrc: '/static/images/orders/Photo2.jpg',phone: '+38050995412', name: '1 ףינס הקינפאג',url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
+        {id: 3, imgSrc: '/static/images/orders/Photo3.jpg',phone: '+38050995412', name: '1 ףינס הקינפאג',url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
       ],
       header : {
         imageBg : '/static/images/bg-header-projects.png',
@@ -53,7 +57,7 @@ export default {
   components: {
     Order,
     ProjectsHeader,
-
+    ShowOrder
   },
   methods: {
     openModal (e) {
@@ -73,6 +77,8 @@ export default {
 axios.post('/api/getOrdersByProject', {project_id: this.$route.params.id})
     .then((response)=>{
       console.log(response);
+      console.log(response.data.value);
+      this.orders = response.data.value;
     })
     .catch((error)=>{
       console.log(error.response.data);

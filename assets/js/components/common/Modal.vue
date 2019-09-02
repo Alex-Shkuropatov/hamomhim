@@ -34,6 +34,7 @@
     position: relative;
     overflow: auto;
     max-height: 100%;
+    margin-bottom: auto;
   }
   .formMessage{
     overflow-x: hidden;

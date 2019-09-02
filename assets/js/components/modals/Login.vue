@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import Modal from './../Modal';
+  import Modal from './../common/Modal';
   import FirstModal from './modalsLogin/FirstModal.vue'
   import SecondModal from './modalsLogin/SecondModal.vue'
   import axios from 'axios';

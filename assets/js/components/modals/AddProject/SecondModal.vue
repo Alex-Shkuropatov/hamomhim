@@ -79,7 +79,7 @@
             </linearGradient>
           </defs>
         </svg>
-          
+
         <div class="role-title">
           קבלנים
         </div>
@@ -94,7 +94,7 @@
 </template>
 
 <script>
-  import Modal from './../../Modal.vue';
+  import Modal from './../../common/Modal.vue';
   export default {
     data: function(){
      return{

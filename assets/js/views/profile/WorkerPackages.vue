@@ -49,6 +49,7 @@ export default {
   box-shadow: 0px ceil($scale1 * 4px) ceil($scale1 * 20px) rgba(0, 0, 0, 0.15);
   width: calc(33.333% - 20px );
   position: relative;
+  margin-bottom: 15px;
   &:after{
     content: '';
     display: block;
@@ -79,9 +80,56 @@ export default {
     font-weight: 500;
     line-height: 1.3;
   }
-  svg{
+  svg, img{
     width: auto;
     height: ceil($scale1 * 155px);
+  }
+}
+
+@media(max-width: $breakpoint3){
+  .package-item{
+    width: calc(33.333% - 10px );
+    &:after{
+      height: 5px;
+    }
+    .title{
+      font-size: 24px;
+    }
+    .content-wrap{
+      padding: ceil($scale3 * 50px);
+    }
+    .desc{
+      margin-bottom: ceil($scale3 * 50px);
+      font-size: 18px;
+    }
+    svg, img{
+      height: ceil($scale3 * 155px);
+    }
+  }
+}
+
+@media (max-width: $breakpoint4){
+  .package-item{
+    width: calc(50% - 10px );
+    box-shadow: 0px ceil($scale2 * 4px) ceil($scale4 * 20px) rgba(0, 0, 0, 0.15);
+    &:last-child{
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+  @media (max-width: $breakpoint5){
+    .package-item{
+      width: calc(50% - 5px );
+      .content-wrap{
+        padding: 10px;
+      }
+      .title{
+        font-size: 18px;
+      }
+      .desc{
+        font-size: 15px;
+      }
+    }
   }
 }
 </style>

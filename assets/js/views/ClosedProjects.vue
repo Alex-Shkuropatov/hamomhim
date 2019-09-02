@@ -19,7 +19,7 @@
 
 import Project from './../components/Project';
 import ProjectsHeader from './../components/ProjectsHeader';
-import AddProj1 from "../components/common/modals/AddProj1";
+import AddProj1 from "../components/modals/AddProj1";
 
 export default {
   data(){

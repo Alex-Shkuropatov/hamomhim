@@ -1,11 +1,11 @@
 <template>
   <div class="project-item">
 
-  <post-close class="close"  @click.native="close"  />
+  <post-close class="close" v-bind="user" @click.native="close"  />
 
     <div class="content-wrapper">
       <div class="thumb">
-        <img :src="imgSrc" alt="">
+        <img :src="imgSrc===''?'/static/images/projects/addImg.png': imgSrc" alt="">
       </div>
       <div class="title">{{title}}</div>
       <div class="description">{{description}}</div>
@@ -20,7 +20,9 @@
   export default {
     data(){
       return{
-
+          user:{
+            id: id,
+          }
       }
     },
     props: {

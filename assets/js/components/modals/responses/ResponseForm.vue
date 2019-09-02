@@ -4,15 +4,28 @@
     <div class="content-wrapper third-message">
         <h2 class="title">טקייורפה םש</h2>
         <div class="subtitle">נתוני אדריכל</div>
-        <drop-down v-bind="catSelect"></drop-down>
+        <!-- <div class="popup-form-row">
+          <div class="col1-2 inp-group">
+            <div class="label">סוג התמחות</div>
+            <drop-down v-bind="catSelect" :items="categories"></drop-down>
+          </div>
+          <div class="col1-2 inp-group">
+            <div class="label">קטגוריות משנה</div>
+            <drop-down v-bind="catSelect" :items="categories"></drop-down>
+          </div>
+          <div class="col1-2 inp-group">
+            <div class="label">איזור עבודה</div>
+            <drop-down v-bind="catSelect" :items="categories"></drop-down>
+          </div>
+        </div> -->
     </div>
     </modal>
     </transition>
 </template>
 
 <script>
-import Modal from '../../Modal.vue'
-import DropDown from '../../DropDown.vue'
+import Modal from '../../common/Modal.vue'
+import DropDown from '../../common/DropDown.vue'
 
 export default {
   methods: {
@@ -29,13 +42,16 @@ export default {
       catSelect: {
         value: '',
         placeholder : '',
-        items: [],
         labelKey: 'name',
       }
     }
   },
+  computed: {
+    categories(){
+      return this.$store.getters['categories/data'];
+    }
+  },
   mounted(){
-    this.catSelect.items = this.$store.getters['categories/get'];
   },
   destroyed(){
 

@@ -58,8 +58,8 @@
 
 import Project from './../components/Project';
 import ProjectsHeader from './../components/ProjectsHeader';
-import AddProj1 from "../components/common/modals/AddProj1";
-import CloseProject from "../components/common/modals/CloseProject"
+import AddProj1 from "../components/modals/AddProj1";
+import CloseProject from "../components/modals/CloseProject"
 
 export default {
   data(){
@@ -67,8 +67,8 @@ export default {
       projects: [
         {id: 1, imgSrc: '/static/images/projects/1.png', title: 'םיטקיורפה םש', url: '#',  description: '.יתימא טסקט היהיש דע - יפוסה יתימאה טסקטה םוקמב - \'וכו טנרטניא ירתא ,תועדומ ,םיניזגמ ,םינולע לש - תויבוציע תוציקסב םקוממ תויהל דעוימו - שירבי\'...'},
         {id: 2, imgSrc: '/static/images/projects/2.png', title: 'םיטקיורפה םש',url: '#', description: '.יתימא טסקט היהיש דע - יפוסה יתימאה טסקטה םוקמב - \'וכו טנרטניא ירתא ,תועדומ ,םיניזגמ ,םינולע לש - תויבוציע תוציקסב םקוממ תויהל דעוימו - שירבי\'...'},
-        {id: 3, imgSrc: '/static/images/projects/1.png', title: 'םיטקיורפה םש',url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 4, imgSrc: '/static/images/projects/4.png', title: 'םיטקיורפה םש',url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
+        {id: 3, imgSrc: '', title: 'םיטקיורפה םש',url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
+        {id: 4, imgSrc: '', title: 'םיטקיורפה םש',url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
         {id: 5, imgSrc: '/static/images/projects/3.png', title: 'םיטקיורפה םש',url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
         {id: 6, imgSrc: '/static/images/projects/6.png', title: 'םיטקיורפה םש',url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
         {id: 7, imgSrc: '/static/images/projects/7.png', title: 'םיטקיורפה םש',url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
@@ -120,8 +120,8 @@ export default {
     let user = this.getData;
     axios.post('/api/getAllProjects', {status:open})
         .then((response) => {
-          console.log(response);
-          //this.projects = response.daata.value;
+          console.log(response.data.value);
+          this.projects = response.data.value;
         })
         .catch((error) => {
           console.log(error.response.data);
