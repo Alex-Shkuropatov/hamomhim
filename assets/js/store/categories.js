@@ -27,6 +27,9 @@ export default {
     data(state) {
       return state.data;
     },
+    getNameById: state => id => {
+      return state.data.find(item => item.id === id );
+    },
     isLoaded(state) {
       return state.loaded;
     }

@@ -101,6 +101,10 @@ export default {
   .footer{
     padding-right: ceil($scale1 * 62px);
     padding-left: ceil($scale1 * 52px);
+    @media (max-width: $breakpoint5){
+      padding-right: 15px;
+      padding-left: 15px;
+    }
   }
   .title-line{
     display: flex;
@@ -113,13 +117,25 @@ export default {
     background: #2871D7;
     box-shadow: 0px ceil($scale1 * 4px) ceil($scale1 * 20px) rgba(0, 0, 0, 0.15);
     border-radius: 5px 5px 0px 0px;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    @media (max-width: $breakpoint5){
+      padding-top: ceil($scale4 * 20px);
+      padding-bottom: ceil($scale4 * 20px);
+    }
     .name{
       font-size: ceil($scale1 * 35px);
       font-weight: 800;
+      @media (max-width: $breakpoint5){
+        font-size: ceil($scale2 * 35px);
+      }
     }
     .date{
       font-size: ceil($scale1 * 24px);
-
+      @media (max-width: $breakpoint5){
+        font-size: ceil($scale2 * 24px);
+      }
       .value{
         font-weight: 800;
       }
@@ -131,9 +147,22 @@ export default {
     padding-top: ceil($scale1 * 33px);
     padding-bottom: ceil($scale1 * 24px);
     font-size: ceil($scale1 * 20px);
+    @media(max-width: $breakpoint5){
+      -webkit-flex-direction: column-reverse;
+      -ms-flex-direction: column-reverse;
+      flex-direction: column-reverse;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      font-size: 15px;
+    }
     .text-col{
       width: 50%;
       margin-left: ceil($scale1 * 45px);
+      @media(max-width: $breakpoint5){
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+      }
     }
     .phone{
       color: #4F4F4F;
@@ -159,6 +188,11 @@ export default {
     padding-top: ceil($scale1 * 27px);
     padding-bottom: ceil($scale1 * 27px);
     font-size: ceil($scale1 * 22px);
+    @media (max-width: $breakpoint3){
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+    }
     .action-item{
       padding: ceil($scale1 * 10px) ceil($scale1 * 25px);
       display: inline-flex;
@@ -166,6 +200,13 @@ export default {
       align-items: center;
       border-radius: 2px;
       transition: all .25s ease-out;
+      @media (max-width: $breakpoint5){
+        font-size: 14px;
+        padding: 7px 10px;
+        svg{
+          height: 16px;
+        }
+      }
       svg{
         height: ceil($scale1 * 28px);
         width: auto;
@@ -182,6 +223,12 @@ export default {
       }
     }
     .accept-actions{
+      @media (max-width: $breakpoint3){
+        margin-top: 10px;
+      }
+      @media (max-width: $breakpoint5){
+        justify-content: space-between;
+      }
       button{
         display: inline-flex;
         justify-content: center;
@@ -190,6 +237,11 @@ export default {
         border-radius: 2px;
         padding: ceil($scale1 * 15px) ceil($scale1 * 50px);
         transition: all .25s ease-out;
+        @media (max-width: $breakpoint5){
+          width: calc(50% - 5px);
+          padding: 7px 0;
+          font-size: 14px;
+        }
         &.decline{
           background: #D7D7D7;
           color: #fff;
