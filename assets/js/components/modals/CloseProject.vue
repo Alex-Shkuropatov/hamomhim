@@ -25,10 +25,26 @@
           },
           closeProject() {
               this.$store.commit('modals/projectPrice/close');
-              this.$router.push('projects/closed-projects');
-          },
+              let data = {
+                price: this.price,
+                projectId : this.id,
+              };
+              console.log(data);
+            axios.post('/api/closeProject', data)
+                .then((response)=>{
+                    console.log(response);
+                  this.$router.push('projects/closed-projects');
+                }).catch((error)=>{
+              console.log(error.response.data);
+            });
 
+          },
       },
+    props: {
+        id: {
+          type: Number
+        }
+    },
       components: {
           Modal,
       },
