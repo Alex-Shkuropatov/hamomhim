@@ -1,5 +1,4 @@
 <template>
-
   <div class="content-wrapper  ">
     <h3 class="title">
       סיכום הזמנה
@@ -122,7 +121,7 @@
 
 <style lang="scss" scoped>
 .content-wrapper{
-
+  width: 500px;
   position: relative;
   .title{
     text-align: center;

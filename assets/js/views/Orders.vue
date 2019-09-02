@@ -1,20 +1,19 @@
 <template>
   <div class="orders-wrapper">
 
-    <close-order />
     <projects-header v-bind="header"  />
 
   <div class="orders">
     <h1 class="title">רשימת פרויקטים</h1>
    <div class="add-order-wrapper">
-     <button class="addOrder" @click="newOrder" >הוספת קבלנים לעבודה    <span>+</span></button>
+     <router-link :to="{name: 'new-order',  }" class=" addOrder th-btn th-btn-blue th-btn-sm "   >  הוספת קבלנים לעבודה    <span>+</span>  </router-link>
      <div class="txt">1 ףינס הקינפאג</div>
    </div>
     <div class="orders-list-wrap h-container">
       <div class="orders-list">
         <Order
           class="orders-item"
-          v-for="order in orders" @onClose="onClose" :key="order.id"
+          v-for="order in orders"   :key="order.id"
           v-bind="order">
         </Order>
       </div>
@@ -22,7 +21,6 @@
   </div>
   </div>
 </template>
-
 <script>
 
 import Order from './../components/orders/Order.vue';
@@ -32,12 +30,12 @@ export default {
   data(){
     return {
       orders: [
-        {id: 1, imgSrc: '/static/images/orders/Photo1.jpg', title: '1 ףינס הקינפאג', url: '#',  description: 'אוה \'םוספיא םרול\' .םידבוע םתא וילע טקיורפה אשונ יפלםילימליכמהתירבעב תועמשמ רסח טסקט םכל וללוח\n' +
+        {id: 1, imgSrc: '/static/images/orders/Photo1.jpg',phone: '+38050995412', title: '1 ףינס הקינפאג', url: '#',  description: 'אוה \'םוספיא םרול\' .םידבוע םתא וילע טקיורפה אשונ יפלםילימליכמהתירבעב תועמשמ רסח טסקט םכל וללוח\n' +
               '.יפוסה רצומל םתמאתהו םכלש טואאיילהו טנופה תקידבלדעוימוקמלממכ שמשמש לל\n' +
               'רבוע טסקטה ,םתרחבש אשונה יפל הידפיקיומ טסקט ךשומ ל טובור :דבוע רמוספיא־םרולה ללוחמ ךיא\n' +
               '.ונהתו וסנ .יתריציה םכשומישל המד־טסקטכ ןאכ גצומ זאו ,תינדיתע ללח תייגולונכט תרזעב היצמרופסנרט'},
-        {id: 2, imgSrc: '/static/images/orders/Photo2.jpg', title: '1 ףינס הקינפאג',url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 3, imgSrc: '/static/images/orders/Photo3.jpg', title: '1 ףינס הקינפאג',url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
+        {id: 2, imgSrc: '/static/images/orders/Photo2.jpg',phone: '+38050995412', title: '1 ףינס הקינפאג',url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
+        {id: 3, imgSrc: '/static/images/orders/Photo3.jpg',phone: '+38050995412', title: '1 ףינס הקינפאג',url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
       ],
       header : {
         imageBg : '/static/images/bg-header-projects.png',
@@ -55,7 +53,6 @@ export default {
   components: {
     Order,
     ProjectsHeader,
-    CloseOrder
 
   },
   methods: {
@@ -67,21 +64,20 @@ export default {
     },
     add(data) {
 
-     //  let order = {};
-     // console.log(data.project);
-     // order.id = this.orders.length+1;
-     // order.imgSrc = data.order.image;
-     // order.title = data.order.name;
-     // order.url = '#';
-     // order.description = data.order.description;
-     // this.orders.push(order);
-    },
-    onClose(data){
-      this.$store.commit('modals/workPrice/open');
     },
     newOrder(){
       this.$router.push('/orders/new-order');
     },
+  },
+  mounted() {
+axios.post('/api/getOrdersByProject', {project_id: this.$route.params.id})
+    .then((response)=>{
+      console.log(response);
+    })
+    .catch((error)=>{
+      console.log(error.response.data);
+    });
+console.log(this.$route.params.id);
   }
 }
 </script>
@@ -109,6 +105,9 @@ export default {
     text-align: center;
     letter-spacing: -0.02em;
     color: #333333;
+    @media screen and (max-width: 1440px) {
+      font-size: 53px;
+    }
   }
 }
 .orders-list{
@@ -199,10 +198,27 @@ export default {
         margin-top: 16px;
       }
     }
-    button{
-      width: 167.51px;
-      height: 36.78px;
-    }
+
+  }
+}
+.addOrder{
+  margin-left: 40px;
+  width: 280px;
+  height: 54px;
+  font-weight: bold;
+  font-size: 24px;
+  background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
+  border-radius: 50px;
+
+  @media screen and (max-width: 650px){
+    margin: 10px 0 10px 0;
+    width: 235px;
+    font-size: 19px;
+
+  }
+  span{
+    font-weight: normal;
+    font-size: 28px;
   }
 }
   .addProj{
@@ -221,18 +237,23 @@ export default {
     flex-direction: row-reverse;
     align-items: center;
     justify-content: space-between;
-    button{
-      margin-left: 40px;
-      width: 280px;
-      height: 54px;
-      font-weight: bold;
-      font-size: 24px;
-      color: #FFFFFF;
-      span{
-        font-weight: normal;
-        font-size: 28px;
-      }
+    @media screen and (max-width: 1440px) {
+      width: 720px;
     }
+    @media screen and (max-width: 850px){
+      width: 555px;
+    }
+      @media screen and (max-width: 650px){
+        width: 405px;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+      }
+
+    @media screen and (max-width: 480px){
+      width: 315px;
+    }
+
     .txt{
       margin-right: 40px;
       font-weight: bold;
@@ -240,14 +261,13 @@ export default {
       line-height: 30px;
       text-align: right;
       color: #333333;
+      @media screen and (max-width: 1440px) {
+       font-size: 30px;
+      }
+      @media screen and (max-width: 650px){
+        margin: 0;
+      }
     }
   }
-  .addOrder{
-    z-index: 10;
-    width: 141px;
-    height: 47px;
-    background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
-    border-radius: 50px;
-    color: white;
-  }
+
 </style>

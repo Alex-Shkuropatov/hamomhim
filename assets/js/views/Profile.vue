@@ -1,6 +1,6 @@
 <template>
 <div class="profile-wrapper">
- <alert-modal/>
+
  <div class="profile-about">
 
   <img class="bg-resume" src="/static/images/profile/resume-bg.png" alt="">
@@ -127,13 +127,11 @@
   <div class="swiper-button-next th-slider-arrow th-slider-arrow-left" slot="button-next" data-uid="7"></div>
  </div>
 
-
 <feedback/>
 
 <download />
 
 </div>
-
 
 </template>
 
@@ -145,10 +143,8 @@ import WorkPost from '../components/profile/WorkPost.vue'
 import Download from '../components/profile/Download'
 import Feedback from '../components/profile/Feedback'
 
-
 export default {
  components: {
-  AlertModal,
   FavouriteIcon,
   WorkPost,
   Download,

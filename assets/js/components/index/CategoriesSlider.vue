@@ -61,7 +61,6 @@ export default {
   },
   methods: {
     onClickCategory(category){
-      console.log(category);
       this.$emit('category:select', category);
     }
   },
