@@ -6,31 +6,16 @@
     <form action="">
       <div class="wrapper">
         <div class="orderWrapper">
-          <p class="formItem" >המסיס</p>
-          <input type="password" placeholder="המסיס" v-model="user.password"   class="inputName">
-        </div>
-        <div class="orderWrapper">
-          <p class="formItem" >ליימיא</p>
+          <p class="formItem" >ליימ</p>
           <div>
-            <i class="fas " ref="mail" v-bind:class="[{ 'fa-spin': focusedMail}, focusedMail ? 'fa-sync-alt':icon]"  ></i>
-            <input type="text" ref="mail" id="mail"  placeholder="E-mail"  @focus="onFocus" @blur="onBlur" v-model="user.email" class="inputName">
+            <i class="fas " ref="mail" v-bind:class="[{ 'fa-spin': focusedPhone}, focusedPhone ? 'fa-sync-alt':icon]"  ></i>
+            <input type="text" ref="mail" id="phoneC"  placeholder="ליימ"  @focus="onFocus" @blur="onBlur" v-model="phoneCode" class="inputName">
           </div>
-        </div>
 
+        </div>
       </div>
     </form>
-    <div class="wrapper-footer">
-      <div class="wrapper-element">
-        <i class="fas fa-key"></i>
-        <span class="underLine">Forgot password</span>
-      </div>
 
-        <div class="checkbox">
-          <input type="checkbox" id="check" value="check" v-model="user.remember">
-          <label for="check">Remember me</label>
-        </div>
-
-    </div>
     <div class="buttons-wrapper">
       <button class="closeB" style="text-align:center" @click="send">Send</button>
     </div>
@@ -40,72 +25,53 @@
 </template>
 
 <script>
-  import Modal from './../../Modal.vue';
-
+  import Modal from './../../common/Modal.vue';
+  import DropDown from './../../common/DropDown.vue';
 
   export default {
 
     methods: {
       close() {
-        this.$store.commit('modals/login/close');
+        this.$store.commit('modals/reg/close');
       },
       send() {
+
         this.$emit('send', {
-          email: this.user.email ,
-          password: this.user.password,
-          remember_me: this.user.remember,
+        phoneCode: this.phoneCode
         })
       },
-      onFocus(e) {
-        console.log(e.target);
-        let elem = e.target;
-        if(elem.id ==="mail"){
-          this.focusedMail = true;
-        } else {
+      onFocus() {
           this.focusedPhone = true;
-        }
       },
-      onBlur(e) {
-        let elem = e.target;
-        if(elem.id ==="mail"){
-          this.focusedMail = false;
-          this.icon = this.checkMail();
-        } else {
+      onBlur() {
           this.focusedPhone = false;
-          this.changeIcon(false);
           this.iconS = this.checkPhone();
-        }
       },
-      checkMail(){
-        let regMail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        let  check = regMail.test(this.user.email);
-        return this.changeIcon(check);
+      checkPhone() {
+        let check = this.phoneCode;
+        return this.changeIcon(true);
       },
-      changeIcon(value){
-        if (value){
+      changeIcon(value) {
+        if (value) {
           return 'fa-check'
         } else {
-          return  'fa-times'
+          return 'fa-times'
         }
       },
     },
     components: {
       Modal,
+      DropDown,
     },
-    data : function () {
+    data: function () {
       return {
-        focusedMail: false,
         focusedPhone: false,
         icon: "fa-sync-alt",
         iconS: 'fa-sync-alt',
-       user: {
-          email: '',
-          password: '',
-         remember: false,
-       },
-        source: '',
+        phoneCode: '',
+
       }
-    },
+    }
   }
 </script>
 
@@ -120,7 +86,6 @@
     color: #BDBDBD;
   }
   .content-wrapper{
-    padding: 20px;
     margin-bottom: 49px;
     text-align: center;
     display: flex;
@@ -136,10 +101,6 @@
       text-align: center;
       letter-spacing: -0.02em;
       color: #333333;
-      @media screen and (max-width: 480px){
-        margin-top:30px;
-        font-size: 30px;
-      }
     }
     p{
       margin: 0;
@@ -163,12 +124,9 @@
     form{
       .wrapper{
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: row;
         align-items: center;
         padding: 11px 30px 0 30px;
-        @media screen and (max-width: 1000px){
-          flex-direction: column;
-        }
         .orderWrapper{
           margin: 0 10px 0 10px;
           p{
@@ -185,18 +143,6 @@
           }
           .inputName{
             padding-right: 20px;
-            width: 350.28px;
-            height: 46.47px;
-            background: #FFFFFF;
-            opacity: 0.5;
-            border: 1px solid #BDBDBD;
-            box-sizing: border-box;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-            border-radius: 50px;
-            @media screen and (max-width: 480px){
-              width: 260.28px;
-            }
-
           }
         }
         .selectWrapper{
@@ -247,7 +193,16 @@
     text-align: right;
     color: #333333;
   }
-
+  .inputName{
+    width: 350.28px;
+    height: 46.47px;
+    background: #FFFFFF;
+    opacity: 0.5;
+    border: 1px solid #BDBDBD;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+  }
   .buttons-wrapper{
     display: flex;
     flex-direction: row;
@@ -265,14 +220,19 @@
       background: #E0E0E0;
       border-radius: 50px;
     }
+    .saveB{
+      margin-left: 10px;
+      background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
+      border-radius: 50px;
+    }
   }
   .checkbox{
-
     display: flex;
     align-items: center;
-    width: 140px;
+    margin-top: 41px;
+    width: 230px;
     justify-content: space-between;
-
+    margin-right: 47px;
     label{
       text-decoration: underline;
       color: #333333;
@@ -293,56 +253,28 @@
     }
       .inputName{
         padding-right: 20px;
-
       }
     }
   }
 
-.orderWrapper{
-  div{
-    position: relative;
-    .fas {
-      position: absolute;
-      left: 37px;
-      top: 13px;
-      z-index: 2;
+div{
+  position: relative;
+  .fas {
+    position: absolute;
+    left: 37px;
+    top: 13px;
+    z-index: 2;
 
-      width: 26px;
-      height: 26px;
-      line-height: 26px;
-      text-align: center;
-      margin-right: -26px;
-      float: left;
-    }
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    margin-right: -26px;
+    float: left;
+  }
 
-    .fas + input {
-      padding-left: 26px;
-    }
+  .fas + input {
+    padding-left: 26px;
   }
 }
-  .wrapper-footer{
-    margin-top:20px;
-    width: 68%;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-around;
-    @media screen and (max-width: 1000px){
-      flex-direction: column-reverse;
-      justify-content: center;
-      width: 154px;
-    }
-    .wrapper-element{
-      display: flex;
-      flex-direction: row-reverse;
-      align-items: center;
-      i{
-        .fa-key{
-
-        }
-      }
-      .underLine{
-        margin-left: 10px;
-      }
-    }
-  }
 </style>

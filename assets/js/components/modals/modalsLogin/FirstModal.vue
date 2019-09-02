@@ -1,5 +1,4 @@
 <template>
-
   <div class="content-wrapper  ">
     <h3 class="title">
       סיכום הזמנה
@@ -79,7 +78,7 @@
             </linearGradient>
           </defs>
         </svg>
-          
+
         <div class="role-title">
           קבלנים
         </div>
@@ -94,23 +93,22 @@
 </template>
 
 <script>
-  import Modal from './../../Modal.vue';
+  import Modal from '../../common/Modal.vue';
   export default {
     data: function(){
      return{
        role: '',
-       modal: 1,
      }
     },
     methods: {
       close() {
-        this.$store.commit('modals/reg/close');
+        this.$store.commit('modals/login/close');
       },
       checkRole: function (role) {
         this.role= role;
         this.$emit('send', {
           role: this.role,
-          modal: this.modal,
+          modal: 1 ,
         })
       },
     },
@@ -123,7 +121,7 @@
 
 <style lang="scss" scoped>
 .content-wrapper{
-
+  width: 500px;
   position: relative;
   .title{
     text-align: center;

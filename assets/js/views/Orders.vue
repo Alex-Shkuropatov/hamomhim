@@ -28,6 +28,8 @@
 import Order from './../components/orders/Order.vue';
 import ProjectsHeader from './../components/ProjectsHeader';
 import ShowOrder from './../components/common/modals/ShowOrder';
+import CloseOrder from '../components/modals/CloseOrder.vue';
+
 export default {
   data(){
     return {

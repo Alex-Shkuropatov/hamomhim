@@ -16,11 +16,11 @@
 </template>
 
 <script>
-  import Modal from './../Modal';
+  import Modal from './../common/Modal';
   import FirstModal from './modalsRegister/FirstModal.vue'
   import SecondModal from './modalsRegister/SecondModal.vue'
   import ThirdModal from './modalsRegister/TihirdModal.vue'
-  import  Alert from './../modals/modalsProject/Alert.vue'
+  import  Alert from './modalsProject/Alert.vue'
   import axios from 'axios';
   export default {
     data: function(){

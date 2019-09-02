@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  import Modal from './../Modal';
+  import Modal from './../common/Modal';
 
 
   export default {

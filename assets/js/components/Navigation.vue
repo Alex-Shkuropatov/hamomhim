@@ -108,8 +108,8 @@
 <script>
 
   import FavouriteIcon from './common/FavouriteIcon.vue'
-  import Registration from './common/modals/Registration.vue'
-  import Login from './common/modals/Login.vue'
+  import Registration from './modals/Registration.vue'
+  import Login from './modals/Login.vue'
   import axios from 'axios';
   import BurgerMenu from './common/BurgerMenu.vue'
   export default {

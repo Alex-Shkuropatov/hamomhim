@@ -65,7 +65,8 @@ export default {
     font-size: 18px;
     line-height: 1.25;
   }
-  .img-col{
+  .img-col,
+  .mob-img{
     // height: 100%;
     height: ceil($scale1 * 245px);
     flex-grow: 1;
@@ -76,5 +77,34 @@ export default {
     background-size: cover;
     border-radius: 5px;
   }
+}
+
+@media (max-width: $breakpoint3){
+  .response-item{
+    margin: 15px 0;
+    padding: 20px;
+  }
+  .response-inner{
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    .img-col{
+      width: 100%;
+    }
+    .text-col{
+      width: 100%;
+      margin-left: 0;
+    }
+    .title{
+      font-size: 22px;
+    }
+    .phone{
+      font-size: 18px;
+    }
+  }
+}
+
+@media (max-width: $breakpoint5){
+
 }
 </style>
