@@ -8,11 +8,11 @@
          <div class="form-row">
           <div class="row">
               <p>לכירדאה םש </p>
-            <input type="text" v-model="architectName">
+            <input type="text" v-model="getData.userName">
           </div>
            <div class="row">
              <p>ןופלט</p>
-           <input type="text" v-model="phone" >
+           <input type="text" v-model="getData.phone" >
            </div>
          </div>
           <div class="under-title">
@@ -42,10 +42,10 @@
               </div>
               </div>
             </div>
-            <textarea name="message" cols="30" rows="10" v-model="message"></textarea>
+            <textarea name="message" cols="30" rows="10" v-model="getData.description"></textarea>
           </div>
         </form>
-        <button class="sendData th-btn th-btn-blue th-btn-sm " style="text-align:center" >חזור לאתר</button>
+        <button class="sendData th-btn th-btn-blue th-btn-sm " @click="close" style="text-align:center" >חזור לאתר</button>
       </div>
     </modal>
   </transition>
@@ -55,42 +55,28 @@
   import Modal from './../Modal';
 
   export default {
+    data(){
+      return{
+        order: '',
+      }
+    },
     methods: {
       close() {
         this.$store.commit('modals/showOrder/close');
       }
     },
     props: {
-      title : {
-        type: String,
-      },
-      architectData : {
-        type: String,
-      },
-      phone : {
-        type: String,
-      },
-      message : {
-        type: String,
-      },
-      description : {
-        type: String,
-      },
-      architectName : {
-        type: String,
-      },
-      invitationData: {
-        type: String,
-      },
-      subcategories: {
-        type: String,
-      },
-      specialisation: {
-        type: String,
-      }
     },
     components: {
       Modal,
+    },
+    computed: {
+      getData() {
+        return this.$store.getters['modals/showOrder/getOrder'];
+      },
+    },
+    mounted() {
+
     }
   }
 </script>
@@ -159,6 +145,7 @@
      margin: 0;
    }
    input{
+     padding-right: 20px;
      pointer-events:none;
      width: 350.28px;
      height: 46.47px;
@@ -180,6 +167,7 @@
 }
 .under-title{
   textarea{
+    pointer-events:none;
     margin-top: 37px;
     width: 650px;
     height: 148px;

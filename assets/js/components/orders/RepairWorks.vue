@@ -5,26 +5,16 @@
     <h4 class="description">ץופישה גוס תא רחב אנ</h4>
  <div class="form-wrapper">
    <form class="form" action="">
-     <div class="row">
-     </div>
-     <div class="row-wrapper">
-      <div class="row">
-        <p class="formItem" >המוק הזיא</p>
-        <input type="text" placeholder="המוק הזיא" v-model="formData.sex" class="inputName">
-      </div>
-         <div class="row" >
-       <p class="formItem" >םירדח המכ</p>
-       <input type="text" placeholder="םירדח המכ" v-model="formData.rooms" class="inputName">
-     </div>
-     </div>
      <div class="row-wrapper">
        <div class="row" >
          <p class="formItem" > ץופיש רוזיא</p>
-         <input type="text" placeholder="ץופיש רוזיא" v-model="formData.area" class="inputName">
+         <div class="selectWrapper ">
+           <drop-down class="dropDown inputName" placeholder="אזור עבודה" v-model="workArea.value" :items="workArea.items"/>
+         </div>
        </div>
        <div class="row" >
          <p class="formItem" >ךרעב הרידה חטש</p>
-         <input type="text" placeholder="ךרעב הרידה חטש" v-model="formData.apartments" class="inputName">
+         <input type="text" placeholder="ךרעב הרידה חטש" v-model="formData.name" class="inputName">
        </div>
      </div>
      <div class="add-files">
@@ -68,22 +58,24 @@
 
 <script>
 import Document from './../orders/Document'
-
+import DropDown from './../common/DropDown'
   export default {
     data(){
       return {
         files: [],
         currentFile: '',
         formData: {
-          sex: '',
-          rooms: '',
-          area: '',
-          apartments: '',
+          name: '',
           description: '',
         },
         isDisabled: true,
+        workArea: {
+          items: [ { label: 'אזור עבודה', value: 1 },{ label: 'אזור עבודה', value: 2 }],
+          value: '',
+        },
       }
     },
+
     methods: {
       previewFiles(event) {
         let file = event.target.files[0];
@@ -104,7 +96,7 @@ import Document from './../orders/Document'
         myFormData.append('files[]', this.files);
         myFormData.append('name', this.formData.name);
         myFormData.append('description', this.formData.description);
-        myFormData.append('work_area', this.formData.area);
+        myFormData.append('work_area', this.workArea.value);
 
 console.log(myFormData);
         this.$emit('send', myFormData)
@@ -114,6 +106,7 @@ console.log(myFormData);
     },
     components: {
       Document,
+      DropDown
     }
   }
 </script>
@@ -195,8 +188,8 @@ console.log(myFormData);
       margin: 10px;
      input{
        padding-right: 20px;
-       width: 487px;
-       height: 65px;
+       width: 372px;
+       height: 42px;
        border: 1px solid #E0E0E0;
        box-sizing: border-box;
        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);

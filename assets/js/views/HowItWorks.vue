@@ -165,7 +165,7 @@
   @media screen and (max-width: 1680px){
     padding: 50px 100px 50px 100px;
   }
-  @media screen and (max-width:1440px){
+  @media screen and (max-width:1240px){
     flex-direction: column;
     align-items: center;
     padding: 0;
@@ -212,6 +212,12 @@
         }
         @media screen and (max-width:1605px){
           font-size:20px ;
+          width: 285px;
+        }
+        @media screen and (max-width: 1440px){
+          width: unset;
+        }
+        @media screen and (max-width: 1240px){
           width: 285px;
         }
         @media screen and (max-width:600px){

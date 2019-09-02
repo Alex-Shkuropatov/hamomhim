@@ -1,12 +1,12 @@
 <template>
   <div class="order-item">
-    <show-order  />
+
     <div class="content-wrapper">
       <div class="thumb">
         <img :src="imgSrc" alt="">
       </div>
      <div class="text-wrapper">
-       <div class="title">{{title}}</div>
+       <div class="title">{{name}}</div>
        <div class="actions-wrapper">
          <div class="action-item worker">
            <button class="item edit"  >
@@ -49,11 +49,11 @@
 </template>
 
 <script>
-import ShowOrder from './../common/modals/ShowOrder'
+
   export default {
   data(){
     return{
-
+      order: {},
     }
   },
     props: {
@@ -65,7 +65,7 @@ import ShowOrder from './../common/modals/ShowOrder'
         default: '',
         type: String,
       },
-      title: {
+      name: {
         default: '',
         type: String,
       },
@@ -79,15 +79,35 @@ import ShowOrder from './../common/modals/ShowOrder'
       url: {
         default: '#',
         type: String,
-      }
+      },
+      user: {
+        name: {
+          type: String,
+        },
+        phone: {
+          type: String,
+        },
+      },
+
     },
     components: {
-        ShowOrder
     },
     methods: {
       showOrder(){
+
+        this.$store.commit('modals/showOrder/saveData',  this.getOrder( ));
         this.$store.commit('modals/showOrder/open');
       },
+      getOrder( ){
+        this.order.description = this.description;
+        this.order.name = this.name;
+        this.order.userName = this.user.name;
+        this.order.phone =this.user.phone;
+        return this.order
+      }
+    },
+    mounted() {
+
     }
   }
 </script>
