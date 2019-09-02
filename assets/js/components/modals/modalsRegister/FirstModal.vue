@@ -2,7 +2,7 @@
 
   <div class="content-wrapper  ">
     <h3 class="title">
-      סיכום הזמנה
+      הרשמה למערכת 
     </h3>
     <h4 class="description">
       כניסה למערכת

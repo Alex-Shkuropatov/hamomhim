@@ -4,7 +4,20 @@
     <div class="content-wrapper third-message">
         <h2 class="title">טקייורפה םש</h2>
         <div class="subtitle">נתוני אדריכל</div>
-        <drop-down v-bind="catSelect" :items="categories"></drop-down>
+        <!-- <div class="popup-form-row">
+          <div class="col1-2 inp-group">
+            <div class="label">סוג התמחות</div>
+            <drop-down v-bind="catSelect" :items="categories"></drop-down>
+          </div>
+          <div class="col1-2 inp-group">
+            <div class="label">קטגוריות משנה</div>
+            <drop-down v-bind="catSelect" :items="categories"></drop-down>
+          </div>
+          <div class="col1-2 inp-group">
+            <div class="label">איזור עבודה</div>
+            <drop-down v-bind="catSelect" :items="categories"></drop-down>
+          </div>
+        </div> -->
     </div>
     </modal>
     </transition>
@@ -35,7 +48,7 @@ export default {
   },
   computed: {
     categories(){
-      return this.$store.getters['categories/get'];
+      return this.$store.getters['categories/data'];
     }
   },
   mounted(){

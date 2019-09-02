@@ -1,16 +1,16 @@
 <template>
 
   <div class="content-wrapper second-message">
-    <h2 class="title">םינלבק - רתאל המשרה</h2>
-    <p class="projectName">תכרעמל המשרה</p>
+    <h2 class="title">הרשמה לאתר - קבלנים</h2>
+    <p class="projectName">הרשמה למערכת</p>
     <form action="">
       <div class="wrapper">
         <div class="orderWrapper">
-          <p class="formItem" >המסיס</p>
-          <input type="password" placeholder="המסיס" v-model="user.password"   class="inputName">
+          <p class="formItem" >סיסמה</p>
+          <input type="password" placeholder="סיסמה" v-model="user.password"   class="inputName">
         </div>
         <div class="orderWrapper">
-          <p class="formItem" >ליימיא</p>
+          <p class="formItem" >אימייל</p>
           <div>
             <i class="fas " ref="mail" v-bind:class="[{ 'fa-spin': focusedMail}, focusedMail ? 'fa-sync-alt':icon]"  ></i>
             <input type="text" ref="mail" id="mail"  placeholder="E-mail"  @focus="onFocus" @blur="onBlur" v-model="user.email" class="inputName">
@@ -22,17 +22,17 @@
     <div class="wrapper-footer">
       <div class="wrapper-element">
         <i class="fas fa-key"></i>
-        <span class="underLine">Forgot password</span>
+        <span class="underLine">שכחתי סיסמה?</span><!-- forgot password -->
       </div>
 
         <div class="checkbox">
           <input type="checkbox" id="check" value="check" v-model="user.remember">
-          <label for="check">Remember me</label>
+          <label for="check">זכור אותי</label>
         </div>
 
     </div>
     <div class="buttons-wrapper">
-      <button class="closeB" style="text-align:center" @click="send">Send</button>
+      <button class="closeB" style="text-align:center" @click="send">שלח</button>
     </div>
 
   </div>
