@@ -25,10 +25,7 @@ export default {
   data(){
     return {
       projects: [
-        {id: 1, imgSrc: '/static/images/projects/closed3.jpg', title: 'םיטקיורפה םש', url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 2, imgSrc: '/static/images/projects/closed2.jpg', title: 'םיטקיורפה םש',url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 3, imgSrc: '/static/images/projects/closed1.jpg', title: 'םיטקיורפה םש',url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 4, imgSrc: '/static/images/projects/closed4.jpg', title: 'םיטקיורפה םש',url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
+
       ],
     };
   },
@@ -42,16 +39,16 @@ export default {
       e.preventDefault();
       this.$store.commit('modals/alert/open');
     },
-    add(data) {
-      let post = {};
-     console.log(data.project);
-     post.id = this.projects.length+1;
-     post.imgSrc = data.project.image;
-     post.title = data.project.name;
-     post.url = '#';
-     post.description = data.project.description;
-     this.projects.push(post);
-    },
+
+  },
+  mounted() {
+    axios.post('/api/getAllProjects', {status:'closed'})
+        .then((response)=>{
+          console.log(response.data.value);
+          this.projects = response.data.value
+        }).catch((error)=>{
+      console.log(error.response.data)
+    })
   }
 }
 </script>

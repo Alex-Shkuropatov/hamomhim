@@ -1,9 +1,9 @@
 <template>
   <div class="projects-wrapper">
 
-      <add-proj1 @add="add" v-bind="changeModal" />
+      <add-proj1  v-bind="changeModal" />
 
-    <close-project @click="open" />
+    <close-project @click="open"  />
 
     <projects-header  />
 
@@ -45,7 +45,7 @@
         </div>
         <Project
           class="project-item"
-          v-for="project in projects" @onClose="onClose" :key="project.id"
+          v-for="project in projects" @close="onClose" :key="project.id"
           v-bind="project">
         </Project>
       </div>
@@ -65,18 +65,10 @@ export default {
   data(){
     return {
       projects: [
-        {id: 1, imgSrc: '/static/images/projects/1.png', title: 'םיטקיורפה םש', url: '#',  description: '.יתימא טסקט היהיש דע - יפוסה יתימאה טסקטה םוקמב - \'וכו טנרטניא ירתא ,תועדומ ,םיניזגמ ,םינולע לש - תויבוציע תוציקסב םקוממ תויהל דעוימו - שירבי\'...'},
-        {id: 2, imgSrc: '/static/images/projects/2.png', title: 'םיטקיורפה םש',url: '#', description: '.יתימא טסקט היהיש דע - יפוסה יתימאה טסקטה םוקמב - \'וכו טנרטניא ירתא ,תועדומ ,םיניזגמ ,םינולע לש - תויבוציע תוציקסב םקוממ תויהל דעוימו - שירבי\'...'},
-        {id: 3, imgSrc: '', title: 'םיטקיורפה םש',url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 4, imgSrc: '', title: 'םיטקיורפה םש',url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 5, imgSrc: '/static/images/projects/3.png', title: 'םיטקיורפה םש',url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 6, imgSrc: '/static/images/projects/6.png', title: 'םיטקיורפה םש',url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 7, imgSrc: '/static/images/projects/7.png', title: 'םיטקיורפה םש',url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 8, imgSrc: '/static/images/projects/8.png', title: 'םיטקיורפה םש',url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
       ],
       changeModal : {
         modalCount : '',
-      }
+      },
     };
   },
   components: {
@@ -93,18 +85,10 @@ export default {
     },
     open(){
       this.$store.commit('modals/projectPrice/open');
+
     },
-    add(data) {
-     //  let post = {};
-     // console.log(data.project);
-     // post.id = this.projects.length+1;
-     // post.imgSrc = data.project.image;
-     // post.title = data.project.name;
-     // post.url = '#';
-     // post.description = data.project.description;
-     // this.projects.push(post);
-    },
-    onClose( ){
+
+    onClose( data){
       this.$store.commit('modals/projectPrice/open');
     },
     destroyed(){
@@ -117,8 +101,8 @@ export default {
     },
   },
   mounted() {
-    let user = this.getData;
-    axios.post('/api/getAllProjects', {status:open})
+
+    axios.post('/api/getAllProjects', {status:'open'})
         .then((response) => {
           console.log(response.data.value);
           this.projects = response.data.value;

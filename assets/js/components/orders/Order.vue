@@ -42,7 +42,7 @@
        </div>
 
        <div class="description">{{description}}</div>
-       <button :href="url" class="sendData th-btn th-btn-blue th-btn-sm"  >קרא את הפוסט הזה  &nbsp;&nbsp;&nbsp;&nbsp;   +</button>
+       <button :href="url" class="sendData th-btn th-btn-blue th-btn-sm" @click="searchWorkers"  >קרא את הפוסט הזה  &nbsp;&nbsp;&nbsp;&nbsp;   +</button>
      </div>
     </div>
   </div>
@@ -88,14 +88,19 @@
           type: String,
         },
       },
+      categoryId: {
+        type: Number,
+      },
+      work_area: {
+        type: String,
+      },
 
     },
     components: {
     },
     methods: {
       showOrder(){
-
-        this.$store.commit('modals/showOrder/saveData',  this.getOrder( ));
+        this.$store.commit('modals/showOrder/saveData', this.order );
         this.$store.commit('modals/showOrder/open');
       },
       getOrder( ){
@@ -103,11 +108,26 @@
         this.order.name = this.name;
         this.order.userName = this.user.name;
         this.order.phone =this.user.phone;
+        this.order.categoryId = this.categoryId;
+        this.order.work_area= this.work_area;
+        console.log(this.order);
         return this.order
-      }
+      },
+      searchWorkers(){
+        let data = {
+          category_id: this.categoryId,
+          working_area: this.work_area,
+        };
+        axios.post('/api/searchWorkers',data)
+            .then((response)=>{
+              console.log(response);
+            }).catch((error)=>{
+              console.log(error);
+        })
+      },
     },
     mounted() {
-
+      this.getOrder()
     }
   }
 </script>

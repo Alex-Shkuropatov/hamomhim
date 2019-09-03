@@ -4,6 +4,7 @@
     <projects-header/>
 
   <div class="workers-list">
+
 <div class="search-tab">
   <button class="th-btn th-btn-blue th-btn-sm add-project">
    <span class=" abs">+</span> Add new project
@@ -13,8 +14,8 @@
   <button class=" th-btn th-btn-blue th-btn-sm add-project search-b" >
     Search
   </button>
-
 </div>
+
     <div class="projects-list-wrap h-container">
       <div class="projects-list">
         <Worker
