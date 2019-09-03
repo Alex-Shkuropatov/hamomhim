@@ -1,10 +1,22 @@
 <template>
     <transition name="slide-fade">
     <modal v-if="$store.getters['modals/responseForm/isOpened']" @close="close">
-    <div class="content-wrapper third-message">
+    <div class="content-wrapper">
         <h2 class="title">טקייורפה םש</h2>
         <div class="subtitle">נתוני אדריכל</div>
-        <drop-down v-bind="catSelect" :items="categories"></drop-down>
+        <div class="popup-form-row">
+          <div class="col1-1 inp-group">
+            <div class="label">Description</div>
+            <theme-textarea v-model="comment" placeholder="comment"></theme-textarea>
+          </div>
+        </div>
+        <div class="popup-form-row">
+
+        </div>
+        <div class="popup-form-row two-buttons">
+          <button class="th-btn th-btn-md wide th-btn-blue">send</button>
+          <button class="th-btn th-btn-md wide th-btn-gray">close</button>
+        </div>
     </div>
     </modal>
     </transition>
@@ -13,6 +25,8 @@
 <script>
 import Modal from '../../common/Modal.vue'
 import DropDown from '../../common/DropDown.vue'
+import ThemeInput from '../../common/ThemeInput.vue'
+import ThemeTextarea from '../../common/ThemeTextarea.vue'
 
 export default {
   methods: {
@@ -22,21 +36,19 @@ export default {
   },
   components: {
     Modal,
-    DropDown
+    DropDown,
+    ThemeInput,
+    ThemeTextarea
   },
-  data: function () {
+  data() {
     return {
-      catSelect: {
-        value: '',
-        placeholder : '',
-        labelKey: 'name',
-      }
+      name: '',
+      phone: '',
+      comment: '',
     }
   },
   computed: {
-    categories(){
-      return this.$store.getters['categories/get'];
-    }
+
   },
   mounted(){
   },
@@ -49,37 +61,11 @@ export default {
 <style lang="scss" scoped>
 @import '~@/vars.scss';
 
-.content-wrapper{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  margin-bottom: 20px;
-  width: 600px;
-  @media screen and (max-width: 650px) {
-    width: 450px;
-  }
-  @media screen and (max-width: 480px) {
-    width: 315px;
-  }
-  .title{
-      margin:0;
-      margin-top: 27px;
-      font-family: Assistant;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 36px;
-      line-height: 40px;
-      text-align: center;
-      letter-spacing: -0.02em;
-      color: #333333;
-  }
-  .subtitle{
-    color: #828282;
-    font-size: ceil($scale1 * 24px);
-  }
-
+.two-buttons{
+  margin-top: 20px;
+  justify-content: space-between;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 .slide-fade-enter-active {
     transition: all .3s ease;

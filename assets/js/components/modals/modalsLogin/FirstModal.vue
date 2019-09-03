@@ -1,7 +1,7 @@
 <template>
   <div class="content-wrapper  ">
     <h3 class="title">
-      סיכום הזמנה
+      התחברות למערכת
     </h3>
     <h4 class="description">
       כניסה למערכת

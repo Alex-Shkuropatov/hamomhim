@@ -1,20 +1,20 @@
 <template>
 
   <div class="contentW second-message">
-    <h2 class="title">םינלבק - רתאל המשרה</h2>
-    <p class="projectName">תכרעמל המשרה</p>
+    <h2 class="title">הרשמה לאתר - קבלנים</h2>
+    <p class="projectName">הרשמה למערכת</p>
     <form action="">
       <div class="wrapper">
         <div class="orderWrapper">
 
-          <p class="formItem" >אלמ םש</p>
-          <input type="text" placeholder="אלמ םש" v-model="name" class="inputName">
+          <p class="formItem" >שם מלא</p>
+          <input type="text" placeholder="שם מלא" v-model="name" class="inputName">
         </div>
         <div class="orderWrapper">
-          <p class="formItem" >ליימ</p>
+          <p class="formItem" >מייל</p>
           <div>
             <i class="fas " ref="mail" v-bind:class="[{ 'fa-spin': focusedMail}, focusedMail ? 'fa-sync-alt':icon]"  ></i>
-            <input type="text" ref="mail" id="mail"  placeholder="ליימ"  @focus="onFocus" @blur="onBlur" v-model="email" class="inputName">
+            <input type="text" ref="mail" id="mail"  placeholder="מייל"  @focus="onFocus" @blur="onBlur" v-model="email" class="inputName">
           </div>
 
         </div>
@@ -22,65 +22,65 @@
       </div>
       <div class="wrapper">
         <div class="orderWrapper">
-          <p class="formItem" >םירוגמ ריע</p>
-          <input type="text" placeholder="םירוגמ ריע" v-model="city" class="inputName">
+          <p class="formItem" >עיר מגורים</p>
+          <input type="text" placeholder="עיר מגורים" v-model="city" class="inputName">
         </div>
         <div class="orderWrapper">
-          <p class="formItem" >ןופלט</p>
+          <p class="formItem" >טלפון</p>
           <div>
             <i class="fas  "  v-bind:class="[{ 'fa-spin': focusedPhone}, focusedPhone ? 'fa-sync-alt':iconS]" ></i>
-            <input type="text" placeholder="ןופלט" id="phone" ref="phone" @focus="onFocus" @blur="onBlur"  v-model="phone" class="inputName">
+            <input type="text" placeholder="טלפון" id="phone" ref="phone" @focus="onFocus" @blur="onBlur"  v-model="phone" class="inputName">
           </div>
         </div>
 
       </div>
       <div class="wrapper">
         <div class="orderWrapper">
-          <p class="formItem" >קסעה םש</p>
-          <input type="text" placeholder="קסעה םש" v-model="company" class="inputName">
+          <p class="formItem" >שם העסק</p>
+          <input type="text" placeholder="שם העסק" v-model="company" class="inputName">
         </div>
         <div class="orderWrapper">
-          <p class="formItem" >םינופלט יקסע</p>
-          <input type="text" placeholder="םינופלט יקסע" v-model="businessPhone" class="inputName">
+          <p class="formItem" >טלפון עסקי</p>
+          <input type="text" placeholder="טלפון עסקי" v-model="businessPhone" class="inputName">
         </div>
 
       </div>
       <div class="wrapper">
         <div class="orderWrapper">
-          <p class="formItem" >סקפ</p>
-          <input type="text" placeholder="סקפ" v-model="fax" class="inputName">
+          <p class="formItem" >פקס</p>
+          <input type="text" placeholder="פקס" v-model="fax" class="inputName">
         </div>
         <div class="orderWrapper">
-          <p class="formItem" >תבותכ</p>
-          <input type="text" placeholder="תבותכ" v-model="adress" class="inputName">
+          <p class="formItem" >כתובת</p>
+          <input type="text" placeholder="כתובת" v-model="adress" class="inputName">
         </div>
 
       </div>
       <div class="wrapper">
         <div class="selectWrapper">
-          <p class="formItem">הדובע רוזיא</p>
-          <drop-down class="dropDown" placeholder="הדובע רוזיא" v-model="workArea.value" :items="workArea.items"/>
+          <p class="formItem">איזור עבודה</p>
+          <drop-down class="dropDown" placeholder="איזור עבודה" v-model="workArea.value" :items="workArea.items"/>
         </div>
         <div class="selectWrapper">
-          <p class="formItem">תוירוגטק</p>
-          <drop-down class="dropDown" placeholder="םהמ דחא רחב" v-model="categories.value" :items="categories.items"/>
+          <p class="formItem">קטגוריות</p>
+          <drop-down class="dropDown" placeholder="קטגוריות" v-model="categories.value" :items="categories.items"/>
         </div>
       </div>
       <hr>
       <div class="last-field">
         <div class="orderWrapper">
-          <p class="formItem" >(םילמס 6- מ רתוי) המסיס</p>
-          <input type="text" placeholder="המסיס" v-model="pass" class="inputName">
+          <p class="formItem" >סיסמה (יותר מ-6 סמלים)</p>
+          <input type="text" placeholder="סיסמה חדשה" v-model="pass" class="inputName">
         </div>
         <div class="checkbox">
           <input type="checkbox" id="check" value="check" v-model="license">
-          <label for="check">שומישה יאנת תא רשאמ ינא</label>
+          <label for="check">אני מאשר את תנאי השימוש</label>
         </div>
       </div>
     </form>
 
     <div class="buttons-wrapper">
-      <button class="closeB" style="text-align:center" @click="send">Send</button>
+      <button class="closeB" style="text-align:center" @click="send">שלח</button>
     </div>
 
   </div>

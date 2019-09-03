@@ -1,0 +1,68 @@
+//only common styles for all popups
+.popup-form-row{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  .col1-1,
+  .col1-2{
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .col1-2{
+    width: 50%;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .col1-1{
+    width: 100%;
+  }
+
+  .inp-group{
+    margin-bottom: 10px;
+    .label{
+      font-weight: bold;
+      color: #000;
+      font-size: 16px;
+      display: block;
+      padding-right: ceil($scale1 * 15px);
+      margin-bottom: 3px;
+    }
+  }
+}
+
+//modal title + subtitle
+.modal .content-wrapper{
+  padding-left: 15px;
+  padding-right: 15px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  margin-bottom: 20px;
+  width: 600px;
+  @media screen and (max-width: 650px) {
+    width: 450px;
+  }
+  @media screen and (max-width: 480px) {
+    width: 315px;
+  }
+  .title{
+      margin:0;
+      margin-top: 27px;
+      font-family: Assistant;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 36px;
+      line-height: 40px;
+      text-align: center;
+      letter-spacing: -0.02em;
+      color: #333333;
+  }
+  .subtitle{
+    color: #828282;
+    font-size: ceil($scale1 * 24px);
+    margin-bottom: 10px;
+  }
+}
