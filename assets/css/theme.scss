@@ -47,6 +47,10 @@
   padding-left: ceil($scale1 * 50px);
   font-size: ceil($scale1 * 22px);
   font-weight: bold;
+  &.wide{
+    padding-right: ceil($scale1 * 100px);
+    padding-left: ceil($scale1 * 100px);
+  }
 }
 .th-btn-lg {
   height: ceil($scale1 * 70px);
@@ -65,6 +69,10 @@
     padding-right: ceil($scale2 * 50px);
     padding-left: ceil($scale2 * 50px);
     font-size: ceil($scale2 * 22px);
+    &.wide{
+      padding-right: ceil($scale2 * 100px);
+      padding-left: ceil($scale2 * 100px);
+    }
   }
   .th-btn-lg {
     height: ceil($scale2 * 70px);
@@ -142,8 +150,8 @@
     }
   }
 }
-.th-btn-yellow{
-  background: #F2C94C;
+.th-btn-gray{
+  background: #E0E0E0;
   color: #fff;
 }
 

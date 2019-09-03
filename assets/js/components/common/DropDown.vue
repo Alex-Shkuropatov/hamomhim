@@ -38,6 +38,10 @@ export default {
     labelKey: {
       type: String,
       default: 'label'
+    },
+    valueKey: {
+      type: String,
+      default: 'value'
     }
   },
   data() {
@@ -49,7 +53,7 @@ export default {
   methods: {
     select(item) {
       this.result = item;
-      this.$emit('input', item.value);
+      this.$emit('input', item[this.valueKey]);
     },
     open() {
       this.opened = !this.opened;
@@ -63,7 +67,7 @@ export default {
       if(!this.result) {
         return this.placeholder;
       } else {
-        return this.result.label;
+        return this.result[this.labelKey];
       }
     },
     placeholded() {
