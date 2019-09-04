@@ -65,7 +65,7 @@
 <script>
 
 import ResponseForm from './../../components/modals/responses/ResponseForm';
-import ShowOrder from './../../components/common/modals/ShowOrder';
+import ShowOrder from './../../components/modals/ShowOrder';
 
 export default {
   data(){
