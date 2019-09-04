@@ -1,9 +1,10 @@
 <template>
   <div class="projects-wrapper">
     <projects-header />
-  <div class="projects">
+  <div class="projects"  >
+    <h2  class="notify_msg"  v-show="projects.length===0" ><i class="far fa-copy"></i> You dont have closed projects </h2>
     <div class="projects-list-wrap h-container">
-      <div class="projects-list">
+      <div class="projects-list" v-show="projects.length!==0">
         <Project
           class="project-item"
           v-for="project in projects" :key="project.id"
@@ -25,10 +26,7 @@ export default {
   data(){
     return {
       projects: [
-        {id: 1, imgSrc: '/static/images/projects/closed3.jpg', title: 'םיטקיורפה םש', url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 2, imgSrc: '/static/images/projects/closed2.jpg', title: 'םיטקיורפה םש',url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 3, imgSrc: '/static/images/projects/closed1.jpg', title: 'םיטקיורפה םש',url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 4, imgSrc: '/static/images/projects/closed4.jpg', title: 'םיטקיורפה םש',url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
+
       ],
     };
   },
@@ -42,23 +40,20 @@ export default {
       e.preventDefault();
       this.$store.commit('modals/alert/open');
     },
-    add(data) {
-      let post = {};
-     console.log(data.project);
-     post.id = this.projects.length+1;
-     post.imgSrc = data.project.image;
-     post.title = data.project.name;
-     post.url = '#';
-     post.description = data.project.description;
-     this.projects.push(post);
-    },
+  },
+  mounted() {
+    axios.post('/api/getAllProjects', {status:'closed'})
+        .then((response)=>{
+          console.log(response.data.value);
+          this.projects = response.data.value
+        }).catch((error)=>{
+      console.log(error.response.data)
+    })
   }
 }
 </script>
 
 <style lang="scss" scoped>
-
-
 
 .projects-wrapper{
   z-index: 0;
@@ -169,9 +164,7 @@ export default {
         margin-top: 5px;
         margin-left: 5px;
       }
-
     }
-
     button{
       width: 167.51px;
       height: 36.78px;
@@ -182,4 +175,9 @@ export default {
     width: 218px;
     height: 160px;
   }
+.notify_msg{
+  text-align: center;
+  padding: 40px 0 40px 0;
+  color: #333333;
+}
 </style>

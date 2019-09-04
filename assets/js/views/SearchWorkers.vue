@@ -4,17 +4,11 @@
     <projects-header/>
 
   <div class="workers-list">
+    <div class="title">
+      <h1 class="title-t">שדח ןלבק ףסוה</h1>
+      <div class="btn-wrapper"><button class="back-b" @click="back"><i class="fas fa-chevron-right"></i>רוזח  </button></div>
+    </div>
 
-<div class="search-tab">
-  <button class="th-btn th-btn-blue th-btn-sm add-project">
-   <span class=" abs">+</span> Add new project
-  </button>
-  <drop-down class="dropDown" placeholder="הדובע רוזיא" v-model="work_area.value" :items="work_area.items"/>
-  <drop-down class="dropDown" placeholder="הדובע רוזיא" v-model="work_area1.value" :items="work_area1.items"/>
-  <button class=" th-btn th-btn-blue th-btn-sm add-project search-b" >
-    Search
-  </button>
-</div>
 
     <div class="projects-list-wrap h-container">
       <div class="projects-list">
@@ -48,15 +42,6 @@ export default {
         {id: 7, imgSrc: '/static/images/projects/7.png',rate:'10',rating:'3' ,type:"םילכירדא", title: ' מ"עב םיצופיש ד.א',workArea:"ץראה לכ", url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
         {id: 8, imgSrc: '/static/images/projects/8.png',rate:'3',rating:'5' ,type:"םילכירדא", title: ' מ"עב םיצופיש ד.א',workArea:"ץראה לכ", url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
       ],
-      work_area: {
-        items: [ { label: ' הדובע רוזיא', value: 1 },{ label: ' הדובע רוזיא', value: 2 },{ label: ' הדובע רוזיא', value: 3 } ],
-        value: '',
-      },
-        work_area1: {
-      items: [ { label: ' הדובע רוזיא', value: 1 },{ label: ' הדובע רוזיא', value: 2 },{ label: ' הדובע רוזיא', value: 3 } ],
-          value: '',
-    },
-
     };
   },
   components: {
@@ -65,7 +50,9 @@ export default {
     DropDown
   },
   methods: {
-
+back(){
+  this.$router.go(-1);
+}
   }
 }
 </script>
@@ -85,8 +72,20 @@ export default {
   padding: 30px 0 0 0;
 }
 }
+.btn-wrapper{
+  position: absolute;
+  top: 62px;
+  .back-b{
+    color: #2871D7;
+    font-weight: bold;
+    font-size: 24px;
+  }
+}
+.worker-list{
+  position: relative;
+}
 .projects-list{
-
+margin-top: 50px;
   width: 100%;
   display: flex;
   -webkit-flex-wrap: wrap;
@@ -115,14 +114,6 @@ export default {
     width: 100%;
     padding: 0;
   }
-.project-item{
-  z-index: 1;
-  position: relative;
-  background: #FFFFFF;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
-  line-height: 1.16;
-  width: 1371px;
-  height: 320px;
 
   .add-new-project{
     -webkit-transform: rotate(45deg);
@@ -150,111 +141,31 @@ export default {
     }
     border-radius: 50%;
   }
-  .content-wrapper{
-    padding: 32px 27px 0 27px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    img{
-      width: 100%;
-    }
-    .title{
-      margin: 0;
-      margin-top: 18px;
-      font-family: Assistant;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 36px;
-      line-height: 40px;
-      text-align: right;
-      letter-spacing: -0.02em;
-      color: #2871D7;
-    }
-    .description{
-      margin-top: 10px;
-      font-family: Assistant;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 18px;
-      line-height: 28px;
-      text-align: center;
-      color: #E0E0E0;
-      width: 375px;
-    }
-    .meta{
-      color: #828282;
-    }
-    .links-wrapper{
-      margin-top: 16px;
-      width: 164px;
-      display: flex;
-      flex-direction: row-reverse;
-      justify-content: space-around;
-      align-items: center;
-      a{
-        margin-top: 14px;
-        font-family: Assistant;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 18px;
-        line-height: 65px;
-
-        background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        &:hover{
-          text-decoration: underline;
-        }
-      }
-      svg{
-        margin-top: 16px;
-
-      }
-
-    }
-
-    button{
-      width: 167.51px;
-      height: 36.78px;
-    }
-  }
+.project-item {
+  z-index: 1;
+  position: relative;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+  line-height: 1.16;
+  width: 1371px;
+  height: 320px;
 }
   .addProj{
     width: 416px;
     height: 286px;
   }
-.search-tab{
-  margin: 50px auto;
+.title{
+  position: relative;
   width: 1371px;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  align-items: center;
-  .add-project{
-    position: relative;
-    background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
-    border-radius: 50px;
-    width: 280px;
-    height: 54px;
+  margin: 0 auto;
+  .title-t{
     font-weight: bold;
-    font-size: 24px;
-    .abs{
-      position: absolute;
-      left: 25px;
-      font-size: 30px;
-      top: 8px;
-    }
-  }
-  .search-b {
-    display: inline-block;
+    font-size: 64px;
     text-align: center;
-  }
-  .dropDown{
-    border: 1px solid #BDBDBD;
-    box-sizing: border-box;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
+    letter-spacing: -0.02em;
+    color: #333333;
+    margin:0;
+    margin-top: 30px;
   }
 }
 </style>

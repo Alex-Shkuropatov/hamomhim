@@ -8,11 +8,11 @@
          <div class="form-row">
           <div class="row">
               <p>לכירדאה םש </p>
-            <input type="text" v-model="getData.userName">
+            <input type="text" :value="getData.userName">
           </div>
            <div class="row">
              <p>ןופלט</p>
-           <input type="text" v-model="getData.phone" >
+           <input type="text" :value="getData.phone" >
            </div>
          </div>
           <div class="under-title">
@@ -20,18 +20,19 @@
             <div class="form-row">
               <div class="row">
                 <p>תוחמתה גוס</p>
-              <input type="text" v-model="specialisation">
+              <input type="text" :value="getId">
               </div>
+
+              <div class="row">
+                <p> הדובע רוזיא</p>
+                <input type="text" :value="getData.work_area"   >
+              </div>
+            </div>
+            <div class="form-row column">
               <div class="row">
                 <p>הנשמ תוירוגטק</p>
-              <input type="text" v-model="subcategories" >
+                <input type="text"    >
               </div>
-            </div>
-            <div class="form-row">
-            <div class="row">
-              <p> הדובע רוזיא</p>
-              <input type="text"  >
-            </div>
               <div class="row">
                 <p>תופרוצמ תונומת</p>
               <div class="download-b">
@@ -42,7 +43,7 @@
               </div>
               </div>
             </div>
-            <textarea name="message" cols="30" rows="10" v-model="getData.description"></textarea>
+            <textarea name="message" v-bind:disabled="flag" cols="30" rows="10" :value="getData.description"></textarea>
           </div>
         </form>
         <button class="sendData th-btn th-btn-blue th-btn-sm " @click="close" style="text-align:center" >חזור לאתר</button>
@@ -52,20 +53,19 @@
 </template>
 
 <script>
-  import Modal from './../Modal';
+  import Modal from '../common/Modal';
 
   export default {
     data(){
       return{
         order: '',
+        flag:true,
       }
     },
     methods: {
       close() {
         this.$store.commit('modals/showOrder/close');
-      }
-    },
-    props: {
+      },
     },
     components: {
       Modal,
@@ -73,6 +73,9 @@
     computed: {
       getData() {
         return this.$store.getters['modals/showOrder/getOrder'];
+      },
+      getId() {
+        return this.$store.getters['categories/getNameById'](this.getData.categoryId);
       },
     },
     mounted() {
@@ -83,7 +86,7 @@
 
 <style lang="scss" scoped>
   .sendData{
-    padding-right: 119px;
+  padding-right: 119px;
     margin-top: 40px;
     background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
     border-radius: 50px;
@@ -106,6 +109,14 @@
       height: 62px;
 
     }
+  }
+  .architectData {
+    font-size: 24px;
+    text-align: center;
+    font-weight: normal;
+    letter-spacing: -0.02em;
+    color: #828282;
+    margin: 0;
   }
   .content-wrapper{
     position: relative;
@@ -140,9 +151,14 @@
     justify-content: space-around;
     align-items: center;
  .row{
-   margin-top: 11px;
+   margin: 10px;
    p{
      margin: 0;
+     font-weight: bold;
+     font-size: 18px;
+     line-height: 65px;
+     text-align: right;
+     color: #333333;
    }
    input{
      padding-right: 20px;
@@ -160,6 +176,8 @@
 .download-b{
   width: 350.28px;
   .download{
+    color: #2871D7;
+    margin-left: 280px;
     .fa-download{
       pointer-events:none;
     }
@@ -167,7 +185,7 @@
 }
 .under-title{
   textarea{
-    pointer-events:none;
+
     margin-top: 37px;
     width: 650px;
     height: 148px;
@@ -177,7 +195,17 @@
     border-radius: 10px;
     font-size: 18px;
     color: #4F4F4F;
+    &:disabled{
+      background-color: white;
+    }
   }
+}
+.invitationData{
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  color: #333333;
+  margin: 0;
 }
   .slide-fade-enter-active {
     transition: all .3s ease;

@@ -14,7 +14,7 @@
         </div>
       </div>
       </div>
-      <button class="next-b th-btn th-btn-blue th-btn-md" @click="sendData"><span>Next</span></button>
+      <button class="next-b th-btn th-btn-blue th-btn-md" :disabled="disable"  @click="sendData"><span>Next</span></button>
     </div>
   </div>
 
@@ -30,13 +30,16 @@
     data(){
       return {
         checkedServices: [],
+        disable:false,
       }
     },
     methods:{
       sendData(){
         this.$emit('send', {
           checked: this.checkedServices ,
-        })
+
+        });
+        this.disable=!disable;
       }
     },
     mounted() {

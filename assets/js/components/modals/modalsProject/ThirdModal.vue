@@ -62,6 +62,10 @@
               required: true
           }
       },
+      mounted() {
+        this.categories.items = this.$store.getters['categories/data'];
+        console.log(this.$store.getters['categories/data']);
+      }
   }
 </script>
 

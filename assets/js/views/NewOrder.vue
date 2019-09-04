@@ -38,7 +38,9 @@ export default {
       this.checked = data.checked;
     },
     onForm(data){
-      data.append('subcategories[]', this.checked);
+     for(let i=0; i<this.checked.length; i++){
+       data.append('subcategories[]', this.checked[i]);
+     }
       data.append('categoryId', this.category.id);
       data.append('projectId', this.$route.params.id);
 
@@ -47,7 +49,6 @@ export default {
           'Content-Type': 'multipart/form-data'
         }})
           .then((response) => {
-
             console.log(response);
             this.$router.push({ name: 'orders' });
           })
