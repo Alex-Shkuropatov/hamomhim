@@ -47,7 +47,6 @@
         data.role = this.role;
         axios.post('/api/auth/login', data)
             .then((response) => {
-
               this.$store.commit('user/auth', response.data.access_token );
               this.$store.commit('user/saveData' , data);
               axios.get('/api/auth/user')

@@ -43,7 +43,7 @@
               </div>
               </div>
             </div>
-            <textarea name="message" cols="30" rows="10" :value="getData.description"></textarea>
+            <textarea name="message" v-bind:disabled="flag" cols="30" rows="10" :value="getData.description"></textarea>
           </div>
         </form>
         <button class="sendData th-btn th-btn-blue th-btn-sm " @click="close" style="text-align:center" >חזור לאתר</button>
@@ -59,14 +59,13 @@
     data(){
       return{
         order: '',
+        flag:true,
       }
     },
     methods: {
       close() {
         this.$store.commit('modals/showOrder/close');
       },
-    },
-    props: {
     },
     components: {
       Modal,
@@ -87,7 +86,7 @@
 
 <style lang="scss" scoped>
   .sendData{
-    padding-right: 119px;
+  padding-right: 119px;
     margin-top: 40px;
     background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
     border-radius: 50px;
@@ -152,7 +151,7 @@
     justify-content: space-around;
     align-items: center;
  .row{
-   margin-top: 11px;
+   margin: 10px;
    p{
      margin: 0;
      font-weight: bold;
@@ -186,7 +185,7 @@
 }
 .under-title{
   textarea{
-    pointer-events:none;
+
     margin-top: 37px;
     width: 650px;
     height: 148px;
@@ -196,6 +195,9 @@
     border-radius: 10px;
     font-size: 18px;
     color: #4F4F4F;
+    &:disabled{
+      background-color: white;
+    }
   }
 }
 .invitationData{

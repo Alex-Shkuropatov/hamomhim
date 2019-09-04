@@ -78,9 +78,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .dropdown {
-
   position: relative;
   background: #FFFFFF;
   border: 1px solid #BDBDBD;

@@ -5,7 +5,7 @@
 
     <div class="content-wrapper">
       <div class="thumb">
-        <img :src="imgSrc===''?'/static/images/projects/addImg.png': imgSrc" alt="">
+        <img :src="thumbnail===null?'/static/images/projects/addImg.png':  $env.API_URL+'//files/'+thumbnail" alt="">
       </div>
       <div class="title">{{name}}</div>
       <div class="description">{{description}}</div>
@@ -30,8 +30,7 @@
         type: Number,
         required: true,
       },
-      imgSrc: {
-        default: '',
+      thumbnail: {
         type: String,
       },
       name: {
@@ -45,7 +44,8 @@
       url: {
         default: '#',
         type: String,
-      }
+      },
+
     },
     components: {
       PostClose,

@@ -12,7 +12,7 @@
   export default {
     props: {
       rate: {
-        type: Number,
+        type: String,
       }
     },
     methods: {

@@ -1,9 +1,10 @@
 <template>
   <div class="projects-wrapper">
     <projects-header />
-  <div class="projects">
+  <div class="projects"  >
+    <h2  class="notify_msg"  v-show="projects.length===0" ><i class="far fa-copy"></i> You dont have closed projects </h2>
     <div class="projects-list-wrap h-container">
-      <div class="projects-list">
+      <div class="projects-list" v-show="projects.length!==0">
         <Project
           class="project-item"
           v-for="project in projects" :key="project.id"
@@ -39,7 +40,6 @@ export default {
       e.preventDefault();
       this.$store.commit('modals/alert/open');
     },
-
   },
   mounted() {
     axios.post('/api/getAllProjects', {status:'closed'})
@@ -54,8 +54,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-
 
 .projects-wrapper{
   z-index: 0;
@@ -166,9 +164,7 @@ export default {
         margin-top: 5px;
         margin-left: 5px;
       }
-
     }
-
     button{
       width: 167.51px;
       height: 36.78px;
@@ -179,4 +175,9 @@ export default {
     width: 218px;
     height: 160px;
   }
+.notify_msg{
+  text-align: center;
+  padding: 40px 0 40px 0;
+  color: #333333;
+}
 </style>

@@ -3,7 +3,7 @@
 
     <div class="content-wrapper">
       <div class="thumb">
-        <img :src="imgSrc" alt="">
+        <img :src='$env.API_URL+"//files/"+thumbnail' alt="">
       </div>
      <div class="text-wrapper">
        <div class="title">{{name}}</div>
@@ -42,7 +42,7 @@
        </div>
 
        <div class="description">{{description}}</div>
-       <button :href="url" class="sendData th-btn th-btn-blue th-btn-sm" @click="searchWorkers"  >קרא את הפוסט הזה  &nbsp;&nbsp;&nbsp;&nbsp;   +</button>
+       <router-link :to="{name: 'search-workers', params:{orderId:id}}" class="sendData th-btn th-btn-blue th-btn-sm" @click="searchWorkers"   > קרא את הפוסט הזה  &nbsp;&nbsp;&nbsp;&nbsp;   +</router-link>
      </div>
     </div>
   </div>
@@ -60,10 +60,6 @@
       id: {
         type: Number,
         required: true,
-      },
-      imgSrc: {
-        default: '',
-        type: String,
       },
       name: {
         default: '',
@@ -94,7 +90,9 @@
       work_area: {
         type: String,
       },
-
+      thumbnail: {
+        type: String,
+      }
     },
     components: {
     },
@@ -110,7 +108,6 @@
         this.order.phone =this.user.phone;
         this.order.categoryId = this.categoryId;
         this.order.work_area= this.work_area;
-        console.log(this.order);
         return this.order
       },
       searchWorkers(){

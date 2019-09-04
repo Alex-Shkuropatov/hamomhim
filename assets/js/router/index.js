@@ -23,6 +23,7 @@ import ClosedOrders from "./../views/ClosedOrders.vue";
 import PreferWorker from "./../views/PreferWorker.vue";
 import Profile from "./../views/Profile.vue"
 import NewOrder from "./../views/NewOrder.vue"
+import SearchWorkers from "./../views/SearchWorkers.vue"
 const routes = [
   {
     path: '/',
@@ -93,6 +94,11 @@ const routes = [
     path: '/projects/:id/orders/new-order/',
     component: NewOrder,
     name: 'new-order',
+  },
+  {
+    path: '/projects/:id/orders/:orderId/search-workers',
+    component: SearchWorkers,
+    name: 'search-workers',
   },
 ];
 
