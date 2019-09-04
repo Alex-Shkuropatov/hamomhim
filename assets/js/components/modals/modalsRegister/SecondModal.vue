@@ -6,7 +6,6 @@
     <form action="">
       <div class="wrapper">
         <div class="orderWrapper">
-
           <p class="formItem" >שם מלא</p>
           <input type="text" placeholder="שם מלא" v-model="name" class="inputName">
         </div>
@@ -16,9 +15,7 @@
             <i class="fas " ref="mail" v-bind:class="[{ 'fa-spin': focusedMail}, focusedMail ? 'fa-sync-alt':icon]"  ></i>
             <input type="text" ref="mail" id="mail"  placeholder="מייל"  @focus="onFocus" @blur="onBlur" v-model="email" class="inputName">
           </div>
-
         </div>
-
       </div>
       <div class="wrapper">
         <div class="orderWrapper">
@@ -86,13 +83,10 @@
   </div>
 
 </template>
-
 <script>
   import Modal from './../../common/Modal.vue';
   import DropDown from './../../common/DropDown.vue';
-
   export default {
-
     methods: {
       close() {
         this.$store.commit('modals/reg/close');

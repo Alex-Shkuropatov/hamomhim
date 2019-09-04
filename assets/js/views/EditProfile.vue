@@ -68,8 +68,6 @@
 </template>
 
 <script>
-
-
   import AlertModal from '../components/modals/Alert.vue';
   import DropDown from '../components/common/DropDown.vue';
 

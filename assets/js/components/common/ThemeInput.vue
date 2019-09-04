@@ -1,8 +1,9 @@
 <template>
-  <input type="text"
+  <input :type="type"
     :placeholder="placeholder"
     :value="value"
     @input="$emit('input', $event.target.value)">
+
 </template>
 
 <script>
