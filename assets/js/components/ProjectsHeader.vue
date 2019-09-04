@@ -1,7 +1,7 @@
 <template>
   <div class="page-subhead" :style="styles">
     <div class="head-container">
-      <img :src="user.imageProfile" class="userImage" alt="user-image">
+      <img :src="user.imageProfile===null? '/static/images/profile/defaultAvatar.png': $env.API_URL+user.imageProfile " class="userImage" alt="user-image">
       <div class="head-txt-container">
         <div class="about-info">
           <div class="th-heading title">{{user.title}}</div>
@@ -61,7 +61,7 @@ export default {
         imageBg : '/static/images/bg-header-projects.png',
         user : {
           title : 'שם משתמש',
-          imageProfile: '/static/images/profile/defPicCutted.png',
+          imageProfile: '',
           position: 'ברוך הבא למערכת',
           valet: ' $235 ',
           value : '$235',
@@ -75,7 +75,14 @@ export default {
       return {
         backgroundImage: 'url('+this.imageBg+')',
       }
-    }
+    },
+    getData() {
+      return this.$store.getters['user/data'];
+    },
+  },
+  mounted() {
+    this.user.title = this.getData.name;
+    this.user.imageProfile = this.getData.avatar;
   }
 }
 </script>
@@ -141,7 +148,7 @@ export default {
 .head-txt-container{
   margin-right: 13px;
   hr{
-    margin-left: 15px;
+    margin-left: 46px;
     width: 185px;
     height: 0px;
     color: white;

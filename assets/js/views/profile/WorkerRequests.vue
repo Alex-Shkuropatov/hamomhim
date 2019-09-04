@@ -1,6 +1,8 @@
 <template>
   <div class="h-container requests-list">
     <response-form></response-form>
+    <show-order></show-order>
+
     <template v-if="requests.length">
       <div class="request-item" v-for="request in requests">
         <div class="title-line">
@@ -62,7 +64,8 @@
 
 <script>
 
-import ResponseForm from './../../components/modals/responses/ResponseForm.vue';
+import ResponseForm from './../../components/modals/responses/ResponseForm';
+import ShowOrder from './../../components/modals/ShowOrder';
 
 export default {
   data(){
@@ -73,13 +76,18 @@ export default {
     };
   },
   components: {
-    ResponseForm
+    ResponseForm,
+    ShowOrder
   },
   methods: {
     openResponseForm(){
       console.log('wowo');
       this.$store.commit('modals/responseForm/open');
     },
+    openViewOrderPopup(){
+      // this.$store.commit('modals/showOrder/saveData',  this.getOrder( ));
+      this.$store.commit('modals/showOrder/open');
+    }
   }
 }
 </script>

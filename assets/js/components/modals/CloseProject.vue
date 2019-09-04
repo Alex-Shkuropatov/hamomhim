@@ -4,7 +4,7 @@
             <div class="content-wrapper third-message">
                 <h2 class="title">סיכום פרויקט</h2>
                 <p class="projectName">נא הזן את סכום הפרויקט</p>
-                <input type="text" class="container-value" v-model="price" placeholder="םוכס">
+                <input type="text" class="container-value" v-model="project.price" placeholder="םוכס">
                 <div class="buttons-wrapper">
                   <button class="saveB"  style="text-align:center" @click='closeProject' >לוטיב</button>
                     <button class="closeB"  style="text-align:center" @click='close' > טקיורפ רוגס</button>
@@ -24,35 +24,40 @@
               this.$store.commit('modals/projectPrice/close');
           },
           closeProject() {
-              this.$store.commit('modals/projectPrice/close');
-              let data = {
-                price: this.price,
-                projectId : this.id,
-              };
-              console.log(data);
-            axios.post('/api/closeProject', data)
+            console.log(this.project);
+            axios.post('/api/closeProject', this.project)
                 .then((response)=>{
-                    console.log(response);
+                  console.log(response);
+                  this.$store.commit('modals/projectPrice/close');
                   this.$router.push('projects/closed-projects');
                 }).catch((error)=>{
-              console.log(error.response.data);
-            });
+                  console.log(error.response.data)
+            })
 
           },
       },
-    props: {
-        id: {
-          type: Number
-        }
-    },
       components: {
           Modal,
       },
+
+    computed: {
+      getData() {
+         return this.$store.getters['modals/projectPrice/getId'];
+
+      },
+    },
       data: function () {
           return {
-              price: '',
+              project: {
+                price: '',
+                projectId: '',
+              }
           }
-      }
+      },
+   beforeUpdate() {
+       this.project.projectId = this.getData;
+   }
+
   }
 </script>
 

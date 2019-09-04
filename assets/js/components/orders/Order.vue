@@ -3,7 +3,7 @@
 
     <div class="content-wrapper">
       <div class="thumb">
-        <img :src="imgSrc" alt="">
+        <img :src='$env.API_URL+"//files/"+thumbnail' alt="">
       </div>
      <div class="text-wrapper">
        <div class="title">{{name}}</div>
@@ -42,7 +42,7 @@
        </div>
 
        <div class="description">{{description}}</div>
-       <button :href="url" class="sendData th-btn th-btn-blue th-btn-sm"  >קרא את הפוסט הזה  &nbsp;&nbsp;&nbsp;&nbsp;   +</button>
+       <router-link :to="{name: 'search-workers', params:{orderId:id}}" class="sendData th-btn th-btn-blue th-btn-sm" @click="searchWorkers"   > קרא את הפוסט הזה  &nbsp;&nbsp;&nbsp;&nbsp;   +</router-link>
      </div>
     </div>
   </div>
@@ -60,10 +60,6 @@
       id: {
         type: Number,
         required: true,
-      },
-      imgSrc: {
-        default: '',
-        type: String,
       },
       name: {
         default: '',
@@ -88,14 +84,21 @@
           type: String,
         },
       },
-
+      categoryId: {
+        type: Number,
+      },
+      work_area: {
+        type: String,
+      },
+      thumbnail: {
+        type: String,
+      }
     },
     components: {
     },
     methods: {
       showOrder(){
-
-        this.$store.commit('modals/showOrder/saveData',  this.getOrder( ));
+        this.$store.commit('modals/showOrder/saveData', this.order );
         this.$store.commit('modals/showOrder/open');
       },
       getOrder( ){
@@ -103,11 +106,25 @@
         this.order.name = this.name;
         this.order.userName = this.user.name;
         this.order.phone =this.user.phone;
+        this.order.categoryId = this.categoryId;
+        this.order.work_area= this.work_area;
         return this.order
-      }
+      },
+      searchWorkers(){
+        let data = {
+          category_id: this.categoryId,
+          working_area: this.work_area,
+        };
+        axios.post('/api/searchWorkers',data)
+            .then((response)=>{
+              console.log(response);
+            }).catch((error)=>{
+              console.log(error);
+        })
+      },
     },
     mounted() {
-
+      this.getOrder()
     }
   }
 </script>

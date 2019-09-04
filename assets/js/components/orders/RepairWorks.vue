@@ -9,7 +9,7 @@
        <div class="row" >
          <p class="formItem" > ץופיש רוזיא</p>
          <div class="selectWrapper ">
-           <drop-down class="dropDown inputName" placeholder="אזור עבודה" v-model="workArea.value" :items="workArea.items"/>
+           <drop-down class="dropDown inputName" placeholder="אזור עבודה" v-model="workArea.value" v-bind="workArea"/>
          </div>
        </div>
        <div class="row" >
@@ -53,7 +53,6 @@
    </form>
  </div>
   </div>
-
 </template>
 
 <script>
@@ -72,6 +71,8 @@ import DropDown from './../common/DropDown'
         workArea: {
           items: [ { label: 'אזור עבודה', value: 1 },{ label: 'אזור עבודה', value: 2 }],
           value: '',
+          labelKey: 'label',
+          valueKey: 'label',
         },
       }
     },
@@ -93,7 +94,9 @@ import DropDown from './../common/DropDown'
       },
       sendOrder(){
         let myFormData = new FormData();
-        myFormData.append('files[]', this.files);
+        for(let i=0; i<this.files.length; i++){
+          myFormData.append('files[]', this.files[i]);
+        }
         myFormData.append('name', this.formData.name);
         myFormData.append('description', this.formData.description);
         myFormData.append('work_area', this.workArea.value);

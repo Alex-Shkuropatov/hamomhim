@@ -13,7 +13,7 @@
     <i class="fa fa-cloud-upload " ></i>
    </label>
    <input id="file-upload" type="file" @change="previewFiles"  accept="image/x-png,image/gif,image/jpeg"  />
-   <img :src="user.avatar" class="profileImg" alt="">
+   <img :src="user.avatar==='http://api.hamomhim.coelix.online/null'? '/static/images/profile/defaultAvatar.png': user.avatar " class="profileImg" alt="">
   </div>
   <div class="textFields">
    <div class="column cLeft">
@@ -35,7 +35,7 @@
      </div>
     <span>קטגוריות</span>
     <div class="selectWrapper">
-     <drop-down class="dropDown" placeholder="נא בחר קטגוריה אחת" v-model="categories.value" :items="categories.items"/>
+     <drop-down class="dropDown" placeholder="נא בחר קטגוריה אחת" v-model="categories.value" v-bind="categories"/>
     </div>
     <span>פקס</span>
     <input class="foemField" v-model.trim="user.fax" placeholder="פקס"  type="text" >
@@ -68,8 +68,6 @@
 </template>
 
 <script>
-
-
   import AlertModal from '../components/modals/Alert.vue';
   import DropDown from '../components/common/DropDown.vue';
 
@@ -103,8 +101,11 @@ export default {
     value: '',
    },
    categories: {
-    items: [ { label: 'נא בחר קטגוריה אחת', value: 1 },{ label: 'נא בחר קטגוריה אחת', value: 2 },{ label: 'נא בחר קטגוריה אחת', value: 3 } ],
+    items: [
+    ],
     value: '',
+    labelKey: 'name',
+    valueKey: 'id',
    },
    modalContent: {
     title: 'New information have been saved',
@@ -133,6 +134,9 @@ export default {
            this.user.userId = data.id;
    this.user.working_area =  this.workArea.value;
   },
+  getCategories(){
+   return this.$store.getters['categories/data'];
+  }
  },
  methods: {
   previewFiles(event) {
@@ -200,6 +204,7 @@ vm.user.avatar= e.target.result;
  },
  mounted() {
   this.fillData;
+  this.categories.items = this.getCategories;
  }
 }
 </script>

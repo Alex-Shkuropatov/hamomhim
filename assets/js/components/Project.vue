@@ -1,13 +1,13 @@
 <template>
   <div class="project-item">
 
-  <post-close class="close" v-bind="user" @click.native="close"  />
+  <post-close class="close"  @click.native="close"  />
 
     <div class="content-wrapper">
       <div class="thumb">
-        <img :src="imgSrc===''?'/static/images/projects/addImg.png': imgSrc" alt="">
+        <img :src="thumbnail===null?'/static/images/projects/addImg.png':  $env.API_URL+'//files/'+thumbnail" alt="">
       </div>
-      <div class="title">{{title}}</div>
+      <div class="title">{{name}}</div>
       <div class="description">{{description}}</div>
       <router-link :to="{name: 'orders', params:{id:id}}" class="th-btn th-btn-empty th-btn-sm"   >קרא את הפוסט הזה</router-link>
     </div>
@@ -21,7 +21,7 @@
     data(){
       return{
           user:{
-            id: id,
+            id: this.id,
           }
       }
     },
@@ -30,11 +30,10 @@
         type: Number,
         required: true,
       },
-      imgSrc: {
-        default: '',
+      thumbnail: {
         type: String,
       },
-      title: {
+      name: {
         default: '',
         type: String,
       },
@@ -45,15 +44,15 @@
       url: {
         default: '#',
         type: String,
-      }
+      },
+
     },
     components: {
       PostClose,
     },
     methods: {
       close(){
-        this.$store.commit('modals/projectPrice/open');
-
+        this.$store.commit('modals/projectPrice/open', this.id);
       },
     },
     mounted() {

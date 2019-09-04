@@ -1,6 +1,6 @@
 <template>
 
-  <div class="content-wrapper second-message">
+  <div class="login-wrapper second-message">
     <h2 class="title">הרשמה לאתר - קבלנים</h2>
     <p class="projectName">הרשמה למערכת</p>
     <form action="">
@@ -119,7 +119,7 @@
   .fa-sync-alt{
     color: #BDBDBD;
   }
-  .content-wrapper{
+  .login-wrapper{
     padding: 20px;
     margin-bottom: 49px;
     text-align: center;

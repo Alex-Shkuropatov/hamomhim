@@ -6,7 +6,6 @@
     <form action="">
       <div class="wrapper">
         <div class="orderWrapper">
-
           <p class="formItem" >שם מלא</p>
           <input type="text" placeholder="שם מלא" v-model="name" class="inputName">
         </div>
@@ -16,9 +15,7 @@
             <i class="fas " ref="mail" v-bind:class="[{ 'fa-spin': focusedMail}, focusedMail ? 'fa-sync-alt':icon]"  ></i>
             <input type="text" ref="mail" id="mail"  placeholder="מייל"  @focus="onFocus" @blur="onBlur" v-model="email" class="inputName">
           </div>
-
         </div>
-
       </div>
       <div class="wrapper">
         <div class="orderWrapper">
@@ -59,11 +56,11 @@
       <div class="wrapper">
         <div class="selectWrapper">
           <p class="formItem">איזור עבודה</p>
-          <drop-down class="dropDown" placeholder="איזור עבודה" v-model="workArea.value" :items="workArea.items"/>
+          <drop-down class="dropDown" placeholder="איזור עבודה" v-model="workArea.value" v-bind="workArea"/>
         </div>
         <div class="selectWrapper">
           <p class="formItem">קטגוריות</p>
-          <drop-down class="dropDown" placeholder="קטגוריות" v-model="categories.value" :items="categories.items"/>
+          <drop-down class="dropDown" placeholder="קטגוריות" v-model="categories.value" v-bind="categories"/>
         </div>
       </div>
       <hr>
@@ -86,13 +83,10 @@
   </div>
 
 </template>
-
 <script>
   import Modal from './../../common/Modal.vue';
   import DropDown from './../../common/DropDown.vue';
-
   export default {
-
     methods: {
       close() {
         this.$store.commit('modals/reg/close');
@@ -175,11 +169,10 @@
         pass: '',
         categories: {
           items: [
-            { label: 'category 1', value: "1" },
-            { label: 'category 2', value: "2" },
-            { label: 'category 3', value: "3" }
           ],
           value: '',
+          labelKey: 'name',
+          valueKey: 'id',
         },
         workArea: {
           items: [
@@ -188,10 +181,20 @@
             { label: 'Work area 3', value: "3" }
           ],
           value: '',
+          labelKey: 'label',
+          valueKey: 'label',
         },
         source: '',
       }
     },
+    computed: {
+      getCategories(){
+        return this.$store.getters['categories/data'];
+      }
+    },
+    mounted() {
+      this.categories.items = this.getCategories;
+    }
   }
 </script>
 

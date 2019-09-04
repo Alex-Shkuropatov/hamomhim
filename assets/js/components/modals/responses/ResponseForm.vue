@@ -1,24 +1,26 @@
 <template>
     <transition name="slide-fade">
     <modal v-if="$store.getters['modals/responseForm/isOpened']" @close="close">
-    <div class="content-wrapper third-message">
+      <div class="content-wrapper">
         <h2 class="title">טקייורפה םש</h2>
         <div class="subtitle">נתוני אדריכל</div>
-        <!-- <div class="popup-form-row">
-          <div class="col1-2 inp-group">
-            <div class="label">סוג התמחות</div>
-            <drop-down v-bind="catSelect" :items="categories"></drop-down>
+        <div class="popup-form-row">
+          <div class="col1-1 inp-group">
+            <div class="label">Description</div>
+            <theme-textarea v-model="description" placeholder="comment"></theme-textarea>
           </div>
-          <div class="col1-2 inp-group">
-            <div class="label">קטגוריות משנה</div>
-            <drop-down v-bind="catSelect" :items="categories"></drop-down>
+        </div>
+        <div class="popup-form-row">
+          <div class="col1-1 inp-group">
+            <div class="label">Files</div>
+            <file-upload-multiple v-model="files"></file-upload-multiple>
           </div>
-          <div class="col1-2 inp-group">
-            <div class="label">איזור עבודה</div>
-            <drop-down v-bind="catSelect" :items="categories"></drop-down>
-          </div>
-        </div> -->
-    </div>
+        </div>
+        <div class="popup-form-row two-buttons">
+          <button class="th-btn th-btn-md wide th-btn-blue" @click="addResponse">send</button>
+          <button class="th-btn th-btn-md wide th-btn-gray" @click="close">close</button>
+        </div>
+      </div>
     </modal>
     </transition>
 </template>
@@ -26,6 +28,9 @@
 <script>
 import Modal from '../../common/Modal.vue'
 import DropDown from '../../common/DropDown.vue'
+import ThemeInput from '../../common/ThemeInput.vue'
+import ThemeTextarea from '../../common/ThemeTextarea.vue'
+import FileUploadMultiple from '../../common/FileUploadMultiple.vue'
 
 export default {
   methods: {
@@ -35,20 +40,36 @@ export default {
   },
   components: {
     Modal,
-    DropDown
+    DropDown,
+    ThemeInput,
+    ThemeTextarea,
+    FileUploadMultiple
   },
-  data: function () {
+  data() {
     return {
-      catSelect: {
-        value: '',
-        placeholder : '',
-        labelKey: 'name',
-      }
+      description: '',
+      files: [],
     }
   },
-  computed: {
-    categories(){
-      return this.$store.getters['categories/data'];
+  methods: {
+    addResponse(){
+      var formData = new FormData();
+      formData.append('order_id', this.$store.getters['modals/responseForm/getOrderId']);
+      formData.append('author_id', this.$store.getters['user/getId']);
+      formData.append('description', this.description);
+      for(let i = 0; i < this.files.length; i++){
+        formData.append('files', this.files[i]);
+      }
+
+      axios.post('api/addResponse')
+        .then(response => {
+          if(response.data.success){
+
+          }
+          else{
+            alert(response.data.message);
+          }
+        });
     }
   },
   mounted(){
@@ -62,37 +83,11 @@ export default {
 <style lang="scss" scoped>
 @import '~@/vars.scss';
 
-.content-wrapper{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  margin-bottom: 20px;
-  width: 600px;
-  @media screen and (max-width: 650px) {
-    width: 450px;
-  }
-  @media screen and (max-width: 480px) {
-    width: 315px;
-  }
-  .title{
-      margin:0;
-      margin-top: 27px;
-      font-family: Assistant;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 36px;
-      line-height: 40px;
-      text-align: center;
-      letter-spacing: -0.02em;
-      color: #333333;
-  }
-  .subtitle{
-    color: #828282;
-    font-size: ceil($scale1 * 24px);
-  }
-
+.two-buttons{
+  margin-top: 20px;
+  justify-content: space-between;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 .slide-fade-enter-active {
     transition: all .3s ease;
