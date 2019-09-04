@@ -51,5 +51,8 @@ export default {
     data(state) {
       return state.data;
     },
+    getId(state){
+      return state.data.id;
+    }
   }
 };

@@ -38,7 +38,7 @@ input{
   color: $clr-dark;
   padding-right: ceil($scale1 * 15px);
   padding-left: ceil($scale1 * 15px);
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
   &::placeholder{
   }
 }

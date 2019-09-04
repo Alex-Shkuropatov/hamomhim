@@ -103,7 +103,7 @@
         this.order.name = this.name;
         this.order.userName = this.user.name;
         this.order.phone =this.user.phone;
-        return this.order
+        return this.order;
       }
     },
     mounted() {
