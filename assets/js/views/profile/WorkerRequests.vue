@@ -27,7 +27,7 @@
         </div>
         <div class="footer">
           <div class="actions">
-            <div class="action-item view">
+            <div class="action-item view" @click="openViewOrderPopup(request)">
               <svg viewBox="0 0 22 34" fill="#2871D7" xmlns="http://www.w3.org/2000/svg">
               <path d="M15.5168 2.63154C14.3456 2.63154 13.3843 1.73239 12.4304 1.05297C12.0117 0.754715 11.5162 0.582031 10.9857 0.582031C10.4542 0.582031 9.95793 0.755309 9.53857 1.05451C8.58584 1.73425 7.62492 2.63154 6.45456 2.63154C5.95433 2.63154 5.54834 3.09063 5.54834 3.65629V7.75531C5.54834 8.32097 5.95433 8.78006 6.45456 8.78006H15.5168C16.017 8.78006 16.423 8.32097 16.423 7.75531V3.65629C16.423 3.09063 16.017 2.63154 15.5168 2.63154Z"/>
               <path d="M20.0477 4.68164C19.0467 4.68164 18.2352 5.4931 18.2352 6.49408V7.75591C18.2352 9.45086 17.0155 10.8302 15.5166 10.8302H6.45438C4.95549 10.8302 3.73572 9.45086 3.73572 7.75591V6.49408C3.73572 5.4931 2.92426 4.68164 1.92328 4.68164C0.924625 4.68164 0.11084 5.60187 0.11084 6.73116V31.3253C0.11084 32.4751 0.906501 33.3748 1.92328 33.3748H20.0477C21.0644 33.3748 21.8601 32.4751 21.8601 31.3253V6.73116C21.8601 5.58138 21.0644 4.68164 20.0477 4.68164ZM10.7209 22.828L7.09598 26.9271C6.91836 27.1259 6.68637 27.2263 6.45438 27.2263C6.22238 27.2263 5.99039 27.1259 5.81277 26.9271L4.00033 24.8776C3.64691 24.4779 3.64691 23.8282 4.00033 23.4286C4.35376 23.0289 4.9283 23.0289 5.28173 23.4286C5.90492 24.1322 7.00335 24.1318 7.62601 23.4277L9.43765 21.379C9.79108 20.9794 10.3656 20.9794 10.719 21.379C11.0725 21.7787 11.0743 22.4263 10.7209 22.828ZM10.7209 14.63L7.09598 18.729C6.91836 18.9278 6.68637 19.0282 6.45438 19.0282C6.22238 19.0282 5.99039 18.9278 5.81277 18.729L4.00033 16.6795C3.64691 16.2798 3.64691 15.6301 4.00033 15.2305C4.35376 14.8308 4.9283 14.8308 5.28173 15.2305C5.90492 15.9341 7.00335 15.9337 7.62601 15.2296L9.43765 13.181C9.79108 12.7813 10.3656 12.7813 10.719 13.181C11.0725 13.5806 11.0743 14.2283 10.7209 14.63ZM17.329 25.1768H13.7041C13.2039 25.1768 12.7979 24.7177 12.7979 24.152C12.7979 23.5864 13.2039 23.1273 13.7041 23.1273H17.329C17.8292 23.1273 18.2352 23.5864 18.2352 24.152C18.2352 24.7177 17.8292 25.1768 17.329 25.1768ZM17.329 16.9787H13.7041C13.2039 16.9787 12.7979 16.5196 12.7979 15.954C12.7979 15.3883 13.2039 14.9292 13.7041 14.9292H17.329C17.8292 14.9292 18.2352 15.3883 18.2352 15.954C18.2352 16.5196 17.8292 16.9787 17.329 16.9787Z"/>
@@ -52,7 +52,7 @@
             </div>
           </div>
           <div class="accept-actions">
-            <button class="accept" @click="openResponseForm">אשר בקשה</button>
+            <button class="accept" @click="openResponseForm()">אשר בקשה</button>
             <button class="decline">בטל בקשה</button>
           </div>
         </div>
@@ -65,7 +65,7 @@
 <script>
 
 import ResponseForm from './../../components/modals/responses/ResponseForm';
-import ShowOrder from './../../components/common/modals/ShowOrder';
+import ShowOrder from './../../components/modals/ShowOrder';
 
 export default {
   data(){
@@ -80,14 +80,32 @@ export default {
     ShowOrder
   },
   methods: {
+    getRequestsFromApi(){
+      axios.post('/api/getWorkerRequests', { page: 0, take: -1})
+        .then(response => {
+          if(response.data.success){
+            this.requests = response.data.value;
+          }
+          else{
+            alert(response.data.message);
+          }
+        })
+    },
     openResponseForm(){
       console.log('wowo');
       this.$store.commit('modals/responseForm/open');
     },
-    openViewOrderPopup(){
-      // this.$store.commit('modals/showOrder/saveData',  this.getOrder( ));
+    openViewOrderPopup(order){
+      this.$store.commit('modals/showOrder/saveData',  {
+        description: order.description,
+        name: order.name,
+        userName : order.user.name,
+        phone : order.phone,
+        categoryId : order.categoryId,
+        work_area: order.work_area,
+      });
       this.$store.commit('modals/showOrder/open');
-    }
+    },
   }
 }
 </script>
