@@ -1,23 +1,26 @@
 <template>
     <transition name="slide-fade">
     <modal v-if="$store.getters['modals/responseForm/isOpened']" @close="close">
-    <div class="content-wrapper">
+      <div class="content-wrapper">
         <h2 class="title">טקייורפה םש</h2>
         <div class="subtitle">נתוני אדריכל</div>
         <div class="popup-form-row">
           <div class="col1-1 inp-group">
             <div class="label">Description</div>
-            <theme-textarea v-model="comment" placeholder="comment"></theme-textarea>
+            <theme-textarea v-model="description" placeholder="comment"></theme-textarea>
           </div>
         </div>
         <div class="popup-form-row">
-
+          <div class="col1-1 inp-group">
+            <div class="label">Files</div>
+            <file-upload-multiple v-model="files"></file-upload-multiple>
+          </div>
         </div>
         <div class="popup-form-row two-buttons">
-          <button class="th-btn th-btn-md wide th-btn-blue">send</button>
-          <button class="th-btn th-btn-md wide th-btn-gray">close</button>
+          <button class="th-btn th-btn-md wide th-btn-blue" @click="addResponse">send</button>
+          <button class="th-btn th-btn-md wide th-btn-gray" @click="close">close</button>
         </div>
-    </div>
+      </div>
     </modal>
     </transition>
 </template>
@@ -27,6 +30,7 @@ import Modal from '../../common/Modal.vue'
 import DropDown from '../../common/DropDown.vue'
 import ThemeInput from '../../common/ThemeInput.vue'
 import ThemeTextarea from '../../common/ThemeTextarea.vue'
+import FileUploadMultiple from '../../common/FileUploadMultiple.vue'
 
 export default {
   methods: {
@@ -38,17 +42,35 @@ export default {
     Modal,
     DropDown,
     ThemeInput,
-    ThemeTextarea
+    ThemeTextarea,
+    FileUploadMultiple
   },
   data() {
     return {
-      name: '',
-      phone: '',
-      comment: '',
+      description: '',
+      files: [],
     }
   },
-  computed: {
+  methods: {
+    addResponse(){
+      var formData = new FormData();
+      formData.append('order_id', this.$store.getters['modals/responseForm/getOrderId']);
+      formData.append('author_id', this.$store.getters['user/getId']);
+      formData.append('description', this.description);
+      for(let i = 0; i < this.files.length; i++){
+        formData.append('files', this.files[i]);
+      }
 
+      axios.post('api/addResponse')
+        .then(response => {
+          if(response.data.success){
+
+          }
+          else{
+            alert(response.data.message);
+          }
+        });
+    }
   },
   mounted(){
   },

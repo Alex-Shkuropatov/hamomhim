@@ -317,4 +317,6 @@
     border: 1px solid #E0E0E0;
     transform: rotate(90deg);
   }
+
 </style>
+

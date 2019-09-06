@@ -2,16 +2,15 @@ export default {
   namespaced: true,
   state: {
     opened: false,
+    orderId: 0
   },
   mutations: {
     close(state) {
       state.opened = false;
     },
-    open(state) {
+    open(state, orderId) {
       state.opened = true;
-    },
-    switch(state) {
-      state.opened = !state.opened;
+      state.orderId = orderId;
     },
   },
   actions: {
@@ -21,6 +20,8 @@ export default {
     isOpened(state) {
       return state.opened;
     },
-
+    getOrderId(state){
+      return state.orderId;
+    }
   }
 };
