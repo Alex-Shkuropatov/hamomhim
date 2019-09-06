@@ -70,12 +70,13 @@ export default {
 axios.post('/api/getOrdersByProject', {project_id: this.$route.params.id})
     .then((response)=>{
       console.log(response);
-      console.log(response.data.value);
+      this.$store.commit('orders/set', response.data.value );
       this.orders = response.data.value;
     })
     .catch((error)=>{
       console.log(error.response.data);
     });
+
 console.log(this.$route.params.id);
   }
 }

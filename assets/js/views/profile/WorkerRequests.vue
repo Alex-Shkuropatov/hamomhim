@@ -64,6 +64,7 @@
 
 import ResponseForm from './../../components/modals/responses/ResponseForm.vue';
 
+
 export default {
   data(){
     return {
@@ -73,7 +74,8 @@ export default {
     };
   },
   components: {
-    ResponseForm
+    ResponseForm,
+
   },
   methods: {
     openResponseForm(){

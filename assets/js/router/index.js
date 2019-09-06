@@ -71,12 +71,12 @@ const routes = [
     name: 'orders',
   },
   {
-    path: '/projects/closed-projects',
+    path: '/closed-projects',
     component: ClosedProjects,
     name: 'closed-projects',
   },
   {
-    path: '/projects/orders/closed-orders',
+    path: '/closed-projects/:id/closed-orders',
     component: ClosedOrders,
     name: 'closed-orders',
   },
@@ -96,9 +96,12 @@ const routes = [
     name: 'new-order',
   },
   {
-    path: '/projects/:id/orders/:orderId/search-workers',
+    path: '/projects/:id/orders/:orderId/:order/search-workers',
     component: SearchWorkers,
     name: 'search-workers',
+    props: {
+      order: {},
+    },
   },
 ];
 

@@ -11,7 +11,7 @@
 
 
     <div class="projects-list-wrap h-container">
-      <div class="projects-list">
+      <div class=workers-list">
         <Worker
           class="worker-item"
           v-for="worker in workers" :key="worker.id"
@@ -32,18 +32,15 @@ import DropDown from './../components/common/DropDown';
 export default {
   data(){
     return {
-      workers: [
-        {id: 1, imgSrc: '/static/images/profile/profileImg.png',rate:'10',rating:'3',type:"םילכירדא", title: ' מ"עב םיצופיש ד.א',workArea:"ץראה לכ", url: '#',  description: 'וה \'םוספיא םרול\' .םידבוע םתא וילעוה \'םוספיא םרול\' .םידבוע םתא וילעוה \'םוספיא םרול\' .םידבוע םתא וילעוה \'םוספיא םרול\' .םידבוע םתא וילעוה \'םוספיא םרול\' .םידבוע םתא וילע טקיורפה אשונ יפל םילימ ליכמה תירבעב תועמשמ רסח טסקט םכל וללוח ללוחמ ךיא .יפוסה רצומל מאכלש'},
-        {id: 2, imgSrc: '/static/images/projects/2.png',rate:'10',rating:'3' ,type:"םילכירדא", title: ' מ"עב םיצופיש ד.א',workArea:"ץראה לכ", url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 3, imgSrc: '/static/images/projects/1.png',rate:'9',rating:'3' ,type:"םילכירדא", title: ' מ"עב םיצופיש ד.א',workArea:"ץראה לכ", url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 4, imgSrc: '/static/images/projects/4.png',rate:'8',rating:'3' ,type:"םילכירדא", title: ' מ"עב םיצופיש ד.א',workArea:"ץראה לכ", url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 5, imgSrc: '/static/images/projects/3.png',rate:'10',rating:'3' ,type:"םילכירדא", title: ' מ"עב םיצופיש ד.א',workArea:"ץראה לכ", url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 6, imgSrc: '/static/images/projects/6.png',rate:'7',rating:'4' ,type:"םילכירדא", title: ' מ"עב םיצופיש ד.א',workArea:"ץראה לכ", url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 7, imgSrc: '/static/images/projects/7.png',rate:'10',rating:'3' ,type:"םילכירדא", title: ' מ"עב םיצופיש ד.א',workArea:"ץראה לכ", url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 8, imgSrc: '/static/images/projects/8.png',rate:'3',rating:'5' ,type:"םילכירדא", title: ' מ"עב םיצופיש ד.א',workArea:"ץראה לכ", url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-      ],
+        workers: [] ,
+      workerData : this.getData
     };
   },
+props: {
+  order: {
+    type: Object,
+  }
+},
   components: {
     ProjectsHeader,
     Worker,
@@ -53,7 +50,34 @@ export default {
 back(){
   this.$router.go(-1);
 }
-  }
+  },
+
+  mounted() {
+
+    console.log(this.getData);
+    axios.post('/api/searchWorkers', {
+          'category_id': this.getData.categoryId,
+          'working_area': this.getData.working_area==='' ? null : this.getData.working_area,
+          'subcategories': this.getData.subcategories.length===0? null : this.getData.subcategories,
+        }
+    )
+        .then((response)=>{
+          console.log('response');
+          console.log(response);
+          this.workers = response.data.value;
+        }).catch((error)=>{
+      console.log(error);
+    });
+  },
+  created(){
+    this.$store.dispatch('orders/updateData', {'project_id':this.$route.params.id});
+  },
+  computed: {
+    getData(){
+      return this.$store.getters['orders/getOrderById'](this.$route.params.orderId);
+    }
+  },
+
 }
 </script>
 
@@ -84,7 +108,7 @@ back(){
 .worker-list{
   position: relative;
 }
-.projects-list{
+.workers-list{
 margin-top: 50px;
   width: 100%;
   display: flex;

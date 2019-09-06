@@ -2,7 +2,7 @@
   <div class="projects-wrapper">
 
 
-    <projects-header  />
+    <workers-header/>
 
     <router-view></router-view>
 
@@ -13,7 +13,7 @@
 <script>
 
 import ProjectsHeader from './../../components/ProjectsHeader';
-
+import WorkersHeader from './../../components/WorkersHeader.vue';
 export default {
   data(){
     return {
@@ -22,6 +22,7 @@ export default {
   },
   components: {
     ProjectsHeader,
+    WorkersHeader,
   },
   methods: {
 
@@ -30,5 +31,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 
 </style>

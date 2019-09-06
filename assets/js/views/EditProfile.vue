@@ -31,7 +31,7 @@
     <input class="foemField" v-model.trim="user.name_of_business" placeholder="שם העסק"  type="text">
     <span>אזור עבודה</span>
      <div class="selectWrapper">
-      <drop-down class="dropDown" placeholder="אזור עבודה" v-model="workArea.value" :items="workArea.items"/>
+      <drop-down class="dropDown" placeholder="אזור עבודה" v-model="workArea.value" v-bind="workArea"/>
      </div>
     <span>קטגוריות</span>
     <div class="selectWrapper">
@@ -97,8 +97,16 @@ export default {
    },
    preload: '',
    workArea: {
-    items: [ { label: 'אזור עבודה', value: 1 },{ label: 'אזור עבודה', value: 2 }],
+    items: [
+     { label: 'כל הארץ', value: "1" },
+     { label: 'תל אביב', value: "2" },
+     { label: 'חיפה והסביבה', value: "3" },
+     { label: 'השרון והסביבה', value: "4" },
+     { label: 'באר שבע', value: "5" },
+    ],
     value: '',
+    labelKey: 'label',
+    valueKey: 'label',
    },
    categories: {
     items: [
