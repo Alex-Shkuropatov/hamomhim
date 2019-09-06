@@ -70,8 +70,8 @@
 <script>
 
 
-  import AlertModal from '../components/modals/Alert.vue';
-  import DropDown from '../components/common/DropDown.vue';
+import AlertModal from '../modals/Alert.vue';
+import DropDown from '../common/DropDown.vue';
 
 export default {
  components: {

@@ -2,7 +2,7 @@
   <div class="projects-wrapper">
 
 
-    <projects-header  />
+    <projects-header v-if="!hideHeader"  />
 
     <router-view></router-view>
 
@@ -15,16 +15,13 @@
 import ProjectsHeader from './../../components/ProjectsHeader';
 
 export default {
-  data(){
-    return {
-
-    };
-  },
   components: {
     ProjectsHeader,
   },
-  methods: {
-
+  computed: {
+    hideHeader(){
+      return ((this.$route.name === 'profile-edit') && (this.$store.getters['user/getField']('role') === 'worker'));
+    }
   }
 }
 </script>

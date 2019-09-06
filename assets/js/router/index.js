@@ -15,13 +15,12 @@ import Blog from './../views/Blog.vue';
 
 import BlogPost from './../views/BlogPost.vue';
 import HowItWorks from './../views/HowItWorks.vue';
-import  EditProfile from './../views/EditProfile.vue'
 import Projects from "./../views/Projects.vue";
 import Orders from "./../views/Orders.vue";
 import ClosedProjects from "./../views/ClosedProjects.vue";
 import ClosedOrders from "./../views/ClosedOrders.vue";
 import PreferWorker from "./../views/PreferWorker.vue";
-import Profile from "./../views/Profile.vue"
+import WorkerProfile from "./../views/WorkerProfile.vue"
 import NewOrder from "./../views/NewOrder.vue"
 import SearchWorkers from "./../views/SearchWorkers.vue"
 const routes = [
@@ -56,11 +55,6 @@ const routes = [
     name: 'how-it-works',
   },
   {
-    path: '/profile/edit',
-    component: EditProfile,
-    name: 'profile-edit',
-  },
-  {
     path: '/projects',
     component: Projects,
     name: 'projects',
@@ -87,7 +81,7 @@ const routes = [
   },
   {
     path: '/view-profile',
-    component: Profile,
+    component: WorkerProfile,
     name: 'view-profile',
   },
   {

@@ -8,11 +8,11 @@
          <div class="form-row">
           <div class="row">
               <p>לכירדאה םש </p>
-            <input type="text" :value="getData.userName">
+              <input type="text" :value="getData.userName">
           </div>
            <div class="row">
              <p>ןופלט</p>
-           <input type="text" :value="getData.phone" >
+             <input type="text" :value="getData.phone" >
            </div>
          </div>
           <div class="under-title">
@@ -20,7 +20,7 @@
             <div class="form-row">
               <div class="row">
                 <p>תוחמתה גוס</p>
-              <input type="text" :value="getId">
+                <input type="text" :value="getId">
               </div>
 
               <div class="row">
