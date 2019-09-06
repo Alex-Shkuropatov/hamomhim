@@ -29,7 +29,7 @@
                 .then((response)=>{
                   console.log(response);
                   this.$store.commit('modals/projectPrice/close');
-                  this.$router.push('projects/closed-projects');
+                  this.$router.push({name : 'closed-projects'});
                 }).catch((error)=>{
                   console.log(error.response.data)
             })

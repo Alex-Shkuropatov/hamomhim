@@ -4,7 +4,7 @@
 
   <first-modal  v-if="modal===0" @send='onFirst'  />
 
-  <second-modal  v-if="modal===1" @send='onSecond' />
+  <second-modal  v-if="modal===1" v-bind="user" @send='onSecond' />
 
     <third-modal v-if="modal===2"  @send='onThird' />
 
@@ -64,13 +64,23 @@
       onSecond (data) {
         data.role = this.user.role;
        this.modal++;
-        axios.post('/api/auth/signup', data)
-            .then((response) => {
-              console.log(response);
-            })
-            .catch((error) => {
-              console.log(error.response.data);
-            });
+       if ( data.role==='worker'){
+         axios.post('/api/auth/signupWorker', data)
+             .then((response) => {
+               console.log(response);
+             })
+             .catch((error) => {
+               console.log(error.response.data);
+             });
+       } else {
+           axios.post('/api/auth/signupArchitect', data)
+               .then((response) => {
+                 console.log(response);
+               })
+               .catch((error) => {
+                 console.log(error.response.data);
+               });
+       }
       },
       onThird(data){
         this.modal++;

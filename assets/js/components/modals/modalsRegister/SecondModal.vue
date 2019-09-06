@@ -6,7 +6,6 @@
     <form action="">
       <div class="wrapper">
         <div class="orderWrapper">
-
           <p class="formItem" >שם מלא</p>
           <input type="text" placeholder="שם מלא" v-model="name" class="inputName">
         </div>
@@ -16,9 +15,7 @@
             <i class="fas " ref="mail" v-bind:class="[{ 'fa-spin': focusedMail}, focusedMail ? 'fa-sync-alt':icon]"  ></i>
             <input type="text" ref="mail" id="mail"  placeholder="מייל"  @focus="onFocus" @blur="onBlur" v-model="email" class="inputName">
           </div>
-
         </div>
-
       </div>
       <div class="wrapper">
         <div class="orderWrapper">
@@ -61,7 +58,7 @@
           <p class="formItem">איזור עבודה</p>
           <drop-down class="dropDown" placeholder="איזור עבודה" v-model="workArea.value" v-bind="workArea"/>
         </div>
-        <div class="selectWrapper">
+        <div class="selectWrapper"  v-if="role==='worker'">
           <p class="formItem">קטגוריות</p>
           <drop-down class="dropDown" placeholder="קטגוריות" v-model="categories.value" v-bind="categories"/>
         </div>
@@ -86,13 +83,10 @@
   </div>
 
 </template>
-
 <script>
   import Modal from './../../common/Modal.vue';
   import DropDown from './../../common/DropDown.vue';
-
   export default {
-
     methods: {
       close() {
         this.$store.commit('modals/reg/close');
@@ -110,6 +104,7 @@
           city:this.city  ,
           working_area: this.workArea.value,
           password: this.pass,
+          category_id: this.categories.value,
           password_confirmation: this.pass,
         })
       },
@@ -155,6 +150,11 @@
       Modal,
       DropDown,
     },
+    props: {
+      role: {
+        type: String,
+      }
+    },
     data : function () {
       return {
         focusedMail: false,
@@ -182,9 +182,11 @@
         },
         workArea: {
           items: [
-            { label: 'Work area 1', value: "1" },
-            { label: 'Work area 2', value: "2" },
-            { label: 'Work area 3', value: "3" }
+            { label: 'כל הארץ', value: "1" },
+            { label: 'תל אביב', value: "2" },
+            { label: 'חיפה והסביבה', value: "3" },
+            { label: 'השרון והסביבה', value: "4" },
+            { label: 'באר שבע', value: "5" },
           ],
           value: '',
           labelKey: 'label',
@@ -451,8 +453,5 @@ div{
     right: 267px;
   }
 }
-  ::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; /* make scrollbar transparent */
-  }
+
 </style>

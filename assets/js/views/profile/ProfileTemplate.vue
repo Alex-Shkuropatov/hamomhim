@@ -1,8 +1,7 @@
 <template>
   <div class="projects-wrapper">
 
-
-    <projects-header v-if="!hideHeader"  />
+    <workers-header v-if="!hideHeader"/>
 
     <router-view></router-view>
 
@@ -13,10 +12,11 @@
 <script>
 
 import ProjectsHeader from './../../components/ProjectsHeader';
-
+import WorkersHeader from './../../components/WorkersHeader.vue';
 export default {
   components: {
     ProjectsHeader,
+    WorkersHeader,
   },
   computed: {
     hideHeader(){
@@ -27,5 +27,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 
 </style>

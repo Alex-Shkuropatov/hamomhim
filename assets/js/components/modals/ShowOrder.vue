@@ -25,13 +25,21 @@
 
               <div class="row">
                 <p> הדובע רוזיא</p>
-                <input type="text" :value="getData.work_area"   >
+                <input type="text" :value="getData.work_area">
               </div>
             </div>
-            <div class="form-row column">
+            <div class="form-row column clm">
               <div class="row">
                 <p>הנשמ תוירוגטק</p>
-                <input type="text"    >
+             <div class="sub-wrapper">
+               <subcategory
+                       class="orders-item"
+                       v-for="subcategory in getData.subcategories"
+                       v-bind:value="subcategory"
+                       :key="subcategory"
+               >
+               </subcategory>
+             </div>
               </div>
               <div class="row">
                 <p>תופרוצמ תונומת</p>
@@ -54,7 +62,7 @@
 
 <script>
   import Modal from '../common/Modal';
-
+  import Subcategory from '../orders/Subcategory.vue'
   export default {
     data(){
       return{
@@ -68,13 +76,14 @@
     },
     components: {
       Modal,
+      Subcategory
     },
     computed: {
       getData() {
         return this.$store.getters['modals/showOrder/getOrder'];
       },
       getId() {
-        return this.$store.getters['categories/getNameById'](this.getData.categoryId);
+        return this.$store.getters['categories/getNameById'](this.getData.category_id);
       },
     },
     mounted() {
@@ -98,7 +107,6 @@
     &:hover {
       color:  #2871D7 ;
     }
-
     @media screen and (max-width: 900px) {
       display: unset;
       padding-right: 55px;
@@ -205,6 +213,10 @@
   text-align: center;
   color: #333333;
   margin: 0;
+}
+.sub-wrapper{
+  display: flex;
+  flex-direction: row;
 }
   .slide-fade-enter-active {
     transition: all .3s ease;

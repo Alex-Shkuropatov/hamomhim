@@ -5,11 +5,11 @@
 
     <div class="content-wrapper">
       <div class="thumb">
-        <img :src="thumbnail===null?'/static/images/projects/addImg.png':  $env.API_URL+'//files/'+thumbnail" alt="">
+        <img :src="thumbnail===null?'/static/images/projects/addImg.png':  $env.API_URL+thumbnail" alt="">
       </div>
       <div class="title">{{name}}</div>
       <div class="description">{{description}}</div>
-      <router-link :to="{name: 'orders', params:{id:id}}" class="th-btn th-btn-empty th-btn-sm"   >קרא את הפוסט הזה</router-link>
+      <router-link :to="{name: path==='/projects'?'orders': 'closed-orders', params:{id:id}}" class="th-btn th-btn-empty th-btn-sm"   >קרא את הפוסט הזה</router-link>
     </div>
   </div>
 </template>
@@ -22,7 +22,8 @@
       return{
           user:{
             id: this.id,
-          }
+          },
+        path: window.location.pathname,
       }
     },
     props: {
@@ -127,8 +128,4 @@
   }
   }
 
-  ::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; /* make scrollbar transparent */
-  }
 </style>
