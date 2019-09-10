@@ -11,7 +11,7 @@
 
 
     <div class="projects-list-wrap h-container">
-      <div class=workers-list">
+      <div class="workers-list">
         <Worker
           class="worker-item"
           v-for="worker in workers" :key="worker.id"
@@ -32,50 +32,50 @@ import DropDown from './../components/common/DropDown';
 export default {
   data(){
     return {
-        workers: [] ,
+      workers: [] ,
       workerData : this.getData
     };
   },
-props: {
-  order: {
-    type: Object,
-  }
-},
+  props: {
+    order: {
+      type: Object,
+    }
+  },
   components: {
     ProjectsHeader,
     Worker,
     DropDown
   },
   methods: {
-back(){
-  this.$router.go(-1);
-}
+    back(){
+      this.$router.go(-1);
+    }
   },
 
   mounted() {
+    this.$store.dispatch('orders/updateData', {'project_id':this.$route.params.id}).then(() =>{
+      let orderData = this.$store.getters['orders/getOrderById'](parseInt(this.$route.params.orderId));
 
-    console.log(this.getData);
-    axios.post('/api/searchWorkers', {
-          'category_id': this.getData.categoryId,
-          'working_area': this.getData.working_area==='' ? null : this.getData.working_area,
-          'subcategories': this.getData.subcategories.length===0? null : this.getData.subcategories,
-        }
-    )
+      return axios.post('/api/searchWorkers', {
+            'category_id': orderData.categoryId,
+            'working_area': orderData.working_area ==='' ? null : orderData.working_area,
+            'subcategories': orderData.subcategories.length===0? null : orderData.subcategories,
+          }
+        )
         .then((response)=>{
           console.log('response');
           console.log(response);
           this.workers = response.data.value;
-        }).catch((error)=>{
-      console.log(error);
+        })
+        .catch((error)=>{
+          console.log(error);
+      });
     });
   },
   created(){
-    this.$store.dispatch('orders/updateData', {'project_id':this.$route.params.id});
+
   },
   computed: {
-    getData(){
-      return this.$store.getters['orders/getOrderById'](this.$route.params.orderId);
-    }
   },
 
 }
