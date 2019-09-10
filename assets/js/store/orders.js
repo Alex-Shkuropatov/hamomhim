@@ -6,16 +6,20 @@ export default {
   },
   mutations: {
     set(state, payload){
+      //console.log(state);
       state.data = payload;
     },
 
   },
   actions: {
     updateData(context, id){
-     return  axios.post('api/getOrdersByProject',id)
+
+      return axios.post('api/getOrdersByProject',id)
+
         .then(response => {
-          console.log(response);
+          //console.log(response);
           if(response.data.success){
+            //console.log(response.data.value);
             context.commit('set', response.data.value );
           }
         }).catch((error)=>{
@@ -28,7 +32,7 @@ export default {
       return state.data;
     },
     getOrderById: state => id => {
-      return state.data.find(item => item.id === id );
+      return state.data.find(item => item.id == id );
     },
 
   }

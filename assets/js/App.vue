@@ -1,6 +1,8 @@
 <template>
   <div id="wrapper">
-    <navigation v-bind="header"/>
+    <header-default v-if="isDefaultHeader"/>
+    <header-worker-profile v-else />
+
     <transition name="cool">
       <router-view class="margin" />
     </transition>
@@ -9,7 +11,8 @@
 </template>
 
 <script>
-import Navigation from './components/Navigation.vue';
+import HeaderDefault from './components/headers/HeaderDefault.vue';
+import HeaderWorkerProfile from './components/headers/HeaderWorkerProfile.vue';
 import Underground from './components/Underground.vue';
 
 export default {
@@ -17,36 +20,34 @@ export default {
     return{
       header: {
         hideHeader: ['view-profile'],
-        headDefault: true,
-        headProfile: false,
       }
     }
   },
   components: {
-    Navigation,
+    HeaderDefault,
+    HeaderWorkerProfile,
     Underground,
 
   },
   methods:{
-    checkHeader(){
+
+  },
+  computed: {
+    isDefaultHeader(){
+      let result = true;
       for(let i=0;i<this.header.hideHeader.length;i++ ) {
         if(this.$route.name === this.header.hideHeader[i]){
-          this.header.headDefault=!this.header.headDefault;
-          this.header.headProfile=!this.header.headProfile;
-          return;
+          result = false;
         }
-        this.header.headDefault=true;
-        this.header.headProfile=false;
-
       }
+
+      //edit profile for worker
+      if(this.$route.name === 'profile-edit' && this.$store.getters['user/getField']('role') === 'worker'){
+        result = false;
+      }
+      return result;
     }
   },
-  created() {
-   this.checkHeader();
-  },
-  beforeUpdate () {
-    this.checkHeader();
-  }
 }
 </script>
 

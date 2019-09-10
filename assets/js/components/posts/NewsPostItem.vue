@@ -54,21 +54,34 @@ export default {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   padding: 20px 22px;
   line-height: 1.16;
+  text-align: center;
+  .thumb{
+    margin-bottom: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+  }
   img{
     width: 100%;
     height: auto;
-    margin-bottom: 15px;
   }
   .title{
     font-size: 24px;
     font-weight: bold;
+    color: $clr-blue;
+    margin-bottom: 8px;
   }
   .meta{
     color: #828282;
+    font-size: 14px;
+    margin-bottom: 8px;
   }
-  .meta, .excerpt, .title{
-    margin-bottom: 5px;
+  .excerpt {
+    font-size: 16px;
+    margin-bottom: 13px;
   }
+}
+.th-btn{
+  border-radius: 5px;
 }
 
 @media (max-width: $breakpoint2){
@@ -88,7 +101,7 @@ export default {
 
 @media (max-width: $breakpoint4){
   .post-item{
-    padding: ceil($scale3 * 20px) ceil($scale3 * 22px);
+     padding: ceil($scale3 * 20px) ceil($scale3 * 22px);
     .title{
       font-size: ceil($scale2 * 24px);
     }

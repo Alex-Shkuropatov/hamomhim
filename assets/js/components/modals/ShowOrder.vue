@@ -15,6 +15,7 @@
               <input type="text" :value="getData.phone">
             </div>
           </div>
+
           <div class="under-title">
             <h3 class="invitationData">הנמזה ינותנ</h3>
             <div class="form-row">

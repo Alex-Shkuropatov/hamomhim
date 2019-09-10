@@ -33,6 +33,11 @@ import ThemeTextarea from '../../common/ThemeTextarea.vue'
 import FileUploadMultiple from '../../common/FileUploadMultiple.vue'
 
 export default {
+  data(){
+    return {
+
+    }
+  },
   methods: {
     close() {
       this.$store.commit('modals/responseForm/close');

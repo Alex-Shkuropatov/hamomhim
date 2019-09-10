@@ -3,6 +3,7 @@
 
     <projects-header/>
 
+
     <div class="workers-list">
       <div class="title">
         <h1 class="title-t">שדח ןלבק ףסוה</h1>
@@ -19,12 +20,14 @@
                   v-bind="worker">
           </Worker>
         </div>
+
       </div>
     </div>
   </div>
 </template>
 
 <script>
+
 
   import Worker from './../components/Worker';
   import ProjectsHeader from './../components/ProjectsHeader';
