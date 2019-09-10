@@ -1,5 +1,5 @@
 <template>
-  <div class="project-item">
+  <div class="project-item" v-show="display">
 
     <div class="content-wrapper">
     <div class="content-block">
@@ -32,7 +32,7 @@
        <div class="content-info">
          <div class="title">
             <div class="title-element">
-              {{title}}
+              {{name}}
             </div>
 
          <div class="title-favourite">
@@ -54,13 +54,13 @@
             </svg>
 
             <span class="bold">אזור עבודה:</span>
-            <span>{{workArea}}</span>
+            <span>{{working_area}}</span>
 
           </div>
         </div>
        </div>
        <div class="content-image">
-         <img :src="imgSrc"  alt="">
+         <img :src="avatar===null? '/static/images/profile/defaultAvatar.png': $env.API_URL+avatar "  alt="">
        </div>
 
      </div>
@@ -80,6 +80,7 @@ import  FavouriteIcon from './common/FavouriteIcon.vue';
         rateFlag: {
           rate: this.rate,
         },
+        display : true,
       }
     },
     props: {
@@ -87,11 +88,10 @@ import  FavouriteIcon from './common/FavouriteIcon.vue';
         type: Number,
         required: true,
       },
-      imgSrc: {
-        default: '',
+      avatar: {
         type: String,
       },
-      title: {
+      name: {
         default: '',
         type: String,
       },
@@ -115,8 +115,7 @@ import  FavouriteIcon from './common/FavouriteIcon.vue';
         default: 'םילכירדא',
         type: String,
       },
-      workArea: {
-        default: '',
+      working_area: {
         type: String,
       }
     },
@@ -131,7 +130,7 @@ import  FavouriteIcon from './common/FavouriteIcon.vue';
         data.append('orderId',this.$route.params.orderId);
         axios.post('/api/addWorkersToOrder',data)
             .then((response)=>{
-              console.log(response);
+              this.display = false;
             }).catch((error)=>{
               console.log(error)
         })

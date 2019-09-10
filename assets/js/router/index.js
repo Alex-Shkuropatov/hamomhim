@@ -24,6 +24,7 @@ import PreferWorker from "./../views/PreferWorker.vue";
 import Profile from "./../views/Profile.vue"
 import NewOrder from "./../views/NewOrder.vue"
 import SearchWorkers from "./../views/SearchWorkers.vue"
+import ProjectFeedback from './../views/ProjectFeedback.vue'
 const routes = [
   {
     path: '/',
@@ -99,9 +100,11 @@ const routes = [
     path: '/projects/:id/orders/:orderId/:order/search-workers',
     component: SearchWorkers,
     name: 'search-workers',
-    props: {
-      order: {},
-    },
+  },
+  {
+    path: '/projects/:id/leave-feedback',
+    component: ProjectFeedback,
+    name: 'project-feedback',
   },
 ];
 

@@ -12,14 +12,15 @@ export default {
   },
   actions: {
     updateData(context, id){
-      axios.post('api/getOrdersByProject',id)
+     return  axios.post('api/getOrdersByProject',id)
         .then(response => {
           console.log(response);
           if(response.data.success){
             context.commit('set', response.data.value );
-            context.commit('load');
           }
-        });
+        }).catch((error)=>{
+        console.log(error);
+      });
     }
   },
   getters: {
