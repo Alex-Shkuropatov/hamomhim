@@ -118,7 +118,7 @@ export default {
         font-weight: bold;
     }
     .description{
-        font-size: ceil($scale1 * 14px);
+        font-size: ceil($scale1 * 16.5px);
         margin-bottom: ceil($scale1 * 25px);
     }
 }

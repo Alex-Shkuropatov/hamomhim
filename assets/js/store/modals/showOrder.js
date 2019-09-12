@@ -7,7 +7,7 @@ export default {
   mutations: {
     close(state) {
       state.opened = false;
-      state.order= '';
+
     },
     open(state) {
       state.opened = true;

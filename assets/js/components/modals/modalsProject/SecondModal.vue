@@ -1,5 +1,4 @@
 <template>
-
     <div class="content-wrapper second-message">
       <h2 class="title">Add new project</h2>
       <p class="projectName">Add order to the project</p>

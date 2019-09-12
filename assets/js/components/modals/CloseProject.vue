@@ -24,12 +24,12 @@
               this.$store.commit('modals/projectPrice/close');
           },
           closeProject() {
-            console.log(this.project);
             axios.post('/api/closeProject', this.project)
                 .then((response)=>{
                   console.log(response);
                   this.$store.commit('modals/projectPrice/close');
-                  this.$router.push('projects/closed-projects');
+
+                  this.$router.push({name : 'project-feedback', params:{'id':this.project.projectId}});
                 }).catch((error)=>{
                   console.log(error.response.data)
             })

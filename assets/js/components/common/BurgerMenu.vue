@@ -68,7 +68,7 @@
       },
       profile(){
         let role  = this.getData.role;
-        role==='worker'?this.$router.push({name: 'projects'}) : this.$router.push({name: 'requests'})
+        role==='architect'?this.$router.push({name: 'projects'}) : this.$router.push({name: 'requests'})
       },
     },
     computed: {

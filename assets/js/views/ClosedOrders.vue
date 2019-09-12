@@ -1,7 +1,6 @@
 <template>
   <div class="projects-wrapper">
 
-
     <projects-header  />
 
   <div class="projects">
@@ -24,7 +23,7 @@
       <div class="projects-list">
         <Order
           class="project-item"
-          v-for="post in posts" :key="post.id"
+          v-for="post in orders" :key="post.id"
           v-bind="post">
         </Order>
       </div>
@@ -42,13 +41,7 @@ import ProjectsHeader from './../components/ProjectsHeader';
 export default {
   data(){
     return {
-      posts: [
-        {id: 1, imgSrc: '/static/images/orders/Photo1.jpg', title: '1 ףינס הקינפאג', url: '#',  description: 'אוה \'םוספיא םרול\' .םידבוע םתא וילע טקיורפה אשונ יפלםילימליכמהתירבעב תועמשמ רסח טסקט םכל וללוח\n' +
-              '.יפוסה רצומל םתמאתהו םכלש טואאיילהו טנופה תקידבלדעוימוקמלממכ שמשמש לל\n' +
-              'רבוע טסקטה ,םתרחבש אשונה יפל הידפיקיומ טסקט ךשומ ל טובור :דבוע רמוספיא־םרולה ללוחמ ךיא\n' +
-              '.ונהתו וסנ .יתריציה םכשומישל המד־טסקטכ ןאכ גצומ זאו ,תינדיתע ללח תייגולונכט תרזעב היצמרופסנרט'},
-        {id: 2, imgSrc: '/static/images/orders/Photo2.jpg', title: '1 ףינס הקינפאג',url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 3, imgSrc: '/static/images/orders/Photo3.jpg', title: '1 ףינס הקינפאג',url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
+      orders: [
       ],
     };
   },
@@ -60,7 +53,19 @@ export default {
   methods: {
     back(){
       this.$router.go(-1);
-    }
+    },
+  },
+  mounted() {
+    axios.post('/api/getOrdersByProject', {project_id: this.$route.params.id})
+        .then((response)=>{
+          console.log(response);
+          console.log(response.data.value);
+          this.orders = response.data.value;
+        })
+        .catch((error)=>{
+          console.log(error.response.data);
+        });
+    console.log(this.$route.params.id);
   }
 }
 </script>
@@ -97,7 +102,7 @@ export default {
   flex-direction: column;
   align-items: center;
 }
-.project-item{
+.order-item{
 
   ::v-deep .actions-wrapper  {
     display: none;
@@ -121,9 +126,12 @@ export default {
     width: 100%;
     padding: 0;
   }
-.project-item{
+.order-item{
   ::v-deep .close {
     display: none;
+  }
+  ::v-deep .description {
+    margin-top: 20px;
   }
   z-index: 1;
   position: relative;

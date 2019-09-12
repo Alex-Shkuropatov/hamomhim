@@ -86,8 +86,7 @@ export default {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   border-radius: 50px;
   .main {
-    margin-left: 148px;
-    width: 200px;
+    width: 100%;
     font-size: 18px;
     text-align: right;
     position: relative;
@@ -95,8 +94,9 @@ export default {
     font-weight: 300;
     .arr {
       position: absolute;
-      right: 310px;
-      top: 5px;
+      right: auto;
+      left: 15px;
+      top: 0px;
       width: 25px;
       height: 100%;
       display: flex;

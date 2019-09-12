@@ -20,11 +20,10 @@
      <div class="add-files">
        <div class="title">םיטנוולר םיצבק רחב אנ</div>
        <div class="row">
-         <button class="th-btn th-btn-blue th-btn-md upload" v-bind:disabled="isDisabled" @click="upload">Upload</button>
          <div class="upload-element">
            <span>םיפסונ םיצבק תאלעה</span>
            <label for="file-upload" class="custom-file-upload addPhoto">
-             <i class="fas fa-cloud-upload-alt"></i>
+             <div class="th-btn th-btn-blue th-btn-md upload" >Upload</div>
            </label>
            <input
                    id="file-upload"
@@ -32,6 +31,7 @@
                   @change="previewFiles"
                   accept="image/x-png,image/gif,image/jpeg,.doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
            />
+           <i class="fas fa-cloud-upload-alt"></i>
          </div>
        </div>
      </div>
@@ -69,7 +69,13 @@ import DropDown from './../common/DropDown'
         },
         isDisabled: true,
         workArea: {
-          items: [ { label: 'אזור עבודה', value: 1 },{ label: 'אזור עבודה', value: 2 }],
+          items: [
+            { label: 'כל הארץ', value: "1" },
+            { label: 'תל אביב', value: "2" },
+            { label: 'חיפה והסביבה', value: "3" },
+            { label: 'השרון והסביבה', value: "4" },
+            { label: 'באר שבע', value: "5" },
+          ],
           value: '',
           labelKey: 'label',
           valueKey: 'label',
@@ -82,7 +88,7 @@ import DropDown from './../common/DropDown'
         let file = event.target.files[0];
         this.currentFile = file;
         this.currentFile.id = generateGuid();
-        this.isDisabled=!this.isDisabled;
+        this.upload(event);
       },
       upload (e){
         e.preventDefault();
@@ -138,6 +144,15 @@ console.log(myFormData);
     display: block;
     cursor: pointer;
   }
+  .fa-cloud-upload-alt{
+    margin-top: -76px;
+    margin-right: -39px;
+    color: #3269B6;
+    @media screen and (max-width:480px) {
+      margin-top: -141px;
+      margin-right: -37px;
+    }
+  }
   .repair-wrapper{
     margin-top: 50px;
     .title{
@@ -147,6 +162,20 @@ console.log(myFormData);
       text-align: center;
       color: #333333;
       margin: 0;
+      @media screen and (max-width:1340px){
+        font-size: 40px;
+      }
+
+      @media screen and (max-width:1340px){
+        font-size: 40px;
+      }
+
+      @media screen and (max-width:1023px){
+        font-size: 31px;
+      }
+      @media screen and (max-width:767px){
+        font-size: 27px;
+      }
     }
     .description{
       font-size: 36px;
@@ -154,6 +183,12 @@ console.log(myFormData);
       letter-spacing: -0.02em;
       color: #828282;
       margin: 0;
+      @media screen and (max-width:1023px){
+        font-size: 25px;
+      }
+      @media screen and (max-width:767px){
+        font-size: 20px;
+      }
     }
   }
 .form{
@@ -199,10 +234,9 @@ console.log(myFormData);
        border-radius: 50px;
        @media screen and (max-width:1440px) {
          width: 333px;
-         height: 60px;
        }
        @media screen and (max-width:767px) {
-         width: 450px;
+         width: 367px;
        }
        @media screen and (max-width:480px) {
          width: 300px;
@@ -214,9 +248,9 @@ console.log(myFormData);
   }
 }
 .upload{
-  margin-right: 40px;
+  margin-right: 240px;
   @media screen and (max-width: 480px){
-    margin: 20px 0 0 0 ;
+    margin: 47px 70px 0 0 ;
 
   }
 }
@@ -298,6 +332,14 @@ console.log(myFormData);
       height: 50px;
      margin: unset;
       margin-top: 50px;
+    }
+  }
+  .selectWrapper{
+    .inputName{
+      width: 367px;
+      @media screen and (max-width: 480px) {
+        width: 300px;
+      }
     }
   }
 </style>

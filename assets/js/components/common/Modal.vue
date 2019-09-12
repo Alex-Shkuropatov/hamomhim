@@ -57,8 +57,9 @@
     z-index: 200;
     display: flex;
     justify-content: center;
-
-
+@media screen and (max-width:480px){
+  padding-top: 120px;
+}
   }
   .closeB{
     fill:#BDBDBD;
