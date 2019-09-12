@@ -35,7 +35,9 @@ props: {
   id: {
     type: Number,
 },
-
+  responses: {
+    type: Array
+  },
 },
     methods: {
     deleteWorker(){

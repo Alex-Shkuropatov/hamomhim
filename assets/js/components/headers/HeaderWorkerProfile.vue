@@ -1,7 +1,7 @@
 <template>
 
   <header class="header-n">
-    <div class="nav-bar">
+    <div class="nav-bar" ref="navMenu">
       <div class="social-links">
         <a href="#" class="whatsapp-wrap">
           <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -67,10 +67,8 @@
   import axios from 'axios';
   import BurgerMenu from '../common/BurgerMenu.vue'
   export default {
-    data: function (){
-      return {
-
-      }
+    data: function () {
+      return {}
     },
     components: {
       FavouriteIcon,
@@ -80,34 +78,33 @@
       BurgerMenu
     },
     methods: {
-      openReg(e){
+      openReg(e) {
         e.preventDefault();
         this.$store.commit('modals/reg/open');
       },
-      openLogin(e){
+      openLogin(e) {
         e.preventDefault();
         this.$store.commit('modals/login/open');
       },
-      logout(e){
+      logout(e) {
         axios.get('/api/auth/logout')
             .then(() => {
-              this.$store.commit('user/logout' );
+              this.$store.commit('user/logout');
             })
             .catch((error) => {
               console.log(error.response.data);
             });
       },
-      profile(){
-        let role  = this.getData.role;
-         role==='worker'? this.$router.push({name: 'requests'}):this.$router.push({name: 'projects'}) ;
+      profile() {
+        let role = this.getData.role;
+        role === 'worker' ? this.$router.push({name: 'requests'}) : this.$router.push({name: 'projects'});
       },
     },
     computed: {
       getData() {
         return this.$store.getters['user/data'];
       }
-    },
-
+    }
   }
 </script>
 
@@ -156,13 +153,13 @@
     }
   }
   .nav-bar{
-    padding-top: 43px;
     margin: 0 auto;
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
-    width: 1515px;
+    padding: 43px 81px 0 81px;
     max-width: 1920px;
+
   }
   .logo-wrap{
     margin-left: 70px;

@@ -7,7 +7,7 @@
         <h2 class="title-order">Choose order</h2>
         <div class="swiper-button-prev th-slider-arrow th-slider-arrow-right" slot="button-prev" data-uid="2"></div>
         <swiper :options="sliderOptions" >
-          <swiper-slide class="slide-outer" v-for="order in orders" :key="order.id">
+          <swiper-slide class="slide-outer" v-for="order in orders"  :key="order.id">
             <div class="slide-inner" >
               <div class="image-wrapper">
                 <img class="order-img" :src="order.thumbnail===null ? '/static/images/profile/defaultAvatar.png': $env.API_URL+order.thumbnail " alt="">
@@ -20,7 +20,6 @@
             </div>
           </swiper-slide>
         </swiper>
-
       </div>
     </div>
   </div>
@@ -37,7 +36,7 @@
         sliderOptions: {
           // spaceBetween: 30,
           slidesPerView: 2,
-          slidesPerColumn: 2,
+          slidesPerColumn: 1,
           navigation: {
             nextEl: '.swiper-button-next[data-uid="1"]',
             prevEl: '.swiper-button-prev[data-uid="2"]',
@@ -65,6 +64,10 @@
             console.log(response);
             this.$store.commit('orders/set', response.data.value);
             this.orders = response.data.value;
+            if(this.orders.length>2){
+              console.log(this.orders);
+              this.sliderOptions.slidesPerColumn = 2;
+            }
           })
           .catch((error) => {
             console.log(error.response.data);
@@ -83,6 +86,9 @@
         });
 
       },
+    },
+    skip() {
+      this.$router.push({name: 'closed-projects'});
     },
   }
 </script>
@@ -154,4 +160,8 @@
       color: #333333;
     }
   }
+  .text-center{
+    margin-top: 25px;
+  }
+
 </style>

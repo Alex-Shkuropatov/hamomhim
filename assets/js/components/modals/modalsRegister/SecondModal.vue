@@ -440,6 +440,7 @@ div{
   }
 }
 .dropDown{
+  width: 345px;
   @media screen and (max-width: 900px) {
     height: 41.47px;
   }

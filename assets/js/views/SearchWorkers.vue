@@ -3,7 +3,6 @@
 
     <projects-header/>
 
-
     <div class="workers-list">
       <div class="title">
         <h1 class="title-t">שדח ןלבק ףסוה</h1>
@@ -11,16 +10,17 @@
           <button class="back-b" @click="back"><i class="fas fa-chevron-right"></i>רוזח</button>
         </div>
       </div>
-      <div class="projects-list-wrap h-container">
-        <div class="workers-list">
+      <div class="projects-list-wrap h-container" v-show="done" >
+        <div class="workers-list" v-show="workers.length!==0">
           <Worker
-                  @delete="onDelete"
                   class="worker-item"
                   v-for="worker in workers" :key="worker.id"
                   v-bind="worker">
           </Worker>
         </div>
-
+        <div class="empty" v-show="workers.length===0">
+          <h3 > <i class="fas fa-user-times"></i>  We cant find any worker suitable to your order</h3>
+        </div>
       </div>
     </div>
   </div>
@@ -36,9 +36,9 @@
   export default {
     data() {
       return {
-        workers: [],
+        workers: [{}],
         formData : new FormData(),
-        workerData: this.getData
+        done: false,
       };
     },
     props: {
@@ -74,9 +74,10 @@
           }
 
            if(orderData.subcategories.length !== 0){
-             this.formData.append('subcategories',  orderData.subcategories);
+             for (let i=0; i<orderData.subcategories.length;i++){
+               this.formData.append('subcategories[]',  orderData.subcategories[i]);
+             }
            }
-
            response.data.value.workers.forEach((worker)=>{
              this.formData.append('exclude[]',  worker.id);
            });
@@ -84,6 +85,8 @@
         return axios.post('/api/searchWorkers', this.formData)
             .then((response) => {
               this.workers = response.data.value;
+              this.done=true;
+              console.log(this.workers);
             })
             .catch((error) => {
               console.log(error);
@@ -91,8 +94,6 @@
            });
       });
     },
-
-
   }
 </script>
 
@@ -220,6 +221,16 @@
       color: #333333;
       margin: 0;
       margin-top: 30px;
+    }
+  }
+  .empty{
+    h3{
+      text-align: center;
+      i{
+        margin-left: 20px;
+        margin-bottom: 10px;
+        font-size: 40px;
+      }
     }
   }
 </style>

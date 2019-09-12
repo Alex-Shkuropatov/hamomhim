@@ -1,15 +1,18 @@
 <template>
   <transition name="slide-fade">
     <modal v-if="$store.getters['modals/showWorkers/isOpened']" @close="close">
-      <div class="content-wrapper">
+      <div class="content-wrapper" >
         <h2 class="title-h"> הנמזהב םידבוע</h2>
-      <div class="workers-list">
+      <div class="workers-list" v-show="getData.length!==0">
         <order-workers
                 class="orders-item"
                 v-for="worker in getData" :key="worker.id"
                 v-bind="worker">
         </order-workers>
       </div>
+        <div class="empty" v-show="getData.length===0">
+          <h3> No workers on order</h3>
+        </div>
       </div>
     </modal>
   </transition>
@@ -36,6 +39,7 @@
     data () {
       return {
         orderId: '',
+        done: false,
       }
     },
     computed: {
@@ -44,6 +48,7 @@
       },
 
     },
+
   }
 </script>
 

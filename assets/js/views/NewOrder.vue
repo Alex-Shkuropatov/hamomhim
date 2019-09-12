@@ -69,5 +69,7 @@ CategoriesSlider,
 </script>
 
 <style lang="scss" scoped>
-
+.wrapper{
+padding-top: 20px;
+}
 </style>

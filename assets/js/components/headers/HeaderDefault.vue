@@ -127,7 +127,7 @@
       -ms-align-items: center;
       align-items: center;
       justify-content: space-between;
-      @media screen and (max-width: 1240px){
+      @media screen and (max-width: 1024px){
         justify-content: flex-end;
       }
     }
@@ -137,6 +137,12 @@
     img{
       width: 100%;
       height: auto;
+    }
+    @media screen and (max-width: 1244px){
+      margin-right: 100px;
+    }
+    @media screen and (max-width: 1024px){
+      margin-right: 0;
     }
   }
   .auth-btns{
@@ -157,7 +163,7 @@
       align-items: center;
 
     }
-    @media screen and (max-width: 900px) {
+    @media screen and (max-width: 1024px) {
       display: none;
     }
   }

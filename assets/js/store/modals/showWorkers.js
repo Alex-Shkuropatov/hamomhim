@@ -8,6 +8,7 @@ export default {
   mutations: {
     close(state) {
       state.opened = false;
+      state.workers = [];
     },
     open(state) {
       state.opened = true;

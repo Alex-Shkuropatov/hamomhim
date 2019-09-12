@@ -1,5 +1,5 @@
 <template>
-<div class="profile-wrapper">
+<div class="profile-wrapper" ref="nav">
 
  <div class="profile-about">
 
@@ -183,7 +183,7 @@ export default {
  },
  methods: {
 
- },
+ }
 }
 </script>
 

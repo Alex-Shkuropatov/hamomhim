@@ -81,7 +81,7 @@ const routes = [
     name: 'prefer-worker',
   },
   {
-    path: '/view-profile',
+    path: '/view-profile/:id',
     component: WorkerProfile,
     name: 'view-profile',
   },

@@ -44,8 +44,9 @@ import PostClose from '../common/PostClose'
     position: relative;
     width: 1059px;
     height: 90px;
-    border-top: 2px solid gray;
-    border-bottom: 2px solid gray;
+    margin-top: -2px;
+    border-top: 2px solid #E0E0E0;
+    border-bottom: 2px solid #E0E0E0;
     @media screen and (max-width:1440px){
       width: 500px;
     }

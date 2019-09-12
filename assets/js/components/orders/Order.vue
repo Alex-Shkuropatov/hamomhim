@@ -140,6 +140,7 @@
       showWorkers(){
         this.$store.commit('modals/showWorkers/saveData', {'order_id':this.id});
         this.$store.commit('modals/showWorkers/open');
+
       }
     },
     mounted() {

@@ -138,6 +138,7 @@ export default {
     width: calc(100% - (#{$gutters} * 3));
   }
   .th-heading{
+    color: #333333;
     margin-bottom: 0;
     margin-top: 10px;
   }
