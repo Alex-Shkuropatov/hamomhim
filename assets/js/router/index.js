@@ -24,6 +24,7 @@ import WorkerProfile from "./../views/WorkerProfile.vue"
 import NewOrder from "./../views/NewOrder.vue"
 import SearchWorkers from "./../views/SearchWorkers.vue"
 import ProjectFeedback from './../views/ProjectFeedback.vue'
+
 const routes = [
   {
     path: '/',
@@ -100,6 +101,7 @@ const routes = [
     component: ProjectFeedback,
     name: 'project-feedback',
   },
+
 ];
 
 

@@ -5,7 +5,7 @@
   <img class="profileImg" :src="avatar===null? '/static/images/profile/defaultAvatar.png': $env.API_URL+avatar "  alt="">
 </div>
     <div class="title">
-{{name}}
+    {{name}}
     </div>
     <div class="desciption">
 
@@ -13,7 +13,9 @@
     <div class="under-text">
 
     </div>
-    <button class="th-btn th-btn-blue th-btn-lg view-profile">  הבוגת ראשה</button>
+    <button class="th-btn th-btn-blue th-btn-lg open-response" v-bind:class="{color: response===null }" :disabled="response === null" @click="openResponse" > הבוגת ראשה</button>
+    <button class="view" @click="viewProfile" >צפה בפרופיל</button>
+
   </div>
 </template>
 
@@ -35,8 +37,8 @@ props: {
   id: {
     type: Number,
 },
-  responses: {
-    type: Array
+  response: {
+    type: Object,
   },
 },
     methods: {
@@ -51,9 +53,15 @@ props: {
       }). catch((error)=>{
         console.log(error);
       });
-
-
     },
+      openResponse(){
+        this.$emit('getResponse', {
+          response: this.response,
+        })
+      },
+      viewProfile(){
+        this.$router.push({name:'view-profile', params: {'id': this.id}})
+      },
     },
     components: {
       PostClose,
@@ -63,6 +71,7 @@ props: {
         return this.$store.getters['modals/showWorkers/getOrderId'];
       },
     },
+
   }
 </script>
 
@@ -94,16 +103,29 @@ props: {
     height: 80px;
     border-radius: 50%;
   }
-  .view-profile{
-
-    width: 100px;
+  .open-response{
+    width: 123px!important;
     height: 25px;
-
     font-weight: bold;
     font-size: 14px;
-
     text-align: center;
-    padding-right: 31px;
+    padding: 0 24px 0 0px;
+    margin-bottom: 20px;
+  }
+  .color{
+    background: linear-gradient(90deg, gray 0%, gray 100%)!important;
+    border: none!important;
+    transition: unset!important;
+    position: static;
+    transform:  unset!important;
+  }
+  .view{
+    position: absolute;
+    bottom: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+    color: #333333;
   }
 </style>
 

@@ -7,7 +7,12 @@
       <div class="wrapper">
         <div class="orderWrapper">
           <p class="formItem" >שם מלא</p>
-          <input type="text" placeholder="שם מלא" v-model="name" class="inputName">
+          <input
+                  type="text"
+                 placeholder="שם מלא"
+                 v-model="name"
+                 class="inputName"
+          >
         </div>
         <div class="orderWrapper">
           <p class="formItem" >מייל</p>
@@ -86,6 +91,7 @@
 <script>
   import Modal from './../../common/Modal.vue';
   import DropDown from './../../common/DropDown.vue';
+
   export default {
     methods: {
       close() {

@@ -321,8 +321,11 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: flex-end;
+        justify-content: center;
+        @media screen and (max-width: 1920px) {
+          justify-content: flex-end;
 
+        }
         @media screen and (max-width: 1440px) {
           flex-direction: column-reverse;
           justify-content: center;
@@ -335,7 +338,6 @@
         }
         .buildersImg{
           img {
-
             @media screen and (min-width: 2555px) {
               width:  836px;
             }
@@ -357,7 +359,7 @@
           height: 477px;
           @media screen and (max-width: 1820px) {
             text-align: center;
-            margin: 0 20px 0 20px;
+            margin: 0 6px 0 6px;
           }
           @media screen and (max-width: 1600px) {
             width: 90%;
@@ -403,9 +405,7 @@
             margin-bottom: 10px;
             width: 490px;
             background-color: white;
-            @media screen and (max-width: 1820px) {
-              margin-left: 184px;
-            }
+
             @media screen and (max-width: 1600px){
               width: 72%;
               margin: unset;

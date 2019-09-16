@@ -36,8 +36,8 @@
                   <subcategory
                           class="orders-item"
                           v-for="subcategory in getData.subcategories"
-                          v-bind:value="subcategory"
-                          :key="subcategory"
+                          v-bind:value="subcategory.name"
+                          :key="subcategory.id"
                   >
                   </subcategory>
                 </div>

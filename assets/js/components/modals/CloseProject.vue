@@ -4,10 +4,24 @@
             <div class="content-wrapper third-message">
                 <h2 class="title">סיכום פרויקט</h2>
                 <p class="projectName">נא הזן את סכום הפרויקט</p>
-                <input type="text" class="container-value" v-model="project.price" placeholder="םוכס">
+                <input
+                        :class="{ 'error': $v.project.price.$error, 'container-value': true }"
+                       type="number"
+                       v-model.trim="project.price"
+                       placeholder="םוכס"
+                        @input="$v.project.price.$touch()"
+                >
+              <div class="error-wrapper" v-if="$v.project.price.$dirty">
+              <p class="error-message" v-if="!$v.project.price.required">
+                Please enter price of the project
+              </p>
+                <p class="error-message" v-else-if ="!$v.project.price.checkPrice">
+                  Price must be > 0
+                </p>
+              </div>
                 <div class="buttons-wrapper">
                   <button class="saveB"  style="text-align:center" @click='closeProject' >לוטיב</button>
-                    <button class="closeB"  style="text-align:center" @click='close' > טקיורפ רוגס</button>
+                    <button class="closeB"  style="text-align:center" @click='close'   > טקיורפ רוגס</button>
                 </div>
             </div>
     </modal>
@@ -16,26 +30,37 @@
 
 <script>
   import Modal from '../common/Modal.vue'
-
-
+  import { required } from "vuelidate/lib/validators";
+const checkPrice = (value) => value>0;
   export default {
       methods: {
           close() {
               this.$store.commit('modals/projectPrice/close');
           },
           closeProject() {
-            axios.post('/api/closeProject', this.project)
-                .then((response)=>{
-                  console.log(response);
-                  this.$store.commit('modals/projectPrice/close');
+            this.$v.project.price.$touch();
 
-                  this.$router.push({name : 'project-feedback', params:{'id':this.project.projectId}});
-                }).catch((error)=>{
-                  console.log(error.response.data)
-            })
+            if (!this.$v.$invalid){
+              axios.post('/api/closeProject', this.project)
+                  .then((response)=>{
+                    console.log(response);
+                    this.$store.commit('modals/projectPrice/close');
 
+                    this.$router.push({name : 'project-feedback', params:{'id':this.project.projectId}});
+                  }).catch((error)=>{
+                console.log(error.response.data)
+              })
+            }
           },
       },
+    validations: {
+      project: {
+        price:{
+          required,
+          checkPrice,
+        }
+      }
+    },
       components: {
           Modal,
       },
@@ -62,7 +87,11 @@
 </script>
 
 <style lang="scss" scoped>
-
+  .form {
+    display: inline-block;
+    text-align: center;
+    width: 49%;
+  }
     .buttons-wrapper{
         display: flex;
         flex-direction: row;
