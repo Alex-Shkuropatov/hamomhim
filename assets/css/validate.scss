@@ -1,0 +1,26 @@
+.error-message{
+  color: red;
+  margin: 0;
+  font-size: 16.5px;
+}
+.error-message-a{
+  color: red;
+  margin: 0;
+  font-size: 16.5px;
+  position: absolute;
+}
+.validators {
+  display: inline-block;
+  width: 49%;
+  text-align: center;
+  vertical-align: top;
+}
+.input {
+  padding: 5px;
+}
+input:focus {
+  outline: none;
+}
+.error {
+  border: 1px solid red!important;
+}

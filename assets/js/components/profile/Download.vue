@@ -41,6 +41,12 @@ import DownloadDocument from './DownloadDocument'
 .download-files{
   margin:  0 auto;
   width: 1449px;
+  @media screen and (max-width:1650px ) {
+    width: 1266px;
+  }
+  @media screen and (max-width:1440px ) {
+    width: 900px;
+  }
   .title{
     color: #333333;
     display: flex;
@@ -48,6 +54,10 @@ import DownloadDocument from './DownloadDocument'
     align-items: center;
     width: 400px;
     margin-right: 80px;
+    @media screen and (max-width: 1600px) {
+      width: 100%;
+      justify-content: center;
+    }
     hr{
       margin-top:38px;
       margin-right: 10px;

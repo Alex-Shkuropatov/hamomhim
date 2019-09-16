@@ -113,8 +113,7 @@
   }
   .header{
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
-    position: fixed;
+     position: fixed;
     z-index: 3000;
     height: ceil($scale1 * 100px);//80px//
     width: 100%;

@@ -75,6 +75,7 @@
     },
     methods:{
       showWorkers(id){
+        console.log(id);
         axios.post('/api/getOrderWorkers', {'order_id':id}
         ).then((response)=>{
           console.log(response);

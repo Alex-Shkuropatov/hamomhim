@@ -9,7 +9,7 @@
  <div class="block-wrapper">
 <div class="block-wrapper-element">
  <div class="element-padd">
- <div class="title"> <span>בולואש ןויצ</span> <favourite-icon/> </div>
+ <div class="title"> <span>{{user.name}}</span> <favourite-icon v-if="getData.role==='architect'"  /> </div>
  <div class="stats-block">
   <div class="stats">
    <div class="stats-element">
@@ -44,7 +44,7 @@
     </svg>
 
     <span class="bold">אזור עבודה:</span>
-    <span>{{user.workArea}}</span>
+    <span>{{user.working_area}}</span>
 
    </div>
   </div>
@@ -82,7 +82,7 @@
     </defs>
    </svg>
 
-   <span>{{user.mail}} </span>
+   <span>{{user.email}} </span>
   </div>
    <div class="contacts-element phone">
     <span>{{user.phone}}</span>
@@ -117,6 +117,7 @@
  </div>
   </div>
 </div>
+
  <div class="slider-wrap h-container-works">
   <div class="swiper-button-prev th-slider-arrow th-slider-arrow-right" slot="button-prev" data-uid="8"></div>
   <swiper :options="sliderOptions" class="works-slider" ref="newsSlider">
@@ -127,7 +128,7 @@
   <div class="swiper-button-next th-slider-arrow th-slider-arrow-left" slot="button-next" data-uid="7"></div>
  </div>
 
-<feedback/>
+<feedback  v-bind="feed" />
 
 <download />
 
@@ -167,6 +168,17 @@ export default {
     navigation: {
      nextEl: '.swiper-button-next[data-uid="7"]',
      prevEl: '.swiper-button-prev[data-uid="8"]',
+    },
+    breakpoints: {
+     1500: {
+      slidesPerView: 4,
+     },
+     1024: {
+      slidesPerView: 3
+     },
+     769: {
+      slidesPerView: 3
+     },
     }
    },
    posts: [
@@ -179,11 +191,37 @@ export default {
     {id: 8, imgSrc: '/static/images/profile/w-4.png', title: 'יללכ ץופיש', url: '#', description: 'למשחו היצלטסניא ,סבג ,ףוציר ,עבצ תודובע'},
     {id: 9, imgSrc: '/static/images/profile/work-1.png', title: 'יללכ ץופיש', url: '#', description: 'למשחו היצלטסניא ,סבג ,ףוציר ,עבצ תודובע'},
    ],
+ feed: {
+  posts: [
+         ],
+     },
    }
  },
  methods: {
 
+ },
+ mounted() {
+  axios.post('/api/getWorkerProfile',{'user_id': this.$route.params.id})
+      .then((response)=>{
+      console.log(response.data.value);
+      this.user = response.data.value.user;
+      console.log(this.user);
+       axios.post('/api/getRatingsOnUser',{'worker_id':this.user.id})
+               .then((response)=>{
+                console.log(response.data.value);
+                this.feed.posts = response.data.value;
+               }).catch((error)=>{
+        console.log(error);
+       });
+      }).catch((error)=>{
+      console.log(error);
+      });
+ },
+computed: {
+ getData() {
+  return this.$store.getters['user/data'];
  }
+}
 }
 </script>
 
@@ -201,7 +239,6 @@ export default {
  .profile-about{
   margin: 70px auto;
   padding: 70px 0 0 0;
-  width: 1265px;
   height: auto;
   position: relative;
   display: flex;
@@ -225,6 +262,9 @@ export default {
    display: flex;
    flex-direction: column;
    align-items: center;
+   @media screen and (max-width: 1440px){
+    width: unset;
+   }
   }
  }
  }
@@ -274,7 +314,6 @@ export default {
   }
  }
  .stats {
-  width: 66%;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -320,7 +359,7 @@ export default {
  }
  .stats-block{
   .description{
-
+   min-height: 110px;
   }
   hr{
    opacity: 0.7;
@@ -383,6 +422,10 @@ export default {
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
+  @media screen and (max-width: 1650px) {
+   width: unset;
+   justify-content: center;
+  }
   .view-all{
    color: #074DAC;
    font-weight: bold;

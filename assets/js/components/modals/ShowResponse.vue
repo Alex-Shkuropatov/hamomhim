@@ -1,6 +1,6 @@
 <template>
   <transition name="slide-fade">
-    <modal v-if="$store.getters['modals/showOrder/isOpened']" @close="close">
+    <modal v-if="$store.getters['modals/showResponse/isOpened']" @close="close">
       <div class="content-wrapper">
         <h2 class="title">Response</h2>
 
@@ -22,6 +22,11 @@
     components: {
       Modal,
 
+    },
+    methods: {
+      close(){
+        this.$store.commit('modals/showResponse/close');
+      }
     },
 
     mounted() {

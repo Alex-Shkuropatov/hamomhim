@@ -6,6 +6,7 @@ import projectPrice from './projectPrice'
 import showOrder from './showOrder'
 import responseForm from './responses/responseForm'
 import showWorkers from './showWorkers'
+import showResponse from './showResponse'
 export default {
   namespaced: true,
   modules: {
@@ -17,6 +18,7 @@ export default {
     responseForm,
     showOrder,
     showWorkers,
+    showResponse,
   },
   state: {
 

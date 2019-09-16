@@ -8,18 +8,86 @@
     <h2 class="title">צור קשר</h2>
     <div class="textWrapper">
       <div class="row">
-        <input type="text" v-model.trim="name" placeholder="שם מלא" class="marge">
-        <input type="text" v-model.trim="mail"  placeholder="מייל" >
+        <div class="input-wrapper">
+        <input type="text"
+               :class="{ 'error': $v.name.$error, 'inputName': true }"
+               v-model.trim.lazy="name"
+               placeholder="שם מלא"
+               class="marge"
+               @input="$v.name.$touch()"
+        >
+          <div class="error-wrapper" v-if="$v.name.$dirty">
+            <p class="error-message-a" v-if="!$v.name.required">
+              Please enter your name
+            </p>
+          </div>
+      </div>
+        <div class="input-wrapper">
+        <input type="text"
+               :class="{ 'error': $v.mail.$error, 'inputName': true }"
+               v-model.trim.lazy="mail"
+               placeholder="מייל"
+               @input="$v.mail.$touch()"
+        >
+          <div class="error-wrapper" v-if="$v.mail.$dirty">
+            <p class="error-message-a" v-if="!$v.mail.required">
+              Please enter your mail
+            </p>
+            <p class="error-message-a" v-else-if="!$v.mail.checkMail">
+              Mail is incorrect
+            </p>
+          </div>
+
+        </div>
       </div>
       <div class="row">
+        <div class="input-wrapper">
+        <input type="text"
+               :class="{ 'error': $v.phone.$error, 'inputName': true }"
+               v-model.trim="phone"
+               placeholder="מספר נייד"
+               class="marge"
+               @input="$v.phone.$touch()"
+        >
+          <div class="error-wrapper" v-if="$v.phone.$dirty">
+            <p class="error-message-a" v-if="!$v.phone.required">
+              Please enter your phone
+            </p>
+            <p class="error-message-a" v-else-if="!$v.phone.checkPhone">
+              Phone is incorrect
+            </p>
+          </div>
 
-        <input type="text" v-model.trim="phone" placeholder="מספר נייד" class="marge">
-        <input type="text" v-model.trim="area" placeholder="איזור">
+        </div>
+        <div class="input-wrapper">
+        <input type="text"
+               v-model.trim="area"
+               placeholder="איזור"
+        >
+        </div>
       </div>
-      <textarea name="msg" v-model.trim="message" id="" cols="30" placeholder="הודעה חופשית" rows="10"></textarea>
+      <div class="input-wrapper">
+        <input type="text"
+               :class="{ 'error': $v.title.$error }"
+               id="title-input"
+               v-model.trim="title"
+               placeholder="איזור"
+               @input="$v.title.$touch()"
+        >
+        <div class="error-wrapper" v-if="$v.title.$dirty">
+          <p class="error-message-a" v-if="!$v.title.required">
+            Fill the field
+          </p>
+          <p class="error-message-a" v-else-if="!$v.title.minLength">
+            Title must contain more than 4 symbols
+          </p>
+        </div>
+      </div>
+
+      <textarea class="txt" name="msg" v-model.trim="message" id="" cols="30" placeholder="הודעה חופשית" rows="10"></textarea>
     </div>
 
-    <button class="th-btn th-btn-blue th-btn-sm" v-on:click="sendDate">שליחת הודעה</button>
+    <button class="th-btn th-btn-blue th-btn-sm"  v-on:click="sendDate">שליחת הודעה</button>
   </form>
 
 
@@ -35,29 +103,62 @@
 </template>
 
 <script>
-export default {
+  import { required, minLength } from "vuelidate/lib/validators";
+  const checkMail= (value) =>{
+    let mail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ ;
+    return mail.test(value);
+  };
+  const checkPhone= (value) =>{
+    let phone = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im ;
+    return phone.test(value);
+  };
+  export default {
   data: function () {
     return {
       name: '',
       mail: '',
       area: '',
       phone: '',
+      title: '',
       message: '',
       isHidden: false,
       isShowed : true
     }
   },
+  validations: {
+    name:{
+      required,
+    },
+    mail: {
+      required,
+      checkMail,
+    },
+    phone: {
+      required,
+      checkPhone,
+    },
+    title:{
+      required,
+      minLength: minLength(4),
+    }
+  },
   methods: {
     sendDate: function (e) {
       e.preventDefault();
-      this.isHidden = !this.isHidden;
-      this.isShowed = !this.isShowed;
-      let dateArr = [this.name, this.mail, this.area, this.phone, this.message];
-      console.log(dateArr);
-      dateArr.forEach((field) => {
-        this.validate(field);
-      });
 
+      this.$v.name.$touch();
+      this.$v.mail.$touch();
+      this.$v.phone.$touch();
+
+      if (!this.$v.$invalid) {
+        let dateArr = [this.name, this.mail, this.area, this.phone, this.message];
+        console.log(dateArr);
+        this.isHidden = !this.isHidden;
+        this.isShowed = !this.isShowed;
+        dateArr.forEach((field) => {
+          this.validate(field);
+        });
+      }
     },
     validate: function (field) {
       if (field!==""){
@@ -138,19 +239,19 @@ export default {
      }
     input[type="text"]{
 
-      margin-top: 19px;
+      margin-top: 25px;
       background: rgba( 255,255,255, 0.5);
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
       border-radius: 50px;
       border: none;
       width: 490px;
-      height: 65px;
-      padding: 25px;
+      height: auto;
+      padding: 4px 22px 22px 0px;
       font-family: Assistant;
       font-style: normal;
       font-weight: bold;
       font-size: 24px;
-      line-height: 65px;
+      line-height: 27px;
       @media screen and (max-width: 1605px){
         font-size: 20px;
       }
@@ -172,23 +273,29 @@ export default {
       }
       @media screen and (max-width: 1605px){
         width: 350px;
-        height: 40px;
       }
       @media screen and (max-width: 1440px){
+        width: 565px;
+      }
+      @media screen and (max-width: 620px){
+      width: 350px;
+    }
+      @media screen and (max-width: 400px){
         width: 100%;
       }
       @media screen and (max-width: 600px){
         background: rgba( 71,74,81, 0.4);
       }
     }
-    textarea{
+
+    .txt{
       margin-top: 19px;
       background: rgba( 255,255,255, 0.5);
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
       border-radius: 50px;
       width: 1007px;
       height: 280px;
-      padding: 20px;
+      padding-right: 20px;
       font-family: Assistant;
       font-style: normal;
       font-weight: bold;
@@ -215,9 +322,9 @@ export default {
         }
       }
       @media screen and (max-width: 1605px){
-        width: 730px;
-        height: 200px;
-      }
+      width: 730px;
+      height: 200px;
+    }
       @media screen and (max-width: 1440px){
         width: 600px;
       }
@@ -356,6 +463,24 @@ button::-moz-focus-inner {
     @media screen and (max-width: 480px){
       display: block;
       object-fit: cover;
+    }
+  }
+  .input-wrapper{
+    position: relative;
+  }
+  #title-input{
+    width: 1000px!important;
+    @media screen and (max-width: 1605px){
+      width: 730px!important;
+    }
+      @media screen and (max-width: 1440px){
+      width: 565px!important;
+    }
+    @media screen and (max-width: 620px){
+      width: 350px!important;
+    }
+    @media screen and (max-width: 400px){
+      width:100%!important;
     }
   }
 </style>

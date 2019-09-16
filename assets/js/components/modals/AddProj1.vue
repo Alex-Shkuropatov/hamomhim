@@ -6,12 +6,41 @@
       <h2 class="title">שדח טקיורפ תפסוה</h2>
       <p class="projectName"> טקיורפ םש ןזה</p>
       <form action="">
-        <input class="inputName" placeholder=" טקיורפ םש" v-model="name" type="text"  >
-        <textarea class="description" name="description" v-model="description" placeholder="רואית" ></textarea>
+        <input
+                :class="{ 'error': $v.name.$error, 'inputName': true }"
+                placeholder=" טקיורפ םש"
+                v-model.trim="name"
+                type="text"
+                @input="$v.name.$touch()"
+        >
+        <div class="error-wrapper" v-if="$v.name.$dirty">
+          <p class="error-message" v-if="!$v.name.required">
+            Please enter project name
+          </p>
+          <p class="error-message" v-else-if="!$v.name.minLength">
+            Project name must contain more than 2 symbols
+          </p>
+        </div>
+        <textarea
+                :class="{ 'error': $v.description.$error, 'inputName': true }"
+                class="description"
+                name="description"
+                v-model.trim="description"
+                placeholder="רואית"
+                @input="$v.description.$touch()"
+        ></textarea>
+        <div class="error-wrapper" v-if="$v.description.$dirty">
+          <p class="error-message" v-if="!$v.description.required">
+            Please enter project description
+          </p>
+          <p class="error-message" v-else-if="!$v.description.minLength">
+            Description must contain more than 10 symbols
+          </p>
+        </div>
       </form>
       <div class="buttons-wrapper">
 
-        <button class="saveB" style="text-align:center" @click='send' >Save</button>
+        <button class="saveB" style="text-align:center"   @click='send' >Save</button>
         <button class="closeB" style="text-align:center" @click='closeB' >Close</button>
       </div>
     </div>
@@ -23,26 +52,43 @@
 
 <script>
   import Modal from './../common/Modal.vue';
+  import { required, minLength } from "vuelidate/lib/validators";
+
   export default {
     methods: {
       closeB() {
         this.$store.commit('modals/newProject/close');
       },
       send () {
-        this.$store.commit('modals/newProject/close');
-        let user = this.getData;
+        this.$v.name.$touch();
+        this.$v.description.$touch();
+
+        if(!this.$v.$invalid) {
+          this.$store.commit('modals/newProject/close');
+          let user = this.getData;
           let data = {
-            name : this.name,
+            name: this.name,
             description: this.description,
           };
-            axios.post('/api/addNewProject', data)
-            .then((response) => {
-              console.log(response);
-               this.$router.push({ name: 'orders', params:{id:response.data.value} })
-            })
-            .catch((error) => {
-              console.log(error.response.data);
-            });
+          axios.post('/api/addNewProject', data)
+              .then((response) => {
+                console.log(response);
+                this.$router.push({name: 'orders', params: {id: response.data.value}})
+              })
+              .catch((error) => {
+                console.log(error.response.data);
+              });
+        }
+      },
+    },
+    validations: {
+        name:{
+          required,
+          minLength: minLength(2)
+        },
+      description:{
+        required,
+        minLength: minLength(2)
       },
     },
     computed: {
@@ -82,7 +128,7 @@
       letter-spacing: -0.02em;
       color: #333333;
     }
-    p{
+    .projectName{
       margin: 0;
       font-style: normal;
       font-weight: normal;

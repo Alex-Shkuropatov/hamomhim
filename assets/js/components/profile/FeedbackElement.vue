@@ -113,7 +113,7 @@ import ShowMore from './../../components/profile/ShowMore'
 }
 .content-wrapper{
   padding-right: 216px;
-
+  min-height: 230px;
   .title {
     width: 750px;
     font-weight: bold;
@@ -126,8 +126,7 @@ import ShowMore from './../../components/profile/ShowMore'
     animation-duration: 2s;
     animation-timing-function: ease;
     transition: all 0.8s;
-
-    width: 800px;
+      max-width: 500px;
     font-size: 24px;
     text-align: right;
     color: #4F4F4F;

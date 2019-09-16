@@ -1,8 +1,7 @@
 <template>
-  <div class="news-section h-container">
+  <div class="  h-container">
     <div class="th-heading text-center">בלוג</div>
     <div class="slider-wrap">
-
       <swiper :options="sliderOptions" class="news-slider" ref="newsSlider">
         <swiper-slide class="slide-outer" v-for="post in posts" :key="post.id">
           <news-post-item class="slide-inner" v-bind="post"></news-post-item>
@@ -11,7 +10,6 @@
       <div class="swiper-button-next th-slider-arrow th-slider-arrow-left" slot="button-next" data-uid="7"></div>
       <div class="swiper-button-prev th-slider-arrow th-slider-arrow-right" slot="button-prev" data-uid="8"></div>
     </div>
-
     <div class="text-center">
       <a href="#" class="th-btn th-btn-blue th-btn-lg blog-link">לבלוג</a>
     </div>

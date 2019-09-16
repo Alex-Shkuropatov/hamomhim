@@ -1,19 +1,24 @@
 <template>
   <transition name="slide-fade">
     <modal v-if="$store.getters['modals/showWorkers/isOpened']" @close="close">
-      <div class="content-wrapper" >
+
+      <div class="content-wrapper"  v-show="count===0" >
         <h2 class="title-h"> הנמזהב םידבוע</h2>
-      <div class="workers-list" v-show="getData.length!==0">
-        <order-workers
-                class="orders-item"
-                v-for="worker in getData" :key="worker.id"
-                v-bind="worker">
-        </order-workers>
-      </div>
+        <div class="workers-list" v-show="getData.length!==0">
+          <order-workers
+            @getResponse="onResponse"
+            class="orders-item"
+            v-for="worker in getData" :key="worker.id  "
+            v-bind="worker">
+          </order-workers>
+        </div>
         <div class="empty" v-show="getData.length===0">
           <h3> No workers on order</h3>
         </div>
       </div>
+
+      <second-modal v-show="count===1" v-bind="data" @back="onBack" />
+
     </modal>
   </transition>
 </template>
@@ -21,17 +26,26 @@
 <script>
   import Modal from '../common/Modal.vue'
   import OrderWorkers from '../orders/OrderWorkers'
-
+  import SecondModal from './modalResponse/SecondModal'
   export default {
     methods: {
       close() {
         this.$store.commit('modals/showWorkers/close');
+        this.count= 0;
       },
-
+      onResponse(data){
+        console.log(data);
+        this.data.response = data.response;
+         this.count++;
+      },
+      onBack(){
+        this.count=0;
+      }
     },
     components: {
       Modal,
-      OrderWorkers
+      SecondModal,
+      OrderWorkers,
     },
     mounted() {
 
@@ -40,6 +54,10 @@
       return {
         orderId: '',
         done: false,
+        count: 0,
+        data: {
+          response: {},
+        }
       }
     },
     computed: {
@@ -53,8 +71,9 @@
 </script>
 
 <style lang="scss" scoped>
+
   .content-wrapper{
-    
+
     width: 720px;
     @media screen and (max-width: 750px) {
       width: 500px;
@@ -73,16 +92,17 @@
       justify-content: center;
     }
   }
-.title-h{
-  font-weight: bold;
-  font-size: 36px;
-  text-align: center;
-  letter-spacing: -0.02em;
-  color: #333333;
-  @media screen and (max-width:480px) {
-    font-size: 30px;
+  .title-h{
+    font-weight: bold;
+    font-size: 36px;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #333333;
+    @media screen and (max-width:480px) {
+      font-size: 30px;
+    }
   }
-}
+
   .slide-fade-enter-active {
     transition: all .3s ease;
   }
