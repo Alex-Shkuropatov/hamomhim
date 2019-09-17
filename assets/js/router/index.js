@@ -18,7 +18,6 @@ import HowItWorks from './../views/HowItWorks.vue';
 import Projects from "./../views/Projects.vue";
 import Orders from "./../views/Orders.vue";
 import ClosedProjects from "./../views/ClosedProjects.vue";
-import ClosedOrders from "./../views/ClosedOrders.vue";
 import PreferWorker from "./../views/PreferWorker.vue";
 import WorkerProfile from "./../views/WorkerProfile.vue"
 import NewOrder from "./../views/NewOrder.vue"
@@ -70,11 +69,6 @@ const routes = [
     path: '/closed-projects',
     component: ClosedProjects,
     name: 'closed-projects',
-  },
-  {
-    path: '/closed-projects/:id/closed-orders',
-    component: ClosedOrders,
-    name: 'closed-orders',
   },
   {
     path: '/prefer-worker',

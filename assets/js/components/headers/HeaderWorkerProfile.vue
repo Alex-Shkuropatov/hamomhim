@@ -15,7 +15,7 @@
       </div>
       <div class="element-wrapper">
         <div class="pages-links">
-          <ul class="desktop-menu"  v-bind:style="[ flag ? 'color: #333333' : 'color: white' ]" >
+          <ul class="desktop-menu"  v-bind:style="[ flag ? 'color: #2871D7' : 'color: white' ]" >
             <li class="menu-item">
               <router-link :to="{ name: 'index'}">דף</router-link>
             </li>
@@ -39,6 +39,8 @@
             <img :src=" flag ? '/static/images/logo/logo-blue.png' : '/static/images/logo/logo-white.png'" alt="">
           </router-link>
         </a>
+
+        <burger-menu class="mobile-menu" />
       </div>
     </div>
     <div class="info-wrapper" v-bind:class="{marginT : getData.role==='worker'}" >
@@ -134,10 +136,19 @@
     align-items: center;
     background-size: cover;
     background-position: center;
+    @media screen and (max-width: 767px) {
+      height: 680px;
+    }
+    @media screen and (max-width: 600px) {
+      height: 600px;
+    }
     .desktop-menu{
       display: flex;
       font-size: ceil($scale1 * 24px);
       margin: 0;
+      @media screen and (max-width: 1240px) {
+        display: none;
+      }
       .menu-item{
         margin-left: ceil($scale1 * 37px);
         &:last-child{
@@ -157,6 +168,9 @@
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+    @media screen and (max-width: 767px) {
+      width: 150px;
+    }
   }
   .social-links{
     display: flex;
@@ -165,6 +179,9 @@
     a{
       font-size: 25px;
       color: white;
+      @media screen and (max-width: 480px) {
+        font-size: 20px;
+      }
     }
     .youtube-wrap{
       margin-left: 10px;
@@ -181,10 +198,29 @@
     position: fixed;
     width: 100%;
     transition: all 0.5s ease-out;
+    @media screen and (max-width: 1240px) {
+      justify-content: center;
+      padding: 25px 81px 0 81px;
+    }
+    @media screen and (max-width: 570px) {
+      padding: 12px 60px 5px 20px;
+      justify-content: flex-start;
+    }
   }
   .logo-wrap{
     margin-left: 70px;
-    svg{
+    @media screen and (max-width: 570px) {
+      margin-left:30px;
+    }
+    a{
+      img{
+        @media screen and (max-width: 767px) {
+          width: 150px;
+        }
+        @media screen and (max-width: 480px){
+          width: 114px;
+        }
+      }
     }
   }
   .info-wrapper{
@@ -193,7 +229,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    @media screen and (max-width: 767px){
+      width: 300px;
+    }
     .title{
       font-weight: bold;
       font-size: 64px;
@@ -201,6 +239,9 @@
       display: flex;
       align-items: center;
       color: #FFFFFF;
+      @media screen and (max-width: 767px){
+        font-size: 50px;
+      }
     }
     .description{
       margin-top: 20px;
@@ -208,10 +249,16 @@
       font-size: 24px;
       line-height: 30px;
       color: #FFFFFF;
+      @media screen and (max-width: 767px){
+        font-size: 20px;
+      }
       .bold{
         font-weight: bold;
         font-size: 24px;
         margin-bottom: 10px;
+        @media screen and (max-width: 767px){
+          font-size: 20px;
+        }
       }
     }
   }
@@ -230,6 +277,10 @@
     border-radius: 50px;
     &:hover{
       color: black;
+    }
+    @media screen and (max-width: 767px){
+      width: 202.89px;
+      height: 52.37px;
     }
   }
   .profile-links{
@@ -257,11 +308,12 @@
     background: white;
     padding: 12px 81px 5px 81px;
     font-size: 24px;
-    line-height: 65px;
     color: #333333;
+
     .element-wrapper{
       .pages-links{
         .desktop-menu{
+
           .menu-item{
             a{
               color: #333333;
@@ -275,14 +327,34 @@
     }
     .social-links{
       a{
-        color: #333333;
+        color: #2871D7;
         i {
         }
       }
     }
+    .mobile-menu{
+      @media screen and (max-width: 767px){
+        margin-top: 5px;
+      }
+      @media screen and (max-width: 570px){
+        margin-top: 0;
+      }
+    }
+    @media screen and (max-width: 570px) {
+      padding: 12px 60px 5px 10px;
+     }
   }
 .marginT{
   margin-top: 300px;
 }
-
+.mobile-menu{
+  display: none;
+  margin-top: 15px;
+  @media screen and (max-width: 1240px) {
+    display: block;
+  }
+  @media screen and (max-width: 570px) {
+    margin-top: -5px;
+  }
+}
 </style>

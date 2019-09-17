@@ -81,6 +81,9 @@ export default {
   align-items: center;
   justify-content: flex-start;
   @media screen and (max-width:1440px){
+    justify-content: flex-start;
+  }
+  @media screen and (max-width:1340px){
     justify-content: center;
   }
 }
