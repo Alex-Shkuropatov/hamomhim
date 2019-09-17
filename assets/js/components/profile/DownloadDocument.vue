@@ -32,7 +32,7 @@
 .document-wrapper{
 padding: 0 20px 0 20px;
  margin-top: 10px;
-  height: 104px;
+  min-height: 104px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
   display: flex;
@@ -40,6 +40,9 @@ padding: 0 20px 0 20px;
   flex-direction: row-reverse;
   align-items: center;
   justify-content: space-between;
+  @media screen and (max-width: 480px){
+    flex-direction: column-reverse;
+  }
   .download{
     width: 216px;
     height: 53px;
@@ -48,16 +51,20 @@ padding: 0 20px 0 20px;
     font-size: 18px;
     padding: 0px;
     font-weight: bold;
-
     display: inline-block;
     text-align: center;
+    @media screen and (max-width: 1035px) {
+      width: 167px;
+      height: 42px;
+    }
+    @media screen and (max-width: 480px){
+      margin-bottom: 10px;
+    }
   }
-
 }
   .download-post{
     position: relative;
     .hover-element{
-
       position: absolute;
       background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
       width: 12px;
@@ -66,5 +73,13 @@ padding: 0 20px 0 20px;
       border-radius: 2px;
     }
   }
-
+.description{
+  text-overflow: ellipsis;
+  width: 55%;
+  overflow: hidden;
+  white-space: nowrap;
+  @media screen and (max-width: 480px){
+    width: 100%;
+  }
+}
 </style>

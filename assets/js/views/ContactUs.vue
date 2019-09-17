@@ -4,90 +4,72 @@
 
 <div class="formWrapper" v-bind:class="{'setH': isHidden}">
 
-  <form action="" id="contactForm" v-show="isShowed" >
+  <form action="" @submit="sendDate" id="contactForm" v-show="isShowed" >
     <h2 class="title">צור קשר</h2>
     <div class="textWrapper">
       <div class="row">
         <div class="input-wrapper">
         <input type="text"
-               :class="{ 'error': $v.name.$error, 'inputName': true }"
-               v-model.trim.lazy="name"
+                v-model.trim.lazy="name"
                placeholder="שם מלא"
-               class="marge"
-               @input="$v.name.$touch()"
-        >
-          <div class="error-wrapper" v-if="$v.name.$dirty">
-            <p class="error-message-a" v-if="!$v.name.required">
-              Please enter your name
-            </p>
-          </div>
+               class="marge inputField"
+               required
+         >
+
       </div>
         <div class="input-wrapper">
-        <input type="text"
-               :class="{ 'error': $v.mail.$error, 'inputName': true }"
+        <input type="email"
                v-model.trim.lazy="mail"
+               class="inputField"
                placeholder="מייל"
-               @input="$v.mail.$touch()"
-        >
-          <div class="error-wrapper" v-if="$v.mail.$dirty">
-            <p class="error-message-a" v-if="!$v.mail.required">
-              Please enter your mail
-            </p>
-            <p class="error-message-a" v-else-if="!$v.mail.checkMail">
-              Mail is incorrect
-            </p>
-          </div>
-
+               required
+         >
         </div>
       </div>
       <div class="row">
         <div class="input-wrapper">
-        <input type="text"
-               :class="{ 'error': $v.phone.$error, 'inputName': true }"
-               v-model.trim="phone"
+        <input type="number"
+                v-model.trim="phone"
                placeholder="מספר נייד"
-               class="marge"
-               @input="$v.phone.$touch()"
-        >
-          <div class="error-wrapper" v-if="$v.phone.$dirty">
-            <p class="error-message-a" v-if="!$v.phone.required">
-              Please enter your phone
-            </p>
-            <p class="error-message-a" v-else-if="!$v.phone.checkPhone">
-              Phone is incorrect
-            </p>
-          </div>
-
+               class="marge inputField"
+               required
+         >
         </div>
         <div class="input-wrapper">
         <input type="text"
                v-model.trim="area"
+               class="inputField"
                placeholder="איזור"
+               required
         >
         </div>
       </div>
       <div class="input-wrapper">
         <input type="text"
-               :class="{ 'error': $v.title.$error }"
+               class="inputField"
                id="title-input"
                v-model.trim="title"
                placeholder="איזור"
-               @input="$v.title.$touch()"
+               required
+               minlength="6"
         >
-        <div class="error-wrapper" v-if="$v.title.$dirty">
-          <p class="error-message-a" v-if="!$v.title.required">
-            Fill the field
-          </p>
-          <p class="error-message-a" v-else-if="!$v.title.minLength">
-            Title must contain more than 4 symbols
-          </p>
-        </div>
+
       </div>
 
-      <textarea class="txt" name="msg" v-model.trim="message" id="" cols="30" placeholder="הודעה חופשית" rows="10"></textarea>
+      <textarea class="txt"
+                name="msg"
+                v-model.trim="message"
+                id=""
+                cols="30"
+                placeholder="הודעה חופשית"
+                rows="10"
+                required
+                minlength="10"
+
+      ></textarea>
     </div>
 
-    <button class="th-btn th-btn-blue th-btn-sm"  v-on:click="sendDate">שליחת הודעה</button>
+    <button class="th-btn th-btn-blue th-btn-sm" type="submit"   >שליחת הודעה</button>
   </form>
 
 
@@ -103,15 +85,7 @@
 </template>
 
 <script>
-  import { required, minLength } from "vuelidate/lib/validators";
-  const checkMail= (value) =>{
-    let mail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ ;
-    return mail.test(value);
-  };
-  const checkPhone= (value) =>{
-    let phone = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im ;
-    return phone.test(value);
-  };
+
   export default {
   data: function () {
     return {
@@ -122,57 +96,36 @@
       title: '',
       message: '',
       isHidden: false,
-      isShowed : true
-    }
-  },
-  validations: {
-    name:{
-      required,
-    },
-    mail: {
-      required,
-      checkMail,
-    },
-    phone: {
-      required,
-      checkPhone,
-    },
-    title:{
-      required,
-      minLength: minLength(4),
+      isShowed : true,
     }
   },
   methods: {
     sendDate: function (e) {
       e.preventDefault();
-
-      this.$v.name.$touch();
-      this.$v.mail.$touch();
-      this.$v.phone.$touch();
-
-      if (!this.$v.$invalid) {
-        let dateArr = [this.name, this.mail, this.area, this.phone, this.message];
-        console.log(dateArr);
+        let dateArr = {name: this.name, email: this.mail, region: this.area, phone: this.phone, message: this.message, title: this.title};
+       axios.post('/api/sendContactForm', dateArr)
+           .then((response)=>{
+             console.log(response);
+           }).catch((error)=>{
+             console.log(error);
+          });
         this.isHidden = !this.isHidden;
         this.isShowed = !this.isShowed;
-        dateArr.forEach((field) => {
-          this.validate(field);
-        });
-      }
+
     },
-    validate: function (field) {
-      if (field!==""){
-        console.log('nice');
-      } else {
-        console.log('bad');
-      }
-    }
+
   }
 }
 </script>
 
 <style lang="scss" scoped>
+  input:invalid {
+    border: 2px dashed red;
+  }
 
+  input:valid {
+    border: 2px solid black;
+  }
   @keyframes hiding {
     0% {
        opacity: 1;
@@ -237,7 +190,7 @@
      @media screen and (max-width: 600px) {
        width: 100%;
      }
-    input[type="text"]{
+    .inputField{
 
       margin-top: 25px;
       background: rgba( 255,255,255, 0.5);
