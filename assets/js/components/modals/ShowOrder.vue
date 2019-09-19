@@ -5,16 +5,16 @@
         <h2 class="title">טקייורפה םש</h2>
         <h3 class="architectData">לכירדא ינותנ</h3>
         <form class="form">
-         <div class="form-row">
-          <div class="row">
+          <div class="form-row">
+            <div class="row">
               <p>לכירדאה םש </p>
               <input type="text" :value="getData.userName">
+            </div>
+            <div class="row">
+              <p>ןופלט</p>
+              <input type="text" :value="getData.phone" >
+            </div>
           </div>
-           <div class="row">
-             <p>ןופלט</p>
-             <input type="text" :value="getData.phone" >
-           </div>
-         </div>
           <div class="under-title">
             <h3 class="invitationData">הנמזה ינותנ</h3>
             <div class="form-row">
@@ -31,38 +31,38 @@
             <div class="form-row column clm">
               <div class="row">
                 <p>הנשמ תוירוגטק</p>
-             <div class="sub-wrapper">
-               <subcategory
-                       class="orders-item"
-                       v-for="subcategory in getData.subcategories"
-                       v-bind:value="subcategory"
-                       :key="subcategory"
-               >
-               </subcategory>
-             </div>
+                <div class="sub-wrapper">
+                  <subcategory
+                  class="orders-item"
+                  v-for="subcategory in getData.subcategories"
+                  v-bind:value="subcategory"
+                  :key="subcategory"
+                  >
+                </subcategory>
               </div>
-              <div class="row">
-                <p>תופרוצמ תונומת</p>
+            </div>
+            <div class="row">
+              <p>תופרוצמ תונומת</p>
               <div class="download-b">
                 <button class="download" >
                   <span>דרוה</span>
                   <i class="fas fa-download"></i>
                 </button>
               </div>
-              </div>
             </div>
-            <textarea name="message" v-bind:disabled="flag" cols="30" rows="10" :value="getData.description"></textarea>
           </div>
-        </form>
-        <button class="sendData th-btn th-btn-blue th-btn-sm " @click="close" style="text-align:center" >חזור לאתר</button>
-      </div>
-    </modal>
-  </transition>
+          <textarea name="message" v-bind:disabled="flag" cols="30" rows="10" :value="getData.description"></textarea>
+        </div>
+      </form>
+      <button class="sendData th-btn th-btn-blue th-btn-sm " @click="close" style="text-align:center" >חזור לאתר</button>
+    </div>
+  </modal>
+</transition>
 </template>
 
 <script>
   import Modal from '../common/Modal';
-  import Subcategory from '../orders/Subcategory.vue'
+  import Subcategory from '../orders/Subcategory.vue';
   export default {
     data(){
       return{
@@ -80,10 +80,11 @@
     },
     computed: {
       getData() {
+
         return this.$store.getters['modals/showOrder/getOrder'];
       },
       getId() {
-        return this.$store.getters['categories/getNameById'](this.getData.category_id);
+        return this.$store.getters['categories/getNameById'](this.getData.categoryId);
       },
     },
     mounted() {
@@ -94,7 +95,7 @@
 
 <style lang="scss" scoped>
   .sendData{
-  padding-right: 119px;
+    padding-right: 119px;
     margin-top: 40px;
     background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
     border-radius: 50px;

@@ -1,22 +1,22 @@
 <template>
   <div class="h-container requests-list">
-    <response-form></response-form>
+    <!-- <response-form></response-form> -->
     <show-order></show-order>
 
     <template v-if="requests.length">
       <div class="request-item" v-for="request in requests">
         <div class="title-line">
-          <div class="name">שם הפרויקט</div>
+          <div class="name">{{request.name}}</div>
           <div class="date">
             <span class="caption">תאריך אישור סופי</span>
-            <span class="value">{{request.date}}</span>
+            <span class="value">{{request.updated_at}}</span>
           </div>
         </div>
         <div class="request-inner">
           <div class="text-col">
             <div class="phone">
-              <span class="bold">שם האדריכל</span> |
-              <a href="#" class="phone">{{request.phone}}</a>
+              <span class="bold">{{getCatNameById(request.categoryId)}}</span> |
+              <a href="#" class="phone">{{request.user.phone}}</a>
             </div>
             <hr class="th-divider">
             <div class="description">
@@ -70,9 +70,7 @@ import ShowOrder from './../../components/modals/ShowOrder';
 export default {
   data(){
     return {
-      requests: [
-        {id: 1, name: 'Name of the order', phone: '972544594498+', date: '12.05.2019'},
-      ]
+      requests: []
     };
   },
   components: {
@@ -84,12 +82,15 @@ export default {
       axios.post('/api/getWorkerRequests', { page: 0, take: -1})
         .then(response => {
           if(response.data.success){
-            this.requests = response.data.value;
+            this.requests = response.data.value.orders;
           }
           else{
             alert(response.data.message);
           }
         })
+    },
+    getCatNameById(id){
+      return this.$store.getters['categories/getNameById'](id);
     },
     openResponseForm(){
       console.log('wowo');
@@ -100,12 +101,15 @@ export default {
         description: order.description,
         name: order.name,
         userName : order.user.name,
-        phone : order.phone,
+        phone : order.user.phone,
         categoryId : order.categoryId,
         work_area: order.work_area,
       });
       this.$store.commit('modals/showOrder/open');
     },
+  },
+  mounted(){
+    this.getRequestsFromApi();
   }
 }
 </script>

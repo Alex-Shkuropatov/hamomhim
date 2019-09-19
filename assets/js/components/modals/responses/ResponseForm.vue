@@ -6,8 +6,8 @@
         <div class="subtitle">נתוני אדריכל</div>
         <div class="popup-form-row">
           <div class="col1-1 inp-group">
-            <div class="label">Description</div>
-            <theme-textarea v-model="description" placeholder="comment"></theme-textarea>
+            <div class="label">תיאור</div>
+            <theme-textarea v-model="description" placeholder="תיאור"></theme-textarea>
           </div>
         </div>
         <div class="popup-form-row">

@@ -5,6 +5,7 @@ import newProject from './newProject'
 import projectPrice from './projectPrice'
 import showOrder from './showOrder'
 import responseForm from './responses/responseForm'
+import addWorkerWork from './editProfile/addWorkerWork'
 export default {
   namespaced: true,
   modules: {
@@ -15,6 +16,7 @@ export default {
     projectPrice,
     responseForm,
     showOrder,
+    addWorkerWork,
   },
   state: {
 

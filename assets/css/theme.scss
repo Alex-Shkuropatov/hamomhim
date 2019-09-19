@@ -159,6 +159,29 @@
   color: #fff;
 }
 
+.th-btn>.plus{
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  -ms-align-items: center;
+  align-items: center;
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  &:before,
+  &:after{
+    content: '';
+    display: block;
+    position: absolute;
+    height: 1px;
+    width: 18px;
+    background: #fff;
+  }
+  &:after{
+    transform: rotate(90deg);
+  }
+}
+
 //arrow btn
 .th-btn-empty-arr {
   @extend .th-btn-empty;
@@ -198,8 +221,8 @@
 .th-input {
   height: ceil($scale1 * 50px);
   border-radius: ceil($scale1 * 50px);
-  padding-right: ceil($scale1 * 25px);
-  padding-left: ceil($scale1 * 25px);
+  padding-right: ceil($scale1 * 15px);
+  padding-left: ceil($scale1 * 15px);
   font-size: ceil($scale1 * 24px);
   &::placeholder {
 
