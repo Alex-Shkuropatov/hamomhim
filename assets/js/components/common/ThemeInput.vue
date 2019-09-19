@@ -32,9 +32,9 @@ export default {
 @import '~@/vars.scss';
 input{
   width: 100%;
-  border: 1px solid #BDBDBD;
+  border: 1px solid #DEDEDE;
   border-radius: ceil($scale1 * 50px);
-  height: ceil($scale1 * 46px);
+  height: ceil($scale1 * 50px);
   font-size: ceil($scale1 * 18px);
   color: $clr-dark;
   padding-right: ceil($scale1 * 15px);
@@ -42,5 +42,9 @@ input{
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
   &::placeholder{
   }
+}
+
+.less-rounded-corners{
+  border-radius: 8px;
 }
 </style>

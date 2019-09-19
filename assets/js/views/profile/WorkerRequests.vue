@@ -1,22 +1,22 @@
 <template>
   <div class="h-container requests-list">
-    <response-form></response-form>
-    <show-order></show-order>
+    <response-form @request:delete="deleteRequest"></response-form>
+    <!-- <show-order></show-order> -->
 
     <template v-if="requests.length">
-      <div class="request-item" v-for="request in requests">
+      <div class="request-item" v-for="request in requests" :key="request.id">
         <div class="title-line">
-          <div class="name">שם הפרויקט</div>
+          <div class="name">{{request.name}}</div>
           <div class="date">
             <span class="caption">תאריך אישור סופי</span>
-            <span class="value">{{request.date}}</span>
+            <span class="value">{{request.updated_at}}</span>
           </div>
         </div>
         <div class="request-inner">
           <div class="text-col">
             <div class="phone">
-              <span class="bold">שם האדריכל</span> |
-              <a href="#" class="phone">{{request.phone}}</a>
+              <span class="bold">{{getCatNameById(request.categoryId)}}</span> |
+              <a href="#" class="phone">{{request.user.phone}}</a>
             </div>
             <hr class="th-divider">
             <div class="description">
@@ -52,7 +52,7 @@
             </div>
           </div>
           <div class="accept-actions">
-            <button class="accept" @click="openResponseForm()">אשר בקשה</button>
+            <button class="accept" @click="openResponseForm(request.id)">אשר בקשה</button>
             <button class="decline">בטל בקשה</button>
           </div>
         </div>
@@ -65,47 +65,58 @@
 <script>
 
 import ResponseForm from './../../components/modals/responses/ResponseForm';
-import ShowOrder from './../../components/modals/ShowOrder';
+//import ShowOrder from './../../components/modals/ShowOrder';
 
 export default {
   data(){
     return {
-      requests: [
-        {id: 1, name: 'Name of the order', phone: '972544594498+', date: '12.05.2019'},
-      ]
+      requests: []
     };
   },
   components: {
     ResponseForm,
-    ShowOrder
+    //ShowOrder
   },
   methods: {
     getRequestsFromApi(){
       axios.post('/api/getWorkerRequests', { page: 0, take: -1})
         .then(response => {
           if(response.data.success){
-            this.requests = response.data.value;
+            this.requests = response.data.value.orders;
           }
           else{
             alert(response.data.message);
           }
         })
     },
-    openResponseForm(){
-      console.log('wowo');
-      this.$store.commit('modals/responseForm/open');
+    getCatNameById(id){
+      var name = '';
+      if(this.$store.getters['categories/isLoaded']){
+        name = this.$store.getters['categories/getNameById'](id);
+      }
+      return name;
+    },
+    openResponseForm(orderId){
+      this.$store.commit('modals/responseForm/open', orderId);
     },
     openViewOrderPopup(order){
       this.$store.commit('modals/showOrder/saveData',  {
         description: order.description,
         name: order.name,
         userName : order.user.name,
-        phone : order.phone,
+        phone : order.user.phone,
         categoryId : order.categoryId,
         work_area: order.work_area,
       });
       this.$store.commit('modals/showOrder/open');
     },
+    deleteRequest(id){
+      console.log('awoooo');
+      this.requests = this.requests.filter(e => e.id !== id);
+    },
+  },
+  mounted(){
+    this.getRequestsFromApi();
   }
 }
 </script>

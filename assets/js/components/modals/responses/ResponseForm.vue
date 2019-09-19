@@ -6,8 +6,8 @@
         <div class="subtitle">נתוני אדריכל</div>
         <div class="popup-form-row">
           <div class="col1-1 inp-group">
-            <div class="label">Description</div>
-            <theme-textarea v-model="description" placeholder="comment"></theme-textarea>
+            <div class="label">תיאור</div>
+            <theme-textarea v-model="description" placeholder="תיאור"></theme-textarea>
           </div>
         </div>
         <div class="popup-form-row">
@@ -60,22 +60,28 @@ export default {
     addResponse(){
       var formData = new FormData();
       formData.append('order_id', this.$store.getters['modals/responseForm/getOrderId']);
-      formData.append('author_id', this.$store.getters['user/getId']);
+      formData.append('author_id', this.$store.getters['user/getField']('id'));
       formData.append('description', this.description);
       for(let i = 0; i < this.files.length; i++){
         formData.append('files', this.files[i]);
       }
 
-      axios.post('api/addResponse')
+      axios.post('api/addResponse', formData)
         .then(response => {
           if(response.data.success){
-
+            this.$emit('request:delete', this.$store.getters['modals/responseForm/getOrderId']);
+            this.close();
           }
           else{
             alert(response.data.message);
           }
         });
-    }
+    },
+    close() {
+      this.description = '';
+      this.files = [];
+      this.$store.commit('modals/responseForm/close');
+    },
   },
   mounted(){
   },

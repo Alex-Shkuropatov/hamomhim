@@ -8,14 +8,12 @@
         </svg>
       </div>
     </button>
-    <select v-show="false">
-      <option></option>
-    </select>
     <div v-if="opened" class="popup">
       <div class="slider">
-        <button class="item" @click="select(item)" v-for="item in items" type="button">
-          {{ item[labelKey] }}
-        </button>
+        <div class="item checked" @click="select(item)" v-for="item in items">
+          <div class="checkbox"></div>
+          <span>{{ item[labelKey] }}</span>
+        </div>
       </div>
     </div>
   </div>
@@ -30,7 +28,7 @@ export default {
 
     },
     value: {
-
+      type: Array,
     },
     placeholder: {
 
@@ -63,6 +61,18 @@ export default {
     ClickOutside: VueClickOutside.directive
   },
   computed: {
+    filteredOptions(){
+      let options = this.items;
+
+      options = options.map(option => {
+        option.selected = false;
+        if(this.value.filter(e => e.id === option.id).length > 0){
+          option.selected = true;
+        }
+        return options;
+      });
+
+    },
     current() {
       if(!this.result) {
         return this.placeholder;
@@ -123,7 +133,7 @@ export default {
     padding-top: 25px;
 
     top: 35px;
-    width: 101%;
+    width: 100%;
     position: absolute;
     max-height: 300px;
     overflow-y: auto;
@@ -136,7 +146,7 @@ export default {
       width: 100%;
       .item {
         width: 100%;
-        display: block;
+        display: flex;
         font-size: 18px;
         font-weight: 300;
         padding: 5px 20px;
@@ -144,7 +154,6 @@ export default {
         font-family: Assistant;
         font-style: normal;
         font-weight: normal;
-        font-size: 18px;
         display: flex;
         align-items: center;
         text-align: right;
@@ -152,29 +161,25 @@ export default {
         &:hover{
           background-color: gainsboro;
         }
-      }
-    }
 
-    // &::-webkit-scrollbar {
-    //   width: 20px;
-    //   height: 50px;
-    // }
-    //
-    // &::-webkit-scrollbar-track {
-    //   border-bottom: 10px solid white;
-    //   border-top: 25px solid white;
-    //   background: #F2F2F2;
-    //   border-left: 9px solid white;
-    //   border-right: 9px solid white;
-    // }
-    //
-    //
-    // &::-webkit-scrollbar-thumb {
-    //   border-radius: 9px;
-    //   background: #E0E0E0;
-    //   border-left: 7px solid white;
-    //   border-right: 7px solid white;
-    // }
+        &.checked .checkbox:after{
+          content: '';
+          display: block;
+          width: 100%;
+          height: 100%;
+          background: url('/static/images/icons/check.svg') no-repeat center;
+          -webkit-background-size: 80%;
+          background-size: 80%;
+        }
+      }
+      .checkbox{
+        width: 21px;
+        height: 21px;
+        border: 1px solid #BDBDBD;
+        border-radius: 3px;
+      }
+
+    }
 
   }
   &.opened {

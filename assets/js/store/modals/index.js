@@ -7,6 +7,7 @@ import showOrder from './showOrder'
 import responseForm from './responses/responseForm'
 import showWorkers from './showWorkers'
 import showResponse from './showResponse'
+import addWorkerWork from './editProfile/addWorkerWork'
 export default {
   namespaced: true,
   modules: {
@@ -19,6 +20,7 @@ export default {
     showOrder,
     showWorkers,
     showResponse,
+    addWorkerWork,
   },
   state: {
 
