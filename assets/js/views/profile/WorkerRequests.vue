@@ -1,10 +1,10 @@
 <template>
   <div class="h-container requests-list">
-    <!-- <response-form></response-form> -->
-    <show-order></show-order>
+    <response-form @request:delete="deleteRequest"></response-form>
+    <!-- <show-order></show-order> -->
 
     <template v-if="requests.length">
-      <div class="request-item" v-for="request in requests">
+      <div class="request-item" v-for="request in requests" :key="request.id">
         <div class="title-line">
           <div class="name">{{request.name}}</div>
           <div class="date">
@@ -52,7 +52,7 @@
             </div>
           </div>
           <div class="accept-actions">
-            <button class="accept" @click="openResponseForm()">אשר בקשה</button>
+            <button class="accept" @click="openResponseForm(request.id)">אשר בקשה</button>
             <button class="decline">בטל בקשה</button>
           </div>
         </div>
@@ -65,7 +65,7 @@
 <script>
 
 import ResponseForm from './../../components/modals/responses/ResponseForm';
-import ShowOrder from './../../components/modals/ShowOrder';
+//import ShowOrder from './../../components/modals/ShowOrder';
 
 export default {
   data(){
@@ -75,7 +75,7 @@ export default {
   },
   components: {
     ResponseForm,
-    ShowOrder
+    //ShowOrder
   },
   methods: {
     getRequestsFromApi(){
@@ -90,11 +90,14 @@ export default {
         })
     },
     getCatNameById(id){
-      return this.$store.getters['categories/getNameById'](id);
+      var name = '';
+      if(this.$store.getters['categories/isLoaded']){
+        name = this.$store.getters['categories/getNameById'](id);
+      }
+      return name;
     },
-    openResponseForm(){
-      console.log('wowo');
-      this.$store.commit('modals/responseForm/open');
+    openResponseForm(orderId){
+      this.$store.commit('modals/responseForm/open', orderId);
     },
     openViewOrderPopup(order){
       this.$store.commit('modals/showOrder/saveData',  {
@@ -106,6 +109,10 @@ export default {
         work_area: order.work_area,
       });
       this.$store.commit('modals/showOrder/open');
+    },
+    deleteRequest(id){
+      console.log('awoooo');
+      this.requests = this.requests.filter(e => e.id !== id);
     },
   },
   mounted(){
