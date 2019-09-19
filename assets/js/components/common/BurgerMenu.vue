@@ -61,6 +61,7 @@
         axios.get('/api/auth/logout')
             .then(() => {
               this.$store.commit('user/logout' );
+              this.$router.push({name: 'index'});
             })
             .catch((error) => {
               console.log(error.response.data);

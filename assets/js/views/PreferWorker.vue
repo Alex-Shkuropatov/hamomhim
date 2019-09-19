@@ -10,7 +10,7 @@
 
       <div class="projects-list"  v-show="workers.length!==0">
         <Worker
-          class="worker-item"
+          class="project-item"
           v-for="worker in workers" :key="worker.id"
           v-bind="worker">
         </Worker>
@@ -91,6 +91,21 @@ margin-top: 50px;
     margin-right: 8px;
     margin-left: 8px;
   }
+  ::v-deep {
+      .content-wrapper{
+        .content{
+          .content-info{
+            .footer-wrapper{
+              margin-top: 70px;
+              .add-user{
+                display: none;
+              }
+              margin-bottom: 20px;
+            }
+          }
+        }
+      }
+  }
 }
 .load-more-posts{
   margin-top: 50px;
@@ -102,40 +117,7 @@ margin-top: 50px;
     padding: 0;
   }
 .project-item{
-  z-index: 1;
-  position: relative;
-  background: #FFFFFF;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
-  line-height: 1.16;
-  width: 1371px;
-  height: 320px;
 
-  .add-new-project{
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-    left: 177px;
-    top: 144px;
-    opacity: 0.4;
-    position: absolute;
-    z-index: 2;
-    transition: all 0.5s ease-out;
-    &:hover {
-      opacity: 1;
-      -webkit-transform: rotate(45deg);
-      -moz-transform: rotate(45deg);
-      -o-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-      transform: rotate(45deg);
-
-      path {
-
-      }
-    }
-    border-radius: 50%;
-  }
   .content-wrapper{
     padding: 32px 27px 0 27px;
     display: flex;
@@ -157,17 +139,7 @@ margin-top: 50px;
       letter-spacing: -0.02em;
       color: #2871D7;
     }
-    .description{
-      margin-top: 10px;
-      font-family: Assistant;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 18px;
-      line-height: 28px;
-      text-align: center;
-      color: #E0E0E0;
-      width: 375px;
-    }
+
     .meta{
       color: #828282;
     }

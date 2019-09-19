@@ -222,7 +222,7 @@
 
   .addOrder {
     margin-left: 40px;
-    width: 280px;
+    width: 285px;
     height: 54px;
     font-weight: bold;
     font-size: 24px;

@@ -3,21 +3,60 @@
 <h2 class="title">Leave feedback</h2>
     <form class="feedback">
       <div class="row">
-        <p>Title</p>
-        <input type="text" placeholder="Title"   v-model="title">
+        <p class="under-text">Title</p>
+        <input
+                type="text"
+                placeholder="Title"
+                v-model.trim="title"
+                :class="{ 'error': $v.title.$error }"
+                @input="$v.title.$touch()"
+
+        >
+        <div class="error-wrapper" v-if="$v.title.$dirty">
+          <p class="error-message" v-if="!$v.title.required">
+            This field cant be empty
+          </p>
+          <p class="error-message" v-else-if="!$v.title.minLength">
+            Title must contain more than 6 symbols
+          </p>
+        </div>
       </div>
       <div class="row">
-        <p>Description</p>
-        <textarea name="description" id="" cols="30" rows="10" class="description" placeholder="Description" v-model="description"></textarea>
+        <p class="under-text">Description</p>
+        <textarea
+                :class="{ 'error': $v.description.$error, 'description': true }"
+                name="description"
+                cols="30"
+                rows="10"
+                placeholder="Description"
+                v-model.trim="description"
+                @input="$v.description.$touch()"
+
+        ></textarea>
+        <div class="error-wrapper" v-if="$v.description.$dirty">
+          <p class="error-message" v-if="!$v.description.required">
+            This field cant be empty
+          </p>
+          <p class="error-message" v-else-if="!$v.description.minLength">
+            Description must contain more than 10 symbols
+          </p>
+        </div>
       </div>
       <div class="rate-wrapper">
         <rate-flag
                 class="orders-item"
                 v-for="digit in arr" :key="digit.rate"
-                  v-bind="digit"
+                v-bind="digit"
                 @rate="onRate"
-                >
+                @input="$v.rateFlag.$touch()"
+        >
         </rate-flag>
+
+      </div>
+      <div class="error-wrapper" v-if="$v.userRate.$dirty">
+        <h5 class="error-message" style="text-align:center" v-if="!$v.userRate.required">
+          Choose the rate
+        </h5>
       </div>
       <button class="th-btn th-btn-blue th-btn-sm feedback-b " @click.prevent="sendFeedback">Send </button>
     </form>
@@ -27,6 +66,8 @@
 
 <script>
 import RateFlag from './../common/RateFlag'
+import { required, minLength } from "vuelidate/lib/validators";
+
   export default {
     data(){
       return{
@@ -56,6 +97,19 @@ import RateFlag from './../common/RateFlag'
     mounted() {
 
     },
+    validations: {
+      title:{
+        required,
+        minLength: minLength(5)
+      },
+      description: {
+        required,
+        minLength: minLength(10)
+      },
+      userRate: {
+        required,
+      }
+    },
     components: {
       RateFlag,
     },
@@ -64,19 +118,30 @@ import RateFlag from './../common/RateFlag'
         this.userRate = date.rate;
       },
       sendFeedback(){
-        let data = {
-          worker_id: this.id,
-          author_id: this.userId,
-          title: this.title,
-          description: this.description,
-          rate: this.userRate,
-        };
-        axios.post('/api/addCommentOnUser', data)
-            .then((resolve)=>{
-              console.log(resolve);
-            }).catch((error)=>{
-              console.log(error);
-        })
+
+        this.$v.title.$touch();
+        this.$v.description.$touch();
+        this.$v.userRate.$touch();
+
+        if(!this.$v.invalid){
+          let data = {
+            worker_id: this.id,
+            author_id: this.userId,
+            title: this.title,
+            description: this.description,
+            rate: this.userRate,
+          };
+          axios.post('/api/addCommentOnUser', data)
+              .then((resolve)=>{
+               console.log(resolve);
+                this.$emit('hide',{
+                  feedFlag : false,
+                  id: this.userId,
+                });
+              }).catch((error)=>{
+            console.log(error);
+          })
+        }
       }
     },
     created() {
@@ -90,16 +155,65 @@ import RateFlag from './../common/RateFlag'
 .rate-wrapper{
   display: flex;
   flex-direction: row-reverse;
-  width: 1000px;
+  justify-content: space-between;
+  width: 912px;
   height: 100px;
   margin: 0 auto;
   margin-top: 25px;
   margin-bottom: 20px;
-  .orders-item{
-    position: relative;
-    width: 95px;
+  @media screen and (max-width:1024px){
+    width: 593px;
   }
-}
+  @media screen and (max-width:600px){
+    width: 300px;
+    height: auto;
+    flex-wrap: wrap;
+  }
+  .orders-item{
+    &:hover  ::v-deep {
+     .svg-pic{
+       transform: scale(1.3);
+      }
+    }
+
+    position: relative;
+    width: 77px;
+    height: 96px;
+    @media screen and (max-width: 1024px){
+      height: 65px;
+    }
+    @media screen and (max-width: 600px){
+      margin-top: 10px;
+      width: 60px;
+    }
+    ::v-deep {
+
+        .rate-number {
+          @media screen and (max-width: 1024px) {
+            font-size: 30px;
+            left: 5px;
+            top: 6px;
+          }
+        }
+          .rate-info{
+            @media screen and (max-width: 1024px) {
+              font-size: 10px;
+              top: 29px;
+              left: -5px;
+            }
+          }
+      .svg-pic{
+        @media screen and (max-width: 1024px) {
+          width: 50px;
+          height: 65px;
+        }
+
+      }
+      }
+
+    }
+  }
+
   .feedback-form{
     display: flex;
     flex-direction: column;
@@ -108,10 +222,17 @@ import RateFlag from './../common/RateFlag'
     width: 850px;
     margin: 0 auto;
     position: relative;
+    @media screen and (max-width: 1025px){
+      width: 100%;
+    }
     .title{
       font-size: 48px;
       text-align: center;
+      font-weight: normal;
       color: #000000;
+      @media screen and (max-width:600px){
+        font-size: 32px;
+      }
     }
     .row{
 
@@ -126,13 +247,26 @@ import RateFlag from './../common/RateFlag'
         width: 700px;
         height: 46px;
         padding-right: 20px;
+        @media screen and (max-width: 1024px){
+          width: 553px;
+        }
+        @media screen and (max-width: 600px){
+          width: 300px;
+        }
       }
-      p{
+      .under-text{
         width: 650px;
         font-weight: bold;
         font-size: 18px;
         text-align: right;
         color: #333333;
+        @media screen and (max-width: 1024px){
+          width: 496px;
+        }
+        @media screen and (max-width: 600px){
+          width: 290px;
+          text-align: center;
+        }
       }
       textarea{
         resize: none;
@@ -143,6 +277,15 @@ import RateFlag from './../common/RateFlag'
         border-radius: 50px;
         padding-right: 20px;
         padding-top: 10px;
+        @media screen and (max-width: 1024px){
+          width: 553px;
+          height: 183px;
+        }
+        @media screen and (max-width: 600px)  {
+          width: 300px;
+          height: 116px;
+          border-radius: 18px;
+        }
       }
     }
   }
@@ -150,11 +293,15 @@ import RateFlag from './../common/RateFlag'
     width: 355px;
     height: 70px;
     border: 1px solid #BDBDBD;
-    margin: 0 auto;
+    margin: 30px auto 10px;
     display: block;
     font-weight: bold;
     font-size: 24px;
     line-height: 31px;
     text-align: center;
+    @media screen and (max-width: 600px){
+      width: 250px;
+      height: 58px;
+    }
   }
 </style>

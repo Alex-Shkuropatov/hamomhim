@@ -1,6 +1,6 @@
 <template>
 
-  <header class="header-n" ref="navMenu"  >
+  <header class="header-w" ref="navMenu"  >
     <div class="nav-bar"  v-bind:class="{ position: flag }">
       <div class="social-links">
         <a href="#" class="whatsapp-wrap">
@@ -43,19 +43,6 @@
         <burger-menu class="mobile-menu" />
       </div>
     </div>
-    <div class="info-wrapper" v-bind:class="{marginT : getData.role==='worker'}" >
-      <div class="title">  בולואש ןויצ
-        <favourite-icon
-              v-if="getData.role==='architect'"
-        />
-
-      </div>
-      <div class="description">
-        <span class="bold">םיאבה םיסקדניאב סולפ םיצופישב עיפומ בולואש ןויצ</span>
-        <span >.הלק הינב ,םיקינצופיש ,םיצופיש ינלבק</span>
-      </div>
-      <button class="contact-b">רשק רוצ</button>
-    </div>
   </header>
 
 </template>
@@ -93,6 +80,7 @@
         axios.get('/api/auth/logout')
             .then(() => {
               this.$store.commit('user/logout');
+              this.$router.push({name: 'index'});
             })
             .catch((error) => {
               console.log(error.response.data);
@@ -128,20 +116,8 @@
 <style lang="scss" scoped>
   @import '~@/vars.scss';
 
-  .header-n{
-    background-image: url(/static/images/profile/header-image.png);
-    height: 814px;
-    width: 100%;
-    -ms-align-items: center;
-    align-items: center;
-    background-size: cover;
-    background-position: center;
-    @media screen and (max-width: 767px) {
-      height: 680px;
-    }
-    @media screen and (max-width: 600px) {
-      height: 600px;
-    }
+  .header-w{
+    height: auto;
     .desktop-menu{
       display: flex;
       font-size: ceil($scale1 * 24px);
@@ -223,66 +199,8 @@
       }
     }
   }
-  .info-wrapper{
-    margin: 200px auto 0;
-    width: 500px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    @media screen and (max-width: 767px){
-      width: 300px;
-    }
-    .title{
-      font-weight: bold;
-      font-size: 64px;
-      line-height: 30px;
-      display: flex;
-      align-items: center;
-      color: #FFFFFF;
-      @media screen and (max-width: 767px){
-        font-size: 50px;
-      }
-    }
-    .description{
-      margin-top: 20px;
-      text-align: center;
-      font-size: 24px;
-      line-height: 30px;
-      color: #FFFFFF;
-      @media screen and (max-width: 767px){
-        font-size: 20px;
-      }
-      .bold{
-        font-weight: bold;
-        font-size: 24px;
-        margin-bottom: 10px;
-        @media screen and (max-width: 767px){
-          font-size: 20px;
-        }
-      }
-    }
-  }
-  .contact-b{
-    margin-top: 20px ;
-    font-weight: bold;
-    font-size: 24px;
-    width: 257.89px;
-    height: 76.37px ;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #FFFFFF;
-    background: #30588E;
-    border-radius: 50px;
-    &:hover{
-      color: black;
-    }
-    @media screen and (max-width: 767px){
-      width: 202.89px;
-      height: 52.37px;
-    }
-  }
+
+
   .profile-links{
     display: flex;
     flex-direction: row-reverse;
@@ -344,9 +262,7 @@
       padding: 12px 60px 5px 10px;
      }
   }
-.marginT{
-  margin-top: 300px;
-}
+
 .mobile-menu{
   display: none;
   margin-top: 15px;

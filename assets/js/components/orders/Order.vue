@@ -3,7 +3,7 @@
 
     <div class="content-wrapper">
       <div class="thumb">
-        <img :src='$env.API_URL+thumbnail' alt="">
+        <img :src="thumbnail===null?'/static/images/projects/addImg.png': $env.API_URL+thumbnail" alt="">
       </div>
       <div class="text-wrapper">
         <div class="title">{{name}}</div>
@@ -37,7 +37,7 @@
           </div>
           <hr>
           <div class="action-item">
-            <button class="item worker " >
+            <button class="item worker " @click="editOrder" >
               <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M15.6217 4.17218L20.7322 9.2826L7.79621 22.2186L2.68863 17.1082L15.6217 4.17218ZM24.6101 2.93966L22.331 0.660587C21.4502 -0.220196 20.02 -0.220196 19.1362 0.660587L16.9531 2.84371L22.0636 7.95418L24.6101 5.40769C25.2932 4.7245 25.2932 3.6228 24.6101 2.93966ZM0.0142212 24.2913C-0.0787828 24.7099 0.299123 25.0849 0.717736 24.9831L6.4125 23.6024L1.30493 18.4919L0.0142212 24.2913Z"
                       fill="#2871D7 "/>
@@ -141,7 +141,16 @@
         this.$store.commit('modals/showWorkers/saveData', {'order_id':this.id});
         this.$store.commit('modals/showWorkers/open');
 
-      }
+      },
+      editOrder(){
+        this.$router.push({
+          name: 'edit-order',
+          params:
+              {
+                'orderId': this.id,
+              }
+        });
+      },
     },
     mounted() {
       this.getOrder()
