@@ -4,22 +4,72 @@
 
 <div class="formWrapper" v-bind:class="{'setH': isHidden}">
 
-  <form action="" id="contactForm" v-show="isShowed" >
+  <form action="" @submit="sendDate" id="contactForm" v-show="isShowed" >
     <h2 class="title">צור קשר</h2>
     <div class="textWrapper">
       <div class="row">
-        <input type="text" v-model.trim="name" placeholder="שם מלא" class="marge">
-        <input type="text" v-model.trim="mail"  placeholder="מייל" >
+        <div class="input-wrapper">
+        <input type="text"
+                v-model.trim.lazy="name"
+               placeholder="שם מלא"
+               class="marge inputField"
+               required
+         >
+
+      </div>
+        <div class="input-wrapper">
+        <input type="email"
+               v-model.trim.lazy="mail"
+               class="inputField"
+               placeholder="מייל"
+               required
+         >
+        </div>
       </div>
       <div class="row">
-
-        <input type="text" v-model.trim="phone" placeholder="מספר נייד" class="marge">
-        <input type="text" v-model.trim="area" placeholder="איזור">
+        <div class="input-wrapper">
+        <input type="number"
+                v-model.trim="phone"
+               placeholder="מספר נייד"
+               class="marge inputField"
+               required
+         >
+        </div>
+        <div class="input-wrapper">
+        <input type="text"
+               v-model.trim="area"
+               class="inputField"
+               placeholder="איזור"
+               required
+        >
+        </div>
       </div>
-      <textarea name="msg" v-model.trim="message" id="" cols="30" placeholder="הודעה חופשית" rows="10"></textarea>
+      <div class="input-wrapper">
+        <input type="text"
+               class="inputField"
+               id="title-input"
+               v-model.trim="title"
+               placeholder="איזור"
+               required
+               minlength="6"
+        >
+
+      </div>
+
+      <textarea class="txt"
+                name="msg"
+                v-model.trim="message"
+                id=""
+                cols="30"
+                placeholder="הודעה חופשית"
+                rows="10"
+                required
+                minlength="10"
+
+      ></textarea>
     </div>
 
-    <button class="th-btn th-btn-blue th-btn-sm" v-on:click="sendDate">שליחת הודעה</button>
+    <button class="th-btn th-btn-blue th-btn-sm" type="submit"   >שליחת הודעה</button>
   </form>
 
 
@@ -35,43 +85,47 @@
 </template>
 
 <script>
-export default {
+
+  export default {
   data: function () {
     return {
       name: '',
       mail: '',
       area: '',
       phone: '',
+      title: '',
       message: '',
       isHidden: false,
-      isShowed : true
+      isShowed : true,
     }
   },
   methods: {
     sendDate: function (e) {
       e.preventDefault();
-      this.isHidden = !this.isHidden;
-      this.isShowed = !this.isShowed;
-      let dateArr = [this.name, this.mail, this.area, this.phone, this.message];
-      console.log(dateArr);
-      dateArr.forEach((field) => {
-        this.validate(field);
-      });
+        let dateArr = {name: this.name, email: this.mail, region: this.area, phone: this.phone, message: this.message, title: this.title};
+       axios.post('/api/sendContactForm', dateArr)
+           .then((response)=>{
+             console.log(response);
+           }).catch((error)=>{
+             console.log(error);
+          });
+        this.isHidden = !this.isHidden;
+        this.isShowed = !this.isShowed;
 
     },
-    validate: function (field) {
-      if (field!==""){
-        console.log('nice');
-      } else {
-        console.log('bad');
-      }
-    }
+
   }
 }
 </script>
 
 <style lang="scss" scoped>
+  input:invalid {
+    border: 2px dashed red;
+  }
 
+  input:valid {
+    border: 2px solid black;
+  }
   @keyframes hiding {
     0% {
        opacity: 1;
@@ -136,21 +190,21 @@ export default {
      @media screen and (max-width: 600px) {
        width: 100%;
      }
-    input[type="text"]{
+    .inputField{
 
-      margin-top: 19px;
+      margin-top: 25px;
       background: rgba( 255,255,255, 0.5);
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
       border-radius: 50px;
       border: none;
       width: 490px;
-      height: 65px;
-      padding: 25px;
+      height: auto;
+      padding: 4px 22px 22px 0px;
       font-family: Assistant;
       font-style: normal;
       font-weight: bold;
       font-size: 24px;
-      line-height: 65px;
+      line-height: 27px;
       @media screen and (max-width: 1605px){
         font-size: 20px;
       }
@@ -172,23 +226,29 @@ export default {
       }
       @media screen and (max-width: 1605px){
         width: 350px;
-        height: 40px;
       }
       @media screen and (max-width: 1440px){
+        width: 565px;
+      }
+      @media screen and (max-width: 620px){
+      width: 350px;
+    }
+      @media screen and (max-width: 400px){
         width: 100%;
       }
       @media screen and (max-width: 600px){
         background: rgba( 71,74,81, 0.4);
       }
     }
-    textarea{
+
+    .txt{
       margin-top: 19px;
       background: rgba( 255,255,255, 0.5);
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
       border-radius: 50px;
       width: 1007px;
       height: 280px;
-      padding: 20px;
+      padding-right: 20px;
       font-family: Assistant;
       font-style: normal;
       font-weight: bold;
@@ -215,9 +275,9 @@ export default {
         }
       }
       @media screen and (max-width: 1605px){
-        width: 730px;
-        height: 200px;
-      }
+      width: 730px;
+      height: 200px;
+    }
       @media screen and (max-width: 1440px){
         width: 600px;
       }
@@ -356,6 +416,24 @@ button::-moz-focus-inner {
     @media screen and (max-width: 480px){
       display: block;
       object-fit: cover;
+    }
+  }
+  .input-wrapper{
+    position: relative;
+  }
+  #title-input{
+    width: 1000px!important;
+    @media screen and (max-width: 1605px){
+      width: 730px!important;
+    }
+      @media screen and (max-width: 1440px){
+      width: 565px!important;
+    }
+    @media screen and (max-width: 620px){
+      width: 350px!important;
+    }
+    @media screen and (max-width: 400px){
+      width:100%!important;
     }
   }
 </style>

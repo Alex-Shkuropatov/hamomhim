@@ -13,15 +13,18 @@ export default {
   },
   actions: {
     updateData(context, id){
+
       return axios.post('api/getOrdersByProject',id)
+
         .then(response => {
           //console.log(response);
           if(response.data.success){
             //console.log(response.data.value);
             context.commit('set', response.data.value );
-
           }
-        });
+        }).catch((error)=>{
+        console.log(error);
+      });
     }
   },
   getters: {

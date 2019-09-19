@@ -158,7 +158,8 @@
 
 .ourGoals{
   padding: 50px 200px 50px 200px;
-
+  max-width: 1900px;
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -174,6 +175,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+
     @media screen and (max-width:1440px){
       margin: 20px 0 20px 0;
     }
@@ -248,6 +250,8 @@
    position: relative;
    padding: 0 200px 0 200px;
    width: 100%;
+   max-width: 1900px;
+   margin: 0 auto;
    @media screen and (max-width: 1680px){
      padding: 0 100px 0 100px;
    }
@@ -341,11 +345,16 @@
        margin-right: 30px;
        display: flex;
        flex-direction: column;
+       @media screen and (max-width: 750px) {
+         margin-right: 0;
+       }
        .stage{
 
          &:nth-child(odd){
            font-weight: bold;
          }
+
+         position: relative;
          margin-top: 15px;
          width: 827px;
          height: 90px;
@@ -361,8 +370,8 @@
          }
          @media screen and (max-width: 750px){
            height: unset;
-           margin-top: 0;
            flex-direction: column;
+           margin: 0 auto;
          }
          .hoverBlock{
            position: absolute;
@@ -376,8 +385,7 @@
          .digit{
            line-height: 65px;
            margin-right: 42px;
-           margin-left: 33px;
-           margin-top: -70px;
+           margin-top: -7px;
            font-family: Assistant;
            font-style: normal;
            font-weight: bold;
@@ -399,10 +407,8 @@
            .hoverBlock{
              background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
              box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-
            }
          }
-
        }
      }
    }

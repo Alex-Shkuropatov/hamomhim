@@ -113,8 +113,7 @@
   }
   .header{
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
-    position: fixed;
+     position: fixed;
     z-index: 3000;
     height: ceil($scale1 * 100px);//80px//
     width: 100%;
@@ -127,7 +126,7 @@
       -ms-align-items: center;
       align-items: center;
       justify-content: space-between;
-      @media screen and (max-width: 1240px){
+      @media screen and (max-width: 1024px){
         justify-content: flex-end;
       }
     }
@@ -137,6 +136,12 @@
     img{
       width: 100%;
       height: auto;
+    }
+    @media screen and (max-width: 1244px){
+      margin-right: 100px;
+    }
+    @media screen and (max-width: 1024px){
+      margin-right: 0;
     }
   }
   .auth-btns{
@@ -157,7 +162,7 @@
       align-items: center;
 
     }
-    @media screen and (max-width: 900px) {
+    @media screen and (max-width: 1024px) {
       display: none;
     }
   }

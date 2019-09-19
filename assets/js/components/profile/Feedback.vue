@@ -23,13 +23,14 @@ import FeedbackElement from './FeedbackElement'
   export default {
      data(){
        return {
-         posts: [
-           {id: 1, title: 'םייופיחו עבצ,סבג ,הרואת ,למשח ,היצלטסניא ,ףוציר ,הינב - יללכ ץופיש',img: '/static/images/profile/profileImg.png',date:'30.07.2019', rate: 10, description: '.רדתסמ הזש יתמ םייסמ אוהו חותפ הז םימעפל ,חיטבמש ןמזב םייסל לדתשמ אוה שארמ ןמז לע םימכסמ ונחנא םא ,טקייורפה תא ותיא להנמ ינא ךיא יולת הז םינמז תניחבמ ,הרומתה תא הוושו םלתשמ ,ריבס ולש ריחמה' + '.הדובעה תוכיאמו לבקמ ינאש האצותהמ הצורמ דואמ ינא ,הלועמ הרוצב תודובעה לכ תא השועו לכהב קסעתמ אוה לבא ךמסומ יאלמשח אוה ,לכה תושעל עדוי אוה .תומוק עברא לש ספאמ היינב ונל השע ןויצ'},
-           {id: 2, title: 'םייופיחו עבצ,סבג ,הרואת ,למשח ,היצלטסניא ,ףוציר ,הינב - יללכ ץופיש',img: '/static/images/profile/pexels-photo-736716.jpeg',date:'30.07.2019', rate: 7, description: '.רדתסמ הזש יתמ םייסמ אוהו חותפ הז םימעפל ,חיטבמש ןמזב םייסל לדתשמ אוה שארמ ןמז לע םימכסמ ונחנא םא ,טקייורפה תא ותיא להנמ ינא ךיא יולת הז םינמז תניחבמ ,הרומתה תא הוושו םלתשמ ,ריבס ולש ריחמה' + '.הדובעה תוכיאמו לבקמ ינאש האצותהמ הצורמ דואמ ינא ,הלועמ הרוצב תודובעה לכ תא השועו לכהב קסעתמ אוה לבא ךמסומ יאלמשח אוה ,לכה תושעל עדוי אוה .תומוק עברא לש ספאמ היינב ונל השע ןויצ'},
-           {id: 3, title: 'םייופיחו עבצ,סבג ,הרואת ,למשח ,היצלטסניא ,ףוציר ,הינב - יללכ ץופיש',img: '/static/images/profile/pexels-photo-736716.jpeg',date:'30.07.2019', rate: 4, description: '.רדתסמ הזש יתמ םייסמ אוהו חותפ הז םימעפל ,חיטבמש ןמזב םייסל לדתשמ אוה שארמ ןמז לע םימכסמ ונחנא םא ,טקייורפה תא ותיא להנמ ינא ךיא יולת הז םינמז תניחבמ ,הרומתה תא הוושו םלתשמ ,ריבס ולש ריחמה' + '.הדובעה תוכיאמו לבקמ ינאש האצותהמ הצורמ דואמ ינא ,הלועמ הרוצב תודובעה לכ תא השועו לכהב קסעתמ אוה לבא ךמסומ יאלמשח אוה ,לכה תושעל עדוי אוה .תומוק עברא לש ספאמ היינב ונל השע ןויצ'},
-             ]
+
        };
      },
+    props: {
+      posts: {
+        type: Array,
+      }
+    },
     components: {
       FeedbackElement,
     },
@@ -43,12 +44,35 @@ import FeedbackElement from './FeedbackElement'
 .feedback-wrapper{
   margin: 0 auto;
   width: 1449px;
+  @media screen and (max-width: 1650px) {
+    width: 1266px;
+  }
+  @media screen and (max-width:1440px ) {
+    width: 900px;
+  }
+  @media screen and (max-width: 1035px) {
+    width: 100%;
+  }
   .title{
     color: #333333;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
     margin-right: 80px;
+    @media screen and (max-width: 1600px) {
+      width: 100%;
+      justify-content: center;
+    }
+    @media screen and (max-width: 1035px) {
+      width: unset;
+     }
+    @media screen and (max-width: 767px){
+      font-size: 40px;
+    }
+
+    @media screen and (max-width: 570px){
+      font-size: 33px;
+    }
     hr{
       margin-top:38px;
       margin-right: 10px;
@@ -56,6 +80,12 @@ import FeedbackElement from './FeedbackElement'
       transform: rotate(180deg);
       width: 260px;
       height: 0px;
+      @media screen and (max-width: 767px){
+        width: 150px
+      }
+      @media screen and (max-width: 570px){
+        display: none;
+      }
     }
     span{
       font-weight: bold;
@@ -65,20 +95,32 @@ import FeedbackElement from './FeedbackElement'
   }
   .head-wrapper{
     margin:  0 auto;
-    height: 978px;
     overflow: hidden;
-    width: 1250px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    @media screen and (max-width: 1035px){
+      width: 650px;
+    }
+    @media screen and (max-width: 767px){
+      width: 440px;
+    }
+    @media screen and (max-width: 480px){
+      width: 310px;
+    }
     .feedback-head{
-
       background-color: #64B049;
       width: 100%;
       height: 4px;
+
     }
   }
 
 }
-.feedback-body{
 
+.feedback-body{
+  @media screen and (max-width: 1035px){
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 </style>

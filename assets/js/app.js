@@ -1,6 +1,9 @@
 import Vue from 'vue';
 import VueFilterDateFormat from 'vue-filter-date-format'
 import VueMask from 'v-mask'
+
+import Vuelidate from "vuelidate";
+
 //import VueModal from 'vue-js-modal'
 
 //swiper
@@ -20,7 +23,7 @@ import router from './router';
 Vue.use(VueFilterDateFormat);
 Vue.use(VueMask);
 Vue.use(VueAwesomeSwiper);
-
+Vue.use(Vuelidate);
 window.app = new Vue({
   router: router,
   store: store,

@@ -14,7 +14,7 @@
         </div>
       </div>
       </div>
-      <button class="next-b th-btn th-btn-blue th-btn-md" :disabled="disable"  @click="sendData"><span>Next</span></button>
+      <button class="next-b th-btn th-btn-blue th-btn-md"   @click="sendData"><span>Next</span></button>
     </div>
   </div>
 
@@ -39,7 +39,6 @@
           checked: this.checkedServices ,
 
         });
-        this.disable=!disable;
       }
     },
     mounted() {
@@ -143,6 +142,20 @@
     text-align: center;
     letter-spacing: -0.02em;
     color: #333333;
+    @media screen and (max-width:1340px){
+      font-size: 40px;
+    }
+
+    @media screen and (max-width:1340px){
+      font-size: 40px;
+    }
+
+    @media screen and (max-width:1023px){
+      font-size: 31px;
+    }
+    @media screen and (max-width:767px){
+      font-size: 27px;
+    }
   }
   .description{
     margin:0;
@@ -150,6 +163,12 @@
     text-align: center;
     letter-spacing: -0.02em;
     color: #828282;
+    @media screen and (max-width:1023px){
+      font-size: 25px;
+    }
+    @media screen and (max-width:767px){
+      font-size: 20px;
+    }
   }
   .services{
      padding: 50px 100px 50px 100px;

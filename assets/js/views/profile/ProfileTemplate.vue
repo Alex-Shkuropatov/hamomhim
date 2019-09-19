@@ -1,7 +1,8 @@
 <template>
   <div class="projects-wrapper">
 
-    <workers-header v-if="!hideHeader"/>
+    <workers-header v-if="!hideHeader && checkRole==='worker'"/>
+    <projects-header v-if="checkRole==='architect'" />
 
     <router-view></router-view>
 
@@ -21,6 +22,9 @@ export default {
   computed: {
     hideHeader(){
       return ((this.$route.name === 'profile-edit') && (this.$store.getters['user/getField']('role') === 'worker'));
+    },
+    checkRole(){
+      return this.$store.getters['user/getField']('role');
     }
   }
 }

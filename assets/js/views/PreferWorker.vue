@@ -4,20 +4,11 @@
     <projects-header/>
 
   <div class="workers-list">
-
-<div class="search-tab">
-  <button class="th-btn th-btn-blue th-btn-sm add-project">
-   <span class=" abs">+</span> Add new project
-  </button>
-  <drop-down class="dropDown" placeholder="הדובע רוזיא" v-model="work_area.value" :items="work_area.items"/>
-  <drop-down class="dropDown" placeholder="הדובע רוזיא" v-model="work_area1.value" :items="work_area1.items"/>
-  <button class=" th-btn th-btn-blue th-btn-sm add-project search-b" >
-    Search
-  </button>
-</div>
+    <h2  class="notify_msg"  v-show="workers.length===0" ><i class="far fa-copy"></i> You dont have favourite workers</h2>
 
     <div class="projects-list-wrap h-container">
-      <div class="projects-list">
+
+      <div class="projects-list"  v-show="workers.length!==0">
         <Worker
           class="worker-item"
           v-for="worker in workers" :key="worker.id"
@@ -33,39 +24,34 @@
 
 import Worker from './../components/Worker';
 import ProjectsHeader from './../components/ProjectsHeader';
-import DropDown from './../components/common/DropDown';
 
 export default {
   data(){
     return {
-      workers: [
-        {id: 1, imgSrc: '/static/images/profile/profileImg.png',rate:'10',rating:'3',type:"םילכירדא", title: ' מ"עב םיצופיש ד.א',workArea:"ץראה לכ", url: '#',  description: 'וה \'םוספיא םרול\' .םידבוע םתא וילעוה \'םוספיא םרול\' .םידבוע םתא וילעוה \'םוספיא םרול\' .םידבוע םתא וילעוה \'םוספיא םרול\' .םידבוע םתא וילעוה \'םוספיא םרול\' .םידבוע םתא וילע טקיורפה אשונ יפל םילימ ליכמה תירבעב תועמשמ רסח טסקט םכל וללוח ללוחמ ךיא .יפוסה רצומל מאכלש'},
-        {id: 2, imgSrc: '/static/images/projects/2.png',rate:'10',rating:'3' ,type:"םילכירדא", title: ' מ"עב םיצופיש ד.א',workArea:"ץראה לכ", url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 3, imgSrc: '/static/images/projects/1.png',rate:'9',rating:'3' ,type:"םילכירדא", title: ' מ"עב םיצופיש ד.א',workArea:"ץראה לכ", url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 4, imgSrc: '/static/images/projects/4.png',rate:'8',rating:'3' ,type:"םילכירדא", title: ' מ"עב םיצופיש ד.א',workArea:"ץראה לכ", url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 5, imgSrc: '/static/images/projects/3.png',rate:'10',rating:'3' ,type:"םילכירדא", title: ' מ"עב םיצופיש ד.א',workArea:"ץראה לכ", url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 6, imgSrc: '/static/images/projects/6.png',rate:'7',rating:'4' ,type:"םילכירדא", title: ' מ"עב םיצופיש ד.א',workArea:"ץראה לכ", url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 7, imgSrc: '/static/images/projects/7.png',rate:'10',rating:'3' ,type:"םילכירדא", title: ' מ"עב םיצופיש ד.א',workArea:"ץראה לכ", url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-        {id: 8, imgSrc: '/static/images/projects/8.png',rate:'3',rating:'5' ,type:"םילכירדא", title: ' מ"עב םיצופיש ד.א',workArea:"ץראה לכ", url: '#',  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-      ],
-      work_area: {
-        items: [ { label: ' הדובע רוזיא', value: 1 },{ label: ' הדובע רוזיא', value: 2 },{ label: ' הדובע רוזיא', value: 3 } ],
-        value: '',
-      },
-        work_area1: {
-      items: [ { label: ' הדובע רוזיא', value: 1 },{ label: ' הדובע רוזיא', value: 2 },{ label: ' הדובע רוזיא', value: 3 } ],
-          value: '',
-    },
 
+      workers: [
+       ],
     };
   },
   components: {
     ProjectsHeader,
     Worker,
-    DropDown
+
   },
   methods: {
 
+  },
+  mounted() {
+      axios.post('/api/getFavouriteUsers')
+        .then((response)=>{
+          console.log(response);
+          this.workers = response.data.value;
+          this.workers.forEach((item) => {
+            item.is_favourite  = true;
+          })
+        }).catch((error)=>{
+          console.log(error);
+        })
   }
 }
 </script>
@@ -86,7 +72,7 @@ export default {
 }
 }
 .projects-list{
-
+margin-top: 50px;
   width: 100%;
   display: flex;
   -webkit-flex-wrap: wrap;
@@ -209,11 +195,8 @@ export default {
       }
       svg{
         margin-top: 16px;
-
       }
-
     }
-
     button{
       width: 167.51px;
       height: 36.78px;
@@ -257,4 +240,7 @@ export default {
     border-radius: 10px;
   }
 }
+  .notify_msg{
+    text-align: center;
+  }
 </style>

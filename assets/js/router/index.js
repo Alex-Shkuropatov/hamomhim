@@ -18,11 +18,12 @@ import HowItWorks from './../views/HowItWorks.vue';
 import Projects from "./../views/Projects.vue";
 import Orders from "./../views/Orders.vue";
 import ClosedProjects from "./../views/ClosedProjects.vue";
-import ClosedOrders from "./../views/ClosedOrders.vue";
 import PreferWorker from "./../views/PreferWorker.vue";
 import WorkerProfile from "./../views/WorkerProfile.vue"
 import NewOrder from "./../views/NewOrder.vue"
 import SearchWorkers from "./../views/SearchWorkers.vue"
+import ProjectFeedback from './../views/ProjectFeedback.vue'
+
 const routes = [
   {
     path: '/',
@@ -70,17 +71,12 @@ const routes = [
     name: 'closed-projects',
   },
   {
-    path: '/closed-projects/:id/closed-orders',
-    component: ClosedOrders,
-    name: 'closed-orders',
-  },
-  {
     path: '/prefer-worker',
     component: PreferWorker,
     name: 'prefer-worker',
   },
   {
-    path: '/view-profile',
+    path: '/view-profile/:id',
     component: WorkerProfile,
     name: 'view-profile',
   },
@@ -93,10 +89,13 @@ const routes = [
     path: '/projects/:id/orders/:orderId/:order/search-workers',
     component: SearchWorkers,
     name: 'search-workers',
-    props: {
-      order: {},
-    },
   },
+  {
+    path: '/projects/:id/leave-feedback',
+    component: ProjectFeedback,
+    name: 'project-feedback',
+  },
+
 ];
 
 

@@ -1,5 +1,5 @@
 <template>
-<div class="profile-wrapper">
+<div class="profile-wrapper" ref="nav">
 
  <div class="profile-about">
 
@@ -9,7 +9,7 @@
  <div class="block-wrapper">
 <div class="block-wrapper-element">
  <div class="element-padd">
- <div class="title"> <span>בולואש ןויצ</span> <favourite-icon/> </div>
+ <div class="title"> <span>{{user.name}}</span> <favourite-icon v-if="getData.role==='architect'"  /> </div>
  <div class="stats-block">
   <div class="stats">
    <div class="stats-element">
@@ -44,15 +44,16 @@
     </svg>
 
     <span class="bold">אזור עבודה:</span>
-    <span>{{user.workArea}}</span>
+    <span>{{user.working_area}}</span>
 
    </div>
   </div>
   <div class="description">
    {{user.description}}
   </div>
-  <hr>
+  <hr class="h desktop">
  </div>
+  <hr class="h mobile">
  </div>
   <div class="contacts">
   <div class="contacts-element mail">
@@ -82,7 +83,7 @@
     </defs>
    </svg>
 
-   <span>{{user.mail}} </span>
+   <span>{{user.email}} </span>
   </div>
    <div class="contacts-element phone">
     <span>{{user.phone}}</span>
@@ -104,7 +105,7 @@
 
 </div>
   <div class="content-image">
-   <img :src="imgSrc"  alt="">
+   <img :src="user.avatar==='null'? '/static/images/profile/defaultAvatar.png' : $env.API_URL+user.avatar"  alt="">
   </div>
  </div>
  </div>
@@ -117,6 +118,7 @@
  </div>
   </div>
 </div>
+
  <div class="slider-wrap h-container-works">
   <div class="swiper-button-prev th-slider-arrow th-slider-arrow-right" slot="button-prev" data-uid="8"></div>
   <swiper :options="sliderOptions" class="works-slider" ref="newsSlider">
@@ -127,7 +129,7 @@
   <div class="swiper-button-next th-slider-arrow th-slider-arrow-left" slot="button-next" data-uid="7"></div>
  </div>
 
-<feedback/>
+<feedback  v-bind="feed" />
 
 <download />
 
@@ -167,6 +169,20 @@ export default {
     navigation: {
      nextEl: '.swiper-button-next[data-uid="7"]',
      prevEl: '.swiper-button-prev[data-uid="8"]',
+    },
+    breakpoints: {
+     1500: {
+      slidesPerView: 4,
+     },
+     1024: {
+      slidesPerView: 3
+     },
+     700: {
+      slidesPerView: 2
+     },
+     480: {
+      slidesPerView: 1
+     },
     }
    },
    posts: [
@@ -179,11 +195,37 @@ export default {
     {id: 8, imgSrc: '/static/images/profile/w-4.png', title: 'יללכ ץופיש', url: '#', description: 'למשחו היצלטסניא ,סבג ,ףוציר ,עבצ תודובע'},
     {id: 9, imgSrc: '/static/images/profile/work-1.png', title: 'יללכ ץופיש', url: '#', description: 'למשחו היצלטסניא ,סבג ,ףוציר ,עבצ תודובע'},
    ],
+ feed: {
+  posts: [
+         ],
+     },
    }
  },
  methods: {
 
  },
+ mounted() {
+  axios.post('/api/getWorkerProfile',{'user_id': this.$route.params.id})
+      .then((response)=>{
+      console.log(response.data.value);
+      this.user = response.data.value.user;
+      console.log(this.user);
+       axios.post('/api/getRatingsOnUser',{'worker_id':this.user.id})
+               .then((response)=>{
+                console.log(response.data.value);
+                this.feed.posts = response.data.value;
+               }).catch((error)=>{
+        console.log(error);
+       });
+      }).catch((error)=>{
+      console.log(error);
+      });
+ },
+computed: {
+ getData() {
+  return this.$store.getters['user/data'];
+ }
+}
 }
 </script>
 
@@ -195,24 +237,33 @@ export default {
 .element-padd{
  padding-right: 195px;
  padding-left: 75px;
+ @media screen and (max-width: 1035px) {
+padding: 0
+ }
 }
  .profile-wrapper{
   width: 100%;
  .profile-about{
   margin: 70px auto;
-  padding: 70px 0 0 0;
-  width: 1265px;
+  padding: 70px 10px 0 10px;
   height: auto;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  @media screen and (max-width: 1035px) {
+   margin-top: 0;
+   padding-top: 0;
+  }
   .bg-resume{
    z-index:0;
    top: 0;
    position: absolute;
    object-fit: cover;
+   @media screen and (max-width: 1035px) {
+    display: none;
+   }
   }
   .profile-resume{
    background: rgba(255,255,255,0.85);
@@ -225,6 +276,21 @@ export default {
    display: flex;
    flex-direction: column;
    align-items: center;
+   @media screen and (max-width: 1440px){
+    width: unset;
+    margin-top: unset;
+   }
+   @media screen and (max-width: 1035px){
+    height: auto;
+    flex-direction: column-reverse;
+   }
+   @media screen and (max-width: 767px){
+    padding: 0 20px 0 20px;
+   }
+   @media screen and (max-width: 480px){
+    padding: 0 5px 0 5px;
+    width: 310px;
+   }
   }
  }
  }
@@ -233,6 +299,7 @@ export default {
  flex-direction: row;
  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
  .profile-resume{
+
  }
 }
 .block-wrapper{
@@ -246,6 +313,10 @@ export default {
  flex-direction: column;
  align-items: flex-start;
  justify-content: flex-start;
+ @media screen and (max-width: 1035px){
+  align-items: center;
+  margin-right: 5px;
+ }
  .title{
   margin-top: 53px;
   display: flex;
@@ -266,6 +337,9 @@ export default {
   height: 191px;
   right: 42px;
   top: 72px;
+  @media screen and (max-width: 1035px) {
+   position: relative;
+  }
   img{
    width: 191px;
    height: 191px;
@@ -274,13 +348,15 @@ export default {
   }
  }
  .stats {
-  width: 66%;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   margin-left: 144px;
   margin-top: 33px;
   left: 20px;
+  @media screen and (max-width: 767px){
+   flex-direction: column;
+  }
   .stats-element{
    display: flex;
    align-items: center;
@@ -320,25 +396,24 @@ export default {
  }
  .stats-block{
   .description{
+   min-height: 110px;
+  }
 
-  }
-  hr{
-   opacity: 0.7;
-   width: 129%;
-   margin-right: -226px;
-   border: 1px solid #E0E0E0;
-   transform: rotate(180deg);
-  }
  }
  .contacts{
   display: flex;
-
+ @media screen and (max-width: 1035px){
+  margin-top: 15px;
+  width: 100%;
+  justify-content: center;
+ }
   .contacts-element{
-
   }
   .phone{
    margin-right: 50px;
-   direction: ltr;
+   @media screen and (max-width: 767px) {
+    margin-right: 25px;
+   }
    span{
    }
   }
@@ -351,12 +426,15 @@ export default {
  padding-right: 89px;
   width: 295.06px;
   height: 58.18px;
+  @media screen and (max-width: 1035px) {
+margin-bottom: 20px;
+  }
  }
  .slide-inner-post {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
   line-height: 1.16;
   margin: 0px 5px 0 5px;
-  height: 333px;
+  max-height: 400px;
  }
  .slide-outer-post{
   padding: 8px;
@@ -370,11 +448,23 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  @media screen and (max-width: 1440px) {
+   padding: 0 100px 0 100px;
+  }
+  @media screen and (max-width: 1035px) {
+   padding: 0 25px 0 25px;
+  }
   .swiper-button-prev{
    right: 150px;
+   @media screen and (max-width: 1440px) {
+    display: none;
+   }
   }
   .swiper-button-next {
    left: 164px;
+   @media screen and (max-width: 1440px) {
+    display: none;
+   }
   }
  }
  .all-works{
@@ -383,6 +473,10 @@ export default {
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
+  @media screen and (max-width: 1650px) {
+   width: unset;
+   justify-content: center;
+  }
   .view-all{
    color: #074DAC;
    font-weight: bold;
@@ -403,14 +497,44 @@ export default {
     transform: rotate(180deg);
     margin-top: 38px;
     margin-right: 35px;
+    @media screen and (max-width: 767px){
+     width: 150px
+    }
+    @media screen and (max-width: 570px){
+     display: none;
+    }
    }
    .last-projects{
     font-weight: bold;
     font-size: 48px;
     color: #333333;
-
+    @media screen and (max-width: 767px){
+     font-size: 40px;
+    }
+    @media screen and (max-width: 570px){
+     font-size: 33px;
+    }
    }
-
+  }
+ }
+ .h{
+  opacity: 0.7;
+  width: 129%;
+  margin-right: -226px;
+  border: 1px solid #E0E0E0;
+  transform: rotate(180deg);
+ }
+ .desktop{
+  @media screen and (max-width: 1035px) {
+   display: none;
+  }
+ }
+ .mobile{
+  display: none;
+  @media screen and (max-width: 1035px) {
+   display: block;
+   width: 98%;
+   margin-right: 0;
   }
  }
 </style>

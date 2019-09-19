@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="img-wrapper">
-      <img :src="img" alt="user-image">
+      <img :src="$env.API_URL+avatar" alt="user-image">
     </div>
     <hr>
   </div>
@@ -53,7 +53,7 @@ import ShowMore from './../../components/profile/ShowMore'
         default: '',
         type: Number,
       },
-      img: {
+      avatar: {
         default: '',
         type: String,
       },
@@ -81,7 +81,16 @@ import ShowMore from './../../components/profile/ShowMore'
     width: 141px;
     height: 140px;
     right: 42px;
-    top: 72px;
+    top: 15px;
+    @media screen and (max-width: 1035px) {
+      position: relative;
+      top: 10px;
+      right: unset;
+    }
+    @media screen and (max-width:480px) {
+    margin-bottom: 48px;
+    margin-left: 131px;
+    }
     img{
       width: 141px;
       height: 140px;
@@ -113,7 +122,17 @@ import ShowMore from './../../components/profile/ShowMore'
 }
 .content-wrapper{
   padding-right: 216px;
+  min-height: 230px;
+  @media screen and (max-width: 1035px) {
+  padding-right: 0;
+  }
+  @media screen and(max-width: 767px) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
+  }
   .title {
     width: 750px;
     font-weight: bold;
@@ -121,19 +140,30 @@ import ShowMore from './../../components/profile/ShowMore'
     text-align: right;
     letter-spacing: -0.02em;
     color: #333333;
+    @media screen and (max-width: 1035px) {
+      width: unset;
+      text-align: center;
+    }
+    @media screen and(max-width: 767px) {
+      width: 280px;
+    }
   }
   .description{
     animation-duration: 2s;
     animation-timing-function: ease;
     transition: all 0.8s;
-
-    width: 800px;
+      max-width: 500px;
     font-size: 24px;
     text-align: right;
     color: #4F4F4F;
     max-height: 124px;
 overflow-y: hidden;
-
+    @media screen and (max-width: 1035px) {
+      text-align: center;
+    }
+    @media screen and(max-width: 767px) {
+      width: 90%;
+    }
   }
 }
 .post-date{
@@ -146,6 +176,11 @@ overflow-y: hidden;
   .feedback-post{
     position: relative;
     height: auto;
+    @media screen and (max-width: 1035px) {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+    }
     hr{
       position: absolute;
       width: 1120px;
@@ -154,7 +189,7 @@ overflow-y: hidden;
     }
   }
 .show-more-b{
-  top: 120px;
+  top: 104px;
   left: 33px;
 }
 </style>
