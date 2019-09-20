@@ -10,18 +10,34 @@
 
     </div>
     <div class="nav">
-      <ul class="nav-links" >
-        <div class="row">
-          <router-link :to="{name: 'profile-edit',  }" class=" link "   >ליפורפ ךורע</router-link>
+      <ul class="nav-links">
+        <template v-if="$store.getters['user/getField']('role') === 'architect'">
+          <div class="row">
+            <router-link :to="{name: 'profile-edit',  }" class="link" >ליפורפ ךורע</router-link>
+            <hr>
+            <router-link :to="{name: 'prefer-worker',  }" class="link" >םיפדעומ םידבוע</router-link>
+          </div>
           <hr>
-          <router-link :to="{name: 'prefer-worker',  }" class=" link "   > םיפדעומ םידבוע </router-link>
-        </div>
-        <hr>
-        <div class="row">
-          <router-link :to="{name: 'closed-projects',  }" class=" link "   > םירוגס םיטקיורפ     </router-link>
+          <div class="row">
+            <router-link :to="{name: 'closed-projects',  }" class="link">םירוגס םיטקיורפ</router-link>
+            <hr>
+            <router-link :to="{name: 'projects',  }" class="link">םיטקייורפ</router-link>
+          </div>
+        </template>
+        <template v-else>
+          <div class="row">
+            <router-link :to="{name: 'requests', }" class="link" >םיטקייורפ</router-link>
+            <hr>
+            <router-link :to="{name: 'responses', }" class="link" >םירוגס םיטקיורפ</router-link>
+          </div>
           <hr>
-          <router-link :to="{name: 'projects',  }" class=" link "   >    םיטקייורפ   </router-link>
-        </div>
+          <div class="row">
+            <router-link :to="{name: 'profile-edit', }" class="link">ערוך פרופיל</router-link>
+            <hr>
+            <router-link :to="{name: 'packages', }" class="link">עובדים מועדפים</router-link>
+          </div>
+        </template>
+
       </ul>
     </div>
   </div>
@@ -36,7 +52,7 @@ export default {
         user : {
           title : 'שם משתמש',
           imageProfile: '',
-        }
+        },
     }
   }
   ,
