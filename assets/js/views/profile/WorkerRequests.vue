@@ -19,9 +19,7 @@
               <a href="#" class="phone">{{request.user.phone}}</a>
             </div>
             <hr class="th-divider">
-            <div class="description">
-              קרה לכם שבאתם להעתיק טקטס מסוים בעברי מאתר וכאשר הדבקם הוא יצא הפוך? זה קורה בעיקר בתוכנות שלא מזהות עברית , כמו פוטושופ אז במקום לנסות לכתוב הפוך לבד יש לנו פה הופך טקסט, שיהפוך את הטקסט לבד פשוט תדביקו וזה יהפוך לכם את הטקסט או שתכתבו לבד את העברית שאתם רוצים פה בתוך ההופך והוא יהפוך את העברית
-            </div>
+            <div class="description">{{request.description}}</div>
           </div>
           <div class="img-col" :style="{ backgroundImage: 'url(/static/images/requests/request-thumb.png)' }"></div>
         </div>
@@ -57,6 +55,9 @@
           </div>
         </div>
       </div>
+    </template>
+    <template v-else>
+      <h2 class="notify_msg text-center">You dont have any invitations to the projects yet.<i class="far fa-copy ml-1 mr-1"></i></h2>
     </template>
 
   </div>

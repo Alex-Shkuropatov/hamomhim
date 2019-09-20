@@ -7,16 +7,17 @@
             <div class="title">שם קטגוריה</div>
             <div class="phone">
               <span class="bold">שם האדריכל</span> |
-              <a href="#" class="phone">{{response.phone}}</a>
+              <a href="#" class="phone">{{response.user.phone}}</a>
             </div>
             <hr class="th-divider">
-            <div class="description">
-              קרה לכם שבאתם להעתיק טקטס מסוים בעברי מאתר וכאשר הדבקם הוא יצא הפוך? זה קורה בעיקר בתוכנות שלא מזהות עברית , כמו פוטושופ אז במקום לנסות לכתוב הפוך לבד יש לנו פה הופך טקסט, שיהפוך את הטקסט לבד פשוט תדביקו וזה יהפוך לכם את הטקסט או שתכתבו לבד את העברית שאתם רוצים פה בתוך ההופך והוא יהפוך את העברית
-            </div>
+            <div class="description">{{response.description}}</div>
           </div>
           <div class="img-col" :style="{ backgroundImage: 'url(/static/images/requests/request-thumb.png)' }"></div>
         </div>
       </div>
+    </template>
+    <template v-else>
+      <h2 class="notify_msg text-center">You didn't write any response yet.<i class="far fa-copy ml-1 mr-1"></i></h2>
     </template>
   </div>
 </template>
@@ -30,7 +31,7 @@ export default {
   },
   methods: {
     getItemsFromApi(){
-      axios.post('/api/getAllResponses', { page: 0, take: 4})
+      axios.post('/api/getAllResponses', { page: 0, take: 10})
         .then(response => {
           if(response.data.success){
             this.responses = response.data.value.records;
@@ -50,15 +51,12 @@ export default {
 <style lang="scss" scoped>
 @import '~@/vars.scss';
 .responses-list{
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 .response-inner{
   display: flex;
 }
 .response-item{
+  flex-grow: 1;
   margin: ceil($scale1 * 20px) ceil($scale1 * 45px);
   background: #FFFFFF;
   box-shadow: 0px ceil($scale1 * 4px) ceil($scale1 * 20px) rgba(0, 0, 0, 0.15);
@@ -124,4 +122,6 @@ export default {
 @media (max-width: $breakpoint5){
 
 }
+
+
 </style>
