@@ -215,6 +215,7 @@ import  FavouriteIcon from './common/FavouriteIcon.vue';
           width: 120px;
           height: 120px;
           margin-left: 46px;
+          margin-top:0;
         }
       }
       .description{

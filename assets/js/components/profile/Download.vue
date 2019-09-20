@@ -6,7 +6,7 @@
  </div>
     <download-document
             class="post-item"
-            v-for="post in posts" :key="post.id"
+            v-for="post in files" :key="post.id"
             v-bind="post">
     </download-document>
     <button class="download-all th-btn th-btn-blue th-btn-md"><span>Download all</span></button>
@@ -30,6 +30,11 @@ import DownloadDocument from './DownloadDocument'
      },
     components: {
       DownloadDocument
+    },
+    props: {
+       files: {
+          type: Array,
+       }
     },
     methods: {
 

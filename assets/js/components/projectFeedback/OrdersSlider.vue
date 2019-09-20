@@ -71,7 +71,7 @@
     methods:{
       showWorkers(id){
         console.log(id);
-        axios.post('/api/getOrderWorkers', {'order_id':id}
+        axios.post('/api/getWorkersWithoutFeedback', {'order_id':id}
         ).then((response)=>{
           console.log(response);
           this.$emit('getWorkers', {

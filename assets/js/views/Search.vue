@@ -4,7 +4,19 @@
     <projects-header/>
 
   <div class="workers-list">
-    <h2  class="notify_msg"  v-show="workers.length===0" ><i class="far fa-copy"></i> You dont have favourite workers</h2>
+
+    <div class="search-tab">
+      <button class="th-btn th-btn-blue th-btn-sm add-project">
+        <span class=" abs">+</span> Add new project
+      </button>
+      <drop-down class="dropDown" placeholder="הדובע רוזיא" v-model="work_area.value" :items="work_area.items"/>
+      <drop-down class="dropDown" placeholder="הדובע רוזיא" v-model="work_area1.value" :items="work_area1.items"/>
+      <button class=" th-btn th-btn-blue th-btn-sm add-project search-b" >
+        Search
+      </button>
+    </div>
+
+    <h2  class="notify_msg"  v-show="workers.length===0" ><i class="far fa-copy"></i> Any worker by this category</h2>
 
     <div class="projects-list-wrap h-container">
 
@@ -24,34 +36,63 @@
 
 import Worker from './../components/Worker';
 import ProjectsHeader from './../components/ProjectsHeader';
-
+import DropDown from './../components/common/DropDown.vue'
 export default {
   data(){
     return {
-
       workers: [
        ],
+      work_area: {
+        items: [
+          { label: 'כל הארץ', value: "1" },
+          { label: 'תל אביב', value: "2" },
+          { label: 'חיפה והסביבה', value: "3" },
+          { label: 'השרון והסביבה', value: "4" },
+          { label: 'באר שבע', value: "5" },
+        ],
+        value: '',
+        labelKey: 'label',
+        valueKey: 'label',
+      },
+      work_area1: {
+        items: [ { label: ' הדובע רוזיא', value: 1 },{ label: ' הדובע רוזיא', value: 2 },{ label: ' הדובע רוזיא', value: 3 } ],
+        value: '',
+      },
+      working_area: '',
     };
   },
   components: {
     ProjectsHeader,
     Worker,
+    DropDown,
 
   },
   methods: {
 
   },
   mounted() {
-      axios.post('/api/getFavouriteUsers')
-        .then((response)=>{
-          console.log(response);
+    this.formData.append('category_id',  this.$route.params.id);
+
+    if (this.work_area.value !== ''){
+      this.formData.append('working_area',  this.work_area.value);
+    }
+
+    if(this.subcategories.length !== 0){
+      for (let i=0; i<this.subcategories.length;i++){
+        this.formData.append('subcategories[]',  this.subcategories[i]);
+      }
+    }
+
+
+    return axios.post('/api/searchWorkers', this.formData)
+        .then((response) => {
           this.workers = response.data.value;
-          this.workers.forEach((item) => {
-            item.is_favourite  = true;
-          })
-        }).catch((error)=>{
-          console.log(error);
+          this.done=true;
+          console.log(this.workers);
         })
+        .catch((error) => {
+          console.log(error);
+        });
   }
 }
 </script>
@@ -210,6 +251,7 @@ margin-top: 50px;
     box-sizing: border-box;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
+    width: 333px;
   }
 }
   .notify_msg{

@@ -1,12 +1,14 @@
 <template>
 <div class="profile-wrapper" ref="nav">
 
+<show-gallery />
 
  <div class="header-info header-n">
 
   <div class="info-wrapper" v-bind:class="{marginT : getData.role==='worker'}" >
    <div class="title"> {{user.name}}
     <favourite-icon
+            v-bind="favourite"
             v-if="getData.role==='architect'"
     />
 
@@ -28,7 +30,7 @@
  <div class="block-wrapper">
 <div class="block-wrapper-element">
  <div class="element-padd">
- <div class="title"> <span>{{user.name}}</span> <favourite-icon v-if="getData.role==='architect'"  /> </div>
+ <div class="title"> <span>{{user.name}}</span> <favourite-icon v-bind="favourite" v-if="getData.role==='architect'"  /> </div>
  <div class="stats-block">
   <div class="stats">
    <div class="stats-element">
@@ -115,8 +117,6 @@
       </linearGradient>
      </defs>
     </svg>
-
-
    </div>
   </div>
  <button class="th-btn th-btn-blue th-btn-sm resume-b">רשק רוצ</button>
@@ -150,15 +150,14 @@
 
 <feedback  v-bind="feed" />
 
-<download />
+<download v-bind="files"/>
 
 </div>
 
 </template>
 
 <script>
-
-import AlertModal from '../components/modals/Alert.vue';
+import ShowGallery from '../components/modals/ShowGallery.vue'
 import FavouriteIcon from '../components/common/FavouriteIcon.vue'
 import WorkPost from '../components/profile/WorkPost.vue'
 import Download from '../components/profile/Download'
@@ -170,7 +169,7 @@ export default {
   WorkPost,
   Download,
   Feedback,
-
+  ShowGallery,
  },
  data: function () {
   return {
@@ -218,7 +217,11 @@ export default {
  feed: {
   posts: [
          ],
+  files: [],
      },
+   favourite:{
+    is_favourite: '',
+   },
    }
  },
  methods: {
@@ -229,7 +232,8 @@ export default {
       .then((response)=>{
       console.log(response.data.value);
       this.user = response.data.value.user;
-      console.log(this.user);
+      this.favourite.is_favourite= this.user.is_favourite
+       console.log(this.user);
        axios.post('/api/getRatingsOnUser',{'worker_id':this.user.id})
                .then((response)=>{
                 console.log(response.data.value);

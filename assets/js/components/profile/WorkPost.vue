@@ -24,9 +24,9 @@
         type: Number,
         required: true,
       },
-      imgSrc: {
+      images: {
         default: '',
-        type: String,
+        type: Array,
       },
       title: {
         default: '',

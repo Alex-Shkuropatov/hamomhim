@@ -1,7 +1,7 @@
 <template>
   <div class="feedback-form" >
 <h2 class="title">Leave feedback</h2>
-    <form class="feedback">
+    <form class="feedback" ref="form">
       <div class="row">
         <p class="under-text">Title</p>
         <input
@@ -134,6 +134,7 @@ import { required, minLength } from "vuelidate/lib/validators";
           axios.post('/api/addCommentOnUser', data)
               .then((resolve)=>{
                console.log(resolve);
+                this.$refs.form.reset();
                 this.$emit('hide',{
                   feedFlag : false,
                   id: this.userId,

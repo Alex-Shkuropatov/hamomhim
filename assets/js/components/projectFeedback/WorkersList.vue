@@ -15,7 +15,7 @@
 
     <div class="feedback-form" >
 
-      <send-feedback v-bind="data" @hide="onHide" v-show="data.flag" v-if="data.id"/>
+      <send-feedback v-bind="data" @hide="onHide" v-show="data.flag" />
 
     </div>
 
@@ -30,7 +30,7 @@ import SendFeedback from './../projectFeedback/SendFeedback';
       return{
         data:{
           id: '',
-          flag:true,
+          flag:false,
         }
       }
     },
@@ -52,7 +52,6 @@ import SendFeedback from './../projectFeedback/SendFeedback';
         this.data.id = data.id;
       },
       onHide(data){
-
         this.data.flag = data.feedFlag;
       },
     },

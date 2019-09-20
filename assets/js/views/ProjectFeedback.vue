@@ -3,7 +3,7 @@
 
     <projects-header  />
 
-    <div class="feedback">
+    <div  class="feedback">
       <div class="th-heading text-center">םיטקיורפ תמישר</div>
 
       <div class="btn-wrapper">
@@ -11,7 +11,7 @@
       </div>
 <orders-slider class="wrapper-block" @getWorkers="onWorkers" />
 
-<workers-list class="wrapper-block" v-bind="order" v-show="order.workers.length!==0"  />
+<workers-list  class="wrapper-block" v-bind="order" v-show="order.workers.length!==0"  />
 
     </div>
   </div>
