@@ -625,7 +625,7 @@ margin-bottom: 20px;
   }
  }
  .marginT{
-  margin-top: 300px;
+  padding-top: 250px;
  }
  .header-n {
   background-image: url(/static/images/profile/header-image.png);
