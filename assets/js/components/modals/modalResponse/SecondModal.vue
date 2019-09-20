@@ -1,16 +1,29 @@
 <template>
-  <div class="content-wrapper" >
-   <h2>RESPONSE</h2>
-    <button class="back-b" @click="back" >back</button>
-    <div class="description">
-      {{response.description}}
-    </div>
-  </div>
+
+      <div class="content-wrapper">
+        <h2 class="title">טקייורפה םש</h2>
+        <div class="subtitle">נתוני אדריכל</div>
+        <div class="popup-form-row">
+          <div class="col1-1 inp-group">
+            <div class="label">תיאור</div>
+            <theme-textarea :disable=true v-model="response.description"  placeholder="תיאור"></theme-textarea>
+          </div>
+        </div>
+        <div class="popup-form-row">
+
+
+        </div>
+        <div class="popup-form-row two-buttons">
+          <button class="th-btn th-btn-md wide th-btn-gray" @click="close">close</button>
+        </div>
+      </div>
 
 </template>
 
 <script>
-
+  import Modal from '../../common/Modal.vue'
+  import ThemeInput from '../../common/ThemeInput.vue'
+  import ThemeTextarea from '../../common/ThemeTextarea.vue'
   export default {
     methods: {
       close() {
@@ -28,7 +41,9 @@
    }
     },
     components: {
-
+      Modal,
+      ThemeInput,
+      ThemeTextarea,
     },
     mounted() {
 
@@ -51,39 +66,49 @@
 </script>
 
 <style lang="scss" scoped>
-  .back-b{
-    width: 60px;
-    height: 30px;
-    background-color: gainsboro;
-  }
-  .content-wrapper{
-
-    width: 720px;
-    @media screen and (max-width: 750px) {
-      width: 500px;
-    }
-    @media screen and (max-width: 480px) {
-      width: 300px;
-    }
-  }
-  .workers-list{
+  @import '~@/vars.scss';
+  .content-wrapper {
     position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+    margin-bottom: 49px;
+    text-align: center;
+    width: 600px;
+    @media screen and (max-width: 900px) {
+      width: 440px;
+    }
     @media screen and (max-width: 480px) {
-      justify-content: center;
+      width: 310px;
+    }
+
+    .title {
+      font-weight: bold;
+      font-size: 40px;
+      text-align: center;
+      color: #2871D7;
+      margin: 0;
+    }
+
+    .description {
+      font-size: 24px;
+      text-align: center;
+      color: #828282;
+      margin: 0;
     }
   }
-  .title-h{
-    font-weight: bold;
-    font-size: 36px;
-    text-align: center;
-    letter-spacing: -0.02em;
-    color: #333333;
-    @media screen and (max-width:480px) {
-      font-size: 30px;
-    }
+  .two-buttons{
+    margin-top: 20px;
+    justify-content: space-between;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .slide-fade-enter-active {
+    transition: all .3s ease;
+  }
+  .slide-fade-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+  .slide-fade-enter, .slide-fade-leave-to
+    /* .slide-fade-leave-active до версии 2.1.8 */ {
+    transform: translateX(10px);
+    opacity: 0;
   }
 </style>

@@ -1,6 +1,27 @@
 <template>
 <div class="profile-wrapper" ref="nav">
 
+<show-gallery />
+
+ <div class="header-info header-n">
+
+  <div class="info-wrapper" v-bind:class="{marginT : getData.role==='worker'}" >
+   <div class="title"> {{user.name}}
+    <favourite-icon
+            v-bind="favourite"
+            v-if="getData.role==='architect'"
+    />
+
+   </div>
+   <div class="description">
+    <span class="bold">םיאבה םיסקדניאב סולפ םיצופישב עיפומ בולואש ןויצ</span>
+    <span >.הלק הינב ,םיקינצופיש ,םיצופיש ינלבק</span>
+   </div>
+   <button class="contact-b">רשק רוצ</button>
+  </div>
+
+ </div>
+
  <div class="profile-about">
 
   <img class="bg-resume" src="/static/images/profile/resume-bg.png" alt="">
@@ -9,7 +30,7 @@
  <div class="block-wrapper">
 <div class="block-wrapper-element">
  <div class="element-padd">
- <div class="title"> <span>{{user.name}}</span> <favourite-icon v-if="getData.role==='architect'"  /> </div>
+ <div class="title"> <span>{{user.name}}</span> <favourite-icon v-bind="favourite" v-if="getData.role==='architect'"  /> </div>
  <div class="stats-block">
   <div class="stats">
    <div class="stats-element">
@@ -21,7 +42,7 @@
      <rect x="10.418" y="16.4648" width="3.79955" height="6.33258" fill="#FFB000"/>
      <rect x="4.08594" y="18.998" width="3.79955" height="3.79955" fill="#FFB000"/>
     </svg>
-    גוריד :  <span>{{user.rating}}</span>
+    גוריד :  <span>{{Math.round(user.average_rating)}}</span>
    </div>
 
    <div class="stats-element">
@@ -30,7 +51,7 @@
      <path d="M9.40164 16.7373H8.94827C4.17993 16.7491 0.317445 20.6117 0.305664 25.3799V25.9904C0.305664 26.3256 0.57733 26.5972 0.912539 26.5972H17.4338C17.769 26.5972 18.0407 26.3256 18.0407 25.9904V25.3799C18.0269 20.6138 14.1678 16.753 9.40164 16.7373Z" fill="#FFB000"/>
      <path d="M30.7091 2.06125C28.7425 0.684006 26.3911 -0.0368368 23.9906 0.00144989C21.59 -0.0368368 19.2387 0.684006 17.2721 2.06125C15.4872 3.37496 14.3877 5.20272 14.3877 7.23754C14.3906 8.1582 14.6159 9.0645 15.0445 9.87923C15.4276 10.6047 15.9337 11.2582 16.5403 11.8105L15.016 14.977C14.8701 15.2766 14.9947 15.6377 15.2943 15.7835C15.4819 15.8749 15.7034 15.8628 15.8799 15.7516L19.3855 13.5883C20.0522 13.8605 20.7431 14.0697 21.4489 14.213C22.2853 14.3843 23.1369 14.4704 23.9906 14.4701C26.3911 14.5083 28.7425 13.7875 30.7091 12.4103C32.494 11.0965 33.5935 9.26878 33.5935 7.23397C33.5935 5.19915 32.4904 3.37496 30.7091 2.06125ZM28.5432 6.2619C28.5429 6.26341 28.5425 6.26502 28.5422 6.26654C28.5184 6.3723 28.4667 6.46975 28.3922 6.54856L26.8358 8.33348L27.0428 10.7289C27.072 11.0627 26.8251 11.3571 26.4911 11.3863C26.3744 11.3965 26.2574 11.3728 26.1539 11.3179L23.9906 10.4076L21.7773 11.3464C21.4712 11.478 21.1163 11.3365 20.9848 11.0304C20.945 10.9377 20.929 10.8365 20.9384 10.736L21.1454 8.34062L19.5711 6.51643C19.3531 6.26181 19.3828 5.87876 19.6374 5.66073C19.7109 5.59782 19.7983 5.55337 19.8924 5.53115L22.2307 4.98853L23.4694 2.94658C23.6411 2.65876 24.0136 2.5646 24.3014 2.73622C24.3879 2.78781 24.4602 2.8601 24.5118 2.94658L25.7434 4.99567L28.0816 5.53829C28.4089 5.61067 28.6156 5.93463 28.5432 6.2619Z" fill="#FFB000"/>
     </svg>
-    ןויצ :  <span>{{user.rate}}</span>
+    ןויצ :  <span>{{user.comments_count}}</span>
    </div>
    <div class="location">
     <svg width="16" height="22" viewBox="0 0 16 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -96,8 +117,6 @@
       </linearGradient>
      </defs>
     </svg>
-
-
    </div>
   </div>
  <button class="th-btn th-btn-blue th-btn-sm resume-b">רשק רוצ</button>
@@ -105,7 +124,7 @@
 
 </div>
   <div class="content-image">
-   <img :src="user.avatar==='null'? '/static/images/profile/defaultAvatar.png' : $env.API_URL+user.avatar"  alt="">
+   <img :src="user.avatar===null? '/static/images/profile/defaultAvatar.png' : $env.API_URL+user.avatar"  alt="">
   </div>
  </div>
  </div>
@@ -131,15 +150,14 @@
 
 <feedback  v-bind="feed" />
 
-<download />
+<download v-bind="files"/>
 
 </div>
 
 </template>
 
 <script>
-
-import AlertModal from '../components/modals/Alert.vue';
+import ShowGallery from '../components/modals/ShowGallery.vue'
 import FavouriteIcon from '../components/common/FavouriteIcon.vue'
 import WorkPost from '../components/profile/WorkPost.vue'
 import Download from '../components/profile/Download'
@@ -151,7 +169,7 @@ export default {
   WorkPost,
   Download,
   Feedback,
-
+  ShowGallery,
  },
  data: function () {
   return {
@@ -163,6 +181,7 @@ export default {
     description: '.יתוכיאו ןימא תוריש קינעמה יעוצקמ תווצ םע דבוע .ךמסומ יאלמשח לש הדועת לעבו למשח תודובעב החמתמ ףסונב .סבגו עבצ ,תוריק יופיח ,ףוציר ,היצלטסניא תודובע ,ןלבק ,בולואש ןויצ.יתוכיאו ןימא תוריש קינעמה יעוצקמ תווצ םע דבוע .ךמסומ יאלמשח לש הדועת לעבו למשח תודובעב החמתמ ףסונב .סבג',
     phone: '+ 38 (098) 765 43 21',
     mail: 'example@gmail.com',
+    name: '',
    },
    sliderOptions: {
     slidesPerView: 5,
@@ -198,7 +217,11 @@ export default {
  feed: {
   posts: [
          ],
+  files: [],
      },
+   favourite:{
+    is_favourite: '',
+   },
    }
  },
  methods: {
@@ -209,7 +232,8 @@ export default {
       .then((response)=>{
       console.log(response.data.value);
       this.user = response.data.value.user;
-      console.log(this.user);
+      this.favourite.is_favourite= this.user.is_favourite
+       console.log(this.user);
        axios.post('/api/getRatingsOnUser',{'worker_id':this.user.id})
                .then((response)=>{
                 console.log(response.data.value);
@@ -335,8 +359,8 @@ padding: 0
   position: absolute;
   width: 191px;
   height: 191px;
-  right: 42px;
-  top: 72px;
+  right: 48px;
+  top: 64px;
   @media screen and (max-width: 1035px) {
    position: relative;
   }
@@ -535,6 +559,85 @@ margin-bottom: 20px;
    display: block;
    width: 98%;
    margin-right: 0;
+  }
+ }
+ .info-wrapper{
+  margin: 0 auto;
+  padding-top: 215px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media screen and (max-width: 767px){
+   width: 300px;
+  }
+  .title{
+   font-weight: bold;
+   font-size: 64px;
+   line-height: 30px;
+   display: flex;
+   align-items: center;
+   color: #FFFFFF;
+   @media screen and (max-width: 767px){
+    font-size: 50px;
+   }
+  }
+  .description{
+   margin-top: 20px;
+   text-align: center;
+   font-size: 24px;
+   line-height: 30px;
+   color: #FFFFFF;
+   @media screen and (max-width: 767px){
+    font-size: 20px;
+   }
+   .bold{
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 10px;
+    @media screen and (max-width: 767px){
+     font-size: 20px;
+    }
+   }
+  }
+ }
+ .contact-b{
+  margin-top: 20px ;
+  font-weight: bold;
+  font-size: 24px;
+  width: 257.89px;
+  height: 76.37px ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #FFFFFF;
+  background: #30588E;
+  border-radius: 50px;
+  &:hover{
+   color: black;
+  }
+  @media screen and (max-width: 767px){
+   width: 202.89px;
+   height: 52.37px;
+  }
+ }
+ .marginT{
+  margin-top: 300px;
+ }
+ .header-n {
+  background-image: url(/static/images/profile/header-image.png);
+  height: 814px;
+  width: 100%;
+  -ms-align-items: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  @media screen and (max-width: 767px) {
+   height: 680px;
+  }
+  @media screen and (max-width: 600px) {
+   height: 600px;
   }
  }
 </style>

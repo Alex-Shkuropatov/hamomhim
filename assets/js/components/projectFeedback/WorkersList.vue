@@ -15,7 +15,7 @@
 
     <div class="feedback-form" >
 
-      <send-feedback v-bind="data" v-if="data.id"/>
+      <send-feedback v-bind="data" @hide="onHide" v-show="data.flag" />
 
     </div>
 
@@ -30,6 +30,7 @@ import SendFeedback from './../projectFeedback/SendFeedback';
       return{
         data:{
           id: '',
+          flag:false,
         }
       }
     },
@@ -47,8 +48,11 @@ import SendFeedback from './../projectFeedback/SendFeedback';
     },
     methods:{
       onWorker(data){
-        console.log(data);
+       this.data.flag = true;
         this.data.id = data.id;
+      },
+      onHide(data){
+        this.data.flag = data.feedFlag;
       },
     },
   }
@@ -61,6 +65,9 @@ import SendFeedback from './../projectFeedback/SendFeedback';
       font-size: 48px;
       text-align: center;
       color: #000000;
+      @media screen and (max-width:600px){
+        font-size: 32px;
+      }
     }
   }
 .workers-wrapper{
@@ -70,5 +77,11 @@ import SendFeedback from './../projectFeedback/SendFeedback';
   flex-direction: row-reverse;
   justify-content: center;
   flex-wrap: wrap;
+  @media screen and (max-width: 1025px){
+  width: 600px;
+}
+  @media screen and (max-width: 625px){
+    width: 300px;
+  }
 }
 </style>

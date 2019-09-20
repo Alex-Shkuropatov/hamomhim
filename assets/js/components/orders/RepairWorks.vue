@@ -1,5 +1,4 @@
 <template>
-
   <div class="repair-wrapper">
     <h2 class="title">תורקתו סבג תודובע</h2>
     <h4 class="description">ץופישה גוס תא רחב אנ</h4>
@@ -13,8 +12,8 @@
          </div>
        </div>
        <div class="row" >
-         <p class="formItem" >ךרעב הרידה חטש</p>
-         <input type="text" placeholder="ךרעב הרידה חטש" v-model="formData.name" class="inputName">
+         <p class="formItem" >שם מלא</p>
+         <input type="text" placeholder="שם מלא" v-model="formData.name" class="inputName">
        </div>
      </div>
      <div class="add-files">
@@ -46,7 +45,6 @@
      <div class="row">
        <div class="title">תוישפוח תורעה</div>
        <textarea v-model="formData.description" name="text" id="" cols="30" placeholder="ץופישה תודוא ןלבקל תורעהו טסקט םושרל ולכות ןאכ..." rows="10">
-
        </textarea>
      </div>
      <button class="next-b th-btn th-btn-blue th-btn-md" @click.prevent="sendOrder"><span>Next</span></button>
@@ -82,7 +80,6 @@ import DropDown from './../common/DropDown'
         },
       }
     },
-
     methods: {
       previewFiles(event) {
         let file = event.target.files[0];

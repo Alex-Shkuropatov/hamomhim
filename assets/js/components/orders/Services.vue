@@ -14,10 +14,9 @@
         </div>
       </div>
       </div>
-      <button class="next-b th-btn th-btn-blue th-btn-md"   @click="sendData"><span>Next</span></button>
+      <button class="next-b th-btn th-btn-blue th-btn-md "   @click="sendData"><span>Next</span></button>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -223,6 +222,10 @@
       padding: 0px;
       display: inline-block;
       text-align: center;
+      @media screen and (max-width: 480px) {
+        width: 200px;
+        height: 50px;
+      }
     }
   }
 }

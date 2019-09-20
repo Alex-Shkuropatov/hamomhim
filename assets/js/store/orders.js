@@ -34,6 +34,5 @@ export default {
     getOrderById: state => id => {
       return state.data.find(item => item.id == id );
     },
-
   }
 };

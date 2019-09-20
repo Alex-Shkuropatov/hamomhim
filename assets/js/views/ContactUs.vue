@@ -15,7 +15,6 @@
                class="marge inputField"
                required
          >
-
       </div>
         <div class="input-wrapper">
         <input type="email"
@@ -28,9 +27,10 @@
       </div>
       <div class="row">
         <div class="input-wrapper">
-        <input type="number"
+        <input type="tel"
                 v-model.trim="phone"
                placeholder="מספר נייד"
+               pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"
                class="marge inputField"
                required
          >
@@ -53,7 +53,6 @@
                required
                minlength="6"
         >
-
       </div>
 
       <textarea class="txt"
