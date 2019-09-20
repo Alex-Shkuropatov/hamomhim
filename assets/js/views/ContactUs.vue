@@ -150,10 +150,10 @@
   }
 .formWrapper{
   background: url("/static/images/aboutUs/team.png");
-  background-position: left -87px ;
+
   background-size: cover;
   background-repeat: no-repeat;
-  min-height:  746px;
+  min-height:  809px;
 
   @media screen and (max-width: 1919px){
     background-position: left 0;
@@ -426,7 +426,8 @@ button::-moz-focus-inner {
       width: 730px!important;
     }
       @media screen and (max-width: 1440px){
-      width: 565px!important;
+      width: 573px!important;
+        margin-right:13px;
     }
     @media screen and (max-width: 620px){
       width: 350px!important;

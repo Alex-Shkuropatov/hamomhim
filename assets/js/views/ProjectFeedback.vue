@@ -30,6 +30,7 @@
       return {
         order:{
           workers: [],
+          orderId: ''
         },
       };
     },
@@ -45,6 +46,7 @@
       },
       onWorkers(data){
       this.order.workers = data.workers;
+      this.order.orderId = data.id;
       },
     },
 computed: {
@@ -53,6 +55,8 @@ computed: {
     created() {
 
     },
+    mounted() {
+    }
 
   }
 </script>

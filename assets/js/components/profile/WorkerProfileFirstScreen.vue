@@ -4,7 +4,7 @@
     <div class="info-wrapper" v-bind:class="{marginT : getData.role!=='architect'}" >
       <div class="title"> {{user.name}}
         <favourite-icon
-        v-bind="favourite"
+        v-bind="{is_favourite:user.is_favourite, user_id:user.id}"
         v-if="getData.role==='architect'"
         />
 
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+  import FavouriteIcon from './../common/FavouriteIcon'
 export default {
   props: {
     user: {
@@ -31,6 +32,9 @@ export default {
     getData() {
       return this.$store.getters['user/data'];
     }
+  },
+  components: {
+    FavouriteIcon
   }
 }
 </script>

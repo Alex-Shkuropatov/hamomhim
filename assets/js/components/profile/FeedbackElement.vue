@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="img-wrapper">
-      <img :src="$env.API_URL+avatar" alt="user-image">
+      <img :src="avatar===null? '/static/images/profile/defaultAvatar.png' : $env.API_URL+avatar" alt="user-image">
     </div>
     <hr>
   </div>

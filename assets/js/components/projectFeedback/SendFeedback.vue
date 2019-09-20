@@ -92,6 +92,9 @@ import { required, minLength } from "vuelidate/lib/validators";
     props: {
       id: {
         type: Number,
+      },
+      orderId: {
+        type:Number,
       }
     },
     mounted() {
@@ -130,6 +133,7 @@ import { required, minLength } from "vuelidate/lib/validators";
             title: this.title,
             description: this.description,
             rate: this.userRate,
+            order_id: this.orderId,
           };
           axios.post('/api/addCommentOnUser', data)
               .then((resolve)=>{

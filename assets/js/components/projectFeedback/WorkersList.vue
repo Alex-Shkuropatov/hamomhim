@@ -31,12 +31,16 @@ import SendFeedback from './../projectFeedback/SendFeedback';
         data:{
           id: '',
           flag:false,
+          orderId: this.orderId,
         }
       }
     },
     props: {
       workers: {
         type: Array,
+      },
+      orderId:{
+        type: Number
       }
     },
     mounted() {
@@ -50,6 +54,7 @@ import SendFeedback from './../projectFeedback/SendFeedback';
       onWorker(data){
        this.data.flag = true;
         this.data.id = data.id;
+        this.data.orderId = this.orderId;
       },
       onHide(data){
         this.data.flag = data.feedFlag;

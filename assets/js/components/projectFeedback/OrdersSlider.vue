@@ -76,6 +76,7 @@
           console.log(response);
           this.$emit('getWorkers', {
             workers : response.data.value.workers,
+            id: id,
           })
         }).catch((error)=>{
           console.log(error);

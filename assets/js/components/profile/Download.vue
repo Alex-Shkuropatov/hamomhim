@@ -38,6 +38,9 @@ import DownloadDocument from './DownloadDocument'
     },
     methods: {
 
+    },
+    mounted() {
+
     }
   }
 </script>

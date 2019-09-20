@@ -13,7 +13,7 @@
  <div class="block-wrapper">
 <div class="block-wrapper-element">
  <div class="element-padd">
- <div class="title"> <span>{{user.name}}</span> <favourite-icon v-bind="favourite" v-if="getData.role==='architect'"  /> </div>
+ <div class="title"> <span>{{user.name}}</span> <favourite-icon v-bind="getData" v-if="getData.role==='architect'"  /> </div>
  <div class="stats-block">
   <div class="stats">
    <div class="stats-element">
@@ -133,7 +133,7 @@
 
 <feedback  v-bind="feed" />
 
-<download v-bind="files"/>
+<download v-bind="feed"/>
 
 </div>
 
@@ -206,6 +206,7 @@ export default {
      },
    favourite:{
     is_favourite: '',
+    user_id: '',
    },
    }
  },
@@ -217,7 +218,9 @@ export default {
       .then((response)=>{
       console.log(response.data.value);
       this.user = response.data.value.user;
-      this.favourite.is_favourite= this.user.is_favourite
+      this.favourite.is_favourite= this.user.is_favourite;
+       this.favourite.user_id= this.user.id;
+       this.feed.files= response.data.value.files;
        console.log(this.user);
        axios.post('/api/getRatingsOnUser',{'worker_id':this.user.id})
                .then((response)=>{

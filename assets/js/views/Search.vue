@@ -253,10 +253,12 @@ margin-top: 50px;
   @media screen and (max-width: 1440px) {
     width: unset;
     flex-wrap: wrap;
+    margin: 10px auto;
   }
   @media screen and (max-width: 900px){
     width: 295px;
     flex-wrap: wrap-reverse;
+    margin: 0 auto;
   }
   .add-project{
     position: relative;

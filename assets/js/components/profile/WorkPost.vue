@@ -24,6 +24,9 @@
         type: Number,
         required: true,
       },
+      imgSrc:{
+        type:String,
+      },
       images: {
         default: '',
         type: Array,
