@@ -25,10 +25,24 @@
 export default {
   data(){
     return {
-      responses: [
-        {id: 1, name: 'Name of the order', phone: '972544594498+', date: '12.05.2019'},
-      ]
+      responses: []
     };
+  },
+  methods: {
+    getItemsFromApi(){
+      axios.post('/api/getAllResponses', { page: 0, take: 4})
+        .then(response => {
+          if(response.data.success){
+            this.responses = response.data.value.records;
+          }
+          else{
+            alert(response.data.message);
+          }
+        })
+    }
+  },
+  mounted(){
+    this.getItemsFromApi();
   }
 }
 </script>
@@ -37,12 +51,15 @@ export default {
 @import '~@/vars.scss';
 .responses-list{
   display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 .response-inner{
   display: flex;
 }
 .response-item{
-  margin: ceil($scale1 * 45px);
+  margin: ceil($scale1 * 20px) ceil($scale1 * 45px);
   background: #FFFFFF;
   box-shadow: 0px ceil($scale1 * 4px) ceil($scale1 * 20px) rgba(0, 0, 0, 0.15);
   padding: ceil($scale1 * 40px) ceil($scale1 * 72px) ceil($scale1 * 50px) ceil($scale1 * 50px);

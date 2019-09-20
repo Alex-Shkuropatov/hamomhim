@@ -2,7 +2,7 @@
   <main>
     <first-frame/>
     <div class="bricks-bg">
-      <categories-slider/>
+      <categories-slider @category:select="searchWorkersByCategory"/>
       <banner-section/>
     </div>
     <top-projects/>
@@ -37,6 +37,11 @@ export default {
     Stats,
     NewsSlider,
     BannerSection
+  },
+  methods: {
+    searchWorkersByCategory(category){
+      this.$router.push({name: 'search-worker', params: { categoryId: category.id }});
+    }
   }
 }
 </script>
