@@ -3,13 +3,15 @@
 
     <projects-header  />
 
-    <div class="feedback">
+    <div  class="feedback">
+      <div class="th-heading text-center">םיטקיורפ תמישר</div>
+
       <div class="btn-wrapper">
         <button class="back-b" @click="skip"><i class="fas fa-chevron-right"></i>רוזח</button>
       </div>
-<orders-slider @getWorkers="onWorkers" />
+<orders-slider class="wrapper-block" @getWorkers="onWorkers" />
 
-<workers-list v-bind="order" v-show="order.workers.length!==0"  />
+<workers-list  class="wrapper-block" v-bind="order" v-show="order.workers.length!==0"  />
 
     </div>
   </div>
@@ -28,6 +30,7 @@
       return {
         order:{
           workers: [],
+          orderId: ''
         },
       };
     },
@@ -43,6 +46,7 @@
       },
       onWorkers(data){
       this.order.workers = data.workers;
+      this.order.orderId = data.id;
       },
     },
 computed: {
@@ -51,6 +55,8 @@ computed: {
     created() {
 
     },
+    mounted() {
+    }
 
   }
 </script>
@@ -62,11 +68,24 @@ computed: {
   .btn-wrapper {
     position: absolute;
     top: 62px;
-
+    right: 200px;
+    @media screen and (max-width: 900px){
+      position: static;
+      text-align: center;
+    }
     .back-b {
       color: #2871D7;
       font-weight: bold;
       font-size: 24px;
     }
+  }
+  .text-center{
+    margin-top: 25px;
+    @media screen and (max-width:600px){
+      font-size: 32px;
+    }
+  }
+  .wrapper-block{
+    margin-bottom: 35px;
   }
 </style>

@@ -31,9 +31,9 @@ export default {
 @import '~@/vars.scss';
 textarea{
   width: 100%;
-  border: 1px solid #BDBDBD;
+  border: 1px solid #DEDEDE;
   border-radius: ceil($scale1 * 20px);
-  height: ceil($scale1 * 200px);
+  height: ceil($scale1 * 180px);
   font-size: ceil($scale1 * 18px);
   color: $clr-dark;
   padding: 10px ceil($scale1 * 15px);

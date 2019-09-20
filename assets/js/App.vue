@@ -73,7 +73,7 @@ export default {
 .margin{
   margin-top:  ceil($scale1 * 100px);
   @media screen and (max-width: $breakpoint2) {
-    margin-top: ceil($scale2 * 100px)!important;
+    margin-top: ceil($scale2 * 100px);
   }
 }
 </style>

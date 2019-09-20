@@ -3,8 +3,26 @@
 
     <projects-header/>
 
+    <add-proj1/>
+
   <div class="workers-list">
-    <h2  class="notify_msg"  v-show="workers.length===0" ><i class="far fa-copy"></i> You dont have favourite workers</h2>
+
+    <div class="search-tab">
+      <button class=" th-btn th-btn-blue th-btn-sm add-project search-b element-m" @click="searchWorkers">
+        Search
+      </button>
+      <drop-down class="dropDown element-m" placeholder="הדובע רוזיא" v-model="subcategories.value" :items="getId" v-bind="subcategories"/>
+      <drop-down class="dropDown element-m" placeholder="הדובע רוזיא" v-model="work_area.value" v-bind="work_area"/>
+      <button
+              class="th-btn th-btn-blue th-btn-sm add-project element-m"
+              v-if="checkRole"
+              @click.prevent="addProject"
+      >
+        <span class=" abs">+</span> Add new project
+      </button>
+    </div>
+
+    <h2  class="notify_msg"  v-show="workers.length===0" ><i class="far fa-copy"></i> Any worker by this category</h2>
 
     <div class="projects-list-wrap h-container">
 
@@ -24,34 +42,80 @@
 
 import Worker from './../components/Worker';
 import ProjectsHeader from './../components/ProjectsHeader';
-
+import DropDown from './../components/common/DropDown.vue';
+import AddProj1 from './../components/modals/AddProj1.vue';
 export default {
   data(){
     return {
-
       workers: [
        ],
+      formData: new FormData(),
+      work_area: {
+        items: [
+          { label: 'כל הארץ', value: "1" },
+          { label: 'תל אביב', value: "2" },
+          { label: 'חיפה והסביבה', value: "3" },
+          { label: 'השרון והסביבה', value: "4" },
+          { label: 'באר שבע', value: "5" },
+        ],
+        value: '',
+        labelKey: 'label',
+        valueKey: 'label',
+      },
+      subcategories: {
+        value: '',
+        labelKey: 'name',
+        valueKey: 'name',
+      },
+      working_area: '',
     };
+  },
+  computed:{
+    checkRole(){
+      return this.$store.getters['user/getField']('role') === 'architect';
+    },
+    getId() {
+     if(this.$store.getters['categories/isLoaded']){
+       return this.$store.getters['categories/getSubCategoriesById'](parseInt(this.$route.params.categoryId));
+     }
+    },
   },
   components: {
     ProjectsHeader,
     Worker,
-
+    DropDown,
+    AddProj1,
   },
   methods: {
+searchWorkers(){
+  this.formData.append('category_id',  this.$route.params.categoryId);
+  if (this.work_area.value !== ''){
+    this.formData.append('working_area',  this.work_area.value);
+  }
+  // if(this.subcategories.length !== 0){
+  //   for (let i=0; i<this.subcategories.length;i++){
+  //     this.formData.append('subcategories[]',  this.subcategories[i]);
+  //   }
+  // }
+  axios.post('/api/searchWorkers', this.formData)
+      .then((response) => {
+        this.workers = response.data.value;
+
+        console.log(this.workers);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+},
+    addProject(){
+      this.$store.commit('modals/newProject/open');
+    }
+  },
+  created() {
+    this.searchWorkers();
 
   },
   mounted() {
-      axios.post('/api/getFavouriteUsers')
-        .then((response)=>{
-          console.log(response);
-          this.workers = response.data.value;
-          this.workers.forEach((item) => {
-            item.is_favourite  = true;
-          })
-        }).catch((error)=>{
-          console.log(error);
-        })
   }
 }
 </script>
@@ -183,9 +247,19 @@ margin-top: 50px;
   margin: 50px auto;
   width: 1371px;
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
+  @media screen and (max-width: 1440px) {
+    width: unset;
+    flex-wrap: wrap;
+    margin: 10px auto;
+  }
+  @media screen and (max-width: 900px){
+    width: 295px;
+    flex-wrap: wrap-reverse;
+    margin: 0 auto;
+  }
   .add-project{
     position: relative;
     background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
@@ -194,6 +268,10 @@ margin-top: 50px;
     height: 54px;
     font-weight: bold;
     font-size: 24px;
+    @media screen and (max-width: 1450px){
+      width: 270px;
+      height: 51px;
+    }
     .abs{
       position: absolute;
       left: 25px;
@@ -210,9 +288,17 @@ margin-top: 50px;
     box-sizing: border-box;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
+    width: 333px;
+    margin: 10px 7px;
+    @media screen and (max-width: 1450px){
+      width: 258px;
+    }
   }
 }
   .notify_msg{
     text-align: center;
+  }
+  .element-m{
+    margin: 0 10px;
   }
 </style>

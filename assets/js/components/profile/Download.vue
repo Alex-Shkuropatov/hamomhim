@@ -6,7 +6,7 @@
  </div>
     <download-document
             class="post-item"
-            v-for="post in posts" :key="post.id"
+            v-for="post in files" :key="post.id"
             v-bind="post">
     </download-document>
     <button class="download-all th-btn th-btn-blue th-btn-md"><span>Download all</span></button>
@@ -25,13 +25,21 @@ import DownloadDocument from './DownloadDocument'
            {id: 4, url: '#', description: 'םייופיחו עבצ,סבג ,הרואת ,למשח ,היצלטסניא ,ףוציר ,הינב - יללכ ץופיש'},
            {id: 5, url: '#', description: 'םייופיחו עבצ,סבג ,הרואת ,למשח ,היצלטסניא ,ףוציר ,הינב - יללכ ץופיש'},
            {id: 6, url: '#', description: 'םייופיחו עבצ,סבג ,הרואת ,למשח ,היצלטסניא ,ףוציר ,הינב - יללכ ץופיש'},
-             ]
+            ]
        };
      },
     components: {
       DownloadDocument
     },
+    props: {
+       files: {
+          type: Array,
+       }
+    },
     methods: {
+
+    },
+    mounted() {
 
     }
   }

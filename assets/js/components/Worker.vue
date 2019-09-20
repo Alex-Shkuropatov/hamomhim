@@ -36,17 +36,17 @@
             </div>
 
          <div class="title-favourite">
-           <favourite-icon v-bind="favourite" />
+           <favourite-icon v-bind="favourite" v-if="checkRole" />
          </div>
 
          </div>
          <div class="type"><span class="bold"> רשימת פרויקטים:</span><span>{{type}}</span><span class="small">תוריד \ תויונח | עקרק תיב </span> </div>
          <hr>
          <div class="description">
-           {{description}}
+           {{bio}}
          </div>
         <div class="footer-wrapper">
-          <button :href="url" class="th-btn th-btn-blue th-btn-sm contact-button" @click="addUser">Add worker</button>
+          <button :href="url" class="th-btn th-btn-blue th-btn-sm contact-button add-user" @click="addUser">Add worker</button>
           <button :href="url" class="th-btn th-btn-empty th-btn-sm contact-button" @click="viewProfile">View profile</button>
           <div class="location">
             <svg width="16" height="22" viewBox="0 0 16 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -98,6 +98,10 @@ import  FavouriteIcon from './common/FavouriteIcon.vue';
         default: '',
         type: String,
       },
+      bio:{
+        default: '',
+        type: String,
+      },
       description: {
         default: '',
         type: String,
@@ -145,6 +149,11 @@ import  FavouriteIcon from './common/FavouriteIcon.vue';
         this.$router.push({name:'view-profile', params: {'id': this.id}})
       },
     },
+    computed: {
+      checkRole(){
+        return this.$store.getters['user/getField']('role') === 'architect';
+      },
+    },
     mounted() {
 
     }
@@ -168,7 +177,21 @@ import  FavouriteIcon from './common/FavouriteIcon.vue';
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
     line-height: 1.16;
     width: 1371px;
-    height: 293px;
+     @media screen and (max-width:1600px){
+       width: 1000px;
+    }
+    @media screen and (max-width:1440px){
+      width: 900px;
+    }
+    @media screen and (max-width:1024px){
+      width: 600px;
+    }
+    @media screen and (max-width: 767px){
+      width: 410px;
+    }
+    @media screen and (max-width: 480px){
+      width: 300px;
+    }
     .content-wrapper{
       .content-image{
         position: absolute;
@@ -180,7 +203,24 @@ import  FavouriteIcon from './common/FavouriteIcon.vue';
           width: 154px;
           height: 154px;
           border-radius: 50%;
+          @media screen and (max-width:480px){
+            width: 120px;
+            height: 120px;
+          }
 
+        }
+        @media screen and (max-width:1024px){
+          position: relative;
+        }
+        @media screen and (max-width: 767px){
+          margin-top: 29px;
+          margin-left: 46px;
+        }
+        @media screen and (max-width:480px){
+          width: 120px;
+          height: 120px;
+          margin-left: 46px;
+          margin-top:0;
         }
       }
       .description{
@@ -193,7 +233,13 @@ import  FavouriteIcon from './common/FavouriteIcon.vue';
         text-align: right;
         color: #4F4F4F;
         height: auto;
-
+        @media screen and (max-width:1024px){
+          width: 600px;
+        }
+        @media screen and (max-width: 767px){
+          width: 80%;
+          text-align: center;
+        }
       }
     .meta{
       color: #828282;
@@ -211,6 +257,23 @@ import  FavouriteIcon from './common/FavouriteIcon.vue';
        align-items: center;
        text-align: center;
        padding-right: 60px;
+       @media screen and (max-width:1024px){
+         width: 250.06px;
+         height: 48.18px;
+         margin-top: 10px;
+         padding-right: 36px;
+       }
+       @media screen and (max-width:767px){
+         padding-right: 45px;
+         width: 215.06px;
+         height: 45.18px;
+       }
+       @media screen and (max-width:480px){
+         width: 195.06px;
+         height: 48.18px;
+         font-size: 22px;
+         padding-right: 39px;
+       }
      }
   }
   }
@@ -222,6 +285,15 @@ import  FavouriteIcon from './common/FavouriteIcon.vue';
    margin-top: 33px;
    position: absolute;
    left: 20px;
+   @media screen and (max-width: 1024px){
+     left: unset;
+     margin-top: 10px;
+   }
+
+   @media screen and (max-width: 480px){
+     position: static;
+     flex-direction: column;
+   }
    .stats-element{
      display: flex;
      align-items: center;
@@ -239,27 +311,43 @@ margin-left: 7px;
  }
 .content-info{
   margin-right: 215px;
+  @media screen and (max-width: 1024px){
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   .title{
     display: flex;
     align-items: center;
     font-weight: bold;
     font-size: 36px;
-
     line-height: 30px;
     text-align: right;
     color:#3269B6;
-
     width: 315px;
     padding-top: 38px;
     margin-top: 32px;
     margin-bottom: 11px;
+    @media screen and (max-width:1024px){
+      width: unset;
+      font-size: 32px;
+    }
+    @media screen and (max-width:480px){
+     font-size: 29px;
+      padding-top: 0;
+      margin-top: 50px;
+    }
   }
   hr{
     border: none;
     height: 1px;
-    width:981px;
+    width: 90%;
     margin-left: 208px;
     background-color: #E0E0E0 ;
+    @media screen and (max-width: 767px){
+      width: unset;
+    }
   }
   .description{
     width:981px;
@@ -267,6 +355,9 @@ margin-left: 7px;
     line-height: 22px;
     text-align: right;
     color: #4F4F4F;
+    @media screen and (max-width: 767px){
+      width: 80%;
+    }
   }
 }
   .type{
@@ -274,6 +365,14 @@ margin-left: 7px;
     line-height: 30px;
     text-align: right;
     color: #828282;
+    @media screen and (max-width: 767px){
+      font-size: 19px;
+    }
+    @media screen and (max-width: 480px){
+      display: flex;
+      flex-direction: column;
+      align-content: flex-start;
+    }
     .bold{
       font-weight: bold;
       color: #333333;
@@ -282,25 +381,39 @@ margin-left: 7px;
     .small{
       font-size: 18px;
       margin-right: 10px;
+      @media screen and (max-width: 480px){
+        margin-right: 0;
+      }
     }
   }
   .footer-wrapper{
     display: flex;
     flex-direction: row;
     align-items: center;
+    @media screen and (max-width:1024px){
+     flex-direction: column-reverse;
+      width: 355px;
+    }
   }
   .location{
     margin-top: 15px;
     margin-right: 60px;
     display: flex;
     flex-direction: row;
+    font-size: 24px;
+
+    @media screen and (max-width:1024px){
+     margin-right: 0;
+    }
+    @media screen and (max-width:767px){
+      font-size: 22px;
+    }
     .bold{
       font-weight: bold;
       color: #333333;
       margin-left: 8px;
     }
     span{
-      font-size: 24px;
       line-height: 30px;
       display: flex;
       align-items: center;
@@ -314,4 +427,15 @@ margin-left: 7px;
 .th-btn-blue{
   margin-left: 20px;
 }
+  .content{
+
+    @media screen and (max-width: 1024px){
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+    @media screen and (max-width: 480px){
+      margin-top: -30px;
+    }
+  }
 </style>

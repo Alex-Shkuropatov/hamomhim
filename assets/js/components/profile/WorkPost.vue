@@ -24,9 +24,12 @@
         type: Number,
         required: true,
       },
-      imgSrc: {
+      imgSrc:{
+        type:String,
+      },
+      images: {
         default: '',
-        type: String,
+        type: Array,
       },
       title: {
         default: '',

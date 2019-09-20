@@ -11,6 +11,18 @@ let mix = require('laravel-mix');
  |
  */
 
+if(mix.inProduction()) {
+ mix.options({
+	 terser: {
+		 terserOptions: {
+			 compress: {
+				 drop_console: true
+			 }
+		 }
+	 }
+ });
+}
+
 mix
 	.js('assets/js/app.js', 'static/js')
 	.webpackConfig({

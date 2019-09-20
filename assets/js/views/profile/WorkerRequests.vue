@@ -1,27 +1,25 @@
 <template>
   <div class="h-container requests-list">
-    <response-form></response-form>
+    <response-form @request:delete="deleteRequest"></response-form>
     <show-order></show-order>
 
     <template v-if="requests.length">
-      <div class="request-item" v-for="request in requests">
+      <div class="request-item" v-for="request in requests" :key="request.id">
         <div class="title-line">
-          <div class="name">שם הפרויקט</div>
+          <div class="name">{{request.name}}</div>
           <div class="date">
             <span class="caption">תאריך אישור סופי</span>
-            <span class="value">{{request.date}}</span>
+            <span class="value">{{request.updated_at}}</span>
           </div>
         </div>
         <div class="request-inner">
           <div class="text-col">
             <div class="phone">
-              <span class="bold">שם האדריכל</span> |
-              <a href="#" class="phone">{{request.phone}}</a>
+              <span class="bold">{{getCatNameById(request.categoryId)}}</span> |
+              <a href="#" class="phone">{{request.user.phone}}</a>
             </div>
             <hr class="th-divider">
-            <div class="description">
-              קרה לכם שבאתם להעתיק טקטס מסוים בעברי מאתר וכאשר הדבקם הוא יצא הפוך? זה קורה בעיקר בתוכנות שלא מזהות עברית , כמו פוטושופ אז במקום לנסות לכתוב הפוך לבד יש לנו פה הופך טקסט, שיהפוך את הטקסט לבד פשוט תדביקו וזה יהפוך לכם את הטקסט או שתכתבו לבד את העברית שאתם רוצים פה בתוך ההופך והוא יהפוך את העברית
-            </div>
+            <div class="description">{{request.description}}</div>
           </div>
           <div class="img-col" :style="{ backgroundImage: 'url(/static/images/requests/request-thumb.png)' }"></div>
         </div>
@@ -52,11 +50,14 @@
             </div>
           </div>
           <div class="accept-actions">
-            <button class="accept" @click="openResponseForm()">אשר בקשה</button>
-            <button class="decline">בטל בקשה</button>
+            <button class="accept" @click="openResponseForm(request.id)">אשר בקשה</button>
+            <button class="decline" @click="rejectResponse(request.id)">בטל בקשה</button>
           </div>
         </div>
       </div>
+    </template>
+    <template v-else>
+      <h2 class="notify_msg text-center">You dont have any invitations to the projects yet.<i class="far fa-copy ml-1 mr-1"></i></h2>
     </template>
 
   </div>
@@ -70,9 +71,7 @@ import ShowOrder from './../../components/modals/ShowOrder';
 export default {
   data(){
     return {
-      requests: [
-        {id: 1, name: 'Name of the order', phone: '972544594498+', date: '12.05.2019'},
-      ]
+      requests: []
     };
   },
   components: {
@@ -84,28 +83,54 @@ export default {
       axios.post('/api/getWorkerRequests', { page: 0, take: -1})
         .then(response => {
           if(response.data.success){
-            this.requests = response.data.value;
+            this.requests = response.data.value.orders;
           }
           else{
             alert(response.data.message);
           }
         })
     },
-    openResponseForm(){
-      console.log('wowo');
-      this.$store.commit('modals/responseForm/open');
+    getCatNameById(id){
+      var name = '';
+      if(this.$store.getters['categories/isLoaded']){
+        name = this.$store.getters['categories/getNameById'](id);
+      }
+      return name;
+    },
+    openResponseForm(orderId){
+      this.$store.commit('modals/responseForm/open', orderId);
     },
     openViewOrderPopup(order){
       this.$store.commit('modals/showOrder/saveData',  {
         description: order.description,
         name: order.name,
         userName : order.user.name,
-        phone : order.phone,
+        phone : order.user.phone,
         categoryId : order.categoryId,
+        subcategories: order.subcategories,
         work_area: order.work_area,
       });
       this.$store.commit('modals/showOrder/open');
     },
+    deleteRequest(id){
+      this.requests = this.requests.filter(e => e.id !== id);
+    },
+    rejectResponse(id){
+      if(confirm('Are you sure you want to reject this request?')){
+        axios.post('/api/rejectRequest', { orderId: id })
+          .then(data => {
+            if(data.data.success){
+              this.requests = this.requests.filter(e => e.id !== id);
+            }
+            else{
+              alert(data.data.message);
+            }
+          });
+      }
+    }
+  },
+  mounted(){
+    this.getRequestsFromApi();
   }
 }
 </script>

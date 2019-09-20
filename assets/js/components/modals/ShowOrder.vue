@@ -34,32 +34,32 @@
                 <p>הנשמ תוירוגטק</p>
                 <div class="sub-wrapper">
                   <subcategory
-                          class="orders-item"
-                          v-for="subcategory in getData.subcategories"
-                          v-bind:value="subcategory.name"
-                          :key="subcategory.id"
+                  class="orders-item"
+                  v-for="subcategory in getData.subcategories"
+                  v-bind:value="subcategory.name"
+                  :key="subcategory.id"
                   >
-                  </subcategory>
-                </div>
-              </div>
-              <div class="row">
-                <p>תופרוצמ תונומת</p>
-                <div class="download-b">
-                  <button class="download">
-                    <span>דרוה</span>
-                    <i class="fas fa-download"></i>
-                  </button>
-                </div>
+                </subcategory>
               </div>
             </div>
-            <textarea name="message" v-bind:disabled="flag"  :value="getData.description"></textarea>
+            <div class="row">
+              <p>תופרוצמ תונומת</p>
+              <div class="download-b">
+                <button class="download">
+                  <span>דרוה</span>
+                  <i class="fas fa-download"></i>
+                </button>
+              </div>
+            </div>
           </div>
-        </form>
-        <button class="sendData th-btn th-btn-blue th-btn-sm " @click="close" style="text-align:center">חזור לאתר
-        </button>
-      </div>
-    </modal>
-  </transition>
+          <textarea name="message" v-bind:disabled="flag"  :value="getData.description"></textarea>
+        </div>
+      </form>
+      <button class="sendData th-btn th-btn-blue th-btn-sm " @click="close" style="text-align:center">חזור לאתר
+      </button>
+    </div>
+  </modal>
+</transition>
 </template>
 
 <script>
@@ -83,10 +83,11 @@
     },
     computed: {
       getData() {
+
         return this.$store.getters['modals/showOrder/getOrder'];
       },
       getId() {
-        return this.$store.getters['categories/getNameById'](this.getData.category_id);
+          return this.$store.getters['categories/getNameById'](this.getData.category_id);
       },
     },
     mounted() {

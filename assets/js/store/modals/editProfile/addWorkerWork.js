@@ -2,22 +2,20 @@ export default {
   namespaced: true,
   state: {
     opened: false,
-    order: {},
-    loaded: false,
+    data: {
+      id: '',
+      name: '',
+      description: '',
+      files: [],
+    }
   },
   mutations: {
     close(state) {
       state.opened = false;
-
     },
-    open(state) {
+    open(state, work) {
       state.opened = true;
-    },
-    saveData(state,order){
-      state.order = order;
-    },
-    switch(state) {
-      state.opened = !state.opened;
+      state.data = work;
     },
   },
   actions: {
@@ -27,12 +25,8 @@ export default {
     isOpened(state) {
       return state.opened;
     },
-    getOrder(state) {
-      return state.order;
-    },
-    isLoaded(state){
-      return state.loaded;
-
+    getData(state){
+      return state.data;
     }
   }
 };

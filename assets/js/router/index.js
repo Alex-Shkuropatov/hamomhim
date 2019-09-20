@@ -19,11 +19,12 @@ import Projects from "./../views/Projects.vue";
 import Orders from "./../views/Orders.vue";
 import ClosedProjects from "./../views/ClosedProjects.vue";
 import PreferWorker from "./../views/PreferWorker.vue";
-import WorkerProfile from "./../views/WorkerProfile.vue"
-import NewOrder from "./../views/NewOrder.vue"
-import SearchWorkers from "./../views/SearchWorkers.vue"
-import ProjectFeedback from './../views/ProjectFeedback.vue'
-
+import WorkerProfile from "./../views/WorkerProfile.vue";
+import NewOrder from "./../views/NewOrder.vue";
+import SearchWorkers from "./../views/SearchWorkers.vue";
+import ProjectFeedback from './../views/ProjectFeedback.vue';
+import EditOrder from './../views/EditOrder.vue';
+import Search from './../views/Search.vue';
 const routes = [
   {
     path: '/',
@@ -66,6 +67,11 @@ const routes = [
     name: 'orders',
   },
   {
+    path: '/search/:categoryId',
+    component: Search,
+    name: 'search',
+  },
+  {
     path: '/closed-projects',
     component: ClosedProjects,
     name: 'closed-projects',
@@ -84,6 +90,11 @@ const routes = [
     path: '/projects/:id/orders/new-order/',
     component: NewOrder,
     name: 'new-order',
+  },
+  {
+    path: '/projects/:id/orders/:id/edit-order/',
+    component: EditOrder,
+    name: 'edit-order',
   },
   {
     path: '/projects/:id/orders/:orderId/:order/search-workers',

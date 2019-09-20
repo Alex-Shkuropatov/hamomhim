@@ -1,8 +1,8 @@
 <template>
   <div class="download-post">
 <div class="document-wrapper">
-  <button class="download th-btn th-btn-blue th-btn-md" :href="url"><span>Download</span></button>
-  <div class="description">{{description}}</div>
+  <button class="download th-btn th-btn-blue th-btn-md" href="#"><span>Download</span></button>
+  <div class="description">{{name}}</div>
 </div>
 <div class="hover-element"></div>
   </div>
@@ -16,12 +16,10 @@
         type: Number,
         required: true,
       },
-      description: {
-        default: '',
+      name: {
         type: String,
       },
-      url: {
-        default: '#',
+      file: {
         type: String,
       }
     },
