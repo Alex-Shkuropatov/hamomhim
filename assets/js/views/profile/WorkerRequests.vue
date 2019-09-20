@@ -1,7 +1,7 @@
 <template>
   <div class="h-container requests-list">
     <response-form @request:delete="deleteRequest"></response-form>
-    <!-- <show-order></show-order> -->
+    <show-order></show-order>
 
     <template v-if="requests.length">
       <div class="request-item" v-for="request in requests" :key="request.id">
@@ -53,7 +53,7 @@
           </div>
           <div class="accept-actions">
             <button class="accept" @click="openResponseForm(request.id)">אשר בקשה</button>
-            <button class="decline">בטל בקשה</button>
+            <button class="decline" @click="rejectResponse(request.id)">בטל בקשה</button>
           </div>
         </div>
       </div>
@@ -65,7 +65,7 @@
 <script>
 
 import ResponseForm from './../../components/modals/responses/ResponseForm';
-//import ShowOrder from './../../components/modals/ShowOrder';
+import ShowOrder from './../../components/modals/ShowOrder';
 
 export default {
   data(){
@@ -75,7 +75,7 @@ export default {
   },
   components: {
     ResponseForm,
-    //ShowOrder
+    ShowOrder
   },
   methods: {
     getRequestsFromApi(){
@@ -106,14 +106,27 @@ export default {
         userName : order.user.name,
         phone : order.user.phone,
         categoryId : order.categoryId,
+        subcategories: order.subcategories,
         work_area: order.work_area,
       });
       this.$store.commit('modals/showOrder/open');
     },
     deleteRequest(id){
-      console.log('awoooo');
       this.requests = this.requests.filter(e => e.id !== id);
     },
+    rejectResponse(id){
+      if(confirm('Are you sure you want to reject this request?')){
+        axios.post('/api/rejectRequest', { orderId: id })
+          .then(data => {
+            if(data.data.success){
+              this.requests = this.requests.filter(e => e.id !== id);
+            }
+            else{
+              alert(data.data.message);
+            }
+          });
+      }
+    }
   },
   mounted(){
     this.getRequestsFromApi();
