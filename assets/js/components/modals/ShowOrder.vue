@@ -87,7 +87,7 @@
         return this.$store.getters['modals/showOrder/getOrder'];
       },
       getId() {
-        return this.$store.getters['categories/getNameById'](this.getData.categoryId);
+          return this.$store.getters['categories/getNameById'](this.getData.category_id);
       },
     },
     mounted() {
