@@ -30,6 +30,9 @@ export default {
     getNameById: state => id => {
       return state.data.find(item => item.id === id ).name;
     },
+    getSubCategoriesById: state => id => {
+      return state.data.find(item => item.id === id ).subcategories;
+    },
     isLoaded(state) {
       return state.loaded;
     }

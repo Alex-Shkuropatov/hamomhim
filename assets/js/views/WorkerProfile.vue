@@ -221,6 +221,7 @@ export default {
      },
    favourite:{
     is_favourite: '',
+    user_id:  '',
    },
    }
  },
@@ -232,7 +233,8 @@ export default {
       .then((response)=>{
       console.log(response.data.value);
       this.user = response.data.value.user;
-      this.favourite.is_favourite= this.user.is_favourite
+      this.favourite.is_favourite= this.user.is_favourite;
+      this.favourite.user_id = this.user.id;
        console.log(this.user);
        axios.post('/api/getRatingsOnUser',{'worker_id':this.user.id})
                .then((response)=>{

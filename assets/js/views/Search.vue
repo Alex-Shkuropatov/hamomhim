@@ -3,16 +3,22 @@
 
     <projects-header/>
 
+    <add-proj1/>
+
   <div class="workers-list">
 
     <div class="search-tab">
-      <button class="th-btn th-btn-blue th-btn-sm add-project">
-        <span class=" abs">+</span> Add new project
-      </button>
-      <drop-down class="dropDown" placeholder="הדובע רוזיא" v-model="work_area.value" :items="work_area.items"/>
-      <drop-down class="dropDown" placeholder="הדובע רוזיא" v-model="work_area1.value" :items="work_area1.items"/>
-      <button class=" th-btn th-btn-blue th-btn-sm add-project search-b" >
+      <button class=" th-btn th-btn-blue th-btn-sm add-project search-b element-m" @click="searchWorkers">
         Search
+      </button>
+      <drop-down class="dropDown element-m" placeholder="הדובע רוזיא" v-model="subcategories.value" :items="getId" v-bind="subcategories"/>
+      <drop-down class="dropDown element-m" placeholder="הדובע רוזיא" v-model="work_area.value" v-bind="work_area"/>
+      <button
+              class="th-btn th-btn-blue th-btn-sm add-project element-m"
+              v-if="checkRole"
+              @click.prevent="addProject"
+      >
+        <span class=" abs">+</span> Add new project
       </button>
     </div>
 
@@ -36,12 +42,14 @@
 
 import Worker from './../components/Worker';
 import ProjectsHeader from './../components/ProjectsHeader';
-import DropDown from './../components/common/DropDown.vue'
+import DropDown from './../components/common/DropDown.vue';
+import AddProj1 from './../components/modals/AddProj1.vue';
 export default {
   data(){
     return {
       workers: [
        ],
+      formData: new FormData(),
       work_area: {
         items: [
           { label: 'כל הארץ', value: "1" },
@@ -54,45 +62,60 @@ export default {
         labelKey: 'label',
         valueKey: 'label',
       },
-      work_area1: {
-        items: [ { label: ' הדובע רוזיא', value: 1 },{ label: ' הדובע רוזיא', value: 2 },{ label: ' הדובע רוזיא', value: 3 } ],
+      subcategories: {
         value: '',
+        labelKey: 'name',
+        valueKey: 'name',
       },
       working_area: '',
     };
+  },
+  computed:{
+    checkRole(){
+      return this.$store.getters['user/getField']('role') === 'architect';
+    },
+    getId() {
+     if(this.$store.getters['categories/isLoaded']){
+       return this.$store.getters['categories/getSubCategoriesById'](parseInt(this.$route.params.categoryId));
+     }
+    },
   },
   components: {
     ProjectsHeader,
     Worker,
     DropDown,
-
+    AddProj1,
   },
   methods: {
+searchWorkers(){
+  this.formData.append('category_id',  this.$route.params.categoryId);
+  if (this.work_area.value !== ''){
+    this.formData.append('working_area',  this.work_area.value);
+  }
+  // if(this.subcategories.length !== 0){
+  //   for (let i=0; i<this.subcategories.length;i++){
+  //     this.formData.append('subcategories[]',  this.subcategories[i]);
+  //   }
+  // }
+  axios.post('/api/searchWorkers', this.formData)
+      .then((response) => {
+        this.workers = response.data.value;
+
+        console.log(this.workers);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+},
+    addProject(){
+      this.$store.commit('modals/newProject/open');
+    }
+  },
+  created() {
+    this.searchWorkers();
 
   },
   mounted() {
-    this.formData.append('category_id',  this.$route.params.id);
-
-    if (this.work_area.value !== ''){
-      this.formData.append('working_area',  this.work_area.value);
-    }
-
-    if(this.subcategories.length !== 0){
-      for (let i=0; i<this.subcategories.length;i++){
-        this.formData.append('subcategories[]',  this.subcategories[i]);
-      }
-    }
-
-
-    return axios.post('/api/searchWorkers', this.formData)
-        .then((response) => {
-          this.workers = response.data.value;
-          this.done=true;
-          console.log(this.workers);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
   }
 }
 </script>
@@ -224,9 +247,17 @@ margin-top: 50px;
   margin: 50px auto;
   width: 1371px;
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
+  @media screen and (max-width: 1440px) {
+    width: unset;
+    flex-wrap: wrap;
+  }
+  @media screen and (max-width: 900px){
+    width: 295px;
+    flex-wrap: wrap-reverse;
+  }
   .add-project{
     position: relative;
     background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
@@ -235,6 +266,10 @@ margin-top: 50px;
     height: 54px;
     font-weight: bold;
     font-size: 24px;
+    @media screen and (max-width: 1450px){
+      width: 270px;
+      height: 51px;
+    }
     .abs{
       position: absolute;
       left: 25px;
@@ -252,9 +287,16 @@ margin-top: 50px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     width: 333px;
+    margin: 10px 7px;
+    @media screen and (max-width: 1450px){
+      width: 258px;
+    }
   }
 }
   .notify_msg{
     text-align: center;
+  }
+  .element-m{
+    margin: 0 10px;
   }
 </style>

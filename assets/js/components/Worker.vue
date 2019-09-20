@@ -36,7 +36,7 @@
             </div>
 
          <div class="title-favourite">
-           <favourite-icon v-bind="favourite" />
+           <favourite-icon v-bind="favourite" v-if="checkRole" />
          </div>
 
          </div>
@@ -147,6 +147,11 @@ import  FavouriteIcon from './common/FavouriteIcon.vue';
       },
       viewProfile(){
         this.$router.push({name:'view-profile', params: {'id': this.id}})
+      },
+    },
+    computed: {
+      checkRole(){
+        return this.$store.getters['user/getField']('role') === 'architect';
       },
     },
     mounted() {
@@ -326,6 +331,7 @@ margin-left: 7px;
     margin-bottom: 11px;
     @media screen and (max-width:1024px){
       width: unset;
+      font-size: 32px;
     }
     @media screen and (max-width:480px){
      font-size: 29px;
