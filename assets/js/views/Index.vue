@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     searchWorkersByCategory(category){
-      this.$router.push({name: 'search-worker', params: { categoryId: category.id }});
+      this.$router.push({name: 'search', params: { categoryId: category.id }});
     }
   }
 }
