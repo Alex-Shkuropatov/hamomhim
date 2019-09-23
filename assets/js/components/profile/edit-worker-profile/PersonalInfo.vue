@@ -22,11 +22,11 @@
           </div>
           <div class="form-group col1-2">
             <div class="caption">סוג התמחות</div>
-            <drop-down v-bind="selects.category" v-model="profileData.category" class="less-rounded-corners"></drop-down>
+            <drop-down v-bind="selects.category" :items="getCategories" v-model="profileData.category" class="less-rounded-corners"></drop-down>
           </div>
           <div class="form-group col1-2">
             <div class="caption">קטגוריות משנה</div>
-            <drop-down v-bind="selects.subcategories" v-model="profileData.subcategories" class="less-rounded-corners"></drop-down>
+            <theme-multiselect v-bind="selects.subcategories" v-model="profileData.subcategories" class="less-rounded-corners"></theme-multiselect>
           </div>
           <div class="form-group col1-2">
             <div class="caption">מייל</div>
@@ -37,11 +37,7 @@
             <theme-input placeholder="טלפון" type="phone" v-model="profileData.phone" class="th-input less-rounded-corners"></theme-input>
           </div>
 
-          <div class="form-group col1-2">
-            <div class="caption">test select</div>
-            <theme-multiselect v-bind="selects.test" v-model="profileData.test" class="less-rounded-corners"></theme-multiselect>
-          </div>
-          <pre>{{profileData.test}}</pre>
+          <pre>{{profileData.category}}</pre>
 
         </div>
 
@@ -85,7 +81,7 @@ export default {
         name: '',
         working_area: '',
         category: {},
-        subcategories: {},
+        subcategories: [],
         email: '',
         phone: '',
 
@@ -94,8 +90,6 @@ export default {
         confirm_password: '',
 
         avatar: '',
-
-        test: {},
       },
       selects: {
         working_area: {
@@ -109,17 +103,6 @@ export default {
           ],
           labelKey: 'value'
         },
-        test: {
-          placeholder: 'placeholder',
-          items: [
-            {id: 1, name: 'כל הארץ'},
-            {id: 2, name: 'תל אביב'},
-            {id: 3, name: 'חיפה והסביבה'},
-            {id: 4, name: 'השרון והסביבה'},
-            {id: 5, name: 'באר שבע'},
-          ],
-          labelKey: 'name',
-        },
         category: {
           placeholder: 'תוחמתה גוס',
           labelKey: 'name',
@@ -128,7 +111,8 @@ export default {
         subcategories: {
           placeholder: 'קטגוריות משנה',
           labelKey: 'name',
-          valueKey: 'id'
+          disabled: true,
+          items: [],
         },
       },
       avatarSrc: 'url(' + window.location.origin + '/static/images/profile/defaultAvatar.png)',
@@ -149,6 +133,11 @@ export default {
       }
       this.isPassFormShown = !this.isPassFormShown;
     },
+  },
+  computed: {
+    getCategories(){
+      return this.$store.getters['categories/data'];
+    }
   }
 }
 </script>

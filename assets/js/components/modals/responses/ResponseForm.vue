@@ -63,7 +63,7 @@ export default {
       formData.append('author_id', this.$store.getters['user/getField']('id'));
       formData.append('description', this.description);
       for(let i = 0; i < this.files.length; i++){
-        formData.append('files', this.files[i]);
+        formData.append('files[]', this.files[i].file);
       }
 
       axios.post('api/addResponse', formData)
