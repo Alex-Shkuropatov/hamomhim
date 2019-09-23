@@ -159,6 +159,7 @@ export default {
  data: function () {
   return {
    imgSrc: '/static/images/profile/profileImg.png',
+   files: [],
    user: {
     rate: '10',
     rating: '3',
@@ -242,10 +243,7 @@ computed: {
 </script>
 
 <style lang="scss" scoped>
- @import '~@/vars.scss';
- .margin{
-  margin: 0;
- }
+@import '~@/vars.scss';
 .element-padd{
  padding-right: 195px;
  padding-left: 75px;
