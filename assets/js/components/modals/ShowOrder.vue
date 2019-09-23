@@ -45,10 +45,10 @@
             <div class="row">
               <p>תופרוצמ תונומת</p>
               <div class="download-b">
-                <button class="download">
+                <a class="download" :href="$env.API_URL+getData.zip" download>
                   <span>דרוה</span>
                   <i class="fas fa-download"></i>
-                </button>
+                </a>
               </div>
             </div>
           </div>

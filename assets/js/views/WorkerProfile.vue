@@ -112,7 +112,7 @@
  </div>
  </div>
 </div>
- <div class="all-works">
+ <div class="all-works" v-if="posts.length!==0">
   <div class="last-projects-wrapper">
   <hr class="line">
  <div class="last-projects">
@@ -131,9 +131,9 @@
   <div class="swiper-button-next th-slider-arrow th-slider-arrow-left" slot="button-next" data-uid="7"></div>
  </div>
 
-<feedback  v-bind="feed" />
+<feedback  v-bind="feed" v-if="feed.posts.length!==0" />
 
-<download v-bind="feed"/>
+<download v-bind="feed" v-if="feed.files.length!==0"/>
 
 </div>
 

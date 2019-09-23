@@ -108,6 +108,9 @@
       subcategories: {
         type: Array,
       },
+      zip: {
+        type: String
+      }
     },
     components: {},
     methods: {
@@ -124,6 +127,7 @@
         this.order.category_id = this.categoryId;
         this.order.work_area = this.work_area;
         this.order.subcategories = this.subcategories;
+        this.order.zip = this.zip;
         return this.order
       },
       searchWorkers() {

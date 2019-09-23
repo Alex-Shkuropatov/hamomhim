@@ -92,7 +92,7 @@ const routes = [
     name: 'new-order',
   },
   {
-    path: '/projects/:id/orders/:id/edit-order/',
+    path: '/projects/:id/orders/:orderId/edit-order/',
     component: EditOrder,
     name: 'edit-order',
   },
