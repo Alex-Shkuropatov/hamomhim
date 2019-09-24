@@ -3,7 +3,7 @@
     <div class="th-heading">מידע ראשי</div>
     <div class="personal-info">
       <div class="avatar-col">
-        <div class="avatar" :style="{ backgroundImage: avatarSrc }"></div>
+        <div class="avatar" :style="avatarStyles"></div>
         <label class="th-btn th-btn-md th-btn-blue">
           <span>Upload new photo</span>
           <input type="file" @change="onAvatarUpdate($event.target.files[0])">
@@ -14,49 +14,57 @@
         <div class="h-row">
           <div class="form-group col1-2">
             <div class="caption">שם מלא</div>
-            <theme-input placeholder="שם מלא" v-model="profileData.name" class="th-input less-rounded-corners"></theme-input>
+            <theme-input
+            placeholder="שם מלא"
+            :value="name"
+            @input="$emit('update:name', arguments[0])"
+            class="th-input less-rounded-corners" />
           </div>
           <div class="form-group col1-2">
             <div class="caption">הדובע רוזיא</div>
-            <drop-down v-bind="selects.working_area" v-model="profileData.working_area" class="less-rounded-corners"></drop-down>
+            <drop-down
+            v-bind="selects.working_area"
+            :value="working_area"
+            @input="$emit('update:working_area', arguments[0])"
+            class="less-rounded-corners" />
           </div>
           <div class="form-group col1-2">
             <div class="caption">סוג התמחות</div>
-            <drop-down v-bind="selects.category" :items="getCategories" v-model="profileData.category" class="less-rounded-corners"></drop-down>
+            <drop-down
+            v-bind="selects.category"
+            :items="getCategories"
+            :value="category"
+            @input="onSelectCategory"
+            class="less-rounded-corners"
+            />
           </div>
           <div class="form-group col1-2">
             <div class="caption">קטגוריות משנה</div>
-            <theme-multiselect v-bind="selects.subcategories" v-model="profileData.subcategories" class="less-rounded-corners"></theme-multiselect>
+            <theme-multiselect v-bind="selects.subcategories" v-model="subcategories" class="less-rounded-corners" />
           </div>
           <div class="form-group col1-2">
             <div class="caption">מייל</div>
-            <theme-input placeholder="מייל" type="email" v-model="profileData.email" class="th-input less-rounded-corners"></theme-input>
+            <theme-input
+            placeholder="מייל"
+            type="email"
+            :value="email"
+            @input="$emit('update:email', arguments[0])"
+            class="th-input less-rounded-corners" />
           </div>
           <div class="form-group col1-2">
             <div class="caption">טלפון</div>
-            <theme-input placeholder="טלפון" type="phone" v-model="profileData.phone" class="th-input less-rounded-corners"></theme-input>
+            <theme-input
+            placeholder="טלפון"
+            type="phone"
+            :value="phone"
+            @input="$emit('update:phone', arguments[0])"
+            class="th-input less-rounded-corners" />
           </div>
-
-          <pre>{{profileData.category}}</pre>
 
         </div>
 
-        <div class="show-changepass-form" :class="{ 'active' : isPassFormShown }" @click="toggleChangePassForm($refs.changepassForm)">Change password</div>
+        <div class="show-changepass-form">Change password</div>
 
-        <div class="h-row changepass-form" ref="changepassForm" style="height:0;">
-          <div class="form-group col1-2">
-            <div class="caption">old password</div>
-            <theme-input placeholder="" type="password" v-model="profileData.old_password" class="th-input less-rounded-corners"></theme-input>
-          </div>
-          <div class="form-group col1-2">
-            <div class="caption">password</div>
-            <theme-input placeholder="" type="password" v-model="profileData.new_password" class="th-input less-rounded-corners"></theme-input>
-          </div>
-          <div class="form-group col1-2">
-            <div class="caption">repeat password</div>
-            <theme-input placeholder="" type="password" v-model="profileData.repeat_password" class="th-input less-rounded-corners"></theme-input>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -77,20 +85,6 @@ export default {
   data(){
     return {
       isPassFormShown: false,
-      profileData: {
-        name: '',
-        working_area: '',
-        category: {},
-        subcategories: [],
-        email: '',
-        phone: '',
-
-        old_password: '',
-        new_password: '',
-        confirm_password: '',
-
-        avatar: '',
-      },
       selects: {
         working_area: {
           placeholder: 'הדובע רוזיא',
@@ -115,23 +109,53 @@ export default {
           items: [],
         },
       },
-      avatarSrc: 'url(' + window.location.origin + '/static/images/profile/defaultAvatar.png)',
+      avatarStyles: {
+        backgroundImage: 'url(/static/images/profile/defaultAvatar.png)',
+      }
     }
   },
+  props: {
+    name: {
+      default: '',
+    },
+    working_area: {
+      default: '',
+    },
+    category: {
+      default: '',
+    },
+    subcategories: {
+      default: function () { return [] },
+    },
+    email: {
+      default: '',
+    },
+    phone: {
+      default: '',
+    },
+    avatar: {
+      default: '',
+    },
+  },
   methods: {
-    onAvatarUpdate(){
+    updateval(a){
+      console.log(a);
+      this.$emit('update:name', a);
+    },
+    onAvatarUpdate(file){
+      this.profileData.avatar = file;
+      let reader = new FileReader();
+      reader.addEventListener('load', () => {
+        this.avatarStyles.backgroundImage = 'url('+reader.result+')';
+      }, false);
+      reader.readAsDataURL(file);
 
     },
-    toggleChangePassForm(el){
-      if(this.isPassFormShown){
-        //helpers.js function
-        collapseBlock(el);
-      }
-      else{
-        //helpers.js function
-        expandBlock(el);
-      }
-      this.isPassFormShown = !this.isPassFormShown;
+    onSelectCategory(value){
+      this.profileData.category = value;
+      this.profileData.subcategories = [];
+      this.selects.subcategories.disabled = false;
+      this.selects.subcategories.items = this.$store.getters['categories/getSubCategoriesById'](value);
     },
   },
   computed: {
