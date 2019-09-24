@@ -10,9 +10,9 @@
     </button>
     <div v-if="opened" class="popup">
       <div class="slider">
-        <div class="item checked" @click="select(item)" v-for="item in items">
+        <div class="item" :class="{ 'checked' : option.selected }" @click.stop="select(option)" v-for="option in filteredOptions">
           <div class="checkbox"></div>
-          <span>{{ item[labelKey] }}</span>
+          <span>{{ option[labelKey] }}</span>
         </div>
       </div>
     </div>
@@ -40,6 +40,10 @@ export default {
     valueKey: {
       type: String,
       default: 'value'
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     }
   },
   data() {
@@ -50,11 +54,28 @@ export default {
   },
   methods: {
     select(item) {
-      this.result = item;
-      this.$emit('input', item[this.valueKey]);
+      let newItem = Object.keys(item).reduce((object, key) => {
+        if (key !== 'selected') {
+          object[key] = item[key];
+        }
+        return object
+      }, {});
+
+      let result = this.value;
+
+      if(item.selected){
+        console.log('includes');
+        result = this.value.filter(e => JSON.stringify(e) !== JSON.stringify(newItem));
+      }
+      else{
+        result.push(newItem);
+      }
+      this.$emit('input', result);
     },
     open() {
-      this.opened = !this.opened;
+      if(!this.disabled){
+        this.opened = !this.opened;
+      }
     },
   },
   directives: {
@@ -69,19 +90,20 @@ export default {
         if(this.value.filter(e => e.id === option.id).length > 0){
           option.selected = true;
         }
-        return options;
+        return option;
       });
+      return options;
 
     },
     current() {
-      if(!this.result) {
+      if(!this.value.length) {
         return this.placeholder;
       } else {
-        return this.result[this.labelKey];
+        return this.value.map(e => e[this.labelKey]).join();
       }
     },
     placeholded() {
-      return !this.result;
+      return !this.value.length;
     }
   }
 }
@@ -95,6 +117,7 @@ export default {
   box-sizing: border-box;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
   border-radius: 50px;
+  user-select: none;
   &.less-rounded-corners{
     border-radius: 8px;
   }
@@ -104,10 +127,14 @@ export default {
     text-align: right;
     position: relative;
     font-weight: 300;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 39px;
     .arr {
       position: absolute;
       right: auto;
-      left: 15px;
+      left: 8px;
       top: 0px;
       width: 25px;
       height: 100%;
@@ -175,6 +202,7 @@ export default {
       .checkbox{
         width: 21px;
         height: 21px;
+        margin-left: 5px;
         border: 1px solid #BDBDBD;
         border-radius: 3px;
       }

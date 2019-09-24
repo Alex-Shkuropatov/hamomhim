@@ -47,7 +47,6 @@ export default {
   data() {
     return {
       opened: false,
-      result: undefined,
     };
   },
   methods: {
@@ -69,6 +68,9 @@ export default {
       } else {
         return this.result[this.labelKey];
       }
+    },
+    result(){
+      return this.items.find(e => e[this.valueKey] === this.value);
     },
     placeholded() {
       return !this.result;
@@ -97,7 +99,7 @@ export default {
     .arr {
       position: absolute;
       right: auto;
-      left: 15px;
+      left: 8px;
       top: 0px;
       width: 25px;
       height: 100%;

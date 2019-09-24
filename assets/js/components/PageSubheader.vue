@@ -23,7 +23,7 @@ export default {
       return {
         backgroundImage: 'url('+this.image+')',
       }
-    }
+    },
   }
 }
 </script>

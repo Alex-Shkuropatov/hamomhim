@@ -108,6 +108,9 @@
       subcategories: {
         type: Array,
       },
+      zip: {
+        type: String
+      }
     },
     components: {},
     methods: {
@@ -124,6 +127,7 @@
         this.order.category_id = this.categoryId;
         this.order.work_area = this.work_area;
         this.order.subcategories = this.subcategories;
+        this.order.zip = this.zip;
         return this.order
       },
       searchWorkers() {
@@ -177,9 +181,7 @@
         top: -4px;
         width: 33px;
         left: -3px;
-
       }
-
       &:hover {
         opacity: 0.8;
 
@@ -187,8 +189,8 @@
         }
       }
     }
-
     .content-wrapper {
+      position: relative;
       display: flex;
       flex-direction: row-reverse;
       width: 1059px;
@@ -329,7 +331,7 @@
       }
 
       .centered {
-        left: 11px;
+        left: 8px;
       }
     }
 

@@ -2,7 +2,7 @@
 
   <div class="editWrapper">
 
-    <alert-modal v-bind="modalContent"/>
+    <alert-modal v-bind="alertFlag? modalSuccess: modalFail"/>
 
     <div class="editP">
 
@@ -33,10 +33,8 @@
             <div class="selectWrapper">
               <drop-down class="dropDown" placeholder="אזור עבודה" v-model="workArea.value" v-bind="workArea"/>
             </div>
-            <span>קטגוריות</span>
-            <div class="selectWrapper">
-              <drop-down class="dropDown" placeholder="נא בחר קטגוריה אחת" v-model="categories.value" v-bind="categories"/>
-            </div>
+            <span>םינופלט יקסע</span>
+            <input class="foemField" v-model.trim="user.business_phone" placeholder="םינופלט יקסע" type="text">
             <span>פקס</span>
             <input class="foemField" v-model.trim="user.fax" placeholder="פקס"  type="text" >
           </div>
@@ -85,6 +83,7 @@ export default {
         name: '',
         city: '',
         name_of_business: '',
+        business_phone: '',
         address: '',
         phone: '',
         email: '',
@@ -94,7 +93,6 @@ export default {
         working_area: '',
         fax: '',
         userId: '',
-        business_phone: '09203234',
       },
       preload: '',
       workArea: {
@@ -116,12 +114,19 @@ export default {
         labelKey: 'name',
         valueKey: 'id',
       },
-      modalContent: {
+      alertFlag: '',
+      modalSuccess: {
         title: 'New information have been saved',
         text: 'Lorem Ipsum dolor set amet',
         buttonText: 'חזור לאתר',
+        icon: 'success'
       },
-
+      modalFail: {
+        title: 'Fail',
+        text: 'Lorem Ipsum dolor set amet',
+        buttonText: 'חזור לאתר',
+        icon: 'fail'
+      },
     }
   },
   computed: {
@@ -135,6 +140,7 @@ export default {
       this.user.name= data.name;
       this.user.city= data.city;
       this.user.name_of_business= data.name_of_business;
+      this.user.business_phone = data.business_phone;
       this.user.address= data.address;
       this.user.email= data.email;
       this.user.phone= data.phone;
@@ -164,7 +170,6 @@ export default {
     },
     openModal (e) {
       e.preventDefault();
-      this.$store.commit('modals/alert/open');
       this.changeInfo();
     },
     openModalPass (e) {
@@ -177,11 +182,13 @@ export default {
 
       axios.post('/api/changePersonalInfo', data)
       .then((response) => {
-        console.log('sussass');
+        this.alertFlag = true;
+        this.$store.commit('modals/alert/open');
         this.$store.dispatch('user/updateData');
       })
       .catch((error) => {
-        console.log(error.response.data);
+        this.alertFlag = false;
+        this.$store.commit('modals/alert/open');
       });
     },
     changePassword(){

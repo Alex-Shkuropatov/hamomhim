@@ -45,10 +45,10 @@
             <div class="row">
               <p>תופרוצמ תונומת</p>
               <div class="download-b">
-                <button class="download">
+                <a class="download" :href="$env.API_URL+getData.zip" download>
                   <span>דרוה</span>
                   <i class="fas fa-download"></i>
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -83,7 +83,6 @@
     },
     computed: {
       getData() {
-
         return this.$store.getters['modals/showOrder/getOrder'];
       },
       getId() {
@@ -203,7 +202,6 @@
       }
     }
   }
-
   .download-b {
     width: 350.28px;
     @media screen and (max-width: 480px) {
@@ -212,7 +210,9 @@
     .download {
       color: #2871D7;
       margin-left: 280px;
-
+@media screen and (max-width: 480px){
+  margin-left: 0;
+}
       .fa-download {
         pointer-events: none;
       }
@@ -257,6 +257,10 @@
   .sub-wrapper {
     display: flex;
     flex-direction: row;
+    @media screen and (max-width: 480px){
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   .slide-fade-enter-active {

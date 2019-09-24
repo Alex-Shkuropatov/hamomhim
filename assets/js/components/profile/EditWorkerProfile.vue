@@ -1,6 +1,9 @@
 <template>
   <div class="profie-page-wrapper">
-    <personal-info class="h-container"/>
+
+    <worker-profile-first-screen :user="user"></worker-profile-first-screen>
+
+    <personal-info v-bind.sync="user" class="h-container"/>
     <bio-info class="h-container"/>
     <worker-works-list
       v-model="workerWorks"
@@ -20,11 +23,12 @@
 </template>
 
 <script>
-import PersonalInfo from './edit-worker-profile/PersonalInfo.vue';
+import PersonalInfo from './edit-worker-profile/PersonalInfo';
 import BioInfo from './edit-worker-profile/BioInfo.vue';
-import WorkerWorksList from './edit-worker-profile/WorkerWorksList.vue';
+import WorkerWorksList from './edit-worker-profile/WorkerWorksList';
 import Feedback from './Feedback.vue';
-import WorkerFiles from './edit-worker-profile/WorkerFiles.vue';
+import WorkerFiles from './edit-worker-profile/WorkerFiles';
+import WorkerProfileFirstScreen from './WorkerProfileFirstScreen';
 
 export default {
   components: {
@@ -32,7 +36,8 @@ export default {
     BioInfo,
     WorkerWorksList,
     Feedback,
-    WorkerFiles
+    WorkerFiles,
+    WorkerProfileFirstScreen
   },
   data(){
     return {

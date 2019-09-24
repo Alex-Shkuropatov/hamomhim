@@ -4,7 +4,7 @@
     <header-worker-profile v-else />
 
     <transition name="cool">
-      <router-view class="margin" />
+      <router-view :class="{'margin' : isDefaultHeader}" />
     </transition>
     <underground/>
   </div>
@@ -70,6 +70,10 @@ export default {
     transition: transform 0.5s ease, opacity 0.5s ease;
   }
 }
+
+/* add margin before header
+ * applies only to default header, that is not transparent
+ */
 .margin{
   margin-top:  ceil($scale1 * 100px);
   @media screen and (max-width: $breakpoint2) {

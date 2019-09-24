@@ -65,7 +65,12 @@
         </div>
         <div class="selectWrapper"  v-if="role==='worker'">
           <p class="formItem">קטגוריות</p>
-          <drop-down class="dropDown" placeholder="קטגוריות" v-model="categories.value" v-bind="categories"/>
+          <drop-down class="dropDown" placeholder="קטגוריות" v-model="categories.value"  v-bind="categories"/>
+        </div>
+      </div>
+      <div class="wrapper" v-if="role==='worker'" >
+        <div class="selectWrapper">
+          <theme-multiselect v-bind="subcategories" v-model="subcategories.value" class="less-rounded-corners dropDown dropdown" />
         </div>
       </div>
       <hr>
@@ -91,7 +96,7 @@
 <script>
   import Modal from './../../common/Modal.vue';
   import DropDown from './../../common/DropDown.vue';
-
+  import ThemeMultiselect from './../../common/ThemeMultiselect.vue'
   export default {
     methods: {
       close() {
@@ -112,6 +117,7 @@
           password: this.pass,
           category_id: this.categories.value,
           password_confirmation: this.pass,
+          subcategories: this.subcategories.value,
         })
       },
       onFocus(e) {
@@ -151,14 +157,24 @@
           return  'fa-times'
         }
       },
+      allowSub(){
+
+      }
     },
     components: {
       Modal,
       DropDown,
+      ThemeMultiselect,
     },
     props: {
       role: {
         type: String,
+      }
+    },
+    watch: {
+      'categories.value'(){
+        this.subcategories.disabled = false;
+        this.subcategories.items = this.getSubcategories;
       }
     },
     data : function () {
@@ -181,6 +197,7 @@
         pass: '',
         categories: {
           items: [
+
           ],
           value: '',
           labelKey: 'name',
@@ -199,15 +216,27 @@
           valueKey: 'label',
         },
         source: '',
+        subcategories: {
+          placeholder: 'קטגוריות משנה',
+          labelKey: 'name',
+          items: [],
+          value: [],
+          disabled: true,
+        },
       }
     },
     computed: {
       getCategories(){
         return this.$store.getters['categories/data'];
+      },
+      getSubcategories(){
+           return this.$store.getters['categories/getSubCategoriesById'](this.categories.value);
       }
     },
+
     mounted() {
       this.categories.items = this.getCategories;
+      this.subcategories.items = this.getSubcategories;
     }
   }
 </script>

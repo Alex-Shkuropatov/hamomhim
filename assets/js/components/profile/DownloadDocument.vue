@@ -1,7 +1,9 @@
 <template>
   <div class="download-post">
 <div class="document-wrapper">
+  <a :href="$env.API_URL+file" download>
   <button class="download th-btn th-btn-blue th-btn-md" href="#"><span>Download</span></button>
+  </a>
   <div class="description">{{name}}</div>
 </div>
 <div class="hover-element"></div>
@@ -22,6 +24,10 @@
       file: {
         type: String,
       }
+    },
+    methods: {
+
+
     },
   }
 </script>

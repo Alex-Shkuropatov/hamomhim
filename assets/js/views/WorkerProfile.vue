@@ -13,7 +13,7 @@
  <div class="block-wrapper">
 <div class="block-wrapper-element">
  <div class="element-padd">
- <div class="title"> <span>{{user.name}}</span> <favourite-icon v-bind="getData" v-if="getData.role==='architect'"  /> </div>
+ <div class="title"> <span>{{user.name}}</span> <favourite-icon v-bind="favourite" v-if="getData.role==='architect'"  /> </div>
  <div class="stats-block">
   <div class="stats">
    <div class="stats-element">
@@ -112,7 +112,7 @@
  </div>
  </div>
 </div>
- <div class="all-works">
+ <div class="all-works" v-if="posts.length!==0">
   <div class="last-projects-wrapper">
   <hr class="line">
  <div class="last-projects">
@@ -131,9 +131,9 @@
   <div class="swiper-button-next th-slider-arrow th-slider-arrow-left" slot="button-next" data-uid="7"></div>
  </div>
 
-<feedback  v-bind="feed" />
+<feedback  v-bind="feed" v-if="feed.posts.length!==0" />
 
-<download v-bind="feed"/>
+<download v-bind="feed" v-if="feed.files.length!==0"/>
 
 </div>
 
@@ -159,14 +159,9 @@ export default {
  data: function () {
   return {
    imgSrc: '/static/images/profile/profileImg.png',
+   files: [],
    user: {
-    rate: '10',
-    rating: '3',
-    workArea: 'ץראה לכ ',
-    description: '.יתוכיאו ןימא תוריש קינעמה יעוצקמ תווצ םע דבוע .ךמסומ יאלמשח לש הדועת לעבו למשח תודובעב החמתמ ףסונב .סבגו עבצ ,תוריק יופיח ,ףוציר ,היצלטסניא תודובע ,ןלבק ,בולואש ןויצ.יתוכיאו ןימא תוריש קינעמה יעוצקמ תווצ םע דבוע .ךמסומ יאלמשח לש הדועת לעבו למשח תודובעב החמתמ ףסונב .סבג',
-    phone: '+ 38 (098) 765 43 21',
-    mail: 'example@gmail.com',
-    name: '',
+
    },
    sliderOptions: {
     slidesPerView: 5,
@@ -211,7 +206,6 @@ export default {
    }
  },
  methods: {
-
  },
  mounted() {
   axios.post('/api/getWorkerProfile',{'user_id': this.$route.params.id})
@@ -222,7 +216,7 @@ export default {
        this.favourite.user_id= this.user.id;
        this.feed.files= response.data.value.files;
        console.log(this.user);
-       axios.post('/api/getRatingsOnUser',{'worker_id':this.user.id})
+       axios.post('/api/getCommentsOnUser',{'worker_id':this.user.id})
                .then((response)=>{
                 console.log(response.data.value);
                 this.feed.posts = response.data.value;
@@ -242,10 +236,7 @@ computed: {
 </script>
 
 <style lang="scss" scoped>
- @import '~@/vars.scss';
- .margin{
-  margin: 0;
- }
+@import '~@/vars.scss';
 .element-padd{
  padding-right: 195px;
  padding-left: 75px;
@@ -339,6 +330,9 @@ padding: 0
   line-height: 30px;
   color: #333333;
   margin-right:10px;
+  @media screen and (max-width: 480px) {
+   font-size: 38px;
+  }
  }
 }
 
@@ -352,11 +346,20 @@ padding: 0
   @media screen and (max-width: 1035px) {
    position: relative;
   }
+  @media screen and (max-width:767px) {
+   width: 120px;
+   height: 120px;
+   right: 3px;
+   top: 39px;
+  }
   img{
    width: 191px;
    height: 191px;
    border-radius: 50%;
-
+   @media screen and (max-width:767px) {
+    width: 120px;
+    height: 120px;
+   }
   }
  }
  .stats {
@@ -368,6 +371,7 @@ padding: 0
   left: 20px;
   @media screen and (max-width: 767px){
    flex-direction: column;
+   margin-left: 0;
   }
   .stats-element{
    display: flex;
@@ -376,6 +380,11 @@ padding: 0
    font-size: 24px;
    line-height: 30px;
    color: #4F4F4F;
+   @media screen and (max-width: 767px){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   }
    span {
     font-weight: bold;
    }
@@ -440,6 +449,12 @@ padding: 0
   height: 58.18px;
   @media screen and (max-width: 1035px) {
 margin-bottom: 20px;
+  }
+  @media screen and (max-width: 480px){
+   font-size: 25px;
+   padding-right: 46px;
+   width: 176.06px;
+   height: 47.18px;
   }
  }
  .slide-inner-post {

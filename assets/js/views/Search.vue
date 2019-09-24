@@ -1,7 +1,7 @@
 <template>
   <div class="workers-wrapper">
 
-    <projects-header/>
+   <page-subheader v-bind="getCategory"/>
 
     <add-proj1/>
 
@@ -41,7 +41,7 @@
 <script>
 
 import Worker from './../components/Worker';
-import ProjectsHeader from './../components/ProjectsHeader';
+import PageSubheader from './../components/PageSubheader';
 import DropDown from './../components/common/DropDown.vue';
 import AddProj1 from './../components/modals/AddProj1.vue';
 export default {
@@ -68,6 +68,10 @@ export default {
         valueKey: 'name',
       },
       working_area: '',
+      subheader: {
+        title : '',
+        image: '/static/images/bg-blog.png',
+      }
     };
   },
   computed:{
@@ -79,9 +83,16 @@ export default {
        return this.$store.getters['categories/getSubCategoriesById'](parseInt(this.$route.params.categoryId));
      }
     },
+    getCategory(){
+      if(this.$store.getters['categories/isLoaded']){
+       return  {title: this.$store.getters['categories/getNameById'](parseInt(this.$route.params.categoryId)),
+       image: '/static/images/bg-blog.png',
+       }
+      }
+    }
   },
   components: {
-    ProjectsHeader,
+    PageSubheader,
     Worker,
     DropDown,
     AddProj1,
@@ -89,6 +100,9 @@ export default {
   methods: {
 searchWorkers(){
   this.formData.append('category_id',  this.$route.params.categoryId);
+
+    this.subheader.title = this.getCategory ;
+
   if (this.work_area.value !== ''){
     this.formData.append('working_area',  this.work_area.value);
   }
