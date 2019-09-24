@@ -43,7 +43,6 @@
              }).catch((error)=>{
            console.log(error);
          })
-
        } else {
          axios.post('api/addUserToFavourite', {'user_id': this.user_id})
              .then((response)=>{

@@ -2,7 +2,7 @@
 
   <div class="editWrapper">
 
-    <alert-modal v-bind="modalContent"/>
+    <alert-modal v-bind="alertFlag? modalSuccess: modalFail"/>
 
     <div class="editP">
 
@@ -116,12 +116,19 @@ export default {
         labelKey: 'name',
         valueKey: 'id',
       },
-      modalContent: {
+      alertFlag: '',
+      modalSuccess: {
         title: 'New information have been saved',
         text: 'Lorem Ipsum dolor set amet',
         buttonText: 'חזור לאתר',
+        icon: 'success'
       },
-
+      modalFail: {
+        title: 'Fail',
+        text: 'Lorem Ipsum dolor set amet',
+        buttonText: 'חזור לאתר',
+        icon: 'fail'
+      },
     }
   },
   computed: {
@@ -164,7 +171,6 @@ export default {
     },
     openModal (e) {
       e.preventDefault();
-      this.$store.commit('modals/alert/open');
       this.changeInfo();
     },
     openModalPass (e) {
@@ -177,11 +183,13 @@ export default {
 
       axios.post('/api/changePersonalInfo', data)
       .then((response) => {
-        console.log('sussass');
+        this.alertFlag = true;
+        this.$store.commit('modals/alert/open');
         this.$store.dispatch('user/updateData');
       })
       .catch((error) => {
-        console.log(error.response.data);
+        this.alertFlag = false;
+        this.$store.commit('modals/alert/open');
       });
     },
     changePassword(){

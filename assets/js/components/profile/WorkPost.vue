@@ -29,7 +29,7 @@
       },
       images: {
         default: '',
-        type: Array,
+        type: String,
       },
       title: {
         default: '',

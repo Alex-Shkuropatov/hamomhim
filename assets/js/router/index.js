@@ -24,6 +24,7 @@ import NewOrder from "./../views/NewOrder.vue";
 import SearchWorkers from "./../views/SearchWorkers.vue";
 import ProjectFeedback from './../views/ProjectFeedback.vue';
 import EditOrder from './../views/EditOrder.vue';
+import ClosedOrders from './../views/ClosedOrders.vue'
 import Search from './../views/Search.vue';
 const routes = [
   {
@@ -65,6 +66,11 @@ const routes = [
     path: '/projects/:id/orders/',
     component: Orders,
     name: 'orders',
+  },
+  {
+    path: '/closed-projects/:id/closed-orders',
+    component: ClosedOrders,
+    name: 'closed-orders',
   },
   {
     path: '/search/:categoryId',

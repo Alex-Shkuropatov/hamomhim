@@ -181,9 +181,7 @@
         top: -4px;
         width: 33px;
         left: -3px;
-
       }
-
       &:hover {
         opacity: 0.8;
 
@@ -191,8 +189,8 @@
         }
       }
     }
-
     .content-wrapper {
+      position: relative;
       display: flex;
       flex-direction: row-reverse;
       width: 1059px;
@@ -333,7 +331,7 @@
       }
 
       .centered {
-        left: 11px;
+        left: 8px;
       }
     }
 
