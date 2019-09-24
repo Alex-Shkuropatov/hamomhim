@@ -232,7 +232,7 @@
       @media screen and (max-width: 620px){
       width: 350px;
     }
-      @media screen and (max-width: 400px){
+      @media screen and (max-width: 619px){
         width: 100%;
       }
       @media screen and (max-width: 600px){
@@ -421,7 +421,7 @@ button::-moz-focus-inner {
     position: relative;
   }
   #title-input{
-    width: 1000px!important;
+    width: 1006px!important;
     @media screen and (max-width: 1605px){
       width: 730px!important;
     }
@@ -431,6 +431,7 @@ button::-moz-focus-inner {
     }
     @media screen and (max-width: 620px){
       width: 350px!important;
+      margin-right: 122px;
     }
     @media screen and (max-width: 400px){
       width:100%!important;

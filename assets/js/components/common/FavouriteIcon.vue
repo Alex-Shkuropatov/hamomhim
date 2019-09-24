@@ -54,11 +54,27 @@
          })
        }
       },
+      gold(){
+        this.$refs.svg.style.fillOpacity=1;
+        this.$refs.svg.style.fill='gold';
+      },
+      white(){
+        this.$refs.svg.style.fill='white';
+        this.$refs.svg.style.fillOpacity=0;
+      }
+    },
+    watch: {
+      'is_favourite'(){
+        this.favourite = this.is_favourite;
+        if (this.is_favourite !== true){
+         this.white();
+        }
+
+      }
     },
     mounted() {
       if (this.is_favourite === true){
-        this.$refs.svg.style.fill='gold';
-        this.$refs.svg.style.fillOpacity=1;
+       this.gold();
       }
     }
   }
