@@ -14,11 +14,11 @@
         {{description}}
       </div>
       <div class="post-date">
-        {{date}}
+        {{new Date(date * 1000)}}
       </div>
     </div>
     <div class="img-wrapper">
-      <img :src="avatar===null? '/static/images/profile/defaultAvatar.png' : $env.API_URL+avatar" alt="user-image">
+      <img :src="author.avatar===null? '/static/images/profile/defaultAvatar.png' : $env.API_URL+author.avatar" alt="user-image">
     </div>
     <hr>
   </div>
@@ -31,7 +31,7 @@ import ShowMore from './../../components/profile/ShowMore'
     data () {
       return {
         rateFlag: {
-          rate: this.rate,
+          rate: this.mark,
         },
           isOpen: false,
       }
@@ -49,13 +49,15 @@ import ShowMore from './../../components/profile/ShowMore'
         default: '',
         type: String,
       },
-      rate: {
+      mark: {
         default: '',
         type: Number,
       },
-      avatar: {
-        default: '',
-        type: String,
+      author:{
+        avatar: {
+          default: '',
+          type: String,
+        },
       },
       date: {
         default: '',

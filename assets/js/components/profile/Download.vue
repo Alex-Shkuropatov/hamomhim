@@ -9,7 +9,6 @@
             v-for="post in files" :key="post.id"
             v-bind="post">
     </download-document>
-    <button class="download-all th-btn th-btn-blue th-btn-md"><span>Download all</span></button>
   </div>
 </template>
 
@@ -48,6 +47,7 @@ import DownloadDocument from './DownloadDocument'
 <style lang="scss" scoped>
 .download-files{
   margin:  0 auto;
+  margin-bottom: 35px;
   width: 1449px;
   @media screen and (max-width:1650px ) {
     width: 1266px;

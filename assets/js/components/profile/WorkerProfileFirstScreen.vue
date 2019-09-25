@@ -4,10 +4,9 @@
     <div class="info-wrapper" v-bind:class="{marginT : getData.role!=='architect'}" >
       <div class="title"> {{user.name}}
         <favourite-icon
-        v-bind="{is_favourite:user.is_favourite, user_id:user.id}"
+        v-bind="favourite"
         v-if="getData.role==='architect'"
         />
-
       </div>
       <div class="description">
         <span class="bold">םיאבה םיסקדניאב סולפ םיצופישב עיפומ בולואש ןויצ</span>
@@ -28,10 +27,37 @@ export default {
       type: Object,
     }
   },
+  data (){
+    return{
+    favourite: {
+      is_favourite: '',
+      user_id: '',
+    }
+    }
+  },
   computed: {
     getData() {
       return this.$store.getters['user/data'];
     }
+  },
+  mounted() {
+    axios.post('/api/getWorkerProfile',{'user_id': this.$route.params.id})
+        .then((response)=>{
+          console.log(response.data.value);
+          this.user = response.data.value.user;
+          this.favourite.is_favourite= this.user.is_favourite;
+          this.favourite.user_id= this.user.id;
+          console.log(this.user);
+          axios.post('/api/getRatingsOnUser',{'worker_id':this.user.id})
+              .then((response)=>{
+                console.log(response.data.value);
+                this.feed.posts = response.data.value;
+              }).catch((error)=>{
+            console.log(error);
+          });
+        }).catch((error)=>{
+          console.log(error);
+        });
   },
   components: {
     FavouriteIcon

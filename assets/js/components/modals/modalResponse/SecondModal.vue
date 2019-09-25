@@ -11,6 +11,9 @@
         </div>
         <div class="popup-form-row">
 
+        <div class="download-wrapper" >
+          <download v-for="file in response.files" :key="file.id" v-bind="file" />
+        </div>
 
         </div>
         <div class="popup-form-row two-buttons">
@@ -24,6 +27,7 @@
   import Modal from '../../common/Modal.vue'
   import ThemeInput from '../../common/ThemeInput.vue'
   import ThemeTextarea from '../../common/ThemeTextarea.vue'
+  import Download from  '../modalResponse/Download.vue'
   export default {
     methods: {
       close() {
@@ -44,6 +48,7 @@
       Modal,
       ThemeInput,
       ThemeTextarea,
+      Download,
     },
     mounted() {
 
@@ -78,7 +83,6 @@
     @media screen and (max-width: 480px) {
       width: 310px;
     }
-
     .title {
       font-weight: bold;
       font-size: 40px;
@@ -86,7 +90,6 @@
       color: #2871D7;
       margin: 0;
     }
-
     .description {
       font-size: 24px;
       text-align: center;
@@ -94,11 +97,18 @@
       margin: 0;
     }
   }
+  .download-wrapper{
+    margin: 0 auto;
+    width: 655px;
+  }
   .two-buttons{
     margin-top: 20px;
     justify-content: space-between;
     padding-right: 15px;
     padding-left: 15px;
+    @media screen and (max-width: 480px){
+      justify-content: center;
+    }
   }
   .slide-fade-enter-active {
     transition: all .3s ease;
