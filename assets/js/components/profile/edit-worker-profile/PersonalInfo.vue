@@ -85,6 +85,7 @@ export default {
   data(){
     return {
       isPassFormShown: false,
+      avatarSrc: '',
       selects: {
         working_area: {
           placeholder: 'הדובע רוזיא',
@@ -109,9 +110,6 @@ export default {
           items: [],
         },
       },
-      avatarStyles: {
-        backgroundImage: 'url(/static/images/profile/defaultAvatar.png)',
-      }
     }
   },
   props: {
@@ -134,19 +132,34 @@ export default {
       default: '',
     },
     avatar: {
-      default: '',
+      default: '/static/images/profile/defaultAvatar.png',
     },
   },
-  methods: {
-    updateval(a){
-      console.log(a);
-      this.$emit('update:name', a);
+  computed: {
+    avatarStyles(){
+      //check if avatar is already and url
+      let url = '';
+      if(typeof this.avatar === 'string'){
+        url = this.avatar;
+      }
+      else if(this.avatar instanceof File){
+        url = this.avatarSrc;
+      }
+      else{
+        url = '/static/images/profile/defaultAvatar.png';
+      }
+      return {backgroundImage: 'url('+url+')'};
     },
+    getCategories(){
+      return this.$store.getters['categories/data'];
+    }
+  },
+  methods: {
     onAvatarUpdate(file){
-      this.profileData.avatar = file;
       let reader = new FileReader();
       reader.addEventListener('load', () => {
-        this.avatarStyles.backgroundImage = 'url('+reader.result+')';
+        this.avatarSrc = reader.result;
+        this.$emit('update:avatar', file);
       }, false);
       reader.readAsDataURL(file);
 
@@ -158,11 +171,6 @@ export default {
       this.selects.subcategories.items = this.$store.getters['categories/getSubCategoriesById'](value);
     },
   },
-  computed: {
-    getCategories(){
-      return this.$store.getters['categories/data'];
-    }
-  }
 }
 </script>
 
