@@ -11,7 +11,7 @@
       <button class=" th-btn th-btn-blue th-btn-sm add-project search-b element-m" @click="searchWorkers">
         Search
       </button>
-      <drop-down class="dropDown element-m" placeholder="הדובע רוזיא" v-model="subcategories.value" v-bind="subcategories"/>
+      <drop-down class="dropDown element-m" placeholder="הדובע רוזיא" v-model="subcategories.value" :items="getId" v-bind="subcategories"/>
       <drop-down class="dropDown element-m" placeholder="הדובע רוזיא" v-model="work_area.value" v-bind="work_area"/>
       <button
               class="th-btn th-btn-blue th-btn-sm add-project element-m"
@@ -63,10 +63,9 @@ export default {
         valueKey: 'label',
       },
       subcategories: {
-        items:[],
         value: '',
         labelKey: 'name',
-        valueKey: 'name',
+        valueKey: 'id',
       },
       working_area: '',
       subheader: {
@@ -81,8 +80,9 @@ export default {
     },
     getId() {
      if(this.$store.getters['categories/isLoaded']){
-       this.subcategories.items = this.$store.getters['categories/getSubCategoriesById'](parseInt(this.$route.params.categoryId));
-       return this.subcategories;
+       return this.$store.getters['categories/getSubCategoriesById'](parseInt(this.$route.params.categoryId));
+     } else {
+       return [];
      }
     },
     getCategory(){
@@ -108,10 +108,11 @@ searchWorkers(){
   if (this.work_area.value !== ''){
     this.formData.append('working_area',  this.work_area.value);
   }
-  if(this.subcategories.length !== 0){
-    for (let i=0; i<this.subcategories.length;i++){
-      this.formData.append('subcategories[]',  this.subcategories[i].id);
-    }
+  if(this.subcategories.value.length !== 0){
+    // for (let i=0; i<this.subcategories.value.length;i++){
+    //   this.formData.append('subcategories[]',  this.subcategories[i].id);
+    // }
+    this.formData.append('subcategories[]',  this.subcategories.value);
   }
   axios.post('/api/searchWorkers', this.formData)
       .then((response) => {
