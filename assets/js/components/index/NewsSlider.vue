@@ -65,6 +65,9 @@ export default {
   padding-right: 2px;
   padding-left: 2px;
 }
+.h-container{
+  margin-bottom: 45px;
+}
 .news-slider{
   margin: ceil($scale1 * -15px);
 }

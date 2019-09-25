@@ -14,7 +14,7 @@
         {{description}}
       </div>
       <div class="post-date">
-        {{new Date(date * 1000)}}
+        {{date}}
       </div>
     </div>
     <div class="img-wrapper">
