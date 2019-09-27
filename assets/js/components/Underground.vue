@@ -8,7 +8,9 @@
         </div>
         <div class="copyright1">כל הזכויות שמורות לקבוצת המומחים 2019</div>
         <div class="copyright2">תנאי השימוש תקנון האתר</div>
-        <a href="#" class="th-btn th-btn-blue th-btn-md">כניסה ללקוחות רשומים</a>
+        <div class="wrapper-a">
+        <a href="#" class="th-btn th-btn-blue th-btn-md button">כניסה ללקוחות רשומים</a>
+        </div>
       </div>
 
       <div class="footer-col areas-col">

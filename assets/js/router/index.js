@@ -73,7 +73,7 @@ const routes = [
     name: 'closed-orders',
   },
   {
-    path: '/search/:categoryId',
+    path: '/search/:categoryId/:subcategories',
     component: Search,
     name: 'search',
   },

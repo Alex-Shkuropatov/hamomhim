@@ -1,5 +1,6 @@
 <template>
   <main>
+    <show-subcategories />
     <first-frame/>
     <div class="bricks-bg">
       <categories-slider @category:select="searchWorkersByCategory"/>
@@ -25,7 +26,7 @@ import ClientReviews from './../components/index/ClientReviews.vue';
 import FeedbackForm from './../components/index/FeedbackForm.vue';
 import Stats from './../components/Stats.vue';
 import NewsSlider from './../components/index/NewsSlider.vue';
-
+import showSubcategories from './../components/modals/Subcategories.vue'
 
 export default {
   components: {
@@ -36,13 +37,15 @@ export default {
     FeedbackForm,
     Stats,
     NewsSlider,
-    BannerSection
+    BannerSection,
+    showSubcategories,
   },
   methods: {
     searchWorkersByCategory(category){
-      this.$router.push({name: 'search', params: { categoryId: category.id }});
+      this.$store.commit('modals/showSubcategories/saveData',category.id);
+      this.$store.commit('modals/showSubcategories/open');
     }
-  }
+  },
 }
 </script>
 

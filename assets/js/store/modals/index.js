@@ -10,6 +10,7 @@ import showResponse from './showResponse'
 import addWorkerWork from './editProfile/addWorkerWork'
 import showGallery from './showGallery'
 import forgetPassword from './forgetPassword'
+import showSubcategories from './showSubcategories'
 export default {
   namespaced: true,
   modules: {
@@ -25,6 +26,7 @@ export default {
     addWorkerWork,
     showGallery,
     forgetPassword,
+    showSubcategories,
   },
   state: {
 
