@@ -69,6 +69,9 @@
       newOrder() {
         this.$router.push('/orders/new-order');
       },
+      back(){
+        this.$router.push('/projects');
+      }
     },
     mounted() {
       axios.post('/api/getOrdersByProject', {project_id: this.$route.params.id})
