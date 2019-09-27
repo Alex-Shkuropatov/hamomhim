@@ -1,16 +1,16 @@
 <template>
   <div class="work-post">
     <div class="img-wrapper">
-      <img :src="imgSrc" alt="">
+      <img :src="$env.API_URL+images[0]" alt="">
     </div>
   <div class="text-wrapper">
     <div class="title">
-      <span>{{title}}</span>
+      <span>{{name}}</span>
     </div>
     <div class="description">
       <span>{{description}}</span>
     </div>
-    <button class="more-b" :href="url"> טקייורפל ></button>
+    <button class="more-b" @click="openImgs" > טקייורפל > </button>
   </div>
 
   </div>
@@ -24,14 +24,12 @@
         type: Number,
         required: true,
       },
-      imgSrc:{
-        type:String,
-      },
+
       images: {
         default: '',
-        type: String,
+        type: Array,
       },
-      title: {
+      name: {
         default: '',
         type: String,
       },
@@ -39,15 +37,15 @@
         default: '',
         type: String,
       },
-      url: {
-        default: '#',
-        type: String,
-      }
     },
     components: {
     },
     methods: {
-
+      openImgs(){
+        this.$emit('openImg',{
+          id: this.id,
+        });
+      }
     }
   }
 </script>
@@ -55,14 +53,17 @@
 <style lang="scss" scoped>
 
 .work-post{
+  position: relative;
   background: #FFFFFF;
-
+  height: 500px;
   line-height: 1.16;
-  img{
-    width: 100%;
-    height: auto;
-    margin-bottom: 8px;
-  }
+ .img-wrapper{
+   img{
+     width: 100%;
+     height: 355px;
+     margin-bottom: 8px;
+   }
+ }
   .text-wrapper{
     padding-right: 10px;
     .title{
@@ -80,8 +81,11 @@
       line-height: 20px;
       text-align: right;
       color: #4F4F4F;
+      margin-bottom: 30px;
     }
     .more-b{
+      bottom: 20px;
+      position: absolute;
       margin-top: 10px;
       background: #2871D7;
       border-radius: 3px;

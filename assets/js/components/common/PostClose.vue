@@ -17,7 +17,6 @@
 
     methods:{
       close() {
-        console.log('asda');
 
       },
     }

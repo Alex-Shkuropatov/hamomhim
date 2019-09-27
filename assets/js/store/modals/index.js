@@ -9,6 +9,7 @@ import showWorkers from './showWorkers'
 import showResponse from './showResponse'
 import addWorkerWork from './editProfile/addWorkerWork'
 import showGallery from './showGallery'
+import forgetPassword from './forgetPassword'
 export default {
   namespaced: true,
   modules: {
@@ -23,6 +24,7 @@ export default {
     showResponse,
     addWorkerWork,
     showGallery,
+    forgetPassword,
   },
   state: {
 

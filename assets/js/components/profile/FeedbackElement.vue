@@ -14,7 +14,7 @@
         {{description}}
       </div>
       <div class="post-date">
-        {{date}}
+        {{postDate}}
       </div>
     </div>
     <div class="img-wrapper">
@@ -37,10 +37,6 @@ import ShowMore from './../../components/profile/ShowMore'
       }
     },
     props: {
-      id: {
-        type: Number,
-        required: true,
-      },
       title: {
         default: '',
         type: String,
@@ -61,8 +57,18 @@ import ShowMore from './../../components/profile/ShowMore'
       },
       date: {
         default: '',
-        type: String,
+        type: Number,
       },
+    },
+    computed:{
+      postDate(){
+       let date =  new Date(this.date*1000);
+       let y = date.getFullYear();
+       let m = this.checkM(date.getMonth()+1);
+       let d = this.checkM(date.getDate());
+
+       return ' '+d+'-'+m+'-'+y+' ';
+      }
     },
     components: {
       RateFlag,
@@ -73,6 +79,16 @@ import ShowMore from './../../components/profile/ShowMore'
         this.isOpen=!this.isOpen;
         console.log('open');
       },
+      checkM(d){
+        if (d<10){
+          d = '0'+d;
+        }
+        return d
+      },
+    },
+    mounted() {
+
+
     }
   }
 </script>

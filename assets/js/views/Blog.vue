@@ -24,7 +24,7 @@ export default {
   data(){
     return {
       subHeader: {
-        title: 'תודוא',
+        title: ' בלוג',
         image: '/static/images/bg-blog.png'
       },
       posts: [

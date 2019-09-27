@@ -113,8 +113,8 @@ export default {
   methods:{
     onCategory(data){
       this.subcategories = data.subcategories;
-      this.category.name = data.name;
-      this.category.id = data.id;
+      this.categoryId = data.id;
+      this.checkedServices= [];
     },
     OnCategories(data){
       this.showWorks= true;

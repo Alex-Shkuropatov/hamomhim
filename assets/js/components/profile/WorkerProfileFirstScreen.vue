@@ -12,7 +12,7 @@
         <span class="bold">םיאבה םיסקדניאב סולפ םיצופישב עיפומ בולואש ןויצ</span>
         <span >.הלק הינב ,םיקינצופיש ,םיצופיש ינלבק</span>
       </div>
-      <button class="contact-b">רשק רוצ</button>
+      <button class="th-btn th-btn-blue th-btn-lg contact-b"><span>רשק רוצ </span></button>
     </div>
 
   </div>
@@ -30,10 +30,10 @@ export default {
   data (){
     return{
     favourite: {
-      is_favourite: '',
-      user_id: '',
+      is_favourite: 0,
+      user_id: 0,
     }
-    }
+   }
   },
   computed: {
     getData() {
@@ -48,13 +48,6 @@ export default {
           this.favourite.is_favourite= this.user.is_favourite;
           this.favourite.user_id= this.user.id;
           console.log(this.user);
-          axios.post('/api/getRatingsOnUser',{'worker_id':this.user.id})
-              .then((response)=>{
-                console.log(response.data.value);
-                this.feed.posts = response.data.value;
-              }).catch((error)=>{
-            console.log(error);
-          });
         }).catch((error)=>{
           console.log(error);
         });
@@ -112,16 +105,12 @@ export default {
   font-size: 24px;
   width: 257.89px;
   height: 76.37px ;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #FFFFFF;
   background: #30588E;
+  border: 2px solid #30588E;
   border-radius: 50px;
-  &:hover{
-    color: black;
-  }
+  padding: 0px;
+  display: inline-block;
+  text-align: center;
   @media screen and (max-width: 767px){
     width: 202.89px;
     height: 52.37px;

@@ -2,17 +2,20 @@ export default {
   namespaced: true,
   state: {
     opened: false,
-    data: {},
+    role: '',
+    load: false,
   },
   mutations: {
     close(state) {
       state.opened = false;
+      state.id= '';
     },
     open(state) {
       state.opened = true;
     },
-    saveData(state,post){
-      state.data = post;
+    saveData(state,role){
+      state.role = role;
+      state.load = true;
     },
     switch(state) {
       state.opened = !state.opened;
@@ -25,8 +28,11 @@ export default {
     isOpened(state) {
       return state.opened;
     },
-    getPost(state) {
-      return state.data;
+    getRole(state) {
+      return {role: state.role};
     },
+    isLoaded(state){
+      return state.load;
+    }
   }
 };

@@ -121,11 +121,11 @@
   </div>
 </div>
 
- <div class="slider-wrap h-container-works">
+ <div class="slider-wrap h-container-works" v-if="posts.length!==0 ">
   <div class="swiper-button-prev th-slider-arrow th-slider-arrow-right" slot="button-prev" data-uid="8"></div>
   <swiper :options="sliderOptions" class="works-slider" ref="newsSlider">
    <swiper-slide class="slide-outer-post" v-for="post in posts" :key="post.id">
-    <work-post class="slide-inner-post" v-bind="post"></work-post>
+    <work-post class="slide-inner-post" @openImg="openImg" v-bind="post"></work-post>
    </swiper-slide>
   </swiper>
   <div class="swiper-button-next th-slider-arrow th-slider-arrow-left" slot="button-next" data-uid="7"></div>
@@ -164,20 +164,20 @@ export default {
 
    },
    sliderOptions: {
-    slidesPerView: 5,
+    slidesPerView: 3,
     navigation: {
      nextEl: '.swiper-button-next[data-uid="7"]',
      prevEl: '.swiper-button-prev[data-uid="8"]',
     },
     breakpoints: {
      1500: {
-      slidesPerView: 4,
+      slidesPerView: 1,
      },
      1024: {
-      slidesPerView: 3
+      slidesPerView: 1
      },
      700: {
-      slidesPerView: 2
+      slidesPerView: 1
      },
      480: {
       slidesPerView: 1
@@ -185,14 +185,7 @@ export default {
     }
    },
    posts: [
-    {id: 1, imgSrc: '/static/images/profile/work-1.png', title: 'י ללכ ץופיש', url: '#', description: 'למשחו היצלטסניא ,סבג ,ףוציר ,עבצ תודובע'},
-    {id: 3, imgSrc: '/static/images/profile/work-1.png', title: 'יללכ ץופיש', url: '#', description: 'למשחו היצלטסניא ,סבג ,ףוציר ,עבצ תודובע'},
-    {id: 4, imgSrc: '/static/images/profile/w-2.png', title: 'יללכ ץופיש', url: '#', description: 'למשחו היצלטסניא ,סבג ,ףוציר ,עבצ תודובע'},
-    {id: 5, imgSrc: '/static/images/profile/w-3.png', title: 'יללכ ץופיש', url: '#', description: 'למשחו היצלטסניא ,סבג ,ףוציר ,עבצ תודובע'},
-    {id: 6, imgSrc: '/static/images/profile/w-4.png', title: 'יללכ ץופיש', url: '#', description: 'למשחו היצלטסניא ,סבג ,ףוציר ,עבצ תודובע'},
-    {id: 7, imgSrc: '/static/images/profile/w-3.png', title: 'יללכ ץופיש', url: '#', description: 'למשחו היצלטסניא ,סבג ,ףוציר ,עבצ תודובע'},
-    {id: 8, imgSrc: '/static/images/profile/w-4.png', title: 'יללכ ץופיש', url: '#', description: 'למשחו היצלטסניא ,סבג ,ףוציר ,עבצ תודובע'},
-    {id: 9, imgSrc: '/static/images/profile/work-1.png', title: 'יללכ ץופיש', url: '#', description: 'למשחו היצלטסניא ,סבג ,ףוציר ,עבצ תודובע'},
+
    ],
  feed: {
   posts: [
@@ -206,12 +199,23 @@ export default {
    }
  },
  methods: {
+  openImg(data){
+   console.log(data.id);
+   this.posts.filter((post)=>{
+    if (post.id === data.id){
+     this.$store.commit('modals/showGallery/saveData', post);
+     this.$store.commit('modals/showGallery/open');
+    }
+   });
+
+  }
  },
  mounted() {
   axios.post('/api/getWorkerProfile',{'user_id': this.$route.params.id})
       .then((response)=>{
       console.log(response.data.value);
       this.user = response.data.value.user;
+       this.posts = response.data.value.workerWork;
       this.favourite.is_favourite= this.user.is_favourite;
        this.favourite.user_id= this.user.id;
        this.feed.files= response.data.value.files;
@@ -330,9 +334,15 @@ padding: 0
   line-height: 30px;
   color: #333333;
   margin-right:10px;
+  @media screen and (max-width:767px){
+   display: block;
+   margin-right: 0;
+   text-align: center;
+  }
   @media screen and (max-width: 480px) {
    font-size: 38px;
   }
+
  }
 }
 
@@ -418,6 +428,9 @@ padding: 0
  .stats-block{
   .description{
    min-height: 110px;
+   @media screen and (max-width:767px){
+    min-height: 19px;
+   }
   }
 
  }
@@ -461,7 +474,7 @@ margin-bottom: 20px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
   line-height: 1.16;
   margin: 0px 5px 0 5px;
-  max-height: 400px;
+
  }
  .slide-outer-post{
   padding: 8px;

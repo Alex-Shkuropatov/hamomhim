@@ -119,7 +119,7 @@
          <img src="/static/images/how-it-works/worker1.png" alt="worker" class="workerImg">
 
       </div>
-      <button class="moreInfo">העלה פוסטים נוספים</button>
+      <button class="th-btn th-btn-blue th-btn-lg next moreInfo"><span>העלה פוסטים נוספים</span></button>
     </div>
   </div>
 
@@ -135,7 +135,7 @@
     data : function () {
       return {
         headData : {
-          title :'אודות',
+          title :'איך זה עובד',
           image: './static/images/aboutUs/team.png'
         }
       }
@@ -417,6 +417,7 @@
      margin-top: 30px;
      width: 355px;
      height: 70px;
+
      background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
      border-radius: 50px;
      font-family: Assistant;
@@ -424,10 +425,12 @@
      font-weight: bold;
      font-size: 24px;
      line-height: 31px;
+     padding: 0px;
+     display: inline-block;
      text-align: center;
-     color: #FFFFFF;
+
      &:hover{
-       color: black;
+
      }
      @media screen and (max-width: 1320px) {
        margin-bottom: 40px;

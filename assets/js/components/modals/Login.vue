@@ -4,7 +4,7 @@
 
   <first-modal  v-if="modalL===0" @send='onFirst'  />
 
-    <second-modal v-if="modalL===1"  @send='onSecond' />
+    <second-modal v-if="modalL===1" v-bind="{role:this.role}"  @send='onSecond' />
 
   </modal>
   </transition>

@@ -231,16 +231,23 @@
     },
     computed: {
       getCategories(){
-        return this.$store.getters['categories/data'];
+        if (this.$store.getters['categories/isLoaded']) {
+          return this.$store.getters['categories/data'];
+        } else {
+          return [];
+        }
       },
       getSubcategories(){
-           return this.$store.getters['categories/getSubCategoriesById'](this.categories.value);
+        if (this.$store.getters['categories/isLoaded']) {
+          return this.$store.getters['categories/getSubCategoriesById'](this.categories.value);
+        } else {
+          return [];
+        }
       }
     },
 
     mounted() {
       this.categories.items = this.getCategories;
-      this.subcategories.items = this.getSubcategories;
     }
   }
 </script>

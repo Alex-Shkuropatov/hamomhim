@@ -2,9 +2,9 @@
 <div class="wrapper">
   <categories-slider @category:select='onCategory' />
 
-  <services v-show="showServices" @send='OnCategories' v-bind="category" />
+  <services v-if="showServices" @send='OnCategories' v-bind="category" />
 
-  <repair-works v-show="showWorks" @send='onForm' />
+  <repair-works v-if="showWorks" @send='onForm' />
 </div>
 
 </template>
@@ -23,7 +23,7 @@ export default {
      },
       showServices: false,
       showWorks: false,
-      checked: '',
+      checked: [],
     };
   },
   methods:{
@@ -32,6 +32,8 @@ export default {
       this.category.name = data.name;
       this.category.id = data.id;
       this.showServices= true;
+      this.checked = [];
+      this.showWorks =false;
     },
     OnCategories(data){
       this.showWorks= true;

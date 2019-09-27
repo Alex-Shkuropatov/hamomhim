@@ -51,6 +51,7 @@ export default {
     data(state) {
       return state.data;
     },
+
     getField: state => fieldName => state.data[fieldName],
   }
 };

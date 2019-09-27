@@ -2,7 +2,7 @@
 
   <header class="header profile-header">
     <login/>
-
+    <forget-password />
     <registration />
 
     <div class="h-container">
@@ -53,6 +53,7 @@
   import FavouriteIcon from '../common/FavouriteIcon.vue'
   import Registration from '../modals/Registration.vue'
   import Login from '../modals/Login.vue'
+  import ForgetPassword from '../modals/ForgetPassword.vue'
   import axios from 'axios';
   import BurgerMenu from '../common/BurgerMenu.vue'
   export default {
@@ -66,7 +67,8 @@
       Registration,
       Login,
       axios,
-      BurgerMenu
+      BurgerMenu,
+      ForgetPassword,
     },
     methods: {
       openReg(e){
@@ -118,7 +120,7 @@
     z-index: 3000;
     height: ceil($scale1 * 100px);//80px//
     width: 100%;
-    background-color: rgba(255,255,255,0.95);
+    background-color: rgba(255,255,255,1);
     display: flex;
     -ms-align-items: center;
     align-items: center;

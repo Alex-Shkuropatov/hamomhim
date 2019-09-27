@@ -1,18 +1,13 @@
 <template>
   <div class="workers-wrapper">
 
-   <page-subheader v-bind="getCategory"/>
+   <page-subheader class="page-subhead" v-bind="getCategory"/>
 
     <add-proj1/>
 
   <div class="workers-list">
 
     <div class="search-tab">
-      <button class=" th-btn th-btn-blue th-btn-sm add-project search-b element-m" @click="searchWorkers">
-        Search
-      </button>
-      <drop-down class="dropDown element-m" placeholder="הדובע רוזיא" v-model="subcategories.value" :items="getId" v-bind="subcategories"/>
-      <drop-down class="dropDown element-m" placeholder="הדובע רוזיא" v-model="work_area.value" v-bind="work_area"/>
       <button
               class="th-btn th-btn-blue th-btn-sm add-project element-m"
               v-if="checkRole"
@@ -20,9 +15,14 @@
       >
         <span class=" abs">+</span> Add new project
       </button>
+      <drop-down class="dropDown element-m" placeholder="הדובע רוזיא" v-model="subcategories.value" :items="getId" v-bind="subcategories"/>
+      <drop-down class="dropDown element-m" placeholder="הדובע רוזיא" v-model="work_area.value" v-bind="work_area"/>
+      <button class=" th-btn th-btn-blue th-btn-sm add-project search-b element-m" @click="searchWorkers">
+        סנן
+      </button>
     </div>
 
-    <h2  class="notify_msg"  v-show="workers.length===0" ><i class="far fa-copy"></i> Any worker by this category</h2>
+    <h2  class="notify_msg"  v-show="workers.length===0" >  לא נמצאו קבלנים  <i class="far fa-copy"></i></h2>
 
     <div class="projects-list-wrap h-container">
 
@@ -49,7 +49,6 @@ export default {
     return {
       workers: [
        ],
-      formData: new FormData(),
       work_area: {
         items: [
           { label: 'כל הארץ', value: "1" },
@@ -101,24 +100,23 @@ export default {
   },
   methods: {
 searchWorkers(){
-  this.formData.append('category_id',  this.$route.params.categoryId);
+  let formData = new FormData();
+  this.subheader.title = this.getCategory ;
 
-    this.subheader.title = this.getCategory ;
-
+  formData.append('category_id',  this.$route.params.categoryId);
   if (this.work_area.value !== ''){
-    this.formData.append('working_area',  this.work_area.value);
+    formData.append('working_area',  this.work_area.value);
   }
-  if(this.subcategories.value.length !== 0){
+  if(this.subcategories.value !== ''){
     // for (let i=0; i<this.subcategories.value.length;i++){
     //   this.formData.append('subcategories[]',  this.subcategories[i].id);
     // }
-    this.formData.append('subcategories[]',  this.subcategories.value);
+    formData.append('subcategories[]',  this.subcategories.value);
   }
-  axios.post('/api/searchWorkers', this.formData)
+  axios.post('/api/searchWorkers', formData)
       .then((response) => {
         this.workers = response.data.value;
-
-        console.log(this.workers);
+        console.log(response);
       })
       .catch((error) => {
         console.log(error);
@@ -188,15 +186,25 @@ margin-top: 50px;
       }
   }
 }
+
 .load-more-posts{
   margin-top: 50px;
   margin-right: auto;
   margin-left: auto;
 }
-  .h-container{
-    width: 100%;
-    padding: 0;
-  }
+
+    .h-container{
+      width: 100%;
+      padding: 0;
+      ::v-deep .clr-blue {
+        text-align: center!important;
+      }
+    }
+
+
+
+
+
 .workers-item{
 
   .content-wrapper{
@@ -256,10 +264,7 @@ margin-top: 50px;
     }
   }
 }
-  .addProj{
-    width: 416px;
-    height: 286px;
-  }
+
 .search-tab{
   margin: 50px auto;
   width: 1371px;
@@ -280,25 +285,31 @@ margin-top: 50px;
   .add-project{
     position: relative;
     background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
-    border-radius: 50px;
-    width: 280px;
-    height: 54px;
+    border-radius: 10px;
+    width: 250px;
+    height: 45px;
     font-weight: bold;
     font-size: 24px;
     @media screen and (max-width: 1450px){
-      width: 270px;
-      height: 51px;
+      width: 257px;
+      height: 45px;
+    }
+    @media screen and (max-width:900px){
+      width: 257px;
     }
     @media screen and (max-width: 480px) {
-      width: 189px;
-      height: 43px;
-      font-size: 21px;
+      font-size: 20px;
     }
     .abs{
       position: absolute;
       left: 25px;
       font-size: 30px;
-      top: 8px;
+      top: 3px;
+      @media screen and (max-width: 480px) {
+        left: 18px;
+        font-size: 30px;
+        top: 1px;
+      }
     }
   }
   .search-b {
@@ -321,6 +332,7 @@ margin-top: 50px;
     text-align: center;
   }
   .element-m{
+
     margin: 0 10px;
   }
 </style>
