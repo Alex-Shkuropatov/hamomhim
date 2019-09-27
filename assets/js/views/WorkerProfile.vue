@@ -230,6 +230,7 @@ export default {
       }).catch((error)=>{
       console.log(error);
       });
+   window.scroll(0, 0);
  },
 computed: {
  getData() {

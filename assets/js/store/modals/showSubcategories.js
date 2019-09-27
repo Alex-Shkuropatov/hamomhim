@@ -2,19 +2,17 @@ export default {
   namespaced: true,
   state: {
     opened: false,
-    order: {},
-    loaded: false,
+    data: [],
   },
   mutations: {
     close(state) {
       state.opened = false;
-
     },
     open(state) {
       state.opened = true;
     },
-    saveData(state,order){
-      state.order = order;
+    saveData(state,id){
+      state.data = id;
     },
     switch(state) {
       state.opened = !state.opened;
@@ -27,11 +25,8 @@ export default {
     isOpened(state) {
       return state.opened;
     },
-    getOrder(state) {
-      return state.order;
+    getId(state) {
+      return  state.data;
     },
-    isLoaded(state){
-      return state.loaded;
-    }
   }
 };

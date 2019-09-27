@@ -44,7 +44,7 @@
         >
         </div>
       </div>
-      <div class="input-wrapper">
+      <div class="input-wrapper title-i">
         <input type="text"
                class="inputField"
                id="title-input"
@@ -430,11 +430,14 @@ button::-moz-focus-inner {
         margin-right:13px;
     }
     @media screen and (max-width: 620px){
-      width: 350px!important;
-      margin-right: 122px;
+      width: 254px !important;
+      margin-right: 0;
     }
-    @media screen and (max-width: 400px){
-      width:100%!important;
-    }
+  }
+  .title-i{
+ @media screen and (max-width:620px){
+   display: flex;
+   justify-content: center;
+ }
   }
 </style>

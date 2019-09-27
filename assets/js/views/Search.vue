@@ -15,7 +15,7 @@
       >
         <span class=" abs">+</span> Add new project
       </button>
-      <drop-down class="dropDown element-m" placeholder="הדובע רוזיא" v-model="subcategories.value" :items="getId" v-bind="subcategories"/>
+      <theme-multiselect   v-bind="subcategories" :items="getId" v-model="subcategories.value" class="dropDown element-m"  />
       <drop-down class="dropDown element-m" placeholder="הדובע רוזיא" v-model="work_area.value" v-bind="work_area"/>
       <button class=" th-btn th-btn-blue th-btn-sm add-project search-b element-m" @click="searchWorkers">
         סנן
@@ -44,6 +44,7 @@ import Worker from './../components/Worker';
 import PageSubheader from './../components/PageSubheader';
 import DropDown from './../components/common/DropDown.vue';
 import AddProj1 from './../components/modals/AddProj1.vue';
+import ThemeMultiselect from './../components/common/ThemeMultiselect.vue'
 export default {
   data(){
     return {
@@ -62,9 +63,10 @@ export default {
         valueKey: 'label',
       },
       subcategories: {
-        value: '',
+        placeholder: 'קטגוריות משנה',
         labelKey: 'name',
-        valueKey: 'id',
+        value: [],
+        valueKey: 'value',
       },
       working_area: '',
       subheader: {
@@ -97,6 +99,7 @@ export default {
     Worker,
     DropDown,
     AddProj1,
+    ThemeMultiselect,
   },
   methods: {
 searchWorkers(){
@@ -107,12 +110,14 @@ searchWorkers(){
   if (this.work_area.value !== ''){
     formData.append('working_area',  this.work_area.value);
   }
-  if(this.subcategories.value !== ''){
-    // for (let i=0; i<this.subcategories.value.length;i++){
-    //   this.formData.append('subcategories[]',  this.subcategories[i].id);
-    // }
-    formData.append('subcategories[]',  this.subcategories.value);
+
+  if(this.subcategories.value.length !== 0){
+    for (let i=0; i<this.subcategories.value.length;i++){
+      console.log(this.subcategories.value);
+      formData.append('subcategories[]', this.subcategories.value[i].id);
+    }
   }
+
   axios.post('/api/searchWorkers', formData)
       .then((response) => {
         this.workers = response.data.value;
@@ -127,10 +132,12 @@ searchWorkers(){
     }
   },
   created() {
+    this.subcategories.value = JSON.parse(this.$route.params.subcategories);
     this.searchWorkers();
 
   },
   mounted() {
+
   }
 }
 </script>
