@@ -4,19 +4,22 @@
     <div class="section-inner">
       <div class="inputs-col">
         <div class="form-group">
-          <theme-textarea placeholder="Tell about yourself" v-model="bio"></theme-textarea>
+          <theme-textarea placeholder="Tell about yourself" :value="bio" @input="$emit('update:bio', arguments[0])"></theme-textarea>
         </div>
         <div class="d-flex">
           <div class="geo-icon"></div>
           <div class="form-group address-group">
             <div class="caption">address</div>
-            <theme-input placeholder="address" v-model="address"></theme-input>
+            <theme-input placeholder="address" :value="address" @input="$emit('update:address', arguments[0])"></theme-input>
           </div>
         </div>
       </div>
       <div class="img-col">
-        <div class="image" :style="{ 'backgroundImage' : bioImageSrc }"></div>
-        <div class="th-btn th-btn-blue th-btn-md">upload new photo</div>
+        <div class="image" :style="bioImageStyle"></div>
+        <label class="th-btn th-btn-blue th-btn-md upload-trigger">
+          upload new photo
+          <input type="file" @change="onFileUpload($event.target.files[0])">
+        </label>
       </div>
     </div>
   </div>
@@ -33,10 +36,33 @@ export default {
   },
   data(){
     return {
-      address: '',
-      bio: '',
-      bioImage: '',
-      bioImageSrc: 'url(' + window.location.origin + '/static/images/default/default-image-rect.svg'
+      bioImageSrc: ''
+    }
+  },
+  props: {
+    address: {
+      default: '',
+    },
+    bio: {
+      default: '',
+    },
+    bioImage: {
+      default: '/static/images/default/default-image-rect.svg'
+    }
+  },
+  computed: {
+    bioImageStyle(){
+      var url = '';
+      if(typeof this.bioImage === 'string'){
+        url = this.bioImage;
+      }
+      else if(this.bioImage instanceof File){
+        url = this.bioImageSrc;
+      }
+      else{
+        url = '/static/images/default/default-image-rect.svg';
+      }
+      return {backgroundImage: 'url('+url+')'};
     }
   }
 }
@@ -94,6 +120,11 @@ export default {
     -webkit-background-size: cover;
     background-size: cover;
     margin-bottom: 20px;
+  }
+}
+.upload-trigger{
+  input{
+    display: none;
   }
 }
 </style>

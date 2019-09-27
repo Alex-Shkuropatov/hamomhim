@@ -84,7 +84,7 @@
   .title-favourite{
     margin-right: 10px;
     svg{
-      fill: white;
+      fill: gold;
       fill-opacity:0;
       &:hover{
         path {

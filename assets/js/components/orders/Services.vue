@@ -25,6 +25,9 @@
       subcategories: {
     type: Array,
   },
+      id: {
+        type: Number,
+      }
     },
     data(){
       return {
@@ -36,11 +39,16 @@
       sendData(){
         this.$emit('send', {
           checked: this.checkedServices ,
-
         });
       }
     },
+   watch: {
+     'subcategories'(){
+       this.checkedServices = []
+     }
+   },
     mounted() {
+
     }
   }
 </script>
@@ -99,7 +107,6 @@
     display: none;
   }
 
-  /* Show the checkmark when checked */
   .container input:checked ~ .checkmark:after {
     display: block;
   }

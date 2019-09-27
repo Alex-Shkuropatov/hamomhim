@@ -75,7 +75,7 @@
 
            if(orderData.subcategories.length !== 0){
              for (let i=0; i<orderData.subcategories.length;i++){
-               this.formData.append('subcategories[]',  orderData.subcategories[i]);
+               this.formData.append('subcategories[]',  orderData.subcategories[i].id);
              }
            }
            response.data.value.workers.forEach((worker)=>{

@@ -1,14 +1,12 @@
 <template>
 
+
   <div class="login-wrapper second-message">
     <h2 class="title">הרשמה לאתר - קבלנים</h2>
     <p class="projectName">הרשמה למערכת</p>
     <form action="">
       <div class="wrapper">
-        <div class="orderWrapper">
-          <p class="formItem" >סיסמה</p>
-          <input type="password" placeholder="סיסמה" v-model="user.password"   class="inputName">
-        </div>
+
         <div class="orderWrapper">
           <p class="formItem" >אימייל</p>
           <div>
@@ -16,13 +14,18 @@
             <input type="text" ref="mail" id="mail"  placeholder="E-mail"  @focus="onFocus" @blur="onBlur" v-model="user.email" class="inputName">
           </div>
         </div>
-
+        <div class="orderWrapper">
+          <p class="formItem" >סיסמה</p>
+          <input type="password" placeholder="סיסמה" v-model="user.password"   class="inputName">
+        </div>
       </div>
     </form>
     <div class="wrapper-footer">
       <div class="wrapper-element">
+        <button class="forget-pass" @click="forgetPass">
         <i class="fas fa-key"></i>
         <span class="underLine">שכחתי סיסמה?</span><!-- forgot password -->
+        </button>
       </div>
 
         <div class="checkbox">
@@ -41,8 +44,7 @@
 
 <script>
   import Modal from './../../common/Modal.vue';
-
-
+  import axios from 'axios';
   export default {
 
     methods: {
@@ -88,9 +90,20 @@
           return  'fa-times'
         }
       },
+      forgetPass(){
+        this.$store.commit('modals/login/close');
+        this.$store.commit('modals/forgetPassword/saveData', this.role);
+        this.$store.commit('modals/forgetPassword/open');
+      }
+    },
+    props: {
+      role:{
+        type:String,
+      }
     },
     components: {
       Modal,
+      axios
     },
     data : function () {
       return {
@@ -335,13 +348,15 @@
       display: flex;
       flex-direction: row-reverse;
       align-items: center;
-      i{
-        .fa-key{
+      .forget-pass{
+        i{
+          .fa-key{
 
+          }
         }
-      }
-      .underLine{
-        margin-left: 10px;
+        .underLine{
+          margin-left: 10px;
+        }
       }
     }
   }

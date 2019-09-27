@@ -103,7 +103,11 @@
         this.$store.commit('modals/reg/close');
       },
       send() {
-        console.log(this.categories.items);
+        let subcat = [];
+        console.log(this.subcategories.value);
+        this.subcategories.value.forEach((item)=>{
+          subcat.push(item.id);
+        });
         this.$emit('send', {
           name: this.name ,
           email: this.email ,
@@ -117,7 +121,7 @@
           password: this.pass,
           category_id: this.categories.value,
           password_confirmation: this.pass,
-          subcategories: this.subcategories.value,
+          subcategories: subcat,
         })
       },
       onFocus(e) {
@@ -227,16 +231,23 @@
     },
     computed: {
       getCategories(){
-        return this.$store.getters['categories/data'];
+        if (this.$store.getters['categories/isLoaded']) {
+          return this.$store.getters['categories/data'];
+        } else {
+          return [];
+        }
       },
       getSubcategories(){
-           return this.$store.getters['categories/getSubCategoriesById'](this.categories.value);
+        if (this.$store.getters['categories/isLoaded']) {
+          return this.$store.getters['categories/getSubCategoriesById'](this.categories.value);
+        } else {
+          return [];
+        }
       }
     },
 
     mounted() {
       this.categories.items = this.getCategories;
-      this.subcategories.items = this.getSubcategories;
     }
   }
 </script>

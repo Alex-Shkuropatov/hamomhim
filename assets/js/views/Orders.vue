@@ -7,11 +7,12 @@
     <projects-header v-bind="header"/>
 
     <div class="orders">
+      <button class="back-b" @click="back"><i class="fas fa-chevron-right"></i>  חזור</button>
       <h1 class="title">רשימת פרויקטים</h1>
       <div class="add-order-wrapper">
         <router-link :to="{name: 'new-order',  }" class=" addOrder th-btn th-btn-blue th-btn-sm "> הוספת קבלנים לעבודה
           <span>+</span></router-link>
-        <div class="txt">1 ףינס הקינפאג</div>
+        <div class="txt">גאפניקה סניף 1</div>
       </div>
       <div class="orders-list-wrap h-container">
         <div class="orders-list">
@@ -89,7 +90,6 @@
   .orders-wrapper {
     z-index: 0;
   }
-
   .orders-list-wrap {
     padding-top: 50px;
     padding-bottom: 50px;
@@ -98,7 +98,7 @@
   .orders {
     width: 100%;
     padding: 30px 0 0 0;
-
+    position: relative;
     .title {
       margin: 0;
       margin-bottom: 30px;
@@ -114,15 +114,19 @@
         font-size: 53px;
       }
     }
+    .back-b{
+      font-weight: bold;
+      font-size: 18px;
+      color:#2871D7;
+      position: absolute;
+    }
   }
-
   .orders-list {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-
   .orders-item {
 
     margin-right: 15px;
@@ -131,13 +135,11 @@
     margin-bottom: 30px;
 
   }
-
   .load-more-posts {
     margin-top: 50px;
     margin-right: auto;
     margin-left: auto;
   }
-
   .h-container {
     width: 100%;
     padding: 0;
@@ -219,6 +221,7 @@
 
     }
   }
+
 
   .addOrder {
     margin-left: 40px;

@@ -40,6 +40,11 @@ export default {
   -webkit-background-size: cover;
   background-size: cover;
   background-position: center;
+  .h-container{
+    .clr-blue{
+      text-align: center;
+    }
+  }
 }
 @media(max-width: $breakpoint2){
   .page-subheader{

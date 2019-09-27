@@ -81,7 +81,7 @@ export default {
   }
 }
 .th-btn{
-  border-radius: 5px;
+  border-radius: 21px;
 }
 
 @media (max-width: $breakpoint2){

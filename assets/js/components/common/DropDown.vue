@@ -51,7 +51,6 @@ export default {
   },
   methods: {
     select(item) {
-      this.result = item;
       this.$emit('input', item[this.valueKey]);
     },
     open() {

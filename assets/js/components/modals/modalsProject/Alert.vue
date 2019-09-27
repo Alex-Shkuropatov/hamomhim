@@ -55,7 +55,7 @@
 <style scoped>
   .sendData{
     padding-right: 141px;
-    margin-top: 40px;
+    margin-top: 20px;
     background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
     border-radius: 50px;
     width: 355px;
@@ -74,7 +74,7 @@
   }
   .content-wrapper{
     position: relative;
-    margin-bottom: 49px;
+    margin-bottom: 25px;
     text-align: center;
     h3{
       margin: 0;
