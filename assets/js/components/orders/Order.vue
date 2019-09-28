@@ -21,10 +21,10 @@
                       fill="#2871D7"/>
               </svg>
             </button>
-            <p class="describe">םידבוע</p>
+              <p class="describe lefted-l"> קבלנים</p>
           </div>
           <hr>
-          <div class="action-item ">
+          <div class="action-item centered">
             <button class="item centered showOrder" @click="showOrder">
               <svg width="19" height="25" viewBox="0 0 19 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M13.2812 1.5625H11.5844C11.2625 0.653125 10.3938 0 9.375 0C8.35625 0 7.4875 0.653125 7.16406 1.5625H5.46875C5.0375 1.5625 4.6875 1.9125 4.6875 2.34375V5.46875C4.6875 5.9 5.0375 6.25 5.46875 6.25H13.2812C13.7125 6.25 14.0625 5.9 14.0625 5.46875V2.34375C14.0625 1.9125 13.7125 1.5625 13.2812 1.5625Z"
@@ -33,18 +33,18 @@
                       fill="#2871D7"/>
               </svg>
             </button>
-            <p class="describe">ףסונ עדימ</p>
+            <p class="describe">פרטי הפרויקט</p>
           </div>
           <hr>
           <div class="action-item">
-            <button class="item worker " @click="editOrder" >
+            <button class="item worker rightred-r " @click="editOrder" >
               <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M15.6217 4.17218L20.7322 9.2826L7.79621 22.2186L2.68863 17.1082L15.6217 4.17218ZM24.6101 2.93966L22.331 0.660587C21.4502 -0.220196 20.02 -0.220196 19.1362 0.660587L16.9531 2.84371L22.0636 7.95418L24.6101 5.40769C25.2932 4.7245 25.2932 3.6228 24.6101 2.93966ZM0.0142212 24.2913C-0.0787828 24.7099 0.299123 25.0849 0.717736 24.9831L6.4125 23.6024L1.30493 18.4919L0.0142212 24.2913Z"
                       fill="#2871D7 "/>
 
               </svg>
             </button>
-            <p class="describe">טסופ ךורע</p>
+            <p class="describe">ערוך הצעה</p>
           </div>
         </div>
 
@@ -317,8 +317,7 @@
 
     .action-item {
       position: relative;
-      width: 60px;
-
+      width: 72px;
       height: 60px;
 
       .item {
@@ -341,7 +340,7 @@
 
     .describe {
       top: 20px;
-      width: 69px;
+      width: 100px;
       position: relative;
       font-family: Assistant;
       font-style: normal;
@@ -362,6 +361,14 @@
     border: 1px solid #E0E0E0;
     transform: rotate(90deg);
   }
-
+.centered{
+  left: 10px;
+}
+  .lefted-l{
+    width: 56px!important;
+  }
+  .rightred-r{
+    left: 26px!important;
+  }
 </style>
 

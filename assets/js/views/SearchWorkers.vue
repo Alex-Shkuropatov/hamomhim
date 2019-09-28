@@ -5,9 +5,9 @@
 
     <div class="workers-list">
       <div class="title">
-        <h1 class="title-t">שדח ןלבק ףסוה</h1>
+        <h1 class="title-t">הוסף קבלן חדש</h1>
         <div class="btn-wrapper">
-          <button class="back-b" @click="back"><i class="fas fa-chevron-right"></i>רוזח</button>
+          <button class="back-b" @click="back"><i class="fas fa-chevron-right"></i>חזור</button>
         </div>
       </div>
       <div class="projects-list-wrap h-container" v-show="done" >
@@ -19,7 +19,7 @@
           </Worker>
         </div>
         <div class="empty" v-show="workers.length===0">
-          <h3 > <i class="fas fa-user-times"></i>  We cant find any worker suitable to your order</h3>
+          <h3 >  לא נמצאו קבלנים רלוונטים עבור פרויקט זה <i class="fas fa-user-times"></i>  </h3>
         </div>
       </div>
     </div>
