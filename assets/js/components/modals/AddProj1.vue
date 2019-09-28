@@ -15,7 +15,7 @@
         >
         <div class="error-wrapper" v-if="$v.name.$dirty">
           <p class="error-message" v-if="!$v.name.required">
-            Please enter project name
+            נא הזן שם פרויקט
           </p>
           <p class="error-message" v-else-if="!$v.name.minLength">
             Project name must contain more than 2 symbols
@@ -31,7 +31,7 @@
         ></textarea>
         <div class="error-wrapper" v-if="$v.description.$dirty">
           <p class="error-message" v-if="!$v.description.required">
-            Please enter project description
+            נא הזן תיאור פרויקט
           </p>
           <p class="error-message" v-else-if="!$v.description.minLength">
             Description must contain more than 10 symbols

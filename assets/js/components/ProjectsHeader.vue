@@ -44,9 +44,9 @@
         </div>
         <hr>
         <div class="row">
-          <router-link :to="{name: 'profile-edit',  }" class=" link "   > הגדרות חשבון  </router-link>
-          <hr>
           <router-link :to="{name: 'prefer-worker',  }" class=" link "   > קבלנים מועדפים   </router-link>
+          <hr>
+          <router-link :to="{name: 'profile-edit',  }" class=" link "   > הגדרות חשבון  </router-link>
         </div>
       </ul>
     </div>
