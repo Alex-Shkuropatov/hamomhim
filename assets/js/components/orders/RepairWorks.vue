@@ -22,7 +22,7 @@
          <div class="upload-element">
            <span>םיפסונ םיצבק תאלעה</span>
            <label for="file-upload" class="custom-file-upload addPhoto">
-             <div class="th-btn th-btn-blue th-btn-md upload" >Upload</div>
+             <div class="th-btn th-btn-blue th-btn-md upload" >העלאת תמונות</div>
            </label>
            <input
                    id="file-upload"
@@ -43,11 +43,11 @@
        />
      </div>
      <div class="row">
-       <div class="title">תוישפוח תורעה</div>
+       <div class="title">תיאור חופשי</div>
        <textarea v-model="formData.description" name="text" id="" cols="30" placeholder="ץופישה תודוא ןלבקל תורעהו טסקט םושרל ולכות ןאכ..." rows="10">
        </textarea>
      </div>
-     <button class="next-b th-btn th-btn-blue th-btn-md" @click.prevent="sendOrder"><span>Next</span></button>
+     <button class="next-b th-btn th-btn-blue th-btn-md" @click.prevent="sendOrder"><span>לשלב הבא</span></button>
    </form>
  </div>
   </div>

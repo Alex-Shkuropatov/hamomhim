@@ -316,8 +316,8 @@
     position: relative;
     .fas {
       position: absolute;
-      left: 37px;
-      top: 13px;
+      left: 17px;
+      top: 11px;
       z-index: 2;
 
       width: 26px;
@@ -349,9 +349,12 @@
       flex-direction: row-reverse;
       align-items: center;
       .forget-pass{
+        .fas{
+          color: #3269B6;
+        }
         i{
           .fa-key{
-
+            color: #3269B6;
           }
         }
         .underLine{
