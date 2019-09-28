@@ -3,12 +3,12 @@
   <modal v-if="$store.getters['modals/newProject/isOpened']" @close="closeB"  >
 
     <div class="content-wrapper first-message">
-      <h2 class="title">שדח טקיורפ תפסוה</h2>
-      <p class="projectName"> טקיורפ םש ןזה</p>
+      <h2 class="title">הוספת פרויקט חדש</h2>
+      <p class="projectName">  הזן פרטי פרויקט</p>
       <form action="">
         <input
                 :class="{ 'error': $v.name.$error, 'inputName': true }"
-                placeholder=" טקיורפ םש"
+                placeholder=" שם פרויקט"
                 v-model.trim="name"
                 type="text"
                 @input="$v.name.$touch()"
@@ -26,7 +26,7 @@
                 class="description"
                 name="description"
                 v-model.trim="description"
-                placeholder="רואית"
+                placeholder="תיאור"
                 @input="$v.description.$touch()"
         ></textarea>
         <div class="error-wrapper" v-if="$v.description.$dirty">
@@ -39,9 +39,8 @@
         </div>
       </form>
       <div class="buttons-wrapper">
-
-        <button class="saveB" style="text-align:center"   @click='send' >Save</button>
-        <button class="closeB" style="text-align:center" @click='closeB' >Close</button>
+        <button class="closeB" style="text-align:center" @click='closeB' >ביטול</button>
+        <button class="saveB" style="text-align:center"   @click='send' > לשלב הבא</button>
       </div>
     </div>
 

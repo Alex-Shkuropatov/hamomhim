@@ -34,7 +34,7 @@
               <drop-down class="dropDown" placeholder="אזור עבודה" v-model="workArea.value" v-bind="workArea"/>
             </div>
             <span>םינופלט יקסע</span>
-            <input class="foemField" v-model.trim="user.business_phone" placeholder="םינופלט יקסע" type="text">
+            <input class="foemField" v-model.trim="user.business_phone" placeholder="טלפון עסקי" type="text">
             <span>פקס</span>
             <input class="foemField" v-model.trim="user.fax" placeholder="פקס"  type="text" >
           </div>

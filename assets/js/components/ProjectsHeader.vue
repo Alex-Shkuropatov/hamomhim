@@ -38,15 +38,15 @@
     <div class="nav">
       <ul class="nav-links" >
         <div class="row">
-          <router-link :to="{name: 'profile-edit',  }" class=" link "   >  פרויקטים </router-link>
+          <router-link :to="{name: 'projects',  }" class=" link "   >   פרויקטים   </router-link>
           <hr>
-          <router-link :to="{name: 'prefer-worker',  }" class=" link "   >  ועצובש םיטקיורפ </router-link>
+          <router-link :to="{name: 'closed-projects',  }" class=" link "   >  פרויקטים שבוצעו </router-link>
         </div>
         <hr>
         <div class="row">
-          <router-link :to="{name: 'closed-projects',  }" class=" link "   > הגדרות חשבון      </router-link>
+          <router-link :to="{name: 'profile-edit',  }" class=" link "   > הגדרות חשבון  </router-link>
           <hr>
-          <router-link :to="{name: 'projects',  }" class=" link "   >     קבלנים מועדפים    </router-link>
+          <router-link :to="{name: 'prefer-worker',  }" class=" link "   > קבלנים מועדפים   </router-link>
         </div>
       </ul>
     </div>

@@ -13,10 +13,10 @@
               v-if="checkRole"
               @click.prevent="addProject"
       >
-        <span class=" abs">+</span> Add new project
+        <span class=" abs">+</span> הוסף פרויקט חדש
       </button>
       <theme-multiselect   v-bind="subcategories" :items="getId" v-model="subcategories.value" class="dropDown element-m"  />
-      <drop-down class="dropDown element-m" placeholder="הדובע רוזיא" v-model="work_area.value" v-bind="work_area"/>
+      <drop-down class="dropDown element-m" placeholder="איזור עבודה" v-model="work_area.value" v-bind="work_area"/>
       <button class=" th-btn th-btn-blue th-btn-sm add-project search-b element-m" @click="searchWorkers">
         סנן
       </button>
