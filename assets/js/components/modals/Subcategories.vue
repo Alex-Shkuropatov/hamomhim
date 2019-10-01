@@ -3,8 +3,8 @@
     <modal v-if="$store.getters['modals/showSubcategories/isOpened']" @close="close">
 <div class="content-wrapper">
 
-  <h2 class="title">םיתוריש ץופיש</h2>
-  <h4 class="description">ץופישה גוס תא רחב אנ</h4>
+  <h2 class="title"> בחירת תת קטגוריה</h2>
+  <h4 class="description"> נא בחר את סוג הקבלן</h4>
   <div class="services">
     <div class="service-wrapper">
       <div class="service" v-for="(subcategory, index) in getSubcategory" :key="index">
@@ -16,9 +16,8 @@
         </div>
       </div>
     </div>
-    <button class="next-b th-btn th-btn-blue th-btn-md "   @click="search"><span>Next</span></button>
+    <button class="next-b th-btn th-btn-blue th-btn-md "   @click="search"><span>לשלב הבא</span></button>
   </div>
-
 </div>
     </modal>
   </transition>

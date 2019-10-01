@@ -6,7 +6,10 @@
     <p class="projectName">הרשמה למערכת</p>
     <form action="">
       <div class="wrapper">
-
+        <div class="orderWrapper">
+          <p class="formItem" >סיסמה</p>
+          <input type="password" placeholder="סיסמה" v-model="user.password"   class="inputName">
+        </div>
         <div class="orderWrapper">
           <p class="formItem" >אימייל</p>
           <div>
@@ -14,10 +17,7 @@
             <input type="text" ref="mail" id="mail"  placeholder="מייל"  @focus="onFocus" @blur="onBlur" v-model="user.email" class="inputName">
           </div>
         </div>
-        <div class="orderWrapper">
-          <p class="formItem" >סיסמה</p>
-          <input type="password" placeholder="סיסמה" v-model="user.password"   class="inputName">
-        </div>
+
       </div>
     </form>
     <div class="wrapper-footer">
