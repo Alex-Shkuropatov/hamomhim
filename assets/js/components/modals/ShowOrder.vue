@@ -256,7 +256,7 @@
 
   .sub-wrapper {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     @media screen and (max-width: 480px){
       flex-direction: column;
       align-items: center;
