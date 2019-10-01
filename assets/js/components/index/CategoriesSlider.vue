@@ -74,6 +74,11 @@ export default {
 .categories-slider-wrap{
   position: relative;
 }
+.th-heading{
+  color: #333333;
+  margin-bottom: 11px;
+  margin-top: 10px;
+}
 .categories-slider{
   margin-bottom: ceil($scale1 * 34px);
   margin-right: ceil($scale1 * -15px);
@@ -137,10 +142,6 @@ export default {
   .h-container{
     width: calc(100% - (#{$gutters} * 3));
   }
-  .th-heading{
-    color: #333333;
-    margin-bottom: 0;
-    margin-top: 10px;
-  }
+
 }
 </style>
