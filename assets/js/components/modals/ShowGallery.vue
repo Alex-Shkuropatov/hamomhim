@@ -16,8 +16,8 @@
       </div>
        <div class="arrows-wrapper">
          <div class="arrows">
-         <button class="prev" @click="prev"> <i class="fas fa-chevron-right"></i></button>
-         <button class="next" @click="next"><i class="fas fa-chevron-left"></i></button>
+         <button class="prev" :disabled="flag" @click="prev"> <i class="fas fa-chevron-right"></i></button>
+         <button class="next" :disabled="flag" @click="next"><i class="fas fa-chevron-left"></i></button>
        </div>
          <div class="slide-counter name">
            {{i+1}}/{{getPost.images.length}}
@@ -37,7 +37,7 @@
   export default {
     data() {
       return {
-        flag: true,
+        flag: false,
         i: 0,
       }
     },
@@ -50,20 +50,26 @@
         this.i=0;
       },
       next(){
-       if ( this.getPost.images.length-1 > this.i ) {
-         this.i++;
-       } else {
-         this.i=0;
-       }
-
+        setTimeout(() => {
+          if ( this.getPost.images.length-1 > this.i ) {
+            this.i++;
+          } else {
+            this.i=0;
+          }
+          this.flag = !this.flag;
+        },300);
+        this.flag = !this.flag;
       },
       prev(){
-        if ( this.i > 0) {
-          this.i--;
-        } else {
-          this.i = this.getPost.images.length - 1 ;
-        }
-
+        setTimeout(() => {
+          if ( this.i > 0) {
+            this.i--;
+          } else {
+            this.i = this.getPost.images.length - 1 ;
+          }
+          this.flag = !this.flag;
+        },300);
+        this.flag = !this.flag;
       },
     },
     components: {

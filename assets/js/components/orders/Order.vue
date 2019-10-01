@@ -8,7 +8,7 @@
       <div class="text-wrapper">
         <div class="title">{{name}}</div>
         <div class="actions-wrapper">
-          <div class="action-item worker">
+          <div class="action-item worker lefted-l">
             <button class="item edit" @click="showWorkers">
               <svg width="20" height="25" viewBox="0 0 20 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M17.663 17.4465C17.1062 16.8326 16.4352 16.5328 15.5785 16.5328H13.7735L12.5884 15.3906C11.7175 16.1045 10.661 16.5185 9.51871 16.5185C8.44789 16.5185 7.43419 16.1473 6.60609 15.5048L5.54951 16.5185H3.67094C2.71435 16.5185 1.97192 16.8469 1.38654 17.518C-0.312489 19.4883 -0.026938 23.7002 0.10156 24.9994H19.1192C19.2193 23.6858 19.3906 19.374 17.663 17.4465Z"
@@ -21,7 +21,7 @@
                       fill="#2871D7"/>
               </svg>
             </button>
-              <p class="describe lefted-l"> קבלנים</p>
+              <p class="describe "> קבלנים</p>
           </div>
           <hr>
           <div class="action-item centered">
@@ -36,8 +36,8 @@
             <p class="describe">פרטי הפרויקט</p>
           </div>
           <hr>
-          <div class="action-item">
-            <button class="item worker rightred-r " @click="editOrder" >
+          <div class="action-item rightred-r">
+            <button class="item worker  " @click="editOrder" >
               <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M15.6217 4.17218L20.7322 9.2826L7.79621 22.2186L2.68863 17.1082L15.6217 4.17218ZM24.6101 2.93966L22.331 0.660587C21.4502 -0.220196 20.02 -0.220196 19.1362 0.660587L16.9531 2.84371L22.0636 7.95418L24.6101 5.40769C25.2932 4.7245 25.2932 3.6228 24.6101 2.93966ZM0.0142212 24.2913C-0.0787828 24.7099 0.299123 25.0849 0.717736 24.9831L6.4125 23.6024L1.30493 18.4919L0.0142212 24.2913Z"
                       fill="#2871D7 "/>
@@ -365,10 +365,16 @@
   left: 10px;
 }
   .lefted-l{
-    width: 56px!important;
+    left: -9px!important;
+    .describe{
+      width: 56px!important;
+    }
   }
   .rightred-r{
+    right: -5px!important;
+  button{
     left: 26px!important;
+  }
   }
 </style>
 

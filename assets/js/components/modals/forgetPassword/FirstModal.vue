@@ -60,6 +60,12 @@
         this.$emit('onSend',{
           mail: this.user.mail,
         });
+        axios.post('/api/auth/forgotPassword',{'email':this.user.email, 'role':this.role})
+            .then((response)=>{
+              console.log(response);
+            }).catch((error)=>{
+          console.log(error);
+        });
       }
     },
     components: {

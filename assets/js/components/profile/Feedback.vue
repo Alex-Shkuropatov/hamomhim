@@ -4,7 +4,7 @@
 <div class="feedback-body">
   <div class="title">
     <hr>
-    <span>םיכמסמ</span>
+    <span>מסמכים</span>
   </div>
   <div class="head-wrapper">
   <div class="feedback-head"></div>

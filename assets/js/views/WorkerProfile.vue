@@ -1,13 +1,12 @@
 <template>
 <div class="profile-wrapper" ref="nav">
 
-<show-gallery />
-
  <worker-profile-first-screen :user="user"></worker-profile-first-screen>
 
  <div class="profile-about">
 
-  <img class="bg-resume" src="/static/images/profile/resume-bg.png" alt="">
+  <img class="bg-resume" :src="user.bio_image === null ? '/static/images/profile/resume-bg.png': $env.API_URL+user.bio_image " alt="">
+
 <div class="resume-wrapper">
  <div class="profile-resume">
  <div class="block-wrapper">
@@ -25,7 +24,7 @@
      <rect x="10.418" y="16.4648" width="3.79955" height="6.33258" fill="#FFB000"/>
      <rect x="4.08594" y="18.998" width="3.79955" height="3.79955" fill="#FFB000"/>
     </svg>
-    גוריד :  <span>{{Math.round(user.average_rating)}}</span>
+    ציון :  <span>{{Math.round(user.average_rating)}}</span>
    </div>
 
    <div class="stats-element">
@@ -34,7 +33,7 @@
      <path d="M9.40164 16.7373H8.94827C4.17993 16.7491 0.317445 20.6117 0.305664 25.3799V25.9904C0.305664 26.3256 0.57733 26.5972 0.912539 26.5972H17.4338C17.769 26.5972 18.0407 26.3256 18.0407 25.9904V25.3799C18.0269 20.6138 14.1678 16.753 9.40164 16.7373Z" fill="#FFB000"/>
      <path d="M30.7091 2.06125C28.7425 0.684006 26.3911 -0.0368368 23.9906 0.00144989C21.59 -0.0368368 19.2387 0.684006 17.2721 2.06125C15.4872 3.37496 14.3877 5.20272 14.3877 7.23754C14.3906 8.1582 14.6159 9.0645 15.0445 9.87923C15.4276 10.6047 15.9337 11.2582 16.5403 11.8105L15.016 14.977C14.8701 15.2766 14.9947 15.6377 15.2943 15.7835C15.4819 15.8749 15.7034 15.8628 15.8799 15.7516L19.3855 13.5883C20.0522 13.8605 20.7431 14.0697 21.4489 14.213C22.2853 14.3843 23.1369 14.4704 23.9906 14.4701C26.3911 14.5083 28.7425 13.7875 30.7091 12.4103C32.494 11.0965 33.5935 9.26878 33.5935 7.23397C33.5935 5.19915 32.4904 3.37496 30.7091 2.06125ZM28.5432 6.2619C28.5429 6.26341 28.5425 6.26502 28.5422 6.26654C28.5184 6.3723 28.4667 6.46975 28.3922 6.54856L26.8358 8.33348L27.0428 10.7289C27.072 11.0627 26.8251 11.3571 26.4911 11.3863C26.3744 11.3965 26.2574 11.3728 26.1539 11.3179L23.9906 10.4076L21.7773 11.3464C21.4712 11.478 21.1163 11.3365 20.9848 11.0304C20.945 10.9377 20.929 10.8365 20.9384 10.736L21.1454 8.34062L19.5711 6.51643C19.3531 6.26181 19.3828 5.87876 19.6374 5.66073C19.7109 5.59782 19.7983 5.55337 19.8924 5.53115L22.2307 4.98853L23.4694 2.94658C23.6411 2.65876 24.0136 2.5646 24.3014 2.73622C24.3879 2.78781 24.4602 2.8601 24.5118 2.94658L25.7434 4.99567L28.0816 5.53829C28.4089 5.61067 28.6156 5.93463 28.5432 6.2619Z" fill="#FFB000"/>
     </svg>
-    ןויצ :  <span>{{user.comments_count}}</span>
+    דירוג :  <span>{{user.comments_count}}</span>
    </div>
    <div class="location">
     <svg width="16" height="22" viewBox="0 0 16 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -53,7 +52,7 @@
    </div>
   </div>
   <div class="description">
-   {{user.description}}
+   {{user.bio}}
   </div>
   <hr class="h desktop">
  </div>
@@ -102,7 +101,7 @@
     </svg>
    </div>
   </div>
- <button class="th-btn th-btn-blue th-btn-sm resume-b">רשק רוצ</button>
+ <button class="th-btn th-btn-blue th-btn-sm resume-b">צור קשר</button>
  </div>
 
 </div>
@@ -116,20 +115,12 @@
   <div class="last-projects-wrapper">
   <hr class="line">
  <div class="last-projects">
-  םינורחא םיטקייורפ
+  פרויקטים אחרונים
  </div>
   </div>
 </div>
 
- <div class="slider-wrap h-container-works" v-if="posts.length!==0 ">
-  <div class="swiper-button-prev th-slider-arrow th-slider-arrow-right" slot="button-prev" data-uid="8"></div>
-  <swiper :options="sliderOptions" class="works-slider" ref="newsSlider">
-   <swiper-slide class="slide-outer-post" v-for="post in posts" :key="post.id">
-    <work-post class="slide-inner-post" @openImg="openImg" v-bind="post"></work-post>
-   </swiper-slide>
-  </swiper>
-  <div class="swiper-button-next th-slider-arrow th-slider-arrow-left" slot="button-next" data-uid="7"></div>
- </div>
+ <gallery-slider v-if="posts.length!==0" v-bind="{posts:posts}" />
 
 <feedback  v-bind="feed" v-if="feed.posts.length!==0" />
 
@@ -140,20 +131,19 @@
 </template>
 
 <script>
-import ShowGallery from '../components/modals/ShowGallery.vue'
 import FavouriteIcon from '../components/common/FavouriteIcon.vue'
 import WorkPost from '../components/profile/WorkPost.vue'
 import Download from '../components/profile/Download'
 import Feedback from '../components/profile/Feedback'
 import WorkerProfileFirstScreen from '../components/profile/WorkerProfileFirstScreen'
-
+import GallerySlider from '../components/profile/GallerySlider.vue'
 export default {
  components: {
+  GallerySlider,
   FavouriteIcon,
   WorkPost,
   Download,
   Feedback,
-  ShowGallery,
   WorkerProfileFirstScreen
  },
  data: function () {
@@ -199,16 +189,7 @@ export default {
    }
  },
  methods: {
-  openImg(data){
-   console.log(data.id);
-   this.posts.filter((post)=>{
-    if (post.id === data.id){
-     this.$store.commit('modals/showGallery/saveData', post);
-     this.$store.commit('modals/showGallery/open');
-    }
-   });
 
-  }
  },
  mounted() {
   axios.post('/api/getWorkerProfile',{'user_id': this.$route.params.id})
@@ -243,8 +224,12 @@ computed: {
 <style lang="scss" scoped>
 @import '~@/vars.scss';
 .element-padd{
- padding-right: 195px;
+ padding-right: 190px;
  padding-left: 75px;
+ @media screen and (max-width: 1440px){
+  padding-right: 164px;
+  padding-left: 40px;
+ }
  @media screen and (max-width: 1035px) {
 padding: 0
  }
@@ -261,22 +246,28 @@ padding: 0
   align-items: center;
   justify-content: center;
   @media screen and (max-width: 1035px) {
-   margin-top: 0;
+   margin-top: 20px;
    padding-top: 0;
   }
   .bg-resume{
    z-index:0;
    top: 0;
    position: absolute;
+   width: 74%;
+   max-height: 694px;
    object-fit: cover;
    @media screen and (max-width: 1035px) {
+    width: 90%;
+    top: 62px;
+   }
+   @media screen and (max-width: 480px){
     display: none;
    }
   }
   .profile-resume{
    background: rgba(255,255,255,0.85);
    position: relative;
-   margin-top: 116px;
+   margin-top: 10px;
    z-index: 3;
 
    width: 1056px;
@@ -289,10 +280,12 @@ padding: 0
     margin-top: unset;
    }
    @media screen and (max-width: 1035px){
+    width: unset;
     height: auto;
     flex-direction: column-reverse;
    }
    @media screen and (max-width: 767px){
+
     padding: 0 20px 0 20px;
    }
    @media screen and (max-width: 480px){
@@ -306,6 +299,10 @@ padding: 0
  display: flex;
  flex-direction: row;
  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+ margin-top: 115px;
+ @media screen and (max-width:1035px){
+  margin-top: 20px;
+ }
  .profile-resume{
 
  }
@@ -336,9 +333,10 @@ padding: 0
   color: #333333;
   margin-right:10px;
   @media screen and (max-width:767px){
-   display: block;
-   margin-right: 0;
+   display: flex;
    text-align: center;
+   justify-content: center;
+   margin-right: 12px;
   }
   @media screen and (max-width: 480px) {
    font-size: 38px;
@@ -377,7 +375,7 @@ padding: 0
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  margin-left: 144px;
+  margin-left: 244px;
   margin-top: 33px;
   left: 20px;
   @media screen and (max-width: 767px){
@@ -409,6 +407,9 @@ padding: 0
   display: flex;
   flex-direction: row;
   align-items: center;
+  @media screen and (max-width:767px){
+   justify-content: center;
+  }
   .bold{
    font-weight: bold;
    color: #333333;
@@ -428,9 +429,14 @@ padding: 0
  }
  .stats-block{
   .description{
-   min-height: 110px;
+   min-height: 76px;
+   margin-top: 35px;
+   @media screen and (max-width:1035px){
+    width: 80%;
+   }
    @media screen and (max-width:767px){
     min-height: 19px;
+    width: 100%;
    }
   }
 
@@ -484,7 +490,7 @@ margin-bottom: 20px;
   position: relative;
   background-color: white;
   margin: 0 auto;
-  padding: 0 229px 0 235px;
+  width: 1770px;
   margin-bottom:40px;
   display: flex;
   flex-direction: row;
@@ -560,8 +566,8 @@ margin-bottom: 20px;
  }
  .h{
   opacity: 0.7;
-  width: 129%;
-  margin-right: -226px;
+  width: 147%;
+  margin-right: -228px;
   border: 1px solid #E0E0E0;
   transform: rotate(180deg);
  }
@@ -576,6 +582,10 @@ margin-bottom: 20px;
    display: block;
    width: 98%;
    margin-right: 0;
+  }
+  @media screen and (max-width: 767px){
+   width: 88%;
+   margin-right: 27px;
   }
  }
 

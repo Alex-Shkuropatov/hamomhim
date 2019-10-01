@@ -143,6 +143,7 @@ import ShowMore from './../../components/profile/ShowMore'
   min-height: 230px;
   @media screen and (max-width: 1035px) {
   padding-right: 0;
+    min-height: unset;
   }
   @media screen and(max-width: 767px) {
     width: 100%;

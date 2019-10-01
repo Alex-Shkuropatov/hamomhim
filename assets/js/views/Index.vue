@@ -52,6 +52,7 @@ export default {
 <style lang="scss" scoped>
   @import '~@/vars.scss';
   .bricks-bg{
+    padding-top: 15px;
     background: url('/static/images/main-page/bg2.png') no-repeat top;
     -webkit-background-size: 100% auto;
     background-size: 100% auto;

@@ -22,10 +22,9 @@
   import FavouriteIcon from './../common/FavouriteIcon'
 export default {
   props: {
-    user: {
-      required: true,
-      type: Object,
-    }
+user:{
+  type: Object
+}
   },
   data (){
     return{
@@ -44,9 +43,8 @@ export default {
     axios.post('/api/getWorkerProfile',{'user_id': this.$route.params.id})
         .then((response)=>{
           console.log(response.data.value);
-          this.user = response.data.value.user;
-          this.favourite.is_favourite= this.user.is_favourite;
-          this.favourite.user_id= this.user.id;
+          this.favourite.is_favourite= response.data.value.user.is_favourite;
+          this.favourite.user_id= response.data.value.user.id;
           console.log(this.user);
         }).catch((error)=>{
           console.log(error);
@@ -76,6 +74,7 @@ export default {
     display: flex;
     align-items: center;
     color: #FFFFFF;
+    margin-right: 23px;
     @media screen and (max-width: 767px){
       font-size: 50px;
     }

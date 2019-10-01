@@ -116,12 +116,18 @@
       @media screen and (max-width: 1440px) {
         font-size: 53px;
       }
+      @media screen and (max-width: 480px){
+        font-size: 42px;
+      }
     }
     .back-b{
       font-weight: bold;
       font-size: 18px;
       color:#2871D7;
       position: absolute;
+      @media screen and (max-width: 480px){
+        position: relative;
+      }
     }
   }
   .orders-list {

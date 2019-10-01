@@ -55,12 +55,14 @@
 .work-post{
   position: relative;
   background: #FFFFFF;
-  height: 500px;
+  height: 325px;
+  width: 260px;
   line-height: 1.16;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
  .img-wrapper{
    img{
      width: 100%;
-     height: 355px;
+     height: 190px;
      margin-bottom: 8px;
    }
  }
@@ -96,7 +98,5 @@
       color: #FFFFFF;
     }
   }
-
-
 }
 </style>

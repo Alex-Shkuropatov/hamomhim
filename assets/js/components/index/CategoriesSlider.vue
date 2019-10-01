@@ -7,7 +7,7 @@
           <swiper-slide class="slide-outer" v-for="category in categories" :key="category.id">
             <div class="slide-inner" @click="onClickCategory(category)">
               <div class="cat-img">
-                <img src="/static/images/main-page/category-placeholder.svg" alt="">
+                <img src=" /static/images/main-page/category-placeholder.svg  " alt="">
               </div>
               <div class="description">{{category.name}}</div>
             </div>
@@ -31,7 +31,7 @@ export default {
     return {
       sliderOptions: {
         // spaceBetween: 30,
-        slidesPerView: 6,
+        slidesPerView: 8,
         slidesPerColumn: 2,
         navigation: {
           nextEl: '.swiper-button-next[data-uid="1"]',

@@ -20,7 +20,7 @@ import PostClose from '../common/PostClose'
   export default {
     props: {
       file: {
-        type: File,
+        type: Object,
       },
     },
     components: {
@@ -55,6 +55,10 @@ import PostClose from '../common/PostClose'
     }
     .file-name{
       margin-right:50px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      width: 75%;
+      white-space: nowrap;
     }
     .svg-icon{
     }

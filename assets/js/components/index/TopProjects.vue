@@ -12,7 +12,7 @@
               <div class="title">{{project.name}}</div>
               <div class="category">{{project.category}}</div>
               <div class="description">{{project.description}}</div>
-              <a :href="project.url" class="th-btn th-btn-empty th-btn-sm">קרא את הפוסט הזה</a>
+              <a :href="project.url" class="th-btn th-btn-empty th-btn-sm project-b">קרא את הפוסט הזה</a>
             </div>
           </swiper-slide>
         </swiper>
@@ -140,4 +140,7 @@ export default {
     width: calc(100% - (#{$gutters} * 3));
   }
 }
+  .project-b{
+    border-radius: 5px;
+  }
 </style>
