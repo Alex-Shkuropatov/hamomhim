@@ -20,8 +20,9 @@
                 </p>
               </div>
                 <div class="buttons-wrapper">
-                  <button class="saveB"  style="text-align:center" @click='closeProject' >לוטיב</button>
-                    <button class="closeB"  style="text-align:center" @click='close'   > טקיורפ רוגס</button>
+
+                  <button class="saveB"  style="text-align:center" @click='closeProject' > סגור פרויקט</button>
+                    <button class="closeB"  style="text-align:center" @click='close'   >ביטול </button>
                 </div>
             </div>
     </modal>
@@ -162,6 +163,7 @@ const checkPrice = (value) => value>0;
         color: #828282;
       }
       .container-value{
+        padding-left: 8px;
         background: #FFFFFF;
         opacity: 0.5;
         border: 1px solid #BDBDBD;

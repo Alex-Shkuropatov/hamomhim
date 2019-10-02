@@ -21,7 +21,10 @@
         סנן
       </button>
     </div>
+    <div class="empty" v-if="!flag">
 
+    </div>
+<div class="workers-list-wrapper" v-if="flag">
     <h2  class="notify_msg"  v-show="workers.length===0" >  לא נמצאו קבלנים  <i class="far fa-copy"></i></h2>
 
     <div class="projects-list-wrap h-container">
@@ -34,6 +37,7 @@
         </Worker>
       </div>
     </div>
+  </div>
   </div>
   </div>
 </template>
@@ -72,7 +76,8 @@ export default {
       subheader: {
         title : '',
         image: '/static/images/bg-blog.png',
-      }
+      },
+      flag:false,
     };
   },
   computed:{
@@ -121,6 +126,7 @@ searchWorkers(){
   axios.post('/api/searchWorkers', formData)
       .then((response) => {
         this.workers = response.data.value;
+        this.flag= true;
         console.log(response);
       })
       .catch((error) => {

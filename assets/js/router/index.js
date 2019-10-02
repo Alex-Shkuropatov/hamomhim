@@ -26,6 +26,8 @@ import ProjectFeedback from './../views/ProjectFeedback.vue';
 import EditOrder from './../views/EditOrder.vue';
 import ClosedOrders from './../views/ClosedOrders.vue'
 import Search from './../views/Search.vue';
+import PrivacyPolicy from './../views/PrivacyPolicy.vue'
+import Terms from './../views/Terms'
 const routes = [
   {
     path: '/',
@@ -111,6 +113,16 @@ const routes = [
     path: '/projects/:id/leave-feedback',
     component: ProjectFeedback,
     name: 'project-feedback',
+  },
+  {
+    path: '/privacy-policy',
+    component: PrivacyPolicy,
+    name: 'privacy-policy',
+  },
+  {
+    path: '/terms-and-conditions',
+    component: Terms,
+    name: 'terms-and-conditions',
   },
 
 ];

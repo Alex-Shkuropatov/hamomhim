@@ -2,8 +2,10 @@
   <div class="workers-wrapper">
 
     <projects-header/>
+    <div class="empty" v-if="!flag">
 
-  <div class="workers-list">
+    </div>
+  <div class="workers-list" v-if="flag">
     <h2  class="notify_msg"  v-show="workers.length===0" ><i class="far fa-copy"></i> You dont have favourite workers</h2>
 
     <div class="projects-list-wrap h-container">
@@ -31,6 +33,7 @@ export default {
 
       workers: [
        ],
+      flag: false,
     };
   },
   components: {
@@ -49,6 +52,7 @@ export default {
           this.workers.forEach((item) => {
             item.is_favourite  = true;
           })
+          this.flag = true;
         }).catch((error)=>{
           console.log(error);
         })

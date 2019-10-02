@@ -69,8 +69,8 @@
   .close{
     top: 5px;
     left: 5px;
-    width: 20px;
-    height: 20px;
+    width: 37px;
+    height: 37px;
     @media screen and(max-width: 480px){
       top: 2px;
       left: 0px;
@@ -86,42 +86,51 @@
     line-height: 1.16;
 
     .content-wrapper{
-      padding: 16px 15px 0 16px;
+      padding: 25px 26px 0 26px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      height: 100%;
+
     img{
       pointer-events: none;
       width: 100%;
-      height: 160px;
+      height: 243px;
+      @media screen and (max-width: 480px) {
+        height: 195px;
+      }
     }
     .title{
       margin: 0;
+      margin-top: 15px;
       font-weight: bold;
-      font-size: 24px;
+      font-size: 36px;
       line-height: 40px;
       text-align: center;
       color: #4F4F4F;
     }
       .description{
+        margin-top: 10px;
         font-weight: normal;
-        font-size: 14px;
+        font-size: 18px;
         line-height: 15px;
         text-align: center;
         color: #4F4F4F;
         min-height: 70px;
         max-height: 70px;
-        overflow: auto;
       }
     .meta{
       color: #828282;
     }
       a{
-        margin-top: 10px;
+        padding-right: 32px;
+        width: 167.51px;
+        height: 36.78px;
+        margin-top: auto;
+        margin-bottom: 10px;
       }
       button{
-        position: absolute;
-        bottom: 57px;
+
         width: 150.51px;
         height: 34.78px;
       }

@@ -1,7 +1,7 @@
 <template>
   <div class="download-post">
 <div class="document-wrapper">
-  <a :href="$env.API_URL+file" download>
+  <a :href="$env.API_URL+file" download target="_blank">
   <button class="download th-btn th-btn-blue th-btn-md" href="#"><span>Download</span></button>
   </a>
   <div class="description">{{name}}</div>

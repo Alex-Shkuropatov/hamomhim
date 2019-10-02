@@ -88,6 +88,7 @@ export default {
 .s-container{
   margin: 0 auto;
   width: 1230px;
+  margin-bottom: 60px;
   @media screen and (max-width: 1440px){
     width: 900px;
   }

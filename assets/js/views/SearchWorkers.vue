@@ -10,6 +10,10 @@
           <button class="back-b" @click="back"><i class="fas fa-chevron-right"></i>חזור</button>
         </div>
       </div>
+      <div class="empty" v-if="!done">
+
+      </div>
+
       <div class="projects-list-wrap h-container" v-show="done" >
         <div class="workers-list" v-show="workers.length!==0">
           <Worker
@@ -18,7 +22,7 @@
                   v-bind="worker">
           </Worker>
         </div>
-        <div class="empty" v-show="workers.length===0">
+        <div class="empty-s" v-show="workers.length===0">
           <h3 >  לא נמצאו קבלנים רלוונטים עבור פרויקט זה <i class="fas fa-user-times"></i>  </h3>
         </div>
       </div>
@@ -223,7 +227,7 @@
       margin-top: 30px;
     }
   }
-  .empty{
+  .empty-s{
     h3{
       text-align: center;
       i{

@@ -355,26 +355,27 @@ export default {
   }
 }
 .sendData{
-  padding-right: 141px;
   margin-top: 40px;
   background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
-  border-radius: 50px;
-  width: 355px;
+  border-radius: 10px;
+  width: 731px;
   height: 70px;
   font-family: Assistant;
   font-style: normal;
   font-weight: bold;
   font-size: 30px;
   line-height: 39px;
-  display: flex;
-  align-items: center;
+  display: inline-block;
   text-align: center;
   @media screen and (max-width: 1440px) {
     margin-bottom: 25px;
   }
+  @media screen and (max-width: 900px) {
+    width: 358px;
+    height: 58px;
+  }
   @media screen and (max-width: 400px) {
-    width: 283px;
-    padding-right: 113px;
+    width: 287px;
   }
   &:hover {
     color:  #2970D5 ;

@@ -16,49 +16,45 @@
     height: 317px;
     align-items: center;
     justify-content: center;
+    font-size: 45px;
+    text-align: right;
     .userImage{
       pointer-events: none;
     }
     .title{
-      pointer-events:none;
+      font-size: 45px;
       margin: 0;
-      margin-bottom: -27px;
-      font-family: Assistant;
-      font-style: normal;
       font-weight: bold;
-      font-size: 36px;
-      line-height: 65px;
-      text-align: right;
       color: #FFFFFF;
+      @media screen and (max-width:767px){
+        font-size: 30px;
+      }
+      @media screen and (max-width: 480px){
+        font-size: 25px;
+      }
     }
     .position{
-      pointer-events:none;
-      font-family: Assistant;
-      font-style: normal;
+
       font-weight: normal;
-      font-size: 24px;
-      line-height: 65px;
-      text-align: right;
       color: #F2F2F2;
+      @media screen and (max-width:767px){
+        font-size: 30px;
+      }
+      @media screen and (max-width: 480px){
+        font-size: 25px;
+      }
     }
   }
 }
 .head-txt-container{
-
-  hr{
-    margin-left: 46px;
-    width: 185px;
-    height: 0px;
-    color: white;
-    border: 1px solid #FFFFFF;
-    transform: rotate(-180deg);
-    @media screen and (max-width: 450px) {
-      width: 170px;
-
-    }
-  }
-
   .summary-info{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    @media screen and (max-width: 480px){
+      flex-direction: column;
+      align-items: center;
+    }
     .sum{
       font-weight: bold;
       font-size: 24px;
@@ -69,7 +65,7 @@
       align-items: center;
       color: #F2F2F2;
       @media screen and (max-width: 450px) {
-        font-size: 16px;
+        font-size: 20px;
 
       }
       span{
@@ -86,6 +82,11 @@
       }
     }
   }
+}
+.about-info{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .nav{
   position: absolute;
@@ -158,13 +159,12 @@
 }
 
 .userImage{
-
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
-  @media screen and (max-width: 500px){
-    width: 130px;
-    height: 130px;
+  @media screen and (max-width: 1650px){
+    width: 150px;
+    height: 150px;
   }
 }
 

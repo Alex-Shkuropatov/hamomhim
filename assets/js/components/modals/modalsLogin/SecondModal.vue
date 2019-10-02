@@ -6,7 +6,6 @@
     <p class="projectName">הרשמה למערכת</p>
     <form action="">
       <div class="wrapper">
-
         <div class="orderWrapper">
           <p class="formItem" >אימייל</p>
           <div>
@@ -18,6 +17,8 @@
           <p class="formItem" >סיסמה</p>
           <input type="password" placeholder="סיסמה" v-model="user.password"   class="inputName">
         </div>
+
+
       </div>
     </form>
     <div class="wrapper-footer">
@@ -27,12 +28,15 @@
         <span class="underLine">שכחתי סיסמה?</span><!-- forgot password -->
         </button>
       </div>
-
+      <div class="wrapper-element">
         <div class="checkbox">
-          <input type="checkbox" id="check" value="check" v-model="user.remember">
-          <label for="check">זכור אותי</label>
+          <label class="container">
+            <input type="checkbox" id="check" value="check" v-model="user.remember">
+            <label for="check">זכור אותי</label>
+            <span class="checkmark"></span>
+          </label>
         </div>
-
+    </div>
     </div>
     <div class="buttons-wrapper">
       <button class="closeB" style="text-align:center" @click="send">שלח</button>
@@ -176,7 +180,7 @@
     form{
       .wrapper{
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: row;
         align-items: center;
         padding: 11px 30px 0 30px;
         @media screen and (max-width: 1000px){
@@ -284,6 +288,7 @@
     display: flex;
     align-items: center;
     width: 140px;
+    height: 17px;
     justify-content: space-between;
 
     label{
@@ -335,20 +340,29 @@
 }
   .wrapper-footer{
     margin-top:20px;
-    width: 68%;
+    width: 87%;
     display: flex;
     flex-direction: row-reverse;
-    justify-content: space-around;
+
     @media screen and (max-width: 1000px){
-      flex-direction: column-reverse;
-      justify-content: center;
-      width: 154px;
+      width: 67%;
+    }
+    @media screen and (max-width:767px){
+      width: 55%;
+    }
+    @media screen and (max-width: 480px){
+      width: 69%;
     }
     .wrapper-element{
       display: flex;
       flex-direction: row-reverse;
       align-items: center;
+      justify-content: flex-end;
+      width: 47%;
       .forget-pass{
+        @media screen and (max-width:1000px){
+          margin-bottom: 6px;
+        }
         .fas{
           color: #3269B6;
         }
@@ -363,4 +377,83 @@
       }
     }
   }
+  .container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    @media screen and (max-width:767px){
+      font-size: 17px;
+    }
+  }
+
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 7px;
+    right: -40px;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    @media screen and (max-width: 767px) {
+      height: 17px;
+      width: 17px;
+    }
+    @media screen and (max-width: 480px) {
+      right: -27px;
+    }
+  }
+
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: white;
+    border: 1px solid gray;
+    opacity: 0.6;
+    border-radius: 2px;
+  }
+
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 7px;
+    top: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid blue;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
 </style>

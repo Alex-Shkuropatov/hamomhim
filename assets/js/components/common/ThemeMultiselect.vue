@@ -10,10 +10,10 @@
     </button>
     <div v-if="opened" class="popup">
       <div class="slider">
-        <div class="item" :class="{ 'checked' : option.selected }" @click.stop="select(option)" v-for="option in filteredOptions">
+        <button class="item" :class="{ 'checked' : option.selected }" @click.stop="select(option)" v-for="option in filteredOptions">
           <div class="checkbox"></div>
           <span>{{ option[labelKey] }}</span>
-        </div>
+        </button>
       </div>
     </div>
   </div>
