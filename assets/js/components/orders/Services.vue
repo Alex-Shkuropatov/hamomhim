@@ -177,7 +177,7 @@
     }
   }
   .services{
-     padding: 50px 100px 50px 100px;
+     padding: 50px 100px 5px 100px;
     border: 1px solid #E0E0E0;
     box-sizing: border-box;
     display: flex;
@@ -220,18 +220,26 @@
     .next-b{
       margin-top: 32px;
       margin-bottom:50px;
-      width: 295.06px;
-      height: 58.18px;
       background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
-      border-radius: 50px;
       font-weight: bold;
       font-size: 24px;
       padding: 0px;
       display: inline-block;
       text-align: center;
-      @media screen and (max-width: 480px) {
+      width: 1070px;
+      height: 74.49px;
+      border-radius: 5px;
+      @media screen and (max-width:1440px){
+        width: 600px;
+      }
+      @media screen and (max-width:767px){
+        width: 450px;
+      }
+      @media screen and (max-width:480px) {
         width: 200px;
         height: 50px;
+        margin: unset;
+        margin-top: 50px;
       }
     }
   }

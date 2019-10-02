@@ -29,7 +29,8 @@ import PostClose from '../common/PostClose'
     methods: {
       close(){
         this.$emit('close', {
-           id:this.file.id
+           id:this.file.id,
+          name: '/files/'+this.file.name,
         })
       },
     }

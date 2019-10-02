@@ -39,6 +39,9 @@ export default {
   background-size: cover;
   color: #fff;
   padding: ceil($scale1 * 50px) 0 ceil($scale1 * 60px) 0;
+  @media screen and (max-width: 480px){
+    padding: 103px 0 79px 0;
+  }
 }
 .title{
   font-size: ceil($scale1 * 56px);//50px
@@ -130,6 +133,9 @@ export default {
     padding-left: 30px;
     background: url("/static/images/icons/search.svg") no-repeat 12px center, linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
     background-size: 16px 16px, cover;
+  }
+  .big-bg{
+    padding: 103px 0 79px 0;
   }
 }
 
