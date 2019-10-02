@@ -520,7 +520,7 @@ margin-bottom: 20px;
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
-  @media screen and (max-width: 1650px) {
+  @media screen and (max-width: 1440px) {
    width: unset;
    justify-content: center;
   }
@@ -536,7 +536,7 @@ margin-bottom: 20px;
    display: flex;
    flex-direction: row-reverse;
    align-items: center;
-
+   margin-bottom: 25px;
    .line{
     width: 260px;
     height: 0px;

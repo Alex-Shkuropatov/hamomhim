@@ -1,7 +1,10 @@
 <template>
   <div class="projects-wrapper">
     <projects-header />
-  <div class="projects"  >
+<div class="empty" v-if="!flag">
+
+</div>
+  <div class="projects" v-if="flag" >
     <h2  class="notify_msg"  v-show="projects.length===0" ><i class="far fa-copy"></i> You dont have closed projects </h2>
     <div class="projects-list-wrap h-container">
       <div class="projects-list" v-show="projects.length!==0">
@@ -28,6 +31,7 @@ export default {
       projects: [
         {},
       ],
+      flag : false,
     };
   },
   components: {
@@ -45,7 +49,8 @@ export default {
     axios.post('/api/getAllProjects', {status:'closed'})
         .then((response)=>{
           console.log(response.data.value);
-          this.projects = response.data.value
+          this.projects = response.data.value;
+          this.flag = true;
         }).catch((error)=>{
       console.log(error.response.data)
     })
@@ -55,9 +60,9 @@ export default {
 
 <style lang="scss" scoped>
 
+
 .projects-wrapper{
   z-index: 0;
-  margin: 0 auto;
   width: 100%;
 }
 
@@ -66,11 +71,15 @@ export default {
 }
 .projects{
   margin: 0 auto;
-  width: 1065px;
+  width: 1440px;
   padding: 30px 0 0 0;
+  @media screen and (max-width:1650px){
+    width: 1285px;
+  }
   @media screen and (max-width: 1200px) {
     width: 100%;
   }
+
 }
 .projects-list{
   width: 100%;
@@ -80,9 +89,6 @@ export default {
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start;
-  @media screen and (max-width:1440px){
-    justify-content: flex-start;
-  }
   @media screen and (max-width:1340px){
     justify-content: center;
   }
@@ -113,34 +119,43 @@ export default {
   background: #FFFFFF;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
   line-height: 1.16;
-  width: 250px;
-  height: 350px;
-
-
+  width: 440px;
+  height: 620px;
+  @media screen and (max-width: 1650px){
+    width: 394px;
+    height: 503px;
+  }
   .content-wrapper{
-    padding: 16px 8px 0 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 
     img{
       width: 100%;
+      height: 286px;
+      @media screen and (max-width:1650px){
+        height: 248px;
+      }
     }
     .title{
       margin: 0;
+      margin-top: 15px;
       font-weight: bold;
-      font-size: 24px;
+      font-size: 36px;
       line-height: 40px;
-      text-align: right;
+      text-align: center;
       letter-spacing: -0.02em;
       color: #2871D7;
     }
     .description{
-      margin-top: 0;
-      font-size: 14px;
-      line-height: 15px;
+      margin-top: 15px;
+      font-weight: normal;
+      font-size: 20px;
+      line-height: 28px;
       text-align: center;
-      color: #F6F6F6;
+      color: #e1e1e1;
+      @media screen and (max-width: 1650px){
+        line-height: 23px;
+        font-size: 18px;
+      }
+      }
     }
     .meta{
       color: #828282;
@@ -155,7 +170,6 @@ export default {
         font-weight: bold;
         font-size: 18px;
         line-height: 65px;
-
         background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -173,7 +187,7 @@ export default {
       height: 36.78px;
     }
   }
-}
+
   .addProj{
     width: 218px;
     height: 160px;

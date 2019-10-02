@@ -1,13 +1,12 @@
 <template>
   <div class="page-subhead" :style="styles">
     <div class="head-container">
-      <img :src="user.imageProfile===null? '/static/images/profile/defaultAvatar.png': $env.API_URL+user.imageProfile " class="userImage" alt="user-image">
+      <img :src="getData.avatar===null? '/static/images/profile/defaultAvatar.png': $env.API_URL+getData.avatar " class="userImage" alt="user-image">
       <div class="head-txt-container">
         <div class="about-info">
-          <div class="th-heading title">{{user.title}}</div>
-          <div class="th-heading position">{{user.position}}</div>
+          <div class=" position">{{user.position}},</div>
+          <div class="th-heading title">{{getData.name}}</div>
         </div>
-        <hr>
         <div class="summary-info">
           <div class="sum" >
             <svg width="28" height="25" viewBox="0 0 28 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -60,9 +59,7 @@ export default {
     return{
         imageBg : '/static/images/bg-header-projects.png',
         user : {
-          title : 'שם משתמש',
-          imageProfile: '',
-          position: 'ברוך הבא למערכת',
+          position: 'ברוך הבא אדריכל יקר',
           valet: ' $235 ',
           value : '$235',
           valueText: 'לכייש רדאה:'
@@ -81,8 +78,7 @@ export default {
     },
   },
   mounted() {
-    this.user.title = this.getData.name;
-    this.user.imageProfile = this.getData.avatar;
+
   }
 }
 </script>
@@ -93,21 +89,23 @@ export default {
   .head-container{
 
     height: 317px;
-    margin-right: 358px;
+    margin: 51px auto 0px;
     width: unset;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     text-align: center;
-
-    @media screen and (max-width:1440px ){
-      margin: 0 auto;
+@media screen and (max-width:1650px){
+  margin: 30px auto 0px;
+}
+    @media screen and (max-width:480px){
+      margin:11px auto 0px;
     }
   }
   .about-info{
-    margin-bottom: -36px;
+
   }
   .head-txt-container {
-    margin-right: 13px;
+
   }
 </style>

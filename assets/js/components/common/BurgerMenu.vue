@@ -29,6 +29,8 @@
               <button class="th-btn th-btn-empty th-btn-sm" @click="openReg">הרשמה למערכת</button>
             </div>
             <div class="auth-btns profile-links"  v-else-if="$store.getters['user/isLogged']">
+              <button class="th-btn th-btn-empty th-btn-sm profileB" @click="profile" >לחשבון שלי</button>
+
               <button class="logout" @click="logout">
                 <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M0.0754738 10.6187C0.126476 10.4967 0.199465 10.3857 0.292469 10.2927L3.29165 7.29349C3.68265 6.90347 4.3147 6.90347 4.70571 7.29349C5.09671 7.6845 5.09671 8.31753 4.70571 8.70755L3.41264 10.0006H8.99898C9.552 10.0006 9.99902 10.4486 9.99902 11.0007C9.99902 11.5527 9.552 12.0007 8.99898 12.0007H3.41268L4.70575 13.2938C5.09676 13.6848 5.09676 14.3178 4.70575 14.7078C4.51074 14.9038 4.25475 15.0009 3.9987 15.0009C3.74266 15.0009 3.48666 14.9039 3.29165 14.7078L0.292469 11.7087C0.199465 11.6166 0.126476 11.5056 0.0754738 11.3826C-0.0255003 11.1387 -0.0255003 10.8627 0.0754738 10.6187Z" fill="#2871D7"/>
@@ -36,7 +38,6 @@
                 </svg>
                 <span> התנתק </span>
               </button>
-              <button class="th-btn th-btn-empty th-btn-sm profileB" @click="profile" >לחשבון שלי</button>
             </div>
           </ul>
         </div>
@@ -93,14 +94,30 @@
 <style lang="scss" scoped>
   @import '~@/vars.scss';
   .auth-btns{
-    margin-top: 30px;
+    display: flex;
+    margin: 20px auto;
+    flex-direction: column;
+    width: 186px;
     .th-btn{
+      margin-top: 10px;
+      display: inline-block;
       padding-right: ceil($scale1 * 40px);
       padding-left: ceil($scale1 * 40px);
     }
-    .profile-links{
+    .logout{
+      margin-top: 13px;
+      span{
+        font-size: 23px;
+      }
+    }
+    .profileB{
+      height: 43px;
+      font-size: 23px;
 
     }
+  }
+  .profile-links{
+
   }
   .outer-menu {
 

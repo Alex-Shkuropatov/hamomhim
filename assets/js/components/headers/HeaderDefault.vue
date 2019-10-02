@@ -182,6 +182,7 @@
     }
     a{
       color: $clr-dark;
+      font-size: 24px;
     }
     @media screen and (max-width: 1240px) {
       display: none;
@@ -199,6 +200,16 @@
       .menu-item{
         margin-left: ceil($scale2 * 37px);
       }
+    }
+  }
+  .profileB{
+    height: 34px;
+    font-size: 16px;
+  }
+  .logout{
+    span{
+      color: $clr-dark;
+      font-size: 21px;
     }
   }
 </style>

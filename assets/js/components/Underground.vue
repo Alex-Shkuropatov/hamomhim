@@ -7,7 +7,21 @@
           <img src="/static/images/logo/logo-blue.png" alt="">
         </div>
         <div class="copyright1">כל הזכויות שמורות לקבוצת המומחים 2019</div>
-        <div class="copyright2">תנאי השימוש תקנון האתר</div>
+        <div class="copyright2"><router-link class="hover-link" :to="{ name: 'terms-and-conditions'}">תקנון האתר</router-link>   <router-link  class="hover-link" :to="{ name: 'privacy-policy'}">תנאי השימוש</router-link></div>
+        <div class="copyright2">
+          <div class="social-links">
+            <a href="#" class="instagram-wrap">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="youtube-wrap">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a  target="_blank" href="https://m.facebook.com/%D7%A7%D7%91%D7%95%D7%A6%D7%AA-%D7%94%D7%9E%D7%95%D7%9E%D7%97%D7%99%D7%9D-%D7%9C%D7%90%D7%93%D7%A8%D7%99%D7%9B%D7%9C%D7%99%D7%9D-388668638352447/" class="facebook-wrap">
+              <i class="fab fa-facebook-square"></i>
+            </a>
+          </div>
+
+        </div>
         <div class="wrapper-a">
         <a href="#" class="th-btn th-btn-blue th-btn-md button">כניסה ללקוחות רשומים</a>
         </div>
@@ -105,6 +119,29 @@ export default {
 .copyright1,
 .copyright2{
   margin-bottom: ceil($scale1 * 10px);
+  .hover-link{
+    color: #4F4F4F;
+    font-weight: bold;
+    &:hover{
+      color: #2871D7;
+    }
+  }
+  .social-links{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    a{
+      font-size: 25px;
+
+      @media screen and (max-width: 480px) {
+        font-size: 20px;
+      }
+    }
+    .youtube-wrap{
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
 }
 .col-caption{
   margin-bottom: ceil($scale1 * 16px);
