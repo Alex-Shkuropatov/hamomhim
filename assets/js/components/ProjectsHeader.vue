@@ -36,13 +36,13 @@
     </div>
     <div class="nav">
       <ul class="nav-links" >
-        <div class="row">
+        <div class="row row-l">
           <router-link :to="{name: 'projects',  }" class=" link "   >   פרויקטים   </router-link>
           <hr>
           <router-link :to="{name: 'closed-projects',  }" class=" link "   >  פרויקטים שבוצעו </router-link>
         </div>
         <hr>
-        <div class="row">
+        <div class="row row-f">
           <router-link :to="{name: 'prefer-worker',  }" class=" link "   > קבלנים מועדפים   </router-link>
           <hr>
           <router-link :to="{name: 'profile-edit',  }" class=" link "   > הגדרות חשבון  </router-link>
@@ -102,10 +102,15 @@ export default {
       margin:11px auto 0px;
     }
   }
-  .about-info{
+  .row-l{
+    @media screen and (max-width:900px ){
+      align-items: flex-end;
+    }
 
   }
-  .head-txt-container {
-
+  .row-f{
+    @media screen and (max-width:900px ){
+      align-items: flex-end!important;
+    }
   }
 </style>

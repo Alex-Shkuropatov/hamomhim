@@ -124,7 +124,7 @@ console.log(myFormData);
     width: 295.06px;
     height: 58.18px;
     background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
-    border-radius: 50px;
+    border-radius: 5px;
     font-weight: bold;
     font-size: 24px;
     padding: 0px;
@@ -135,11 +135,20 @@ console.log(myFormData);
     display: none;
   }
   .custom-file-upload {
-    margin-right: -35px;
+    margin-right: 545px;
     margin-top: -34px;
     color: #2871D7;
     display: block;
     cursor: pointer;
+    @media screen and (max-width:1440px){
+      margin-right: 486px;
+    }
+    @media screen and (max-width: 767px){
+      margin-right: 210px;
+    }
+    @media screen and (max-width:480px){
+      margin-right: -50px;
+    }
   }
   .fa-cloud-upload-alt{
     margin-top: -76px;
@@ -228,7 +237,7 @@ console.log(myFormData);
        border: 1px solid #E0E0E0;
        box-sizing: border-box;
        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-       border-radius: 50px;
+       border-radius: 5px;
        @media screen and (max-width:1440px) {
          width: 333px;
        }
@@ -245,7 +254,7 @@ console.log(myFormData);
   }
 }
 .upload{
-  margin-right: 240px;
+  border-radius: 5px;
   @media screen and (max-width: 480px){
     margin: 47px 70px 0 0 ;
 
@@ -253,14 +262,26 @@ console.log(myFormData);
 }
   .add-files{
     display: flex;
-    width: 940px;
+    width: 762px;
     margin-top: 50px;
     flex-direction: column;
     align-items: flex-start;
-
     @media screen and (max-width:1440px) {
-      width: unset;
+      width:705px;
     }
+    @media screen and (max-width:1340px){
+      width:661px;
+    }
+    @media screen and (max-width:1340px){
+      width:661px;
+    }
+    @media screen and (max-width:767px){
+      width: 394px;
+    }
+    @media screen and (max-width:480px){
+      width: 246px;
+    }
+
     .title{
       font-weight: bold;
       font-size: 24px;
@@ -303,7 +324,7 @@ console.log(myFormData);
         border: 1px solid #E0E0E0;
         box-sizing: border-box;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-        border-radius: 20px;
+        border-radius: 5px;
         width: 1070px;
         height: 239px;
         @media screen and (max-width:1440px) {
@@ -322,8 +343,15 @@ console.log(myFormData);
   }
   .next-b{
     margin-top: 40px ;
-    width: 374px;
+    width: 1070px;
     height: 74.49px;
+    border-radius: 5px;
+    @media screen and (max-width:1440px){
+      width: 600px;
+    }
+    @media screen and (max-width:767px){
+      width: 450px;
+    }
     @media screen and (max-width:480px) {
       width: 200px;
       height: 50px;
@@ -334,6 +362,7 @@ console.log(myFormData);
   .selectWrapper{
     .inputName{
       width: 367px;
+      border-radius: 5px;
       @media screen and (max-width: 480px) {
         width: 300px;
       }

@@ -103,6 +103,7 @@ export default {
       subcategories: [],
       checkedServices: [],
       categoryId: '',
+      deleted_files: [],
     };
   },
   components: {
@@ -152,11 +153,15 @@ export default {
     },
     closeD(data){
       this.files = this.files.filter(file => file.id !== data.id);
+      this.deleted_files.push(data.id);
     },
     sendOrder(){
       let myFormData = new FormData();
       for(let i=0; i<this.files.length; i++){
         myFormData.append('files[]', this.files[i]);
+      }
+      for(let i=0; i<this.deleted_files.length; i++){
+        myFormData.append('deleted_files[]', this.deleted_files[i]);
       }
       for(let i=0; i<this.checkedServices.length; i++){
         myFormData.append('subcategories[]', this.checkedServices[i]);
@@ -375,18 +380,26 @@ padding-top: 20px;
     .next-b{
       margin-top: 32px;
       margin-bottom:50px;
-      width: 295.06px;
-      height: 58.18px;
+      width: 1070px;
+      height: 74.49px;
+      border-radius: 5px;
       background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
-      border-radius: 50px;
       font-weight: bold;
       font-size: 24px;
       padding: 0px;
       display: inline-block;
       text-align: center;
-      @media screen and (max-width: 480px) {
+      @media screen and (max-width:1440px){
+        width: 600px;
+      }
+      @media screen and (max-width:767px){
+        width: 450px;
+      }
+      @media screen and (max-width:480px) {
         width: 200px;
         height: 50px;
+        margin: unset;
+        margin-top: 50px;
       }
     }
   }
@@ -397,7 +410,7 @@ padding-top: 20px;
   width: 295.06px;
   height: 58.18px;
   background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
-  border-radius: 50px;
+  border-radius: 5px;
   font-weight: bold;
   font-size: 24px;
   padding: 0px;
@@ -408,11 +421,20 @@ input[type="file"] {
   display: none;
 }
 .custom-file-upload {
-  margin-right: -35px;
+  margin-right: 545px;
   margin-top: -34px;
   color: #2871D7;
   display: block;
   cursor: pointer;
+  @media screen and (max-width:1440px){
+    margin-right: 486px;
+  }
+  @media screen and (max-width: 767px){
+    margin-right: 210px;
+  }
+  @media screen and (max-width:480px){
+    margin-right: -50px;
+  }
 }
 .fa-cloud-upload-alt{
   margin-top: -76px;
@@ -501,7 +523,7 @@ input[type="file"] {
         border: 1px solid #E0E0E0;
         box-sizing: border-box;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-        border-radius: 50px;
+        border-radius: 5px;
         @media screen and (max-width:1440px) {
           width: 333px;
         }
@@ -518,7 +540,7 @@ input[type="file"] {
   }
 }
 .upload{
-  margin-right: 240px;
+  border-radius: 5px;
   @media screen and (max-width: 480px){
     margin: 47px 70px 0 0 ;
 
@@ -526,14 +548,26 @@ input[type="file"] {
 }
 .add-files{
   display: flex;
-  width: 940px;
+  width: 762px;
   margin-top: 50px;
   flex-direction: column;
   align-items: flex-start;
-
   @media screen and (max-width:1440px) {
-    width: unset;
+    width:705px;
   }
+  @media screen and (max-width:1340px){
+    width:661px;
+  }
+  @media screen and (max-width:1340px){
+    width:661px;
+  }
+  @media screen and (max-width:767px){
+    width: 394px;
+  }
+  @media screen and (max-width:480px){
+    width: 246px;
+  }
+
   .title{
     font-weight: bold;
     font-size: 24px;
@@ -576,7 +610,7 @@ input[type="file"] {
       border: 1px solid #E0E0E0;
       box-sizing: border-box;
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-      border-radius: 20px;
+      border-radius: 5px;
       width: 1070px;
       height: 239px;
       @media screen and (max-width:1440px) {
@@ -595,8 +629,15 @@ input[type="file"] {
 }
 .next-b{
   margin-top: 40px ;
-  width: 374px;
+  width: 1070px;
   height: 74.49px;
+  border-radius: 5px;
+  @media screen and (max-width:1440px){
+    width: 600px;
+  }
+  @media screen and (max-width:767px){
+    width: 450px;
+  }
   @media screen and (max-width:480px) {
     width: 200px;
     height: 50px;
@@ -606,6 +647,7 @@ input[type="file"] {
 }
 .selectWrapper{
   .inputName{
+    border-radius: 5px;
     width: 367px;
     @media screen and (max-width: 480px) {
       width: 300px;
