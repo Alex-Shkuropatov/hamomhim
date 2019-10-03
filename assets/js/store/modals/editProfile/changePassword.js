@@ -2,22 +2,13 @@ export default {
   namespaced: true,
   state: {
     opened: false,
-    data: {
-      id: '',
-      name: '',
-      description: '',
-      files: [],
-    }
   },
   mutations: {
     close(state) {
       state.opened = false;
     },
-    open(state, work) {
+    open(state) {
       state.opened = true;
-      if(work){
-        state.data = work;
-      }
     },
   },
   actions: {
@@ -27,8 +18,5 @@ export default {
     isOpened(state) {
       return state.opened;
     },
-    getData(state){
-      return state.data;
-    }
   }
 };

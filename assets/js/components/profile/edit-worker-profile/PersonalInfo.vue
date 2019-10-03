@@ -25,7 +25,7 @@
             <drop-down
             v-bind="selects.working_area"
             :value="working_area"
-            @input="$emit('update:working_area', arguments[0])"
+            @input="updateWorkingArea"
             class="less-rounded-corners" />
           </div>
           <div class="form-group col1-2">
@@ -33,14 +33,21 @@
             <drop-down
             v-bind="selects.category"
             :items="getCategories"
-            :value="category"
-            @input="onSelectCategory"
+            :value="category_id"
+            @input="onUpdateCategory"
             class="less-rounded-corners"
             />
           </div>
           <div class="form-group col1-2">
             <div class="caption">קטגוריות משנה</div>
-            <theme-multiselect v-bind="selects.subcategories" v-model="subcategories" class="less-rounded-corners" />
+            <theme-multiselect
+            :placeholder="selects.subcategories.placeholder"
+            :labelKey="selects.subcategories.labelKey"
+            :value="subcategories"
+            :items="subcatsItems"
+            :disabled="isSubcatsSelectDisabled"
+            @input="onUpdateSubcats"
+            class="less-rounded-corners" />
           </div>
           <div class="form-group col1-2">
             <div class="caption">מייל</div>
@@ -63,7 +70,8 @@
 
         </div>
 
-        <div class="show-changepass-form">Change password</div>
+        <div class="show-changepass-form" @click="$store.commit('modals/changePassword/open')">Change password</div>
+        <change-password />
 
       </div>
     </div>
@@ -75,16 +83,17 @@
 import ThemeInput from '../../common/ThemeInput.vue';
 import DropDown from '../../common/DropDown.vue';
 import ThemeMultiselect from '../../common/ThemeMultiselect.vue';
+import ChangePassword from '../../modals/editWorkerProfile/ChangePassword.vue';
 
 export default {
   components: {
     ThemeInput,
     DropDown,
-    ThemeMultiselect
+    ThemeMultiselect,
+    ChangePassword
   },
   data(){
     return {
-      isPassFormShown: false,
       avatarSrc: '',
       selects: {
         working_area: {
@@ -106,8 +115,6 @@ export default {
         subcategories: {
           placeholder: 'קטגוריות משנה',
           labelKey: 'name',
-          disabled: true,
-          items: [],
         },
       },
     }
@@ -119,7 +126,7 @@ export default {
     working_area: {
       default: '',
     },
-    category: {
+    category_id: {
       default: '',
     },
     subcategories: {
@@ -132,15 +139,18 @@ export default {
       default: '',
     },
     avatar: {
-      default: '/static/images/profile/defaultAvatar.png',
+      default: null,
     },
   },
   computed: {
+    isSubcatsSelectDisabled(){
+      return !this.category_id;
+    },
     avatarStyles(){
-      //check if avatar is already and url
+      //check if avatar is already an url
       let url = '';
       if(typeof this.avatar === 'string'){
-        url = this.avatar;
+        url = this.$env.API_URL + this.avatar;
       }
       else if(this.avatar instanceof File){
         url = this.avatarSrc;
@@ -152,9 +162,27 @@ export default {
     },
     getCategories(){
       return this.$store.getters['categories/data'];
-    }
+    },
+    subcatsItems(){
+      if(this.category_id && this.$store.getters['categories/isLoaded']){
+        return this.$store.getters['categories/getSubCategoriesById'](this.category_id);
+      }
+      else{
+        return [];
+      }
+    },
   },
   methods: {
+    updateWorkingArea(value){
+      this.$emit('update:working_area', value);
+    },
+    onUpdateCategory(value){
+      this.$emit('update:category_id', value);
+      this.$emit('update:subcategories', []);
+    },
+    onUpdateSubcats(value){
+      this.$emit('update:subcategories', value);
+    },
     onAvatarUpdate(file){
       let reader = new FileReader();
       reader.addEventListener('load', () => {
@@ -163,12 +191,6 @@ export default {
       }, false);
       reader.readAsDataURL(file);
 
-    },
-    onSelectCategory(value){
-      this.profileData.category = value;
-      this.profileData.subcategories = [];
-      this.selects.subcategories.disabled = false;
-      this.selects.subcategories.items = this.$store.getters['categories/getSubCategoriesById'](value);
     },
   },
 }
