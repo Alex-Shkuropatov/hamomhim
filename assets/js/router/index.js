@@ -105,7 +105,7 @@ const routes = [
     name: 'edit-order',
   },
   {
-    path: '/projects/:id/orders/:orderId//search-workers',
+    path: '/projects/:id/orders/:orderId/search-workers',
     component: SearchWorkers,
     name: 'search-workers',
   },
