@@ -4,7 +4,8 @@
 
       <div class="content-wrapper"  v-show="count===0" >
         <h2 class="title-h"> הנמזהב םידבוע</h2>
-        <div class="workers-list" v-show="getData.length!==0">
+
+        <div class="workers-list" v-show="getData!==false">
           <order-workers
             @getResponse="onResponse"
             class="orders-item"
@@ -102,7 +103,11 @@
       font-size: 30px;
     }
   }
-
+.empty{
+  h3{
+    text-align: center;
+  }
+}
   .slide-fade-enter-active {
     transition: all .3s ease;
   }

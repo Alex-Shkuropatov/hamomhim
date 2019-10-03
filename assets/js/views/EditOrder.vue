@@ -175,6 +175,7 @@ export default {
       axios.post('/api/changeOrder', myFormData)
           .then((response)=>{
             console.log(response);
+            this.deleted_files= [];
             this.$router.push({ name: 'orders' });
           }).catch(()=>{
             console.log(error);

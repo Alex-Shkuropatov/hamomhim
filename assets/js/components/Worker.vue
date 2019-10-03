@@ -162,7 +162,7 @@ import  FavouriteIcon from './common/FavouriteIcon.vue';
       },
       getName() {
         if(this.$store.getters['categories/isLoaded']){
-          return this.$store.getters['categories/getNameById'](parseInt(this.categoryId));
+          return this.$store.getters['categories/getNameById'](parseInt(this.categoryId||this.$route.params.id));
         } else {
           return '';
         }
@@ -389,13 +389,21 @@ margin-left: 7px;
     line-height: 30px;
     text-align: right;
     color: #828282;
+    @media screen and (max-width:1024px){
+      width: 50%;
+      text-align: center;
+    }
     @media screen and (max-width: 767px){
       font-size: 19px;
+      width: 64%;
     }
     @media screen and (max-width: 480px){
       display: flex;
       flex-direction: column;
       align-content: flex-start;
+      -ms-text-align-last: right;
+      text-align-last: right;
+      width: 40%;
     }
     .bold{
       font-weight: bold;
@@ -408,6 +416,7 @@ margin-left: 7px;
       margin-right: 10px;
       @media screen and (max-width: 480px){
         margin-right: 0;
+        text-align: right;
       }
     }
   }

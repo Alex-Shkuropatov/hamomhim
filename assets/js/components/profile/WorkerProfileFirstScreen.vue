@@ -78,6 +78,9 @@ user:{
     @media screen and (max-width: 767px){
       font-size: 50px;
     }
+    @media screen and (max-width: 480px) {
+      font-size: 32px;
+    }
   }
   .description{
     margin-top: 20px;
