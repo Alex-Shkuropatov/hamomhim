@@ -8,6 +8,7 @@ import responseForm from './responses/responseForm'
 import showWorkers from './showWorkers'
 import showResponse from './showResponse'
 import addWorkerWork from './editProfile/addWorkerWork'
+import changePassword from './editProfile/changePassword'
 import showGallery from './showGallery'
 import forgetPassword from './forgetPassword'
 import showSubcategories from './showSubcategories'
@@ -24,6 +25,7 @@ export default {
     showWorkers,
     showResponse,
     addWorkerWork,
+    changePassword,
     showGallery,
     forgetPassword,
     showSubcategories,

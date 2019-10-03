@@ -71,6 +71,8 @@ export default {
         result.push(newItem);
       }
       this.$emit('input', result);
+      this.filteredOptions;
+
     },
     open() {
       if(!this.disabled){
@@ -83,14 +85,17 @@ export default {
   },
   computed: {
     filteredOptions(){
-      let options = this.items;
+      this.value;
+      //console.log('Multiselect this.value in computed property: ', JSON.stringify(this.value));
 
-      options = options.map(option => {
+      let options = this.items.map(option => {
+
         option.selected = false;
         if(this.value.filter(e => e.id === option.id).length > 0){
           option.selected = true;
         }
         return option;
+
       });
       return options;
 
@@ -105,7 +110,7 @@ export default {
     placeholded() {
       return !this.value.length;
     }
-  }
+  },
 }
 </script>
 
