@@ -86,23 +86,41 @@ export default {
 }
 .slide-outer{
   padding: ceil($scale1 * 15px);
+  &:hover{
+    .slide-inner{
+      transition: color 0.3s ease-out;
+      background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
+      color: #fff;
+      border: 2px solid #3269B6;
+      .cat-img{
+        filter: unset;
+        img{
+            filter: unset;
+        }
+      }
+    }
+  }
 }
+
 .slide-inner{
   text-align: center;
-  background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
+  background: #F6F6F6;
   box-shadow: 0px 0px ceil($scale1 * 20px) rgba(0, 0, 0, 0.1);
   padding-top: ceil($scale1 * 35px);
   padding-bottom: ceil($scale1 * 13px);
   font-size: ceil($scale1 * 18px);
-  color: #fff;
+  color: #4F4F4F;
+  border: 2px solid #BDBDBD;
   .cat-img{
     width: ceil($scale1 * 50px);
     margin-bottom: ceil($scale1 * 15px);
     margin-right: auto;
     margin-left: auto;
+    filter: sepia(100%) hue-rotate(172deg) saturate(467%);
   }
   img{
     width: 100%;
+    filter: brightness(0.34) saturate(100%);
   }
 }
 

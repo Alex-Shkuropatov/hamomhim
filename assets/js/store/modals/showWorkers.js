@@ -2,13 +2,13 @@ export default {
   namespaced: true,
   state: {
     opened: false,
-    workers: {},
+    workers: [],
     orderId: '',
   },
   mutations: {
     close(state) {
       state.opened = false;
-      state.workers = [];
+      state.workers = false;
     },
     open(state) {
       state.opened = true;

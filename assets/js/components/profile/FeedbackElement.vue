@@ -166,6 +166,9 @@ import ShowMore from './../../components/profile/ShowMore'
     @media screen and(max-width: 767px) {
       width: 280px;
     }
+    @media screen and (max-width:480px){
+      font-size: 26px;
+    }
   }
   .description{
     animation-duration: 2s;
@@ -182,6 +185,9 @@ overflow-y: hidden;
     }
     @media screen and(max-width: 767px) {
       width: 90%;
+    }
+    @media screen and (max-width: 480px){
+      font-size: 17px;
     }
   }
 }

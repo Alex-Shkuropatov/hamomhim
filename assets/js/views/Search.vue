@@ -200,11 +200,7 @@ margin-top: 50px;
   }
 }
 
-.load-more-posts{
-  margin-top: 50px;
-  margin-right: auto;
-  margin-left: auto;
-}
+
 
     .h-container{
       width: 100%;

@@ -57,7 +57,6 @@ export default {
               params:
                   {
                     'orderId':response.data.orderId,
-                    'order': data
                   }
             });
           })

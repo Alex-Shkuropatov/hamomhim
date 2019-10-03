@@ -138,7 +138,6 @@
           params:
               {
                 'orderId': this.id,
-                'order': this.order
               }
         });
       },

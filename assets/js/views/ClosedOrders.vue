@@ -94,6 +94,9 @@
       text-align: center;
       letter-spacing: -0.02em;
       color: #333333;
+      @media screen and (max-width:600px){
+        font-size: 44px;
+      }
     }
   }
   .projects-list{
@@ -210,6 +213,9 @@
     position: absolute;
     top: 69px;
     right: 15%;
+    @media screen and (max-width:1024px){
+      position: static;
+    }
     button{
       display: flex;
       flex-direction: row-reverse;
