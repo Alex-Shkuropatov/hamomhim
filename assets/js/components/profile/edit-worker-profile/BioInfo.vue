@@ -46,23 +46,33 @@ export default {
     bio: {
       default: '',
     },
-    bioImage: {
-      default: '/static/images/default/default-image-rect.svg'
+    bio_image: {
+      default: null
     }
   },
   computed: {
     bioImageStyle(){
       var url = '';
-      if(typeof this.bioImage === 'string'){
-        url = this.bioImage;
+      if(typeof this.bio_image === 'string'){
+        url = this.$env.API_URL + this.bio_image;
       }
-      else if(this.bioImage instanceof File){
+      else if(this.bio_image instanceof File){
         url = this.bioImageSrc;
       }
       else{
         url = '/static/images/default/default-image-rect.svg';
       }
       return {backgroundImage: 'url('+url+')'};
+    }
+  },
+  methods: {
+    onFileUpload(file){
+      let reader = new FileReader();
+      reader.addEventListener('load', () => {
+        this.bioImageSrc = reader.result;
+        this.$emit('update:bio_image', file);
+      }, false);
+      reader.readAsDataURL(file);
     }
   }
 }

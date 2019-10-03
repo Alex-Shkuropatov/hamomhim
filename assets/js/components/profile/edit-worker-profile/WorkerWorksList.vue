@@ -3,7 +3,7 @@
     <div class="th-heading">פרוייקטים אחרונים </div>
     <div class="section-inner">
       <div class="h-row d-flex">
-        <div class="add-new-work" @click="$store.commit('modals/addWorkerWork/open', 0)">
+        <div class="add-new-work" @click="$store.commit('modals/addWorkerWork/open', null)">
           <div class="image"></div>
           <div class="th-btn th-btn-blue th-btn-md">
             Add new work
@@ -13,26 +13,30 @@
         <div v-for="work in value" class="work-item">
           <div class="worker-work-inner w-100">
             <div class="delete" @click="onDeleteItem(work.id)"></div>
-            <div class="image" :style="{ 'backgroundImage' : 'url(' + $env.API_URL + work.images[0] + ')' }"></div>
+            <div class="image" :style="getWorkerWorkThumb(work)"></div>
             <div class="text">
               <div class="name clr-blue">{{work.name}}</div>
               <div class="description">{{work.description}}</div>
             </div>
           </div>
-          <div class="th-btn th-btn-blue th-btn-md">Edit</div>
+          <div class="th-btn th-btn-blue th-btn-md"  @click="$store.commit('modals/addWorkerWork/open', work)">Edit</div>
         </div>
       </div>
     </div>
 
     <!-- popups -->
     <transition name="slide-fade">
-      <add-worker-work v-if="$store.getters['modals/addWorkerWork/isOpened']"></add-worker-work>
+      <add-worker-work
+      v-if="$store.getters['modals/addWorkerWork/isOpened']"
+      @update:work="onUpdateWork"
+      @add:work="onAddWork"
+      />
     </transition>
   </div>
 </template>
 
 <script>
-import addWorkerWork from '../../modals/editWorkerProfile/addWorkerWork.vue';
+import addWorkerWork from '../../modals/editWorkerProfile/AddWorkerWork.vue';
 
 export default {
   data(){
@@ -48,18 +52,40 @@ export default {
   },
   methods: {
     onDeleteItem(id){
-      axios.post('/api/deleteWorkerWork', {id : id})
-        .then((response) => {
-          if(response.data.success){
-            this.$emit('input', this.value.filter(item => item.id !== id));
-          }
-          else{
-            alert(repsonse.data.message);
-          }
-        })
+      if(confirm('Are you sure you want to delete this item?')){
+        axios.post('/api/deleteWorkerWork', {id : id})
+          .then((response) => {
+            if(response.data.success){
+              this.$emit('input', this.value.filter(item => item.id !== id));
+            }
+            else{
+              alert(repsonse.data.message);
+            }
+          })
+      }
+    },
+    getWorkerWorkThumb(work){
+      let style = {};
+      if(work.images){
+        style.backgroundImage = 'url(' + this.$env.API_URL + work.images[0] + ')';
+      }
+      else{
+        style.backgroundImage = 'url(/static/images/default/default-image-rect2.svg)';
+        style.backgroundSize = 'contain';
+        style.backgroundRepeat = 'no-repeat';
+      }
+      return style;
+    },
+    onAddWork(work){
+      let works = this.value;
+      works.push(work);
+      this.$emit('input', works);
+    },
+    onUpdateWork(work){
+      console.log(work);
+      this.$emit('input', this.value.map(e => e.id === work.id ? work : e));
     }
   },
-
 }
 </script>
 

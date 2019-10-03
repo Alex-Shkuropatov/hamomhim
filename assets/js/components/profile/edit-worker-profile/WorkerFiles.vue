@@ -55,7 +55,7 @@ export default {
 
     },
     onDeleteFile(id){
-      axios.post('/api/addPersonalFile', {id: id})
+      axios.post('/api/deletePersonalFile', {id: id})
         .then((response) => {
           if(response.data.success){
             this.$emit('input', this.value.filter(file => file.id !== id));
