@@ -51,8 +51,15 @@ export default {
           'Content-Type': 'multipart/form-data'
         }})
           .then((response) => {
-            console.log(response);
-            this.$router.push({ name: 'orders' });
+            console.log(response.data.orderId);
+            this.$router.push({
+              name: 'search-workers',
+              params:
+                  {
+                    'orderId':response.data.orderId,
+                    'order': data
+                  }
+            });
           })
           .catch((error) => {
             console.log(error.response.data);
