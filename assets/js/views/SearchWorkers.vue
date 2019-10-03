@@ -57,7 +57,7 @@
     },
     methods: {
       back() {
-        this.$router.go(-1);
+        this.$router.push({name: 'orders'});
       },
     },
 
@@ -135,6 +135,7 @@
   }
 
   .workers-list {
+    transition: color 0.3s ease-out;
     margin-top: 50px;
     width: 100%;
     display: flex;
