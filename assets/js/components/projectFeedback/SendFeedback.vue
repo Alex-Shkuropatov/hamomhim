@@ -48,7 +48,7 @@
                 v-for="digit in arr" :key="digit.rate"
                 v-bind="digit"
                 @rate="onRate"
-                @input="$v.rateFlag.$touch()"
+                :style="[ userRate===digit.rate ? {transform: 'scale(1.1)'} : ''  ]"
         >
         </rate-flag>
 
@@ -126,7 +126,7 @@ import { required, minLength } from "vuelidate/lib/validators";
         this.$v.description.$touch();
         this.$v.userRate.$touch();
 
-        if(!this.$v.invalid){
+        if(!this.$v.invalid && this.userRate!==''){
           let data = {
             worker_id: this.id,
             author_id: this.userId,
@@ -141,7 +141,7 @@ import { required, minLength } from "vuelidate/lib/validators";
                 this.$refs.form.reset();
                 this.$emit('hide',{
                   feedFlag : false,
-                  id: this.userId,
+                  id: this.id,
                 });
               }).catch((error)=>{
             console.log(error);
@@ -177,7 +177,7 @@ import { required, minLength } from "vuelidate/lib/validators";
   .orders-item{
     &:hover  ::v-deep {
      .svg-pic{
-       transform: scale(1.3);
+       transform: scale(1.2);
       }
     }
 

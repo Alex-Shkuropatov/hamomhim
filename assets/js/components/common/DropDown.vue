@@ -113,24 +113,14 @@ export default {
     }
   }
   .popup {
-    top: 25px;
+    top: 38px;
     width: 100%;
     position: absolute;
     max-height: 300px;
     overflow-y: auto;
     background: #FFFFFF;
     border: 1px solid #E0E0E0;
-    z-index: 1000;
-    padding-top: 25px;
-
-    top: 35px;
-    width: 101%;
-    position: absolute;
-    max-height: 300px;
-    overflow-y: auto;
-    background: #FFFFFF;
-    border: 1px solid #E0E0E0;
-    border-radius: 20px;
+    border-radius: 4px;
     padding-top: 6px;
 
     .slider {

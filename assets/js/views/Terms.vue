@@ -1,5 +1,5 @@
 <template>
-<div class="wrapper-page">
+<div class="wrapper-page h-container">
   <h2 class="title"> תקנון האתר</h2>
   <hr>
 

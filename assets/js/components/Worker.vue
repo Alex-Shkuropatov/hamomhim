@@ -1,5 +1,5 @@
 <template>
-  <div class="project-item" v-show="display">
+  <div class="project-item" v-if="display">
 
     <div class="content-wrapper">
     <div class="content-block">
@@ -41,7 +41,12 @@
            ציון :  <span>{{rateFlag.rate}}</span>
          </div>
        </div>
-         <div class="type"><span class="bold"> רשימת פרויקטים:</span><span>{{getName}}</span><div class="small"><span v-for="subcategory in subcategories" :key="subcategory.id" >/{{subcategory.name}}</span> </div> </div>
+         <div class="type"><span class="bold"> רשימת פרויקטים:</span><span>{{getName}}</span><div class="small"  v-if="subcategories.length!==0">
+           <span
+                   v-for="subcategory in subcategories"
+                   :key="subcategory.id"
+           >/{{subcategory.name}}</span>
+         </div> </div>
          <hr>
          <div class="description">
            {{bio}}
@@ -131,9 +136,15 @@ import  FavouriteIcon from './common/FavouriteIcon.vue';
       },
       subcategories: {
         type: Array,
+        default: function () { return [] },
       },
       categoryId:{
         type: Number,
+      },
+      category:{
+        id:{
+          type: Number,
+        }
       }
     },
     components: {
@@ -162,7 +173,7 @@ import  FavouriteIcon from './common/FavouriteIcon.vue';
       },
       getName() {
         if(this.$store.getters['categories/isLoaded']){
-          return this.$store.getters['categories/getNameById'](parseInt(this.categoryId||this.$route.params.id));
+          return this.$store.getters['categories/getNameById'](parseInt(this.categoryId||this.category.id));
         } else {
           return '';
         }
@@ -252,6 +263,7 @@ import  FavouriteIcon from './common/FavouriteIcon.vue';
         height: auto;
         @media screen and (max-width:1024px){
           width: 426px;
+          text-align: center;
         }
         @media screen and (max-width: 767px){
           width: 80%;
@@ -414,6 +426,7 @@ margin-left: 7px;
       display: inline-block;
       font-size: 18px;
       margin-right: 10px;
+      width: 90%;
       @media screen and (max-width: 480px){
         margin-right: 0;
         text-align: right;

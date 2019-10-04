@@ -1,5 +1,5 @@
 <template>
-  <div class="worker-item"  >
+  <div class="worker-item"   >
 
     <div class="img-wrapper">
       <img class="profileImg" :src="avatar===null? '/static/images/profile/defaultAvatar.png': $env.API_URL+avatar "  alt="">

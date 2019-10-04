@@ -32,7 +32,7 @@
             <div class="form-row column clm">
               <div class="row">
                 <p>הנשמ תוירוגטק</p>
-                <div class="sub-wrapper">
+                <div class="sub-wrapper" v-if="getData.subcategories[0]!==null">
                   <subcategory
                   class="orders-item"
                   v-for="subcategory in getData.subcategories"

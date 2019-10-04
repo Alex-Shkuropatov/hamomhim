@@ -103,11 +103,15 @@ import ShowMore from './../../components/profile/ShowMore'
     @media screen and (max-width: 1035px) {
       position: relative;
       top: 10px;
-      right: unset;
+      right: -226px;
+    }
+    @media screen and (max-width: 767px){
+      right: -121px;
     }
     @media screen and (max-width:480px) {
-    margin-bottom: 48px;
-    margin-left: 131px;
+      right: unset;
+      margin-bottom: 16px;
+      margin-left: 131px;
     }
     img{
       width: 141px;
@@ -142,14 +146,15 @@ import ShowMore from './../../components/profile/ShowMore'
   padding-right: 216px;
   min-height: 230px;
   @media screen and (max-width: 1035px) {
-  padding-right: 0;
+    display: flex;
+    padding-right: 23px;
+    width: 95%;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 9px;
     min-height: unset;
   }
   @media screen and(max-width: 767px) {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 
   }
   .title {
@@ -161,10 +166,11 @@ import ShowMore from './../../components/profile/ShowMore'
     color: #333333;
     @media screen and (max-width: 1035px) {
       width: unset;
-      text-align: center;
+      text-align: right;
+      margin-top: 8px;
     }
     @media screen and(max-width: 767px) {
-      width: 280px;
+
     }
     @media screen and (max-width:480px){
       font-size: 26px;
@@ -181,10 +187,10 @@ import ShowMore from './../../components/profile/ShowMore'
     max-height: 124px;
 overflow-y: hidden;
     @media screen and (max-width: 1035px) {
-      text-align: center;
-    }
+      text-align: right;
+  }
     @media screen and(max-width: 767px) {
-      width: 90%;
+
     }
     @media screen and (max-width: 480px){
       font-size: 17px;
@@ -208,7 +214,7 @@ overflow-y: hidden;
     }
     hr{
       position: absolute;
-      width: 1120px;
+      width: 100%;
       bottom: -10px;
       left: 16px;
     }
