@@ -197,13 +197,8 @@
         this.$store.commit('modals/reg/close');
       },
       send() {
-        this.$v.name.$touch();
-        this.$v.city.$touch();
-        this.$v.company.$touch();
-        this.$v.businessPhone.$touch();
-        this.$v.fax.$touch();
-        this.$v.adress.$touch();
-        if(!this.$v.$invalid) {
+
+
           let subcat = [];
           console.log(this.subcategories.value);
           this.subcategories.value.forEach((item) => {
@@ -224,7 +219,7 @@
             password_confirmation: this.pass,
             subcategories: subcat,
           })
-        }
+
       },
       onFocus(e) {
         console.log(e.target);
