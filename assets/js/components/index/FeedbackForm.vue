@@ -3,41 +3,73 @@
     <div class="section-container">
 
       <div class="th-heading text-center">מימון פרויקטים</div>
-      <div class="feedback-form">
+      <form class="feedback-form">
         <div class="form-group">
           <label class="label">
             <div class="caption">שם מלא</div>
-            <input type="text" class="th-input" placeholder="שם מלא">
+            <theme-input v-model="name" type="text" class="th-input" placeholder="שם מלא" required />
           </label>
         </div>
         <div class="form-group">
           <label class="label">
             <div class="caption">טלפון</div>
-            <input type="text" class="th-input" placeholder="טלפון">
+            <theme-input v-model="phone" type="text" class="th-input" placeholder="טלפון" required />
           </label>
         </div>
         <div class="form-group">
           <label class="label">
             <div class="caption">מייל</div>
-            <input type="text" class="th-input" placeholder="מייל">
+            <theme-input v-model="email" type="text" class="th-input" placeholder="מייל" required />
           </label>
         </div>
         <div class="form-group">
           <label class="label">
             <div class="caption">סכום נדרש</div>
-            <input type="text" class="th-input" placeholder="סכום נדרש">
+            <theme-input v-model="amount_required" type="text" class="th-input" placeholder="סכום נדרש" required />
           </label>
         </div>
         <div class="form-group">
-          <button class="th-btn th-btn-md th-btn-yellow text-center">שלח</button>
+          <button class="th-btn th-btn-md th-btn-yellow text-center" @click.prevent="sendForm">שלח</button>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </template>
 
 <script>
+import ThemeInput from './../common/ThemeInput.vue';
+
 export default {
+  data(){
+    return {
+      name: '',
+      phone: '',
+      email: '',
+      amount_required: '',
+    };
+  },
+  components: {
+    ThemeInput
+  },
+  methods: {
+    sendForm(){
+      let data = {
+        name: this.name,
+        phone: this.phone,
+        email: this.email,
+        amount_required: this.amount_required
+      };
+      axios.post('/api/sendContactForm2', data)
+        .then(response => {
+          if(response.data.success){
+            alert('תודה על ההודעה שלך!');//Thank you for your post
+          }
+          else{
+            alert('אירעה שגיאה, אנא צור קשר עם מנהל המערכת או נסה מאוחר יותר.');//An error occurred, please contact administrator or try later.
+          }
+        });
+    }
+  },
 }
 </script>
 
