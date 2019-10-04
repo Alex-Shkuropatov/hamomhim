@@ -1,9 +1,7 @@
 <template>
   <div class="list-wrapper">
     <h2 class="title-w">Choose worker</h2>
-
   <div class="workers-wrapper">
-
     <worker-feedback
             class="orders-item"
             v-for="worker in workers" :key="worker.id"
@@ -15,7 +13,7 @@
 
     <div class="feedback-form" >
 
-      <send-feedback v-bind="data" @hide="onHide" v-show="data.flag" />
+      <send-feedback v-bind="data" @hide="onHide" v-if="data.flag" />
 
     </div>
 
@@ -32,7 +30,8 @@ import SendFeedback from './../projectFeedback/SendFeedback';
           id: '',
           flag:false,
           orderId: this.orderId,
-        }
+        },
+        user_id: '',
       }
     },
     props: {
@@ -58,6 +57,13 @@ import SendFeedback from './../projectFeedback/SendFeedback';
       },
       onHide(data){
         this.data.flag = data.feedFlag;
+console.log(data.id);
+        console.log(data.feedFlag);
+        this.$emit('send',{
+          id : data.id,
+        });
+
+        this.user_id = data.id;
       },
     },
   }

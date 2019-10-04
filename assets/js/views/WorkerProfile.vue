@@ -584,8 +584,7 @@ margin-bottom: 20px;
    margin-right: 0;
   }
   @media screen and (max-width: 767px){
-   width: 88%;
-   margin-right: 27px;
+   width: 100%;
   }
  }
 

@@ -11,7 +11,7 @@
       </div>
 <orders-slider class="wrapper-block" @getWorkers="onWorkers" />
 
-<workers-list  class="wrapper-block" v-bind="order" v-show="order.workers.length!==0"  />
+<workers-list  class="wrapper-block" v-bind="order" v-show="order.workers.length!==0"  @send="changeList" />
 
     </div>
   </div>
@@ -48,6 +48,9 @@
       this.order.workers = data.workers;
       this.order.orderId = data.id;
       },
+      changeList(data){
+        this.order.workers = this.order.workers.filter((item)=> item.id !== data.id);
+      }
     },
 computed: {
 

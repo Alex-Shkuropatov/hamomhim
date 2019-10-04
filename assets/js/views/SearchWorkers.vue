@@ -10,19 +10,20 @@
           <button class="back-b" @click="back"><i class="fas fa-chevron-right"></i>חזור</button>
         </div>
       </div>
+
       <div class="empty" v-if="!done">
 
       </div>
 
       <div class="projects-list-wrap l-container" v-show="done" >
-        <div class="workers-list"  v-show="workers.length!==0">
+        <div class="workers-list"  v-show="workers.length!==0 ">
           <Worker
                   class="worker-item"
                   v-for="worker in workers" :key="worker.id"
                   v-bind="worker">
           </Worker>
         </div>
-        <div class="empty-s" v-show="workers.length===0">
+        <div class="empty-s" v-show="workers.length===0  ">
           <h3 >  לא נמצאו קבלנים רלוונטים עבור פרויקט זה <i class="fas fa-user-times"></i>  </h3>
         </div>
       </div>
@@ -74,7 +75,9 @@
 
             if(orderData.subcategories.length !== 0){
               for (let i=0; i<orderData.subcategories.length;i++){
-                this.formData.append('subcategories[]',  orderData.subcategories[i].id);
+                if(orderData.subcategories[i]!==null){
+                  this.formData.append('subcategories[]',  orderData.subcategories[i].id);
+                }
               }
             }
             response.data.value.workers.forEach((worker)=>{
@@ -89,14 +92,17 @@
                 })
                 .catch((error) => {
                   console.log(error);
+                  console.log('-');
                 });
           });
         });
       }
     },
+    computed:{
 
+    },
     mounted() {
-    this.search();
+
     },
     created() {
      this.search();

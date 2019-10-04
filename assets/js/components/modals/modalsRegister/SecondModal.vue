@@ -8,11 +8,17 @@
         <div class="orderWrapper">
           <p class="formItem" >שם מלא</p>
           <input
+                  :class="{ 'error': $v.name.$error, 'inputName': true, 'form__input': true }"
                   type="text"
                   placeholder="שם מלא"
-                  v-model="name"
-                  class="inputName"
+                  @input="$v.name.$touch()"
+                  v-model.trim="name"
           >
+          <div class="error-wrapper" v-if="$v.name.$dirty">
+            <p class="error-message" v-if="!$v.name.required">
+              אנא הכנס את שמך
+            </p>
+          </div>
         </div>
         <div class="orderWrapper">
           <p class="formItem" >מייל</p>
@@ -25,7 +31,17 @@
       <div class="wrapper">
         <div class="orderWrapper">
           <p class="formItem" >עיר מגורים</p>
-          <input type="text" placeholder="עיר מגורים" v-model="city" class="inputName">
+          <input
+                  type="text"
+                  placeholder="עיר מגורים"
+                  v-model.trim="city"
+                  @input="$v.city.$touch()"
+                  :class="{ 'error': $v.city.$error, 'inputName': true }">
+          <div class="error-wrapper" v-if="$v.city.$dirty">
+            <p class="error-message" v-if="!$v.city.required">
+              אנא הכנס את עירך
+            </p>
+          </div>
         </div>
         <div class="orderWrapper">
           <p class="formItem" >טלפון</p>
@@ -34,50 +50,102 @@
             <input type="text" placeholder="טלפון" id="phone" ref="phone" @focus="onFocus" @blur="onBlur"  v-model="phone" class="inputName">
           </div>
         </div>
-
       </div>
       <div class="wrapper">
         <div class="orderWrapper">
           <p class="formItem" >שם העסק</p>
-          <input type="text" placeholder="שם העסק" v-model="company" class="inputName">
+          <input
+                  type="text"
+                  placeholder="שם העסק"
+                  v-model.trim="company"
+                  @input="$v.company.$touch()"
+                  :class="{ 'error': $v.company.$error, 'inputName': true }">
+          <div class="error-wrapper" v-if="$v.company.$dirty">
+            <p class="error-message" v-if="!$v.company.required">
+               Field is required
+            </p>
+          </div>
         </div>
         <div class="orderWrapper">
           <p class="formItem" >טלפון עסקי</p>
-          <input type="text" placeholder="טלפון עסקי" v-model="businessPhone" class="inputName">
+          <input type="text"
+                 placeholder="טלפון עסקי"
+                 v-model.trim="businessPhone"
+                 @input="$v.businessPhone.$touch()"
+                 :class="{ 'error': $v.businessPhone.$error, 'inputName': true }">
+          <div class="error-wrapper" v-if="$v.businessPhone.$dirty">
+            <p class="error-message" v-if="!$v.businessPhone.required">
+              Field is required
+            </p>
+          </div>
         </div>
 
       </div>
       <div class="wrapper">
         <div class="orderWrapper">
           <p class="formItem" >פקס</p>
-          <input type="text" placeholder="פקס" v-model="fax" class="inputName">
+          <input type="text"
+                 placeholder="פקס"
+                 v-model.trim="fax"
+                 @input="$v.fax.$touch()"
+                 :class="{ 'error': $v.fax.$error, 'inputName': true }"
+          >
+          <div class="error-wrapper" v-if="$v.fax.$dirty">
+            <p class="error-message" v-if="!$v.fax.required">
+              Field is required
+            </p>
+          </div>
         </div>
         <div class="orderWrapper">
           <p class="formItem" >כתובת</p>
-          <input type="text" placeholder="כתובת" v-model="adress" class="inputName">
+          <input type="text"
+                 placeholder="כתובת"
+                 v-model.trim="adress"
+                 @input="$v.adress.$touch()"
+                 :class="{ 'error': $v.adress.$error, 'inputName': true }"
+
+          >
+          <div class="error-wrapper" v-if="$v.adress.$dirty">
+            <p class="error-message" v-if="!$v.adress.required">
+              Field is required
+            </p>
+          </div>
         </div>
 
       </div>
       <div class="wrapper">
-        <div class="selectWrapper">
-          <p class="formItem">איזור עבודה</p>
-          <drop-down class="dropDown" placeholder="איזור עבודה" v-model="workArea.value" v-bind="workArea"/>
-        </div>
+
         <div class="selectWrapper"  v-if="role==='worker'">
           <p class="formItem">קטגוריות</p>
-          <drop-down class="dropDown" placeholder="קטגוריות" v-model="categories.value"  v-bind="categories"/>
+          <drop-down
+                  :class="{ 'error': $v.categories.value.$error, 'dropDown': true }"
+                  placeholder="קטגוריות"
+                     v-model="categories.value"
+                     v-bind="categories"
+          />
         </div>
-      </div>
-      <div class="wrapper" v-if="role==='worker'" >
-        <div class="selectWrapper">
-          <theme-multiselect v-bind="subcategories" v-model="subcategories.value" class="less-rounded-corners dropDown dropdown" />
+        <div class="selectWrapper" v-if="role==='worker'" @click="showWarn">
+          <p class="formItem">    קטגוריות משנה</p>
+          <theme-multiselect
+                  v-bind="subcategories"
+                  v-model="subcategories.value"
+                  :class="{ 'error': subcatFlag, 'less-rounded-corners': true, 'dropDown': true, 'dropdown':true,}"
+
+          />
         </div>
+
+
       </div>
+      <div class="selectWrapper">
+        <p class="formItem">איזור עבודה</p>
+        <drop-down class="dropDown" placeholder="איזור עבודה" v-model="workArea.value" v-bind="workArea"/>
+      </div>
+
       <hr>
       <div class="last-field">
         <div class="orderWrapper">
           <p class="formItem" >סיסמה (יותר מ-6 סמלים)</p>
-          <input type="text" placeholder="סיסמה חדשה" v-model="pass" class="inputName">
+          <input type="password" placeholder="סיסמה חדשה" v-model="pass" class="inputName">
         </div>
         <div class="checkbox">
           <input type="checkbox" id="check" value="check" v-model="license">
@@ -97,32 +165,66 @@
   import Modal from './../../common/Modal.vue';
   import DropDown from './../../common/DropDown.vue';
   import ThemeMultiselect from './../../common/ThemeMultiselect.vue'
+  import { required, minLength } from "vuelidate/lib/validators";
   export default {
+    validations: {
+      name:{
+        required,
+      },
+      city:{
+        required,
+      },
+      company:{
+        required,
+      },
+      businessPhone:{
+        required,
+      },
+      fax:{
+        required,
+      },
+      adress: {
+        required,
+      },
+      categories:{
+        value:{
+          required,
+        }
+      }
+    },
     methods: {
       close() {
         this.$store.commit('modals/reg/close');
       },
       send() {
-        let subcat = [];
-        console.log(this.subcategories.value);
-        this.subcategories.value.forEach((item)=>{
-          subcat.push(item.id);
-        });
-        this.$emit('send', {
-          name: this.name ,
-          email: this.email ,
-          phone: this.phone ,
-          business_phone:this.businessPhone,
-          name_of_business: this.company,
-          fax: this.fax ,
-          address: this.adress ,
-          city:this.city  ,
-          working_area: this.workArea.value,
-          password: this.pass,
-          category_id: this.categories.value,
-          password_confirmation: this.pass,
-          subcategories: subcat,
-        })
+        this.$v.name.$touch();
+        this.$v.city.$touch();
+        this.$v.company.$touch();
+        this.$v.businessPhone.$touch();
+        this.$v.fax.$touch();
+        this.$v.adress.$touch();
+        if(!this.$v.$invalid) {
+          let subcat = [];
+          console.log(this.subcategories.value);
+          this.subcategories.value.forEach((item) => {
+            subcat.push(item.id);
+          });
+          this.$emit('send', {
+            name: this.name,
+            email: this.email,
+            phone: this.phone,
+            business_phone: this.businessPhone,
+            name_of_business: this.company,
+            fax: this.fax,
+            address: this.adress,
+            city: this.city,
+            working_area: this.workArea.value,
+            password: this.pass,
+            category_id: this.categories.value,
+            password_confirmation: this.pass,
+            subcategories: subcat,
+          })
+        }
       },
       onFocus(e) {
         console.log(e.target);
@@ -161,8 +263,12 @@
           return  'fa-times'
         }
       },
-      allowSub(){
-
+      showWarn(){
+       if(this.categories.value === ''){
+         this.subcatFlag = true;
+       } else {
+         this.subcatFlag = false;
+       }
       }
     },
     components: {
@@ -227,6 +333,7 @@
           value: [],
           disabled: true,
         },
+        subcatFlag : false,
       }
     },
     computed: {
@@ -253,6 +360,15 @@
 </script>
 
 <style lang="scss" scoped>
+  .error-wrapper-block{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 545px;
+    @media screen and (max-width:900px){
+      width: unset;
+    }
+  }
   .fa-times{
     color: red;
   }
@@ -310,14 +426,13 @@
       .wrapper{
         display: flex;
         flex-direction: row;
-        align-items: center;
         padding: 11px 30px 0 30px;
         @media screen and (max-width: 900px) {
-          flex-direction: column;
+          flex-direction: column-reverse;
         }
         .orderWrapper{
           margin: 0 10px 0 10px;
-          p{
+          .formItem{
             margin: 0;
             margin-right: 20px;
             font-family: Assistant;
@@ -348,7 +463,7 @@
     }
   }
   .textareaWrapper{
-    p{
+    .formItem{
       margin: 0;
       margin-right: 20px;
       font-family: Assistant;
@@ -386,14 +501,14 @@
     color: #333333;
   }
   .inputName{
-    width: 350.28px;
-    height: 46.47px;
+    width: 345.28px;
+    height: 41.47px;
     background: #FFFFFF;
     opacity: 0.5;
     border: 1px solid #BDBDBD;
     box-sizing: border-box;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-    border-radius: 50px;
+    border-radius: 5px;
     @media screen and (max-width: 900px) {
       height: 41.47px;
     }
@@ -486,6 +601,7 @@
     }
   }
   .dropDown{
+    border-radius: 5px;
     width: 345px;
     @media screen and (max-width: 900px) {
       height: 41.47px;

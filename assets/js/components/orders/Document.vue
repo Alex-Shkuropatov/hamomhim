@@ -20,7 +20,7 @@ import PostClose from '../common/PostClose'
   export default {
     props: {
       file: {
-        type: Object,
+        type: File,
       },
     },
     components: {
