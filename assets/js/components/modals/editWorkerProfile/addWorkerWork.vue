@@ -17,13 +17,16 @@
               <label class="add-new-file">
                 <div class="image w-100"></div>
                 <div class="th-btn th-btn-blue w-100">העלאת תמונה</div>
-                <input type="file" @change="onFileUpload($event.taget.files)">
+                <input type="file" multiple @change="onFileUpload($event.target.files)">
               </label>
               <div class="item" v-for="file in files" :key="">
-                <div class="image" :style="{ backgroundImage: 'url()' }"></div>
-                <div class="th-btn th-btn-empty w-100">העלאת תמונה</div>
+                <div class="image" :style="getBackgoroundImage(file)"></div>
+                <div class="th-btn th-btn-empty w-100" @click="deleteFile(file)">העלאת תמונה</div>
               </div>
             </div>
+          </div>
+          <div class="col1-1 inp-group text-center">
+            <button class="th-btn th-btn-blue th-btn-lg submit-btn" @click.prevent="saveWorkItem">הוסף לאתר</button>
           </div>
         </div>
       </div>
@@ -35,21 +38,29 @@ import Modal from '../../common/Modal';
 import ThemeInput from '../../common/ThemeInput';
 import ThemeTextarea from '../../common/ThemeTextarea';
 
+function getInitialData(){
+  return {
+    id: '',
+    name: '',
+    description: '',
+    files: [],
+    deleted_files: [],
+  }
+}
+
 export default {
   data(){
-    return {
-      id: '',
-      name: '',
-      description: '',
-      files: [],
-    }
+    return getInitialData();
   },
   methods: {
     close() {
+      Object.assign(this.$data, getInitialData());
       this.$store.commit('modals/addWorkerWork/close');
     },
     onFileUpload(files){
-
+      [...files].forEach(file => {
+        this.fileToBase64(file);
+      });
     },
     fileToBase64(file){
       let reader = new FileReader();
@@ -63,6 +74,61 @@ export default {
         });
       }, false);
       reader.readAsDataURL(file);
+    },
+    deleteFile(file){
+      if(!file.hasOwnProperty('status')){
+        this.deleted_files.push(file);
+        this.files = this.files.filter(e => e !== file);
+      }
+      else{
+        this.files = this.files.filter(e => e.id !== file.id);
+      }
+
+    },
+    getBackgoroundImage(file){
+      let src = '';
+      if(file.hasOwnProperty('src')){
+        src = file.src;
+      }
+      else{
+        src = this.$env.API_URL+file;
+      }
+      return { backgroundImage: 'url('+src+')'};
+    },
+    saveWorkItem(){
+      let formData = new FormData();
+      formData.append('name', this.name);
+      formData.append('description', this.description);
+      this.files.forEach(file => {
+        //if it's not old file
+        if(typeof file !== 'string'){
+          formData.append('images[]', file.value, file.value.name);
+        }
+      });
+      this.deleted_files.forEach(file => {
+        formData.append('deleted_images[]', file);
+      });
+      let route = '/api/addNewWorkerWork';
+      if(!isNaN(+this.id)){
+        route = '/api/editWorkerWork';
+        formData.append('id', this.id);
+      }
+      axios.post(route, formData)
+        .then(response => {
+          if(response.data.success){
+            if(isNaN(+this.id)){
+              this.$emit('add:work', response.data.value);
+            }
+            else{
+              this.$emit('update:work', response.data.value);
+            }
+            this.close();
+          }
+          else{
+            alert(response.data.errors.join('.'));
+          }
+        });
+
     }
   },
   components: {
@@ -75,27 +141,36 @@ export default {
   },
   mounted() {
     //get data to display
-    let data = this.$store.getters['modals/addWorkerWork/data'];
-    console.log(data);
-    this.id = data.id ? data.id : generateGuid();
-    this.id = data.id || generateGuid();
+    let data = this.$store.getters['modals/addWorkerWork/getData'];
+    console.log('mounted');
 
+    this.id = data.id || generateGuid();
     this.name = data.name;
     this.description = data.description;
-    this.files = data.files;
+    if(data.images){
+      this.files = [...data.images];
+    }
   }
+
 }
 </script>
 
 <style lang="scss" scoped>
-
+.item,
+.add-new-file{
+  margin-bottom: 10px;
+  .image{
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center;
+    padding-top: 100%;
+  }
+}
 .add-new-file{
   display: block;
   .image{
-    background: url('/static/images/default/default-image-square-2.svg') no-repeat center;
-    -webkit-background-size: contain;
-    background-size: contain;
-    padding-top: 100%;
+    background-image: url('/static/images/default/default-image-square-2.svg');
   }
   input{
     display: none;
@@ -117,5 +192,8 @@ $gutter: 12px;
     margin-top: 9px;
     justify-content: center;
   }
+}
+.submit-btn{
+  height: 50px;
 }
 </style>

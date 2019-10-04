@@ -51,7 +51,8 @@ export default {
   },
   methods: {
     select(item) {
-      this.$emit('input', item[this.valueKey]);
+      let value = item[this.valueKey];
+      this.$emit('input', value);
     },
     open() {
       this.opened = !this.opened;
