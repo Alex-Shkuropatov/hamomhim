@@ -9,7 +9,7 @@
       v-model="workerWorks"
       class="h-container"
     />
-    <feedback v-if="comments.length" class="feedback"/>
+    <feedback v-if="comments.length" :posts="comments" class="feedback"/>
     <worker-files
       class="h-container"
       v-model="files"

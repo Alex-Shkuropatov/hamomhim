@@ -70,7 +70,7 @@
 
         </div>
 
-        <div class="show-changepass-form" @click="$store.commit('modals/changePassword/open')">Change password</div>
+        <div class="show-changepass-form" @click="$store.commit('modals/changePassword/open')">סיסמאות לא תואמות</div>
         <change-password />
 
       </div>
