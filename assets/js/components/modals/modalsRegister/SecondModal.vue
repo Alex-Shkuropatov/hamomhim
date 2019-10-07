@@ -98,18 +98,27 @@
         </div>
         <div class="orderWrapper">
           <p class="formItem" >כתובת</p>
-          <input type="text"
-                 placeholder="כתובת"
-                 v-model.trim="adress"
-                 @input="$v.adress.$touch()"
-                 :class="{ 'error': $v.adress.$error, 'inputName': true }"
-
+          <vue-google-autocomplete
+            ref="addressAutoComplete"
+            id="map"
+            classname="inputName"
+            placeholder="כתובת"
+            v-on:change="getAddressData"
+            country="il"
           >
-          <div class="error-wrapper" v-if="$v.adress.$dirty">
-            <p class="error-message" v-if="!$v.adress.required">
+          </vue-google-autocomplete>
+          <!-- <input type="text"
+                 placeholder="כתובת"
+                 v-model.trim="address"
+                 @input="$v.address.$touch()"
+                 :class="{ 'error': $v.address.$error, 'inputName': true }"
+
+          > -->
+          <!-- <div class="error-wrapper" v-if="$v.address.$dirty">
+            <p class="error-message" v-if="!$v.address.required">
               Field is required
             </p>
-          </div>
+          </div> -->
         </div>
 
       </div>
@@ -166,6 +175,8 @@
   import DropDown from './../../common/DropDown.vue';
   import ThemeMultiselect from './../../common/ThemeMultiselect.vue'
   import { required, minLength } from "vuelidate/lib/validators";
+  import VueGoogleAutocomplete from 'vue-google-autocomplete'
+
   export default {
     validations: {
       name:{
@@ -183,7 +194,7 @@
       fax:{
         required,
       },
-      adress: {
+      address: {
         required,
       },
       categories:{
@@ -193,6 +204,11 @@
       }
     },
     methods: {
+      getAddressData(addressData, placeResultData, id){
+        //console.log({addressData, placeResultData, id});
+        //console.log(this.$refs.addressAutoComplete.autocompleteText);
+        this.address = this.$refs.addressAutoComplete.autocompleteText;
+      },
       close() {
         this.$store.commit('modals/reg/close');
       },
@@ -211,7 +227,7 @@
             business_phone: this.businessPhone,
             name_of_business: this.company,
             fax: this.fax,
-            address: this.adress,
+            address: this.address,
             city: this.city,
             working_area: this.workArea.value,
             password: this.pass,
@@ -270,6 +286,7 @@
       Modal,
       DropDown,
       ThemeMultiselect,
+      VueGoogleAutocomplete,
     },
     props: {
       role: {
@@ -295,7 +312,7 @@
         phone: '',
         businessPhone : '',
         fax: '',
-        adress: '',
+        address: '',
         company: '',
         city: '',
         check: '',
