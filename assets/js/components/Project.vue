@@ -9,7 +9,7 @@
       </div>
       <div class="title">{{name}}</div>
       <div class="description">{{description}}</div>
-      <router-link :to="{name: path==='/projects'?'orders': 'closed-orders', params:{id:id}}" class="th-btn th-btn-empty th-btn-sm"   >קרא את הפוסט הזה</router-link>
+      <router-link :to="{name: path==='/projects'?'orders': 'closed-orders', params:{id:id}}" class="th-btn th-btn-empty th-btn-sm"   >ראה פרטי המכרז</router-link>
     </div>
   </div>
 </template>
@@ -71,6 +71,10 @@
     left: 5px;
     width: 37px;
     height: 37px;
+    @media screen and (max-width:1650px){
+      width: 31px;
+      height: 31px;
+    }
     @media screen and(max-width: 480px){
       top: 2px;
       left: 0px;
@@ -95,7 +99,7 @@
     img{
       pointer-events: none;
       width: 100%;
-      height: 243px;
+      height: 205px;
       @media screen and (max-width: 480px) {
         height: 195px;
       }
@@ -108,6 +112,9 @@
       line-height: 40px;
       text-align: center;
       color: #4F4F4F;
+      @media screen and (max-width:1650px){
+        font-size: 30px;
+      }
     }
       .description{
         margin-top: 10px;
@@ -123,11 +130,18 @@
       color: #828282;
     }
       a{
-        padding-right: 32px;
-        width: 167.51px;
-        height: 36.78px;
+        padding-right: 47px;
+        width: 211.51px;
+        height: 42.78px;
         margin-top: auto;
         margin-bottom: 10px;
+        font-size: 18px;
+        @media screen and (max-width:1650px){
+          padding-right: 42px;
+          width: 191.51px;
+          height: 41.78px;
+          font-size: 16px;
+        }
       }
       button{
 

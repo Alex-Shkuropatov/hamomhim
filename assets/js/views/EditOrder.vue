@@ -4,8 +4,8 @@
 
   <div class="servives-wrapper" @send='OnCategories'  >
     <img class="img-plan" src='/static/images/orders/AddOrderBg.png' alt="">
-    <h2 class="title">םיתוריש ץופיש</h2>
-    <h4 class="description">ץופישה גוס תא רחב אנ</h4>
+    <h2 class="title">תת קטגוריות שיפוץ שירותים</h2>
+    <h4 class="description">נא בחר סוג קבלן</h4>
     <div class="services">
       <div class="service-wrapper">
         <div class="service" v-for="(subcategory, index) in getSubcategory" :key="index">
@@ -605,6 +605,7 @@ input[type="file"] {
       margin-right: 59px;
     }
     textarea {
+      resize: none;
       margin: 0 auto;
       padding-top: 10px;
       padding-right: 20px;

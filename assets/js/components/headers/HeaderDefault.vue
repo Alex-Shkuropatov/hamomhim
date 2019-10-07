@@ -81,7 +81,7 @@
         this.$store.commit('modals/login/open');
       },
       logout(e){
-        axios.get('/api/auth/logout')
+        axios.post('/api/auth/logout')
             .then(() => {
               this.$store.commit('user/logout' );
               this.$router.push({name: 'index'});
