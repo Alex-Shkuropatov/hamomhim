@@ -3,7 +3,7 @@
     <modal v-if="$store.getters['modals/showWorkers/isOpened']" @close="close">
 
       <div class="content-wrapper"  v-show="count===0" >
-        <h2 class="title-h"> הנמזהב םידבוע</h2>
+        <h2 class="title-h">רשימת קבלנים</h2>
 
         <div class="workers-list" v-show="getData!==false">
           <order-workers

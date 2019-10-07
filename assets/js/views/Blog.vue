@@ -9,9 +9,6 @@
           v-bind="post">
         </news-post-item>
       </div>
-      <div class="text-center load-more-posts-wrap">
-        <button class="th-btn th-btn-lg th-btn-blue load-more-posts">העלה פוסטים נוספים</button>
-      </div>
     </div>
   </div>
 </template>
@@ -68,11 +65,7 @@ export default {
   width: calc(25% - 30px);
   margin-bottom: 30px;
 }
-.load-more-posts{
-  margin-top: 50px;
-  margin-right: auto;
-  margin-left: auto;
-}
+
 
 @media(max-width: $breakpoint2){
   .post-item{

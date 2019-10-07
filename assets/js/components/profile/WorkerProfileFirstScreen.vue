@@ -12,7 +12,7 @@
         <span class="bold">םיאבה םיסקדניאב סולפ םיצופישב עיפומ בולואש ןויצ</span>
         <span >.הלק הינב ,םיקינצופיש ,םיצופיש ינלבק</span>
       </div>
-      <button class="th-btn th-btn-blue th-btn-lg contact-b"><span>רשק רוצ </span></button>
+      <button class="th-btn th-btn-blue th-btn-lg contact-b"><span>צור קשר </span></button>
     </div>
 
   </div>

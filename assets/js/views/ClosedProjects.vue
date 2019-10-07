@@ -71,10 +71,13 @@ export default {
 }
 .projects{
   margin: 0 auto;
-  width: 1342px;
+  width: 1156px;
   padding: 30px 0 0 0;
   @media screen and (max-width:1650px){
-    width: 1285px;
+    width: 1044px;
+  }
+  @media screen and (max-width:1440px){
+    width: 933px;
   }
   @media screen and (max-width: 1200px) {
     width: 100%;
@@ -119,11 +122,15 @@ export default {
   background: #FFFFFF;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
   line-height: 1.16;
-  width: 417px;
-  height: 538px;
+  width: 355px;
+  height: 480px;
   @media screen and (max-width: 1650px){
-    width: 394px;
-    height: 503px;
+    width: 332px;
+    height: 449px;
+  }
+  @media screen and (max-width: 1440px){
+    width: 292px;
+    height: 400px;
   }
   .content-wrapper{
 
