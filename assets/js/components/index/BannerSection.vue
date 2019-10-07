@@ -6,10 +6,10 @@
         <swiper-slide class="slide-outer" v-for="slide in slides" :key="slide.id">
             <div class="cat-img">
               <img src="/static/images/main-page/banner.jpg" alt="">
+
             </div>
         </swiper-slide>
       </swiper>
-
     </div>
   </div>
 </template>

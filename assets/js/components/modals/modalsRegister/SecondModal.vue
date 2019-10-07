@@ -579,8 +579,8 @@
     position: relative;
     .fas {
       position: absolute;
-      left: 37px;
-      top: 13px;
+      left: 18px;
+      top: 9px;
       z-index: 2;
 
       width: 26px;
