@@ -63,16 +63,37 @@ const routes = [
     path: '/projects',
     component: Projects,
     name: 'projects',
+    beforeEnter(to, from, next) {
+      if (store.getters['user/isLogged']) {
+        next();
+      } else {
+        next('/');
+      }
+    }
   },
   {
     path: '/projects/:id/orders/',
     component: Orders,
     name: 'orders',
+    beforeEnter(to, from, next) {
+      if (store.getters['user/isLogged']) {
+        next();
+      } else {
+        next('/');
+      }
+    }
   },
   {
     path: '/closed-projects/:id/closed-orders',
     component: ClosedOrders,
     name: 'closed-orders',
+    beforeEnter(to, from, next) {
+      if (store.getters['user/isLogged']) {
+        next();
+      } else {
+        next('/');
+      }
+    }
   },
   {
     path: '/search/:categoryId/:subcategories',
@@ -83,11 +104,25 @@ const routes = [
     path: '/closed-projects',
     component: ClosedProjects,
     name: 'closed-projects',
+    beforeEnter(to, from, next) {
+      if (store.getters['user/isLogged']) {
+        next();
+      } else {
+        next('/');
+      }
+    }
   },
   {
     path: '/prefer-worker',
     component: PreferWorker,
     name: 'prefer-worker',
+    beforeEnter(to, from, next) {
+      if (store.getters['user/isLogged']) {
+        next();
+      } else {
+        next('/');
+      }
+    }
   },
   {
     path: '/view-profile/:id',
@@ -98,21 +133,49 @@ const routes = [
     path: '/projects/:id/orders/new-order/',
     component: NewOrder,
     name: 'new-order',
+    beforeEnter(to, from, next) {
+      if (store.getters['user/isLogged']) {
+        next();
+      } else {
+        next('/');
+      }
+    }
   },
   {
     path: '/projects/:id/orders/:orderId/edit-order/',
     component: EditOrder,
     name: 'edit-order',
+    beforeEnter(to, from, next) {
+      if (store.getters['user/isLogged']) {
+        next();
+      } else {
+        next('/');
+      }
+    }
   },
   {
     path: '/projects/:id/orders/:orderId/search-workers',
     component: SearchWorkers,
     name: 'search-workers',
+    beforeEnter(to, from, next) {
+      if (store.getters['user/isLogged']) {
+        next();
+      } else {
+        next('/');
+      }
+    }
   },
   {
     path: '/projects/:id/leave-feedback',
     component: ProjectFeedback,
     name: 'project-feedback',
+    beforeEnter(to, from, next) {
+      if (store.getters['user/isLogged']) {
+        next();
+      } else {
+        next('/');
+      }
+    }
   },
   {
     path: '/privacy-policy',

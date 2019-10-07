@@ -53,7 +53,7 @@
     height: 100%;
     left: 0;
     top: 0;
-    padding-top: 95px;
+    padding-top: 105px;
     z-index: 200;
     display: flex;
     justify-content: center;

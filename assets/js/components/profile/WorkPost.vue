@@ -76,8 +76,15 @@
       background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
     }
     .description {
+      text-overflow: ellipsis;
+      width: 75%;
+      overflow: hidden;
+      white-space: nowrap;
       margin-top: 10px;
       font-size: 18px;
       line-height: 20px;
