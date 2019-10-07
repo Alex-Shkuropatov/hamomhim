@@ -10,8 +10,8 @@
       <button class="back-b" @click="back"><i class="fas fa-chevron-right"></i>  חזור</button>
       <h1 class="title">רשימת פרויקטים</h1>
       <div class="add-order-wrapper">
-        <router-link :to="{name: 'new-order',  }" class=" addOrder th-btn th-btn-blue th-btn-sm "> הוספת קבלנים לעבודה
-          <span>+</span></router-link>
+        <router-link :to="{name: 'new-order',  }" class=" addOrder th-btn th-btn-blue th-btn-sm "> הוספת פרויקט חדש
+          <span>  +  </span></router-link>
         <div class="txt">גאפניקה סניף 1</div>
       </div>
       <div class="orders-list-wrap h-container">
@@ -230,8 +230,6 @@
 
     }
   }
-
-
   .addOrder {
     margin-left: 40px;
     width: 285px;
@@ -251,6 +249,7 @@
     span {
       font-weight: normal;
       font-size: 28px;
+      margin-right: 20px;
     }
   }
 

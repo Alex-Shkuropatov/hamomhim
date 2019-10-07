@@ -132,7 +132,7 @@ export default {
     width: 1044px;
   }
   @media screen and (max-width:1440px){
-    width: 1176px;
+    width: 933px;
   }
   @media screen and (max-width: 1200px) {
     width: 100%;
@@ -180,8 +180,8 @@ export default {
   height: 449px;
 }
   @media screen and (max-width: 1440px){
-    width: 376px;
-    height: 494px;
+    width: 292px;
+    height: 400px;
   }
   .add-project{
     -webkit-transform: rotate(45deg);
@@ -198,10 +198,6 @@ export default {
     @media screen and (max-width:1650px){
       left: 110px;
       top: 93px;
-    }
-    @media screen and (max-width:480px){
-      left: 97px;
-      top: 111px;
     }
     &:hover {
       opacity: 1;
@@ -221,6 +217,10 @@ export default {
         width: 83px;
         height: 86px;
       }
+      @media screen and (max-width: 1440px){
+        width: 64px;
+        height: 64px;
+      }
     }
   }
   .content-wrapper{
@@ -233,6 +233,9 @@ export default {
       height: 253px;
       @media screen and (max-width:1650px){
         height: 215px;
+      }
+      @media screen and (max-width: 1440px){
+        height: 184px;
       }
     }
     .title{
@@ -260,10 +263,16 @@ export default {
       line-height: 21px;
       text-align: center;
       color: #e1e1e1;
+      overflow: auto;
       @media screen and (max-width: 1650px){
         margin-top: 4px;
         line-height: 23px;
         font-size: 15px;
+      }
+      @media screen and (max-width: 1440px){
+        margin-top: 4px;
+        line-height: 22px;
+        font-size: 14px;
       }
       @media screen and(max-width:480px){
         font-size: 14px;
@@ -280,6 +289,9 @@ export default {
       align-items: center;
       @media screen and (max-width:1650px){
         margin-top: -7px;
+      }
+      @media screen and (max-width:1440px){
+        margin-top: -11px;
       }
       a{
         font-weight: bold;

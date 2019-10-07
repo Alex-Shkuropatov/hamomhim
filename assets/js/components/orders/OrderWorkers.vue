@@ -13,7 +13,7 @@
     <div class="under-text">
 
     </div>
-    <button class="th-btn th-btn-blue th-btn-lg open-response" v-bind:class="{color: response===null }" :disabled="response === null" @click="openResponse" > הבוגת ראשה</button>
+    <button class="th-btn th-btn-blue th-btn-lg open-response" v-bind:class="{color: response===null }" :disabled="response === null" @click="openResponse" > השאר תגובה</button>
     <button class="view" @click="viewProfile" >צפה בפרופיל</button>
 
   </div>

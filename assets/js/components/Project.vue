@@ -100,8 +100,8 @@
       pointer-events: none;
       width: 100%;
       height: 205px;
-      @media screen and (max-width: 480px) {
-        height: 195px;
+      @media screen and (max-width: 1440px) {
+        height: 171px;
       }
     }
     .title{
@@ -141,6 +141,12 @@
           width: 191.51px;
           height: 41.78px;
           font-size: 16px;
+        }
+        @media screen and (max-width: 1440px){
+          padding-right: 31px;
+          width: 145.51px;
+          height: 34.78px;
+          font-size: 13px;
         }
       }
       button{
