@@ -113,6 +113,7 @@ export default {
   border: 2px solid #BDBDBD;
   .cat-img{
     width: ceil($scale1 * 50px);
+    height: 40px;
     margin-bottom: ceil($scale1 * 15px);
     margin-right: auto;
     margin-left: auto;

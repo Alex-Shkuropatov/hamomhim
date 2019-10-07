@@ -25,6 +25,7 @@ export default {
         autoplay: {
           delay: 4000,
         },
+        touchRatio:0,
         speed: 600,
         loop: true,
         effect: 'cube',
