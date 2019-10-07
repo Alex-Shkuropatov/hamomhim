@@ -10,6 +10,7 @@
             @getResponse="onResponse"
             class="orders-item"
             v-for="worker in getData" :key="worker.id  "
+            :projectName = 'getName'
             v-bind="worker">
           </order-workers>
         </div>
@@ -51,6 +52,11 @@
     mounted() {
 
      },
+    props:{
+      projectName:{
+        type: String
+      },
+    },
     data () {
       return {
         orderId: '',
@@ -65,6 +71,9 @@
       getData() {
         return this.$store.getters['modals/showWorkers/getWorkers'];
       },
+      getName(){
+        return this.$store.getters['modals/showWorkers/getProjectName'];
+      }
 
     },
 

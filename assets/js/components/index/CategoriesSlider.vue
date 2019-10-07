@@ -7,7 +7,7 @@
           <swiper-slide class="slide-outer" v-for="category in categories" :key="category.id">
             <div class="slide-inner" @click="onClickCategory(category)">
               <div class="cat-img">
-                <img src=" /static/images/main-page/category-placeholder.svg  " alt="">
+                <img :src="$env.API_URL+ category.image" alt="">
               </div>
               <div class="description">{{category.name}}</div>
             </div>

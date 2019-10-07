@@ -30,7 +30,7 @@
               </div>
             </div>
             <div class="form-row column clm">
-              <div class="row">
+              <div class="row ml-b">
                 <p>הנשמ תוירוגטק</p>
                 <div class="sub-wrapper" v-if="getData.subcategories[0]!==null">
                   <subcategory
@@ -167,13 +167,16 @@
       display: flex;
       flex-direction: row;
       justify-content: space-around;
-      align-items: center;
       @media screen and (max-width:900px) {
         flex-direction: column;
       }
       .row {
         margin: 10px;
-
+@media screen and (max-width:900px){
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
         p {
           margin: 0;
           font-weight: bold;
@@ -200,6 +203,12 @@
           }
         }
       }
+      .ml-b{
+        margin-left: 108px;
+        @media screen and (max-width:480px){
+          margin-left: 20px;
+        }
+      }
     }
   }
   .download-b {
@@ -210,7 +219,7 @@
     .download {
       color: #2871D7;
       margin-left: 280px;
-@media screen and (max-width: 480px){
+@media screen and (max-width:900px){
   margin-left: 0;
 }
       .fa-download {

@@ -4,6 +4,7 @@ export default {
     opened: false,
     workers: [],
     orderId: '',
+    projectName: '',
   },
   mutations: {
     close(state) {
@@ -12,7 +13,9 @@ export default {
     },
     open(state) {
       state.opened = true;
-
+    },
+    setName(state, name){
+      state.projectName = name;
     },
     saveData(state,id){
       axios.post('/api/getOrderWorkers',id)
@@ -24,7 +27,6 @@ export default {
           }).catch((error)=>{
         console.log(error);
       })
-
     },
     switch(state) {
       state.opened = !state.opened;
@@ -39,6 +41,9 @@ export default {
     },
     getWorkers(state) {
       return state.workers;
+    },
+    getProjectName(state) {
+      return state.projectName;
     },
     getOrderId(state){
       return state.orderId;
