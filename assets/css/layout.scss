@@ -79,3 +79,19 @@ button {
   border: 0;
   vertical-align: middle;
 }
+
+//google map VueGoogleAutocomplete
+.pac-container{
+  z-index: 3001;
+  font-family: 'Assistant', sans-serif;
+}
+.pac-item{
+  text-align: right;
+}
+.pac-item-query:after{
+  content: ' ';
+}
+.pac-icon{
+  margin-left: 7px;
+  margin-right: 0;
+}
