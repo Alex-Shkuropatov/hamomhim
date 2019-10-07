@@ -9,7 +9,7 @@
       </div>
       <div class="title">{{name}}</div>
       <div class="description">{{description}}</div>
-      <router-link :to="{name: path==='/projects'?'orders': 'closed-orders', params:{id:id}}" class="th-btn th-btn-empty th-btn-sm"   >קרא את הפוסט הזה</router-link>
+      <router-link :to="{name: path==='/projects'?'orders': 'closed-orders', params:{id:id}}" class="th-btn th-btn-empty th-btn-sm"   >ראה פרטי המכרז</router-link>
     </div>
   </div>
 </template>

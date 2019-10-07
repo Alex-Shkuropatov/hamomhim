@@ -126,10 +126,10 @@ export default {
 }
 .projects{
   margin: 0 auto;
-  width: 1440px;
+  width: 1342px;
   padding: 30px 0 0 0;
   @media screen and (max-width:1650px){
-    width: 1285px;
+    width: 1210px;
   }
   @media screen and (max-width:1440px){
     width: 1176px;
@@ -173,11 +173,11 @@ export default {
   background: #FFFFFF;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
   line-height: 1.16;
-  width: 450px;
-  height: 620px;
+  width: 417px;
+  height: 538px;
 @media screen and (max-width: 1650px){
-  width: 406px;
-  height: 503px;
+  width: 387px;
+  height: 476px;
 }
   @media screen and (max-width: 1440px){
     width: 376px;
@@ -222,7 +222,7 @@ export default {
       align-items: center;
     img{
       width: 100%;
-      height: 286px;
+      height: 253px;
       @media screen and (max-width:1650px){
         height: 248px;
       }
@@ -231,7 +231,7 @@ export default {
       margin: 0;
       margin-top: 15px;
       font-weight: bold;
-      font-size: 36px;
+      font-size: 30px;
       line-height: 40px;
       text-align: center;
       letter-spacing: -0.02em;
@@ -248,8 +248,9 @@ export default {
       text-align: center;
       color: #e1e1e1;
       @media screen and (max-width: 1650px){
+        margin-top: 4px;
         line-height: 23px;
-        font-size: 18px;
+        font-size: 15px;
       }
       @media screen and(max-width:480px){
         font-size: 14px;

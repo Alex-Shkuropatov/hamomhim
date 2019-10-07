@@ -6,7 +6,7 @@
 </div>
   <div class="projects" v-if="flag" >
     <h2  class="notify_msg"  v-show="projects.length===0" ><i class="far fa-copy"></i> You dont have closed projects </h2>
-    <div class="projects-list-wrap h-container">
+    <div class="projects-list-wrap">
       <div class="projects-list" v-show="projects.length!==0">
         <Project
           class="project-item"
@@ -71,7 +71,7 @@ export default {
 }
 .projects{
   margin: 0 auto;
-  width: 1440px;
+  width: 1342px;
   padding: 30px 0 0 0;
   @media screen and (max-width:1650px){
     width: 1285px;
@@ -119,8 +119,8 @@ export default {
   background: #FFFFFF;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
   line-height: 1.16;
-  width: 440px;
-  height: 620px;
+  width: 417px;
+  height: 538px;
   @media screen and (max-width: 1650px){
     width: 394px;
     height: 503px;
