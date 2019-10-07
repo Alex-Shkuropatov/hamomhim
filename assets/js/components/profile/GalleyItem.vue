@@ -66,7 +66,7 @@ export default {
     height: auto;
   }
   .title{
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     color: $clr-blue;
     margin-bottom: 8px;

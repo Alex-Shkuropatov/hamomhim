@@ -8,7 +8,7 @@
     {{name}}
     </div>
     <div class="desciption">
-
+      {{projectName}}
     </div>
     <div class="under-text">
 
@@ -40,6 +40,9 @@ props: {
   response: {
     type: Object,
   },
+  projectName:{
+    type: String,
+  }
 },
     methods: {
     deleteWorker(){

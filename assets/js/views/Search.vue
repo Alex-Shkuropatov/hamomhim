@@ -173,6 +173,11 @@ margin-top: 50px;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  ::v-deep{
+    .project-item{
+      width: 1000px;
+    }
+  }
 }
 .worker-item{
   margin-right: 15px;
@@ -275,15 +280,13 @@ margin-top: 50px;
 }
 
 .search-tab{
-  margin: 50px auto;
-  width: 1448px;
+  margin: 0 auto;
+  width: 1026px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  @media screen and (max-width:1600px){
-    width: 1026px;
-  }
+
   @media screen and (max-width: 1440px) {
     width: unset;
     justify-content: center;
@@ -302,7 +305,7 @@ margin-top: 50px;
     width: 250px;
     height: 45px;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 20px;
     @media screen and (max-width:1600px){
       font-size: 19px;
     }

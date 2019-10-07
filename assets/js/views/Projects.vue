@@ -196,7 +196,7 @@ export default {
     z-index: 2;
     transition: all 0.5s ease-out;
     @media screen and (max-width:1650px){
-      left: 110px;
+      left: 119px;
       top: 93px;
     }
     &:hover {
@@ -214,6 +214,7 @@ export default {
       width: 97px;
       height: 97px;
       @media screen and (max-width: 1650px){
+
         width: 83px;
         height: 86px;
       }
