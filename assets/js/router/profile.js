@@ -7,11 +7,19 @@ import WorkerResponses from './../views/profile/WorkerResponses.vue';
 import WorkerPackages from './../views/profile/WorkerPackages.vue';
 
 import EditProfile from './../views/profile/EditProfile.vue';
+import store from "../store";
 
 export default {
   path: '/profile',
   component: ProfileTemplate,
   name: 'profile',
+  beforeEnter(to, from, next) {
+    if (store.getters['user/isLogged']) {
+      next();
+    } else {
+      next('/');
+    }
+  },
   children: [
     {
       path: 'requests',
