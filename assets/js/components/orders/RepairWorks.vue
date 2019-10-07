@@ -1,12 +1,12 @@
 <template>
   <div class="repair-wrapper">
-    <h2 class="title">תורקתו סבג תודובע</h2>
-    <h4 class="description">ץופישה גוס תא רחב אנ</h4>
+    <h2 class="title">פירוט אודות העבודה</h2>
+    <h4 class="description">נא מלאו את הפרטים הבאים</h4>
  <div class="form-wrapper">
    <form class="form" action="">
      <div class="row-wrapper">
        <div class="row" >
-         <p class="formItem" > ץופיש רוזיא</p>
+         <p class="formItem" > איזור שיפוץ</p>
          <div class="selectWrapper ">
            <drop-down class="dropDown inputName" placeholder="אזור עבודה" v-model="workArea.value" v-bind="workArea"/>
          </div>
@@ -17,10 +17,10 @@
        </div>
      </div>
      <div class="add-files">
-       <div class="title">םיטנוולר םיצבק רחב אנ</div>
+       <div class="title">נא בחר קבצים עבור העבודה</div>
        <div class="row">
          <div class="upload-element">
-           <span>םיפסונ םיצבק תאלעה</span>
+           <span>העלאת קבצים</span>
            <label for="file-upload" class="custom-file-upload addPhoto">
              <div class="th-btn th-btn-blue th-btn-md upload" >העלאת תמונות</div>
            </label>
@@ -44,7 +44,7 @@
      </div>
      <div class="row">
        <div class="title">תיאור חופשי</div>
-       <textarea v-model="formData.description" name="text" id="" cols="30" placeholder="ץופישה תודוא ןלבקל תורעהו טסקט םושרל ולכות ןאכ..." rows="10">
+       <textarea v-model="formData.description" name="text" id="" cols="30" placeholder=" כאן תוכלו פירוט עבור העבודה..." rows="10">
        </textarea>
      </div>
      <button class="next-b th-btn th-btn-blue th-btn-md" @click.prevent="sendOrder"><span>לשלב הבא</span></button>
@@ -318,6 +318,7 @@ console.log(myFormData);
         margin-right: 59px;
       }
       textarea {
+        resize: none;
         margin: 0 auto;
         padding-top: 10px;
         padding-right: 20px;

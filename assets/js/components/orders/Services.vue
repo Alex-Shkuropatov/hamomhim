@@ -1,8 +1,8 @@
 <template>
   <div class="servives-wrapper">
     <img class="img-plan" src='/static/images/orders/AddOrderBg.png' alt="">
-    <h2 class="title">םיתוריש ץופיש</h2>
-    <h4 class="description">ץופישה גוס תא רחב אנ</h4>
+    <h2 class="title">תת קטגוריות שיפוץ שירותים</h2>
+    <h4 class="description">נא בחר סוג קבלן</h4>
     <div class="services">
       <div class="service-wrapper">
       <div class="service" v-for="(subcategory, index) in subcategories" :key="index">
@@ -14,7 +14,7 @@
         </div>
       </div>
       </div>
-      <button class="next-b th-btn th-btn-blue th-btn-md "   @click="sendData"><span>Next</span></button>
+      <button class="next-b th-btn th-btn-blue th-btn-md "   @click="sendData"><span>לשלב הבא</span></button>
     </div>
   </div>
 </template>

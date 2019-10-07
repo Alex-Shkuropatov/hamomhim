@@ -14,7 +14,7 @@
         <div class="project-item">
 
       <button class="add-project" @click="openModal">
-        <svg width="97" class="add-new-project" height="97" viewBox="0 0 38 38"  xmlns="http://www.w3.org/2000/svg">
+        <svg   class="add-new-project"   viewBox="0 0 38 38"  xmlns="http://www.w3.org/2000/svg">
           <path d="M18.6123 0.793945C8.4616 0.793945 0.204102 9.04411 0.204102 19.1858C0.204102 29.3274 8.4616 37.5776 18.6123 37.5776C28.7629 37.5776 37.0204 29.3274 37.0204 19.1858C37.0204 9.04411 28.7629 0.793945 18.6123 0.793945ZM25.3912 23.7913C25.9909 24.3907 25.9909 25.3592 25.3912 25.9586C25.092 26.2575 24.6994 26.4077 24.3064 26.4077C23.9137 26.4077 23.521 26.2575 23.2219 25.9586L18.6123 21.3528L14.0026 25.9586C13.7035 26.2575 13.3108 26.4077 12.9181 26.4077C12.5252 26.4077 12.1325 26.2575 11.8334 25.9586C11.2337 25.3592 11.2337 24.3907 11.8334 23.7913L16.4433 19.1858L11.8334 14.5802C11.2337 13.9808 11.2337 13.0123 11.8334 12.4129C12.4333 11.8137 13.4027 11.8137 14.0026 12.4129L18.6123 17.0187L23.2219 12.4129C23.8219 11.8137 24.7912 11.8137 25.3912 12.4129C25.9909 13.0123 25.9909 13.9808 25.3912 14.5802L20.7813 19.1858L25.3912 23.7913Z" fill="url(#paint0_linear)"/>
           <defs>
             <linearGradient id="paint0_linear" x1="0.204101" y1="19.1858" x2="37.0204" y2="19.1858" gradientUnits="userSpaceOnUse">
@@ -126,10 +126,10 @@ export default {
 }
 .projects{
   margin: 0 auto;
-  width: 1342px;
+  width: 1156px;
   padding: 30px 0 0 0;
   @media screen and (max-width:1650px){
-    width: 1210px;
+    width: 1044px;
   }
   @media screen and (max-width:1440px){
     width: 1176px;
@@ -173,11 +173,11 @@ export default {
   background: #FFFFFF;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
   line-height: 1.16;
-  width: 417px;
-  height: 538px;
+  width: 355px;
+  height: 480px;
 @media screen and (max-width: 1650px){
-  width: 387px;
-  height: 476px;
+  width: 332px;
+  height: 449px;
 }
   @media screen and (max-width: 1440px){
     width: 376px;
@@ -189,15 +189,15 @@ export default {
     -o-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-    left: 152px;
-    top: 121px;
+    left: 121px;
+    top: 96px;
     opacity: 0.5;
     position: absolute;
     z-index: 2;
     transition: all 0.5s ease-out;
     @media screen and (max-width:1650px){
-      left: 135px;
-      top: 111px;
+      left: 110px;
+      top: 93px;
     }
     @media screen and (max-width:480px){
       left: 97px;
@@ -214,6 +214,14 @@ export default {
       }
     }
     border-radius: 50%;
+    svg{
+      width: 97px;
+      height: 97px;
+      @media screen and (max-width: 1650px){
+        width: 83px;
+        height: 86px;
+      }
+    }
   }
   .content-wrapper{
       padding: 16px 8px 0 16px;
@@ -224,7 +232,7 @@ export default {
       width: 100%;
       height: 253px;
       @media screen and (max-width:1650px){
-        height: 248px;
+        height: 215px;
       }
     }
     .title{
@@ -236,15 +244,20 @@ export default {
       text-align: center;
       letter-spacing: -0.02em;
       color: #2871D7;
+      @media screen and (max-width: 1650px){
+        margin-top: 10px;
+        font-weight: bold;
+        font-size: 30px;
+      }
       @media screen and(max-width:480px){
         font-size: 31px;
       }
     }
     .description{
-      margin-top: 15px;
+      margin-top: 3px;
       font-weight: normal;
-      font-size: 20px;
-      line-height: 28px;
+      font-size: 16px;
+      line-height: 21px;
       text-align: center;
       color: #e1e1e1;
       @media screen and (max-width: 1650px){

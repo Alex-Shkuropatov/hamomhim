@@ -276,13 +276,17 @@ margin-top: 50px;
 
 .search-tab{
   margin: 50px auto;
-  width: 1371px;
+  width: 1448px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  @media screen and (max-width:1600px){
+    width: 1026px;
+  }
   @media screen and (max-width: 1440px) {
     width: unset;
+    justify-content: center;
     flex-wrap: wrap;
     margin: 10px auto;
   }
@@ -299,6 +303,9 @@ margin-top: 50px;
     height: 45px;
     font-weight: bold;
     font-size: 24px;
+    @media screen and (max-width:1600px){
+      font-size: 19px;
+    }
     @media screen and (max-width: 1450px){
       width: 257px;
       height: 45px;
