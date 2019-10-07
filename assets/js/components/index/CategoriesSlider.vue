@@ -121,6 +121,7 @@ export default {
   }
   img{
     width: 100%;
+    height: 40px;
     filter: brightness(0.34) saturate(100%);
   }
 }
