@@ -72,6 +72,8 @@
     padding-left: 35px;
     font-weight: bold;
     font-size: 18px;
+    margin-top: auto;
+    margin-bottom: 20px;
   }
 }
 .profileImg {

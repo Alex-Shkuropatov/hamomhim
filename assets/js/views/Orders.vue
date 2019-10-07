@@ -10,8 +10,8 @@
       <button class="back-b" @click="back"><i class="fas fa-chevron-right"></i>  חזור</button>
       <h1 class="title">רשימת פרויקטים</h1>
       <div class="add-order-wrapper">
-        <button :to="{name: 'new-order',  }" @click="orders" class=" addOrder th-btn th-btn-blue th-btn-sm "> הוספת פרויקט חדש
-          <span>  +  </span></button>
+        <router-link :to="{name: 'new-order',  }" @click="orders" class=" addOrder th-btn th-btn-blue th-btn-sm "> הוספת פרויקט חדש
+          <span>  +  </span></router-link>
         <div class="txt">גאפניקה סניף 1</div>
       </div>
       <div class="orders-list-wrap h-container">
