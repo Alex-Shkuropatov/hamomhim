@@ -13,10 +13,11 @@
       <div class="description" v-bind:class="{openBlock:isOpen}">
         {{description}}
       </div>
-      <div class="post-date">
-        {{postDate}}
-      </div>
+
     </div>
+    <div class="post-date">
+    {{postDate}}
+  </div>
     <div class="img-wrapper">
       <img :src="author.avatar===null? '/static/images/profile/defaultAvatar.png' : $env.API_URL+author.avatar" alt="user-image">
     </div>
@@ -129,8 +130,6 @@ import ShowMore from './../../components/profile/ShowMore'
     top: 0;
   }
 .document-wrapper{
-
-
   padding: 0 20px 0 20px;
  margin-top: 10px;
   height: 104px;
@@ -143,8 +142,9 @@ import ShowMore from './../../components/profile/ShowMore'
   justify-content: space-between;
 }
 .content-wrapper{
+  width: 545px;
   padding-right: 216px;
-  min-height: 230px;
+  min-height: 130px;
   @media screen and (max-width: 1035px) {
     display: flex;
     padding-right: 23px;
@@ -198,11 +198,14 @@ overflow-y: hidden;
   }
 }
 .post-date{
+  padding-right: 216px;
   font-weight: bold;
   font-size: 24px;
   text-align: right;
   letter-spacing: -0.02em;
   color: #2871D7;
+  padding-top: 7px;
+  padding-bottom: 10px;
 }
   .feedback-post{
     position: relative;
