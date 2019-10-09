@@ -4,9 +4,9 @@
     <header-worker-profile v-else />
 
     <transition name="cool">
-      <router-view :class="{'margin' : isDefaultHeader}" />
+      <router-view :class="{'margin' : isDefaultHeader, 'index': true}" />
     </transition>
-    <underground/>
+    <underground class="under" />
   </div>
 </template>
 
@@ -80,4 +80,10 @@ export default {
     margin-top: ceil($scale2 * 100px);
   }
 }
+  .index{
+    z-index: 2!important;
+  }
+  .under{
+    z-index: 1;
+  }
 </style>
