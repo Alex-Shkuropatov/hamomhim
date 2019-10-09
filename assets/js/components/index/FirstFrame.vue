@@ -121,12 +121,14 @@
           border: none!important;
           margin-top: 3px;
           input{
+            color: gray;
             @media screen and (max-width:1340px){
               margin:0;
             }
           }
           .vs__selected{
             margin:0;
+
           }
         }
         .vs__dropdown-menu {
