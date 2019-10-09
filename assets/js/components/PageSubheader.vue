@@ -54,6 +54,7 @@ export default {
     .clr-white{
       text-align: center;
       color: #FFFFFF;
+      margin-bottom: 0;
     }
   }
 }
