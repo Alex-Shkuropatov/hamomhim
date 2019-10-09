@@ -8,6 +8,7 @@ Vue.use(VueRouter);
 import auth from './auth';
 import profile from './profile';
 
+
 import Index from './../views/Index.vue';
 import AboutUs from './../views/AboutUs.vue';
 import ContactUs from './../views/ContactUs.vue';

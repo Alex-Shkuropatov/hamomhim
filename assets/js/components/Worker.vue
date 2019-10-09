@@ -52,8 +52,10 @@
            {{bio}}
          </div>
         <div class="footer-wrapper">
+          <div class="btn-wrapper">
           <button :href="url" class="th-btn th-btn-blue th-btn-sm contact-button add-user" @click="addUser"><span>הוסף פרויקט</span></button>
           <button :href="url" class="th-btn th-btn-empty th-btn-sm contact-button" @click="viewProfile">  <span>ראה פרופיל</span>  </button>
+        </div>
           <div class="location">
             <svg width="16" height="22" viewBox="0 0 16 22" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M8 0C3.58878 0 0 3.57423 0 7.96753C0 13.4198 7.15922 21.4239 7.46403 21.762C7.75033 22.0796 8.25019 22.079 8.53597 21.762C8.84078 21.4239 16 13.4198 16 7.96753C15.9999 3.57423 12.4112 0 8 0ZM8 11.9762C5.7806 11.9762 3.97504 10.1779 3.97504 7.96753C3.97504 5.75713 5.78065 3.95889 8 3.95889C10.2194 3.95889 12.0249 5.75717 12.0249 7.96758C12.0249 10.178 10.2194 11.9762 8 11.9762Z" fill="url(#paint0_linear)"/>
@@ -204,7 +206,7 @@ import  FavouriteIcon from './common/FavouriteIcon.vue';
     background: #FFFFFF;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
     line-height: 1.16;
-    width: 1000px;
+    width: 1371px;
      @media screen and (max-width:1600px){
        width: 1000px;
     }
@@ -226,7 +228,7 @@ import  FavouriteIcon from './common/FavouriteIcon.vue';
         width: 154px;
         height: 154px;
         right: 20px;
-        top: 48px;
+        top: 34px;
         img{
           width: 154px;
           height: 154px;
@@ -239,15 +241,18 @@ import  FavouriteIcon from './common/FavouriteIcon.vue';
         }
         @media screen and (max-width:1024px){
           position: relative;
+          right: unset;
+          height: unset;
+          margin-left: 17px;
+          margin-top: 13px;
         }
         @media screen and (max-width: 767px){
           margin-top: 29px;
-          margin-left: 46px;
         }
         @media screen and (max-width:480px){
           width: 120px;
           height: 120px;
-          margin-left: 46px;
+
           margin-top:0;
         }
       }
@@ -261,6 +266,7 @@ import  FavouriteIcon from './common/FavouriteIcon.vue';
         text-align: right;
         color: #4F4F4F;
         height: auto;
+        width: 90%;
         @media screen and (max-width:1024px){
           width: 426px;
           text-align: center;
@@ -280,30 +286,23 @@ import  FavouriteIcon from './common/FavouriteIcon.vue';
         margin-top: 14px;
       }
      .contact-button{
-       width: 295.06px;
-       height: 58.18px;
+       width: 200.06px;
+       height: 45.18px;
        font-weight: bold;
-       font-size: 32px;
-       line-height: 42px;
+       font-size: 21px;
        display: flex;
        justify-content: center;
        span{
          display: inline-block;
          text-align: center;
        }
-       @media screen and (max-width:1024px){
-         width: 250.06px;
-         height: 48.18px;
-         margin-top: 10px;
-       }
        @media screen and (max-width:767px){
-         width: 215.06px;
-         height: 45.18px;
+
        }
        @media screen and (max-width:480px){
-         width: 195.06px;
-         height: 48.18px;
-         font-size: 22px;
+         width: 190.06px;
+         height: 45.18px;
+         font-size: 19px;
        }
      }
   }
@@ -356,12 +355,11 @@ margin-left: 7px;
     display: flex;
     align-items: center;
     font-weight: bold;
-    font-size: 36px;
+    font-size: 27px;
     line-height: 30px;
     text-align: right;
     color:#3269B6;
     width: 315px;
-    padding-top: 38px;
     margin-top: 32px;
     margin-bottom: 11px;
     @media screen and (max-width:1024px){
@@ -396,7 +394,7 @@ margin-left: 7px;
   }
 }
   .type{
-    font-size: 24px;
+    font-size: 20px;
     line-height: 30px;
     text-align: right;
     color: #828282;
@@ -436,6 +434,7 @@ margin-left: 7px;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     @media screen and (max-width:1024px){
      flex-direction: column-reverse;
       width: 355px;
@@ -443,19 +442,29 @@ margin-left: 7px;
     @media screen and (max-width:480px){
       margin-top: 0!important;
     }
+    .btn-wrapper{
+      display: flex;
+      flex-direction: row;
+      @media screen and (max-width: 1024px){
+        flex-direction: column;
+      }
+
+    }
   }
   .location{
-    margin-top: 15px;
-    margin-right: 60px;
+    margin-left: 43px;
     display: flex;
     flex-direction: row;
     font-size: 24px;
 
     @media screen and (max-width:1024px){
-     margin-right: 0;
+     margin-left: 0;
     }
     @media screen and (max-width:767px){
       font-size: 22px;
+    }
+    @media screen and (max-width:480px){
+      font-size: 18px;
     }
     .bold{
       font-weight: bold;

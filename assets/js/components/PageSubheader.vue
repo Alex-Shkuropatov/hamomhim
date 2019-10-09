@@ -1,7 +1,11 @@
 <template>
+
   <div class="page-subheader" :style="styles">
+    <div class="subhead-bg page-subheader">
+
+    </div>
     <div class="h-container">
-      <div class="th-heading clr-blue">{{title}}</div>
+      <div class="th-heading clr-white">{{title}}</div>
     </div>
   </div>
 </template>
@@ -30,6 +34,11 @@ export default {
 
 <style lang="scss" scoped>
 @import '~@/vars.scss';
+.subhead-bg{
+  width: 100%;
+  background: rgba(	40,	113,	215, 0.75);
+  position: absolute;
+}
 .page-subheader{
   height: ceil($scale1 * 250px);
   width: 100%;
@@ -41,8 +50,10 @@ export default {
   background-size: cover;
   background-position: center;
   .h-container{
-    .clr-blue{
+    z-index:1;
+    .clr-white{
       text-align: center;
+      color: #FFFFFF;
     }
   }
 }
