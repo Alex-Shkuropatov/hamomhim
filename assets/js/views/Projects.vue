@@ -7,6 +7,8 @@
 
     <projects-header  />
 
+    <router-view></router-view>
+
   <div class="projects">
 
     <div class="projects-list-wrap ">

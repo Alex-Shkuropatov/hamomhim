@@ -42,6 +42,7 @@
         let arr = this.checkedServices;
         let string = JSON.stringify(arr);
         this.$router.push({name: 'search', params: { categoryId: this.getId , subcategories: string }});
+        console.log(string);
         this.checkedServices = [];
         this.$store.commit('modals/showSubcategories/close');
       },

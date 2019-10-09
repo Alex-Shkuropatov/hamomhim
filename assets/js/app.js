@@ -1,6 +1,9 @@
 import Vue from 'vue';
 import VueFilterDateFormat from 'vue-filter-date-format'
 import VueMask from 'v-mask'
+import vSelect from 'vue-select'
+
+Vue.component('v-select', vSelect)
 
 import Vuelidate from "vuelidate";
 

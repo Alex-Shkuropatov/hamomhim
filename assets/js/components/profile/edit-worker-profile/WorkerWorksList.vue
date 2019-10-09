@@ -149,6 +149,7 @@ $gutter: ceil($scale1 * 18px);
     font-weight: bold;
     font-size: ceil($scale1 * 24px);
     margin-top: 10px;
+    overflow: hidden;
   }
   .text{
     font-size: ceil($scale1 * 20px);

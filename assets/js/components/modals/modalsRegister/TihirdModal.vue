@@ -6,12 +6,14 @@
     <form action="">
       <div class="wrapper">
         <div class="orderWrapper">
-          <p class="formItem" >ליימ</p>
+          <p class="formItem" >נא המתן 30 שניות עד לקבלת קוד האימות</p>
           <div>
             <i class="fas " ref="mail" v-bind:class="[{ 'fa-spin': focusedPhone}, focusedPhone ? 'fa-sync-alt':icon]"  ></i>
-            <input type="text" ref="mail" id="phoneC"  placeholder="ליימ"  @focus="onFocus" @blur="onBlur" v-model="phoneCode" class="inputName">
+            <input type="text"  :style="[ flag ? {border: '2px solid red'} : ''  ]" ref="mail" id="phoneC"  placeholder="נא הזן 4 ספרות"  @focus="onFocus" @blur="onBlur" v-model="phoneCode" class="inputName">
           </div>
-
+          <div v-if="flag" class="red">
+            <div class="red scale-up-center ">Code is invalid</div>
+          </div>
         </div>
       </div>
     </form>
@@ -39,6 +41,7 @@
         this.$emit('send', {
         phoneCode: this.phoneCode
         })
+
       },
       onFocus() {
           this.focusedPhone = true;
@@ -58,6 +61,13 @@
           return 'fa-times'
         }
       },
+
+    },
+    props:{
+      flag:{
+        type: Boolean,
+        default: false
+      }
     },
     components: {
       Modal,
@@ -69,15 +79,43 @@
         icon: "fa-sync-alt",
         iconS: 'fa-sync-alt',
         phoneCode: '',
-
       }
     }
   }
 </script>
 
 <style lang="scss" scoped>
+  .scale-up-center {
+    -webkit-animation: scale-up-center 0.4s cubic-bezier(0.860, 0.000, 0.070, 1.000) forwards;
+    animation: scale-up-center 0.4s cubic-bezier(0.860, 0.000, 0.070, 1.000) forwards;
+  }
+  .red{
+    color: red;
+    @-webkit-keyframes scale-up-center {
+      0% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+      }
+      100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+      }
+    }
+    @keyframes scale-up-center {
+      0% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+      }
+      100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+      }
+    }
+  }
   .fa-times{
     color: red;
+
+
   }
   .fa-check{
     color: green;

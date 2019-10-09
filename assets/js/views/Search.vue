@@ -175,7 +175,7 @@ margin-top: 50px;
   justify-content: space-around;
   ::v-deep{
     .project-item{
-      width: 1000px;
+
     }
   }
 }
@@ -193,7 +193,7 @@ margin-top: 50px;
         .content{
           .content-info{
             .footer-wrapper{
-              margin-top: 70px;
+              margin-top: 24px;
               .add-user{
                 display: none;
               }

@@ -2,7 +2,7 @@
   <div class="header-info header-n">
 
     <div class="info-wrapper" v-bind:class="{marginT : getData.role!=='architect'}" >
-      <div class="title"> {{user.name}}
+      <div class="title" v-bind:class="{marginL : getData.role==='architect'}"  > {{user.name}}
         <favourite-icon
         v-bind="favourite"
         v-if="getData.role==='architect'"
@@ -67,6 +67,9 @@ user:{
   @media screen and (max-width: 767px){
     width: 300px;
   }
+  .marginL{
+    margin-right: 23px;
+  }
   .title{
     font-weight: bold;
     font-size: 64px;
@@ -74,7 +77,6 @@ user:{
     display: flex;
     align-items: center;
     color: #FFFFFF;
-    margin-right: 23px;
     @media screen and (max-width: 767px){
       font-size: 50px;
     }

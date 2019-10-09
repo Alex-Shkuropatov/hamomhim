@@ -66,7 +66,7 @@
      data : function(){
         return{
           subhead : {
-           title : '',
+           title : 'אודות',
            image : '/static/images/aboutUs/head.png'
          }
         }

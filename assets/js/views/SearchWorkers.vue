@@ -136,24 +136,7 @@
     align-items: center;
     justify-content: space-around;
     ::v-deep{
-      .project-item{
-        width: 1370px;
-        @media screen and (max-width:1600px){
-          width: 1000px;
-        }
-        @media screen and (max-width:1440px){
-          width: 900px;
-        }
-        @media screen and (max-width:1024px){
-          width: 600px;
-        }
-        @media screen and (max-width: 767px){
-          width: 410px;
-        }
-        @media screen and (max-width: 480px){
-          width: 300px;
-        }
-      }
+
     }
   }
   .worker-item{
@@ -177,20 +160,21 @@
               margin-right: 0;
             }
             .footer-wrapper{
-              margin-top: 70px;
+              margin-top: 26px;
               .add-user{
                 @media screen and (max-width:1024px){
                   margin-left: 0;
+                  margin-top: 8px;
+                  margin-bottom: 8px;
                 }
               }
               margin-bottom: 20px;
               button{
-                @media screen and (max-width:1600px ){
-                  width: 199.06px;
-                  height: 46.18px;
+
+                  width: 179.06px;
+                  height: 35.18px;
                   font-weight: bold;
                   font-size: 19px;
-                }
 
               }
             }

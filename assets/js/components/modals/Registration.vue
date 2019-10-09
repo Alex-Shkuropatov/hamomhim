@@ -6,7 +6,7 @@
 
   <second-modal  v-if="modal===1" v-bind="user" @send='onSecond' />
 
-    <third-modal v-if="modal===2"  @send='onThird' />
+    <third-modal v-if="modal===2" v-bind="code"  @send='onThird' />
 
   <alert v-if="modal===3" v-bind="modalContent"  @send='onFourth'   />
 
@@ -40,6 +40,9 @@
           pass: '',
           role: '',
         },
+        code:{
+          flag: false,
+        },
         modalContent: {
           title: 'החלצהב עצוב תומיאה',
           text: 'תכרעמב רשואמו תמוא ךלש ןובשחה',
@@ -51,7 +54,7 @@
       closeB() {
         this.$store.commit('modals/reg/close');
         this.modal = 0;
-
+        this.code.flag = false;
       },
       closeProject(data){
         this.$store.commit('modals/reg/open');
@@ -63,6 +66,7 @@
       },
       onSecond (data) {
         data.role = this.user.role;
+        this.user.email = data.email  ;
        this.modal++;
        if ( data.role==='worker'){
          axios.post('/api/auth/signupWorker', data)
@@ -78,13 +82,27 @@
                  console.log(response);
                })
                .catch((error) => {
+                 alert(error.data.message);
                  console.log(error.response.data);
                });
        }
       },
       onThird(data){
-        this.modal++;
+
         console.log(data.phoneCode);
+        axios.post('/api/auth/confirmPhone',{email:this.user.email, role: this.user.role, code: data.phoneCode})
+            .then((response)=>{
+             if (response.data.success){
+               this.code.flag = false;
+               this.modal++;
+             } else {
+               this.code.flag = true;
+             }
+              console.log(response);
+            }).catch((error)=>{
+              console.log(error);
+
+        })
       },
       onFourth(data){
         this.modal = data.modal;
