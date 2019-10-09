@@ -128,7 +128,7 @@
           }
           .vs__selected{
             margin:0;
-            
+
           }
         }
         .vs__dropdown-menu {
