@@ -12,7 +12,7 @@
             <hr class="th-divider">
             <div class="description">{{response.description}}</div>
           </div>
-          <div class="img-col" :style="{ backgroundImage: 'url(' + $env.API_URL + response.thumbnail + ')' }"></div>
+          <div class="img-col" :style="{ backgroundImage: 'url(' + $env.API_URL + response.files[0].file + ')' }"></div>
         </div>
       </div>
     </template>

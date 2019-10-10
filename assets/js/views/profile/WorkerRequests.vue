@@ -107,9 +107,10 @@ export default {
         name: order.name,
         userName : order.user.name,
         phone : order.user.phone,
-        categoryId : order.categoryId,
+        category_id : order.categoryId,
         subcategories: order.subcategories,
         work_area: order.work_area,
+        zip: order.zip,
       });
       this.$store.commit('modals/showOrder/open');
     },

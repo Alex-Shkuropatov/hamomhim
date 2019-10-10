@@ -201,7 +201,7 @@ export default {
   }
 .notify_msg{
   text-align: center;
-  padding: 40px 0 40px 0;
+  padding: 10px 0 0px 0;
   color: #333333;
 }
 </style>

@@ -218,6 +218,7 @@ margin-top: 50px;
 }
   .notify_msg{
     text-align: center;
+    margin-bottom: 50px;
     @media screen and (max-width:480px ) {
       font-size: 20px;
     }

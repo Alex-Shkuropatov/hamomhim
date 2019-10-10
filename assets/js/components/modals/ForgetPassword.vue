@@ -4,9 +4,9 @@
 
   <first-modal  v-if="modalL===0" v-bind="getRole" @onSend="onFirst"   />
 
-    <second-modal v-if="modalL===1"  @onSend="onSecond"   />
+    <second-modal v-if="modalL===1" v-bind="user"  @onSend="onSecond"   />
 
-    <third-modal v-if="modalL===2"  @onSend="onThird"  />
+    <third-modal v-if="modalL===2" v-bind="user"  @onSend="onThird"  />
 
     <alert v-if="modalL===3" @send="onFourth" v-bind="modalContent" />
 
@@ -28,7 +28,7 @@
         animaStyle: 'slide-fade',
         user: {
         token: '',
-        mail: '',
+        email: '',
         code: '',
         role: '',
         },
@@ -50,16 +50,30 @@
         this.modalL = 0;
       },
       onFirst(data){
-        this.user.mail = data.mail;
-        this.modalL++;
+        if(data.success){
+          this.user.email = data.email;
+          this.user.role = data.role;
+          this.modalL++;
+        }
       },
       onSecond(data){
-        this.user.code = data.code;
-        this.modalL++;
+       if(data.success){
+         this.user.code = data.code;
+         this.modalL++;
+       }
+
       },
       onThird(data){
         this.user.password = data.password;
-        this.modalL++;
+        if(data.success){
+          axios.post('/api/auth/changePasswordUnauthorized',{role:this.user.role,token:this.user.code,email:this.user.email, new_password: data.password})
+              .then((response)=>{
+                console.log(response);
+                this.modalL++;
+              }).catch((error)=>{
+            console.log(error);
+          })
+        }
       },
       onFourth(){
         this.modalL = 0;

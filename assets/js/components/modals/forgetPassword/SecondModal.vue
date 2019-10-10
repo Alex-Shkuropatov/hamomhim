@@ -5,9 +5,10 @@
   <div class="orderWrapper">
     <p class="formItem" >Code</p>
     <div>
-      <i class="fas  "  v-bind:class="[{ 'fa-spin': focusedCode}, focusedCode ? 'fa-sync-alt':iconS]" ></i>
-      <input type="text" placeholder="טלפון" id="phone" ref="phone" @focus="onFocus" @blur="onBlur"  v-model="user.code" class="inputName">
+      <i class="fas  "  v-bind:class="[{ 'fa-spin': focusedCode},focusedCode ? 'fa-sync-alt': (flag? iconS : 'fa-sync-alt')]" ></i>
+      <input type="text" placeholder="טלפון" id="phone" ref="phone" @focus="onFocus" @blur="onBlur"  :style="[ flag!=='' ? {border: '2px solid red'} : ''  ]"   v-model.trim="token" class="inputName">
     </div>
+    <p class="error-message" v-if="flag!==''">{{flag}}</p>
   </div>
 
   <button class=" th-btn th-btn-blue th-btn-lg next" @click="send" ><span>Next</span></button>
@@ -22,11 +23,18 @@
        focusedCode: false,
        icon: "fa-sync-alt",
        iconS: 'fa-sync-alt',
-       user: {
-         code: '',
-       },
-       source: '',
+       token: '',
+       flag: '',
      }
+    },
+    props:{
+      email:{
+        type: String,
+      },
+      role: {
+        type: String,
+      },
+
     },
     methods: {
       close() {
@@ -34,14 +42,14 @@
       },
       onFocus(e) {
           this.focusedCode = true;
+          this.flag= '';
       },
       onBlur(e) {
         this.focusedCode = false;
-        this.iconS = this.checkPhone();
       },
       checkPhone(){
         let regMail = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
-        let check = regMail.test(this.user.code);
+        let check = regMail.test(this.token);
         return this.changeIcon(check);
       },
       changeIcon(value){
@@ -52,9 +60,31 @@
         }
       },
       send(){
-        this.$emit('onSend',{
-          code : this.user.code,
-        })
+
+        axios.post('/api/auth/forgotPasswordVerification',{role: this.role, email: this.email, token: this.token})
+            .then((response)=>{
+              console.log(response);
+              if(response.data.success){
+                this.modalL++;
+                this.iconS = this.changeIcon(true);
+                this.$emit('onSend',{
+                  code : this.token,
+                  success: true,
+                });
+                this.iconS = true;
+              } else {
+                this.$emit('onSend',{
+                  success: false,
+                });
+                this.flag  = response.data.message;
+                this.iconS = this.changeIcon(false);
+              }
+
+            }).catch((error)=>{
+          console.log(error);
+        });
+
+
       },
     },
     components: {
@@ -69,6 +99,10 @@
     width: 500px;
     margin-bottom: 0;
   }
+  .red-error{
+    color:red;
+    text-align: center;
+  }
   .fa-times{
     color: red;
   }
@@ -80,7 +114,7 @@
   }
   .orderWrapper{
     margin: 0 10px 0 10px;
-    p{
+    .formItem{
       margin: 0;
       margin-right: 20px;
       font-family: Assistant;

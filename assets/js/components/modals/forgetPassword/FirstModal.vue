@@ -5,9 +5,10 @@
   <div class="orderWrapper">
     <p class="formItem" >אימייל</p>
     <div>
-      <i class="fas " ref="mail" v-bind:class="[{ 'fa-spin': focusedMail}, focusedMail ? 'fa-sync-alt':icon]"  ></i>
-      <input type="text" ref="mail" id="mail"  placeholder="E-mail"  @focus="onFocus" @blur="onBlur" v-model="user.email" class="inputName">
+      <i class="fas " ref="mail" v-bind:class="[{ 'fa-spin': focusedMail}, focusedMail ? 'fa-sync-alt': (flag? iconS : 'fa-sync-alt')]"  ></i>
+      <input type="text" ref="mail" id="mail" :style="[ flag!=='' ? {border: '2px solid red'} : ''  ]"  placeholder="E-mail"  @focus="onFocus" @blur="onBlur" v-model.trim="user.email" class="inputName">
     </div>
+    <p class="error-message" v-if="flag!==''">{{flag}}</p>
   </div>
 
   <button class=" th-btn th-btn-blue th-btn-lg next" @click="send"><span>Next</span></button>
@@ -25,7 +26,7 @@
        user: {
          email: '',
        },
-       source: '',
+       flag: '',
      }
     },
     props: {
@@ -39,10 +40,10 @@
       },
       onFocus(e) {
           this.focusedMail = true;
+          this.flag= '';
       },
       onBlur(e) {
           this.focusedMail = false;
-          this.icon = this.checkMail();
       },
       checkMail(){
         let regMail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -57,11 +58,24 @@
         }
       },
       send(){
-        this.$emit('onSend',{
-          mail: this.user.mail,
-        });
+
         axios.post('/api/auth/forgotPassword',{'email':this.user.email, 'role':this.role})
             .then((response)=>{
+              if(response.data.success){
+                this.$emit('onSend',{
+                  email: this.user.email,
+                  role: this.role,
+                  success: true,
+                });
+                this.iconS = true;
+              } else {
+                this.$emit('onSend',{
+                  success: false,
+                });
+                this.flag  = response.data.message;
+                this.iconS = this.changeIcon(false);
+
+              }
               console.log(response);
             }).catch((error)=>{
           console.log(error);
@@ -80,6 +94,10 @@
     width: 500px;
     margin-bottom: 0;
   }
+  .red-error{
+    color:red;
+    text-align: center;
+  }
   .fa-times{
     color: red;
   }
@@ -91,7 +109,7 @@
   }
   .orderWrapper{
     margin: 0 10px 0 10px;
-    p{
+   .formItem{
       margin: 0;
       margin-right: 20px;
       font-family: Assistant;
