@@ -114,8 +114,6 @@
   }
   .fa-times{
     color: red;
-
-
   }
   .fa-check{
     color: green;

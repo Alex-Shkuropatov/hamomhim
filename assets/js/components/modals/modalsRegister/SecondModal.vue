@@ -174,7 +174,7 @@
   import Modal from './../../common/Modal.vue';
   import DropDown from './../../common/DropDown.vue';
   import ThemeMultiselect from './../../common/ThemeMultiselect.vue'
-  import { required, minLength } from "vuelidate/lib/validators";
+  import { required } from "vuelidate/lib/validators";
   import VueGoogleAutocomplete from 'vue-google-autocomplete'
 
   export default {

@@ -15,7 +15,6 @@
               <input type="text" :value="getData.phone">
             </div>
           </div>
-
           <div class="under-title">
             <h3 class="invitationData">הנמזה ינותנ</h3>
             <div class="form-row">
@@ -23,7 +22,6 @@
                 <p>תוחמתה גוס</p>
                 <input type="text" :value="getId">
               </div>
-
               <div class="row">
                 <p> הדובע רוזיא</p>
                 <input type="text" :value="getData.work_area">

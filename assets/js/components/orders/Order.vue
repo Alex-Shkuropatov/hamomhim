@@ -112,7 +112,9 @@
         type: String
       }
     },
-    components: {},
+    components: {
+
+    },
     methods: {
       showOrder() {
         this.$store.commit('modals/showOrder/saveData', this.order);

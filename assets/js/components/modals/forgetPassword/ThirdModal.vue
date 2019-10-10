@@ -5,15 +5,16 @@
   <div class="orderWrapper">
     <p class="formItem" >New password</p>
     <div>
-      <input type="text" placeholder="טלפון"   ref="password"  v-model="user.password" class="inputName">
+      <input type="password" placeholder="טלפון"  :style="[ flag!=='' ? {border: '2px solid red'} : ''  ]"  ref="password"  v-model="user.password" class="inputName">
     </div>
   </div>
   <div class="orderWrapper">
     <p class="formItem" >Confirm password</p>
     <div>
       <i class="fas  "  v-bind:class="[{ 'fa-spin': focusedCode}, focusedCode ? 'fa-sync-alt':iconS]" ></i>
-      <input type="text" placeholder="טלפון" id="phone" ref="phone" @focus="onFocus" @blur="onBlur"  v-model="user.confirmPassword" class="inputName">
+      <input type="password" :style="[ flag!=='' ? {border: '2px solid red'} : ''  ]" placeholder="טלפון" id="phone" ref="phone" @focus="onFocus" @blur="onBlur"  v-model="user.confirmPassword" class="inputName">
     </div>
+    <p class="error-message" v-if="flag!==''">Passwords doesnt match</p>
   </div>
 
   <button class=" th-btn th-btn-blue th-btn-lg next" @click="send" ><span>Next</span></button>
@@ -31,7 +32,7 @@
        user: {
          code: '',
        },
-       source: '',
+       flag: '',
      }
     },
     methods: {
@@ -40,15 +41,13 @@
       },
       onFocus(e) {
           this.focusedCode = true;
+          this.flag= '';
       },
       onBlur(e) {
         this.focusedCode = false;
         this.iconS = this.checkPhone();
       },
-      checkPhone(){
-        let check = this.user.password === this.user.confirmPassword;
-        return this.changeIcon(check);
-      },
+
       changeIcon(value){
         if (value){
           return 'fa-check'
@@ -59,13 +58,19 @@
       send(){
         this.$emit('onSend',{
           code : this.user.password,
+          success: this.flag,
         })
       },
     },
     components: {
 
     },
-
+      computed:{
+        checkPhone(){
+          this.flag = this.user.password === this.user.confirmPassword;
+          return this.changeIcon(this.flag);
+        },
+      },
   }
 </script>
 
@@ -73,6 +78,10 @@
   .content-wrapper{
     width: 500px;
     margin-bottom: 0;
+  }
+  .red-error{
+    color:red;
+    text-align: center;
   }
   .fa-times{
     color: red;
@@ -85,7 +94,7 @@
   }
   .orderWrapper{
     margin: 0 10px 0 10px;
-    p{
+    .formItem{
       margin: 0;
       margin-right: 20px;
       font-family: Assistant;

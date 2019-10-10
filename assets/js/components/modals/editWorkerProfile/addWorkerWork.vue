@@ -6,16 +6,26 @@
         <div class="popup-form-row">
           <div class="col1-1 inp-group">
             <div class="label">שם הפרויקט </div>
-            <theme-input v-model="name" placeholder="שם הפרויקט" class="less-rounded-corners"></theme-input>
+            <theme-input
+                    @input="$v.name.$touch()"
+                    v-model.trim="name"
+                    placeholder="שם הפרויקט"
+                    :class="{ 'error': $v.name.$error, 'less-rounded-corners': true }"
+            ></theme-input>
           </div>
           <div class="col1-1 inp-group">
             <div class="label">תיאור</div>
-            <theme-textarea v-model="description" placeholder="תיאור"></theme-textarea>
+            <theme-textarea
+                    v-model.trim="description"
+                    @input="$v.description.$touch()"
+                    placeholder="תיאור"
+                    :class="{ 'error': $v.description.$error }"
+            ></theme-textarea>
           </div>
           <div class="col1-1 inp-group">
             <div class="files-list w-100">
               <label class="add-new-file">
-                <div class="image w-100"></div>
+                <div class="image w-100"  :style="[ flag!=='' ? {border: '2px solid red'} : ''  ]" ></div>
                 <div class="th-btn th-btn-blue w-100">העלאת תמונה</div>
                 <input type="file" multiple @change="onFileUpload($event.target.files)">
               </label>
@@ -37,18 +47,29 @@
 import Modal from '../../common/Modal';
 import ThemeInput from '../../common/ThemeInput';
 import ThemeTextarea from '../../common/ThemeTextarea';
+import { required } from "vuelidate/lib/validators";
 
 function getInitialData(){
+
   return {
     id: '',
     name: '',
     description: '',
     files: [],
     deleted_files: [],
+    flag: '',
   }
 }
 
 export default {
+  validations:{
+    name:{
+      required,
+    },
+    description:{
+      required,
+    },
+  },
   data(){
     return getInitialData();
   },
@@ -95,40 +116,47 @@ export default {
       }
       return { backgroundImage: 'url('+src+')'};
     },
-    saveWorkItem(){
-      let formData = new FormData();
-      formData.append('name', this.name);
-      formData.append('description', this.description);
-      this.files.forEach(file => {
-        //if it's not old file
-        if(typeof file !== 'string'){
-          formData.append('images[]', file.value, file.value.name);
-        }
-      });
-      this.deleted_files.forEach(file => {
-        formData.append('deleted_images[]', file);
-      });
-      let route = '/api/addNewWorkerWork';
-      if(!isNaN(+this.id)){
-        route = '/api/editWorkerWork';
-        formData.append('id', this.id);
-      }
-      axios.post(route, formData)
-        .then(response => {
-          if(response.data.success){
-            if(isNaN(+this.id)){
-              this.$emit('add:work', response.data.value);
-            }
-            else{
-              this.$emit('update:work', response.data.value);
-            }
-            this.close();
-          }
-          else{
-            alert(response.data.errors.join('.'));
+    saveWorkItem() {
+      this.$v.name.$touch();
+      this.$v.description.$touch();
+
+      if (this.files.length===0){
+        this.flag=true;
+      } else {
+        this.flag=false;
+      if (!this.$v.$invalid) {
+        let formData = new FormData();
+        formData.append('name', this.name);
+        formData.append('description', this.description);
+        this.files.forEach(file => {
+          //if it's not old file
+          if (typeof file !== 'string') {
+            formData.append('images[]', file.value, file.value.name);
           }
         });
-
+        this.deleted_files.forEach(file => {
+          formData.append('deleted_images[]', file);
+        });
+        let route = '/api/addNewWorkerWork';
+        if (!isNaN(+this.id)) {
+          route = '/api/editWorkerWork';
+          formData.append('id', this.id);
+        }
+        axios.post(route, formData)
+            .then(response => {
+              if (response.data.success) {
+                if (isNaN(+this.id)) {
+                  this.$emit('add:work', response.data.value);
+                } else {
+                  this.$emit('update:work', response.data.value);
+                }
+                this.close();
+              } else {
+                alert(response.data.errors.join('.'));
+              }
+            });
+      }
+    }
     }
   },
   components: {
