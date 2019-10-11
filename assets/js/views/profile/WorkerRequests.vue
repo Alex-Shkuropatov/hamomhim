@@ -3,6 +3,10 @@
     <response-form @request:delete="deleteRequest"></response-form>
     <show-order></show-order>
 
+    <div class="empty" v-if="!flag">
+
+    </div>
+    <div class="wrap"  v-if="flag">
     <template v-if="requests.length">
       <div class="request-item" v-for="request in requests" :key="request.id">
         <div class="title-line">
@@ -59,7 +63,7 @@
     <template v-else>
       <h2 class="notify_msg text-center">You dont have any invitations to the projects yet.<i class="far fa-copy ml-1 mr-1"></i></h2>
     </template>
-
+</div>
   </div>
 </template>
 
@@ -71,7 +75,8 @@ import ShowOrder from './../../components/modals/ShowOrder';
 export default {
   data(){
     return {
-      requests: []
+      requests: [],
+      flag : false,
     };
   },
   components: {
@@ -82,6 +87,7 @@ export default {
     getRequestsFromApi(){
       axios.post('/api/getWorkerRequests', { page: 0, take: -1})
         .then(response => {
+          this.flag= true;
           if(response.data.success){
             this.requests = response.data.value.orders;
           }

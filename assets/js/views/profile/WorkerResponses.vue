@@ -1,5 +1,11 @@
 <template>
   <div class="h-container responses-list">
+    <div class="empty" v-if="!flag">
+
+    </div>
+    <div class="wrap"  v-if="flag">
+
+
     <template v-if="responses.length">
       <div class="response-item" v-for="response in responses">
         <div class="response-inner">
@@ -19,6 +25,7 @@
     <template v-else>
       <h2 class="notify_msg text-center">You didn't write any response yet.<i class="far fa-copy ml-1 mr-1"></i></h2>
     </template>
+    </div>
   </div>
 </template>
 
@@ -26,13 +33,15 @@
 export default {
   data(){
     return {
-      responses: []
+      responses: [],
+      flag: false,
     };
   },
   methods: {
     getItemsFromApi(){
       axios.post('/api/getAllResponses', { page: 0, take: 10})
         .then(response => {
+          this.flag = true;
           if(response.data.success){
             this.responses = response.data.value.records;
           }

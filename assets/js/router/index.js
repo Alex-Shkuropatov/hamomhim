@@ -7,7 +7,7 @@ Vue.use(VueRouter);
 
 import auth from './auth';
 import profile from './profile';
-
+import projects from './projects'
 
 import Index from './../views/Index.vue';
 import AboutUs from './../views/AboutUs.vue';
@@ -16,19 +16,11 @@ import Blog from './../views/Blog.vue';
 
 import BlogPost from './../views/BlogPost.vue';
 import HowItWorks from './../views/HowItWorks.vue';
-import Projects from "./../views/Projects.vue";
-import Orders from "./../views/Orders.vue";
-import ClosedProjects from "./../views/ClosedProjects.vue";
-import PreferWorker from "./../views/PreferWorker.vue";
 import WorkerProfile from "./../views/WorkerProfile.vue";
-import NewOrder from "./../views/NewOrder.vue";
-import SearchWorkers from "./../views/SearchWorkers.vue";
-import ProjectFeedback from './../views/ProjectFeedback.vue';
-import EditOrder from './../views/EditOrder.vue';
-import ClosedOrders from './../views/ClosedOrders.vue'
 import Search from './../views/Search.vue';
 import PrivacyPolicy from './../views/PrivacyPolicy.vue'
 import Terms from './../views/Terms'
+
 const routes = [
   {
     path: '/',
@@ -61,123 +53,17 @@ const routes = [
     name: 'how-it-works',
   },
   {
-    path: '/projects',
-    component: Projects,
-    name: 'projects',
-    beforeEnter(to, from, next) {
-      if (store.getters['user/isLogged']) {
-        next();
-      } else {
-        next('/');
-      }
-    }
-  },
-  {
-    path: '/projects/:id/orders/',
-    component: Orders,
-    name: 'orders',
-    beforeEnter(to, from, next) {
-      if (store.getters['user/isLogged']) {
-        next();
-      } else {
-        next('/');
-      }
-    }
-  },
-  {
-    path: '/closed-projects/:id/closed-orders',
-    component: ClosedOrders,
-    name: 'closed-orders',
-    beforeEnter(to, from, next) {
-      if (store.getters['user/isLogged']) {
-        next();
-      } else {
-        next('/');
-      }
-    }
-  },
-  {
     path: '/search/:categoryId/:subcategories',
     component: Search,
     name: 'search',
   },
-  {
-    path: '/closed-projects',
-    component: ClosedProjects,
-    name: 'closed-projects',
-    beforeEnter(to, from, next) {
-      if (store.getters['user/isLogged']) {
-        next();
-      } else {
-        next('/');
-      }
-    }
-  },
-  {
-    path: '/prefer-worker',
-    component: PreferWorker,
-    name: 'prefer-worker',
-    beforeEnter(to, from, next) {
-      if (store.getters['user/isLogged']) {
-        next();
-      } else {
-        next('/');
-      }
-    }
-  },
+
   {
     path: '/view-profile/:id',
     component: WorkerProfile,
     name: 'view-profile',
   },
-  {
-    path: '/projects/:id/orders/new-order/',
-    component: NewOrder,
-    name: 'new-order',
-    beforeEnter(to, from, next) {
-      if (store.getters['user/isLogged']) {
-        next();
-      } else {
-        next('/');
-      }
-    }
-  },
-  {
-    path: '/projects/:id/orders/:orderId/edit-order/',
-    component: EditOrder,
-    name: 'edit-order',
-    beforeEnter(to, from, next) {
-      if (store.getters['user/isLogged']) {
-        next();
-      } else {
-        next('/');
-      }
-    }
-  },
-  {
-    path: '/projects/:id/orders/:orderId/search-workers',
-    component: SearchWorkers,
-    name: 'search-workers',
-    beforeEnter(to, from, next) {
-      if (store.getters['user/isLogged']) {
-        next();
-      } else {
-        next('/');
-      }
-    }
-  },
-  {
-    path: '/projects/:id/leave-feedback',
-    component: ProjectFeedback,
-    name: 'project-feedback',
-    beforeEnter(to, from, next) {
-      if (store.getters['user/isLogged']) {
-        next();
-      } else {
-        next('/');
-      }
-    }
-  },
+
   {
     path: '/privacy-policy',
     component: PrivacyPolicy,
@@ -194,6 +80,7 @@ const routes = [
 
 //routes.push(auth);
 routes.push(profile);
+routes.push(projects);
 
 const router = new VueRouter({
   routes,

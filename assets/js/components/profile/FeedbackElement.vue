@@ -6,6 +6,7 @@
    <div class="show-more-element">
    </div>
  </div>
+    <div class="wrap-content">
     <div class="content-wrapper">
       <div class="title">
         {{title}}
@@ -17,6 +18,7 @@
     </div>
     <div class="post-date">
     {{postDate}}
+  </div>
   </div>
     <div class="img-wrapper">
       <img :src="author.avatar===null? '/static/images/profile/defaultAvatar.png' : $env.API_URL+author.avatar" alt="user-image">
@@ -104,7 +106,7 @@ import ShowMore from './../../components/profile/ShowMore'
     @media screen and (max-width: 1035px) {
       position: relative;
       top: 10px;
-      right: -226px;
+      right: -191px;
     }
     @media screen and (max-width: 767px){
       right: -121px;
@@ -119,6 +121,9 @@ import ShowMore from './../../components/profile/ShowMore'
       height: 140px;
       border-radius: 50%;
     }
+  }
+  .wrap-content{
+    padding-right: 10px;
   }
   .openBlock{
     max-height:max-content!important;
@@ -142,12 +147,15 @@ import ShowMore from './../../components/profile/ShowMore'
   justify-content: space-between;
 }
 .content-wrapper{
-  width: 545px;
+  width: 890px;
   padding-right: 216px;
   min-height: 130px;
+  @media screen and (max-width: 1440px){
+    width: 545px;
+  }
   @media screen and (max-width: 1035px) {
     display: flex;
-    padding-right: 23px;
+    padding-right: 0px;
     width: 95%;
     flex-direction: column;
     align-items: flex-start;
@@ -206,6 +214,9 @@ overflow-y: hidden;
   color: #2871D7;
   padding-top: 7px;
   padding-bottom: 10px;
+  @media screen and (max-width: 1035px){
+    padding-right: 0;
+  }
 }
   .feedback-post{
     position: relative;

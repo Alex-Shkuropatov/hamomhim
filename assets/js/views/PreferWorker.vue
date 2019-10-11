@@ -1,7 +1,5 @@
 <template>
   <div class="workers-wrapper">
-
-    <projects-header/>
     <div class="empty" v-if="!flag">
 
     </div>
@@ -25,7 +23,6 @@
 <script>
 
 import Worker from './../components/Worker';
-import ProjectsHeader from './../components/ProjectsHeader';
 
 export default {
   data(){
@@ -37,7 +34,6 @@ export default {
     };
   },
   components: {
-    ProjectsHeader,
     Worker,
 
   },

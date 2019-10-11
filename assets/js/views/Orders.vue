@@ -4,8 +4,6 @@
 
     <show-order/>
 
-    <projects-header v-bind="header"/>
-
     <div class="orders">
       <button class="back-b" @click="back"><i class="fas fa-chevron-right"></i>  חזור</button>
       <h1 class="title">רשימת פרויקטים</h1>
@@ -29,7 +27,6 @@
 <script>
 
   import Order from './../components/orders/Order.vue';
-  import ProjectsHeader from './../components/ProjectsHeader';
   import ShowOrder from './../components/modals/ShowOrder';
   import ShowWorkers from './../components/modals/ShowWorkers';
 
@@ -37,14 +34,6 @@
     data() {
       return {
         orders: [],
-        header: {
-          imageBg: '/static/images/bg-header-projects.png',
-          user: {
-            title: 'שמתשמ םש',
-            imageProfile: '/static/images/profile/defPicCutted.png',
-            position: 'האדר שייכל'
-          }
-        },
         changeModal: {
           modalCount: '',
         }
@@ -53,7 +42,6 @@
     components: {
       ShowWorkers,
       Order,
-      ProjectsHeader,
       ShowOrder
     },
     methods: {
@@ -67,10 +55,10 @@
 
       },
       newOrder() {
-        this.$router.push('/orders/new-order');
+        this.$router.push({name: 'new-order'});
       },
       back(){
-        this.$router.push('/projects');
+        this.$router.push({name: 'projects'});
       }
     },
     mounted() {

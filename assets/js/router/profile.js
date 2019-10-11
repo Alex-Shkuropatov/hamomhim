@@ -8,18 +8,13 @@ import WorkerPackages from './../views/profile/WorkerPackages.vue';
 
 import EditProfile from './../views/profile/EditProfile.vue';
 import store from "../store";
+import middleware from "./middleware";
 
 export default {
   path: '/profile',
   component: ProfileTemplate,
   name: 'profile',
-  beforeEnter(to, from, next) {
-    if (store.getters['user/isLogged']) {
-      next();
-    } else {
-      next('/');
-    }
-  },
+  beforeEnter: Multiguard([middleware.isLogged, middleware.isWorker]),
   children: [
     {
       path: 'requests',

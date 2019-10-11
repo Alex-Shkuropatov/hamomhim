@@ -5,7 +5,6 @@
 
     <close-project @click="open"  />
 
-    <projects-header  />
 
     <router-view></router-view>
 
@@ -61,7 +60,6 @@
 <script>
 
 import Project from './../components/Project';
-import ProjectsHeader from './../components/ProjectsHeader';
 import AddProj1 from "../components/modals/AddProj1";
 import CloseProject from "../components/modals/CloseProject"
 export default {
@@ -76,7 +74,6 @@ export default {
   },
   components: {
     Project,
-    ProjectsHeader,
     AddProj1,
     CloseProject,
   },

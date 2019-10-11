@@ -45,7 +45,7 @@
         <div class="row row-f">
           <router-link :to="{name: 'prefer-worker',  }" class=" link "   > קבלנים מועדפים   </router-link>
           <hr>
-          <router-link :to="{name: 'profile-edit',  }" class=" link "   > הגדרות חשבון  </router-link>
+          <router-link :to="{name: 'edit-profile',  }" class=" link "   > הגדרות חשבון  </router-link>
         </div>
       </ul>
     </div>
