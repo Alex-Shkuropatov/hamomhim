@@ -143,7 +143,7 @@
     margin-right: 15px;
     margin-left: 15px;
 
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     @media screen and (max-width:1700px){
       margin-right: 8px;
       margin-left: 8px;

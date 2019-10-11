@@ -51,7 +51,9 @@ export default {
     data(state) {
       return state.data;
     },
-
+    isWorker(state){
+      return state.data.role === 'worker';
+    },
     getField: state => fieldName => state.data[fieldName],
   }
 };

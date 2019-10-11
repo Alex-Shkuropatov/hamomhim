@@ -183,7 +183,7 @@ margin-top: 50px;
   margin-right: 15px;
   margin-left: 15px;
 
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   @media screen and (max-width:1700px){
     margin-right: 8px;
     margin-left: 8px;
@@ -193,11 +193,12 @@ margin-top: 50px;
         .content{
           .content-info{
             .footer-wrapper{
-              margin-top: 24px;
+              margin-top: 10px;
+              margin-bottom: 15px;
               .add-user{
                 display: none;
               }
-              margin-bottom: 20px;
+
             }
           }
         }

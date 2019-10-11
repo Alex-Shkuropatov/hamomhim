@@ -240,12 +240,12 @@
         }
       }
       .closeB{
-        margin-right: 10px;
+        margin-left: 10px;
         background: #E0E0E0;
         border-radius: 50px;
       }
       .saveB{
-        margin-left: 10px;
+        margin-right: 10px;
         background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
         border-radius: 50px;
       }

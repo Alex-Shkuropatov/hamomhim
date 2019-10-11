@@ -14,7 +14,7 @@
             v-bind="worker">
           </order-workers>
         </div>
-        <div class="empty" v-show="getData.length===0">
+        <div class="empty-h" v-show="getData.length===0">
           <h3> No workers on order</h3>
         </div>
       </div>
@@ -112,7 +112,8 @@
       font-size: 30px;
     }
   }
-.empty{
+.empty-h{
+  margin: 15px 0 30px 0;
   h3{
     text-align: center;
   }

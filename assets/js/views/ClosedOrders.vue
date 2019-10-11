@@ -1,8 +1,6 @@
 -<template>
   <div class="projects-wrapper">
 
-    <projects-header  />
-
     <div class="projects">
       <div class="backB">
         <button @click="back">
@@ -35,7 +33,6 @@
 <script>
 
   import Order from '../components/orders/Order';
-  import ProjectsHeader from './../components/ProjectsHeader';
 
 
   export default {
@@ -47,8 +44,6 @@
     },
     components: {
       Order,
-      ProjectsHeader,
-
     },
     methods: {
       back(){
