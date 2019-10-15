@@ -1,8 +1,7 @@
 <template>
-
   <div class="editWrapper">
 
-    <alert-modal v-bind="alertFlag? modalSuccess: modalFail"/>
+    <alert-modal  />
 
     <div class="editP">
 
@@ -64,13 +63,10 @@
     </div>
   </div>
 </template>
-
 <script>
-
 
 import AlertModal from '../modals/Alert.vue';
 import DropDown from '../common/DropDown.vue';
-
 export default {
   components: {
     AlertModal,
@@ -113,19 +109,6 @@ export default {
         value: '',
         labelKey: 'name',
         valueKey: 'id',
-      },
-      alertFlag: '',
-      modalSuccess: {
-        title: 'New information have been saved',
-        text: 'Lorem Ipsum dolor set amet',
-        buttonText: 'חזור לאתר',
-        icon: 'success'
-      },
-      modalFail: {
-        title: 'Fail',
-        text: 'Lorem Ipsum dolor set amet',
-        buttonText: 'חזור לאתר',
-        icon: 'fail'
       },
     }
   },
@@ -174,20 +157,18 @@ export default {
     },
     openModalPass (e) {
       e.preventDefault();
-      this.$store.commit('modals/alert/open');
       this.changePassword();
     },
     changeInfo(){
       let data = this.setFromData();
-
       axios.post('/api/changePersonalInfo', data)
       .then((response) => {
-        this.alertFlag = true;
+        let res = response.data;
+        this.$store.commit('modals/alert/saveData',{success:res.success,text : res.message? res.message: 'Information successfully saved'});
         this.$store.commit('modals/alert/open');
         this.$store.dispatch('user/updateData');
       })
       .catch((error) => {
-        this.alertFlag = false;
         this.$store.commit('modals/alert/open');
       });
     },
@@ -195,7 +176,9 @@ export default {
 
       axios.post('/api/changePassword', this.user)
       .then((response) => {
-        console.log(response);
+        let res = response.data;
+        this.$store.commit('modals/alert/saveData',{success:res.success,text : res.message? res.message: 'Information successfully saved'});
+          this.$store.commit('modals/alert/open');
         this.$store.dispatch('user/updateData');
       })
       .catch((error) => {

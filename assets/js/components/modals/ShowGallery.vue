@@ -1,6 +1,7 @@
 <template>
   <transition name="slide-fade">
     <modal v-if="$store.getters['modals/showGallery/isOpened']" @close="close">
+
       <h3>Works Gallery</h3>
       <div class="content" v-if="getPost!==''">
         <div class="img-wrapper">
@@ -26,6 +27,7 @@
 
      </div>
       </div>
+
     </modal>
 </transition>
 </template>
@@ -33,7 +35,7 @@
 <script>
   import Modal from '../common/Modal';
   import Subcategory from '../orders/Subcategory.vue'
-
+import Preloader from'../common/Preloader'
   export default {
     data() {
       return {
@@ -74,7 +76,8 @@
     },
     components: {
       Modal,
-      Subcategory
+      Subcategory,
+      Preloader,
     },
     computed: {
       getPost(){
@@ -82,14 +85,15 @@
          }
 
     },
-    mounted() {
 
-    }
   }
 </script>
 
 <style lang="scss" scoped>
-
+.wrap-preloader{
+  width: 300px;
+  height: 300px;
+}
 .content{
   width: 800px;
   @media screen and (max-width: 900px){

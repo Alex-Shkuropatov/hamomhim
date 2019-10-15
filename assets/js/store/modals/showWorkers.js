@@ -14,32 +14,48 @@ export default {
     open(state) {
       state.opened = true;
     },
+    setWorkers(state,workers){
+      state.workers = workers;
+    },
+    setId(state, orderId){
+      state.orderId = orderId;
+    },
     setName(state, name){
       state.projectName = name;
     },
-    saveData(state,id){
-      axios.post('/api/getOrderWorkers',id)
-          .then((resolve)=>{
-            console.log(resolve);
-            state.workers = resolve.data.value.workers;
-            state.orderId = id.order_id;
-            console.log(state.orderId);
-          }).catch((error)=>{
-        console.log(error);
-      })
+    removeWorker(state,id){
+      let index ;
+     for(let i=0; i<state.workers.length; i++){
+      if ( state.workers[i].id === id){
+        index = i;
+      }
+     }
+     state.workers.splice(index,1);
     },
     switch(state) {
       state.opened = !state.opened;
     },
   },
   actions: {
-
+    saveData(context,id){
+      return axios.post('/api/getOrderWorkers',id)
+          .then((resolve)=>{
+            console.log('resolve');
+            console.log(resolve);
+            context.commit('setWorkers',  resolve.data.value.workers);
+            context.commit('setId',   id.order_id);
+          }).catch((error)=>{
+        console.log(error);
+      })
+    },
   },
   getters: {
     isOpened(state) {
       return state.opened;
     },
     getWorkers(state) {
+      console.log('log');
+      console.log(state.workers);
       return state.workers;
     },
     getProjectName(state) {

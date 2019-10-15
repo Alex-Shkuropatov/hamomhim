@@ -22,7 +22,7 @@
 
 <script>
 
-import Worker from './../components/Worker';
+import Worker from '../../components/Worker';
 
 export default {
   data(){

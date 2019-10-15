@@ -1,7 +1,6 @@
 <template>
   <div class="feedback-wrapper">
 
-    <projects-header  />
 
     <div  class="feedback">
       <div class="th-heading text-center">םיטקיורפ תמישר</div>
@@ -20,10 +19,10 @@
 
 <script>
 
-  import Worker from './../components/Worker';
-  import ProjectsHeader from './../components/ProjectsHeader';
-  import OrdersSlider from '../components/projectFeedback/OrdersSlider';
-  import WorkersList from '../components/projectFeedback/WorkersList';
+  import Worker from '../../components/Worker';
+  import ProjectsHeader from '../../components/ProjectsHeader';
+  import OrdersSlider from '../../components/projectFeedback/OrdersSlider';
+  import WorkersList from '../../components/projectFeedback/WorkersList';
 
   export default {
     data() {

@@ -1,15 +1,16 @@
 import Multiguard from 'vue-router-multiguard';
 
-import Projects from "./../views/Projects.vue";
-import Orders from "./../views/Orders.vue";
-import NewOrder from "./../views/NewOrder.vue";
-import ProjectFeedback from './../views/ProjectFeedback.vue';
-import EditOrder from './../views/EditOrder.vue';
-import ClosedProjects from './../views/ClosedProjects.vue'
-import ClosedOrders from './../views/ClosedOrders.vue';
-import SearchWorkers from "./../views/SearchWorkers.vue";
+import Projects from "./../views/projects/Projects.vue";
+import Orders from "./../views/projects/Orders.vue";
+import NewOrder from "./../views/projects/NewOrder.vue";
+import ProjectFeedback from './../views/projects/ProjectFeedback.vue';
+import EditOrder from './../views/projects/EditOrder.vue';
+import ClosedProjects from './../views/projects/ClosedProjects.vue';
+
+import ClosedOrders from './../views/projects/ClosedOrders.vue';
+import SearchWorkers from "./../views/projects/SearchWorkers.vue";
 import ProjectsTemlate from './../views/projects/ProjectsTemplate.vue';
-import PreferWorker from './../views/PreferWorker.vue';
+import PreferWorker from './../views/projects/PreferWorker.vue';
 import EditProfile from './../components/profile/EditArchitectProfile.vue'
 import middleware from './middleware'
 import store from "../store";

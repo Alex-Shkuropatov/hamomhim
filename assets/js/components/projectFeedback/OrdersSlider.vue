@@ -106,7 +106,10 @@
   }
   .one-block{
     width: 550px;
-    margin: 0 auto
+    margin: 0 auto;
+    @media screen and (max-width:600px){
+      width: 312px;
+    }
   }
   .slide-inner{
     display: flex;
@@ -136,7 +139,7 @@
       }
       .description{
         font-size: 18px;
-        text-align: right;
+        text-align: center;
         max-height: 70px;
         overflow:hidden;
         color: #4F4F4F;
@@ -183,6 +186,9 @@
     font-size: 48px;
     color: #000000;
     font-weight: normal;
+    @media screen and (max-width: 480px){
+      font-size: 35px;
+    }
   }
   .wraping-block{
     position: relative;

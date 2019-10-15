@@ -1,8 +1,6 @@
 <template>
   <div class="workers-wrapper">
 
-    <projects-header/>
-
     <div class="workers-list">
       <div class="title">
         <h1 class="title-t">הוסף קבלן חדש</h1>
@@ -18,6 +16,7 @@
       <div class="projects-list-wrap l-container" v-show="done" >
         <div class="workers-list"  v-show="workers.length!==0 ">
           <Worker
+                  @add="addWorker"
                   class="worker-item"
                   v-for="worker in workers" :key="worker.id"
                   v-bind="worker">
@@ -33,10 +32,8 @@
 
 <script>
 
-
-  import Worker from './../components/Worker';
-  import ProjectsHeader from './../components/ProjectsHeader';
-  import DropDown from './../components/common/DropDown';
+  import Worker from '../../components/Worker';
+  import DropDown from '../../components/common/DropDown';
 
   export default {
     data() {
@@ -52,11 +49,19 @@
       }
     },
     components: {
-      ProjectsHeader,
       Worker,
       DropDown
     },
     methods: {
+      addWorker(data){
+        let index;
+     for (let i=0; i<this.workers.length; i++){
+       if ( this.workers[i].id === data.id){
+         index = i;
+       }
+     }
+     this.workers.splice(index,1);
+      },
       back() {
         this.$router.push({name: 'orders'});
       },
@@ -83,16 +88,12 @@
             response.data.value.workers.forEach((worker)=>{
               this.formData.append('exclude[]',  worker.id);
             });
-
             return axios.post('/api/searchWorkers', this.formData)
                 .then((response) => {
-                  this.workers = response.data.value;
+                  this.workers = Object.values(response.data.value);
                   this.done=true;
-                  console.log(this.workers);
                 })
                 .catch((error) => {
-                  console.log(error);
-                  console.log('-');
                 });
           });
         });
@@ -160,22 +161,24 @@
               margin-right: 0;
             }
             .footer-wrapper{
-              margin-top: 26px;
+
               .add-user{
                 @media screen and (max-width:1024px){
-                  margin-left: 0;
-                  margin-top: 8px;
-                  margin-bottom: 8px;
+
                 }
               }
-              margin-bottom: 20px;
+
               button{
 
                   width: 179.06px;
+                height: 35.18px;
+                font-weight: bold;
+                font-size: 19px;
+                @media screen and (max-width:767px){
+                  width: 118.06px;
                   height: 35.18px;
-                  font-weight: bold;
-                  font-size: 19px;
-
+                  font-size: 15px;
+                }
               }
             }
           }

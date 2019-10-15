@@ -78,9 +78,9 @@
 </template>
 
 <script>
-import CategoriesSlider from '../components/index/CategoriesSlider.vue'
-import Document from '../components/orders/Document'
-import DropDown from '../components/common/DropDown'
+import CategoriesSlider from '../../components/index/CategoriesSlider.vue'
+import Document from '../../components/orders/Document'
+import DropDown from '../../components/common/DropDown'
 
 export default {
   data() {

@@ -9,8 +9,11 @@
         />
       </div>
       <div class="description">
-        <span class="bold">םיאבה םיסקדניאב סולפ םיצופישב עיפומ בולואש ןויצ</span>
-        <span >.הלק הינב ,םיקינצופיש ,םיצופיש ינלבק</span>
+        <span class="bold">ציון שאולוב מופיע בשיפוצים פלוס באינדקסים הבאים</span>
+       <span><span
+                v-for="subcategory in subcategories"
+                :key="subcategory.id"
+        >, {{subcategory.name}}</span>.</span>
       </div>
       <button class="th-btn th-btn-blue th-btn-lg contact-b"><span>צור קשר </span></button>
     </div>
@@ -24,7 +27,10 @@ export default {
   props: {
 user:{
   type: Object
-}
+},
+    subcategories:{
+      type: Array,
+    }
   },
   data (){
     return{
