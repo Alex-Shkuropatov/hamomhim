@@ -8,10 +8,13 @@
       {{name}}
     </div>
     <div class="desciption">
-
+      ציון שאולוב מופיע בשיפוצים פלוס באינדקסים הבאים
     </div>
     <div class="under-text">
-
+ <span
+         v-for="subcategory in subcategories"
+         :key="subcategory.id"
+ >, {{subcategory.name}}</span>
     </div>
     <button class="th-btn th-btn-blue th-btn-lg feedback" @click="getWorkerId">Leave feedback</button>
   </div>
@@ -36,6 +39,9 @@
       id: {
         type: Number,
       },
+      subcategories:{
+        type: Array,
+      }
 
     },
     mounted() {
@@ -81,6 +87,17 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
+}
+.desciption{
+  text-align: center;
+  font-weight: 900;
+  width: 90%;
+}
+.under-text{
+  line-height: 17px;
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 5px;
 }
 .view-profile{
 

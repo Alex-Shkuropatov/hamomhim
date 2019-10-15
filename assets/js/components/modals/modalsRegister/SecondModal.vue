@@ -105,6 +105,7 @@
             placeholder="כתובת"
             v-on:change="getAddressData"
             country="il"
+
           >
           </vue-google-autocomplete>
           <!-- <input type="text"

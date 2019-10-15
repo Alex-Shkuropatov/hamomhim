@@ -5,16 +5,17 @@
       <div class="content-wrapper"  v-show="count===0" >
         <h2 class="title-h">רשימת קבלנים</h2>
 
-        <div class="workers-list" v-show="getData!==false">
+        <div class="workers-list" v-show="getData!==false" >
           <order-workers
             @getResponse="onResponse"
+            @onDelete="deleteWorker"
             class="orders-item"
             v-for="worker in getData" :key="worker.id  "
             :projectName = 'getName'
             v-bind="worker">
           </order-workers>
         </div>
-        <div class="empty-h" v-show="getData.length===0">
+        <div class="empty-h" v-show="getData.length===0" >
           <h3> No workers on order</h3>
         </div>
       </div>
@@ -34,11 +35,15 @@
       close() {
         this.$store.commit('modals/showWorkers/close');
         this.count= 0;
+
       },
       onResponse(data){
         console.log(data);
         this.data.response = data.response;
          this.count++;
+      },
+      deleteWorker(){
+
       },
       onBack(){
         this.count=0;
@@ -64,7 +69,8 @@
         count: 0,
         data: {
           response: {},
-        }
+        },
+        workerCount: 0,
       }
     },
     computed: {
@@ -73,6 +79,9 @@
       },
       getName(){
         return this.$store.getters['modals/showWorkers/getProjectName'];
+      },
+      checkAll(){
+        console.log(document.getElementById('someIDThatExists').style.display);
       }
 
     },

@@ -32,7 +32,7 @@
 
 <script>
 
-  import Order from '../components/orders/Order';
+  import Order from '../../components/orders/Order';
 
 
   export default {

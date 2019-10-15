@@ -59,9 +59,9 @@
 
 <script>
 
-import Project from './../components/Project';
-import AddProj1 from "../components/modals/AddProj1";
-import CloseProject from "../components/modals/CloseProject"
+import Project from '../../components/Project';
+import AddProj1 from "../../components/modals/AddProj1";
+import CloseProject from "../../components/modals/CloseProject"
 export default {
   data(){
     return {

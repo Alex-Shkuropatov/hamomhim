@@ -8,10 +8,13 @@
     {{name}}
     </div>
     <div class="desciption">
-      {{projectName}}
+      ציון שאולוב מופיע בשיפוצים פלוס באינדקסים הבאים
     </div>
     <div class="under-text">
-
+     <span
+             v-for="subcategory in subcategories"
+             :key="subcategory.id"
+     >, {{subcategory.name}}</span>
     </div>
     <button class="th-btn th-btn-blue th-btn-lg open-response" v-bind:class="{color: response===null }" :disabled="response === null" @click="openResponse" > השאר תגובה</button>
     <button class="view" @click="viewProfile" >צפה בפרופיל</button>
@@ -37,12 +40,20 @@ props: {
   id: {
     type: Number,
 },
+  subcategories:{
+    type:Array,
+  },
   response: {
     type: Object,
   },
   projectName:{
     type: String,
-  }
+  },
+  category:{
+    name:{
+      type:String,
+    }
+  },
 },
     methods: {
     deleteWorker(){
@@ -51,8 +62,11 @@ props: {
         orderId: orderData,
         userId: this.id,
       }).then((response)=>{
-        console.log(response);
-        this.display = false;
+       this.$store.commit('modals/showWorkers/removeWorker',{id: this.id});
+        this.$emit('onDelete',{
+
+        });
+
       }). catch((error)=>{
         console.log(error);
       });
@@ -73,6 +87,9 @@ props: {
       getId() {
         return this.$store.getters['modals/showWorkers/getOrderId'];
       },
+      getProjectName(){
+        this.$store.getters['modals/showWorkers/getProjectName'];
+      }
     },
 
   }
@@ -82,7 +99,7 @@ props: {
   .worker-item{
     position: relative;
     margin: 5px;
-    height: 240px;
+    height: 297px;
     width: 220px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
     display: flex;
@@ -93,6 +110,7 @@ props: {
       font-weight: 800;
       font-size: 20px;
       text-align: right;
+      margin-top:0;
       color: #2871D7;
     }
     .closeB{
@@ -100,8 +118,17 @@ props: {
       height: 30px;
     }
   }
+  .desciption{
+    text-align: center;
+    font-weight: 900;
+  }
+  .under-text{
+    line-height: 17px;
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
   .profileImg {
-    margin-top: 20px;
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -113,7 +140,7 @@ props: {
     font-size: 14px;
     text-align: center;
     padding: 0 24px 0 0px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
   }
   .color{
     background: linear-gradient(90deg, gray 0%, gray 100%)!important;
@@ -123,7 +150,6 @@ props: {
     transform:  unset!important;
   }
   .view{
-    position: absolute;
     bottom: 10px;
     font-weight: bold;
     font-size: 14px;

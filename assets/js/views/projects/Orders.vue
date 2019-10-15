@@ -26,9 +26,9 @@
 </template>
 <script>
 
-  import Order from './../components/orders/Order.vue';
-  import ShowOrder from './../components/modals/ShowOrder';
-  import ShowWorkers from './../components/modals/ShowWorkers';
+  import Order from '../../components/orders/Order.vue';
+  import ShowOrder from '../../components/modals/ShowOrder';
+  import ShowWorkers from '../../components/modals/ShowWorkers';
 
   export default {
     data() {
