@@ -1,14 +1,14 @@
 <template>
   <div class="post-item">
     <div class="thumb">
-      <img :src="thumb" alt="">
+      <img :src="thumb? $env.API_URL+thumb: '/static/images/default/default-blog.png' " alt="">
     </div>
     <div class="title">{{title}}</div>
     <div class="meta">
-      <span>{{date}}</span> | <span>by {{author}}</span>
+      <span>{{getDate}}</span> | <span>by {{author}}</span>
     </div>
-    <div class="excerpt">{{excerpt}}</div>
-    <a :href="url" class="th-btn th-btn-empty th-btn-sm">קרא את הפוסט הזה</a>
+    <div class="excerpt">{{description}}</div>
+    <router-link  class="th-btn th-btn-empty th-btn-sm" :to="{name: 'blog-post', params: {id: id}}">קרא את הפוסט הזה </router-link>
   </div>
 </template>
 
@@ -27,6 +27,12 @@ export default {
       default: '',
       type: String,
     },
+    created_at:{
+      type: String,
+    },
+    description:{
+      type:String,
+    },
     author: {
       default: '',
       type: String,
@@ -42,6 +48,13 @@ export default {
     url: {
       default: '#',
       type: String,
+    }
+  },
+  computed:{
+    getDate(){
+      if (this.created_at){
+        return this.created_at.slice(0,11).replace(/-/g, '.')
+      }
     }
   }
 }

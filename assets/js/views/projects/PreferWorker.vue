@@ -96,7 +96,7 @@ margin-top: 50px;
         .content{
           .content-info{
             .footer-wrapper{
-              margin-top: 70px;
+              margin-top: 15px;
               .add-user{
                 display: none;
               }
