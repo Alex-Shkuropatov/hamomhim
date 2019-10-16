@@ -3,8 +3,8 @@
     <div class="empty" v-if="!flag">
 
     </div>
-    <div class="wrap"  v-if="flag">
 
+    <div class="wrap"  v-if="flag">
 
     <template v-if="responses.length">
       <div class="response-item" v-for="response in responses">
@@ -18,7 +18,8 @@
             <hr class="th-divider">
             <div class="description">{{response.description}}</div>
           </div>
-          <div class="img-col" :style="{ backgroundImage: 'url(' + $env.API_URL + response.files[0].file + ')' }"></div>
+          <div class="img-col" :style="[ response.files.length>0?  {backgroundImage: 'url(' + $env.API_URL + response.files[0].file + ')'} : {backgroundImage: 'url(/static/images/projects/addImg.png)'} ]">
+          </div>
         </div>
       </div>
     </template>
@@ -53,6 +54,7 @@ export default {
   },
   mounted(){
     this.getItemsFromApi();
+
   }
 }
 </script>

@@ -164,12 +164,16 @@ export default {
       return this.$store.getters['categories/data'];
     },
     subcatsItems(){
+      let subcats = [];
       if(this.category_id && this.$store.getters['categories/isLoaded']){
-        return this.$store.getters['categories/getSubCategoriesById'](this.category_id);
+        this.$store.getters['categories/getSubCategoriesById'](this.category_id).forEach(el => {
+          subcats.push({
+            id: el.id,
+            name: el.name
+          });
+        });
       }
-      else{
-        return [];
-      }
+      return subcats;
     },
   },
   methods: {

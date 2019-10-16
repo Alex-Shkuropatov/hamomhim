@@ -18,6 +18,15 @@ export default {
         {id: 4, thumb: '/static/images/news/news-thumb.png', title: 'הגדלת הכנסות', author: 'Lorem Ipsum', date: '12.23.19', url: '#', excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
       ],
     };
+  },
+  mounted() {
+    axios.post('/api/admin/getAllBlogs',{'sortBy':'id','orderBy': 'DESC', page: '0', take: '3'})
+        .then((response)=>{
+          console.log(response);
+          this.posts = response.data.value.records;
+        }).catch((error)=>{
+      console.log(error);
+    })
   }
 }
 </script>
