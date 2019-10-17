@@ -224,8 +224,12 @@
   padding-right: ceil($scale1 * 15px);
   padding-left: ceil($scale1 * 15px);
   font-size: ceil($scale1 * 24px);
+  border: 1px solid #DEDEDE;
   &::placeholder {
 
+  }
+  &.less-rounded-corners {
+    border-radius: 8px;
   }
 }
 

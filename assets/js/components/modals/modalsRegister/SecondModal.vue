@@ -140,8 +140,7 @@
             placeholder="כתובת"
             v-on:change="getAddressData"
             country="il"
-          >
-          </vue-google-autocomplete>
+          />
           <div class="error-wrapper" v-if="$v.adress">
             <p class="error-message" v-if="!$v.address.required">
               שדה נדרש
