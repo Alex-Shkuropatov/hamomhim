@@ -22,7 +22,15 @@
             <span>אזור מגורים</span>
             <input class="foemField" v-model.trim="user.city" placeholder="אזור מגורים" type="text">
             <span>כתובת</span>
-            <input class="foemField" v-model.trim="user.address" placeholder="כתובת" type="text">
+            <vue-google-autocomplete
+              ref="addressAutoComplete"
+              id="map"
+              classname="foemField"
+              placeholder="כתובת"
+              v-on:change="getAddressData"
+              country="il"
+            />
+            <!-- <input class="foemField" v-model.trim="user.address" placeholder="כתובת" type="text"> -->
             <span>טלפון</span>
             <input class="foemField" v-model.trim="user.phone" placeholder="טלפון" type="text">
           </div>
@@ -70,11 +78,13 @@
 
 import AlertModal from '../modals/Alert.vue';
 import DropDown from '../common/DropDown.vue';
+import VueGoogleAutocomplete from 'vue-google-autocomplete';
 
 export default {
   components: {
     AlertModal,
     DropDown,
+    VueGoogleAutocomplete,
   },
   data: function () {
     return {
@@ -216,6 +226,12 @@ export default {
       myFormData.append('working_area', this.user.working_area );
       myFormData.append('userId', this.user.userId);
       return myFormData;
+    },
+    getAddressData(addressData, placeResultData, id){
+      //console.log({addressData, placeResultData, id});
+      //console.log(this.$refs.addressAutoComplete.autocompleteText);
+
+      this.user.address = this.$refs.addressAutoComplete.autocompleteText;
     },
   },
   mounted(){
