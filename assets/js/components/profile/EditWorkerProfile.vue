@@ -30,6 +30,8 @@ import Feedback from './Feedback.vue';
 import WorkerFiles from './edit-worker-profile/WorkerFiles';
 import WorkerProfileFirstScreen from './WorkerProfileFirstScreen';
 
+//import { required, email } from "vuelidate/lib/validators";
+
 export default {
   components: {
     PersonalInfo,
@@ -41,12 +43,25 @@ export default {
   },
   data(){
     return {
-      user: {},
+      user: {
+        // name: '',
+        // email: '',
+      },
       workerWorks: [],
       files: [],
       comments: []
     }
   },
+  // validations: {
+  //   user: {
+  //     name: {
+  //       required
+  //     },
+  //     email: {
+  //       required, email
+  //     }
+  //   }
+  // },
   methods: {
     getDataFromApi(){
       axios.post('api/getWorkerProfile', {'user_id' : this.$store.getters['user/getField']('id')})

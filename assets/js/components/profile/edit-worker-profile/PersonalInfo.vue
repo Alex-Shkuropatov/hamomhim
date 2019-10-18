@@ -300,4 +300,49 @@ $gutter: 17px;
   transition: all .3s ease-out;
   overflow: hidden;
 }
+@media(max-width: 768px){
+  .personal-info-wrap{
+    margin-top: 30px;
+  }
+  .personal-info{
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+  .avatar-col{
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .forms-col{
+    width: 100%;
+    padding: 0 30px;
+    margin-left: 0;
+    margin-top: 20px;
+  }
+}
+@media(max-width: 576px){
+  .avatar-col{
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .avatar{
+    width: 75%;
+    padding-top: 75%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .forms-col{
+    padding: 0 15px;
+  }
+  .personal-info{
+    padding-bottom: 15px;
+  }
+  .avatar-col{
+    width: 100%;
+  }
+  .forms-col .col1-2{
+    width: 100%;
+  }
+}
 </style>

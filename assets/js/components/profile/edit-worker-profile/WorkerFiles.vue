@@ -130,4 +130,15 @@ export default {
 input{
   display: none;
 }
+
+@media(max-width: 576px){
+  .section-wrap{
+    margin-top: 15px;
+  }
+  .upload-btn-wrap,
+  .files-list .item{
+    padding: 10px;
+    font-size: 14px;
+  }
+}
 </style>
