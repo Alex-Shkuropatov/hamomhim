@@ -297,4 +297,9 @@ $gutter: 17px;
   transition: all .3s ease-out;
   overflow: hidden;
 }
+@media(max-width: 768px){
+  .personal-info-wrap{
+    margin-top: 30px;
+  }
+}
 </style>
