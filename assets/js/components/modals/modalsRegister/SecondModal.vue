@@ -324,17 +324,21 @@
         this.$v.address.$touch();
         this.$v.workArea.value.$touch();
         this.$v.pass.$touch();
+
         if (this.role==='worker'){
           this.$v.categories.value.$touch();
           this.$v.subcategories.value.$touch();
         }
-        if(!this.$v.$invalid) {
+
 
           let subcat = [];
-          console.log(this.subcategories.value);
-          this.subcategories.value.forEach((item) => {
-            subcat.push(item.id);
-          });
+          if (this.role==='worker') {
+
+            console.log(this.subcategories.value);
+            this.subcategories.value.forEach((item) => {
+              subcat.push(item.id);
+            });
+          }
           this.$emit('send', {
             name: this.name,
             email: this.email,
@@ -350,7 +354,7 @@
             password_confirmation: this.pass,
             subcategories: subcat,
           })
-        }
+
       },
       onFocus(e) {
         console.log(e.target);
