@@ -57,6 +57,7 @@
   import ForgetPassword from '../modals/ForgetPassword.vue'
   import axios from 'axios';
   import BurgerMenu from '../common/BurgerMenu.vue'
+  import Alert from './../modals/Alert.vue'
   export default {
     data: function (){
       return {
@@ -70,6 +71,7 @@
       axios,
       BurgerMenu,
       ForgetPassword,
+      Alert,
     },
     methods: {
       openReg(e){

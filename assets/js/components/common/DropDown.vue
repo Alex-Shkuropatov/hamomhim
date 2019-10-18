@@ -113,6 +113,10 @@ export default {
       font-weight: normal;
     }
   }
+  .th-input{
+ border:none;
+    height: 42px;
+  }
   .popup {
     top: 38px;
     width: 100%;

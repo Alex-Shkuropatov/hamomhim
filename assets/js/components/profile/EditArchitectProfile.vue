@@ -15,73 +15,180 @@
           <img :src="user.avatar==='http://api.hamomhim.coelix.online/null'? '/static/images/profile/defaultAvatar.png': user.avatar " class="profileImg" alt="">
         </div>
         <div class="textFields">
-          <div class="column cLeft">
+          <div class="row-wrapper">
+            <div class="row">
             <span>שם מלא</span>
-            <input class="foemField" v-model.trim="user.name" placeholder="שם מלא"  type="text">
-            <span>אזור מגורים</span>
-            <input class="foemField" v-model.trim="user.city" placeholder="אזור מגורים" type="text">
-            <span>כתובת</span>
-            <vue-google-autocomplete
-              ref="addressAutoComplete"
-              id="map"
-              classname="foemField"
-              placeholder="כתובת"
-              v-on:change="getAddressData"
-              country="il"
-            />
-            <!-- <input class="foemField" v-model.trim="user.address" placeholder="כתובת" type="text"> -->
-            <span>טלפון</span>
-            <input class="foemField" v-model.trim="user.phone" placeholder="טלפון" type="text">
-          </div>
-          <div class="column cRight">
-            <span>שם העסק</span>
-            <input class="foemField" v-model.trim="user.name_of_business" placeholder="שם העסק"  type="text">
-            <span>אזור עבודה</span>
-            <div class="selectWrapper">
-              <drop-down class="dropDown" placeholder="אזור עבודה" v-model="workArea.value" v-bind="workArea"/>
+            <input
+                    @input="$v.user.name.$touch()"
+                    :class="{ 'error': $v.user.name.$error, 'foemField': true }"
+                    v-model.trim.lazy="user.name"
+                    placeholder="שם מלא"
+                    type="text"
+            >
+            <div class="error-wrapper" v-if="$v.user.name.$dirty">
+              <p class="error-message" v-if="!$v.user.name.required">
+                שדה נדרש
+              </p>
             </div>
-            <span>טלפון עסקי</span>
-            <input class="foemField" v-model.trim="user.business_phone" placeholder="טלפון עסקי" type="text">
-            <span>פקס</span>
-            <input class="foemField" v-model.trim="user.fax" placeholder="פקס"  type="text" >
+          </div>
+            <div class="row">
+              <span>שם העסק</span>
+              <input
+                      @input="$v.user.name_of_business.$touch()"
+                      :class="{ 'error': $v.user.name_of_business.$error, 'foemField': true }"
+                      v-model.trim.lazy="user.name_of_business"
+                      placeholder="שם העסק"
+                      type="text"
+              >
+              <div class="error-wrapper" v-if="$v.user.name_of_business.$dirty">
+                <p class="error-message" v-if="!$v.user.name_of_business.required">
+                  שדה נדרש
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row-wrapper">
+            <div class="row">
+            <span>אזור מגורים</span>
+            <input
+                    @input="$v.user.city.$touch()"
+                    :class="{ 'error': $v.user.city.$error, 'foemField': true }"
+                    v-model.trim.lazy="user.city"
+                    placeholder="אזור מגורים"
+                    type="text"
+            >
+            <div class="error-wrapper" v-if="$v.user.city.$dirty">
+              <p class="error-message" v-if="!$v.user.city.required">
+                שדה נדרש
+              </p>
+            </div>
+          </div>
+            <div class="row">
+              <span>אזור עבודה</span>
+              <div class="selectWrapper">
+                <drop-down
+                        class="dropDown"
+                        placeholder="אזור עבודה"
+                        v-model="workArea.value"
+                        v-bind="workArea"
+                />
+              </div>
+            </div>
+          </div>
+         <div class="row-wrapper">
+           <div class="row">
+             <span>כתובת</span>
+             <vue-google-autocomplete
+                     ref="addressAutoComplete"
+                     id="map"
+                     @input="$v.user.address.$touch()"
+                     :class="{'error': $v.user.address.$error,'foemField': true }"
+                     placeholder="כתובת"
+                     v-on:change="getAddressData"
+                     country="il"
+             />
+             <div class="error-wrapper" v-if="$v.user.address.$dirty">
+               <p class="error-message" v-if="!$v.user.address.required">
+                 שדה נדרש
+               </p>
+             </div>
+           </div>
+           <div class="row">
+             <span>טלפון עסקי</span>
+             <input
+                     @input="$v.user.business_phone.$touch()"
+                     :class="{ 'error': $v.user.business_phone.$error, 'foemField': true }"
+                     v-model.trim.lazy="user.business_phone"
+                     placeholder="טלפון עסקי"
+                     type="text"
+             >
+             <div class="error-wrapper" v-if="$v.user.business_phone.$dirty">
+               <p class="error-message" v-if="!$v.user.business_phone.required">
+                 שדה נדרש
+               </p>
+             </div>
+           </div>
+         </div>
+      <div class="row-wrapper">
+        <div class="row">
+          <span>פקס</span>
+          <input
+                  @input="$v.user.fax.$touch()"
+                  :class="{ 'error': $v.user.fax.$error, 'foemField': true }"
+                  v-model.trim.lazy="user.fax"
+                  placeholder="פקס"
+                  type="text"
+          >
+          <div class="error-wrapper" v-if="$v.user.fax.$dirty">
+            <p class="error-message" v-if="!$v.user.fax.required">
+              שדה נדרש
+            </p>
           </div>
         </div>
+        <div class="row">
+          <span>טלפון</span>
+          <input
+                  @input="$v.user.phone.$touch()"
+                  :class="{ 'error': $v.user.phone.$error, 'foemField': true }"
+                  v-model.trim.lazy="user.phone"
+                  placeholder="טלפון"
+                  type="text"
+          >
+          <div class="error-wrapper" v-if="$v.user.phone.$dirty">
+            <p class="error-message" v-if="!$v.user.phone.required">
+              שדה נדרש
+            </p>
+          </div>
+        </div>
+      </div>
+
+          </div>
+
+
         <button class="sendData th-btn th-btn-blue th-btn-sm" ref="sendData" style="text-align:center"   @click="openModal">שמור</button>
       </form>
     </div>
-    <div class="editP_section editP">
-      <h2 class="titleH">שינוי סיסמה</h2>
-      <form action="" class="changePass">
-        <div class="textFields">
-          <div class="column cLeft">
-            <span>אמייל</span>
-            <input class="foemField" v-model.trim="user.email" placeholder="example@gmail.com"  type="text" disabled>
-            <span>סיסמה חדשה</span>
-            <input class="foemField" v-model.trim="user.newPassword" placeholder="**********" type="password">
-          </div>
-          <div class="column cRight">
-            <span>סיסמה נוכחית</span>
-            <input class="foemField" v-model.trim="user.oldPassword" placeholder="**********" type="password">
-            <span>אישור סיסמה חדשה</span>
-            <input class="foemField" v-model.trim="user.confirmPassword" placeholder="**********" type="password">
-          </div>
-        </div>
-        <button class="sendData th-btn th-btn-blue th-btn-sm"  @click="openModalPass">שמור</button>
-      </form>
-    </div>
+ <change-password :email="user.email" :userId="user.userId" />
   </div>
+
 </template>
 <script>
-
-import AlertModal from '../modals/Alert.vue';
-import DropDown from '../common/DropDown.vue';
-import VueGoogleAutocomplete from 'vue-google-autocomplete';
-
+  import AlertModal from '../modals/Alert.vue';
+  import DropDown from '../common/DropDown.vue';
+  import VueGoogleAutocomplete from 'vue-google-autocomplete';
+import { required, minLength } from "vuelidate/lib/validators";
+import ChangePassword from '../profile/ChangePassword.vue'
 export default {
+  validations:{
+    user:{
+      name:{
+        required,
+      },
+      city:{
+        required,
+      },
+      phone:{
+        required,
+      },
+      name_of_business: {
+        required,
+      },
+      address:{
+        required,
+      },
+      business_phone: {
+        required,
+      },
+      fax:{
+        required,
+      },
+    },
+  },
   components: {
+ ChangePassword,
     AlertModal,
-    DropDown,
     VueGoogleAutocomplete,
+    DropDown,
   },
   data: function () {
     return {
@@ -135,7 +242,8 @@ export default {
       this.user.city= data.city;
       this.user.name_of_business= data.name_of_business;
       this.user.business_phone = data.business_phone;
-      this.user.address= data.address;
+      this.$refs.addressAutoComplete.autocompleteText = data.address;
+      this.user.address = data.address;
       this.user.email= data.email;
       this.user.phone= data.phone;
       this.user.fax= data.fax;
@@ -166,36 +274,33 @@ export default {
       e.preventDefault();
       this.changeInfo();
     },
-    openModalPass (e) {
-      e.preventDefault();
-      this.changePassword();
-    },
     changeInfo(){
-      let data = this.setFromData();
-      axios.post('/api/changePersonalInfo', data)
-      .then((response) => {
-        let res = response.data;
-        this.$store.commit('modals/alert/saveData',{success:res.success,text : res.message? res.message: 'Information successfully saved'});
-        this.$store.commit('modals/alert/open');
-        this.$store.dispatch('user/updateData');
-      })
-      .catch((error) => {
-        this.$store.commit('modals/alert/open');
-      });
-    },
-    changePassword(){
+      this.$v.user.name.$touch();
+      this.$v.user.city.$touch();
+      this.$v.user.name_of_business.$touch();
+      this.$v.user.business_phone.$touch();
+      this.$v.user.address.$touch();
+      this.$v.user.phone.$touch();
+      this.$v.user.fax.$touch();
 
-      axios.post('/api/changePassword', this.user)
-      .then((response) => {
-        let res = response.data;
-        this.$store.commit('modals/alert/saveData',{success:res.success,text : res.message? res.message: 'Information successfully saved'});
-          this.$store.commit('modals/alert/open');
-        this.$store.dispatch('user/updateData');
-      })
-      .catch((error) => {
-        console.log(error.response.data);
-      });
+      if(!this.$v.$invalid  ) {
+        let data = this.setFromData();
+        axios.post('/api/changePersonalInfo', data)
+            .then((response) => {
+              let res = response.data;
+              this.$store.commit('modals/alert/saveData', {
+                success: res.success,
+                text: res.message ? res.message : 'Information successfully saved'
+              });
+              this.$store.commit('modals/alert/open');
+              this.$store.dispatch('user/updateData');
+            })
+            .catch((error) => {
+              this.$store.commit('modals/alert/open');
+            });
+      }
     },
+
     setFromData() {
       let myFormData = new FormData();
       myFormData.append('avatar', this.preload);
@@ -212,10 +317,8 @@ export default {
       return myFormData;
     },
     getAddressData(addressData, placeResultData, id){
-      //console.log({addressData, placeResultData, id});
-      //console.log(this.$refs.addressAutoComplete.autocompleteText);
 
-      this.user.address = this.$refs.addressAutoComplete.autocompleteText;
+      this.user.address = this.$refs.addressAutoComplete.autocompleteText.trim();
     },
   },
   mounted(){
@@ -252,7 +355,7 @@ export default {
     background: #FFFFFF;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
     width: 1166px;
-    height: 838px;
+    height: auto;
     margin-right: auto;
     margin-left: auto;
     @media screen and (max-width: 1440px) {
@@ -281,7 +384,7 @@ export default {
   }
   .editP_section{
     margin-top: 24px;
-    height: 449px;
+    height: auto;
     margin-bottom: 60px;
     @media screen and (max-width: 1440px) {
       height: auto;
@@ -356,6 +459,7 @@ export default {
 }
 .sendData{
   margin-top: 40px;
+  margin-bottom: 25px;
   background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
   border-radius: 10px;
   width: 731px;
@@ -385,32 +489,37 @@ export default {
 .textFields{
   padding-top: 20px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   @media screen and (max-width: 900px){
     flex-direction: column;
   }
-  .column{
+  .row-wrapper{
     display: flex;
-    flex-direction: column;
-    span{
-      margin-top: 15px;
-      margin-right: 10px;
-      font-family: Assistant;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 18px;
-      text-align: right;
+    flex-direction: row;
+    justify-content: space-around;
+    .row{
+      margin: 0 10px;
+      display: flex;
+      flex-direction: column;
+      span{
+        margin-top: 15px;
+        margin-right: 10px;
+        font-family: Assistant;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        text-align: right;
 
-      color: #333333;
-      @media screen and (max-width: 400px) {
-        text-align: center;
+        color: #333333;
+        @media screen and (max-width: 400px) {
+          text-align: center;
+        }
       }
-    }
-
-    input{
-      padding-right: 25px;
+      input{
+        padding-right: 25px;
+      }
     }
   }
 }

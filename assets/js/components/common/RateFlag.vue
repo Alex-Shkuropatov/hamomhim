@@ -48,6 +48,11 @@
       line-height: 30px;
       text-align: center;
       color: #FFFFFF;
+      @media screen and (max-width:1024px){
+        width: 25px;
+        left: 18px;
+        font-size: 30px;
+      }
     }
     .rate-info{
       position: absolute;
@@ -59,6 +64,12 @@
       line-height: 30px;
       text-align: center;
       color: #FFFFFF;
+      @media screen and (max-width:1024px){
+        top: 40px;
+        width: 54px;
+        left: 3px;
+        font-size: 11px;
+      }
     }
     .svg-pic{
       transition: all .2s ease;
@@ -67,6 +78,10 @@
       top: 0;
       left: 0;
       position: absolute;
+      @media screen and (max-width: 1024px){
+        width:58px;
+        height:76px;
+      }
     }
   }
 </style>

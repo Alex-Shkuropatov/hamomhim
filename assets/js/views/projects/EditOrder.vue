@@ -87,7 +87,7 @@
         <div class="row">
           <div class="title">תיאור חופשי</div>
           <textarea
-                  v-model.trim.lazy="description"
+                  v-model.trim="description"
                   name="text"
                   cols="30"
                   placeholder="ץופישה תודוא ןלבקל תורעהו טסקט םושרל ולכות ןאכ..."
@@ -98,6 +98,12 @@
              <div class="error-wrapper" v-if="$v.description.$dirty">
                 <p class="error-message" v-if="!$v.description.required">
                   שדה נדרש
+                </p>
+                <p class="error-message" v-else-if="!$v.description.minLength">
+                Description must contain more than 10 symbols
+                </p>
+                <p class="error-message" v-else-if="!$v.description.maxLength">
+                   Description must contain less than 150 symbols
                 </p>
               </div>
        </textarea>
@@ -115,7 +121,7 @@
 import CategoriesSlider from '../../components/index/CategoriesSlider.vue'
 import Document from '../../components/orders/Document'
 import DropDown from '../../components/common/DropDown'
-import { required, minLength} from "vuelidate/lib/validators";
+import { required, minLength, maxLength} from "vuelidate/lib/validators";
 
 export default {
   validations:{
@@ -130,6 +136,8 @@ export default {
       description: {
         required,
         minLength: minLength(10),
+        maxLength: maxLength(150),
+
       }
   },
   data() {

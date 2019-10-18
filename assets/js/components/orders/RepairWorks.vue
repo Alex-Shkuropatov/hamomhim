@@ -83,6 +83,9 @@
          <p class="error-message" v-else-if="!$v.formData.description.minLength">
            Description must contain more than 10 symbols
          </p>
+         <p class="error-message" v-else-if="!$v.formData.description.maxLength">
+           Description must contain less than 150 symbols
+         </p>
        </div>
      </div>
      <button class="next-b th-btn th-btn-blue th-btn-md" @click.prevent="sendOrder"><span>לשלב הבא</span></button>
@@ -94,7 +97,7 @@
 <script>
 import Document from './../orders/Document'
 import DropDown from './../common/DropDown'
-import { required, minLength} from "vuelidate/lib/validators";
+import { required, minLength, maxLength} from "vuelidate/lib/validators";
 
   export default {
   validations:{
@@ -110,6 +113,8 @@ workArea: {
       description: {
           required,
           minLength: minLength(10),
+          maxLength: maxLength(150),
+
       }
   }
   },
