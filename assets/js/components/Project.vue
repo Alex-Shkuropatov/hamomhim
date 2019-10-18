@@ -9,7 +9,7 @@
       </div>
       <div class="title">{{name}}</div>
       <div class="description">{{description}}</div>
-      <router-link :to="{name: path==='/acc/projects'?'orders': 'closed-orders', params:{id:id}}" class="th-btn th-btn-empty th-btn-sm"   >ראה פרטי המכרז</router-link>
+      <button  @click="openOrders"  class="th-btn th-btn-empty th-btn-sm"   >ראה פרטי המכרז</button>
     </div>
   </div>
 </template>
@@ -54,6 +54,14 @@
     methods: {
       close(){
         this.$store.commit('modals/projectPrice/open', this.id);
+      },
+      openOrders(){
+        if(this.path === '/acc/projects' ){
+          this.$store.commit('modals/showWorkers/setName', this.name);
+          this.$router.push({name: 'orders',params:{id:this.id}})
+        } else {
+          this.$router.push({name: 'closed-orders', params:{id:this.id}})
+        }
       },
     },
     mounted() {

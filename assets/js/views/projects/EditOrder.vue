@@ -29,12 +29,33 @@
           <div class="row" >
             <p class="formItem" > ץופיש רוזיא</p>
             <div class="selectWrapper ">
-              <drop-down class="dropDown inputName" placeholder="אזור עבודה" v-model="workArea.value" v-bind="workArea"/>
+              <drop-down
+                      @input="$v.workArea.value.$touch()"
+                      :class="{ 'error': $v.workArea.value.$error, 'dropDown inputName': true }"
+                      placeholder="אזור עבודה"
+                      v-model.trim.lazy="workArea.value"
+                      v-bind="workArea"
+              />
+              <div class="error-wrapper" v-if="$v.workArea.value.$dirty">
+                <p class="error-message" v-if="!$v.workArea.value.required">
+                  שדה נדרש
+                </p>
+              </div>
             </div>
           </div>
           <div class="row" >
             <p class="formItem" >שם מלא</p>
-            <input type="text" placeholder="שם מלא" v-model="name" class="inputName">
+            <input
+                    type="text"
+                    placeholder="שם מלא"
+                    v-model.trim.lazy="name"
+                    @input="$v.name.$touch()"
+                    :class="{ 'error': $v.name.$error, 'inputName': true }">
+            <div class="error-wrapper" v-if="$v.name.$dirty">
+              <p class="error-message" v-if="!$v.name.required">
+                שדה נדרש
+              </p>
+            </div>
           </div>
         </div>
         <div class="add-files">
@@ -65,7 +86,20 @@
         </div>
         <div class="row">
           <div class="title">תיאור חופשי</div>
-          <textarea v-model="description" name="text" id="" cols="30" placeholder="ץופישה תודוא ןלבקל תורעהו טסקט םושרל ולכות ןאכ..." rows="10">
+          <textarea
+                  v-model.trim.lazy="description"
+                  name="text"
+                  cols="30"
+                  placeholder="ץופישה תודוא ןלבקל תורעהו טסקט םושרל ולכות ןאכ..."
+                  rows="10"
+                  @input="$v.description.$touch()"
+                  :class="{ 'error': $v.description.$error}"
+          >
+             <div class="error-wrapper" v-if="$v.description.$dirty">
+                <p class="error-message" v-if="!$v.description.required">
+                  שדה נדרש
+                </p>
+              </div>
        </textarea>
         </div>
         <button class="next-b th-btn th-btn-blue th-btn-md" @click.prevent="sendOrder"><span>לשלב הבא</span></button>
@@ -78,11 +112,26 @@
 </template>
 
 <script>
-import CategoriesSlider from '../components/index/CategoriesSlider.vue'
-import Document from '../components/orders/Document'
-import DropDown from '../components/common/DropDown'
+import CategoriesSlider from '../../components/index/CategoriesSlider.vue'
+import Document from '../../components/orders/Document'
+import DropDown from '../../components/common/DropDown'
+import { required, minLength} from "vuelidate/lib/validators";
 
 export default {
+  validations:{
+    workArea: {
+      value:{
+        required,
+      }
+    },
+      name:{
+        required,
+      },
+      description: {
+        required,
+        minLength: minLength(10),
+      }
+  },
   data() {
     return {
       files: [],
@@ -156,30 +205,38 @@ export default {
       this.deleted_files.push(data.id);
     },
     sendOrder(){
-      let myFormData = new FormData();
-      for(let i=0; i<this.files.length; i++){
-        myFormData.append('files[]', this.files[i]);
-      }
-      for(let i=0; i<this.deleted_files.length; i++){
-        myFormData.append('deleted_files[]', this.deleted_files[i]);
-      }
-      for(let i=0; i<this.checkedServices.length; i++){
-        myFormData.append('subcategories[]', this.checkedServices[i]);
-      }
-      myFormData.append('order_id', this.$route.params.orderId);
-      myFormData.append('categoryId',this.categoryId);
-      myFormData.append('name', this.name);
-      myFormData.append('description', this.description);
-      myFormData.append('work_area', this.workArea.value);
+      this.$v.workArea.value.$touch();
+      this.$v.name.$touch();
+      this.$v.description.$touch();
 
-      axios.post('/api/changeOrder', myFormData)
-          .then((response)=>{
-            console.log(response);
-            this.deleted_files= [];
-            this.$router.push({ name: 'orders' });
-          }).catch(()=>{
-            console.log(error);
-      })
+      if(!this.$v.$invalid) {
+
+
+        let myFormData = new FormData();
+        for (let i = 0; i < this.files.length; i++) {
+          myFormData.append('files[]', this.files[i]);
+        }
+        for (let i = 0; i < this.deleted_files.length; i++) {
+          myFormData.append('deleted_files[]', this.deleted_files[i]);
+        }
+        for (let i = 0; i < this.checkedServices.length; i++) {
+          myFormData.append('subcategories[]', this.checkedServices[i]);
+        }
+        myFormData.append('order_id', this.$route.params.orderId);
+        myFormData.append('categoryId', this.categoryId);
+        myFormData.append('name', this.name);
+        myFormData.append('description', this.description);
+        myFormData.append('work_area', this.workArea.value);
+
+        axios.post('/api/changeOrder', myFormData)
+            .then((response) => {
+              console.log(response);
+              this.deleted_files = [];
+              this.$router.push({name: 'orders'});
+            }).catch(() => {
+          console.log(error);
+        })
+      }
     },
   },
   computed: {

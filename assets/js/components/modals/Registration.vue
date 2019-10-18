@@ -21,6 +21,7 @@
   import SecondModal from './modalsRegister/SecondModal.vue'
   import ThirdModal from './modalsRegister/TihirdModal.vue'
   import  Alert from './modalsProject/Alert.vue'
+
   import axios from 'axios';
   export default {
     data: function(){
@@ -92,12 +93,14 @@
         console.log(data.phoneCode);
         axios.post('/api/auth/confirmPhone',{email:this.user.email, role: this.user.role, code: data.phoneCode})
             .then((response)=>{
-             if (response.data.success){
+              let res = response.data;
+             if (res.success){
                this.code.flag = false;
                this.modal++;
              } else {
                this.code.flag = true;
              }
+              this.$store.commit('modals/alert/saveData',{success:res.success,text : res.message? res.message: 'Information successfully saved'});
               console.log(response);
             }).catch((error)=>{
               console.log(error);

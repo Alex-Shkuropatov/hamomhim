@@ -10,7 +10,16 @@
           <p class="formItem" >אימייל</p>
           <div>
             <i class="fas " ref="mail" v-bind:class="[{ 'fa-spin': focusedMail}, focusedMail ? 'fa-sync-alt':icon]"  ></i>
-            <input type="text" ref="mail" id="mail"  placeholder="מייל"  @focus="onFocus" @blur="onBlur" v-model="user.email" class="inputName">
+            <input
+                    type="text"
+                    ref="mail"
+                    id="mail"
+                    placeholder="מייל"
+                    @focus="onFocus"
+                    @blur="onBlur"
+                    v-model.trim.lazy="user.email"
+                    :class="{ 'error': $v.user.email.$error, 'inputName': true }">
+
           </div>
         </div>
         <div class="orderWrapper">
@@ -50,7 +59,13 @@
   import Modal from './../../common/Modal.vue';
   import axios from 'axios';
   export default {
+validations:{
+user:{
+  email:{
 
+  }
+}
+},
     methods: {
       close() {
         this.$store.commit('modals/login/close');

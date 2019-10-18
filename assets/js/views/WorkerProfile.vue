@@ -1,7 +1,7 @@
 <template>
 <div class="profile-wrapper" ref="nav">
 
- <worker-profile-first-screen :user="user"></worker-profile-first-screen>
+ <worker-profile-first-screen :user="user" :subcategories="subcategories"></worker-profile-first-screen>
 
  <div class="profile-about">
 
@@ -153,6 +153,7 @@ export default {
    user: {
 
    },
+   subcategories: [],
    sliderOptions: {
     slidesPerView: 3,
     navigation: {
@@ -196,6 +197,7 @@ export default {
       .then((response)=>{
       console.log(response.data.value);
       this.user = response.data.value.user;
+      this.subcategories = response.data.value.subcategories;
        this.posts = response.data.value.workerWork;
       this.favourite.is_favourite= this.user.is_favourite;
        this.favourite.user_id= this.user.id;

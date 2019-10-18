@@ -144,9 +144,12 @@
         });
       },
       showWorkers(){
-        this.$store.commit('modals/showWorkers/saveData', {'order_id':this.id});
-        this.$store.commit('modals/showWorkers/open');
-
+        this.$store.dispatch('modals/showWorkers/saveData', {'order_id':this.id})
+            .then((resolve)=>{
+              this.$store.commit('modals/showWorkers/open');
+            }).catch((error)=>{
+           console.log(error);
+        });
       },
       editOrder(){
         this.$router.push({
@@ -233,6 +236,7 @@
         @media screen and (max-width: 1440px) {
           margin: unset;
           width: 90%;
+          margin-top: 20px;
         }
 
         .title {
@@ -296,7 +300,9 @@
             margin-top: 37px;
           }
           @media screen and (max-width: 550px) {
-            margin-top: 20px;
+             width: 241.8px;
+            height: 54.07px;
+            font-size: 21px;
           }
         }
       }

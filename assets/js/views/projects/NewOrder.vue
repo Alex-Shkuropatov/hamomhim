@@ -10,9 +10,9 @@
 </template>
 
 <script>
-import CategoriesSlider from '../components/index/CategoriesSlider.vue'
-import Services from '../components/orders/Services.vue'
-import RepairWorks from '../components/orders/RepairWorks.vue'
+import CategoriesSlider from '../../components/index/CategoriesSlider.vue'
+import Services from '../../components/orders/Services.vue'
+import RepairWorks from '../../components/orders/RepairWorks.vue'
 export default {
   data() {
     return {
@@ -51,7 +51,7 @@ export default {
           'Content-Type': 'multipart/form-data'
         }})
           .then((response) => {
-            console.log(response.data.orderId);
+            console.log(response);
             this.$router.push({
               name: 'search-workers',
               params:

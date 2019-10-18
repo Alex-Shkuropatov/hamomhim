@@ -8,12 +8,34 @@
        <div class="row" >
          <p class="formItem" > איזור שיפוץ</p>
          <div class="selectWrapper ">
-           <drop-down class="dropDown inputName" placeholder="אזור עבודה" v-model="workArea.value" v-bind="workArea"/>
+           <drop-down
+                   placeholder="אזור עבודה"
+                   v-model="workArea.value"
+                   v-bind="workArea"
+                   @input="$v.workArea.value.$touch()"
+                   :class="{ 'error': $v.workArea.value.$error, 'dropDown inputName': true }"
+           />
+           <div class="error-wrapper" v-if="$v.workArea.value.$dirty">
+             <p class="error-message" v-if="!$v.workArea.value.required">
+               שדה נדרש
+             </p>
+           </div>
          </div>
        </div>
        <div class="row" >
          <p class="formItem" >שם מלא</p>
-         <input type="text" placeholder="שם מלא" v-model="formData.name" class="inputName">
+         <input
+                 type="text"
+                 placeholder="שם מלא"
+                 v-model.trim.lazy="formData.name"
+                 @input="$v.formData.name.$touch()"
+                 :class="{ 'error': $v.formData.name.$error, 'dropDown inputName': true }"
+         >
+         <div class="error-wrapper" v-if="$v.formData.name.$dirty">
+           <p class="error-message" v-if="!$v.formData.name.required">
+             שדה נדרש
+           </p>
+         </div>
        </div>
      </div>
      <div class="add-files">
@@ -44,8 +66,24 @@
      </div>
      <div class="row">
        <div class="title">תיאור חופשי</div>
-       <textarea v-model="formData.description" name="text" id="" cols="30" placeholder=" כאן תוכלו פירוט עבור העבודה..." rows="10">
+       <textarea
+               v-model.trim.lazy="formData.description"
+               name="text"
+               @input="$v.formData.description.$touch()"
+               :class="{ 'error': $v.formData.description.$error }"
+               cols="30"
+               placeholder=" כאן תוכלו פירוט עבור העבודה..."
+               rows="10"
+       >
        </textarea>
+       <div class="error-wrapper" v-if="$v.formData.description.$dirty">
+         <p class="error-message" v-if="!$v.formData.description.required">
+           שדה נדרש
+         </p>
+         <p class="error-message" v-else-if="!$v.formData.description.minLength">
+           Description must contain more than 10 symbols
+         </p>
+       </div>
      </div>
      <button class="next-b th-btn th-btn-blue th-btn-md" @click.prevent="sendOrder"><span>לשלב הבא</span></button>
    </form>
@@ -56,7 +94,25 @@
 <script>
 import Document from './../orders/Document'
 import DropDown from './../common/DropDown'
+import { required, minLength} from "vuelidate/lib/validators";
+
   export default {
+  validations:{
+workArea: {
+  value:{
+    required,
+  }
+},
+    formData:{
+  name:{
+    required,
+  },
+      description: {
+          required,
+          minLength: minLength(10),
+      }
+  }
+  },
     data(){
       return {
         files: [],
@@ -96,16 +152,23 @@ import DropDown from './../common/DropDown'
         this.files = this.files.filter(file => file.id !== data.id);
       },
       sendOrder(){
-        let myFormData = new FormData();
-        for(let i=0; i<this.files.length; i++){
-          myFormData.append('files[]', this.files[i]);
-        }
-        myFormData.append('name', this.formData.name);
-        myFormData.append('description', this.formData.description);
-        myFormData.append('work_area', this.workArea.value);
+        this.$v.workArea.value.$touch();
+        this.$v.formData.name.$touch();
+        this.$v.formData.description.$touch();
 
-console.log(myFormData);
-        this.$emit('send', myFormData)
+        if(!this.$v.$invalid) {
+
+          let myFormData = new FormData();
+          for (let i = 0; i < this.files.length; i++) {
+            myFormData.append('files[]', this.files[i]);
+          }
+          myFormData.append('name', this.formData.name);
+          myFormData.append('description', this.formData.description);
+          myFormData.append('work_area', this.workArea.value);
+
+
+          this.$emit('send', myFormData)
+        }
       },
     },
     mounted() {

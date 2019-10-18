@@ -24,7 +24,25 @@
           <p class="formItem" >מייל</p>
           <div>
             <i class="fas " ref="mail" v-bind:class="[{ 'fa-spin': focusedMail}, focusedMail ? 'fa-sync-alt':icon]"  ></i>
-            <input type="text" ref="mail" id="mail"  placeholder="מייל"  @focus="onFocus" @blur="onBlur" v-model="email" class="inputName">
+            <input
+                    type="text"
+                    ref="mail"
+                    id="mail"
+                    placeholder="מייל"
+                    @focus="onFocus"
+                    @blur="onBlur"
+                    v-model.trim.lazy="email"
+                    @input="$v.email.$touch()"
+                    :class="{'error': $v.email.$error, 'inputName': true}"
+            >
+            <div class="error-wrapper" v-if="$v.email.$dirty">
+              <p class="error-message" v-if="!$v.email.required">
+                שדה נדרש
+              </p>
+              <p class="error-message" v-else-if="!$v.email.regexp">
+               Email is invalid
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -47,7 +65,24 @@
           <p class="formItem" >טלפון</p>
           <div>
             <i class="fas  "  v-bind:class="[{ 'fa-spin': focusedPhone}, focusedPhone ? 'fa-sync-alt':iconS]" ></i>
-            <input type="text" placeholder="טלפון" id="phone" ref="phone" @focus="onFocus" @blur="onBlur"  v-model="phone" class="inputName">
+            <input
+                    type="text"
+                    placeholder="טלפון"
+                    id="phone"
+                    ref="phone"
+                    @focus="onFocus"
+                    @blur="onBlur"
+                    v-model.trim="phone"
+                    @input="$v.phone.$touch()"
+                    :class="{ 'error': $v.phone.$error, 'inputName': true }">
+            <div class="error-wrapper" v-if="$v.phone.$dirty">
+              <p class="error-message" v-if="!$v.phone.required">
+                שדה נדרש
+              </p>
+              <p class="error-message" v-if="!$v.phone.regexp">
+                Phone is invalid
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -62,7 +97,7 @@
                   :class="{ 'error': $v.company.$error, 'inputName': true }">
           <div class="error-wrapper" v-if="$v.company.$dirty">
             <p class="error-message" v-if="!$v.company.required">
-               Field is required
+              שדה נדרש
             </p>
           </div>
         </div>
@@ -75,11 +110,10 @@
                  :class="{ 'error': $v.businessPhone.$error, 'inputName': true }">
           <div class="error-wrapper" v-if="$v.businessPhone.$dirty">
             <p class="error-message" v-if="!$v.businessPhone.required">
-              Field is required
+              שדה נדרש
             </p>
           </div>
         </div>
-
       </div>
       <div class="wrapper">
         <div class="orderWrapper">
@@ -92,7 +126,7 @@
           >
           <div class="error-wrapper" v-if="$v.fax.$dirty">
             <p class="error-message" v-if="!$v.fax.required">
-              Field is required
+              שדה נדרש
             </p>
           </div>
         </div>
@@ -101,11 +135,17 @@
           <vue-google-autocomplete
             ref="addressAutoComplete"
             id="map"
-            classname="inputName"
+            :class="{ 'error': $v.address.$error, 'inputName': true }"
+            @input="$v.address.$touch()"
             placeholder="כתובת"
             v-on:change="getAddressData"
             country="il"
           />
+          <div class="error-wrapper" v-if="$v.adress">
+            <p class="error-message" v-if="!$v.address.required">
+              שדה נדרש
+            </p>
+          </div>
           <!-- <input type="text"
                  placeholder="כתובת"
                  v-model.trim="address"
@@ -127,33 +167,66 @@
           <p class="formItem">קטגוריות</p>
           <drop-down
                   :class="{ 'error': $v.categories.value.$error, 'dropDown': true }"
-                  placeholder="קטגוריות"
+                      placeholder="קטגוריות"
                      v-model="categories.value"
                      v-bind="categories"
+                  @input="$v.categories.value.$touch()"
           />
+          <div class="error-wrapper" v-if="$v.categories.value.$dirty">
+            <p class="error-message" v-if="!$v.categories.value.required">
+              שדה נדרש
+            </p>
+          </div>
         </div>
+
         <div class="selectWrapper" v-if="role==='worker'" @click="showWarn">
           <p class="formItem">    קטגוריות משנה</p>
           <theme-multiselect
                   v-bind="subcategories"
                   v-model="subcategories.value"
-                  :class="{ 'error': subcatFlag, 'less-rounded-corners': true, 'dropDown': true, 'dropdown':true,}"
-
+                  :class="{ 'error': subcatFlag || $v.subcategories.value.$error, 'less-rounded-corners': true, 'dropDown': true, 'dropdown':true,}"
           />
+          <div class="error-wrapper" v-if="$v.subcategories.value.$dirty">
+            <p class="error-message" v-if="!$v.subcategories.value.required">
+              שדה נדרש
+            </p>
+          </div>
         </div>
-
-
       </div>
       <div class="selectWrapper">
         <p class="formItem">איזור עבודה</p>
-        <drop-down class="dropDown" placeholder="איזור עבודה" v-model="workArea.value" v-bind="workArea"/>
+        <drop-down
+                placeholder="איזור עבודה"
+                v-model="workArea.value"
+                v-bind="workArea"
+                @input="$v.workArea.value.$touch()"
+                :class="{ 'error': $v.workArea.value.$error, 'dropDown': true }"
+        />
+        <div class="error-wrapper" v-if="$v.workArea.value.$dirty">
+          <p class="error-message" v-if="!$v.workArea.value.required">
+            שדה נדרש
+          </p>
+        </div>
       </div>
 
       <hr>
       <div class="last-field">
         <div class="orderWrapper">
           <p class="formItem" >סיסמה (יותר מ-6 סמלים)</p>
-          <input type="password" placeholder="סיסמה חדשה" v-model="pass" class="inputName">
+          <input
+                  type="password"
+                  placeholder="סיסמה חדשה"
+                  v-model.trim.lazy="pass"
+                  :class="{ 'error': $v.pass.$error, 'inputName': true }"
+          >
+          <div class="error-wrapper" v-if="$v.pass.$dirty">
+            <p class="error-message" v-if="!$v.pass.required">
+              שדה נדרש
+            </p>
+            <p class="error-message" v-else-if="!$v.pass.minLength">
+              Password must contain more than 6 symbols
+            </p>
+          </div>
         </div>
         <div class="checkbox">
           <input type="checkbox" id="check" value="check" v-model="license">
@@ -173,7 +246,7 @@
   import Modal from './../../common/Modal.vue';
   import DropDown from './../../common/DropDown.vue';
   import ThemeMultiselect from './../../common/ThemeMultiselect.vue'
-  import { required } from "vuelidate/lib/validators";
+  import { required, minLength } from "vuelidate/lib/validators";
   import VueGoogleAutocomplete from 'vue-google-autocomplete'
 
   export default {
@@ -183,6 +256,14 @@
       },
       city:{
         required,
+      },
+      email:{
+        required,
+        regexp(){
+          let regMail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          let  check = regMail.test(this.email);
+          return check;
+        }
       },
       company:{
         required,
@@ -196,12 +277,33 @@
       address: {
         required,
       },
+      phone:{
+        required,
+        regexp(){
+          let regex = /^0(\d{9})$/;
+          let  check = regex.test(this.phone);
+          return check;
+        }
+      },
       categories:{
         value:{
           required,
         }
-      }
-    },
+      },
+      subcategories:{
+        value:{
+          required
+        }
+      },
+      workArea:{
+        value:{
+          required,
+        }
+      },
+      pass:{
+        required,
+        minLength:minLength(6),
+      }    },
     methods: {
       getAddressData(addressData, placeResultData, id){
         //console.log({addressData, placeResultData, id});
@@ -212,7 +314,21 @@
         this.$store.commit('modals/reg/close');
       },
       send() {
-
+        this.$v.name.$touch();
+        this.$v.company.$touch();
+        this.$v.businessPhone.$touch();
+        this.$v.fax.$touch();
+        this.$v.email.$touch();
+        this.$v.phone.$touch();
+        this.$v.city.$touch();
+        this.$v.address.$touch();
+        this.$v.workArea.value.$touch();
+        this.$v.pass.$touch();
+        if (this.role==='worker'){
+          this.$v.categories.value.$touch();
+          this.$v.subcategories.value.$touch();
+        }
+        if(!this.$v.$invalid) {
 
           let subcat = [];
           console.log(this.subcategories.value);
@@ -234,7 +350,7 @@
             password_confirmation: this.pass,
             subcategories: subcat,
           })
-
+        }
       },
       onFocus(e) {
         console.log(e.target);

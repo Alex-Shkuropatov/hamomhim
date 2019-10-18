@@ -38,6 +38,15 @@ export default {
       ],
     };
   },
+  mounted(){
+    axios.post('/api/admin/getAllBlogs',{'sortBy':'id','orderBy': 'DESC', page: '0', take: '20'})
+        .then((response)=>{
+          console.log(response);
+          this.posts = response.data.value.records;
+        }).catch((error)=>{
+          console.log(error);
+        })
+  },
   components: {
     PageSubheader,
     NewsPostItem
