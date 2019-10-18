@@ -3,7 +3,7 @@
     <header-default v-if="isDefaultHeader"/>
     <header-worker-profile v-else />
 
-    <transition name="cool">
+    <transition name="cool"  mode="out-in">
       <router-view :class="{'margin' : isDefaultHeader, 'index': true}" />
     </transition>
     <underground class="under" />
@@ -53,6 +53,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '~@/vars.scss';
+@import "../css/transitions";
 #content {
   &.cool-enter {
     transform: scale(1.2) translateY(50px);

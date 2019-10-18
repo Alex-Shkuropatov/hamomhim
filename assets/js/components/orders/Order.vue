@@ -251,6 +251,9 @@
           @media screen and (max-width: 1440px) {
             text-align: center;
           }
+          @media screen and (max-width:1024px){
+            font-size: 25px;
+          }
           @media screen and (max-width: 850px) {
             margin: 10px;
           }
@@ -271,6 +274,7 @@
           }
           @media screen and (max-width: 1440px) {
             text-align: center;
+            height: auto;
           }
         }
 
@@ -299,10 +303,15 @@
             margin: 0 auto;
             margin-top: 37px;
           }
+          @media screen and (max-width:767px){
+            width: 236.8px;
+            height: 47.07px;
+            font-size:19px;
+          }
           @media screen and (max-width: 550px) {
-             width: 241.8px;
-            height: 54.07px;
-            font-size: 21px;
+            width: 188.8px;
+            height: 43.07px;
+            font-size: 15px;
           }
         }
       }

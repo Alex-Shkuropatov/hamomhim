@@ -73,6 +73,14 @@ export default {
         url = '/static/images/default/default-image-rect.svg';
       }
       return {backgroundImage: 'url('+url+')'};
+    },
+
+  },
+  watch:{
+    address(){
+      if (this.address!==''){
+        this.$refs.addressAutoComplete.autocompleteText = this.address;
+      }
     }
   },
   methods: {
@@ -90,6 +98,12 @@ export default {
         this.$emit('update:bio_image', file);
       }, false);
       reader.readAsDataURL(file);
+    }
+  },
+  mounted() {
+    console.log(this.address);
+    if (this.address!==''){
+      this.$refs.addressAutoComplete.autocompleteText = this.address;
     }
   }
 }

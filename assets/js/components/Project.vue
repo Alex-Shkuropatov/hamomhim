@@ -159,7 +159,7 @@
       }
       button{
 
-        width: 150.51px;
+        width: 142.51px;
         height: 34.78px;
       }
   }

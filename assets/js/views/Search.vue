@@ -306,10 +306,7 @@ margin-top: 50px;
     width: 250px;
     height: 45px;
     font-weight: bold;
-    font-size: 20px;
-    @media screen and (max-width:1600px){
-      font-size: 19px;
-    }
+    font-size: 17px;
     @media screen and (max-width: 1450px){
       width: 257px;
       height: 45px;

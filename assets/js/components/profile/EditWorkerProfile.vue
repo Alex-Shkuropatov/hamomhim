@@ -3,7 +3,7 @@
 
     <worker-profile-first-screen :user="user"></worker-profile-first-screen>
 
-    <personal-info v-bind.sync="user" class="h-container"/>
+    <personal-info id="p-info" ref="firstBlock" v-bind.sync="user" class="h-container"/>
     <bio-info v-bind.sync="user" class="h-container"/>
     <worker-works-list
       v-model="workerWorks"

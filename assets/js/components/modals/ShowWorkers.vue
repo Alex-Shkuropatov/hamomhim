@@ -35,7 +35,6 @@
       close() {
         this.$store.commit('modals/showWorkers/close');
         this.count= 0;
-
       },
       onResponse(data){
         console.log(data);
