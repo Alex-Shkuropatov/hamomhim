@@ -392,6 +392,7 @@ margin-left: 7px;
   .title{
     display: flex;
     font-weight: bold;
+    align-items: center;
     font-size: 27px;
     line-height: 30px;
     text-align: right;
@@ -401,7 +402,7 @@ margin-left: 7px;
     margin-bottom: 11px;
     @media screen and (max-width:1024px){
       width: unset;
-      font-size: 32px;
+      font-size: 23px;
       margin-top: 36px;
       margin-bottom: 5px;
     }

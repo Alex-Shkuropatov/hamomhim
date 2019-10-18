@@ -126,6 +126,10 @@ export default {
   &.less-rounded-corners{
     border-radius: 8px;
   }
+  .th-input{
+    border:none;
+    height: 42px;
+  }
   .main {
     width: 100%;
     font-size: 18px;
@@ -164,14 +168,14 @@ export default {
     z-index: 1000;
     padding-top: 25px;
 
-    top: 35px;
+    top: 38px;
     width: 100%;
     position: absolute;
     max-height: 300px;
     overflow-y: auto;
     background: #FFFFFF;
     border: 1px solid #E0E0E0;
-    border-radius: 20px;
+    border-radius: 5px;
     padding-top: 6px;
 
     .slider {

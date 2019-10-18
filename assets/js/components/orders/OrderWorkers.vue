@@ -127,6 +127,7 @@ props: {
     text-align: center;
     font-size: 14px;
     margin-bottom: 5px;
+    height: 50px;
   }
   .profileImg {
     width: 80px;
@@ -136,6 +137,7 @@ props: {
   .open-response{
     width: 123px!important;
     height: 25px;
+    margin-top: 20px;
     font-weight: bold;
     font-size: 14px;
     text-align: center;

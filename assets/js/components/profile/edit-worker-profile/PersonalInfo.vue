@@ -56,6 +56,7 @@
             type="email"
             :value="email"
             @input="$emit('update:email', arguments[0])"
+            :disabled=true
             class="th-input less-rounded-corners" />
           </div>
           <div class="form-group col1-2">
@@ -67,12 +68,11 @@
             @input="$emit('update:phone', arguments[0])"
             class="th-input less-rounded-corners" />
           </div>
-
         </div>
 
         <div class="show-changepass-form" @click="$store.commit('modals/changePassword/open')">סיסמאות לא תואמות</div>
         <change-password />
-
+        <alert />
       </div>
     </div>
   </div>
@@ -84,13 +84,16 @@ import ThemeInput from '../../common/ThemeInput.vue';
 import DropDown from '../../common/DropDown.vue';
 import ThemeMultiselect from '../../common/ThemeMultiselect.vue';
 import ChangePassword from '../../modals/editWorkerProfile/ChangePassword.vue';
+import Alert from './../../modals/Alert.vue'
+import { required, minLength } from "vuelidate/lib/validators";
 
 export default {
   components: {
     ThemeInput,
     DropDown,
     ThemeMultiselect,
-    ChangePassword
+    ChangePassword,
+    Alert,
   },
   data(){
     return {

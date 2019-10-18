@@ -31,7 +31,7 @@
                     placeholder="מייל"
                     @focus="onFocus"
                     @blur="onBlur"
-                    v-model.trim.lazy="email"
+                    v-model.trim="email"
                     @input="$v.email.$touch()"
                     :class="{'error': $v.email.$error, 'inputName': true}"
             >
@@ -79,7 +79,7 @@
               <p class="error-message" v-if="!$v.phone.required">
                 שדה נדרש
               </p>
-              <p class="error-message" v-if="!$v.phone.regexp">
+              <p class="error-message" v-else-if="!$v.phone.regexp">
                 Phone is invalid
               </p>
             </div>
@@ -140,8 +140,7 @@
             placeholder="כתובת"
             v-on:change="getAddressData"
             country="il"
-          >
-          </vue-google-autocomplete>
+          />
           <div class="error-wrapper" v-if="$v.adress">
             <p class="error-message" v-if="!$v.address.required">
               שדה נדרש

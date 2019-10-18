@@ -17,7 +17,7 @@
 
         </div>
         <div class="popup-form-row two-buttons">
-          <button class="th-btn th-btn-md wide th-btn-gray" @click="close">close</button>
+          <button class="th-btn th-btn-md wide th-btn-gray" @click="back">close</button>
         </div>
       </div>
 
@@ -32,9 +32,11 @@
     methods: {
       close() {
         this.$store.commit('modals/showWorkers/close');
+
       },
       back(){
         this.$emit('back', {
+
         })
       },
 

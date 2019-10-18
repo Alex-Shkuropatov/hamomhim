@@ -19,6 +19,11 @@
                     @blur="onBlur"
                     v-model.trim.lazy="user.email"
                     :class="{ 'error': $v.user.email.$error, 'inputName': true }">
+            <div class="error-wrapper" v-if="$v.user.email.$dirty">
+              <p class="error-message" v-if="!$v.user.email.required">
+                שדה נדרש
+              </p>
+            </div>
 
           </div>
         </div>
@@ -58,11 +63,13 @@
 <script>
   import Modal from './../../common/Modal.vue';
   import axios from 'axios';
+  import { required } from "vuelidate/lib/validators";
+
   export default {
 validations:{
 user:{
   email:{
-
+    required
   }
 }
 },
@@ -71,11 +78,15 @@ user:{
         this.$store.commit('modals/login/close');
       },
       send() {
-        this.$emit('send', {
-          email: this.user.email ,
-          password: this.user.password,
-          remember_me: this.user.remember,
-        })
+        this.$v.user.email.$touch();
+
+        if(!this.$v.$invalid) {
+          this.$emit('send', {
+            email: this.user.email,
+            password: this.user.password,
+            remember_me: this.user.remember,
+          })
+        }
       },
       onFocus(e) {
         console.log(e.target);
@@ -173,7 +184,7 @@ user:{
         font-size: 30px;
       }
     }
-    p{
+    .projectName{
       margin: 0;
       font-style: normal;
       font-weight: normal;
@@ -196,14 +207,13 @@ user:{
       .wrapper{
         display: flex;
         flex-direction: row;
-        align-items: center;
         padding: 11px 30px 0 30px;
         @media screen and (max-width: 1000px){
           flex-direction: column;
         }
         .orderWrapper{
           margin: 0 10px 0 10px;
-          p{
+          .formItem{
             margin: 0;
             margin-right: 20px;
             font-family: Assistant;

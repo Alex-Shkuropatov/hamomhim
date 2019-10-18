@@ -232,7 +232,7 @@ computed: {
   padding-right: 164px;
   padding-left: 40px;
  }
- @media screen and (max-width: 1035px) {
+ @media screen and (max-width: 1235px) {
 padding: 0
  }
 }
@@ -247,7 +247,7 @@ padding: 0
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  @media screen and (max-width: 1035px) {
+  @media screen and (max-width: 1235px) {
    margin-top: 20px;
    padding-top: 0;
   }
@@ -258,7 +258,7 @@ padding: 0
    width: 74%;
    max-height: 694px;
    object-fit: cover;
-   @media screen and (max-width: 1035px) {
+   @media screen and (max-width: 1235px) {
     width: 90%;
     top: 62px;
    }
@@ -281,7 +281,7 @@ padding: 0
     width: unset;
     margin-top: unset;
    }
-   @media screen and (max-width: 1035px){
+   @media screen and (max-width: 1235px){
     width: unset;
     height: auto;
     flex-direction: column-reverse;
@@ -302,7 +302,7 @@ padding: 0
  flex-direction: row;
  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
  margin-top: 115px;
- @media screen and (max-width:1035px){
+ @media screen and (max-width:1235px){
   margin-top: 20px;
  }
  .profile-resume{
@@ -320,7 +320,7 @@ padding: 0
  flex-direction: column;
  align-items: flex-start;
  justify-content: flex-start;
- @media screen and (max-width: 1035px){
+ @media screen and (max-width: 1235px){
   align-items: center;
   margin-right: 5px;
  }
@@ -354,7 +354,7 @@ padding: 0
   height: 191px;
   right: 48px;
   top: 64px;
-  @media screen and (max-width: 1035px) {
+  @media screen and (max-width: 1235px) {
    position: relative;
   }
   @media screen and (max-width:767px) {
@@ -376,7 +376,7 @@ padding: 0
  .stats {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: flex-start;
   margin-left: 244px;
   margin-top: 33px;
   left: 20px;
@@ -433,7 +433,7 @@ padding: 0
   .description{
    min-height: 76px;
    margin-top: 35px;
-   @media screen and (max-width:1035px){
+   @media screen and (max-width:1235px){
     width: 80%;
    }
    @media screen and (max-width:767px){
@@ -445,7 +445,7 @@ padding: 0
  }
  .contacts{
   display: flex;
- @media screen and (max-width: 1035px){
+ @media screen and (max-width: 1235px){
   margin-top: 15px;
   width: 100%;
   justify-content: center;
@@ -469,7 +469,7 @@ padding: 0
  padding-right: 89px;
   width: 295.06px;
   height: 58.18px;
-  @media screen and (max-width: 1035px) {
+  @media screen and (max-width: 1235px) {
 margin-bottom: 20px;
   }
   @media screen and (max-width: 480px){
@@ -500,7 +500,7 @@ margin-bottom: 20px;
   @media screen and (max-width: 1440px) {
    padding: 0 100px 0 100px;
   }
-  @media screen and (max-width: 1035px) {
+  @media screen and (max-width: 1235px) {
    padding: 0 25px 0 25px;
   }
   .swiper-button-prev{
@@ -568,19 +568,19 @@ margin-bottom: 20px;
  }
  .h{
   opacity: 0.7;
-  width: 147%;
+  width: 122%;
   margin-right: -228px;
   border: 1px solid #E0E0E0;
   transform: rotate(180deg);
  }
  .desktop{
-  @media screen and (max-width: 1035px) {
+  @media screen and (max-width: 1235px) {
    display: none;
   }
  }
  .mobile{
   display: none;
-  @media screen and (max-width: 1035px) {
+  @media screen and (max-width: 1235px) {
    display: block;
    width: 98%;
    margin-right: 0;

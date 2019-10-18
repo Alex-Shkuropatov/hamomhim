@@ -9,8 +9,16 @@
         <div class="d-flex">
           <div class="geo-icon"></div>
           <div class="form-group address-group">
-            <div class="caption">address</div>
-            <theme-input placeholder="address" :value="address" @input="$emit('update:address', arguments[0])"></theme-input>
+            <div class="caption">כתובת</div>
+            <vue-google-autocomplete
+              ref="addressAutoComplete"
+              id="map"
+              classname="th-input less-rounded-corners autocomplete-address"
+              placeholder="כתובת"
+              v-on:change="getAddressData"
+              country="il"
+            />
+            <!-- <theme-input placeholder="address" :value="address" @input="$emit('update:address', arguments[0])"></theme-input> -->
           </div>
         </div>
       </div>
@@ -28,11 +36,13 @@
 <script>
 import ThemeInput from '../../common/ThemeInput.vue';
 import ThemeTextarea from '../../common/ThemeTextarea.vue';
+import VueGoogleAutocomplete from 'vue-google-autocomplete';
 
 export default {
   components: {
     ThemeInput,
     ThemeTextarea,
+    VueGoogleAutocomplete,
   },
   data(){
     return {
@@ -63,9 +73,24 @@ export default {
         url = '/static/images/default/default-image-rect.svg';
       }
       return {backgroundImage: 'url('+url+')'};
+    },
+
+  },
+  watch:{
+    address(){
+      if (this.address!==''){
+        this.$refs.addressAutoComplete.autocompleteText = this.address;
+      }
     }
   },
   methods: {
+    getAddressData(addressData, placeResultData, id){
+      //console.log({addressData, placeResultData, id});
+      //console.log(this.$refs.addressAutoComplete.autocompleteText);
+
+      let address = this.$refs.addressAutoComplete.autocompleteText;
+      this.$emit('update:address', address);
+    },
     onFileUpload(file){
       let reader = new FileReader();
       reader.addEventListener('load', () => {
@@ -73,6 +98,12 @@ export default {
         this.$emit('update:bio_image', file);
       }, false);
       reader.readAsDataURL(file);
+    }
+  },
+  mounted() {
+    console.log(this.address);
+    if (this.address!==''){
+      this.$refs.addressAutoComplete.autocompleteText = this.address;
     }
   }
 }
@@ -118,6 +149,9 @@ export default {
 }
 .address-group{
   flex-grow: 0.5;
+}
+.autocomplete-address{
+  width: 100%;
 }
 
 .img-col{

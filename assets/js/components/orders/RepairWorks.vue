@@ -27,13 +27,16 @@
          <input
                  type="text"
                  placeholder="שם מלא"
-                 v-model.trim.lazy="formData.name"
+                 v-model.trim="formData.name"
                  @input="$v.formData.name.$touch()"
                  :class="{ 'error': $v.formData.name.$error, 'dropDown inputName': true }"
          >
          <div class="error-wrapper" v-if="$v.formData.name.$dirty">
            <p class="error-message" v-if="!$v.formData.name.required">
              שדה נדרש
+           </p>
+           <p class="error-message" v-else-if="!$v.formData.name.maxLength">
+             Description must contain less than 50 symbols
            </p>
          </div>
        </div>
@@ -83,6 +86,9 @@
          <p class="error-message" v-else-if="!$v.formData.description.minLength">
            Description must contain more than 10 symbols
          </p>
+         <p class="error-message" v-else-if="!$v.formData.description.maxLength">
+           Description must contain less than 150 symbols
+         </p>
        </div>
      </div>
      <button class="next-b th-btn th-btn-blue th-btn-md" @click.prevent="sendOrder"><span>לשלב הבא</span></button>
@@ -94,7 +100,7 @@
 <script>
 import Document from './../orders/Document'
 import DropDown from './../common/DropDown'
-import { required, minLength} from "vuelidate/lib/validators";
+import { required, minLength, maxLength} from "vuelidate/lib/validators";
 
   export default {
   validations:{
@@ -106,10 +112,13 @@ workArea: {
     formData:{
   name:{
     required,
+    maxLength: maxLength(50),
   },
       description: {
           required,
           minLength: minLength(10),
+          maxLength: maxLength(150),
+
       }
   }
   },
