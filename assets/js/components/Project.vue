@@ -117,7 +117,6 @@
       margin-top: 15px;
       font-weight: bold;
       font-size: 36px;
-      line-height: 40px;
       text-align: center;
       color: #4F4F4F;
       @media screen and (max-width:1650px){
@@ -127,12 +126,21 @@
       .description{
         margin-top: 10px;
         font-weight: normal;
-        font-size: 18px;
-        line-height: 15px;
+        font-size: 19px;
+        line-height: 25px;
         text-align: center;
         color: #4F4F4F;
         min-height: 70px;
         max-height: 70px;
+        @media screen and (max-width:1650px){
+          font-size: 18px;
+          line-height: 20px;
+        }
+        @media screen and (max-width:1440px){
+          margin-top:0;
+          font-size: 15px;
+          line-height: 18px;
+        }
       }
     .meta{
       color: #828282;
@@ -161,6 +169,9 @@
 
         width: 142.51px;
         height: 34.78px;
+        margin-top: auto;
+        margin-bottom: 10px;
+
       }
   }
   }

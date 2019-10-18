@@ -41,9 +41,10 @@ export default {
             slidesPerView: 3,
           },
           900: {
-            slidesPerView: 2
+            slidesPerView: 2,
+            spaceBetween: 0,
           },
-          600: {
+          700: {
             slidesPerView: 1
           }
         },
@@ -92,10 +93,10 @@ export default {
   @media screen and (max-width: 1440px){
     width: 900px;
   }
-  @media screen and (max-width: 1023px){
+  @media screen and (max-width: 1024px){
     width: 600px;
   }
-  @media screen and (max-width: 600px){
+  @media screen and (max-width: 700px){
     width: 300px;
   }
 }
@@ -175,7 +176,17 @@ export default {
     height: 25px;
   }
   @media screen and (max-width: 670px){
-    display: none;
+
+  }
+}
+.th-slider-arrow-left{
+  @media screen and (max-width:400px){
+    left: -12px;
+  }
+}
+.th-slider-arrow-right{
+  @media screen and (max-width:400px){
+    right: -12px;
   }
 }
   .news-slider{

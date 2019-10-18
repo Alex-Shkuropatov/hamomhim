@@ -25,7 +25,7 @@
           <div class="col1-1 inp-group">
             <div class="files-list w-100">
               <label class="add-new-file">
-                <div class="image w-100"  :style="[ flag!=='' ? {border: '2px solid red'} : ''  ]" ></div>
+                <div class="image w-100"  :style="[ flag===false ? {border: '2px solid red'} : ''  ]" ></div>
                 <div class="th-btn th-btn-blue w-100">העלאת תמונה</div>
                 <input type="file" multiple @change="onFileUpload($event.target.files)">
               </label>
@@ -57,7 +57,7 @@ function getInitialData(){
     description: '',
     files: [],
     deleted_files: [],
-    flag: '',
+    flag: true,
   }
 }
 
@@ -121,9 +121,9 @@ export default {
       this.$v.description.$touch();
 
       if (this.files.length===0){
-        this.flag=true;
-      } else {
         this.flag=false;
+      } else {
+        this.flag=true;
       if (!this.$v.$invalid) {
         let formData = new FormData();
         formData.append('name', this.name);

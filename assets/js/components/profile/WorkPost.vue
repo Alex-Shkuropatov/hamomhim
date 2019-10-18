@@ -24,7 +24,6 @@
         type: Number,
         required: true,
       },
-
       images: {
         default: '',
         type: Array,
@@ -56,9 +55,18 @@
   position: relative;
   background: #FFFFFF;
   height: 325px;
-  width: 260px;
+  width: 241px;
   line-height: 1.16;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  @media screen and (max-width:1440px){
+    width: 209px;
+  }
+  @media screen and (max-width:900px){
+    width: 270px;
+  }
+  @media screen and (max-width: 767px){
+    width: 250px;
+  }
  .img-wrapper{
    img{
      width: 100%;

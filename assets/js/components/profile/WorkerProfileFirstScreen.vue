@@ -128,6 +128,9 @@ user:{
 }
 .marginT{
   padding-top: 300px;
+  @media screen and (max-width: 480px){
+    padding-top: 220px;
+  }
 }
 .header-n {
   background-image: url('/static/images/profile/header-image.png');

@@ -40,7 +40,9 @@
         this.$emit('send', {
           checked: this.checkedServices ,
         });
+
       }
+
     },
    watch: {
      'subcategories'(){
