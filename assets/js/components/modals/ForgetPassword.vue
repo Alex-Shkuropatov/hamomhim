@@ -8,7 +8,7 @@
 
     <third-modal v-if="modalL===2" v-bind="user"  @onSend="onThird"  />
 
-    <alert v-if="modalL===3" @send="onFourth" v-bind="modalContent" />
+    <alert v-if="modalL===3" @send="onFourth"  />
 
   </modal>
   </transition>
@@ -32,11 +32,7 @@
         code: '',
         role: '',
         },
-        modalContent: {
-          title: 'Your password was changed',
-          text: '',
-          buttonText: 'רתאל רוזח',
-        },
+
       }
     },
     computed: {
@@ -68,15 +64,19 @@
         if(data.success){
           axios.post('/api/auth/changePasswordUnauthorized',{role:this.user.role,token:this.user.code,email:this.user.email, new_password: data.password})
               .then((response)=>{
-                console.log(response);
+                let res = response.data;
+                this.$store.commit('modals/alert/saveData', {
+                  success: res.success,
+                  text: res.message ? res.message : 'Information successfully saved'
+                });
                 this.modalL++;
               }).catch((error)=>{
             console.log(error);
           })
         }
       },
-      onFourth(){
-        this.modalL = 0;
+      onFourth(data){
+        this.modalL = data.modal;
         this.$store.commit('modals/forgetPassword/close');
       }
     },
