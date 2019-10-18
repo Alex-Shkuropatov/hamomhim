@@ -5,7 +5,7 @@
       <div class="avatar-col">
         <div class="avatar" :style="avatarStyles"></div>
         <label class="th-btn th-btn-md th-btn-blue">
-          <span>Upload new photo</span>
+          <span>העלאה תמונת פרופיל חדשה</span>
           <input type="file" @change="onAvatarUpdate($event.target.files[0])">
         </label>
       </div>
@@ -70,7 +70,7 @@
           </div>
         </div>
 
-        <div class="show-changepass-form" @click="$store.commit('modals/changePassword/open')">סיסמאות לא תואמות</div>
+        <div class="show-changepass-form" @click="$store.commit('modals/changePassword/open')">שינוי סיסמה</div>
         <change-password />
         <alert />
       </div>
@@ -260,7 +260,7 @@ $gutter: 17px;
   }
   .th-btn{
     width: 100%;
-    font-size: 18px;
+    font-size: 14px;
     padding-right: 0;
     padding-left: 0;
     display: -webkit-inline-flex;

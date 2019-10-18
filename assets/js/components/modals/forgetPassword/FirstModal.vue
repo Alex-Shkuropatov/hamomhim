@@ -1,17 +1,17 @@
 <template>
 
 <div class="content-wrapper">
-  <h2>Enter your mail</h2>
+  <h2>נא הזן את כתובת המייל שלך</h2><!-- enter your email -->
   <div class="orderWrapper">
     <p class="formItem" >אימייל</p>
     <div>
       <i class="fas " ref="mail" v-bind:class="[{ 'fa-spin': focusedMail}, focusedMail ? 'fa-sync-alt': (flag? iconS : 'fa-sync-alt')]"  ></i>
-      <input type="text" ref="mail" id="mail" :style="[ flag!=='' ? {border: '2px solid red'} : ''  ]"  placeholder="E-mail"  @focus="onFocus" @blur="onBlur" v-model.trim="user.email" class="inputName">
+      <input type="text" ref="mail" id="mail" :style="[ flag!=='' ? {border: '2px solid red'} : ''  ]"  placeholder="מייל"  @focus="onFocus" @blur="onBlur" v-model.trim="user.email" class="inputName">
     </div>
     <p class="error-message" v-if="flag!==''">{{flag}}</p>
   </div>
 
-  <button class=" th-btn th-btn-blue th-btn-lg next" @click="send"><span>Next</span></button>
+  <button class=" th-btn th-btn-blue th-btn-lg next" @click="send"><span>לשלב הבא</span></button>
 </div>
 </template>
 

@@ -25,7 +25,7 @@
       <div class="img-col">
         <div class="image" :style="bioImageStyle"></div>
         <label class="th-btn th-btn-blue th-btn-md upload-trigger">
-          upload new photo
+          העלאת תמונה חדשה
           <input type="file" @change="onFileUpload($event.target.files[0])">
         </label>
       </div>

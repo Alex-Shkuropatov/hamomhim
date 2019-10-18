@@ -4,7 +4,7 @@
       <img :src="user.imageProfile===null? '/static/images/profile/defaultAvatar.png': $env.API_URL+user.imageProfile " class="userImage" alt="user-image">
       <div class="head-txt-container">
         <div class="about-info">
-          <div class="th-heading title" style="direction: ltr">   {{user.title}} ,רקי ןלבק אבה ךורב</div>
+          <div class="th-heading title" style="direction: ltr">   {{user.title}} ,ברוך הבא קבלן יקר</div>
         </div>
       </div>
 
@@ -26,15 +26,15 @@
         </template>
         <template v-else>
           <div class="row">
-            <router-link :to="{name: 'requests', }" class="link" >םיטקייורפ</router-link>
+            <router-link :to="{name: 'requests', }" class="link" >פרויקטים</router-link>
             <hr>
-            <router-link :to="{name: 'responses', }" class="link" >םירוגס םיטקיורפ</router-link>
+            <router-link :to="{name: 'responses', }" class="link" >פרויקטים סגורים</router-link>
           </div>
           <hr>
           <div class="row">
             <router-link :to="{name: 'profile-edit', }" class="link">ערוך פרופיל</router-link>
             <hr>
-            <router-link :to="{name: 'packages', }" class="link">עובדים מועדפים</router-link>
+            <router-link :to="{name: 'packages', }" class="link">רכישת מנוי באתר</router-link>
           </div>
         </template>
 
