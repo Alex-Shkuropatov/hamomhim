@@ -61,7 +61,7 @@
       </div>
     </template>
     <template v-else>
-      <h2 class="notify_msg text-center">You dont have any invitations to the projects yet.<i class="far fa-copy ml-1 mr-1"></i></h2>
+      <h2 class="notify_msg text-center">טרם קיבלת פרויקטים<i class="far fa-copy ml-1 mr-1"></i></h2><!-- You don't have any invitations to projects yet -->
     </template>
 </div>
   </div>

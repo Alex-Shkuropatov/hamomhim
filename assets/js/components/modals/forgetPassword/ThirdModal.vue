@@ -1,23 +1,23 @@
 <template>
 
 <div class="content-wrapper">
-  <h2>Enter security code from mail</h2>
+  <h2>נא רשום את הסיסמה החדשה</h2><!-- Enter security code from mail -->
   <div class="orderWrapper">
-    <p class="formItem" >New password</p>
+    <p class="formItem" >סיסמה חדשה</p><!--New password -->
     <div>
       <input type="password" placeholder="טלפון"  :style="[ flag!=='' ? {border: '2px solid red'} : ''  ]"  ref="password"  v-model="user.password" class="inputName">
     </div>
   </div>
   <div class="orderWrapper">
-    <p class="formItem" >Confirm password</p>
+    <p class="formItem" >אימות סיסמה</p><!-- Confirm password -->
     <div>
       <i class="fas  "  v-bind:class="[{ 'fa-spin': focusedCode}, focusedCode ? 'fa-sync-alt':iconS]" ></i>
       <input type="password" :style="[ flag!=='' ? {border: '2px solid red'} : ''  ]" placeholder="טלפון" id="phone" ref="phone" @focus="onFocus" @blur="onBlur"  v-model="user.confirmPassword" class="inputName">
     </div>
-    <p class="error-message" v-if="flag!==''">Passwords doesnt match</p>
+    <p class="error-message" v-if="flag!==''">סיסמאות אינן תואמות</p><!-- Passwords don't match -->
   </div>
 
-  <button class=" th-btn th-btn-blue th-btn-lg next" @click="send" ><span>Next</span></button>
+  <button class=" th-btn th-btn-blue th-btn-lg next" @click="send" ><span>לשלב הבא</span></button>
 </div>
 </template>
 

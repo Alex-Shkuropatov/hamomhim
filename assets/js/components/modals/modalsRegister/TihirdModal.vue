@@ -12,7 +12,7 @@
             <input type="text"  :style="[ flag ? {border: '2px solid red'} : ''  ]" ref="mail" id="phoneC"  placeholder="נא הזן 4 ספרות"  @focus="onFocus" @blur="onBlur" v-model="phoneCode" class="inputName">
           </div>
           <div v-if="flag" class="red">
-            <div class="red scale-up-center ">Code is invalid</div>
+            <div class="red scale-up-center ">הקוד אינו חוקי</div>
           </div>
         </div>
       </div>

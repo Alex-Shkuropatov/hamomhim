@@ -1,7 +1,7 @@
 <template>
  <button class="show-more" @click="swap" v-bind:class="{ active: isActive }">
    <span class="text">קרא עוד</span>
-   <i class="fas" v-bind:class="isActive? 'fa-angle-down':'fa-angle-up' "></i>
+   <i class="fas" v-bind:class="isActive? 'fa-angle-up': 'fa-angle-down' "></i>
  </button>
 </template>
 
