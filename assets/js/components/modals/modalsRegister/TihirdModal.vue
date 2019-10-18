@@ -1,8 +1,8 @@
 <template>
 
   <div class="content-wrapper second-message">
-    <h2 class="title">םינלבק - רתאל המשרה</h2>
-    <p class="projectName">תכרעמל המשרה</p>
+    <h2 class="title">אימות דו שלבי</h2>
+    <p class="projectName">נא הזן את הקוד שקיבלת לטלפון הנייד</p>
     <form action="">
       <div class="wrapper">
         <div class="orderWrapper">
@@ -19,7 +19,7 @@
     </form>
 
     <div class="buttons-wrapper">
-      <button class="closeB" style="text-align:center" @click="send">Send</button>
+      <button class="closeB" style="text-align:center" @click="send">שלח</button>
     </div>
 
   </div>
