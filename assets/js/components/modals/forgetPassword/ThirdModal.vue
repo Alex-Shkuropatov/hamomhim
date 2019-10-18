@@ -5,16 +5,16 @@
   <div class="orderWrapper">
     <p class="formItem" >New password</p>
     <div>
-      <input type="password" placeholder="טלפון"  :style="[ flag!=='' ? {border: '2px solid red'} : ''  ]"  ref="password"  v-model="user.password" class="inputName">
+      <input type="password" placeholder="טלפון"  :style="[ flag!==true ? {border: '2px solid red'} : ''  ]"  ref="password"  v-model="user.password" class="inputName">
     </div>
   </div>
   <div class="orderWrapper">
     <p class="formItem" >Confirm password</p>
     <div>
       <i class="fas  "  v-bind:class="[{ 'fa-spin': focusedCode}, focusedCode ? 'fa-sync-alt':iconS]" ></i>
-      <input type="password" :style="[ flag!=='' ? {border: '2px solid red'} : ''  ]" placeholder="טלפון" id="phone" ref="phone" @focus="onFocus" @blur="onBlur"  v-model="user.confirmPassword" class="inputName">
+      <input type="password" :style="[ flag!==true ? {border: '2px solid red'} : ''  ]" placeholder="טלפון" id="phone" ref="phone" @focus="onFocus" @blur="onBlur"  v-model="user.confirmPassword" class="inputName">
     </div>
-    <p class="error-message" v-if="flag!==''">Passwords doesnt match</p>
+    <p class="error-message" v-if="flag!==true">Passwords doesnt match</p>
   </div>
 
   <button class=" th-btn th-btn-blue th-btn-lg next" @click="send" ><span>Next</span></button>
@@ -31,8 +31,10 @@
        iconS: 'fa-sync-alt',
        user: {
          code: '',
+         password:'',
+         confirmPassword: '',
        },
-       flag: '',
+       flag: true,
      }
     },
     methods: {
@@ -41,11 +43,11 @@
       },
       onFocus(e) {
           this.focusedCode = true;
-          this.flag= '';
+
       },
       onBlur(e) {
         this.focusedCode = false;
-        this.iconS = this.checkPhone();
+
       },
 
       changeIcon(value){
@@ -56,20 +58,22 @@
         }
       },
       send(){
+        this.iconS = this.checkPhone();
         this.$emit('onSend',{
-          code : this.user.password,
+          password : this.user.password,
           success: this.flag,
         })
+      },
+      checkPhone(){
+        this.flag = this.user.password === this.user.confirmPassword;
+        return this.changeIcon(this.flag);
       },
     },
     components: {
 
     },
       computed:{
-        checkPhone(){
-          this.flag = this.user.password === this.user.confirmPassword;
-          return this.changeIcon(this.flag);
-        },
+
       },
   }
 </script>
