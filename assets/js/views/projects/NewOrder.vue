@@ -1,8 +1,8 @@
 <template>
 <div class="wrapper">
-  <categories-slider @category:select='onCategory' />
+  <categories-slider class="slider-cat" @category:select='onCategory' />
 
-  <services  v-show="showServices" @send='OnCategories' v-bind="category" />
+  <services class="services-block"  v-show="showServices" @send='OnCategories' v-bind="category" />
 
   <repair-works  v-show="showWorks" @send='onForm' />
 </div>
@@ -28,22 +28,24 @@ export default {
   },
   methods:{
     onCategory(data){
-
+      let element = document.getElementsByClassName('services-block')[0];
+    if (data){
+      element.scrollIntoView({block: "center", behavior: "smooth"});
+    }
       this.category.subcategories = data.subcategories;
       this.category.name = data.name;
       this.category.id = data.id;
       this.showServices= true;
       this.checked = [];
       this.showWorks =false;
-      let element = document.getElementsByClassName('servives-wrapper')[0];
-      element.scrollIntoView();
+
     },
     OnCategories(data){
 
       this.showWorks= true;
       this.checked = data.checked;
-      let element = document.getElementById('repair');
-      element.scrollIntoView();
+      let element = document.getElementsByClassName('services-block')[0];
+      element.scrollIntoView(true);
     },
     onForm(data){
      for(let i=0; i<this.checked.length; i++){

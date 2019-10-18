@@ -36,6 +36,9 @@
           <p class="error-message" v-else-if="!$v.description.minLength">
             Description must contain more than 10 symbols
           </p>
+          <p class="error-message" v-else-if="!$v.description.maxLength">
+            Description must contain less than 150 symbols
+          </p>
         </div>
       </form>
       <div class="buttons-wrapper">
@@ -46,12 +49,11 @@
 
   </modal>
   </transition>
-
 </template>
 
 <script>
   import Modal from './../common/Modal.vue';
-  import { required, minLength } from "vuelidate/lib/validators";
+  import { required, minLength, maxLength } from "vuelidate/lib/validators";
 
   export default {
     methods: {
@@ -83,11 +85,12 @@
     validations: {
         name:{
           required,
-          minLength: minLength(2)
+          minLength: minLength(2),
         },
       description:{
         required,
-        minLength: minLength(2)
+        minLength: minLength(2),
+        maxLength: maxLength(150),
       },
     },
     computed: {

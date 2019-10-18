@@ -148,23 +148,7 @@ export default {
 
 <style lang="scss" scoped>
 
-.editWrapper{
-  z-index: 0;
-  margin: 0 auto;
-  padding: 30px 25px 0 25px;
-  @media screen and (max-width: 900px){
-    padding: 20px 5px 0 5px;
-  }
-  @media screen and (max-width: 1440px) {
-    width: 900px;
-    height: auto;
-  }
-  @media screen and (max-width: 900px){
-    width: 500px;
-  }
-  @media screen and (max-width: 600px){
-    width: 100%;
-  }
+
   .editP{
     display: flex;
     flex-direction: column;
@@ -213,55 +197,11 @@ export default {
       align-items: center;
     }
   }
-}
-.titleH{
 
-  margin: 0;
-  margin-top: 35px;
-  font-family: Assistant;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 64px;
-  line-height: 65px;
-  text-align: center;
-  letter-spacing: -0.02em;
-  color : #333333;
-  @media screen and (max-width: 600px){
-    font-size: 42px;
-  }
-}
-.cLeft{
-  margin-left: 8px;
-}
-.cRight{
-  margin-right: 8px;
-  @media screen and (max-width: 900px){
-    margin-right:0;
-  }
-}
-.profileImg{
-  margin-top: 20px;
-  width: 189px;
-  height: 189px;
-  border-radius: 50%;
-}
-.addPhoto {
-  background-image: url('/static/images/profile/addPic.png');
-  background-repeat: no-repeat;
-  background-position: 4px;
-  outline: none;
-  -moz-border-radius: 5px; /*закругляем углы для Mozilla*/
-  -webkit-border-radius: 5px; /*закругляем углы для Chrome, Safari*/
-  border-radius: 5px; /*закругляем углы для остальных браузеров*/
-  padding-left: 20px; /*отступ слева от ввода, чтобы текст не был на картинке(выбирать по размеру картинки)*/
-  height: 24px;
-  font-size: 13px; /*размер шрифта*/
-  width: 35px;
-}
-.imageW{
-  display: flex;
-  flex-direction: column-reverse;
-}
+
+
+
+
 .foemField{
   background: #FFFFFF;
 
@@ -317,6 +257,9 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    @media screen and (max-width:900px){
+      flex-direction: column;
+    }
     .row{
       margin: 0 10px;
       display: flex;
@@ -342,15 +285,8 @@ export default {
   }
 
 }
-input[type="file"] {
-  display: none;
-}
-.custom-file-upload {
-  margin-right: -15px;
-  margin-top: -34px;
-  display: block;
-  cursor: pointer;
-}
+
+
 
 .modal {
   position: fixed;
@@ -360,29 +296,7 @@ input[type="file"] {
   top: 0;
   z-index: 200;
 
-  .wrapper {
-    overflow-y: auto;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    > * {
-      position: relative;
-    }
-    .bg {
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      background: rgba(0, 0, 0, 0.3);
-      transition-property: background;
-      transition-duration: 3s;
-      position: absolute;
-      cursor: pointer;
-    }
-  }
+
   &.fade-enter {
     opacity: 0;
   }

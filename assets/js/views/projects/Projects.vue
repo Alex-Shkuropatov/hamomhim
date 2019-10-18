@@ -198,6 +198,9 @@ export default {
       left: 119px;
       top: 93px;
     }
+    @media screen and (max-width: 1440px){
+      left: 108px;
+    }
     &:hover {
       opacity: 1;
       -webkit-transform: rotate(45deg);

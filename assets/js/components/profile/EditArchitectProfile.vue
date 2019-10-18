@@ -499,6 +499,9 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    @media screen and (max-width: 900px){
+      flex-direction: column;
+    }
     .row{
       margin: 0 10px;
       display: flex;
@@ -541,29 +544,7 @@ input[type="file"] {
   top: 0;
   z-index: 200;
 
-  .wrapper {
-    overflow-y: auto;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    > * {
-      position: relative;
-    }
-    .bg {
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      background: rgba(0, 0, 0, 0.3);
-      transition-property: background;
-      transition-duration: 3s;
-      position: absolute;
-      cursor: pointer;
-    }
-  }
+
   &.fade-enter {
     opacity: 0;
   }
