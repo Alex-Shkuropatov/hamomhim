@@ -27,8 +27,9 @@
   export default {
     methods: {
       close() {
-        this.$store.commit('modals/reg/close');
-
+        this.$emit('send',{
+          modal:0,
+        });
       }
     },
     computed:{
