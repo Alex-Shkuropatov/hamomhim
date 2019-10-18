@@ -207,4 +207,25 @@ $gutter: ceil($scale1 * 18px);
   transform: translateX(10px);
   opacity: 0;
 }
+
+@media(max-width: 768px){
+  .work-item,
+  .add-new-work{
+    width: calc(33.333% - 15px * 2);
+  }
+}
+@media (max-width: 576px){
+  .work-item,
+  .add-new-work{
+    width: calc(50% - 15px * 2);
+  }
+}
+@media (max-width: 450px){
+  .work-item,
+  .add-new-work{
+    width: calc(100% - 20px * 2);
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+}
 </style>

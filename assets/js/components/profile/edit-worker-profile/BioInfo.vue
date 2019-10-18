@@ -171,4 +171,44 @@ export default {
     display: none;
   }
 }
+
+@media (max-width: 768px){
+  .img-col{
+    width: 45%;
+    margin-right: 5%;
+  }
+  .address-group{
+    flex-grow: 1;
+  }
+}
+@media(max-width: 576px){
+  .section-inner{
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    padding: 30px 15px 40px 15px;
+  }
+  .inputs-col,
+  .img-col{
+    width: 100%;
+  }
+  .img-col{
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+  .geo-icon{
+    width: 35px;
+    height: 35px;
+    margin-top: auto;
+    margin-bottom: 5px;
+    margin-left: 5px;
+  }
+  .autocomplete-address{
+    font-size: 14px;
+    height: 30px;
+  }
+}
 </style>
