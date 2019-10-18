@@ -6,7 +6,7 @@
         <div class="add-new-work" @click="$store.commit('modals/addWorkerWork/open', null)">
           <div class="image"></div>
           <div class="th-btn th-btn-blue th-btn-md">
-            Add new work
+            הוסף גלריה חדשה
             <span class="plus"></span>
           </div>
         </div>
@@ -19,7 +19,7 @@
               <div class="description">{{work.description}}</div>
             </div>
           </div>
-          <div class="th-btn th-btn-blue th-btn-md"  @click="$store.commit('modals/addWorkerWork/open', work)">Edit</div>
+          <div class="th-btn th-btn-blue th-btn-md"  @click="$store.commit('modals/addWorkerWork/open', work)">ערוך גלריה</div>
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@
       <div class="upload-btn-wrap">
         <label class="th-btn th-btn-blue th-btn-md">
           <span class="caption">
-            Upload new file
+            העלאת מסמך חדש
           </span>
           <span class="plus"></span>
           <input type="file" @change="onFileUpload($event.target.files[0])">

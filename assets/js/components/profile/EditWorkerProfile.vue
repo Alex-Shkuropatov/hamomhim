@@ -15,7 +15,7 @@
       v-model="files"
     />
     <div class="submit-line h-container">
-      <button class="th-btn th-btn-blue th-btn-md wide" @click="saveProfileData">Save</button>
+      <button class="th-btn th-btn-blue th-btn-md wide" @click="saveProfileData">שמור</button>
     </div>
 
   </div>

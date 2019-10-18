@@ -2,7 +2,7 @@
   <div class="download-files">
  <div class="title">
    <hr>
-   <div class="spn">םיכמסמ</div>
+   <div class="spn">מסמכים</div>
  </div>
     <download-document
             class="post-item"
