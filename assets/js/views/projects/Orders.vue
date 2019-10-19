@@ -17,6 +17,7 @@
           <Order
                   class="orders-item"
                   v-for="order in orders" :key="order.id"
+                  :projectName="projName"
                   v-bind="order">
           </Order>
         </div>
@@ -36,7 +37,8 @@
         orders: [],
         changeModal: {
           modalCount: '',
-        }
+        },
+        projName: '',
       };
     },
     components: {
@@ -65,6 +67,7 @@
       axios.post('/api/getOrdersByProject', {project_id: this.$route.params.id})
           .then((response) => {
             console.log(response);
+            this.projName = this.$route.params.name;
             this.$store.commit('orders/set', response.data.value);
             this.orders = response.data.value;
           })

@@ -79,8 +79,8 @@
               <p class="error-message" v-if="!$v.phone.required">
                 שדה נדרש
               </p>
-              <p class="error-message" v-else-if="!$v.phone.regexp">
-                Phone is invalid
+              <p class="error-message" v-else-if="!$v.phone.regexp"> <!--Phone is invalid -->
+                הטלפון שהוזן לא תקין
               </p>
             </div>
           </div>
@@ -383,7 +383,7 @@
         return this.changeIcon(check);
       },
       checkPhone(){
-        let regMail = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
+        let regMail = /^0(\d{9})$/;
         let check = regMail.test(this.phone);
         return this.changeIcon(check);
       },

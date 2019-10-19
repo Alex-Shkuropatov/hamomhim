@@ -106,10 +106,7 @@ import ShowMore from './../../components/profile/ShowMore'
     @media screen and (max-width: 1035px) {
       position: relative;
       top: 10px;
-      right: -191px;
-    }
-    @media screen and (max-width: 767px){
-      right: -121px;
+      right: 27px;
     }
     @media screen and (max-width:480px) {
       right: unset;
@@ -124,6 +121,12 @@ import ShowMore from './../../components/profile/ShowMore'
   }
   .wrap-content{
     padding-right: 10px;
+    @media screen and (max-width:1035px){
+      padding-right: 46px;
+    }
+    @media screen and (max-width:480px) {
+      padding-right: 10px;
+    }
   }
   .openBlock{
     max-height:max-content!important;
@@ -224,7 +227,6 @@ overflow-y: hidden;
     @media screen and (max-width: 1035px) {
       display: flex;
       flex-direction: column-reverse;
-      align-items: center;
     }
     hr{
       position: absolute;

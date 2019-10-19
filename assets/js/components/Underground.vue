@@ -23,7 +23,7 @@
 
         </div>
         <div class="wrapper-a">
-        <a href="#" class="th-btn th-btn-blue th-btn-md button">כניסה ללקוחות רשומים</a>
+        <button @click="openLogin" class="th-btn th-btn-blue th-btn-md button">כניסה ללקוחות רשומים</button>
         </div>
       </div>
 
@@ -85,6 +85,12 @@
 
 <script>
 export default {
+  methods:{
+    openLogin(e){
+      e.preventDefault();
+      this.$store.commit('modals/login/open');
+    },
+  }
 }
 </script>
 

@@ -196,7 +196,7 @@ import { required, minLength } from "vuelidate/lib/validators";
         .rate-number {
           @media screen and (max-width: 1024px) {
             font-size: 30px;
-            left: 5px;
+            left: 12px;
             top: 6px;
           }
         }
@@ -204,7 +204,7 @@ import { required, minLength } from "vuelidate/lib/validators";
             @media screen and (max-width: 1024px) {
               font-size: 10px;
               top: 29px;
-              left: -5px;
+              left: -3px;
             }
           }
       .svg-pic{

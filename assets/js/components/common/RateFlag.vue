@@ -50,7 +50,7 @@
       color: #FFFFFF;
       @media screen and (max-width:1024px){
         width: 25px;
-        left: 18px;
+        left: 16px;
         font-size: 30px;
       }
     }
