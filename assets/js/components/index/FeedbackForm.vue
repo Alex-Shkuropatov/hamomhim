@@ -1,5 +1,6 @@
 <template>
   <div class="feedback-section">
+    <alert/>
     <div class="section-container">
 
       <div class="th-heading text-center">מימון פרויקטים</div>
@@ -38,7 +39,7 @@
 
 <script>
 import ThemeInput from './../common/ThemeInput.vue';
-
+import Alert from './../modals/Alert.vue'
 export default {
   data(){
     return {
@@ -49,7 +50,8 @@ export default {
     };
   },
   components: {
-    ThemeInput
+    ThemeInput,
+    Alert,
   },
   methods: {
     sendForm(){
@@ -61,12 +63,20 @@ export default {
       };
       axios.post('/api/sendContactForm2', data)
         .then(response => {
+          let res = response.data;
           if(response.data.success){
-            alert('תודה על ההודעה שלך!');//Thank you for your post
+            this.$store.commit('modals/alert/saveData', {
+              success: res.success,
+              text: res.message ? res.message : 'תודה על ההודעה שלך!',//Thank you for your post
+            });
           }
           else{
-            alert('אירעה שגיאה, אנא צור קשר עם מנהל המערכת או נסה מאוחר יותר.');//An error occurred, please contact administrator or try later.
+            this.$store.commit('modals/alert/saveData', {
+              success: res.success,
+              text:  'אירעה שגיאה, אנא צור קשר עם מנהל המערכת או נסה מאוחר יותר.',//An error occurred, please contact administrator or try later.
+            });
           }
+          this.$store.commit('modals/alert/open');
         });
     }
   },

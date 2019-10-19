@@ -58,9 +58,9 @@
       openOrders(){
         if(this.path === '/acc/projects' ){
           this.$store.commit('modals/showWorkers/setName', this.name);
-          this.$router.push({name: 'orders',params:{id:this.id}})
+          this.$router.push({name: 'orders',params:{id:this.id,name: this.name}})
         } else {
-          this.$router.push({name: 'closed-orders', params:{id:this.id}})
+          this.$router.push({name: 'closed-orders', params:{id:this.id,name: this.name}})
         }
       },
     },

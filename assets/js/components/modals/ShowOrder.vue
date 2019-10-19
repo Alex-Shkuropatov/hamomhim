@@ -2,34 +2,34 @@
   <transition name="slide-fade">
     <modal v-if="$store.getters['modals/showOrder/isOpened']" @close="close">
       <div class="content-wrapper">
-        <h2 class="title">טקייורפה םש</h2>
-        <h3 class="architectData">לכירדא ינותנ</h3>
+        <h2 class="title">  שם הפרויקט :  {{ getData.projectName}} </h2>
+        <h3 class="architectData"> פרטי הפרויקט</h3 >
         <form class="form">
           <div class="form-row">
             <div class="row">
-              <p>לכירדאה םש </p>
+              <p>שם האדריכל </p>
               <input type="text" :value="getData.userName">
             </div>
             <div class="row">
-              <p>ןופלט</p>
+              <p>טלפון</p>
               <input type="text" :value="getData.phone">
             </div>
           </div>
           <div class="under-title">
-            <h3 class="invitationData">הנמזה ינותנ</h3>
+            <h3 class="invitationData">נתוני ההזמנה</h3>
             <div class="form-row">
               <div class="row">
-                <p>תוחמתה גוס</p>
+                <p>סוג התמחות</p>
                 <input type="text" :value="getId">
               </div>
               <div class="row">
-                <p> הדובע רוזיא</p>
+                <p>תמונות מצורפות</p>
                 <input type="text" :value="getData.work_area">
               </div>
             </div>
             <div class="form-row column clm">
               <div class="row ml-b">
-                <p>הנשמ תוירוגטק</p>
+                <p>הורד פרויקט</p>
                 <div class="sub-wrapper" v-if="getData.subcategories[0]!==null">
                   <subcategory
                   class="orders-item"
@@ -41,10 +41,10 @@
               </div>
             </div>
             <div class="row">
-              <p>תופרוצמ תונומת</p>
+              <p>שמור הצעה</p>
               <div class="download-b">
                 <a class="download" :href="$env.API_URL+getData.zip" download>
-                  <span>דרוה</span>
+                  <span>להוריד</span>
                   <i class="fas fa-download"></i>
                 </a>
               </div>
@@ -144,6 +144,7 @@
     }
 
     .title {
+
       font-weight: bold;
       font-size: 40px;
       text-align: center;

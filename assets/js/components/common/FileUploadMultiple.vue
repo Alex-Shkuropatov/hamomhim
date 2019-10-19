@@ -3,11 +3,11 @@
     <div class="files-list">
       <div class="item" v-for="file in value">
         {{file.file.name}}
-        <a href="#" class="th-btn th-btn-blue delete-btn" @click.prevent="onDeleteFile(file.id)">Delete</a>
+        <a href="#" class="th-btn th-btn-blue delete-btn" @click.prevent="onDeleteFile(file.id)">הסר מסמך</a>
       </div>
     </div>
     <label class="upload-btn">
-      <span class="caption">Add file</span>
+      <span class="caption">הוסף קבצים</span>
       <input type="file" multiple @change="onFileUpload($event.target.files)">
     </label>
   </div>

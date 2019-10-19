@@ -1,6 +1,6 @@
 <template>
   <div class="profie-page-wrapper">
-
+    <alert />
     <worker-profile-first-screen :user="user"></worker-profile-first-screen>
 
     <personal-info id="p-info" ref="firstBlock" v-bind.sync="user" class="h-container"/>
@@ -29,7 +29,7 @@ import WorkerWorksList from './edit-worker-profile/WorkerWorksList';
 import Feedback from './Feedback.vue';
 import WorkerFiles from './edit-worker-profile/WorkerFiles';
 import WorkerProfileFirstScreen from './WorkerProfileFirstScreen';
-
+import Alert from './../modals/Alert'
 //import { required, email } from "vuelidate/lib/validators";
 
 export default {
@@ -39,7 +39,8 @@ export default {
     WorkerWorksList,
     Feedback,
     WorkerFiles,
-    WorkerProfileFirstScreen
+    WorkerProfileFirstScreen,
+    Alert,
   },
   data(){
     return {
@@ -103,12 +104,21 @@ export default {
       });
       axios.post('api/updateWorkerProfile', data)
         .then(response => {
+
+          let res = response.data;
           if(response.data.success){
-            alert('Profile was successfully edited.');
+            this.$store.commit('modals/alert/saveData', {
+              success: res.success,
+              text: res.message ? res.message : 'הפרופיל נערך בהצלחה.',//
+            });
           }
           else{
-            alert('An error occured, please try later or contact site administator.');
+            this.$store.commit('modals/alert/saveData', {
+              success: res.success,
+              text:  'אירעה שגיאה, אנא צור קשר עם מנהל המערכת או נסה מאוחר יותר.',
+            });
           }
+          this.$store.commit('modals/alert/open');
         });
     },
   },
