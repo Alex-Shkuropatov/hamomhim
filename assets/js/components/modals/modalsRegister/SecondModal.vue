@@ -40,7 +40,7 @@
                 שדה נדרש
               </p>
               <p class="error-message" v-else-if="!$v.email.regexp">
-               Email is invalid
+                אימייל שגוי
               </p>
             </div>
           </div>
@@ -247,9 +247,11 @@
   import Modal from './../../common/Modal.vue';
   import DropDown from './../../common/DropDown.vue';
   import ThemeMultiselect from './../../common/ThemeMultiselect.vue'
-  import { required, minLength } from "vuelidate/lib/validators";
+  import { required, minLength, requiredIf } from "vuelidate/lib/validators";
   import VueGoogleAutocomplete from 'vue-google-autocomplete'
-
+const checkRole =  () => {
+  return this.role === 'worker'
+};
   export default {
     validations: {
       name:{
@@ -288,12 +290,12 @@
       },
       categories:{
         value:{
-          required,
+          required: requiredIf('isOptional'),
         }
       },
       subcategories:{
         value:{
-          required
+          required: requiredIf('isOptional'),
         }
       },
       workArea:{
@@ -304,7 +306,8 @@
       pass:{
         required,
         minLength:minLength(6),
-      }    },
+      },
+      },
     methods: {
       getAddressData(addressData, placeResultData, id){
         //console.log({addressData, placeResultData, id});
@@ -419,6 +422,8 @@
         this.subcategories.items = this.getSubcategories;
       }
     },
+
+
     data : function () {
       return {
         focusedMail: false,
@@ -482,6 +487,9 @@
         } else {
           return [];
         }
+      },
+      isOptional() {
+        return this.checkRole() // some conditional logic here...
       }
     },
 

@@ -8,7 +8,6 @@
         <div class="orderWrapper">
           <p class="formItem" >נא המתן 30 שניות עד לקבלת קוד האימות</p>
           <div>
-            <i class="fas " ref="mail" v-bind:class="[{ 'fa-spin': focusedPhone}, focusedPhone ? 'fa-sync-alt':icon]"  ></i>
             <input type="text"  :style="[ flag ? {border: '2px solid red'} : ''  ]" ref="mail" id="phoneC"  placeholder="נא הזן 4 ספרות"  @focus="onFocus" @blur="onBlur" v-model="phoneCode" class="inputName">
           </div>
           <div v-if="flag" class="red">

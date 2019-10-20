@@ -51,14 +51,24 @@
               this.$store.commit('user/saveData' , data);
               axios.get('/api/auth/user')
                   .then((response)=>{
+                    console.log('then');
                     this.$store.commit('user/saveData' , response.data);
                   })
                   .catch((error) => {
+                    console.log('error');
+
                     console.log(error);
                   });
             })
             .catch((error) => {
-              console.log(error.response.data);
+              console.log(error.response );
+              this.$store.commit('modals/alert/saveData', {
+                success: false,
+                text:  'לא מורשה',
+              });
+              this.$store.commit('modals/login/close');
+              this.$store.commit('modals/alert/open');
+
             });
 
         this.$store.commit('modals/login/close');
