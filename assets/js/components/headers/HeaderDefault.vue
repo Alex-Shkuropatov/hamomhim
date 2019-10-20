@@ -4,7 +4,7 @@
     <login/>
     <forget-password />
     <registration />
-
+<alert />
     <div class="h-container">
       <a href="#" class="logo-wrap">
         <router-link :to="{ name: 'index'}">

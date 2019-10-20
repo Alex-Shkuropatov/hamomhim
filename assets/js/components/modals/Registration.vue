@@ -68,11 +68,20 @@
       onSecond (data) {
         data.role = this.user.role;
         this.user.email = data.email  ;
-       this.modal++;
+
        if ( data.role==='worker'){
          axios.post('/api/auth/signupWorker', data)
              .then((response) => {
-               console.log(response);
+               let res = response.data;
+             if (res.success){
+               this.modal++;
+             } else {
+               this.$store.commit('modals/alert/saveData', {
+                 success: res.success,
+                 text:  response.data.message,
+               });
+               this.modal = 3;
+             }
              })
              .catch((error) => {
                console.log(error.response.data);
@@ -80,7 +89,16 @@
        } else {
            axios.post('/api/auth/signupArchitect', data)
                .then((response) => {
-                 console.log(response);
+                 let res = response.data;
+                 if (res.success){
+                   this.modal++;
+                 } else {
+                   this.$store.commit('modals/alert/saveData', {
+                     success: res.success,
+                     text:  response.data.message,
+                   });
+                   this.modal = 3;
+                 }
                })
                .catch((error) => {
                  alert(error.data.message);

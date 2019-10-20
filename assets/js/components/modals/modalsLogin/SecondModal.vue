@@ -23,6 +23,9 @@
               <p class="error-message" v-if="!$v.user.email.required">
                 שדה נדרש
               </p>
+              <p class="error-message" v-else-if="!$v.user.email.regexp">
+                אימייל שגוי
+              </p>
             </div>
 
           </div>
@@ -69,7 +72,12 @@
 validations:{
 user:{
   email:{
-    required
+    required,
+    regexp(){
+      let regMail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      let  check = regMail.test(this.user.email);
+      return check;
+    }
   }
 }
 },
