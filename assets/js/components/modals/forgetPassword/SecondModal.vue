@@ -5,7 +5,6 @@
   <div class="orderWrapper">
     <p class="formItem" >נא הזן את הקוד</p><!-- code -->
     <div>
-      <i class="fas  "  v-bind:class="[{ 'fa-spin': focusedCode},focusedCode ? 'fa-sync-alt': (flag? iconS : 'fa-sync-alt')]" ></i>
       <input type="text" placeholder="טלפון" id="phone" ref="phone" @focus="onFocus" @blur="onBlur"  :style="[ flag!=='' ? {border: '2px solid red'} : ''  ]"   v-model.trim="token" class="inputName">
     </div>
     <p class="error-message" v-if="flag!==''">{{flag}}</p>

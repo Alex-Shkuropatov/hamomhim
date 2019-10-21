@@ -6,7 +6,9 @@
       <div></div>
     </label>
     <div class="menu">
+
       <div class="mobileMenuWrapper" style="display: flex;flex-direction: column;">
+    
         <div>
           <ul id="burger-menu">
             <li class="menu-item">
@@ -25,8 +27,8 @@
               <router-link :to="{ name: 'contact-us'}">צור קשר</router-link>
             </li>
             <div class="auth-btns"  v-if="!$store.getters['user/isLogged']">
-              <button class="th-btn th-btn-blue th-btn-sm" @click="openLogin">התחברות למערכת</button>
-              <button class="th-btn th-btn-empty th-btn-sm" @click="openReg">הרשמה למערכת</button>
+              <button class="th-btn th-btn-blue th-btn-sm login" @click="openLogin">התחברות למערכת</button>
+              <button class="th-btn th-btn-empty th-btn-sm registr" @click="openReg">הרשמה למערכת</button>
             </div>
             <div class="auth-btns profile-links"  v-else-if="$store.getters['user/isLogged']">
               <button class="th-btn th-btn-empty th-btn-sm profileB" @click="profile" >לחשבון שלי</button>
@@ -114,6 +116,10 @@
       height: 43px;
       font-size: 23px;
 
+    }
+    .registr{
+      border: 2px solid white;
+      color: white;
     }
   }
   .profile-links{
@@ -329,7 +335,6 @@
           font-weight: bold;
 
           line-height: 65px;
-          text-decoration-line: underline;
           color: #FFFFFF;
           @media screen and (max-width: 1250px){
             font-size: 50px;
