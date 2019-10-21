@@ -24,9 +24,7 @@ export default {
         title: ' בלוג',
         image: '/static/images/bg-blog.png'
       },
-      posts: [
-
-       ],
+      posts: [],
     };
   },
   mounted(){
