@@ -14,10 +14,10 @@
         >
         <div class="error-wrapper" v-if="$v.title.$dirty">
           <p class="error-message" v-if="!$v.title.required">
-            This field cant be empty
+            שדה נדרש
           </p>
           <p class="error-message" v-else-if="!$v.title.minLength">
-            Title must contain more than 6 symbols
+            כותרת חייבת להכיל לפחות 6 ספרות
           </p>
         </div>
       </div>
@@ -35,10 +35,10 @@
         ></textarea>
         <div class="error-wrapper" v-if="$v.description.$dirty">
           <p class="error-message" v-if="!$v.description.required">
-            This field cant be empty
+            שדה נדרש
           </p>
           <p class="error-message" v-else-if="!$v.description.minLength">
-            Description must contain more than 10 symbols
+            התיאור חייב להכיל לפחות 10 מילים
           </p>
         </div>
       </div>
@@ -55,7 +55,7 @@
       </div>
       <div class="error-wrapper" v-if="$v.userRate.$dirty">
         <h5 class="error-message" style="text-align:center" v-if="!$v.userRate.required">
-          Choose the rate
+          בחר את התעריף
         </h5>
       </div>
       <button class="th-btn th-btn-blue th-btn-sm feedback-b " @click.prevent="sendFeedback">Send </button>

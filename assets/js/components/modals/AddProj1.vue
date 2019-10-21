@@ -34,10 +34,10 @@
             נא הזן תיאור פרויקט
           </p>
           <p class="error-message" v-else-if="!$v.description.minLength">
-            Description must contain more than 10 symbols
+            התיאור חייב להכיל לפחות 6 מילים
           </p>
           <p class="error-message" v-else-if="!$v.description.maxLength">
-            Description must contain less than 150 symbols
+            התיאור חייב להכיל פחות מ 150 מילים
           </p>
         </div>
       </form>
@@ -89,7 +89,7 @@
         },
       description:{
         required,
-        minLength: minLength(2),
+        minLength: minLength(6),
         maxLength: maxLength(150),
       },
     },
