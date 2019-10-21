@@ -108,7 +108,7 @@
               </div>
        </textarea>
         </div>
-        <button class="next-b th-btn th-btn-blue th-btn-md" @click.prevent="sendOrder"><span>לשלב הבא</span></button>
+        <button class="next-b th-btn th-btn-blue th-btn-md" v-bind:disabled="spinFlag" @click.prevent="sendOrder"><i v-show="spinFlag" class="fas fa-spinner fa-spin"></i><span>לשלב הבא</span></button>
       </form>
     </div>
   </div>
@@ -153,6 +153,7 @@ export default {
           { label: 'השרון והסביבה', value: "4" },
           { label: 'באר שבע', value: "5" },
         ],
+        spinFlag: false,
         value: '',
         labelKey: 'label',
         valueKey: 'label',
@@ -218,7 +219,7 @@ export default {
       this.$v.description.$touch();
 
       if(!this.$v.$invalid) {
-
+        this.spinFlag = true;
 
         let myFormData = new FormData();
         for (let i = 0; i < this.files.length; i++) {

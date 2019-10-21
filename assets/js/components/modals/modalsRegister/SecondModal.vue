@@ -229,10 +229,17 @@
             </p>
           </div>
         </div>
+        <div class="check-wrapper">
         <div class="checkbox">
           <input type="checkbox" id="check" value="check" v-model="license">
-          <label for="check">אני מאשר את תנאי השימוש</label>
+          <router-link :to="{name:'privacy-policy'}"  target="_blank" for="check">אני מאשר את תנאי השימוש</router-link>
         </div>
+          <div class="error-wrapper" v-if="$v.license.$dirty">
+            <p class="error-message" v-if="!$v.license.required">
+              שדה נדרש
+            </p>
+          </div>
+      </div>
       </div>
     </form>
 
@@ -258,6 +265,9 @@ const checkRole =  () => {
         required,
       },
       city:{
+        required,
+      },
+      license:{
         required,
       },
       email:{
@@ -324,6 +334,7 @@ const checkRole =  () => {
         this.$v.fax.$touch();
         this.$v.email.$touch();
         this.$v.phone.$touch();
+        this.$v.license.$touch();
         this.$v.city.$touch();
         this.$v.address.$touch();
         this.$v.workArea.value.$touch();
@@ -334,9 +345,9 @@ const checkRole =  () => {
           this.$v.subcategories.value.$touch();
         }
 
-
+        if(!this.$v.$invalid  ) {
           let subcat = [];
-          if (this.role==='worker') {
+          if (this.role === 'worker') {
 
             console.log(this.subcategories.value);
             this.subcategories.value.forEach((item) => {
@@ -358,7 +369,7 @@ const checkRole =  () => {
             password_confirmation: this.pass,
             subcategories: subcat,
           })
-
+        }
       },
       onFocus(e) {
         console.log(e.target);
@@ -693,7 +704,7 @@ const checkRole =  () => {
       margin-left: 50px;
       width: 209px;
     }
-    label{
+    a{
       text-decoration: underline;
       color: #333333;
     }
@@ -701,7 +712,6 @@ const checkRole =  () => {
   .last-field{
     display: flex;
     flex-direction: row;
-    align-items: center;
     width: 727px;
     @media screen and (max-width: 900px) {
       flex-direction: column;
@@ -717,6 +727,10 @@ const checkRole =  () => {
       .inputName{
         padding-right: 20px;
       }
+    }
+    a{
+      color: #333333;
+      text-decoration: none;
     }
   }
 

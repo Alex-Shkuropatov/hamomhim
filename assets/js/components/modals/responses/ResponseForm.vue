@@ -7,7 +7,7 @@
         <div class="popup-form-row">
           <div class="col1-1 inp-group">
             <div class="label">תיאור</div>
-            <theme-textarea v-model="description" placeholder="תיאור"></theme-textarea>
+            <theme-textarea   v-model="description" placeholder="תיאור"></theme-textarea>
           </div>
         </div>
         <div class="popup-form-row">

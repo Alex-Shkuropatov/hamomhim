@@ -80,8 +80,6 @@
       FirstModal,
       SecondModal,
       axios,
-
-
     },
     created(){
       this.animaStyle='slide-fade';

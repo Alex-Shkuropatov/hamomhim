@@ -70,7 +70,7 @@
      <div class="row">
        <div class="title">תיאור חופשי</div>
        <textarea
-               v-model.trim.lazy="formData.description"
+               v-model.trim="formData.description"
                name="text"
                @input="$v.formData.description.$touch()"
                :class="{ 'error': $v.formData.description.$error }"
@@ -91,7 +91,7 @@
          </p>
        </div>
      </div>
-     <button class="next-b th-btn th-btn-blue th-btn-md" @click.prevent="sendOrder"><span>לשלב הבא</span></button>
+     <button class="next-b th-btn th-btn-blue th-btn-md" v-bind:disabled="spinFlag" @click.prevent="sendOrder"><i v-show="spinFlag" class="fas fa-spinner fa-spin"></i><span id="sendBid">   לשלב הבא</span></button>
    </form>
  </div>
   </div>
@@ -131,6 +131,7 @@ workArea: {
           description: '',
         },
         isDisabled: true,
+        spinFlag: false,
         workArea: {
           items: [
             { label: 'כל הארץ', value: "1" },
@@ -166,7 +167,7 @@ workArea: {
         this.$v.formData.description.$touch();
 
         if(!this.$v.$invalid) {
-
+            this.spinFlag = true;
           let myFormData = new FormData();
           for (let i = 0; i < this.files.length; i++) {
             myFormData.append('files[]', this.files[i]);
