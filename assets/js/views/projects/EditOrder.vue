@@ -108,7 +108,7 @@
               </div>
        </textarea>
         </div>
-        <button class="next-b th-btn th-btn-blue th-btn-md" v-bind:disabled="spinFlag" @click.prevent="sendOrder"><i v-show="spinFlag" class="fas fa-spinner fa-spin"></i><span>לשלב הבא</span></button>
+        <button class="next-b th-btn th-btn-blue th-btn-md" v-bind:disabled="spinFlag" @click.prevent="sendOrder"> <i v-show="spinFlag" class="fas fa-spinner fa-spin"></i> <span>לשלב הבא</span> </button>
       </form>
     </div>
   </div>

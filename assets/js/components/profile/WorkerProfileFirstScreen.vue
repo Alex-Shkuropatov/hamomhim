@@ -17,7 +17,7 @@
       </div>
       <button class="th-btn th-btn-blue th-btn-lg contact-b"><span>צור קשר </span></button>
     </div>
-
+    <button class="back-b" @click="back"><i class="fas fa-chevron-right"></i>  חזור</button>
   </div>
 </template>
 
@@ -58,6 +58,11 @@ user:{
   },
   components: {
     FavouriteIcon
+  },
+  methods:{
+    back(){
+      this.$router.go(-1);
+    }
   }
 }
 </script>
@@ -108,6 +113,14 @@ user:{
       }
     }
   }
+}
+.back-b{
+  color: #FFFFFF;
+  display: block;
+  margin: 0 auto;
+  margin-top:10px;
+  font-weight: bold;
+  font-size: 24px;
 }
 .contact-b{
   margin-top: 20px ;

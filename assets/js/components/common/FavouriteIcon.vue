@@ -66,7 +66,7 @@
     watch: {
       'is_favourite'(){
         this.favourite = this.is_favourite;
-        if (this.is_favourite !== true){
+        if (this.is_favourite === false){
          this.white();
         }
       }
