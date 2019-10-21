@@ -7,9 +7,7 @@
       </div>
       <div class="post-content">
         <div class="main-title">{{content.title}}</div>
-        <div class="text section">
-            {{content.contents}}
-        </div>
+        <div class="text section" v-html="content.contents"></div>
 
         <div class="section">
         </div>
