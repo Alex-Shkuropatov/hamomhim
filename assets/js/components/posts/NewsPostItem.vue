@@ -9,7 +9,7 @@
       <span>{{getDate}}</span> | <span>by {{author}}</span>
     </div>
     <div class="excerpt">{{description}}</div>
-    <router-link  class="th-btn th-btn-empty th-btn-sm" :to="{name: 'blog-post', params: {id: id}}">קרא את הפוסט הזה </router-link>
+    <button  class="th-btn th-btn-empty th-btn-sm" @click="openSingle">קרא את הפוסט הזה </button>
   </div>
 </template>
 
@@ -64,6 +64,11 @@ export default {
       return {
         backgroundImage: 'url(' + (this.thumbnail ? this.$env.API_URL+this.thumbnail : '/static/images/default/default-blog.png') + ')'
       };
+    }
+  },
+  methods:{
+    openSingle(){
+      this.$router.push({name: 'blog-post',params:{id:this.id}});
     }
   }
 }

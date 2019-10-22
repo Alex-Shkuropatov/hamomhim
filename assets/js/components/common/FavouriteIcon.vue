@@ -83,6 +83,11 @@
   .title-favourite{
     margin-right: 3px;
     margin-bottom: 3px;
+    button{
+    @media screen and (max-width: 480px){
+      width: 19px;
+      padding: 0;
+    }
     svg{
       width:30px;
       height:28px;
@@ -98,6 +103,7 @@
         }
       }
     }
+  }
   }
   .tooltip {
     position: relative;

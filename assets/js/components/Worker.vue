@@ -411,8 +411,15 @@ margin-left: 7px;
       margin-left: 0px;
     }
     @media screen and (max-width: 480px){
-      font-size: 16px;
+      font-size: 14px;
       margin-left: 0;
+      width: 145px;
+      display: flex;
+      justify-content: center;
+    }
+    .title-element{
+      text-align: right;
+      line-height: 19px;
     }
   }
   hr{
