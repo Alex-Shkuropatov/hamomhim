@@ -3,10 +3,14 @@
   <div class="outer-menu">
     <input class="checkbox-toggle" type="checkbox" id="checkB" />
     <label class="hamburger burger" id="menuB">
-      <div></div>
+      <div class="lines">
+        <span class="line"></span>
+      </div>
     </label>
     <div class="menu">
+
       <div class="mobileMenuWrapper" style="display: flex;flex-direction: column;">
+
         <div>
           <ul id="burger-menu">
             <li class="menu-item">
@@ -25,8 +29,8 @@
               <router-link :to="{ name: 'contact-us'}">צור קשר</router-link>
             </li>
             <div class="auth-btns"  v-if="!$store.getters['user/isLogged']">
-              <button class="th-btn th-btn-blue th-btn-sm" @click="openLogin">התחברות למערכת</button>
-              <button class="th-btn th-btn-empty th-btn-sm" @click="openReg">הרשמה למערכת</button>
+              <button class="th-btn th-btn-blue th-btn-sm login" @click="openLogin">התחברות למערכת</button>
+              <button class="th-btn th-btn-empty th-btn-sm registr" @click="openReg">הרשמה למערכת</button>
             </div>
             <div class="auth-btns profile-links"  v-else-if="$store.getters['user/isLogged']">
               <button class="th-btn th-btn-empty th-btn-sm profileB" @click="profile" >לחשבון שלי</button>
@@ -115,6 +119,10 @@
       font-size: 23px;
 
     }
+    .registr{
+      border: 2px solid white;
+      color: white;
+    }
   }
   .profile-links{
 
@@ -142,17 +150,7 @@
     opacity: 0;
   }
   .outer-menu .checkbox-toggle:checked + .hamburger > div {
-    -webkit-transform: rotate(135deg);
-    transform: rotate(135deg);
-  }
-  .outer-menu .checkbox-toggle:checked + .hamburger > div:before,
-  .outer-menu .checkbox-toggle:checked + .hamburger > div:after {
-    top: 0;
-    -webkit-transform: rotate(90deg);
-    transform: rotate(90deg);
-  }
-  .outer-menu .checkbox-toggle:checked + .hamburger > div:after {
-    opacity: 0;
+
   }
   .outer-menu .checkbox-toggle:checked ~ .menu {
     pointer-events: auto;
@@ -162,80 +160,97 @@
     -webkit-transform: scale(1);
     transform: scale(1);
     transition-duration: 0.75s;
-
   }
   .outer-menu .checkbox-toggle:checked ~ .menu > div > div {
     opacity: 1;
     transition: opacity 0.4s ease 0.4s;
-
-  }
-  .outer-menu .checkbox-toggle:hover + .hamburger {
-
-  }
-  .outer-menu .checkbox-toggle:checked:hover + .hamburger > div {
-    -webkit-transform: rotate(225deg);
-    transform: rotate(225deg);
-    background-color: white;
   }
   .outer-menu .hamburger {
     position: absolute;
     z-index: 1;
     width: 59px;
     height: 47px;
-    padding: 0.2em 0.8em;
+    padding: 0.2em 1.1em;
     border-radius: 10px;
     cursor: pointer;
     transition: box-shadow 0.4s ease;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     display: flex;
+    -ms-align-items: center;
     align-items: center;
-    justify-content: center;
   }
-  .outer-menu .hamburger > div {
-    position: relative;
-    flex: none;
-    width: 40px;
-    height: 2px;
-    background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
-    transition: all 0.4s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .outer-menu .hamburger{
+
+    & > div {
+      position: relative;
+      width: 100%;
+      height: 16px;
+      flex: none;
+      display: flex;
+      align-items: center;
+      // justify-content: center;
+    }
+
+    & > div:before,
+    & > div:after{
+      content: '';
+    }
+    .line,
+    & > div:before,
+    & > div:after{
+      display: block;
+      position: absolute;
+      z-index: 1;
+      height: 2px;
+      background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
+    }
+    & > div:before{
+      top: 0;
+      transition: transform .1s, top .2s .2s;//plays when menu closes
+      width: 56%;
+    }
+    .line{
+      width: 78%;
+      transition: opacity 0s .1s;
+    }
+    & > div:after{
+      bottom: 0;
+      transition: transform .1s, bottom .2s .2s, width 0s .1s;//plays when menu closes
+      width: 100%;
+    }
+
   }
-  .outer-menu .hamburger > div:before{
-    content: '';
-    position: absolute;
-    z-index: 1;
-    top: -10px;
-    left: 0;
-    height: 2px;
-    background: inherit;
-    transition: all 0.4s ease;
-  }
-  #menuB{
-    div{
-      &:before {
-        width: 40px!important;
-      }
-      &:after{
-        width: 20px!important;
-      }
+
+  //animation for hamburger
+  .outer-menu .checkbox-toggle:checked + .hamburger{
+    & > div:before{
+      top: calc(50% - 1px);
+      transform: rotate(45deg);
+      width: 100%;
+      transition: top .1s, transform .2s .2s;//playes when menu opens
+
+    }
+    & > div:after{
+      bottom: calc(50% - 1px);
+      transform: rotate(-45deg);
+
+      transition: top .1s, transform .2s .2s, width 0s .1s;
+    }
+    & > div .line{
+      opacity: 0;
     }
   }
-  .outer-menu .hamburger > div:after {
-    content: '';
-    position: absolute;
-    z-index: 1;
-    top: -10px;
-    left: 0;
-    height: 1px;
-    background: inherit;
-    transition: all 0.4s ease;
+
+  @keyframes scale{
+    0%{
+      transform: scale(1);
+    }
+    100%{
+      transform: scale(2);
+    }
   }
-  .outer-menu .hamburger > div:after {
-    top: 10px;
-  }
+
   .outer-menu .menu {
     position: fixed;
     top: 0;
@@ -329,7 +344,6 @@
           font-weight: bold;
 
           line-height: 65px;
-          text-decoration-line: underline;
           color: #FFFFFF;
           @media screen and (max-width: 1250px){
             font-size: 50px;

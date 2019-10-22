@@ -14,7 +14,7 @@
       <i class="fas  "  v-bind:class="[{ 'fa-spin': focusedCode}, focusedCode ? 'fa-sync-alt':iconS]" ></i>
       <input type="password" :style="[ flag!==true ? {border: '2px solid red'} : ''  ]" placeholder="טלפון" id="phone" ref="phone" @focus="onFocus" @blur="onBlur"  v-model="user.confirmPassword" class="inputName">
     </div>
-    <p class="error-message" v-if="flag!==''">סיסמאות אינן תואמות</p><!-- Passwords don't match -->
+    <p class="error-message" v-if="flag!==true">סיסמאות אינן תואמות</p><!-- Passwords don't match -->
   </div>
 
   <button class=" th-btn th-btn-blue th-btn-lg next" @click="send" ><span>לשלב הבא</span></button>

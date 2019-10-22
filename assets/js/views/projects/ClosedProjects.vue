@@ -5,7 +5,7 @@
 
 </div>
   <div class="projects" v-if="flag" >
-    <h2  class="notify_msg"  v-show="projects.length===0" ><i class="far fa-copy"></i> You dont have closed projects </h2>
+    <h2  class="notify_msg"  v-show="projects.length===0" > אין לך פרויקטים סגורים. <i class="far fa-copy"></i>  </h2>
     <div class="projects-list-wrap">
       <div class="projects-list" v-show="projects.length!==0">
         <Project

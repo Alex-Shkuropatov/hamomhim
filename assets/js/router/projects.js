@@ -27,27 +27,27 @@ export default {
       name: 'projects',
     },
     {
-      path: 'projects/:id/:name/orders/',
+      path: 'projects/:id/:name?/orders/',
       component: Orders,
       name: 'orders',
     },
     {
-      path: 'projects/:id/:name/orders/new-order/',
+      path: 'projects/:id/orders/new-order/',
       component: NewOrder,
       name: 'new-order',
     },
     {
-      path: 'projects/:id/:name/orders/:orderId/edit-order/',
+      path: 'projects/:id/orders/:orderId/edit-order/',
       component: EditOrder,
       name: 'edit-order',
     },
     {
-      path: 'projects/:id/:name/orders/:orderId/search-workers',
+      path: 'projects/:id/orders/:orderId/search-workers',
       component: SearchWorkers,
       name: 'search-workers',
     },
     {
-      path: 'projects/:id/:name/leave-feedback',
+      path: 'projects/:id/leave-feedback',
       component: ProjectFeedback,
       name: 'project-feedback',
     },
@@ -62,7 +62,7 @@ export default {
       name: 'prefer-worker',
     },
     {
-      path: 'closed-projects/:id/:name/closed-orders',
+      path: 'closed-projects/:id/closed-orders',
       component: ClosedOrders,
       name: 'closed-orders',
     },

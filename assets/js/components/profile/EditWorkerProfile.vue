@@ -104,8 +104,8 @@ export default {
       });
       axios.post('api/updateWorkerProfile', data)
         .then(response => {
-
           let res = response.data;
+
           if(response.data.success){
             this.$store.commit('modals/alert/saveData', {
               success: res.success,
@@ -119,7 +119,14 @@ export default {
             });
           }
           this.$store.commit('modals/alert/open');
+        }).catch((error)=>{
+          console.log(error);
+        this.$store.commit('modals/alert/saveData', {
+          success: false,
+          text:  'כל השדות חובה.',
         });
+        this.$store.commit('modals/alert/open');
+      })
     },
   },
   mounted(){

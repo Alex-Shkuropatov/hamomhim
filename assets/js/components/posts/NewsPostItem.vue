@@ -1,7 +1,8 @@
 <template>
   <div class="post-item">
     <div class="thumb">
-      <img :src="thumb? $env.API_URL+thumb: '/static/images/default/default-blog.png' " alt="">
+      <!-- <img :src="thumbnail? $env.API_URL+thumbnail: '/static/images/default/default-blog.png' " alt=""> -->
+      <div class="img" :style="imageStyle"></div>
     </div>
     <div class="title">{{title}}</div>
     <div class="meta">
@@ -19,7 +20,7 @@ export default {
       type: Number,
       required: true,
     },
-    thumb: {
+    thumbnail: {
       default: '',
       type: String,
     },
@@ -55,6 +56,14 @@ export default {
       if (this.created_at){
         return this.created_at.slice(0,11).replace(/-/g, '.')
       }
+    },
+    imageStyle(){
+      console.log({
+        backgroundImage: this.thumbnail ? this.$env.API_URL+this.thumbnail : '/static/images/default/default-blog.png)'
+      });
+      return {
+        backgroundImage: 'url(' + (this.thumbnail ? this.$env.API_URL+this.thumbnail : '/static/images/default/default-blog.png') + ')'
+      };
     }
   }
 }
@@ -76,6 +85,12 @@ export default {
   img{
     width: 100%;
     height: auto;
+  }
+  .img{
+    padding-top: 90%;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center;
   }
   .title{
     font-size: 24px;

@@ -23,7 +23,7 @@
 
         </div>
         <div class="wrapper-a">
-        <button @click="openLogin" class="th-btn th-btn-blue th-btn-md button">כניסה ללקוחות רשומים</button>
+        <button v-if="logged" @click="openLogin" class="th-btn th-btn-blue th-btn-md button">כניסה ללקוחות רשומים</button>
         </div>
       </div>
 
@@ -90,6 +90,11 @@ export default {
       e.preventDefault();
       this.$store.commit('modals/login/open');
     },
+  },
+  computed:{
+    logged(){
+      this.$store.getters['user/isLogged']
+    }
   }
 }
 </script>

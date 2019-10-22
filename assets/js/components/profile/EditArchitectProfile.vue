@@ -290,7 +290,7 @@ export default {
               let res = response.data;
               this.$store.commit('modals/alert/saveData', {
                 success: res.success,
-                text: res.message ? res.message : 'Information successfully saved'
+                text: res.message ? res.message : 'המידע נשמר בהצלחה'
               });
               this.$store.commit('modals/alert/open');
               this.$store.dispatch('user/updateData');

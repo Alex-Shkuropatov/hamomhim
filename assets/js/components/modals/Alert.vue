@@ -18,7 +18,7 @@
           <i class="fas fa-times msgOk"></i>
         </div>
 
-        <h3  :style="[getData.success === false? {color: 'red'} : {color: '#2871D7'}  ]" >{{getData.success === true? 'Success': 'Fail'}}</h3>
+        <h3  :style="[getData.success === false? {color: 'red'} : {color: '#2871D7'}  ]" >{{getData.success === true? 'אושר':'נכשל'}}</h3>
         <p>{{getData.text}}</p>
         <button class="sendData th-btn th-btn-blue th-btn-sm " style="text-align:center" @click='close' >חזור לאתר</button>
       </div>

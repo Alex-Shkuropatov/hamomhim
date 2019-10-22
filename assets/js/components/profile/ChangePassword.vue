@@ -21,7 +21,7 @@
                   שדה נדרש
                 </p>
                 <p class="error-message" v-else-if="!$v.user.oldPassword.minLength">
-                  Password must contain more than 6 symbols
+                  הסיסמה חייבת להכיל לפחות 6 ספרות
                 </p>
               </div>
           </div>
@@ -40,7 +40,7 @@
                   שדה נדרש
                 </p>
                 <p class="error-message" v-else-if="!$v.user.newPassword.minLength">
-                  Password must contain more than 6 symbols
+                  הסיסמה חייבת להכיל לפחות 6 ספרות
                 </p>
               </div>
           </div>
@@ -56,8 +56,8 @@
                 <p class="error-message" v-if="!$v.user.confirmPassword.required">
                   שדה נדרש
                 </p>
-                <p class="error-message" v-else-if="!$v.user.confirmPassword.regexp">
-                 Passwords doesnt match
+                <p class="error-message" v-else-if="!$v.user.confirmPassword.regexp"> <!-- Passwords don't match -->
+                  סיסמאות אינן תואמות
                 </p>
               </div>
           </div>
