@@ -49,6 +49,11 @@
     },
     components: {
       FavouriteIcon
+    },
+    methods: {
+        back(){
+          this.$router.go(-1);
+        }
     }
   }
   </script>
@@ -100,23 +105,31 @@
       }
     }
   }
-  .contact-b{
-    margin-top: 20px ;
-    font-weight: bold;
-    font-size: 24px;
-    width: 257.89px;
-    height: 76.37px ;
-    background: #30588E;
-    border: 2px solid #30588E;
-    border-radius: 50px;
-    padding: 0px;
-    display: inline-block;
-    text-align: center;
-    @media screen and (max-width: 767px){
-      width: 202.89px;
-      height: 52.37px;
-    }
+.back-b{
+  color: #FFFFFF;
+  display: block;
+  margin: 0 auto;
+  margin-top:10px;
+  font-weight: bold;
+  font-size: 24px;
+}
+.contact-b{
+  margin-top: 20px ;
+  font-weight: bold;
+  font-size: 24px;
+  width: 257.89px;
+  height: 76.37px ;
+  background: #30588E;
+  border: 2px solid #30588E;
+  border-radius: 50px;
+  padding: 0px;
+  display: inline-block;
+  text-align: center;
+  @media screen and (max-width: 767px){
+    width: 202.89px;
+    height: 52.37px;
   }
+}
   .marginT{
     padding-top: 300px;
     @media screen and (max-width: 480px){

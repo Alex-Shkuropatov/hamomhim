@@ -225,7 +225,7 @@
             </p>
             <p class="error-message" v-else-if="!$v.pass.minLength">
               <!-- Password must contain more than 6 symbols -->
-              הסיסמה חייבת לכלול יותר משישה סמלים
+              הסיסמה חייבת להכיל לפחות 6 ספרות
             </p>
           </div>
         </div>
