@@ -5,15 +5,16 @@
     :user="user"
     :subcategories="subcategories"
     :favourite="favourite"
+
     @update:is_favourite="onUpdateIsFavourite"
     />
 
-    <div class="profile-about">
+    <div class="profile-about" id="resume">
 
       <img class="bg-resume" :src="user.bio_image === null ? '/static/images/profile/resume-bg.png': $env.API_URL+user.bio_image " alt="">
 
-      <div class="resume-wrapper">
-        <div class="profile-resume">
+      <div class="resume-wrapper" >
+        <div class="profile-resume" >
           <div class="block-wrapper">
             <div class="block-wrapper-element">
               <div class="element-padd">
@@ -57,7 +58,7 @@
                     </div>
                   </div>
                   <div class="description">
-                    {{user.bio}}
+                    {{user.bio === 'null' ? '': user.bio}}
                   </div>
                   <hr class="h desktop">
                 </div>
@@ -107,7 +108,7 @@
                   <span>{{user.email}} </span>
                 </div>
               </div>
-              <button class="th-btn th-btn-blue th-btn-sm resume-b">צור קשר</button>
+              <button class="th-btn th-btn-blue th-btn-sm resume-b" @click="showPhone"><span>{{phoneFlag === false ? 'צור קשר' : this.user.phone}}</span></button>
             </div>
 
           </div>
@@ -159,6 +160,7 @@ export default {
       user: {
 
       },
+      phoneFlag: false,
       subcategories: [],
       sliderOptions: {
         slidesPerView: 3,
@@ -199,6 +201,10 @@ export default {
     onUpdateIsFavourite(){
       console.log('updated value');
       this.favourite.is_favourite=!this.favourite.is_favourite;
+    },
+    showPhone(){
+      this.phoneFlag=!this.phoneFlag;
+
     }
   },
   mounted() {
@@ -481,7 +487,8 @@ export default {
   font-weight: bold;
   font-size: 32px;
   line-height: 42px;
-  padding-right: 89px;
+  text-align: center;
+  display: inline-block;
   width: 295.06px;
   height: 58.18px;
   @media screen and (max-width: 1235px) {

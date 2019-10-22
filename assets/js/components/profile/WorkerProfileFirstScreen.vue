@@ -16,9 +16,9 @@
           :key="subcategory.id"
           >, {{subcategory.name}}</span>.</span>
         </div>
-        <button class="th-btn th-btn-blue th-btn-lg contact-b"><span>צור קשר </span></button>
+        <a href="#resume"  class="th-btn th-btn-blue th-btn-lg contact-b"><span>צור קשר </span></a>
       </div>
-
+    <button class="back-b" @click="back"><i class="fas fa-chevron-right"></i>  חזור</button>
     </div>
   </template>
 
@@ -125,6 +125,13 @@
   padding: 0px;
   display: inline-block;
   text-align: center;
+  span{
+    display: inline-block;
+    margin-top: 19px;
+    @media screen and (max-width:767px){
+      margin-top: 8px;
+    }
+  }
   @media screen and (max-width: 767px){
     width: 202.89px;
     height: 52.37px;
