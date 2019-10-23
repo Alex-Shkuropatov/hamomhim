@@ -48,7 +48,6 @@ export default {
       });
     }
   },
-
   beforeRouteUpdate (to, from, next) {
  this.getBlog(to.params.id);
     next();

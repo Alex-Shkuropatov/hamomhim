@@ -67,7 +67,7 @@
                 let res = response.data;
                 this.$store.commit('modals/alert/saveData', {
                   success: res.success,
-                  text: res.message ? res.message : 'Information successfully saved'
+                  text: this.translations(res.message),
                 });
                 this.modalL++;
               }).catch((error)=>{
@@ -78,7 +78,12 @@
       onFourth(data){
         this.modalL = data.modal;
         this.$store.commit('modals/forgetPassword/close');
-      }
+      },
+      translations(str){
+        if (str === 'Password changed successfully'){
+          return 'סיסמה שונתה בהצלחה'
+        }
+      },
     },
     components: {
       Modal,
@@ -111,4 +116,4 @@
     transform: translateX(10px);
     opacity: 0;
   }
-</style>
+</styl

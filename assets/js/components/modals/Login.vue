@@ -47,18 +47,30 @@
         data.role = this.role;
         axios.post('/api/auth/login', data)
             .then((response) => {
-              this.$store.commit('user/auth', response.data.access_token );
-              this.$store.commit('user/saveData' , data);
-              axios.get('/api/auth/user')
-                  .then((response)=>{
-                    console.log('then');
-                    this.$store.commit('user/saveData' , response.data);
-                  })
-                  .catch((error) => {
-                    console.log('error');
+              let res = response.data;
+              if (response.data.access_token){
+                this.$store.commit('user/auth', response.data.access_token );
+                this.$store.commit('user/saveData' , data);
+                axios.get('/api/auth/user')
+                    .then((response)=>{
+                      console.log('then');
+                      this.$store.commit('user/saveData' , response.data);
+                    })
+                    .catch((error) => {
+                      console.log('error');
 
-                    console.log(error);
-                  });
+                      console.log(error);
+                    });
+
+              } else {
+                this.$store.commit('modals/alert/saveData', {
+                  success: res.success,
+                  text: 'טלפון המשתמש אינו מאושר',
+                });
+                this.$store.commit('modals/alert/open');
+                this.$store.commit('modals/login/close');
+              }
+
             })
             .catch((error) => {
               console.log(error.response );
@@ -74,7 +86,7 @@
         this.$store.commit('modals/login/close');
         this.modalL=0;
       },
-    },
+    },  
     components: {
       Modal,
       FirstModal,

@@ -58,11 +58,10 @@ export default {
       }
     },
     imageStyle(){
-      console.log({
-        backgroundImage: this.thumbnail ? this.$env.API_URL+this.thumbnail : '/static/images/default/default-blog.png)'
-      });
-      return {
-        backgroundImage: 'url(' + (this.thumbnail ? this.$env.API_URL+this.thumbnail : '/static/images/default/default-blog.png') + ')'
+
+       if(this.title){
+         return {backgroundImage: 'url(' + (this.thumbnail ? this.$env.API_URL+this.thumbnail : '/static/images/default/default-blog.png') + ')'};
+
       };
     }
   },
