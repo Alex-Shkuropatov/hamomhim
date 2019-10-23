@@ -430,6 +430,7 @@ const checkRole =  () => {
     watch: {
       'categories.value'(){
         this.subcategories.disabled = false;
+        this.subcategories.value = [];
         this.subcategories.items = this.getSubcategories;
       }
     },

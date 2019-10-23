@@ -29,19 +29,32 @@ export default {
   data(){
     return {
       subHeader: {
+        title: '',
         image: '/static/images/bg-post-page.png'
       },
       content: {},
     };
   },
+  methods:{
+    getBlog(id){
+      console.log('+++');
+      axios.post('/api/admin/getSingleBlog',{id : id})
+          .then((response)=>{
+            console.log(response.data.value);
+            this.content = response.data.value;
+            this.subHeader.title = response.data.value.title;
+          }).catch((error)=>{
+        console.log(error);
+      });
+    }
+  },
+
+  beforeRouteUpdate (to, from, next) {
+ this.getBlog(to.params.id);
+    next();
+  },
   mounted() {
-    axios.post('/api/admin/getSingleBlog',{id:this.$route.params.id})
-        .then((response)=>{
-          console.log(response.data.value);
-          this.content = response.data.value;
-        }).catch((error)=>{
-      console.log(error);
-    });
+    this.getBlog(this.$route.params.id);
   }
 }
 </script>
@@ -107,5 +120,8 @@ export default {
 }
 .sidebar{
   width: 25%;
+  @media screen and (max-width: 767px){
+    display: none;
+  }
 }
 </style>

@@ -63,7 +63,7 @@
         this.$store.commit('modals/login/open');
       },
       logout(e){
-        axios.get('/api/auth/logout')
+        axios.post('/api/auth/logout')
             .then(() => {
               this.$store.commit('user/logout' );
               this.$router.push({name: 'index'});
@@ -109,7 +109,7 @@
       padding-left: ceil($scale1 * 40px);
     }
     .logout{
-      margin-top: 13px;
+      margin-top: 25px;
       span{
         font-size: 23px;
       }
@@ -122,6 +122,7 @@
     .registr{
       border: 2px solid white;
       color: white;
+      margin-top: 23px;
     }
   }
   .profile-links{
