@@ -5,7 +5,22 @@
   <div class="orderWrapper">
     <p class="formItem" >סיסמה חדשה</p><!--New password -->
     <div>
-      <input type="password" placeholder="טלפון"  :style="[ flag!==true ? {border: '2px solid red'} : ''  ]"  ref="password"  v-model="user.password" class="inputName">
+      <input
+              type="password"
+              placeholder="טלפון"
+              :style="[ flag!==true ? {border: '2px solid red'} : ''  ]"
+              ref="password"
+              v-model.trim.lazy="user.password"
+              :class="{ 'error': $v.user.password.$error, 'inputName': true }"
+      >
+      <div class="error-wrapper" v-if="$v.user.password.$dirty">
+        <p class="error-message" v-if="!$v.user.password.required">
+          שדה נדרש
+        </p>
+        <p class="error-message" v-if="!$v.user.password.minLength">
+          הסיסמה חייבת להכיל לפחות 6 ספרות
+        </p>
+      </div>
     </div>
   </div>
   <div class="orderWrapper">
@@ -22,6 +37,7 @@
 </template>
 
 <script>
+  import { required, minLength } from "vuelidate/lib/validators";
 
   export default {
     data: function(){
@@ -37,6 +53,14 @@
        flag: true,
      }
     },
+    validations:{
+      user:{
+        password:{
+          required,
+          minLength: minLength(6),
+        }
+      }
+    },
     methods: {
       close() {
         this.$store.commit('modals/forgetPassword/close');
@@ -47,8 +71,10 @@
       },
       onBlur(e) {
         this.focusedCode = false;
-
-      },
+        if (!this.$v.$invalid) {
+          this.iconS = this.checkPhone();
+        }
+        },
 
       changeIcon(value){
         if (value){
@@ -58,15 +84,20 @@
         }
       },
       send(){
-        this.iconS = this.checkPhone();
-        this.$emit('onSend',{
-          password : this.user.password,
-          success: this.flag,
-        })
+        this.$v.user.password.$touch();
+        if (!this.$v.$invalid) {
+          this.iconS = this.checkPhone();
+          this.$emit('onSend',{
+            password : this.user.password,
+            success: this.flag   ,
+          })
+        }
+
+
       },
       checkPhone(){
-        this.flag = this.user.password === this.user.confirmPassword;
-        return this.changeIcon(this.flag);
+        this.flag = this.user.password === this.user.confirmPassword ;
+        return this.changeIcon(this.flag );
       },
     },
     components: {

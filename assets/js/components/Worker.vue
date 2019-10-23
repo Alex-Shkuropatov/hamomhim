@@ -405,17 +405,19 @@ margin-left: 7px;
       font-size: 23px;
       margin-top: 36px;
       margin-bottom: 5px;
+      width: 290px;
+      display: flex;
+      justify-content: center;
     }
     @media screen and (max-width: 767px){
       font-size: 18px;
       margin-left: 0px;
+      width: 145px;
     }
     @media screen and (max-width: 480px){
       font-size: 14px;
       margin-left: 0;
-      width: 145px;
-      display: flex;
-      justify-content: center;
+
     }
     .title-element{
       text-align: right;

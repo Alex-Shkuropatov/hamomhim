@@ -78,7 +78,7 @@
              } else {
                this.$store.commit('modals/alert/saveData', {
                  success: res.success,
-                 text:  response.data.message,
+                 text:  this.translations(res.message),
                });
                this.modal = 3;
              }
@@ -95,7 +95,8 @@
                  } else {
                    this.$store.commit('modals/alert/saveData', {
                      success: res.success,
-                     text:  response.data.message,
+                     titleText: 'ההרשמה נכשלה',
+                     text:  this.translations(res.message),
                    });
                    this.modal = 3;
                  }
@@ -118,7 +119,7 @@
              } else {
                this.code.flag = true;
              }
-              this.$store.commit('modals/alert/saveData',{success:res.success,text : res.message? res.message: 'Information successfully saved'});
+              this.$store.commit('modals/alert/saveData',{success:res.success,text :  'המידע נשמר בהצלחה'});
               console.log(response);
             }).catch((error)=>{
               console.log(error);
@@ -128,6 +129,11 @@
       onFourth(data){
         this.modal = data.modal;
         this.$store.commit('modals/reg/close');
+      },
+      translations(str){
+        if (str === 'user with the same email and role already exists'){
+          return 'המייל שהוזן קיים במערכת כקבלן או אדריכל'
+        }
       },
       PrevModal(){
          this.modal= 0;

@@ -75,15 +75,18 @@
                 this.$emit('onSend',{
                   success: false,
                 });
-                this.flag  = response.data.message;
+                this.flag  = this.translations(response.data.message);
                 this.iconS = this.changeIcon(false);
               }
 
             }).catch((error)=>{
           console.log(error);
         });
-
-
+      },
+      translations(str){
+        if (str === 'Token is invalid'){
+          return 'קוד אימות שגוי'
+        }
       },
     },
     components: {
