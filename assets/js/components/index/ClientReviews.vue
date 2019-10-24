@@ -1,25 +1,25 @@
 <template>
   <div class="client-reviews-section">
-    <div class="th-heading clr-blue text-center h-container">פרויקטים שבועיים</div>
+    <div class="th-heading clr-blue text-center h-container">פרויקט נבחר</div>
     <div class="sec-outer">
       <div class="h-container">
         <div class="content-container">
-          <swiper :options="reviewsSliderOptions" class="reviews-slider" ref="reviewsSlider">
-            <swiper-slide class="slide-outer" v-for="review in reviews" :key="review.id">
+          <div class="reviews-slider" ref="reviewsSlider">
+            <div class="slide-outer">
               <div class="slide-inner">
-                <div class="name clr-blue">{{review.name}}</div>
-                <div class="text">{{review.text}}</div>
+                <div class="name clr-blue">{{reviews[0].name}}</div>
+                <div class="text">{{reviews[0].text}}</div>
                 <div class="socials">
-                  <a :href="review.facebook" class="facebook">Lorem ipsum dolor sit amet</a>
+                  <a :href="reviews[0].facebook" class="facebook">Lorem ipsum dolor sit amet</a>
                 </div>
               </div>
-            </swiper-slide>
-          </swiper>
+            </div>
+          </div>
           <div class="photos-slider-row">
             <swiper :options="photosSliderOptions" class="photos-slider" ref="photosSlider">
-              <swiper-slide class="slide-outer" v-for="review in reviews" :key="review.id">
-                <div class="slide-inner">
-                  <img :src="review.avatar" alt="">
+              <swiper-slide class="slide-outer" v-for="image, index in reviews[0].images" :key="index">
+                <div class="slide-inner" :style="bgImage(image)">
+                  <!-- <img :src="image" alt=""> -->
                 </div>
               </swiper-slide>
             </swiper>
@@ -60,17 +60,34 @@ export default {
         spaceBetween: 20,
       },
       reviews: [
-        {id: 1, name: 'Name of client', avatar: '/static/images/main-page/client-review-avatar.png', text: 'Lorem ipsum dolor sit amet, vim at nemore elaboraret, qui ea expetenda vituperata. Ex esse percipit iracundia vel. Vim no ipsum quaeque detracto, antiopam definitionem in eum, inani habemus referrentur duo et. Mea affert discere mnesarchum ei, impedit inermis id sit. Ut error quaestio atomorum quo,r.', facebook: '#'},
-        {id: 2, name: 'Name of client', avatar: '/static/images/main-page/client-review-avatar.png', text: 'Lorem ipsum dolor sit amet, vim at nemore elaboraret, qui ea expetenda vituperata. Ex esse percipit iracundia vel. Vim no ipsum quaeque detracto, antiopam definitionem in eum, inani habemus referrentur duo et. Mea affert discere mnesarchum ei, impedit inermis id sit. Ut error quaestio atomorum quo,r.', facebook: '#'},
-        {id: 3, name: 'Name of client', avatar: '/static/images/main-page/client-review-avatar.png', text: 'Lorem ipsum dolor sit amet, vim at nemore elaboraret, qui ea expetenda vituperata. Ex esse percipit iracundia vel. Vim no ipsum quaeque detracto, antiopam definitionem in eum, inani habemus referrentur duo et. Mea affert discere mnesarchum ei, impedit inermis id sit. Ut error quaestio atomorum quo,r.', facebook: '#'},
-        {id: 4, name: 'Name of client', avatar: '/static/images/main-page/client-review-avatar.png', text: 'Lorem ipsum dolor sit amet, vim at nemore elaboraret, qui ea expetenda vituperata. Ex esse percipit iracundia vel. Vim no ipsum quaeque detracto, antiopam definitionem in eum, inani habemus referrentur duo et. Mea affert discere mnesarchum ei, impedit inermis id sit. Ut error quaestio atomorum quo,r.', facebook: '#'},
+        {
+          id: 1,
+          name: 'פיתה רחוב',
+          images: [
+            '/static/images/main-page/MainPageProject/WhatsApp Image 2019-10-23 at 13.10.28.jpeg',
+            '/static/images/main-page/MainPageProject/WhatsApp Image 2019-10-23 at 13.10.29 (1).jpeg',
+            '/static/images/main-page/MainPageProject/WhatsApp Image 2019-10-23 at 13.10.29 (2).jpeg',
+            '/static/images/main-page/MainPageProject/WhatsApp Image 2019-10-23 at 13.10.29 (3).jpeg',
+            '/static/images/main-page/MainPageProject/WhatsApp Image 2019-10-23 at 13.10.29.jpeg',
+            '/static/images/main-page/MainPageProject/WhatsApp Image 2019-10-23 at 13.10.30 (1).jpeg',
+            '/static/images/main-page/MainPageProject/WhatsApp Image 2019-10-23 at 13.10.30.jpeg',
+          ],
+          text: 'וגם ההשראה מהמקום עצמו שנמצא בצומת הכי מרכזית שיש, צומת עלית ברמת גן,הרעיון היה להכניס את הרחוב עצמו לתוך המסעדה, ע"י אבן שפה שצבועה בכחול לבן, ציורי גרפיטי על הקירות.הישיבה על דלפקים אשר צופים על הצומת המרכזית.הרחוב הוא לא רק בחוץ, אלא גם בפנים.',
+          facebook: 'https://www.facebook.com/IraVainerDesigner/'
+        },
       ]
 
     };
   },
+  methods: {
+    bgImage(url){
+      //console.log({ backgroundImage: "url('" + url + "')"});
+      return { backgroundImage: "url('" + url + "')"};
+    }
+  },
   mounted(){
-    this.$refs.reviewsSlider.swiper.controller.control = this.$refs.photosSlider.swiper;
-    this.$refs.photosSlider.swiper.controller.control = this.$refs.reviewsSlider.swiper;
+    //this.$refs.reviewsSlider.swiper.controller.control = this.$refs.photosSlider.swiper;
+    //this.$refs.photosSlider.swiper.controller.control = this.$refs.reviewsSlider.swiper;
 
     // setTranslate(a){
     //   console.log(a);
@@ -169,9 +186,16 @@ export default {
 .photos-slider{
   width: ceil($scale1 * 470px);
   margin: 0;
-  img{
-    width: 100%;
-    height: auto;
+  // img{
+  //   width: 100%;
+  //   height: auto;
+  // }
+  .slide-inner{
+    padding-top: 58%;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 }
 
@@ -256,7 +280,7 @@ export default {
     .name{
       font-size: ceil($scale3 * 36px);
     }
-    
+
   }
 }
 

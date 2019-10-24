@@ -5,7 +5,7 @@ import ProfileTemplate from './../views/profile/ProfileTemplate.vue';
 import WorkerRequests from './../views/profile/WorkerRequests.vue';
 import WorkerResponses from './../views/profile/WorkerResponses.vue';
 import WorkerPackages from './../views/profile/WorkerPackages.vue';
-
+import WorkerResponsesClosed from './../views/profile/WorkerResponsesClosed';
 import EditProfile from './../views/profile/EditProfile.vue';
 import store from "../store";
 import middleware from "./middleware";
@@ -22,9 +22,14 @@ export default {
       name: 'requests',
     },
     {
-      path: 'responses',
+      path: 'responses-open',
       component: WorkerResponses,
-      name: 'responses',
+      name: 'responses-open',
+    },
+    {
+      path: 'responses-closed',
+      component: WorkerResponsesClosed,
+      name: 'responses-closed',
     },
     {
       path: 'packages',

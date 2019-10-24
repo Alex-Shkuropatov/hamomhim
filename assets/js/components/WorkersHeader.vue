@@ -10,7 +10,7 @@
 
     </div>
     <div class="nav">
-      <ul class="nav-links">
+      <ul  class='nav-links' v-bind:class="[$store.getters['user/isWorker' ]?  'nav-bar-worker':'']"  >
         <template v-if="$store.getters['user/getField']('role') === 'architect'">
           <div class="row">
             <router-link :to="{name: 'profile-edit',  }" class="link" >ליפורפ ךורע</router-link>
@@ -25,10 +25,15 @@
           </div>
         </template>
         <template v-else>
+
+
           <div class="row">
+            <router-link :to="{name: 'responses-closed', }" class="link" >פרויקטים פתוחים
+            </router-link>
+            <hr>
             <router-link :to="{name: 'requests', }" class="link" >פרויקטים</router-link>
             <hr>
-            <router-link :to="{name: 'responses', }" class="link" >פרויקטים סגורים</router-link>
+            <router-link :to="{name: 'responses-open', }" class="link" >פרויקטים סגורים</router-link>
           </div>
           <hr>
           <div class="row">
@@ -36,6 +41,8 @@
             <hr>
             <router-link :to="{name: 'packages', }" class="link">רכישת מנוי באתר</router-link>
           </div>
+
+
         </template>
 
       </ul>
@@ -90,4 +97,14 @@ export default {
       margin-bottom: 0;
     }
   }
+  .nav-bar-worker{
+    width: 760px!important;
+    @media screen and (max-width:900px ){
+      width: 320px!important;
+    }
+    @media screen and (max-width:480px ){
+      width: 300px!important;
+    }
+  }
+
 </style>

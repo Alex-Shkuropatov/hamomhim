@@ -405,14 +405,23 @@ margin-left: 7px;
       font-size: 23px;
       margin-top: 36px;
       margin-bottom: 5px;
+      width: 290px;
+      display: flex;
+      justify-content: center;
     }
     @media screen and (max-width: 767px){
       font-size: 18px;
       margin-left: 0px;
+      width: 145px;
     }
     @media screen and (max-width: 480px){
-      font-size: 16px;
+      font-size: 14px;
       margin-left: 0;
+
+    }
+    .title-element{
+      text-align: right;
+      line-height: 19px;
     }
   }
   hr{

@@ -11,18 +11,13 @@
         </defs>
       </svg>
     </button>
-    <span class="tooltiptext" v-if="!favourite" >Add to favourites</span>
-    <span class="tooltiptext del" v-if="favourite" >Delete from favourites</span>
+    <span class="tooltiptext" v-if="!is_favourite" >Add to favourites</span>
+    <span class="tooltiptext del" v-if="is_favourite" >Delete from favourites</span>
   </div>
 </template>
 
 <script>
   export default {
-    data(){
-      return {
-        favourite: this.is_favourite,
-      }
-    },
     props: {
       is_favourite: {
         type: Boolean,
@@ -33,12 +28,12 @@
     },
     methods: {
       addFavourite(){
-       if (this.favourite === true) {
+       if (this.is_favourite === true) {
          axios.post('/api/deleteUserFromFavourite', {'user_id': this.user_id})
              .then((response)=>{
                this.$refs.svg.style.fill='white';
                this.$refs.svg.style.fillOpacity=0;
-               this.favourite=!this.favourite;
+               this.$emit('input', 0);
                console.log(response);
              }).catch((error)=>{
            console.log(error);
@@ -48,7 +43,7 @@
              .then((response)=>{
                this.$refs.svg.style.fillOpacity=1;
                this.$refs.svg.style.fill='gold';
-               this.favourite=!this.favourite;
+               this.$emit('input', 1);
              }).catch((error)=>{
            console.log(error);
          })
@@ -65,15 +60,20 @@
     },
     watch: {
       'is_favourite'(){
-        this.favourite = this.is_favourite;
         if (this.is_favourite !== true){
          this.white();
+        }
+        else{
+          this.gold();
         }
       }
     },
     mounted() {
       if (this.is_favourite === true){
        this.gold();
+      }
+      else{
+        this.white();
       }
     }
   }
@@ -83,6 +83,11 @@
   .title-favourite{
     margin-right: 3px;
     margin-bottom: 3px;
+    button{
+    @media screen and (max-width: 480px){
+      width: 19px;
+      padding: 0;
+    }
     svg{
       width:30px;
       height:28px;
@@ -98,6 +103,7 @@
         }
       }
     }
+  }
   }
   .tooltip {
     position: relative;

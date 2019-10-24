@@ -4,7 +4,7 @@
 
     </div>
   <div class="workers-list" v-if="flag">
-    <h2  class="notify_msg"  v-show="workers.length===0" ><i class="far fa-copy"></i> You dont have favourite workers</h2>
+    <h2  class="notify_msg"  v-show="workers.length===0" > טרם הוספת עובדים מועדפים. <i class="fas fa-user-times"></i>  </h2>
 
     <div class="projects-list-wrap h-container">
 

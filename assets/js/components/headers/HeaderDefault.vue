@@ -29,7 +29,8 @@
         </li>
       </ul>
       <burger-menu class="mobile-menu" />
-      <div class="auth-btns"  v-if="!$store.getters['user/isLogged']">
+      <div v-if="$store.getters['user/isLoaded']">
+      <div class="auth-btns" id="reg-btns" v-if="!$store.getters['user/isLogged']">
         <button class="th-btn th-btn-blue th-btn-sm" @click="openLogin">התחברות למערכת</button>
         <button class="th-btn th-btn-empty th-btn-sm" @click="openReg">הרשמה למערכת</button>
       </div>
@@ -44,6 +45,9 @@
        </button>
 
       </div>
+
+      </div>
+      <div v-else-if="!$store.getters['user/isLogged']" style="width: 300px;height: 10px"></div>
     </div>
   </header>
 
