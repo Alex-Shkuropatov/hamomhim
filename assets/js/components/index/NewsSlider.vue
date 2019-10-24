@@ -3,7 +3,7 @@
     <div class="th-heading text-center">בלוג</div>
     <div class="slider-wrap">
       <swiper :options="sliderOptions" class="news-slider" ref="newsSlider">
-        <swiper-slide class="slide-outer" v-for="post in posts" :key="post.id">
+        <swiper-slide v-for="post in posts" v-if="post" class="slide-outer" :key="post.id">
           <news-post-item class="slide-inner" v-bind="post"></news-post-item>
         </swiper-slide>
       </swiper>
@@ -44,10 +44,13 @@ export default {
        ],
     };
   },
+  methods: {
+
+  },
   mounted(){
     axios.post('/api/admin/getAllBlogs',{'sortBy':'id','orderBy': 'DESC', page: '0', take: '20'})
         .then((response)=>{
-          console.log(response);
+          //console.log(response);
           this.posts = response.data.value.records;
         }).catch((error)=>{
       console.log(error);
@@ -75,6 +78,17 @@ export default {
 }
 .slide-outer{
   padding: ceil($scale1 * 15px);
+  height: auto;
+}
+.slide-inner{
+  height: 100%;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  &::v-deep .th-btn{
+    margin: auto auto 0 auto;
+  }
 }
 
 .blog-link{
