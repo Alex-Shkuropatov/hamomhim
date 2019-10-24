@@ -69,7 +69,7 @@ export default {
   }
 }
 .post-content{
-  width: 66%;
+  width: 70%;
   font-size: 20px;
   line-height: 1.3;
   .main-title{
@@ -107,5 +107,21 @@ export default {
 }
 .sidebar{
   width: 25%;
+}
+</style>
+<style lang="scss">
+.image.image-style-side{
+  max-width: 50%;
+  float: right;
+  display: table;
+  clear: both;
+  text-align: center;
+  margin: 1em auto 1em 24px;
+  img{
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    min-width: 50px;
+  }
 }
 </style>
