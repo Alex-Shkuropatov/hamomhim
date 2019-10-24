@@ -1,5 +1,8 @@
 <template>
   <div class="top-projects-section">
+
+    <show-order />
+
     <div class="h-container">
       <div class="th-heading text-center">פרויקטים אחרונים</div>
       <div class="top-projects-slider-wrap">
@@ -7,12 +10,12 @@
           <swiper-slide class="slide-outer" v-for="project in projects" :key="project.id">
             <div class="slide-inner">
               <div class="creator-avatar">
-                <img :src="project.avatar" alt="">
+                <img :src="project.thumbnail !== null ? $env.API_URL+project.thumbnail : '/static/images/projects/addImg2.png' " alt="">
               </div>
               <div class="title">{{project.name}}</div>
-              <div class="category">{{project.category}}</div>
+              <div class="category">{{$store.getters['categories/getNameById',{id: projects.category_id}]}}</div>
               <div class="description">{{project.description}}</div>
-              <a :href="project.url" class="th-btn th-btn-empty th-btn-sm project-b">קרא את הפוסט הזה</a>
+              <button  @click="getOrder(project)" class="th-btn th-btn-empty th-btn-sm project-b">קרא את הפוסט הזה</button>
             </div>
           </swiper-slide>
         </swiper>
@@ -24,6 +27,7 @@
 </template>
 
 <script>
+  import showOrder from './../modals/ShowOrder.vue'
 export default {
   data(){
     return {
@@ -63,7 +67,39 @@ export default {
         {id: 14, name: 'שם הפרויקט', avatar: '/static/images/main-page/top-avatar.png', category: 'Lorem ipsum dolor', url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'},
         {id: 15, name: 'שם הפרויקט', avatar: '/static/images/main-page/top-avatar.png', category: 'Lorem ipsum dolor', url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'},
       ],
+      curProject: {},
     };
+  },
+  methods:{
+    getOrder(project){
+
+      this.$store.commit('modals/showOrder/saveData', {
+        description : project.description,
+        name : project.name,
+        projectName : project.projectName,
+        userName : project.name,
+        phone : project.phone,
+        category_id : project.categoryId,
+        work_area : project.work_area,
+        subcategories : project.subcategories,
+        zip : project.zip,
+
+      });
+
+      this.$store.commit('modals/showOrder/open');
+    }
+  },
+  components:{
+showOrder
+  },
+  mounted() {
+    axios.post('/api/getLatestOrders')
+        .then((response)=>{
+         this.projects =  response.data.value;
+         console.log(this.projects);
+        }).catch((error)=>{
+          console.log(error);
+    })
   }
 }
 </script>
@@ -104,10 +140,12 @@ export default {
         top: ceil($scale1 * -32px);
         width: ceil($scale1 * 65px);
         height: ceil($scale1 * 65px);
-        border-radius: 50%;
+
         img{
             width: 100%;
-            height: auto;
+            height: 38px;
+          border-radius: 20%;
+
         }
     }
     .title{
@@ -120,6 +158,7 @@ export default {
     .description{
         font-size: ceil($scale1 * 16.5px);
         margin-bottom: ceil($scale1 * 25px);
+          height: 50px;
     }
 }
 

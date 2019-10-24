@@ -10,7 +10,7 @@
     <p class="error-message" v-if="flag!==''">{{flag}}</p>
   </div>
 
-  <button class=" th-btn th-btn-blue th-btn-lg next" @click="send" ><span>לשלב הבא</span></button>
+  <button class=" th-btn th-btn-blue th-btn-lg next" @click="send" ><i v-show="spinFlag" class="fas fa-spinner fa-spin"></i><span>לשלב הבא</span></button>
 </div>
 </template>
 
@@ -24,6 +24,7 @@
        iconS: 'fa-sync-alt',
        token: '',
        flag: '',
+       spinFlag: '',
      }
     },
     props:{
@@ -59,7 +60,7 @@
         }
       },
       send(){
-
+    this.spinFlag = true;
         axios.post('/api/auth/forgotPasswordVerification',{role: this.role, email: this.email, token: this.token})
             .then((response)=>{
               console.log(response);
@@ -77,6 +78,7 @@
                 });
                 this.flag  = this.translations(response.data.message);
                 this.iconS = this.changeIcon(false);
+                this.spinFlag =false;
               }
 
             }).catch((error)=>{

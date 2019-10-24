@@ -37,7 +37,6 @@ export default {
   },
   methods:{
     getBlog(id){
-      console.log('+++');
       axios.post('/api/admin/getSingleBlog',{id : id})
           .then((response)=>{
             console.log(response.data.value);
@@ -81,9 +80,12 @@ export default {
   }
 }
 .post-content{
-  width: 66%;
+  width: 70%;
   font-size: 20px;
   line-height: 1.3;
+  @media screen and (max-width:767px){
+    width: 100%;
+  }
   .main-title{
     font-size: 48px;
     font-weight: bold;
@@ -111,6 +113,7 @@ export default {
     }
   }
 }
+
 .section{
   margin-bottom: 20px;
 }
@@ -123,4 +126,32 @@ export default {
     display: none;
   }
 }
+</style>
+<style lang="scss">
+.image.image-style-side{
+  max-width: 50%;
+  float: right;
+  display: table;
+  clear: both;
+  text-align: center;
+  margin: 1em auto 1em 24px;
+  img{
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    min-width: 50px;
+  }
+}
+.post-content{
+  .text{
+    .image{
+      display: block;
+      margin-right: auto;
+      img{
+        width: 100%;
+      }
+    }
+  }
+}
+
 </style>

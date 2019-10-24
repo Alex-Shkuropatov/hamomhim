@@ -67,7 +67,7 @@
                 let res = response.data;
                 this.$store.commit('modals/alert/saveData', {
                   success: res.success,
-                  text: this.translations(res.message),
+                  text: 'סיסמה שונתה בהצלחה',
                 });
                 this.modalL++;
               }).catch((error)=>{

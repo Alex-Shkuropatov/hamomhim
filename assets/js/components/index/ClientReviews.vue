@@ -7,19 +7,20 @@
           <div class="reviews-slider" ref="reviewsSlider">
             <div class="slide-outer">
               <div class="slide-inner">
-                <div class="name clr-blue">{{reviews[0].name}}</div>
-                <div class="text">{{reviews[0].text}}</div>
+                <div class="name clr-blue">{{post.name}}</div>
+                <div class="text">{{post.text}}</div>
                 <div class="socials">
-                  <a :href="reviews[0].facebook" class="facebook">Lorem ipsum dolor sit amet</a>
+                  <a :href="post.facebook" class="facebook">Lorem ipsum dolor sit amet</a>
                 </div>
               </div>
             </div>
           </div>
           <div class="photos-slider-row">
             <swiper :options="photosSliderOptions" class="photos-slider" ref="photosSlider">
-              <swiper-slide class="slide-outer" v-for="image, index in reviews[0].images" :key="index">
+              <swiper-slide class="slide-outer" v-for="image, index in post.images" :key="index">
                 <div class="slide-inner" :style="bgImage(image)">
                   <!-- <img :src="image" alt=""> -->
+                  {{index}}
                 </div>
               </swiper-slide>
             </swiper>
@@ -59,23 +60,13 @@ export default {
         },
         spaceBetween: 20,
       },
-      reviews: [
-        {
-          id: 1,
-          name: 'פיתה רחוב',
-          images: [
-            '/static/images/main-page/MainPageProject/WhatsApp Image 2019-10-23 at 13.10.28.jpeg',
-            '/static/images/main-page/MainPageProject/WhatsApp Image 2019-10-23 at 13.10.29 (1).jpeg',
-            '/static/images/main-page/MainPageProject/WhatsApp Image 2019-10-23 at 13.10.29 (2).jpeg',
-            '/static/images/main-page/MainPageProject/WhatsApp Image 2019-10-23 at 13.10.29 (3).jpeg',
-            '/static/images/main-page/MainPageProject/WhatsApp Image 2019-10-23 at 13.10.29.jpeg',
-            '/static/images/main-page/MainPageProject/WhatsApp Image 2019-10-23 at 13.10.30 (1).jpeg',
-            '/static/images/main-page/MainPageProject/WhatsApp Image 2019-10-23 at 13.10.30.jpeg',
-          ],
-          text: 'וגם ההשראה מהמקום עצמו שנמצא בצומת הכי מרכזית שיש, צומת עלית ברמת גן,הרעיון היה להכניס את הרחוב עצמו לתוך המסעדה, ע"י אבן שפה שצבועה בכחול לבן, ציורי גרפיטי על הקירות.הישיבה על דלפקים אשר צופים על הצומת המרכזית.הרחוב הוא לא רק בחוץ, אלא גם בפנים.',
-          facebook: 'https://www.facebook.com/IraVainerDesigner/'
-        },
-      ]
+      post: {
+        id: 1,
+        name: '',
+        images: [],
+        text: '',
+        facebook: ''
+      },
 
     };
   },
@@ -94,6 +85,27 @@ export default {
     //   console.log(this);
     //   this.$refs.photosSlider.setTranslate(a);
     // }
+    axios.post('/api/admin/getAllBlogs', {
+        sortBy: 'id',
+        orderBy: 'DESC',
+        page: 0,
+        take: 2,
+        tag: 'main page'
+      })
+      .then(response => {
+        let post = response.data.value.records[0];
+        this.post.id = post.id;
+        this.post.name = post.title;
+        this.post.text = post.description;
+        //get facebook link
+        let parser = new DOMParser();
+        let textHtml = parser.parseFromString(post.contents, 'text/html');
+        this.post.facebook = textHtml.getElementsByTagName('a')[0].getAttribute("href");
+        let imagesCollection = textHtml.getElementsByTagName('img');
+        for(let i = 0; i < imagesCollection.length; i++){
+          this.post.images.push(imagesCollection[i].getAttribute('src'));
+        }
+      });
   }
 }
 </script>

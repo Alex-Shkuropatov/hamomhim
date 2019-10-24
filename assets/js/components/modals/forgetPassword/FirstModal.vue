@@ -11,7 +11,7 @@
     <p class="error-message" v-if="flag!==''">{{flag}}</p>
   </div>
 
-  <button class=" th-btn th-btn-blue th-btn-lg next" @click="send"><span>לשלב הבא</span></button>
+  <button class=" th-btn th-btn-blue th-btn-lg next" @click="send"><i v-show="spinFlag" class="fas fa-spinner fa-spin"></i><span>לשלב הבא</span></button>
 </div>
 </template>
 
@@ -27,6 +27,7 @@
          email: '',
        },
        flag: '',
+       spinFlag : false,
      }
     },
     props: {
@@ -58,7 +59,7 @@
         }
       },
       send(){
-
+      this.spinFlag = true;
         axios.post('/api/auth/forgotPassword',{'email':this.user.email, 'role':this.role})
             .then((response)=>{
               if(response.data.success){
@@ -74,7 +75,7 @@
                 });
                 this.flag  =  this.translations(response.data.message);
                 this.iconS = this.changeIcon(false);
-
+                this.spinFlag= false;
               }
               console.log(response);
             }).catch((error)=>{
