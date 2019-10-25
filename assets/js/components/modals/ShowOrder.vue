@@ -43,7 +43,7 @@
             <div class="row">
               <p>שמור הצעה</p>
               <div class="download-b">
-                <a class="download" :href="$env.API_URL+getData.zip" download>
+                <a class="download" :href="$env.API_URL+getData.zip"  v-bind:style="[getData.zip ===  null  ? {'pointer-events': 'none'}: '']"  download>
                   <span>להוריד</span>
                   <i class="fas fa-download"></i>
                 </a>
@@ -121,7 +121,6 @@
       padding-right: 24px;
     }
   }
-
   .architectData {
     font-size: 24px;
     text-align: center;
@@ -130,7 +129,6 @@
     color: #828282;
     margin: 0;
   }
-
   .content-wrapper {
     position: relative;
     margin-bottom: 49px;
@@ -142,16 +140,13 @@
     @media screen and (max-width: 480px) {
       width: 310px;
     }
-
     .title {
-
       font-weight: bold;
       font-size: 40px;
       text-align: center;
       color: #2871D7;
       margin: 0;
     }
-
     .description {
       font-size: 24px;
       text-align: center;
