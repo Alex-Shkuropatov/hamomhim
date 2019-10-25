@@ -5,7 +5,7 @@
       <swiper :options="sliderOptions" class="categories-slider" ref="categoriesSlider">
         <swiper-slide class="slide-outer" v-for="slide in slides" :key="slide.id">
             <div class="cat-img">
-              <img src="/static/images/main-page/banner.jpg" alt="">
+              <img src="/static/images/main-page/banner.png" alt="">
 
             </div>
         </swiper-slide>
