@@ -278,7 +278,7 @@
       height: 200px;
     }
       @media screen and (max-width: 1440px){
-        width: 600px;
+        width: 565px;
       }
       @media screen and (max-width: 600px){
         width: 100%;
@@ -426,8 +426,7 @@ button::-moz-focus-inner {
       width: 730px!important;
     }
       @media screen and (max-width: 1440px){
-      width: 573px!important;
-        margin-right:13px;
+      width: 565px!important;
     }
     @media screen and (max-width: 620px){
       width: 254px !important;
