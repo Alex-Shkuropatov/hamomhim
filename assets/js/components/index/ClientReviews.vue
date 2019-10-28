@@ -275,6 +275,9 @@ export default {
   .content-container{
     width: 80%;
   }
+  .sec-outer{
+    background: none;
+  }
   .photos-slider-row{
     top: auto;
     left: auto;
