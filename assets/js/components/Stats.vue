@@ -28,7 +28,7 @@
     },
     data: function () {
       return {
-        statsArr : [307, 1869, 1357],
+        statsArr : [0, 0, 0],
         statsF: 0,
         statsS: 0,
         statsT: 0,
@@ -36,13 +36,23 @@
       }
     },
     methods: {
+      getNumbersFromAPI(){
+        return axios.post('/api/getStatsNumbers')
+        .then(response => {
+          if(response.data.success){
+            this.statsArr[0] = response.data.value.workers;
+            this.statsArr[1] = response.data.value.orders;
+            this.statsArr[2] = response.data.value.users;
+          }
+        });
+      },
       formatToPrice(value) {
         return `${value.toFixed(0)}`;
       },
       checkCord(){
         let coordY =  this.$refs.stats.getBoundingClientRect().y ; // delete event listener
         if(coordY<650){
-          this.duration = 3400;
+          this.duration = 1400;
           this.statsF =this.statsArr[0];
           this.statsS = this.statsArr[1];
           this.statsT = this.statsArr[2];
@@ -54,7 +64,8 @@
       document.removeEventListener('scroll', this.checkCord, false);
     },
     mounted() {
-    document.addEventListener('scroll',  this.checkCord)
+      this.getNumbersFromAPI()
+      .then(document.addEventListener('scroll',  this.checkCord));
     },
   };
 </script>
