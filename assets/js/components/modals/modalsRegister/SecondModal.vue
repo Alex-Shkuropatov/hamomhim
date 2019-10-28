@@ -716,6 +716,7 @@ const checkRole =  () => {
     width: 727px;
     @media screen and (max-width: 900px) {
       flex-direction: column;
+      width: unset;
     }
     .orderWrapper {
       .formItem{

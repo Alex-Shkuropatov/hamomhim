@@ -13,7 +13,7 @@
                 <img :src="project.thumbnail !== null ? $env.API_URL+project.thumbnail : '/static/images/projects/addImg2.png' " alt="">
               </div>
               <div class="title">{{project.name}}</div>
-              <div class="category">{{$store.getters['categories/getNameById',{id: projects.category_id}]}}</div>
+              <div   class="category">{{$store.getters['categories/getNameById'](project.categoryId)}}</div>
               <div class="description">{{project.description}}</div>
               <button  @click="getOrder(project)" class="th-btn th-btn-empty th-btn-sm project-b">קרא את הפוסט הזה</button>
             </div>
@@ -50,23 +50,7 @@ export default {
           }
       },
       projects: [
-        {id: 0, name: 'שם הפרויקט',  avatar: '/static/images/main-page/top-avatar.png', category: 'Lorem ipsum dolor', url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'},
-        {id: 1, name: 'שם הפרויקט',  avatar: '/static/images/main-page/top-avatar.png', category: 'Lorem ipsum dolor', url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'},
-        {id: 2, name: 'שם הפרויקט',  avatar: '/static/images/main-page/top-avatar.png', category: 'Lorem ipsum dolor', url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'},
-        {id: 3, name: 'שם הפרויקט',  avatar: '/static/images/main-page/top-avatar.png', category: 'Lorem ipsum dolor', url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'},
-        {id: 4, name: 'שם הפרויקט',  avatar: '/static/images/main-page/top-avatar.png', category: 'Lorem ipsum dolor', url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'},
-        {id: 5, name: 'שם הפרויקט',  avatar: '/static/images/main-page/top-avatar.png', category: 'Lorem ipsum dolor', url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'},
-        {id: 6, name: 'שם הפרויקט',  avatar: '/static/images/main-page/top-avatar.png', category: 'Lorem ipsum dolor', url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'},
-        {id: 7, name: 'שם הפרויקט',  avatar: '/static/images/main-page/top-avatar.png', category: 'Lorem ipsum dolor', url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'},
-        {id: 8, name: 'שם הפרויקט',  avatar: '/static/images/main-page/top-avatar.png', category: 'Lorem ipsum dolor', url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'},
-        {id: 9, name: 'שם הפרויקט',  avatar: '/static/images/main-page/top-avatar.png', category: 'Lorem ipsum dolor', url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'},
-        {id: 10, name: 'שם הפרויקט', avatar: '/static/images/main-page/top-avatar.png', category: 'Lorem ipsum dolor', url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'},
-        {id: 11, name: 'שם הפרויקט', avatar: '/static/images/main-page/top-avatar.png', category: 'Lorem ipsum dolor', url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'},
-        {id: 12, name: 'שם הפרויקט', avatar: '/static/images/main-page/top-avatar.png', category: 'Lorem ipsum dolor', url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'},
-        {id: 13, name: 'שם הפרויקט', avatar: '/static/images/main-page/top-avatar.png', category: 'Lorem ipsum dolor', url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'},
-        {id: 14, name: 'שם הפרויקט', avatar: '/static/images/main-page/top-avatar.png', category: 'Lorem ipsum dolor', url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'},
-        {id: 15, name: 'שם הפרויקט', avatar: '/static/images/main-page/top-avatar.png', category: 'Lorem ipsum dolor', url: '#', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'},
-      ],
+                    ],
       curProject: {},
     };
   },
@@ -76,9 +60,9 @@ export default {
       this.$store.commit('modals/showOrder/saveData', {
         description : project.description,
         name : project.name,
-        projectName : project.projectName,
+        projectName : project.project_name,
         userName : project.name,
-        phone : project.phone,
+        phone : project.phone || project.user_phone,
         category_id : project.categoryId,
         work_area : project.work_area,
         subcategories : project.subcategories,
@@ -89,6 +73,7 @@ export default {
       this.$store.commit('modals/showOrder/open');
     }
   },
+
   components:{
 showOrder
   },

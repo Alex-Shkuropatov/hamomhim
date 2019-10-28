@@ -93,6 +93,7 @@ export default {
       data.append('name', this.user.name);
       data.append('working_area', this.user.working_area);
       data.append('address', this.user.address);
+      data.append('email', this.user.email);
       data.append('phone', this.user.phone);
       data.append('bio', this.user.bio);
       if(this.user.bio_image instanceof File){

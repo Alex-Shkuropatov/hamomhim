@@ -12,6 +12,7 @@ import changePassword from './editProfile/changePassword'
 import showGallery from './showGallery'
 import forgetPassword from './forgetPassword'
 import showSubcategories from './showSubcategories'
+import phoneCode from  './phoneCode'
 export default {
   namespaced: true,
   modules: {
@@ -29,6 +30,7 @@ export default {
     showGallery,
     forgetPassword,
     showSubcategories,
+    phoneCode,
   },
   state: {
 

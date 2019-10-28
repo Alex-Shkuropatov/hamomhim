@@ -1,5 +1,7 @@
 <template>
+  <div class="wrapper">
   <transition v-bind:name="animaStyle">
+
   <modal v-if="$store.getters['modals/login/isOpened']" @close="closeB"  >
 
   <first-modal  v-if="modalL===0" @send='onFirst'  />
@@ -7,14 +9,19 @@
     <second-modal v-if="modalL===1" v-bind="{role:this.role}"  @send='onSecond' />
 
   </modal>
-  </transition>
 
+  </transition>
+    <transition v-bind:name="animaStyle">
+      <code-phone  v-if="$store.getters['modals/phoneCode/isOpened']" />
+    </transition>
+  </div>
 </template>
 
 <script>
   import Modal from './../common/Modal';
   import FirstModal from './modalsLogin/FirstModal.vue'
   import SecondModal from './modalsLogin/SecondModal.vue'
+  import codePhone from './PhoneCode.vue'
   import axios from 'axios';
 
   export default {
@@ -49,7 +56,7 @@
             .then((response) => {
               let res = response.data;
               if (response.data.access_token){
-                this.$store.commit('user/auth', response.data.access_token );
+                this.$store.commit('user/auth', response.data.access_token );  //Login success
                 this.$store.commit('user/saveData' , data);
                 axios.get('/api/auth/user')
                     .then((response)=>{
@@ -57,15 +64,22 @@
                       this.$store.commit('user/saveData' , response.data);
                     })
                     .catch((error) => {
-                      console.log('error');
+                      console.log('1');
 
                       console.log(error);
                     });
 
-              } else {
+              }else if (response.data.error === 'User phone is not approved'){   //User dont approved by phone code
+                console.log('2');
+                this.$store.commit('modals/phoneCode/set', data);
+                this.$store.commit('modals/phoneCode/open');
+                this.$store.commit('modals/login/close');
+
+              }
+              else if(response.data.error === 'The user is not approved by the administrator.' ) {  //User dont approved by admin
                 this.$store.commit('modals/alert/saveData', {
                   success: res.success,
-                  text: 'טלפון המשתמש אינו מאושר',
+                  text: 'המשתמש אינו מאושר על ידי מנהל המערכת.',
                 });
                 this.$store.commit('modals/alert/open');
                 this.$store.commit('modals/login/close');
@@ -73,6 +87,7 @@
 
             })
             .catch((error) => {
+              console.log('3');
               console.log(error.response );
               this.$store.commit('modals/alert/saveData', {
                 success: false,
@@ -92,6 +107,7 @@
       FirstModal,
       SecondModal,
       axios,
+      codePhone,
     },
     created(){
       this.animaStyle='slide-fade';
