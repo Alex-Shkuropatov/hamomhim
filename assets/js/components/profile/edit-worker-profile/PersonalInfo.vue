@@ -56,7 +56,6 @@
             type="email"
             :value="email"
             @input="$emit('update:email', arguments[0])"
-            :disabled=true
             class="th-input less-rounded-corners" />
           </div>
           <div class="form-group col1-2">

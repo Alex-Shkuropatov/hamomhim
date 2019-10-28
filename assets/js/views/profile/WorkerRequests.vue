@@ -112,6 +112,7 @@ export default {
         description: order.description,
         name: order.name,
         userName : order.user.name,
+        projectName: order.project_name,
         phone : order.user.phone,
         category_id : order.categoryId,
         subcategories: order.subcategories,

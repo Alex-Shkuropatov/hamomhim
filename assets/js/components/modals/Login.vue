@@ -17,9 +17,6 @@
   </div>
 </template>
 
-
-
-
 <script>
   import Modal from './../common/Modal';
   import FirstModal from './modalsLogin/FirstModal.vue'

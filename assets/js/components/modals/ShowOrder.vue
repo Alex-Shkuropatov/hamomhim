@@ -109,7 +109,6 @@
     &:hover {
       color: #2871D7;
     }
-
     @media screen and (max-width: 900px) {
       display: unset;
       padding-right: 55px;
@@ -154,9 +153,7 @@
       margin: 0;
     }
   }
-
   .form {
-
     .form-row {
       display: flex;
       flex-direction: row;
@@ -228,7 +225,7 @@
       padding-right: 20px;
       margin-top: 37px;
       width: 650px;
-      height: 148px;
+      min-height: 148px;
       border: 1px solid #BDBDBD;
       box-sizing: border-box;
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);

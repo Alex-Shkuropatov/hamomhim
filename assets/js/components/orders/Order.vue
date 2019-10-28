@@ -111,7 +111,7 @@
       zip: {
         type: String
       },
-      projectName:{
+      project_name:{
         type: String,
       },
     },
@@ -127,7 +127,7 @@
       getOrder() {
         this.order.description = this.description;
         this.order.name = this.name;
-        this.order.projectName = this.projectName;
+        this.order.projectName = this.project_name;
         this.order.userName = this.user.name;
         this.order.phone = this.user.phone;
         this.order.category_id = this.categoryId;
