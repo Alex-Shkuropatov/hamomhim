@@ -102,6 +102,9 @@ export default {
 <style lang="scss" scoped>
 
 @import '~@/vars.scss';
+footer{
+  margin-top: auto;
+}
 .footer-container{
   border-top: ceil($scale1 * 4px) solid #F2F2F2;
   padding-top: ceil($scale1 * 40px);

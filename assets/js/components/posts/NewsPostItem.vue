@@ -81,6 +81,10 @@ export default {
   padding: 20px 22px;
   line-height: 1.16;
   text-align: center;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   .thumb{
     margin-bottom: 10px;
     border-radius: 5px;
@@ -114,6 +118,7 @@ export default {
 }
 .th-btn{
   border-radius:5px;
+  margin: auto auto 0 auto;
 }
 
 @media (max-width: $breakpoint2){

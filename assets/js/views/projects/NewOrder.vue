@@ -1,11 +1,11 @@
 <template>
-<div class="wrapper">
-  <categories-slider class="slider-cat" @category:select='onCategory' />
+  <div class="wrapper">
+    <categories-slider class="slider-cat" @category:select='onCategory' />
 
-  <services class="services-block"  v-show="showServices" @send='OnCategories' v-bind="category" />
+    <services class="services-block"  v-show="showServices" @send='OnCategories' v-bind="category" />
 
-  <repair-works  v-show="showWorks" @send='onForm' />
-</div>
+    <repair-works class="repair-works-block" v-show="showWorks" @send='onForm' />
+  </div>
 
 </template>
 
@@ -16,11 +16,11 @@ import RepairWorks from '../../components/orders/RepairWorks.vue'
 export default {
   data() {
     return {
-     category:{
-       name: '',
-       id : '',
-       subcategories : [] ,
-     },
+      category:{
+        name: '',
+        id : '',
+        subcategories : [] ,
+      },
       showServices: false,
       showWorks: false,
       checked: [],
@@ -29,9 +29,6 @@ export default {
   methods:{
     onCategory(data){
       let element = document.getElementsByClassName('services-block')[0];
-    if (data){
-      element.scrollIntoView({block: "center", behavior: "smooth"});
-    }
       this.category.subcategories = data.subcategories;
       this.category.name = data.name;
       this.category.id = data.id;
@@ -39,18 +36,25 @@ export default {
       this.checked = [];
       this.showWorks =false;
 
+      this.$nextTick(() => {
+        element.scrollIntoView({block: "center", behavior: "smooth"});
+      });
+
     },
     OnCategories(data){
 
       this.showWorks= true;
       this.checked = data.checked;
-      let element = document.getElementsByClassName('services-block')[0];
-      element.scrollIntoView(true);
+      let element = document.getElementsByClassName('repair-works-block')[0];
+      this.$nextTick(() => {
+        element.scrollIntoView({block: "center", behavior: "smooth"});
+      });
+      //element.scrollIntoView(true);
     },
     onForm(data){
-     for(let i=0; i<this.checked.length; i++){
-       data.append('subcategories[]', this.checked[i]);
-     }
+      for(let i=0; i<this.checked.length; i++){
+        data.append('subcategories[]', this.checked[i]);
+      }
       data.append('categoryId', this.category.id);
       data.append('projectId', this.$route.params.id);
 
@@ -58,34 +62,34 @@ export default {
         headers: {
           'Content-Type': 'multipart/form-data'
         }})
-          .then((response) => {
-            console.log(response);
-            this.$router.push({
-              name: 'search-workers',
-              params:
-                  {
-                    'orderId':response.data.orderId,
-                  }
-            });
-          })
-          .catch((error) => {
-            console.log(error.response.data);
+        .then((response) => {
+          console.log(response);
+          this.$router.push({
+            name: 'search-workers',
+            params:
+            {
+              'orderId':response.data.orderId,
+            }
           });
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+        });
+      },
     },
-  },
-  components: {
-CategoriesSlider,
-    Services,
-    RepairWorks
-  },
-  mounted() {
-    console.log(this.$route.params.id);
+    components: {
+      CategoriesSlider,
+      Services,
+      RepairWorks
+    },
+    mounted() {
+      console.log(this.$route.params.id);
+    }
   }
-}
-</script>
+  </script>
 
-<style lang="scss" scoped>
-.wrapper{
-padding-top: 20px;
-}
-</style>
+  <style lang="scss" scoped>
+  .wrapper{
+    padding-top: 20px;
+  }
+  </style>
