@@ -421,7 +421,7 @@ margin-left: 7px;
     }
     .title-element{
       text-align: right;
-      line-height: 19px;
+      line-height: 20px;
     }
   }
   hr{

@@ -41,8 +41,6 @@
             <hr>
             <router-link :to="{name: 'packages', }" class="link">רכישת מנוי באתר</router-link>
           </div>
-
-
         </template>
 
       </ul>
