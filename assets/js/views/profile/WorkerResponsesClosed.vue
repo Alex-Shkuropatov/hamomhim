@@ -24,7 +24,7 @@
       </div>
     </template>
     <template v-else>
-      <h2 class="notify_msg text-center">You didn't write any response yet.<i class="far fa-copy ml-1 mr-1"></i></h2>
+      <h2 class="notify_msg text-center">אין לך פרויקטים סגורים. <i class="far fa-copy ml-1 mr-1"></i></h2>
     </template>
     </div>
   </div>
