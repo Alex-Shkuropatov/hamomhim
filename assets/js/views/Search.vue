@@ -22,14 +22,16 @@
       </button>
     </div>
     <div class="empty" v-if="!flag">
-
+      <i v-show="flag" class="fas fa-spinner fa-spin"></i>
     </div>
 <div class="workers-list-wrapper" v-if="flag">
+
     <h2  class="notify_msg"  v-show="workers.length===0" >  לא נמצאו קבלנים  <i class="far fa-copy"></i></h2>
 
     <div class="projects-list-wrap h-container">
 
       <div class="workers-list"  v-show="workers.length!==0">
+        <i v-show="flag" class="fas fa-spinner fa-spin"></i>
         <Worker
           class="worker-item"
           v-for="worker in workers" :key="worker.id"

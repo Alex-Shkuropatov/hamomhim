@@ -303,26 +303,23 @@ padding-top: 20px;
   width: 0;
 }
 
-/* Create a custom checkbox */
 .checkmark {
   position: absolute;
   top: 7px;
   right: -40px;
   height: 25px;
   width: 25px;
-  background-color: #eee;
+  background-color: #2871d7;
 }
 
 /* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
-  background-color: #ccc;
+  background-color: #2871d7;
 }
 
 /* When the checkbox is checked, add a blue background */
 .container input:checked ~ .checkmark {
-  background-color: white;
-  border: 1px solid gray;
-  opacity: 0.6;
+  background-color: #2871d7;
   border-radius: 2px;
 }
 
@@ -333,7 +330,6 @@ padding-top: 20px;
   display: none;
 }
 
-/* Show the checkmark when checked */
 .container input:checked ~ .checkmark:after {
   display: block;
 }
@@ -344,7 +340,7 @@ padding-top: 20px;
   top: 4px;
   width: 5px;
   height: 10px;
-  border: solid blue;
+  border: solid white;
   border-width: 0 3px 3px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);

@@ -73,8 +73,8 @@
           <span class="caption">מייל ליצירת קשר</span>
         </div>
         <div class="contact-item">
-          <p>אריאל שרון 4</p>
-          <span class="caption">גבעתיים, ישראל</span>
+          <p>הברזל 31</p>
+          <span class="caption">תל אביב, ישראל</span>
         </div>
       </div>
 
