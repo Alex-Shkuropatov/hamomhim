@@ -121,8 +121,14 @@
       </div>
       <button class="th-btn th-btn-blue th-btn-lg next moreInfo"><span>העלה פוסטים נוספים</span></button>
     </div>
-  </div>
 
+  </div>
+  <div class="video-wrap">
+    <div class="video-inner">
+      <iframe  class="ytImage"  src="https://www.youtube.com/embed/u8TEMCyrnho" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    </div>
+  </div>
 </div>
 </template>
 
@@ -152,6 +158,40 @@
       transform: scale(1.2);
     }
   }
+
+  .video-wrap {
+    padding: 0 200px;
+    width: 100%;
+    margin: 20px auto;
+    max-height: 60vh;
+    @media screen and (min-width: 1921px){
+      width: 1400px;
+      padding: unset;
+    }
+@media screen and (max-width:1680px){
+  padding: 0 100px;
+}
+    @media screen and (max-width:1300px) {
+      padding: 0 25px;
+    }
+@media screen and (max-width:750px){
+  padding: 0 5px;
+}
+    .video-inner{
+      width: 100%;
+      position: relative;
+      padding-bottom: 56.25%;
+      iframe{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        max-height: 60vh;
+      }
+    }
+  }
+
 
 .content{
   width: 100%;
