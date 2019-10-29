@@ -40,9 +40,7 @@
         this.$emit('send', {
           checked: this.checkedServices ,
         });
-
       }
-
     },
    watch: {
      'subcategories'(){
@@ -50,13 +48,11 @@
      }
    },
     mounted() {
-
     }
   }
 </script>
 
 <style lang="scss" scoped >
-
   .container {
     display: block;
     position: relative;

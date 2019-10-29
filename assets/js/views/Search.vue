@@ -21,8 +21,10 @@
         סנן
       </button>
     </div>
-    <div class="empty" v-if="!flag">
-      <i v-show="flag" class="fas fa-spinner fa-spin"></i>
+    <div class="empty" v-if=" !flag">
+      <div class="preload-wrapper" style="width: 50px; margin: 0 auto;margin-top: 20px">
+        <i style="color: #2871D7; font-size: 50px" v-show="!flag" class="fas fa-spinner fa-spin"></i>
+      </div>
     </div>
 <div class="workers-list-wrapper" v-if="flag">
 
@@ -31,7 +33,7 @@
     <div class="projects-list-wrap h-container">
 
       <div class="workers-list"  v-show="workers.length!==0">
-        <i v-show="flag" class="fas fa-spinner fa-spin"></i>
+
         <Worker
           class="worker-item"
           v-for="worker in workers" :key="worker.id"

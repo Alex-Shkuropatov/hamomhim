@@ -174,7 +174,7 @@ import  FavouriteIcon from './common/FavouriteIcon.vue';
       },
       getName() {
         if(this.$store.getters['categories/isLoaded']){
-          return this.$store.getters['categories/getNameById'](parseInt(this.categoryId||this.category.id));
+          return this.$store.getters['categories/getNameById'](parseInt(this.$route.params.categoryId||this.categoryId||this.category.id));
         } else {
           return '';
         }
@@ -233,8 +233,8 @@ import  FavouriteIcon from './common/FavouriteIcon.vue';
         right: 20px;
         top: 13px;
         img{
-          width: 154px;
-          height: 154px;
+          width: 143px;
+          height: 143px;
           border-radius: 50%;
           @media screen and (max-width: 1024px){
             width: 110px;
