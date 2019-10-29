@@ -28,7 +28,9 @@ export default {
       return state.data;
     },
     getNameById: state => id => {
-      return state.data.find(item => item.id === id ).name;
+      let name =  state.data.find(item => item.id === id ).name;
+      console.log(name);
+      return name ? name : 'אדריכלים'
     },
     getSubCategoriesById: state => id => {
       return state.data.find(item => item.id === id ).subcategories;

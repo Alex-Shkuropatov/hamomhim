@@ -10,7 +10,9 @@
       </div>
 
       <div class="empty" v-if="!done">
-
+        <div class="preload-wrapper" style="width: 50px; margin: 0 auto;margin-top: 20px">
+          <i style="color: #2871D7; font-size: 50px" v-show="!done" class="fas fa-spinner fa-spin"></i>
+        </div>
       </div>
 
       <div class="projects-list-wrap l-container" v-show="done" >
