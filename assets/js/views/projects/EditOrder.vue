@@ -17,6 +17,12 @@
           </div>
         </div>
       </div>
+      <div class="error-wrapper" v-if="!flag">
+        <p class="error-message" v-if="!flag">
+          בחר תת קטגוריה
+        </p>
+      </div>
+
     </div>
   </div>
 
@@ -144,6 +150,7 @@ export default {
     return {
       files: [],
       name: '',
+      flag: true,
       description: '',
       workArea: {
         items: [
@@ -217,8 +224,12 @@ export default {
       this.$v.workArea.value.$touch();
       this.$v.name.$touch();
       this.$v.description.$touch();
-
-      if(!this.$v.$invalid) {
+      if (this.checkedServices.length>0) {
+        this.flag = true;
+      } else {
+        this.flag=false;
+      }
+      if(!this.$v.$invalid && this.flag===true) {
         this.spinFlag = true;
 
         let myFormData = new FormData();

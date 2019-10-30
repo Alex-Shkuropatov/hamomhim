@@ -13,13 +13,20 @@
           </label>
         </div>
       </div>
+
       </div>
-      <button class="next-b th-btn th-btn-blue th-btn-md "   @click="sendData"><span>לשלב הבא</span></button>
+      <div class="error-wrapper" v-if="!flag">
+        <p class="error-message" v-if="!flag">
+          בחר תת קטגוריה
+        </p>
+      </div>
+      <button class="next-b th-btn th-btn-blue th-btn-md "    @click="sendData"><span>לשלב הבא</span></button>
     </div>
   </div>
 </template>
 
 <script>
+
   export default {
     props: {
       subcategories: {
@@ -33,13 +40,19 @@
       return {
         checkedServices: [],
         disable:false,
+        flag: true,
       }
     },
     methods:{
       sendData(){
+        if (this.checkedServices.length>0){
+          this.flag = true;
         this.$emit('send', {
           checked: this.checkedServices ,
         });
+      } else {
+          this.flag = false;
+        }
       }
     },
    watch: {
