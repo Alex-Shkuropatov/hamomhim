@@ -76,7 +76,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 0 auto;
+    margin: 0 auto 25px auto;
     padding: 0 25px 0 25px;
     //width: 827px; //0.8
     @media screen and (max-width: 900px) {
