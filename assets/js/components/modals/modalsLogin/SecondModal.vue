@@ -487,6 +487,10 @@ user:{
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+    @media(max-width: 767px){
+      top: 0px;
+      left: 4px;
+    }
   }
 
 </style>
