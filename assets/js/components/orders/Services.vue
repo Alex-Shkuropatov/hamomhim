@@ -13,19 +13,19 @@
           </label>
         </div>
       </div>
-        <div class="error-wrapper" v-if="$v.checkedServices.$dirty">
-          <p class="error-message" v-if="!$v.checkedServices.checkArray">
-            בחר קטגוריית משנה
-          </p>
-        </div>
+
       </div>
-      <button class="next-b th-btn th-btn-blue th-btn-md "   @click="sendDatas"><span>לשלב הבא</span></button>
+      <div class="error-wrapper" v-if="!flag">
+        <p class="error-message" v-if="!flag">
+          בחר תת קטגוריה
+        </p>
+      </div>
+      <button class="next-b th-btn th-btn-blue th-btn-md "    @click="sendData"><span>לשלב הבא</span></button>
     </div>
   </div>
 </template>
 
 <script>
-  import {  } from "vuelidate/lib/validators";
 
   export default {
     props: {
@@ -36,25 +36,22 @@
         type: Number,
       }
     },
-    validations:{
-      checkArray(){
-        return this.checkedServices.length>0;
-      }
-    },
     data(){
       return {
         checkedServices: [],
         disable:false,
+        flag: true,
       }
     },
     methods:{
-
-      sendDatas(){
-        this.$v.checkedServices.$touch();
-        if(!this.$v.$invalid  ) {
-          this.$emit('send', {
-            checked: this.checkedServices,
-          });
+      sendData(){
+        if (this.checkedServices.length>0){
+          this.flag = true;
+        this.$emit('send', {
+          checked: this.checkedServices ,
+        });
+      } else {
+          this.flag = false;
         }
       }
     },
