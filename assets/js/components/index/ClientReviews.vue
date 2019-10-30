@@ -10,7 +10,7 @@
                 <div class="name clr-blue">{{post.name}}</div>
                 <div class="text">{{post.text}}</div>
                 <div class="socials">
-                  <a :href="post.facebook" class="facebook">לעמוד הפייסבוק שלנוt</a>
+                  <a :href="post.facebook" class="facebook">לעמוד הפייסבוק שלנו</a>
                 </div>
               </div>
             </div>
