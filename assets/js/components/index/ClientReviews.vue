@@ -7,7 +7,7 @@
           <div class="reviews-slider" ref="reviewsSlider">
             <div class="slide-outer">
               <div class="slide-inner">
-                <div class="name clr-blue">{{post.name}}</div>
+                <div class="name clr-blue" @click="$router.push({ name: 'blog-post', params: { id: post.id } })">{{post.name}}</div>
                 <div class="text">{{post.text}}</div>
                 <div class="socials">
                   <a :href="post.facebook" class="facebook">לעמוד הפייסבוק שלנו</a>
@@ -18,7 +18,7 @@
           <div class="photos-slider-row">
             <swiper :options="photosSliderOptions" class="photos-slider" ref="photosSlider">
               <swiper-slide class="slide-outer" v-for="image, index in post.images" :key="index">
-                <div class="slide-inner" :style="bgImage(image)">
+                <div class="slide-inner" :style="bgImage(image)" @click="$router.push({ name: 'blog-post', params: { id: post.id } })">
                   <!-- <img :src="image" alt=""> -->
                   {{index}}
                 </div>
@@ -134,6 +134,7 @@ export default {
   .name{
     font-size: ceil($scale1 * 36px);
     font-weight: bold;
+    cursor: pointer;
   }
   .text{
     font-size: ceil($scale1 * 24px);
