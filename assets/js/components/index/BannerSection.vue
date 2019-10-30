@@ -4,10 +4,9 @@
 
       <swiper :options="sliderOptions" class="categories-slider" ref="categoriesSlider">
         <swiper-slide class="slide-outer" v-for="slide in slides" :key="slide.id">
-            <div class="cat-img">
+            <a href="http://google.com/" class="cat-img">
               <img src="/static/images/main-page/banner.png" alt="">
-
-            </div>
+            </a>
         </swiper-slide>
       </swiper>
     </div>
@@ -49,6 +48,9 @@ export default {
   max-width: calc(100% - 30px);
   overflow: hidden;
   text-align: center;
+}
+.cat-img{
+  display: block;
 }
 .categories-slider{
   pointer-events: none;

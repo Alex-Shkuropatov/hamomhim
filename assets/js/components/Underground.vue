@@ -10,12 +10,12 @@
         <div class="copyright2"><router-link class="hover-link" :to="{ name: 'terms-and-conditions'}">תקנון האתר</router-link>   <router-link  class="hover-link" :to="{ name: 'privacy-policy'}">תנאי השימוש</router-link></div>
         <div class="copyright2">
           <div class="social-links">
-            <a href="#" class="instagram-wrap">
+            <!-- <a href="#" class="instagram-wrap">
               <i class="fab fa-instagram"></i>
             </a>
             <a href="#" class="youtube-wrap">
               <i class="fab fa-youtube"></i>
-            </a>
+            </a> -->
             <a  target="_blank" href="https://m.facebook.com/%D7%A7%D7%91%D7%95%D7%A6%D7%AA-%D7%94%D7%9E%D7%95%D7%9E%D7%97%D7%99%D7%9D-%D7%9C%D7%90%D7%93%D7%A8%D7%99%D7%9B%D7%9C%D7%99%D7%9D-388668638352447/" class="facebook-wrap">
               <i class="fab fa-facebook-square"></i>
             </a>
@@ -23,7 +23,7 @@
 
         </div>
         <div class="wrapper-a">
-        <button v-if="logged" @click="openLogin" class="th-btn th-btn-blue th-btn-md button">כניסה ללקוחות רשומים</button>
+          <button v-if="logged" @click="openLogin" class="th-btn th-btn-blue th-btn-md button">כניסה ללקוחות רשומים</button>
         </div>
       </div>
 
