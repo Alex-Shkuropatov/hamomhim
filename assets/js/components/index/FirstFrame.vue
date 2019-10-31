@@ -10,6 +10,7 @@
                     :options="getCategories"
                     label="name"
                     :clearable="false"
+                    dir="rtl"
                     v-model="item.value"
           ></v-select>
 
