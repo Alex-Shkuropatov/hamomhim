@@ -31,6 +31,7 @@ export default {
     return {
       sliderOptions: {
         // spaceBetween: 30,
+        slidesPerGroup: 8,
         slidesPerView: 8,
         slidesPerColumn: 2,
         navigation: {
@@ -39,15 +40,19 @@ export default {
         },
         breakpoints: {
           1340: {
+            slidesPerGroup: 5,
             slidesPerView: 5,
           },
           1023: {
+            slidesPerGroup: 4,
             slidesPerView: 4,
           },
           767: {
+            slidesPerGroup: 3,
             slidesPerView: 3,
           },
           570: {
+            slidesPerGroup: 2,
             slidesPerView: 2,
           }
         }

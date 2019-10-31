@@ -2,7 +2,7 @@
   <div class="header-info header-n">
 
     <div class="info-wrapper" v-bind:class="{marginT : getData.role!=='architect'}" >
-      <div class="title" v-bind:class="{marginL : getData.role==='architect'}"  > {{user.name}}
+      <div class="title" v-bind:class="{marginL : getData.role==='architect'}"  > {{user.name_of_business}}
         <favourite-icon
         v-bind="favourite"
         v-if="getData.role==='architect'"
@@ -10,7 +10,7 @@
         />
       </div>
       <div class="description">
-        <span class="bold">ציון שאולוב מופיע בשיפוצים פלוס באינדקסים הבאים</span>
+        <span class="bold">{{user.name_of_business}} מופיע בשיפוצים פלוס באינדקסים הבאים</span>
         <span><span
           v-for="subcategory in subcategories"
           :key="subcategory.id"

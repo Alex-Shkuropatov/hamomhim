@@ -5,7 +5,7 @@
       <div class="head-txt-container">
         <div class="about-info">
           <div class=" position">{{user.position}},</div>
-          <div class="th-heading title">{{getData.name}}</div>
+          <div class="th-heading title">{{getData.name_of_business}}</div>
         </div>
         <div class="summary-info">
           <div class="sum" >

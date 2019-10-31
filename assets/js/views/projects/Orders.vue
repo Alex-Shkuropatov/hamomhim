@@ -10,7 +10,7 @@
       <div class="add-order-wrapper">
         <router-link :to="{name: 'new-order',  }" @click="orders" class=" addOrder th-btn th-btn-blue th-btn-sm "> הוספת פרויקט חדש
           <span>  +  </span></router-link>
-        <div class="txt">גאפניקה סניף 1</div>
+        <div class="txt">{{projName}}</div>
       </div>
       <div class="orders-list-wrap h-container">
         <div class="orders-list">

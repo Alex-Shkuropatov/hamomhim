@@ -74,7 +74,7 @@
           axios.post('/api/addNewProject', data)
               .then((response) => {
                 console.log(response);
-                this.$router.push({name: 'orders', params: {id: response.data.value}})
+                this.$router.push({name: 'new-order', params: {id: response.data.value}})
               })
               .catch((error) => {
                 console.log(error.response.data);

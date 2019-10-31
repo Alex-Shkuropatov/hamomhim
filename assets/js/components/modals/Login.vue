@@ -63,6 +63,14 @@
                       console.log('then');
                       this.$store.commit('user/saveData' , response.data);
                     })
+                    .then(() => {
+                      if(this.$store.getters['user/isWorker']){
+                        this.$router.push({name: 'requests'});
+                      }
+                      else{
+                        this.$router.push({name: 'projects'});
+                      }
+                    })
                     .catch((error) => {
                       console.log('1');
 
@@ -101,7 +109,7 @@
         this.$store.commit('modals/login/close');
         this.modalL=0;
       },
-    },  
+    },
     components: {
       Modal,
       FirstModal,
