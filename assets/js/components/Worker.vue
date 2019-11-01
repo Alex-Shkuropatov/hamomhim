@@ -202,9 +202,27 @@
   .rateFlag{
     position: absolute;
     top: -1px;
-    left: 42px;
+    left: 30px;
     @media screen and (max-width:480px){
       left: 10px;
+    }
+    &::v-deep{
+      .svg-pic{
+        width: 50px;
+        height: auto;
+      }
+      .rate-number{
+        font-size: 28px;
+        top: 8px;
+        width: 100%;
+      }
+      .rate-info{
+        top: 28px;
+        font-size: 10px;
+        left: 5px;
+        width: auto;
+        white-space: nowrap;
+      }
     }
   }
   .project-item{
@@ -425,6 +443,7 @@
       .title-element{
         text-align: right;
         line-height: 20px;
+        margin-bottom: 7px;
       }
     }
     hr{
@@ -456,6 +475,7 @@
     line-height: 30px;
     text-align: right;
     color: #828282;
+    max-width: 90%;
     @media screen and (max-width:1024px){
       text-align: center;
     }
@@ -465,6 +485,7 @@
     }
     @media screen and (max-width:480px){
       font-size: 15px;
+      max-width: 100%;
     }
     .bold{
       font-weight: bold;
