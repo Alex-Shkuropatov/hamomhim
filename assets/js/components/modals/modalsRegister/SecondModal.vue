@@ -116,16 +116,17 @@
         </div>
       </div>
       <div class="wrapper">
-        <div class="orderWrapper">
-          <p class="formItem" >פקס</p>
-          <input type="text"
-                 placeholder="פקס"
-                 v-model.trim="fax"
-                 @input="$v.fax.$touch()"
-                 :class="{ 'error': $v.fax.$error, 'inputName': true }"
-          >
-          <div class="error-wrapper" v-if="$v.fax.$dirty">
-            <p class="error-message" v-if="!$v.fax.required">
+        <div class="selectWrapper">
+          <p class="formItem">איזור עבודה</p>
+          <drop-down
+                  placeholder="איזור עבודה"
+                  v-model="workArea.value"
+                  v-bind="workArea"
+                  @input="$v.workArea.value.$touch()"
+                  :class="{ 'error': $v.workArea.value.$error, 'dropDown': true }"
+          />
+          <div class="error-wrapper" v-if="$v.workArea.value.$dirty">
+            <p class="error-message" v-if="!$v.workArea.value.required">
               שדה נדרש
             </p>
           </div>
@@ -146,18 +147,6 @@
               שדה נדרש
             </p>
           </div>
-          <!-- <input type="text"
-                 placeholder="כתובת"
-                 v-model.trim="address"
-                 @input="$v.address.$touch()"
-                 :class="{ 'error': $v.address.$error, 'inputName': true }"
-
-          > -->
-          <!-- <div class="error-wrapper" v-if="$v.address.$dirty">
-            <p class="error-message" v-if="!$v.address.required">
-              Field is required
-            </p>
-          </div> -->
         </div>
 
       </div>
@@ -193,24 +182,7 @@
           </div>
         </div>
       </div>
-      <div class="selectWrapper">
-        <p class="formItem">איזור עבודה</p>
-        <drop-down
-                placeholder="איזור עבודה"
-                v-model="workArea.value"
-                v-bind="workArea"
-                @input="$v.workArea.value.$touch()"
-                :class="{ 'error': $v.workArea.value.$error, 'dropDown': true }"
-        />
-        <div class="error-wrapper" v-if="$v.workArea.value.$dirty">
-          <p class="error-message" v-if="!$v.workArea.value.required">
-            שדה נדרש
-          </p>
-        </div>
-      </div>
-
-      <hr>
-      <div class="last-field">
+      <div class="wrapper">
         <div class="orderWrapper">
           <p class="formItem" >סיסמה (יותר מ-6 סמלים)</p>
           <input
@@ -229,17 +201,42 @@
             </p>
           </div>
         </div>
-        <div class="check-wrapper">
-        <div class="checkbox">
-          <input type="checkbox" id="check" value="check" v-model="license">
-          <router-link :to="{name:'privacy-policy'}"  target="_blank" for="check">אני מאשר את תנאי השימוש</router-link>
-        </div>
-          <div class="error-wrapper" v-if="$v.license.$dirty">
-            <p class="error-message" v-if="!$v.license.required">
+        <div class="orderWrapper">
+          <p class="formItem" >חזור על הסיסמה</p>
+          <input
+                  type="password"
+                  placeholder="חזור על הסיסמה"
+                  v-model.trim.lazy="repass"
+                  :class="{ 'error': $v.repass.$error, 'inputName': true }"
+          >
+          <div class="error-wrapper" v-if="$v.repass.$dirty">
+            <p class="error-message" v-if="!$v.repass.required">
               שדה נדרש
             </p>
+            <p class="error-message" v-else-if="!$v.repass.minLength">
+              <!-- Password must contain more than 6 symbols -->
+              הסיסמה חייבת להכיל לפחות 6 ספרות
+            </p>
+            <p class="error-message" v-else-if="!$v.repass.sameAsPassword">
+              <!-- Passwords do not match -->
+              סיסמאות לא תואמות
+            </p>
           </div>
+        </div>
+
       </div>
+      <div class="wrapper">
+        <div class="check-wrapper">
+          <div class="checkbox">
+            <input type="checkbox" id="check" value="check" v-model="license">
+            <router-link :to="{name:'privacy-policy'}"  target="_blank" for="check">אני מאשר את תנאי השימוש</router-link>
+          </div>
+            <div class="error-wrapper" v-if="$v.license.$dirty">
+              <p class="error-message" v-if="!$v.license.required">
+                שדה נדרש
+              </p>
+            </div>
+        </div>
       </div>
     </form>
 
@@ -254,7 +251,7 @@
   import Modal from './../../common/Modal.vue';
   import DropDown from './../../common/DropDown.vue';
   import ThemeMultiselect from './../../common/ThemeMultiselect.vue'
-  import { required, minLength, requiredIf } from "vuelidate/lib/validators";
+  import { required, minLength, requiredIf, sameAs } from "vuelidate/lib/validators";
   import VueGoogleAutocomplete from 'vue-google-autocomplete'
 const checkRole =  () => {
   return this.role === 'worker'
@@ -317,7 +314,11 @@ const checkRole =  () => {
         required,
         minLength:minLength(6),
       },
-      },
+      repass: {
+        required,
+        sameAsPassword: sameAs('pass'),
+      }
+    },
     methods: {
       getAddressData(addressData, placeResultData, id){
         //console.log({addressData, placeResultData, id});
@@ -454,6 +455,7 @@ const checkRole =  () => {
         city: '',
         check: '',
         pass: '',
+        repass: '',
         categories: {
           items: [
 
