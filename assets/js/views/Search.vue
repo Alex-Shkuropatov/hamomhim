@@ -168,7 +168,7 @@ searchWorkers(){
 }
 }
 .workers-list{
-margin-top: 50px;
+  margin-top: 10px;
   width: 100%;
   display: flex;
   -webkit-flex-wrap: wrap;
