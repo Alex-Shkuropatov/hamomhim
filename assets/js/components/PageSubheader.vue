@@ -40,7 +40,7 @@ export default {
   position: absolute;
 }
 .page-subheader{
-  height: ceil($scale1 * 250px);
+  height: ceil($scale1 * 180px);
   width: 100%;
   display: flex;
   -ms-align-items: center;
@@ -60,18 +60,18 @@ export default {
 }
 @media(max-width: $breakpoint2){
   .page-subheader{
-    height: ceil($scale2 * 250px);
+    height: ceil($scale2 * 180px);
   }
 }
 
 @media(max-width: $breakpoint3){
   .page-subheader{
-    height: ceil($scale3 * 250px);
+    height: ceil($scale3 * 180px);
   }
 }
 @media(max-width: $breakpoint4){
   .page-subheader{
-    height: ceil($scale4 * 250px);
+    height: ceil($scale4 * 180px);
   }
 }
 

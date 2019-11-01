@@ -40,11 +40,11 @@
                 ציון :  <span>{{rateFlag.rate}}</span>
               </div>
             </div>
-            <div  class="type"><span class="bold"> סוג התמחות:</span><span>{{getName}}</span><div class="small"  v-if="subcategories.length!==0">
+            <div  class="type"><span class="bold"> סוג התמחות:</span><span>{{getName}}</span><div class="small subcats"  v-if="subcategories.length!==0">
               <span
               v-for="subcategory in subcategories"
               :key="subcategory.id"
-              >/{{subcategory.name}}</span>
+              >{{subcategory.name}}</span>
             </div> </div>
             <hr>
             <div class="description">
@@ -52,8 +52,8 @@
             </div>
             <div class="footer-wrapper">
               <div class="btn-wrapper">
-                <button :href="url" class="th-btn th-btn-blue th-btn-sm contact-button add-user" @click="addUser"><span>הוסף פרויקט</span></button>
-                <button :href="url" class="th-btn th-btn-empty th-btn-sm contact-button" @click="viewProfile">  <span>ראה פרופיל</span>  </button>
+                <button :href="url" class="th-btn th-btn-blue th-btn-sm less-rounded-corners contact-button add-user" @click="addUser"><span>הוסף פרויקט</span></button>
+                <button :href="url" class="th-btn th-btn-empty th-btn-sm less-rounded-corners contact-button" @click="viewProfile">  <span>ראה פרופיל</span>  </button>
               </div>
               <div class="location">
                 <i class="fas fa-map-marker-alt"></i>
@@ -187,6 +187,10 @@
   </script>
 
   <style lang="scss" scoped>
+  .title-favourite::v-deep button svg{
+    width: 20px;
+    height: 20px;
+  }
   .fa-map-marker-alt{
     color:#3269B6;
     margin-left: 5px;
@@ -209,7 +213,7 @@
     background: #FFFFFF;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
     line-height: 1.16;
-    width: 1371px;
+    width: 1000px;
     @media screen and (max-width:1600px){
       width: 1000px;
     }
@@ -228,13 +232,13 @@
     .content-wrapper{
       .content-image{
         position: absolute;
-        width: 154px;
-        height: 154px;
+        width: 124px;
+        height: 124px;
         right: 20px;
         top: 13px;
         img{
-          width: 143px;
-          height: 143px;
+          width: 123px;
+          height: 123px;
           border-radius: 50%;
           @media screen and (max-width: 1024px){
             width: 110px;
@@ -276,8 +280,8 @@
         font-family: Assistant;
         font-style: normal;
         font-weight: normal;
-        font-size: 18px;
-        line-height: 28px;
+        font-size: 14px;
+        line-height: normal;
         text-align: right;
         color: #4F4F4F;
         height: auto;
@@ -302,12 +306,13 @@
         margin-top: 14px;
       }
       .contact-button{
-        width: 200.06px;
-        height: 45.18px;
+        width: 120px;
+        height: 30px;
         font-weight: bold;
-        font-size: 21px;
+        font-size: 14px;
         display: flex;
         justify-content: center;
+        border-radius: 4px;
         span{
           display: inline-block;
           text-align: center;
@@ -327,11 +332,10 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    margin-left: 144px;
-    margin-top: 33px;
+    margin-top: 10px;
     position: absolute;
     top: 5px;
-    left: 5px;
+    left: 80px;
     @media screen and (max-width: 1024px){
       justify-content: center;
       position: static;
@@ -351,7 +355,7 @@
       display: flex;
       align-items: center;
       padding: 8px;
-      font-size: 24px;
+      font-size: 20px;
       line-height: 30px;
       color: #4F4F4F;
       @media screen and (max-width: 767px){
@@ -367,8 +371,8 @@
     }
     svg{
       margin-left: 7px;
-      width: 34px;
-      height: 27px;
+      width: auto;
+      height: 22px;
       @media screen and (max-width: 767px){
         margin-left: 0px;
       }
@@ -379,7 +383,7 @@
     }
   }
   .content-info{
-    margin-right: 215px;
+    margin-right: 170px;
     @media screen and (max-width: 1024px){
       margin: 0 10px;
       display: flex;
@@ -393,16 +397,15 @@
       display: flex;
       font-weight: bold;
       align-items: center;
-      font-size: 27px;
+      font-size: 25px;
       line-height: 30px;
       text-align: right;
       color:#3269B6;
       width: 315px;
       margin-top: 20px;
-      margin-bottom: 11px;
       @media screen and (max-width:1024px){
         width: unset;
-        font-size: 23px;
+        font-size: 22px;
         margin-top: 36px;
         margin-bottom: 5px;
         width: 290px;
@@ -469,16 +472,22 @@
       margin-left: 5px;
     }
     .small{
-      display: inline-block;
+      display: inline;
       font-size: 18px;
-      margin-right: 10px;
       width: 90%;
       @media screen and (max-width: 1024px){
         width: 100%;
       }
       @media screen and (max-width: 480px){
-        margin-right: 0;
         font-size: 15px;
+      }
+      span{
+        &:first-child:before{
+          content: ' | ';
+        }
+        &:before{
+          content: ' \\ ';
+        }
       }
     }
   }
@@ -487,6 +496,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    width: 90%;
     @media screen and (max-width:1024px){
       flex-direction: column-reverse;
       width: 355px;
@@ -506,13 +516,11 @@
     margin-bottom: 10px;
   }
   .location{
-    margin-left: 43px;
     display: flex;
     flex-direction: row;
-    font-size: 24px;
+    font-size: 16px;
 
     @media screen and (max-width:1024px){
-      margin-left: 0;
       margin-bottom:10px;
     }
     @media screen and (max-width:767px){
@@ -529,7 +537,6 @@
       margin-left: 8px;
     }
     span{
-      line-height: 30px;
       display: flex;
       align-items: center;
       text-align: right;
