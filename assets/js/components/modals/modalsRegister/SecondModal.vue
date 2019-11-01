@@ -213,12 +213,8 @@
             <p class="error-message" v-if="!$v.repass.required">
               שדה נדרש
             </p>
-            <p class="error-message" v-else-if="!$v.repass.minLength">
-              <!-- Password must contain more than 6 symbols -->
-              הסיסמה חייבת להכיל לפחות 6 ספרות
-            </p>
             <p class="error-message" v-else-if="!$v.repass.sameAsPassword">
-              <!-- Passwords do not match -->
+              <!-- passwords do not match -->
               סיסמאות לא תואמות
             </p>
           </div>
@@ -281,9 +277,9 @@ const checkRole =  () => {
       businessPhone:{
         required,
       },
-      fax:{
-        required,
-      },
+      // fax:{
+      //   required,
+      // },
       address: {
         required,
       },
@@ -317,7 +313,7 @@ const checkRole =  () => {
       repass: {
         required,
         sameAsPassword: sameAs('pass'),
-      }
+      },
     },
     methods: {
       getAddressData(addressData, placeResultData, id){
@@ -329,10 +325,11 @@ const checkRole =  () => {
         this.$store.commit('modals/reg/close');
       },
       send() {
+        console.log('yoba');
         this.$v.name.$touch();
         this.$v.company.$touch();
         this.$v.businessPhone.$touch();
-        this.$v.fax.$touch();
+        //this.$v.fax.$touch();
         this.$v.email.$touch();
         this.$v.phone.$touch();
         this.$v.license.$touch();
@@ -340,12 +337,13 @@ const checkRole =  () => {
         this.$v.address.$touch();
         this.$v.workArea.value.$touch();
         this.$v.pass.$touch();
+        this.$v.repass.$touch();
 
         if (this.role==='worker'){
           this.$v.categories.value.$touch();
           this.$v.subcategories.value.$touch();
         }
-
+        console.log(this.$v);
         if(!this.$v.$invalid  ) {
           let subcat = [];
           if (this.role === 'worker') {
@@ -361,7 +359,7 @@ const checkRole =  () => {
             phone: this.phone,
             business_phone: this.businessPhone,
             name_of_business: this.company,
-            fax: this.fax,
+            fax: '0',
             address: this.address,
             city: this.city,
             working_area: this.workArea.value,
