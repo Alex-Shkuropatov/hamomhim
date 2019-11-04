@@ -246,6 +246,8 @@
     }
     @media screen and (max-width: 480px){
       width: 300px;
+      border-radius: 5px;
+      overflow: hidden;
     }
     .content-wrapper{
       .content-image{
@@ -298,12 +300,12 @@
         font-family: Assistant;
         font-style: normal;
         font-weight: normal;
-        font-size: 14px;
+        font-size: 16px;
         line-height: normal;
         text-align: right;
         color: #4F4F4F;
         height: auto;
-        width: 90%;
+        width: calc(100% - 110px);
         @media screen and (max-width:1024px){
           width: 426px;
           text-align: center;
@@ -353,7 +355,7 @@
     margin-top: 10px;
     position: absolute;
     top: 5px;
-    left: 80px;
+    left: 110px;
     @media screen and (max-width: 1024px){
       justify-content: center;
       position: static;
@@ -449,7 +451,7 @@
     hr{
       border: none;
       height: 1px;
-      width: 90%;
+      width: calc(100% - 110px);
       margin-left: 208px;
       background-color: #E0E0E0 ;
       @media screen and (max-width: 1024px){
@@ -475,7 +477,7 @@
     line-height: 30px;
     text-align: right;
     color: #828282;
-    max-width: 90%;
+    max-width: calc(100% - 110px);
     @media screen and (max-width:1024px){
       text-align: center;
     }
@@ -517,7 +519,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 90%;
+    width: calc(100% - 110px);
     @media screen and (max-width:1024px){
       flex-direction: column-reverse;
       width: 355px;

@@ -194,9 +194,6 @@
   .h-container{
     width: 100%;
     padding: 0;
-    ::v-deep .clr-blue {
-      text-align: center!important;
-    }
   }
 
 

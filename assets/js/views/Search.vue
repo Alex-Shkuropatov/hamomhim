@@ -1,18 +1,18 @@
 <template>
   <div class="workers-wrapper">
 
-   <page-subheader class="page-subhead" v-bind="getCategory"/>
+    <page-subheader class="page-subhead" v-bind="getCategory"/>
 
     <add-proj1/>
 
-  <div class="workers-list">
+    <div class="workers-list">
 
-    <div class="search-tab">
-      <button
-              class="th-btn th-btn-blue th-btn-sm add-project element-m"
-              v-if="checkRole"
-              @click.prevent="addProject"
-      >
+      <div class="search-tab">
+        <button
+        class="th-btn th-btn-blue th-btn-sm add-project element-m"
+        v-if="checkRole"
+        @click.prevent="addProject"
+        >
         <span class=" abs">+</span> הוסף פרויקט חדש
       </button>
       <drop-down class="dropDown element-m" placeholder="איזור עבודה" v-model="work_area.value" v-bind="work_area"/>
@@ -26,29 +26,38 @@
         <i style="color: #2871D7; font-size: 50px" v-show="!flag" class="fas fa-spinner fa-spin"></i>
       </div>
     </div>
-<div class="workers-list-wrapper" v-if="flag">
+    <div class="workers-list-wrapper" v-if="flag">
 
-    <h2  class="notify_msg"  v-show="workers.length===0" >  לא נמצאו קבלנים  <i class="far fa-copy"></i></h2>
+      <h2  class="notify_msg"  v-show="workers.length===0" >  לא נמצאו קבלנים  <i class="far fa-copy"></i></h2>
 
-    <div class="projects-list-wrap h-container">
+      <div class="projects-list-wrap h-container">
 
-      <div class="workers-list"  v-show="workers.length!==0">
+        <div class="workers-list"  v-show="workers.length!==0">
 
-        <Worker
-          class="worker-item"
-          v-for="worker in workers" :key="worker.id"
-          v-bind="worker">
+          <template v-for="worker in workers">
+            <worker
+            v-if="!isMobile"
+            class="worker-item"
+            :key="worker.id"
+            v-bind="worker"/>
+            <worker-mobile
+            v-else
+            class="worker-item"
+            :key="worker.id"
+            v-bind="worker"/>
+          </template>
         </Worker>
       </div>
     </div>
   </div>
-  </div>
-  </div>
+</div>
+</div>
 </template>
 
 <script>
 
 import Worker from './../components/Worker';
+import WorkerMobile from './../components/WorkerMobile';
 import PageSubheader from './../components/PageSubheader';
 import DropDown from './../components/common/DropDown.vue';
 import AddProj1 from './../components/modals/AddProj1.vue';
@@ -56,8 +65,9 @@ import ThemeMultiselect from './../components/common/ThemeMultiselect.vue'
 export default {
   data(){
     return {
+      isMobile: false,
       workers: [
-       ],
+      ],
       work_area: {
         items: [
           { label: 'כל הארץ', value: "1" },
@@ -84,50 +94,52 @@ export default {
       flag:false,
     };
   },
-  computed:{
+  computed: {
     checkRole(){
       return this.$store.getters['user/getField']('role') === 'architect';
     },
     getId() {
-     if(this.$store.getters['categories/isLoaded']){
-       return this.$store.getters['categories/getSubCategoriesById'](parseInt(this.$route.params.categoryId));
-     } else {
-       return [];
-     }
+      if(this.$store.getters['categories/isLoaded']){
+        return this.$store.getters['categories/getSubCategoriesById'](parseInt(this.$route.params.categoryId));
+      } else {
+        return [];
+      }
     },
     getCategory(){
       if(this.$store.getters['categories/isLoaded']){
-       return  {title: this.$store.getters['categories/getNameById'](parseInt(this.$route.params.categoryId)),
-       image: '/static/images/bg-blog.png',
-       }
+        return  {
+          title: this.$store.getters['categories/getNameById'](parseInt(this.$route.params.categoryId)),
+          image: '/static/images/bg-blog.png',
+        }
       }
     }
   },
   components: {
     PageSubheader,
     Worker,
+    WorkerMobile,
     DropDown,
     AddProj1,
     ThemeMultiselect,
   },
   methods: {
-searchWorkers(){
-  let formData = new FormData();
-  this.subheader.title = this.getCategory ;
+    searchWorkers(){
+      let formData = new FormData();
+      this.subheader.title = this.getCategory ;
 
-  formData.append('category_id',  this.$route.params.categoryId);
-  if (this.work_area.value !== ''){
-    formData.append('working_area',  this.work_area.value);
-  }
+      formData.append('category_id',  this.$route.params.categoryId);
+      if (this.work_area.value !== ''){
+        formData.append('working_area',  this.work_area.value);
+      }
 
-  if(this.subcategories.value.length !== 0){
-    for (let i=0; i<this.subcategories.value.length;i++){
-      console.log(this.subcategories.value);
-      formData.append('subcategories[]', this.subcategories.value[i].id);
-    }
-  }
+      if(this.subcategories.value.length !== 0){
+        for (let i=0; i<this.subcategories.value.length;i++){
+          console.log(this.subcategories.value);
+          formData.append('subcategories[]', this.subcategories.value[i].id);
+        }
+      }
 
-  axios.post('/api/searchWorkers', formData)
+      axios.post('/api/searchWorkers', formData)
       .then((response) => {
         this.workers = response.data.value;
         this.flag= true;
@@ -136,15 +148,28 @@ searchWorkers(){
       .catch((error) => {
         console.log(error);
       });
-},
+    },
     addProject(){
       this.$store.commit('modals/newProject/open');
+    },
+    onResize() {
+      if (window.innerWidth < 556) {
+      // if (window.matchMedia("(max-width: 556px)").matches) {
+        this.isMobile = true;
+      } else {
+        this.isMobile = false;
+      }
     }
   },
   created() {
+    window.addEventListener('resize', this.onResize);
+    this.onResize();
     this.subcategories.value = JSON.parse(this.$route.params.subcategories);
     this.searchWorkers();
 
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.onResize)
   },
   mounted() {
 
@@ -164,8 +189,8 @@ searchWorkers(){
   width: 100%;
   padding: 30px 230px 0 230px;
   @media screen and (max-width:1918px){
-  padding: 30px 0 0 0;
-}
+    padding: 30px 0 0 0;
+  }
 }
 .workers-list{
   margin-top: 10px;
@@ -193,32 +218,29 @@ searchWorkers(){
     margin-left: 8px;
   }
   ::v-deep {
-      .content-wrapper{
-        .content{
-          .content-info{
-            .footer-wrapper{
-              margin-top: 10px;
-              margin-bottom: 15px;
-              .add-user{
-                display: none;
-              }
-
+    .content-wrapper{
+      .content{
+        .content-info{
+          .footer-wrapper{
+            margin-top: 10px;
+            margin-bottom: 15px;
+            .add-user{
+              display: none;
             }
+
           }
         }
       }
+    }
   }
 }
 
 
 
-    .h-container{
-      width: 100%;
-      padding: 0;
-      ::v-deep .clr-blue {
-        text-align: center!important;
-      }
-    }
+.h-container{
+  width: 100%;
+  padding: 0;
+}
 
 
 
@@ -299,8 +321,8 @@ searchWorkers(){
     margin: 10px auto;
   }
   @media screen and (max-width: 900px){
-    width: 295px;
-    flex-wrap: wrap-reverse;
+    width: 300px;
+    flex-wrap: wrap;
     margin: 0 auto;
   }
   .add-project{
@@ -348,12 +370,19 @@ searchWorkers(){
       width: 258px;
     }
   }
-}
-  .notify_msg{
-    text-align: center;
-  }
   .element-m{
-
-    margin: 0 10px;
+    @media screen and (max-width: 900px){
+      margin-right: 0;
+      margin-left: 0;
+      width: 300px;
+    }
   }
+}
+.notify_msg{
+  text-align: center;
+}
+.element-m{
+
+  margin: 0 10px;
+}
 </style>
