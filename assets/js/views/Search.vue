@@ -232,6 +232,11 @@ export default {
         }
       }
     }
+    .btn-wrapper{
+      .add-user{
+        display: none;//worker mobile style
+      }
+    }
   }
 }
 
@@ -348,9 +353,9 @@ export default {
       left: 25px;
       font-size: 30px;
       top: 3px;
-      @media screen and (max-width: 480px) {
+      @media screen and (max-width: 556px) {
         left: 18px;
-        font-size: 30px;
+        font-size: 26px;
         top: 1px;
       }
     }
@@ -369,12 +374,31 @@ export default {
     @media screen and (max-width: 1450px){
       width: 258px;
     }
+    &::v-deep{
+      @media screen and (max-width: 556px){
+        .main{
+          font-size: 16px;
+          height: 36px;
+        }
+        .popup{
+          top: 36px;
+        }
+        .slider .item{
+          font-size: 16px;
+        }
+      }
+    }
+
   }
   .element-m{
     @media screen and (max-width: 900px){
       margin-right: 0;
       margin-left: 0;
       width: 300px;
+    }
+    @media screen and (max-width: 556px){
+      height: 36px;
+      font-size: 16px;
     }
   }
 }

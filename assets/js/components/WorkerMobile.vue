@@ -63,7 +63,7 @@
   </div>
 
   <div class="btn-wrapper">
-    <button :href="url" class="th-btn th-btn-blue th-btn-sm less-rounded-corners contact-button add-user" @click="addUser"><span>הוסף פרויקט</span></button>
+    <button v-if="" :href="url" class="th-btn th-btn-blue th-btn-sm less-rounded-corners contact-button add-user" @click="addUser"><span>הוסף פרויקט</span></button>
     <button :href="url" class="th-btn th-btn-empty th-btn-sm less-rounded-corners contact-button" @click="viewProfile">  <span>ראה פרופיל</span>  </button>
   </div>
 
@@ -184,7 +184,8 @@ export default {
 
 <style lang="scss" scoped>
 .worker-item{
-  width: 300px;
+  // width: 300px;
+  width: calc(100% - 30px);
   border-radius: 5px;
   position: relative;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
@@ -297,7 +298,7 @@ export default {
   display: flex;
   flex-basis: 0;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
-  .th-btn.contact-button{
+  .contact-button{
     width: auto;
     height: 32px;
     font-size: 13px;
