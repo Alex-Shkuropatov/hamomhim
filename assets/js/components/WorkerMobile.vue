@@ -24,7 +24,7 @@
 
         <div class="favourite-caption" v-if="checkRole">
           <favourite-icon v-bind="favourite" />
-          םיפדעומל ףסוה
+           הוסף למועדפים
         </div>
       </div>
 
