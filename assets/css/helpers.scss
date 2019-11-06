@@ -12,10 +12,17 @@
   margin: 0 auto;
   padding: 0 $gutters;
 }
+.h-container2 {
+  width: $container-width1 + 130px * $scale1;
+  margin: 0 auto;
+  padding: 0 $gutters;
+}
 @media (max-width: $breakpoint2){
-  .h-container{
+  .h-container,
+  .h-container2{
     width: $container-width2;
   }
+
 }
 
 @media (max-width: $breakpoint3){

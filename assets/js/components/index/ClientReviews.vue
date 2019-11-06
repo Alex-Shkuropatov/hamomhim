@@ -1,8 +1,11 @@
 <template>
   <div class="client-reviews-section">
-    <div class="th-heading clr-blue text-center h-container">פרויקט נבחר</div>
+    <div class="th-heading clr-blue text-center h-container2">
+      <span class="light">פרויקט נבחר</span>
+      <span>אירה זינגר</span>
+    </div>
     <div class="sec-outer">
-      <div class="h-container">
+      <div class="h-container2">
         <div class="content-container">
           <div class="reviews-slider" ref="reviewsSlider">
             <div class="slide-outer">
@@ -20,14 +23,9 @@
               <swiper-slide class="slide-outer" v-for="image, index in post.images" :key="index">
                 <div class="slide-inner" :style="bgImage(image)" @click="$router.push({ name: 'blog-post', params: { id: post.id } })">
                   <!-- <img :src="image" alt=""> -->
-                  {{index}}
                 </div>
               </swiper-slide>
             </swiper>
-            <div class="controls">
-              <div class="swiper-button-next slider-arrow" slot="button-next" data-uid="5"></div>
-              <div class="swiper-button-prev slider-arrow" slot="button-prev" data-uid="6"></div>
-            </div>
           </div>
 
         </div>
@@ -112,12 +110,23 @@ export default {
 
 <style lang="scss" scoped>
 @import '~@/vars.scss';
-.sec-outer{
-  background: url('/static/images/main-page/bg-house.png') no-repeat top left;
-  background-size: calc((100vw - #{$container-width1}) / 2 + (#{$container-width1} * 0.18)) auto;
+.client-reviews-section{
+  background: url('/static/images/main-page/main-top-news.png') no-repeat center;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+.light{
+  font-weight: normal;
+  color: #333;
+}
+.h-container2{
+  position: relative;
 }
 .content-container{
-  width: 66%;
+  width: 58%;
+  margin-right: -$gutters;
+  margin-left: -$gutters;
+  height: ceil( ($container-width1 + 130px * $scale1) * 0.27 + 50px * $scale1);//hight of images slider + it's top margin
 }
 
 .reviews-slider{
@@ -129,15 +138,17 @@ export default {
   .slide-inner{
     background: #FFFFFF;
     box-shadow: 0px ceil($scale1 * 4px) ceil($scale1 * 20px) rgba(0, 0, 0, 0.2);
-    padding: ceil($scale1 * 35px) ceil($scale1 * 50px) ceil($scale1 * 15px) ceil($scale1 * 75px);
+    padding: ceil($scale1 * 35px) ceil($scale1 * 50px) ceil($scale1 * 15px) 13%;
   }
   .name{
-    font-size: ceil($scale1 * 36px);
+    font-size: ceil($scale1 * 55px);
+    margin-bottom: ceil($scale1 * 20px);
     font-weight: bold;
     cursor: pointer;
   }
   .text{
     font-size: ceil($scale1 * 24px);
+    margin-bottom: ceil($scale1 * 20px);
   }
   .socials,
   .socials a{
@@ -163,9 +174,10 @@ export default {
 .photos-slider-row{
   display: flex;
   justify-content: flex-end;
-  position: relative;
-  top: -50px;
-  left: -110px;
+  position: absolute;
+  top: ceil( 50px * $scale1 );
+  left: 0;
+  width: 46%;
   .controls{
     position: relative;
     background: #333333;
@@ -197,7 +209,7 @@ export default {
   }
 }
 .photos-slider{
-  width: ceil($scale1 * 470px);
+  width: 100%;
   margin: 0;
   // img{
   //   width: 100%;
