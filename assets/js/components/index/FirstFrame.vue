@@ -1,18 +1,18 @@
 <template>
-  <div class="big-bg">
+  <div class="search-cat-wrap">
     <p class="title">אדריכלים מעצבי פנים בואו לקבל הצעות</p>
     <p class="title clr-blue">מבעלי מקצוע בתחום הבנייה?</p>
     <div class="search-cat-form">
       <div class="input-container">
 
-          <v-select class="input"
-                    placeholder="חיפוש קבלנים"
-                    :options="getCategories"
-                    label="name"
-                    :clearable="false"
-                    dir="rtl"
-                    v-model="item.value"
-          ></v-select>
+        <v-select class="input"
+          placeholder="חיפוש קבלנים"
+          :options="getCategories"
+          label="name"
+          :clearable="false"
+          dir="rtl"
+          v-model="item.value"
+        />
 
         <button class="search-btn" @click="searchMain">חיפוש</button>
       </div>
@@ -70,20 +70,22 @@
     width: 300px;
     background: white;
   }
-  .big-bg{
+  .search-cat-wrap{
     display: flex;
     justify-content: center;
     text-align: center;
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
-    background: url('/static/images/main-page/bg1.png') no-repeat center top;
-    -webkit-background-size: cover;
-    background-size: cover;
     color: #fff;
-    padding: ceil($scale1 * 50px) 0 ceil($scale1 * 60px) 0;
+    padding: ceil($scale1 * 50px) 0 ceil($scale1 * 40px) 0;
     @media screen and (max-width: 480px){
       padding: 103px 0 79px 0;
+    }
+    &::v-deep{
+      .vs__actions{
+        display: none;
+      }
     }
   }
   .title{
@@ -160,7 +162,7 @@
   }
 
   @media(max-width: $breakpoint2){
-    .big-bg{
+    .search-cat-wrap{
       padding: ceil($scale2 * 50px) 0 ceil($scale2 * 60px) 0;
     }
     .title{
@@ -210,7 +212,7 @@
       background: url("/static/images/icons/search.svg") no-repeat 12px center, linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
       background-size: 16px 16px, cover;
     }
-    .big-bg{
+    .search-cat-wrap{
       padding: 103px 0 79px 0;
     }
   }

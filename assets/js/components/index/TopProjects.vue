@@ -12,10 +12,10 @@
               <div class="creator-avatar">
                 <img :src="project.thumbnail !== null ? $env.API_URL+project.thumbnail : '/static/images/projects/addImg2.png' " alt="">
               </div>
-              <div class="title">{{project.name}}</div>
+              <div class="title clr-blue">{{project.name}}</div>
               <div   class="category">{{$store.getters['categories/getNameById'](project.categoryId)}}</div>
               <div class="description">{{project.description}}</div>
-              <button  @click="getOrder(project)" class="th-btn th-btn-empty th-btn-sm project-b">קרא את הפוסט הזה</button>
+              <button  @click="getOrder(project)" class="th-btn th-btn-blue th-btn-sm project-b">קרא את הפוסט הזה</button>
             </div>
           </swiper-slide>
         </swiper>
@@ -91,15 +91,38 @@ showOrder
 
 <style lang="scss" scoped>
 @import '~@/vars.scss';
+.th-heading{
+  color: #fff;
+}
 .top-projects-section{
-  padding: ceil($scale1 * 25px) 0 0 0;
+  padding: ceil($scale1 * 25px) 0 ceil($scale1 * 25px) 0;
+  background: #1D2C50;
   width: 100%;
 }
 .top-projects-slider-wrap{
   position: relative;
 }
 .slide-outer{
-    padding: ceil($scale1 * 32px) ceil($scale1 * 20px) ceil($scale1 * 20px) ceil($scale1 * 20px);
+  height: auto;
+  padding: ceil($scale1 * 32px) 20px ceil($scale1 * 20px) 20px;
+  position: relative;
+
+  //make lines between slides
+  &.swiper-slide-active,
+  &.swiper-slide-active+div,
+  &.swiper-slide-active+div+div{
+    &:after{
+      content: '';
+      display: block;
+      position: absolute;
+      height: 70%;
+      width: 1px;
+      background: #fff;
+      opacity: 0.5;
+      left: 0;
+      bottom: 10%;
+    }
+  }
 }
 .top-pojects{
   margin-right: ceil($scale1 * -20px);
@@ -113,6 +136,7 @@ showOrder
     -ms-align-items: center;
     align-items: center;
     text-align: center;
+    height: 100%;
     background: #FFFFFF;
     box-shadow: 0px ceil($scale1 * 4px) ceil($scale1 * 20px) rgba(0, 0, 0, 0.1);
     border-radius: 5px;
@@ -124,13 +148,13 @@ showOrder
         position: absolute;
         top: ceil($scale1 * -32px);
         width: ceil($scale1 * 65px);
-        height: ceil($scale1 * 65px);
+        border-radius: 20%;
+        background: #fff;
+        overflow: hidden;
 
         img{
             width: 100%;
             height: 38px;
-          border-radius: 20%;
-
         }
     }
     .title{
@@ -138,12 +162,14 @@ showOrder
         font-weight: bold;
     }
     .category{
-        font-weight: bold;
+        font-weight: 600;
     }
     .description{
         font-size: ceil($scale1 * 16.5px);
         margin-bottom: ceil($scale1 * 25px);
-          height: 50px;
+    }
+    .th-btn{
+      margin-top: auto;
     }
 }
 

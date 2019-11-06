@@ -1,8 +1,9 @@
 <template>
   <main>
-    <show-subcategories />
-    <first-frame/>
-    <div class="bricks-bg">
+    <div class="main-bg">
+
+      <show-subcategories />
+      <first-frame/>
       <categories-slider @category:select="searchWorkersByCategory"/>
       <banner-section/>
     </div>
@@ -10,7 +11,7 @@
     <client-reviews/>
     <feedback-form/>
     <div class="stats-section h-container">
-      <div class="th-heading text-center">קצת עלינו במספרים</div>
+      <div class="th-heading text-center clr-blue">קצת עלינו במספרים</div>
       <stats/>
     </div>
     <news-slider/>
@@ -51,26 +52,43 @@ export default {
 
 <style lang="scss" scoped>
   @import '~@/vars.scss';
-  .bricks-bg{
-    padding-top: 15px;
-    background: url('/static/images/main-page/bg2.png') no-repeat top;
-    -webkit-background-size: 100% auto;
-    background-size: 100% auto;
-  }
   .stats-section{
     margin: 0 auto;
+    padding: 0;
     margin-top: ceil($scale1 * 40px);
-    width: 860px;
-    @media  screen and (max-width: 900px){
-      width: unset;
-    }
     .th-heading{
       margin-bottom: ceil($scale1 * 40px);
     }
   }
-  @media(max-width: $breakpoint5){
-    .bricks-bg{
-      background: none;
+  .main-bg{
+    position: relative;
+    background-image: url('/static/images/main-page/main-bg.png');
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    padding-bottom: 20px;
+    box-shadow: 0px 4px 4px rgba(156, 156, 156, 0.25);
+    &::v-deep{
+      .cats-section{
+        .th-heading{
+          color: #fff;
+        }
+        .slide-inner{
+          background-color: rgba(255,255,255,.3);
+          border: none;
+          border-radius: 4px;
+          color: #fff;
+          &:hover{
+            background: #2970D5;
+          }
+          .cat-img{
+            filter: none;
+          }
+          img{
+            filter: none;
+          }
+        }
+      }
     }
   }
 </style>

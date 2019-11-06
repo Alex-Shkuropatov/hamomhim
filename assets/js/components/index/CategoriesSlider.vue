@@ -88,13 +88,14 @@ export default {
   margin-bottom: ceil($scale1 * 34px);
   margin-right: ceil($scale1 * -15px);
   margin-left: ceil($scale1 * -15px);
+  user-select: none;
 }
 .slide-outer{
   padding: ceil($scale1 * 15px);
   &:hover{
     .slide-inner{
-      transition: color 0.3s ease-out;
-      background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
+      transition: all 0.2s ease-in;
+      background: #2970D5;
       color: #fff;
       border: 2px solid #3269B6;
       .cat-img{

@@ -8,25 +8,25 @@
         <div class="form-group">
           <label class="label">
             <div class="caption">שם מלא</div>
-            <theme-input v-model="name" type="text" class="th-input" placeholder="שם מלא" required />
+            <theme-input v-model="name" type="text" class="th-input less-rounded-corners" placeholder="שם מלא" required />
           </label>
         </div>
         <div class="form-group">
           <label class="label">
             <div class="caption">טלפון</div>
-            <theme-input v-model="phone" type="text" class="th-input" placeholder="טלפון" required />
+            <theme-input v-model="phone" type="text" class="th-input less-rounded-corners" placeholder="טלפון" required />
           </label>
         </div>
         <div class="form-group">
           <label class="label">
             <div class="caption">מייל</div>
-            <theme-input v-model="email" type="text" class="th-input" placeholder="מייל" required />
+            <theme-input v-model="email" type="text" class="th-input less-rounded-corners" placeholder="מייל" required />
           </label>
         </div>
         <div class="form-group">
           <label class="label">
             <div class="caption">סכום נדרש</div>
-            <theme-input v-model="amount_required" type="text" class="th-input" placeholder="סכום נדרש" required />
+            <theme-input v-model="amount_required" type="text" class="th-input less-rounded-corners" placeholder="סכום נדרש" required />
           </label>
         </div>
         <div class="form-group">
@@ -91,7 +91,7 @@ export default {
   margin-left: auto;
 }
 .feedback-section{
-  background: url('/static/images/main-page/bg3.png') no-repeat center;
+  background: url('/static/images/main-page/feedback-bg.png') no-repeat center;
   -webkit-background-size: cover;
   background-size: cover;
   padding: ceil($scale1 * 25px) 0 ceil($scale1 * 50px);
@@ -117,10 +117,12 @@ export default {
       background: transparent;
       width: 100%;
       color: #fff;
+      border-radius: 4px;
     }
     .th-btn{
       width: 100%;
       justify-content: center;
+      border-radius: 4px;
     }
     .caption{
       font-weight: bold;
