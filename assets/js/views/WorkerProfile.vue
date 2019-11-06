@@ -206,7 +206,9 @@ export default {
       this.favourite.is_favourite=!this.favourite.is_favourite;
     },
     showPhone(){
-      this.phoneFlag=!this.phoneFlag;
+      if(this.$store.getters['user/isLogged']){
+        this.phoneFlag=!this.phoneFlag;
+      }
 
     }
   },
