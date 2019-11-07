@@ -230,21 +230,21 @@ export default {
 }
 
 @media(max-width: $breakpoint2){
-  .sec-outer{
-    background-size: calc((100vw - #{$container-width2}) / 2 + (#{$container-width2} * 0.3)) auto;
+  .content-container{
+    height: ceil( ($container-width2 + 130px * $scale2) * 0.27 + 50px * $scale2);//hight of images slider + it's top margin
   }
   .th-heading{
     margin-bottom: 15px;
   }
   .reviews-slider{
     .slide-inner{
-      padding: ceil($scale2 * 35px) ceil($scale2 * 50px) 15px ceil($scale2 * 75px);
+      padding: ceil($scale2 * 35px) ceil($scale2 * 50px) ceil($scale2 * 15px) 13%;
     }
     .name{
-      font-size: ceil($scale2 * 36px);
+      font-size: ceil($scale2 * 55px);
     }
     .text{
-      font-size: ceil($scale2 * 22px);
+      font-size: ceil($scale2 * 24px);
     }
     .socials{
       .facebook{
@@ -259,56 +259,42 @@ export default {
 
   //photos slider
   .photos-slider-row{
-    display: flex;
-    .controls{
-      .slider-arrow{
-        height: ceil($scale2 * 114px);
-        width: ceil($scale2 * 82px);
-        &.swiper-button-next{
-          background: url('/static/images/icons/arrow-left.svg') no-repeat center !important;
-          background-size: ceil($scale2 * 25px);
-        }
-        &.swiper-button-prev{
-          background: url('/static/images/icons/arrow-right.svg') no-repeat center !important;
-          background-size: ceil($scale2 * 25px);
-        }
-      }
-    }
+    top: ceil( 50px * $scale2 );
   }
-  .photos-slider{
-    width: ceil($scale2 * 470px);
-  }
-
   .banner{
     margin-top: ceil($scale2 * 75px);
   }
 }
 
 @media(max-width: $breakpoint3){
-  .content-container{
-    width: 80%;
-  }
-  .sec-outer{
-    background: none;
-  }
-  .photos-slider-row{
-    top: auto;
-    left: auto;
-    justify-content: flex-start;
-  }
+
 }
 @media(max-width: $breakpoint4){
   .content-container{
     width: 100%;
+    height: auto;
+  }
+  .photos-slider-row{
+    position: static;
+    width: 100%;
+  }
+}
+@media(max-width: $breakpoint5){
+  .content-container{
+    margin-right: 0;
+    margin-left: 0;
   }
   .reviews-slider{
-    .slide-inner{
-      padding: ceil($scale4 * 35px) ceil($scale4 * 50px) ceil($scale4 * 15px) ceil($scale4 * 75px);
-    }
     .name{
-      font-size: ceil($scale3 * 36px);
+      font-size: ceil($scale3 * 55px);
+      margin-bottom: 5px;
     }
-
+    .text{
+      margin-bottom: 5px;
+    }
+  }
+  .banner{
+    margin-top: 24px;
   }
 }
 

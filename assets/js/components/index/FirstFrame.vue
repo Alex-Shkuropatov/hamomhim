@@ -213,7 +213,7 @@
       background-size: 16px 16px, cover;
     }
     .search-cat-wrap{
-      padding: 103px 0 79px 0;
+      padding: 50px 0 30px 0;
     }
   }
 

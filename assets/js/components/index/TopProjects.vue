@@ -173,9 +173,18 @@ showOrder
     }
 }
 
+@media (max-width: 1700px) {
+  .slide-outer.swiper-slide-active+div+div:after{
+    display: none;
+  }
+}
+
 @media(max-width: $breakpoint3){
   .h-container{
     width: $container-width3 - 30px;
+  }
+  .slide-outer.swiper-slide-active+div:after{
+    display: none;
   }
 }
 
@@ -190,7 +199,12 @@ showOrder
     width: calc(100% - (#{$gutters} * 3));
   }
 }
-  .project-b{
-    border-radius: 5px;
+@media (max-width: 556px){
+  .slide-outer.swiper-slide-active:after{
+    display: none;
   }
+}
+.project-b{
+  border-radius: 5px;
+}
 </style>

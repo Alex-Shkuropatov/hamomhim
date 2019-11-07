@@ -91,4 +91,9 @@ export default {
       }
     }
   }
+  @media(max-width: $breakpoint5){
+    .stats-section{
+      padding: 0 15px;
+    }
+  }
 </style>
