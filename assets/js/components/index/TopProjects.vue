@@ -1,7 +1,7 @@
 <template>
   <div class="top-projects-section">
 
-    <show-order />
+    <show-order-latest />
 
     <div class="h-container">
       <div class="th-heading text-center">פרויקטים אחרונים</div>
@@ -9,8 +9,8 @@
         <swiper :options="sliderOptions" class="top-pojects" ref="topProjectsSlider">
           <swiper-slide class="slide-outer" v-for="project in projects" :key="project.id">
             <div class="slide-inner">
-              <div class="creator-avatar">
-                <img :src="project.thumbnail !== null ? $env.API_URL+project.thumbnail : '/static/images/projects/addImg2.png' " alt="">
+              <div class="creator-avatar" :class="project.thumbnail === null ? 'empty-avatar' : ''">
+                <img :src="$env.API_URL+project.thumbnail" alt="">
               </div>
               <div class="title clr-blue">{{project.name}}</div>
               <div   class="category">{{$store.getters['categories/getNameById'](project.categoryId)}}</div>
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-  import showOrder from './../modals/ShowOrder.vue'
+import showOrderLatest from './../modals/showOrderLatest.vue'
 export default {
   data(){
     return {
@@ -57,7 +57,7 @@ export default {
   methods:{
     getOrder(project){
 
-      this.$store.commit('modals/showOrder/saveData', {
+      this.$store.commit('modals/showOrderLatest/saveData', {
         description : project.description,
         name : project.name,
         projectName : project.project_name,
@@ -70,12 +70,12 @@ export default {
 
       });
 
-      this.$store.commit('modals/showOrder/open');
+      this.$store.commit('modals/showOrderLatest/open');
     }
   },
 
   components:{
-showOrder
+    showOrderLatest
   },
   mounted() {
     axios.post('/api/getLatestOrders')
@@ -98,13 +98,18 @@ showOrder
   padding: ceil($scale1 * 25px) 0 ceil($scale1 * 25px) 0;
   background: #1D2C50;
   width: 100%;
+  &::v-deep{
+    .modal-close svg path{
+      fill: #fff;
+    }
+  }
 }
 .top-projects-slider-wrap{
   position: relative;
 }
 .slide-outer{
   height: auto;
-  padding: ceil($scale1 * 32px) 20px ceil($scale1 * 20px) 20px;
+  padding: ceil($scale1 * 104px / 2) 20px ceil($scale1 * 20px) 20px;
   position: relative;
 
   //make lines between slides
@@ -140,21 +145,26 @@ showOrder
     background: #FFFFFF;
     box-shadow: 0px ceil($scale1 * 4px) ceil($scale1 * 20px) rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    padding: ceil($scale1 * 35px) ceil($scale1 * 16px) ceil($scale1 * 24px);
+    padding: ceil($scale1 * 60px) ceil($scale1 * 16px) ceil($scale1 * 24px);
     color: $clr-dark;
     text-decoration: none;
     position: relative;
     .creator-avatar{
         position: absolute;
-        top: ceil($scale1 * -32px);
-        width: ceil($scale1 * 65px);
-        border-radius: 20%;
-        background: #fff;
+        top: ceil($scale1 * -52px);
+        width: ceil($scale1 * 104px);
+        height: ceil($scale1 * 104px);
+        border-radius: 50%;
         overflow: hidden;
-
+        &.empty-avatar{
+          background: url('/static/images/projects/addImg2.png') no-repeat center, #fff;
+          background-size: 70% auto, cover;
+        }
         img{
             width: 100%;
-            height: 38px;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
     }
     .title{
