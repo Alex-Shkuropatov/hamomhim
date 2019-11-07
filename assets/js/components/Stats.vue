@@ -78,14 +78,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
   margin: 0 auto 25px auto;
   padding: 0 25px 0 25px;
   color: $clr-blue;
   //width: 827px; //0.8
-  @media screen and (max-width: 900px) {
-    flex-direction: column;
-  }
   .stats_element {
     display: flex;
     flex-direction: column;
@@ -96,12 +92,14 @@
     padding: 20px 0;
     transition: all .2s ease-in-out;
     background: #fff;
-    &:hover{
-      background: $clr-blue;
-      color: #fff;
-      border-color: $clr-blue;
-      svg{
-        fill: #fff;
+    @media (min-width: $breakpoint4){
+      &:hover{
+        background: $clr-blue;
+        color: #fff;
+        border-color: $clr-blue;
+        svg{
+          fill: #fff;
+        }
       }
     }
     svg{
@@ -126,6 +124,30 @@
       font-size: ceil(30px * $scale1);
       line-height: ceil(65px * $scale1);
       letter-spacing: -0.02em;
+    }
+  }
+}
+
+@media (max-width: $breakpoint4){
+  .stats{
+    padding: 0;
+  }
+}
+
+@media (max-width: $breakpoint5){
+  .stats{
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-align-items: center;
+    align-items: center;
+    .stats_element{
+      border: none;
+      border-bottom: solid 2px #C9DBF5;
+      width: 75%;
+      &:last-child{
+        border: none;
+      }
     }
   }
 }

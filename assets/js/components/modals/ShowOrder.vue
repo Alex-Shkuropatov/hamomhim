@@ -145,6 +145,7 @@
       text-align: center;
       color: #2871D7;
       margin: 0;
+      margin-top: 40px;
     }
     .description {
       font-size: 24px;

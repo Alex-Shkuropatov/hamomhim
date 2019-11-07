@@ -26,19 +26,22 @@
 }
 
 @media (max-width: $breakpoint3){
-  .h-container{
+  .h-container,
+  .h-container2{
     width: $container-width3;
   }
 }
 
 @media (max-width: $breakpoint4){
-  .h-container{
+  .h-container,
+  .h-container2{
     width: $container-width4;
   }
 }
 
 @media (max-width: $breakpoint5){
-  .h-container{
+  .h-container,
+  .h-container2{
     width: 100%;
   }
 }

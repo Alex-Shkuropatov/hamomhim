@@ -4,6 +4,7 @@ import login from './login'
 import newProject from './newProject'
 import projectPrice from './projectPrice'
 import showOrder from './showOrder'
+import showOrderLatest from './showOrderLatest'
 import responseForm from './responses/responseForm'
 import showWorkers from './showWorkers'
 import showResponse from './showResponse'
@@ -23,6 +24,7 @@ export default {
     projectPrice,
     responseForm,
     showOrder,
+    showOrderLatest,
     showWorkers,
     showResponse,
     addWorkerWork,

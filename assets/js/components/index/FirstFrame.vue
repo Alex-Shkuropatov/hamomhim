@@ -82,11 +82,6 @@
     @media screen and (max-width: 480px){
       padding: 103px 0 79px 0;
     }
-    &::v-deep{
-      .vs__actions{
-        display: none;
-      }
-    }
   }
   .title{
     font-size: ceil($scale1 * 56px);//50px
@@ -111,11 +106,12 @@
       margin-left: -17px;
       direction: rtl;
       border: none;
-      background: white;
+      background: rgba(255,255,255,.5);
       padding-right: ceil($scale1 * 33px);
       padding-left:0;
       width: ceil($scale1 * 500px);
       border-radius: 0px 40px 40px 0px;
+      color: #fff;
       @media screen and (max-width: 480px){
         width: 235px!important;
       }
@@ -124,14 +120,20 @@
           border: none!important;
           margin-top: 3px;
           input{
-            color: gray;
+            color: #fff;
+            &::placeholder{
+              color: #fff;
+            }
+            &::-webkit-search-cancel-button{
+              display: none;
+            }
             @media screen and (max-width:1340px){
               margin:0;
             }
           }
           .vs__selected{
             margin:0;
-
+            color: #fff;
           }
         }
         .vs__dropdown-menu {
@@ -141,6 +143,9 @@
           border-radius: 10px;
           text-transform: lowercase;
           font-variant: small-caps;
+        }
+        .vs__actions{
+          display: none;
         }
       }
     }
@@ -213,7 +218,7 @@
       background-size: 16px 16px, cover;
     }
     .search-cat-wrap{
-      padding: 103px 0 79px 0;
+      padding: 50px 0 30px 0;
     }
   }
 
