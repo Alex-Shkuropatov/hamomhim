@@ -7,30 +7,26 @@
       <form class="feedback-form">
         <div class="form-group">
           <label class="label">
-            <div class="caption">שם מלא</div>
             <theme-input v-model="name" type="text" class="th-input less-rounded-corners" placeholder="שם מלא" required />
           </label>
         </div>
         <div class="form-group">
           <label class="label">
-            <div class="caption">טלפון</div>
             <theme-input v-model="phone" type="text" class="th-input less-rounded-corners" placeholder="טלפון" required />
           </label>
         </div>
         <div class="form-group">
           <label class="label">
-            <div class="caption">מייל</div>
             <theme-input v-model="email" type="text" class="th-input less-rounded-corners" placeholder="מייל" required />
           </label>
         </div>
         <div class="form-group">
           <label class="label">
-            <div class="caption">סכום נדרש</div>
-            <theme-input v-model="amount_required" type="text" class="th-input less-rounded-corners" placeholder="סכום נדרש" required />
+            <theme-input v-model="amount_required" type="number" class="th-input less-rounded-corners" placeholder="סכום נדרש" required />
           </label>
         </div>
         <div class="form-group">
-          <button class="th-btn th-btn-md th-btn-yellow text-center" @click.prevent="sendForm">שלח</button>
+          <button class="th-btn th-btn-md th-btn-yellow text-center" @click.prevent="sendForm">שלח בקשה</button>
         </div>
       </form>
     </div>
@@ -103,6 +99,7 @@ export default {
   margin-bottom: 0;
   line-height: 1.1;
   margin-bottom: ceil($scale1 * 10px);
+  margin-bottom: 20px;
 }
 .feedback-form{
   display: flex;
@@ -118,6 +115,13 @@ export default {
       width: 100%;
       color: #fff;
       border-radius: 4px;
+      &::placeholder{
+        color: #fff;
+      }
+      &[type=number]::-webkit-inner-spin-button,
+      &[type=number]::-webkit-outer-spin-button{
+        -webkit-appearance: none;
+      }
     }
     .th-btn{
       width: 100%;

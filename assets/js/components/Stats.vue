@@ -92,6 +92,7 @@
     padding: 20px 0;
     transition: all .2s ease-in-out;
     background: #fff;
+    border-radius: 5px;
     @media (min-width: $breakpoint4){
       &:hover{
         background: $clr-blue;
