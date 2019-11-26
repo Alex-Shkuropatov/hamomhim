@@ -81,6 +81,7 @@
   margin: 0 auto 25px auto;
   padding: 0 25px 0 25px;
   color: $clr-blue;
+  width: 100%;
   //width: 827px; //0.8
   .stats_element {
     display: flex;

@@ -99,6 +99,14 @@ export default {
   justify-content: space-between;
   padding-right: 15px;
   padding-left: 15px;
+  @media screen and (max-width: 480px){
+    justify-content: center;
+  }
+  button{
+    @media screen and (max-width: 480px){
+      margin: 5px 0;
+    }
+  }
 }
 .slide-fade-enter-active {
     transition: all .3s ease;

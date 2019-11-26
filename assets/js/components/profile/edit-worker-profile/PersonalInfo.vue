@@ -335,7 +335,7 @@ $gutter: 17px;
     padding: 0 15px;
   }
   .personal-info{
-    padding-bottom: 15px;
+    padding-bottom: 0px;
   }
   .avatar-col{
     width: 100%;

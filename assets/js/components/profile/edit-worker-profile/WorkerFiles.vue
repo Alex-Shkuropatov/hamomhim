@@ -96,6 +96,7 @@ export default {
     align-items: center;
     font-size: ceil($scale1 * 24px);
     font-weight: bold;
+    word-break: break-all;
   }
 }
 

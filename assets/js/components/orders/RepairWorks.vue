@@ -53,7 +53,13 @@
                    id="file-upload"
                   type="file"
                   @change="previewFiles"
-                  accept="image/x-png,image/gif,image/jpeg,.doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                  accept="image/*,
+                  application/msword
+                  application/vnd.ms-powerpoint,
+                  text/plain,
+                  application/pdf,
+                  application/vnd.ms-excel,
+                  application/vnd.openxmlformats-officedocument.wordprocessingml.document"
            />
            <i class="fas fa-cloud-upload-alt"></i>
          </div>
@@ -91,7 +97,13 @@
          </p>
        </div>
      </div>
-     <button class="next-b th-btn th-btn-blue th-btn-md" v-bind:disabled="spinFlag" @click.prevent="sendOrder"> <i v-show="spinFlag" class="fas fa-spinner fa-spin"></i> <span id="sendBid">   לשלב הבא</span> </button>
+     <button
+       class="next-b th-btn th-btn-blue th-btn-md"
+       v-bind:disabled="spinFlag"
+       @click.prevent="sendOrder">
+       <i v-show="spinFlag" class="fas fa-spinner fa-spin"></i>
+       <span id="sendBid">   לשלב הבא</span>
+     </button>
    </form>
  </div>
   </div>

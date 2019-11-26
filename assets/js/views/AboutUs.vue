@@ -32,7 +32,7 @@
         </div>
 
          <stats/>
-        
+
       </div>
     </div>
     <div class="thirdBlock">
@@ -302,13 +302,9 @@
   //
   //
   .thirdBlock {
-    pointer-events: none;
     background: linear-gradient(90deg, rgb(40, 113, 215) 0%, rgb(50, 105, 182) 100%);
-
     box-sizing: border-box;
-
     margin-top: 146px;
-    z-index: 0;
     @media screen and (max-width:480px) {
       margin-top: 80px;
     }
@@ -357,6 +353,7 @@
           margin-left: 120px;
           width: 880px;
           height: 477px;
+          text-align: center;
           @media screen and (max-width: 1820px) {
             text-align: center;
             margin: 0 6px 0 6px;
@@ -381,7 +378,6 @@
             font-weight: bold;
             font-size: 36px;
             line-height: 40px;
-            text-align: right;
             color: #FFFFFF;
             @media screen and (max-width: 1605px) {
               text-align: center;
@@ -397,12 +393,13 @@
             }
           }
           hr {
-            margin-left: 381px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 10px;
+            margin-top: 7px;
             height: 0;
             border: 3px solid #FFFFFF;
             transform: rotate(180deg);
-            margin-top: 7px;
-            margin-bottom: 10px;
             width: 490px;
             background-color: white;
 
@@ -415,7 +412,6 @@
           .description {
             font-size: 24px;
             line-height: 40px;
-            text-align: right;
             color: #FFFFFF;
             @media screen and (max-width: 1820px) {
               text-align: center;
@@ -437,4 +433,3 @@
 
 
 </style>
-
