@@ -69,7 +69,8 @@
   .container {
     display: block;
     position: relative;
-    padding-left: 35px;
+    margin-left: 15px;
+    padding-right: 40px;
     margin-bottom: 12px;
     cursor: pointer;
     font-size: 22px;
@@ -92,7 +93,7 @@
   .checkmark {
     position: absolute;
     top: 7px;
-    right: -40px;
+    right: 0px;
     height: 25px;
     width: 25px;
     background-color: #eee;
@@ -222,7 +223,6 @@
    }
    .service{
      label{
-       font-family: Rubik;
        font-size: 24px;
        line-height: 40px;
        text-align: center;

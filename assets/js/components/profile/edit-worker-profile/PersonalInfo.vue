@@ -21,7 +21,7 @@
             class="th-input less-rounded-corners" />
           </div>
           <div class="form-group col1-2">
-            <div class="caption">הדובע רוזיא</div>
+            <div class="caption">איזור עבודה</div>
             <drop-down
             v-bind="selects.working_area"
             :value="working_area"
