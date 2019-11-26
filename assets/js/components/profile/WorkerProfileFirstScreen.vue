@@ -139,7 +139,7 @@
 }
   .marginT{
     padding-top: 300px;
-    @media screen and (max-width: 480px){
+    @media screen and (max-width: 600px){
       padding-top: 220px;
     }
   }
