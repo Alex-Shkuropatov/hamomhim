@@ -75,7 +75,7 @@
     .title{
       font-weight: bold;
       font-size: 64px;
-      line-height: 30px;
+      line-height: 55px;
       display: flex;
       align-items: center;
       color: #FFFFFF;

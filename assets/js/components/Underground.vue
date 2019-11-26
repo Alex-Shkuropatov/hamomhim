@@ -129,6 +129,10 @@ footer{
   p{
     margin: 0;
   }
+  ul{
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 .copyright1,
 .copyright2{
