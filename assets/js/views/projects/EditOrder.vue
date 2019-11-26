@@ -76,7 +76,13 @@
                       id="file-upload"
                       type="file"
                       @change="previewFiles"
-                      accept="image/x-png,image/gif,image/jpeg,.doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                      accept="image/*,
+                  application/msword
+                  application/vnd.ms-powerpoint,
+                  text/plain,
+                  application/pdf,
+                  application/vnd.ms-excel,
+                  application/vnd.openxmlformats-officedocument.wordprocessingml.document"
               />
               <i class="fas fa-cloud-upload-alt"></i>
             </div>

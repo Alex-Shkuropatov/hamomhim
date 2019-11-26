@@ -6,7 +6,7 @@
         <div class="popup-form-row">
           <div class="col1-1 inp-group">
             <div class="label">תיאור</div>
-            <theme-textarea :disable=true v-model="response.description"  placeholder="תיאור"></theme-textarea>
+            <theme-textarea  style="background:white" :disabled="true"  v-model="response.description"  placeholder="תיאור"></theme-textarea>
           </div>
         </div>
         <div class="popup-form-row">

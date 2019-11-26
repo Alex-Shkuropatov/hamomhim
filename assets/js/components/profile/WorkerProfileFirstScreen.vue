@@ -75,7 +75,7 @@
     .title{
       font-weight: bold;
       font-size: 64px;
-      line-height: 30px;
+      line-height: 45px;
       display: flex;
       align-items: center;
       color: #FFFFFF;
@@ -139,7 +139,7 @@
 }
   .marginT{
     padding-top: 300px;
-    @media screen and (max-width: 480px){
+    @media screen and (max-width: 600px){
       padding-top: 220px;
     }
   }
