@@ -8,8 +8,8 @@
       <div class="text-wrapper">
         <div class="title">{{name}}</div>
         <div class="actions-wrapper">
-          <div class="action-item worker lefted-l">
-            <button class="item edit" @click="showWorkers">
+          <div class="action-item worker" @click="showWorkers">
+            <button class="item edit">
               <svg width="20" height="25" viewBox="0 0 20 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M17.663 17.4465C17.1062 16.8326 16.4352 16.5328 15.5785 16.5328H13.7735L12.5884 15.3906C11.7175 16.1045 10.661 16.5185 9.51871 16.5185C8.44789 16.5185 7.43419 16.1473 6.60609 15.5048L5.54951 16.5185H3.67094C2.71435 16.5185 1.97192 16.8469 1.38654 17.518C-0.312489 19.4883 -0.026938 23.7002 0.10156 24.9994H19.1192C19.2193 23.6858 19.3906 19.374 17.663 17.4465Z"
                       fill="#2871D7"/>
@@ -21,11 +21,10 @@
                       fill="#2871D7"/>
               </svg>
             </button>
-              <p class="describe "> קבלנים</p>
+            <p class="describe "> קבלנים</p>
           </div>
-          <hr>
-          <div class="action-item centered">
-            <button class="item centered showOrder" @click="showOrder">
+          <div class="action-item centered" @click="showOrder">
+            <button class="item centered showOrder">
               <svg width="19" height="25" viewBox="0 0 19 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M13.2812 1.5625H11.5844C11.2625 0.653125 10.3938 0 9.375 0C8.35625 0 7.4875 0.653125 7.16406 1.5625H5.46875C5.0375 1.5625 4.6875 1.9125 4.6875 2.34375V5.46875C4.6875 5.9 5.0375 6.25 5.46875 6.25H13.2812C13.7125 6.25 14.0625 5.9 14.0625 5.46875V2.34375C14.0625 1.9125 13.7125 1.5625 13.2812 1.5625Z"
                       fill="#2871D7"/>
@@ -35,9 +34,8 @@
             </button>
             <p class="describe">פרטי הפרויקט</p>
           </div>
-          <hr>
-          <div class="action-item rightred-r">
-            <button class="item worker  " @click="editOrder" >
+          <div class="action-item" @click="editOrder">
+            <button class="item worker">
               <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M15.6217 4.17218L20.7322 9.2826L7.79621 22.2186L2.68863 17.1082L15.6217 4.17218ZM24.6101 2.93966L22.331 0.660587C21.4502 -0.220196 20.02 -0.220196 19.1362 0.660587L16.9531 2.84371L22.0636 7.95418L24.6101 5.40769C25.2932 4.7245 25.2932 3.6228 24.6101 2.93966ZM0.0142212 24.2913C-0.0787828 24.7099 0.299123 25.0849 0.717736 24.9831L6.4125 23.6024L1.30493 18.4919L0.0142212 24.2913Z"
                       fill="#2871D7 "/>
@@ -50,7 +48,7 @@
 
         <div class="description">{{description}}</div>
 
-        <button class="sendData th-btn th-btn-blue th-btn-sm" @click.prevent="searchWorkers"> קרא את הפוסט הזה &nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="sendData th-btn th-btn-blue th-btn-sm" @click.prevent="searchWorkers"> הוסף קבלן &nbsp;&nbsp;&nbsp;&nbsp;
           +
         </button>
       </div>
@@ -303,7 +301,7 @@
         .sendData {
           position: absolute;
           bottom: 37px;
-          width: 285.8px;
+          width: 200px;
           height: 54.07px;
           font-style: normal;
           font-weight: bold;
@@ -336,26 +334,32 @@
   }
 
   .actions-wrapper {
+    margin-top: 15px;
     margin-bottom: 10px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
     align-items: center;
-    width: 284px;
     height: 63px;
 
-@media screen and (max-width: 767px){
-  margin: 0 auto;
-}
+    @media screen and (max-width: 767px){
+      margin: 0 auto;
+    }
     .action-item {
       position: relative;
-      width: 72px;
       height: 60px;
+      display: flex;
+      text-align: center;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 15px;
+      border-left: 2px solid #E0E0E0;
+      cursor: pointer;
+      &:last-child{
+        border: none;
+      }
 
       .item {
-        position: absolute;
-        left: 18px;
-        top: 10px;
         width: 40px;
         height: 30px;
         padding: 0;
@@ -366,47 +370,18 @@
       }
     }
 
-    .worker {
-      margin-left: -10px;
-    }
-
-    .describe {
-      top: 20px;
-      width: 100px;
-      position: relative;
+    .describe{
       font-family: Assistant;
       font-style: normal;
       font-weight: normal;
       font-size: 18px;
       line-height: 30px;
+      margin-bottom: 0;
+      margin-top: 0;
       display: flex;
       align-items: center;
       text-align: center;
       color: #828282;
     }
   }
-
-  hr {
-    margin-top: 14px;
-    width: 50px;
-    height: 0px;
-    border: 1px solid #E0E0E0;
-    transform: rotate(90deg);
-  }
-.centered{
-  left: 10px;
-}
-  .lefted-l{
-    left: -9px!important;
-    .describe{
-      width: 56px!important;
-    }
-  }
-  .rightred-r{
-    right: -5px!important;
-  button{
-    left: 26px!important;
-  }
-  }
 </style>
-

@@ -23,13 +23,13 @@
                 <input type="text" :value="getId">
               </div>
               <div class="row">
-                <p>תמונות מצורפות</p>
+                <p>איזור שיפוץ</p>
                 <input type="text" :value="getData.work_area">
               </div>
             </div>
             <div class="form-row column clm">
               <div class="row ml-b">
-                <p>הורד פרויקט</p>
+                <p>תת קטגורי</p>
                 <div class="sub-wrapper" v-if="getData.subcategories[0]!==null">
                   <subcategory
                   class="orders-item"

@@ -16,7 +16,7 @@
           </order-workers>
         </div>
         <div class="empty-h" v-show="getData.length===0" >
-          <h3> No workers on order</h3>
+          <h3>טרם הוספת קבלנים למכרז</h3>
         </div>
       </div>
 

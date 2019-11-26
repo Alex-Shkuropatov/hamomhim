@@ -106,10 +106,10 @@
                   שדה נדרש
                 </p>
                 <p class="error-message" v-else-if="!$v.description.minLength">
-                Description must contain more than 10 symbols
+                  תיאור פרויקט חייב להכיל לפחות 10 תווים.
                 </p>
                 <p class="error-message" v-else-if="!$v.description.maxLength">
-                   Description must contain less than 150 symbols
+                   תיאור פרויקט חייב להכיל פחות 150 תווים.
                 </p>
               </div>
        </textarea>
@@ -448,7 +448,6 @@ padding-top: 20px;
       }
       .service{
         label{
-          font-family: Rubik;
           font-size: 24px;
           line-height: 40px;
           text-align: center;

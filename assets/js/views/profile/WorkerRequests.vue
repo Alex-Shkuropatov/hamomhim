@@ -12,7 +12,7 @@
         <div class="title-line">
           <div class="name">{{request.name}}</div>
           <div class="date">
-            <span class="caption">תאריך אישור סופי</span>
+            <span class="caption">תאריך קבלת הפרויקט</span>
             <span class="value">{{request.updated_at}}</span>
           </div>
         </div>
@@ -125,7 +125,7 @@ export default {
       this.requests = this.requests.filter(e => e.id !== id);
     },
     rejectResponse(id){
-      if(confirm('Are you sure you want to reject this request?')){
+      if(confirm('האם אתה בטוח שברצונך למחוק פרויקט זה?')){
         axios.post('/api/rejectRequest', { orderId: id })
           .then(data => {
             if(data.data.success){

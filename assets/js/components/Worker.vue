@@ -10,7 +10,7 @@
           <div class="content-info">
             <div class="title" :style="[ rateFlag.rate>!0 ? '' : {'margin-left': '0'}  ]">
               <div class="title-element">
-                {{name}}
+                {{name_of_business}}
               </div>
 
               <div class="title-favourite">
@@ -52,7 +52,7 @@
             </div>
             <div class="footer-wrapper">
               <div class="btn-wrapper">
-                <button :href="url" class="th-btn th-btn-blue th-btn-sm less-rounded-corners contact-button add-user" @click="addUser"><span>הוסף פרויקט</span></button>
+                <button :href="url" class="th-btn th-btn-blue th-btn-sm less-rounded-corners contact-button add-user" @click="addUser"><span>הוסף קבלן</span></button>
                 <button :href="url" class="th-btn th-btn-empty th-btn-sm less-rounded-corners contact-button" @click="viewProfile">  <span>ראה פרופיל</span>  </button>
               </div>
               <div class="location">
@@ -102,6 +102,10 @@
       name: {
         default: '',
         type: String,
+      },
+      name_of_business: {
+        type: String,
+        default: '',
       },
       bio:{
         default: '',
@@ -187,6 +191,10 @@
   </script>
 
   <style lang="scss" scoped>
+  .title-favourite{
+    position: relative;
+    top: -2.5px;
+  }
   .title-favourite::v-deep button svg{
     width: 20px;
     height: 20px;
