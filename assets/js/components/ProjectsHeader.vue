@@ -36,15 +36,10 @@
     </div>
     <div class="nav">
       <ul class="nav-links" >
-        <div class="row row-l">
+        <div class="row">
           <router-link :to="{name: 'projects',  }" class=" link "   >   פרויקטים   </router-link>
-          <hr>
           <router-link :to="{name: 'closed-projects',  }" class=" link "   >  פרויקטים שבוצעו </router-link>
-        </div>
-        <hr>
-        <div class="row row-f">
           <router-link :to="{name: 'prefer-worker',  }" class=" link "   > קבלנים מועדפים   </router-link>
-          <hr>
           <router-link :to="{name: 'edit-profile',  }" class=" link "   > הגדרות חשבון  </router-link>
         </div>
       </ul>
