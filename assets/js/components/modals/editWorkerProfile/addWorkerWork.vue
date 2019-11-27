@@ -224,4 +224,13 @@ $gutter: 12px;
 .submit-btn{
   height: 50px;
 }
+
+@media (max-width: 768px){
+  .files-list{
+    .item,
+    .add-new-file{
+      width: calc(50% - #{$gutter} * 2);
+    }
+  }
+}
 </style>

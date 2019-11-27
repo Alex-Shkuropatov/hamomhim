@@ -107,10 +107,8 @@
     img{
       pointer-events: none;
       width: 100%;
-      height: 205px;
-      @media screen and (max-width: 1440px) {
-        height: 171px;
-      }
+      height: 100%;
+      object-fit: cover;
     }
     .title{
       margin: 0;
@@ -174,6 +172,13 @@
 
       }
   }
+  }
+  .thumb{
+    width: 100%;
+    height: 205px;
+    @media screen and (max-width: 1440px) {
+      height: 171px;
+    }
   }
 
 </style>

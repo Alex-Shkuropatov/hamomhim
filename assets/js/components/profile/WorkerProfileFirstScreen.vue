@@ -78,6 +78,7 @@
       line-height: 55px;
       display: flex;
       align-items: center;
+      text-align: center;
       color: #FFFFFF;
       @media screen and (max-width: 767px){
         font-size: 50px;
@@ -145,7 +146,7 @@
   }
   .header-n {
     background-image: url('/static/images/profile/header-image.png');
-    height: 814px;
+    height: 550px;
     width: 100%;
     -ms-align-items: center;
     align-items: center;

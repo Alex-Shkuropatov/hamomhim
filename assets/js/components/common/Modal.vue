@@ -29,7 +29,7 @@
   }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .formWrapper{
     position: relative;
     overflow: auto;
@@ -54,17 +54,20 @@
     left: 0;
     top: 0;
     padding-top: 105px;
-    z-index: 200;
+    z-index: 3001;
     display: flex;
     justify-content: center;
     @media screen and (max-width:480px){
       padding-top: 80px;
     }
+    @media (max-width: 380px){
+      padding-top: 35px;
+    }
   }
   .closeB{
     fill:#BDBDBD;
-    left: 25px;
-    top: 25px;
+    left: 15px;
+    top: 15px;
     z-index: 100;
     animation: forwards;
     animation-duration: 1s;
