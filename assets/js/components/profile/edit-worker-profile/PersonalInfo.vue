@@ -286,6 +286,8 @@ $gutter: 17px;
   &:after{
     content: '';
     display: inline-block;
+    position: relative;
+    top: 3px;
     width: 9px;
     height: 13px;
     background: url('/static/images/icons/arrow-left-black2.svg') no-repeat center;

@@ -171,7 +171,7 @@
     z-index: 1;
     width: 59px;
     height: 47px;
-    padding: 0.2em 1.1em;
+    padding: 2.8px 15.4px;
     border-radius: 10px;
     cursor: pointer;
     transition: box-shadow 0.4s ease;

@@ -81,9 +81,7 @@ export default {
     margin-top: ceil($scale2 * 100px);
   }
 }
-  .index{
-    z-index: 2!important;
-  }
+
   .under{
     z-index: 1;
   }

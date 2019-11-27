@@ -165,7 +165,7 @@
     }
   }
   .nav-bar{
-    z-index: 99999999999999999;
+    z-index: 3000;
     margin: 0 auto;
     display: flex;
     flex-direction: row-reverse;
