@@ -222,10 +222,15 @@
         padding: 10px 0 10px 0px;
       }
 
-      img {
+      .thumb {
         pointer-events: none;
         width: 460px;
         height: 330.12px;
+        img{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
         @media screen and (max-width: 1650px){
           width: 386px;
           height: 263px;
