@@ -1,23 +1,22 @@
 <template>
     <transition name="slide-fade">
-    <modal v-if="$store.getters['modals/responseForm/isOpened']" @close="close">
+    <modal v-if="$store.getters['modals/showResponse/isOpened']" @close="close">
       <div class="content-wrapper">
         <h2 class="title">שם הפרויקט</h2>
         <div class="subtitle">נתוני אדריכל</div>
         <div class="popup-form-row">
           <div class="col1-1 inp-group">
             <div class="label">תיאור</div>
-            <theme-textarea   v-model="description" disabled placeholder="תיאור"></theme-textarea>
+            <theme-textarea v-model="description" disabled placeholder="תיאור"></theme-textarea>
           </div>
         </div>
-        <div class="popup-form-row">
+        <div class="popup-form-row" v-if="files.length>0">
           <div class="col1-1 inp-group">
             <div class="label">מסמכים</div>
-            <file-upload-multiple v-model="files"></file-upload-multiple>
+            <file-upload-multiple v-model="files" :disabled="true"></file-upload-multiple>
           </div>
         </div>
         <div class="popup-form-row two-buttons">
-          <button class="th-btn th-btn-md wide th-btn-blue" @click="addResponse">שלח הצעה</button>
           <button class="th-btn th-btn-md wide th-btn-gray" @click="close">חזור אחורה</button>
         </div>
       </div>
@@ -55,13 +54,6 @@ export default {
       default: function(){
         return [];
       }
-    },
-  },
-  methods: {
-    close() {
-      this.description = '';
-      this.files = [];
-      this.$store.commit('modals/responseForm/close');
     },
   },
   mounted(){

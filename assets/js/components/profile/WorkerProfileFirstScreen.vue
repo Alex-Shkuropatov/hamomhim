@@ -1,7 +1,14 @@
 <template>
   <div class="header-info header-n">
 
-    <div class="info-wrapper" v-bind:class="{marginT : getData.role!=='architect'}" >
+    <div class="info-wrapper h-container" v-bind:class="{marginT : getData.role!=='architect'}" >
+      <ul class="worker-profile-nav">
+        <li><a href="#">דף בית</a></li>
+        <li><a href="#">אודות</a></li>
+        <li><a href="#">בלוג</a></li>
+        <li><a href="#">איך זה עובד</a></li>
+        <li><a href="#">צור קשר</a></li>
+      </ul>
       <div class="title" v-bind:class="{marginL : getData.role==='architect'}"  > {{user.name_of_business}}
         <favourite-icon
         v-bind="favourite"
@@ -59,13 +66,24 @@
   </script>
 
   <style lang="scss" scoped>
+  .worker-profile-nav{
+    display: flex;
+    li{
+      margin: 0 15px;
+    }
+    a{
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+    }
+  }
   .info-wrapper{
     margin: 0 auto;
-    padding-top: 215px;
-    width: 500px;
+    padding-top: 130px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100%;
     @media screen and (max-width: 767px){
       width: 300px;
     }
@@ -139,7 +157,7 @@
   }
 }
   .marginT{
-    padding-top: 300px;
+    padding-top: 130px;
     @media screen and (max-width: 600px){
       padding-top: 220px;
     }
