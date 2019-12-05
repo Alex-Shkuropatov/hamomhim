@@ -2,7 +2,9 @@
   <div class="download-post">
     <div class="document-wrapper">
       <a :href="$env.API_URL+file" download target="_blank">
-        <button class="download th-btn th-btn-blue th-btn-md" href="#"><span>Download</span></button>
+        <button class="download th-btn th-btn-blue th-btn-md" href="#">
+          <span >Download</span>
+        </button>
       </a>
       <div class="description">{{name}}</div>
     </div>
@@ -44,9 +46,7 @@
     flex-direction: row-reverse;
     align-items: center;
     justify-content: space-between;
-    @media screen and (max-width: 480px){
-      flex-direction: column-reverse;
-    }
+
     .download{
       width: 118px;
       height: 30px;
@@ -61,13 +61,13 @@
         width: 100px;
         height: 35px;
       }
-      @media screen and (max-width: 480px){
-        margin-bottom: 10px;
-      }
+
     }
   }
   .download-post{
     position: relative;
+
+
     .hover-element{
       position: absolute;
       background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
@@ -83,7 +83,7 @@
     overflow: hidden;
     white-space: nowrap;
     @media screen and (max-width: 480px){
-      width: 100%;
+      width: 196px;
     }
   }
 </style>

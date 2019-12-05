@@ -7,18 +7,37 @@
     <div class="wrap"  v-if="flag">
 
     <template v-if="responses.length">
+      <show-response
+        :data="currentResponse"
+      ></show-response>
+
       <div class="response-item" v-for="response in responses">
         <div class="response-inner">
           <div class="text-col">
-            <div class="title">שם קטגוריה</div>
-            <div class="phone">
-              <span class="bold">שם האדריכל</span> |
-              <a href="#" class="phone">{{response.user.phone}}</a>
+            <div class="title">{{response.order.category.name}}</div>
+            <div class="subcats">
+              <span v-for="subcategory in response.order.subcategories">
+                {{subcategory.name}}
+              </span>
             </div>
             <hr class="th-divider">
-            <div class="description">{{response.description}}</div>
+            <div class="customer-info">
+              <div class="item">
+                <span class="caption clr-black">שם</span>
+                <span class="clr-blue">{{response.order.architect_name}}</span>
+              </div>
+              <div class="item">
+                <span class="caption clr-black">טלפון</span>
+                <span class="clr-blue">{{response.order.architect_phone}}</span>
+              </div>
+            </div>
+            <div class="description">{{response.order.description}}</div>
+            <button class="th-btn th-btn-blue th-btn-md" @click="openResponse(response)">צפה בתגובה שלך</button>
           </div>
-          <div class="img-col" :style="[ response.files.length>0?  {backgroundImage: 'url(' + $env.API_URL + response.files[0].file + ')'} : {backgroundImage: 'url(/static/images/projects/addImg.png)'} ]">
+          <div class="img-col"
+               :style="[ response.order.thumbnail != null ?
+               {backgroundImage: 'url(' + $env.API_URL +  ( response.order.thumbnail) + ')'} :
+               {backgroundImage: 'url(/static/images/projects/addImg.png)'} ]">
           </div>
         </div>
       </div>
@@ -31,13 +50,19 @@
 </template>
 
 <script>
-export default {
+  import ShowResponse from './../../components/modals/responses/ShowResponse';
+
+  export default {
   data(){
     return {
       responses: [],
+      currentResponse : [],
       flag: false,
     };
   },
+    components:{
+    ShowResponse,
+    },
   methods: {
     getItemsFromApi(){
       axios.post('/api/getAllResponses', { page: 0, take: 10, status: 'closed'})
@@ -50,6 +75,10 @@ export default {
             alert(response.data.message);
           }
         })
+    },
+    openResponse(response){
+      this.currentResponse = response;
+      this.$store.commit('modals/showResponse/open');
     }
   },
   mounted(){

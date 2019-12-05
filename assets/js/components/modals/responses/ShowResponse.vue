@@ -1,67 +1,36 @@
 <template>
     <transition name="slide-fade">
-    <modal v-if="$store.getters['modals/showResponse/isOpened']" @close="close">
-      <div class="content-wrapper">
-        <h2 class="title">שם הפרויקט</h2>
-        <div class="subtitle">נתוני אדריכל</div>
-        <div class="popup-form-row">
-          <div class="col1-1 inp-group">
-            <div class="label">תיאור</div>
-            <theme-textarea v-model="description" disabled placeholder="תיאור"></theme-textarea>
-          </div>
-        </div>
-        <div class="popup-form-row" v-if="files.length>0">
-          <div class="col1-1 inp-group">
-            <div class="label">מסמכים</div>
-            <file-upload-multiple v-model="files" :disabled="true"></file-upload-multiple>
-          </div>
-        </div>
-        <div class="popup-form-row two-buttons">
-          <button class="th-btn th-btn-md wide th-btn-gray" @click="close">חזור אחורה</button>
-        </div>
-      </div>
-    </modal>
+        <modal v-if="$store.getters['modals/showResponse/isOpened']" @close="close">
+            <modal-content :response="data"  @back="close" />
+        </modal>
     </transition>
 </template>
 
 <script>
-import Modal from '../../common/Modal.vue'
-import DropDown from '../../common/DropDown.vue'
-import ThemeInput from '../../common/ThemeInput.vue'
-import ThemeTextarea from '../../common/ThemeTextarea.vue'
-import FileUploadMultiple from '../../common/FileUploadMultiple.vue'
+    import Modal from '../../common/Modal.vue'
+    import modalContent from './../modalResponse/SecondModal'
 
-export default {
-  methods: {
-    close() {
-      this.$store.commit('modals/showResponse/close');
-    },
-  },
-  components: {
-    Modal,
-    DropDown,
-    ThemeInput,
-    ThemeTextarea,
-    FileUploadMultiple
-  },
-  props: {
-    description: {
-      type: String,
-      default: ''
-    },
-    files: {
-      type: Array,
-      default: function(){
-        return [];
-      }
-    },
-  },
-  mounted(){
-  },
-  destroyed(){
+    export default {
+        methods: {
+            close() {
+                this.$store.commit('modals/showResponse/close');
+            },
+        },
+        components: {
+            Modal,
+            modalContent
+        },
+        props: {
+            data: {
+                type: Object
+            },
+        },
+        mounted() {
+        },
+        destroyed() {
 
-  },
-}
+        },
+    }
 </script>
 
 <style lang="scss" scoped>

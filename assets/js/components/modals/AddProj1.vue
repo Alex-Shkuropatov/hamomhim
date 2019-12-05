@@ -113,7 +113,6 @@
 
 <style  lang="scss" scoped>
   .content-wrapper{
-
     margin-bottom: 49px;
     text-align: center;
     display: flex;

@@ -102,6 +102,9 @@
   .download-wrapper{
     margin: 0 auto;
     width: 655px;
+    @media screen and (max-width:900px){
+      width: 100%;
+    }
   }
   .two-buttons{
     margin-top: 20px;
