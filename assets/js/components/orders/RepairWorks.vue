@@ -53,6 +53,7 @@
                    id="file-upload"
                   type="file"
                   @change="previewFiles"
+                  multiple
                   accept="image/*,
                   application/msword
                   application/vnd.ms-powerpoint,
@@ -160,10 +161,12 @@ workArea: {
     },
     methods: {
       previewFiles(event) {
-        let file = event.target.files[0];
-        this.currentFile = file;
-        this.currentFile.id = generateGuid();
-        this.upload(event);
+        for(let i=0;i<event.target.files.length;i++ ){
+          this.currentFile = event.target.files[i];
+          this.currentFile.id = generateGuid();
+          this.upload(event);
+        }
+
       },
       upload (e){
         e.preventDefault();

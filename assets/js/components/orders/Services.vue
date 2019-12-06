@@ -220,6 +220,8 @@
    @media screen and (max-width: 480px) {
      flex-direction: column;
      width: 300px;
+     align-items: flex-start;
+     padding-right: 15px;
    }
    .service{
      label{

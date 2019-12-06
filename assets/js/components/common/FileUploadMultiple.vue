@@ -8,7 +8,7 @@
         <a href="#" class="th-btn th-btn-blue delete-btn" @click.prevent="onDeleteFile(file.id)">הסר מסמך</a>
       </div>
     </div>
-    <label class="upload-btn">
+    <label class="upload-btn" v-if="!disabled">
       <span class="caption">הוסף קבצים</span>
       <input type="file" multiple @change="onFileUpload($event.target.files)">
     </label>
@@ -20,6 +20,10 @@
     props: {
       value: {
         type: Array
+      },
+      disabled: {
+        type: Boolean,
+        default: false,
       }
     },
     methods: {

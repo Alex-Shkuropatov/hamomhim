@@ -222,10 +222,15 @@
         padding: 10px 0 10px 0px;
       }
 
-      img {
+      .thumb {
         pointer-events: none;
         width: 460px;
         height: 330.12px;
+        img{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
         @media screen and (max-width: 1650px){
           width: 386px;
           height: 263px;
@@ -327,7 +332,9 @@
           @media screen and (max-width: 767px){
             margin: 0 auto;
           }
-
+          @media screen and (max-width:480px){
+            width: 150px;
+          }
         }
       }
     }
@@ -342,7 +349,7 @@
     height: 63px;
 
     @media screen and (max-width: 767px){
-      margin: 0 auto;
+      margin: 20px auto;
     }
     .action-item {
       position: relative;
@@ -355,6 +362,9 @@
       padding: 0 15px;
       border-left: 2px solid #E0E0E0;
       cursor: pointer;
+      @media screen and (max-width: 767px){
+        justify-content: unset;
+      }
       &:last-child{
         border: none;
       }

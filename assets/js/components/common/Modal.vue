@@ -58,10 +58,10 @@
     display: flex;
     justify-content: center;
     @media screen and (max-width:480px){
-      padding-top: 80px;
+      padding-top: 50px;
     }
     @media (max-width: 380px){
-      padding-top: 35px;
+      padding-top: 25px;
     }
   }
   .closeB{

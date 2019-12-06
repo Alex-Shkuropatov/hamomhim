@@ -1,7 +1,14 @@
 <template>
   <div class="header-info header-n">
 
-    <div class="info-wrapper" v-bind:class="{marginT : getData.role!=='architect'}" >
+    <div class="info-wrapper h-container" v-bind:class="{marginT : getData.role!=='architect'}" >
+      <ul class="worker-profile-nav">
+        <li><router-link >דף בית</router-link></li>
+        <li><router-link>אודות</router-link></li>
+        <li><router-link>בלוג</router-link></li>
+        <li><router-link>איך זה עובד</router-link></li>
+        <li><router-link>צור קשר</router-link></li>
+      </ul>
       <div class="title" v-bind:class="{marginL : getData.role==='architect'}"  > {{user.name_of_business}}
         <favourite-icon
         v-bind="favourite"
@@ -16,9 +23,10 @@
           :key="subcategory.id"
           >, {{subcategory.name}}</span>.</span>
         </div>
-        <a href="#resume"  class="th-btn th-btn-blue th-btn-lg contact-b"><span>צור קשר </span></a>
+        <button class="th-btn th-btn-blue th-btn-lg contact-b" @click="phoneFlag=!phoneFlag"><span>{{phoneFlag ? user.phone : 'צור קשר '  }}</span></button>
+      <button class="back-b" @click="back"><i class="fas fa-chevron-right"></i>  חזור</button>
       </div>
-    <button class="back-b" @click="back"><i class="fas fa-chevron-right"></i>  חזור</button>
+
     </div>
   </template>
 
@@ -54,18 +62,38 @@
         back(){
           this.$router.go(-1);
         }
-    }
+    },
+    data(){
+      return{
+        phoneFlag : false,
+      }
+    },
   }
   </script>
 
   <style lang="scss" scoped>
+  .worker-profile-nav{
+    display: flex;
+    li{
+      margin: 0 15px;
+    }
+    a{
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+    }
+    @media screen and (max-width: 767px ) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
   .info-wrapper{
     margin: 0 auto;
-    padding-top: 215px;
-    width: 500px;
+    padding-top: 130px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100%;
     @media screen and (max-width: 767px){
       width: 300px;
     }
@@ -81,10 +109,10 @@
       text-align: center;
       color: #FFFFFF;
       @media screen and (max-width: 767px){
-        font-size: 50px;
+        font-size: 35px;
       }
-      @media screen and (max-width: 480px) {
-        font-size: 32px;
+      @media screen and (max-width: 600px) {
+        font-size: 30px;
       }
     }
     .description{
@@ -128,9 +156,7 @@
   text-align: center;
   span{
     display: inline-block;
-    margin-top: 19px;
     @media screen and (max-width:767px){
-      margin-top: 8px;
     }
   }
   @media screen and (max-width: 767px){
@@ -139,9 +165,9 @@
   }
 }
   .marginT{
-    padding-top: 300px;
+    padding-top: 130px;
     @media screen and (max-width: 600px){
-      padding-top: 220px;
+      padding-top: 60px;
     }
   }
   .header-n {
