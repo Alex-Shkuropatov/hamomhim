@@ -3,9 +3,9 @@
 
     <div class="info-wrapper h-container" v-bind:class="{marginT : getData.role!=='architect'}" >
       <ul class="worker-profile-nav">
-        <li><a href="#" >פרוייקטים אחרונים</a ></li>
-        <li><a href="#">חוות דעת אחרונות</a></li>
-        <li><a href="#">מסמכים</a></li>
+        <li><a href="#gallery-l" >פרוייקטים אחרונים</a ></li>
+        <li><a href="#feedback-l">חוות דעת אחרונות</a></li>
+        <li><a href="#download-l">מסמכים</a></li>
 
       </ul>
       <div class="title" v-bind:class="{marginL : getData.role==='architect'}"  > {{user.name_of_business}}
@@ -82,9 +82,13 @@
       font-weight: bold;
       color: #fff;
     }
+    @media screen and (max-width:1035px ) {
+      align-items: center;
+      justify-content: center;
+    }
     @media screen and (max-width: 767px ) {
       flex-direction: column;
-      align-items: center;
+
     }
   }
   .info-wrapper{

@@ -111,11 +111,11 @@
       </div>
     </div>
 
-    <gallery-slider v-if="posts.length!==0" v-bind="{posts:posts}" />
+    <gallery-slider id="gallery-l" v-if="posts.length!==0" v-bind="{posts:posts}" />
 
-    <feedback  v-bind="feed" v-if="feed.posts.length!==0" />
+    <feedback id="feedback-l"  v-bind="feed" v-if="feed.posts.length!==0" />
 
-    <download v-bind="feed" v-if="feed.files.length!==0"/>
+    <download id="download-l" v-bind="feed" v-if="feed.files.length!==0"/>
 
   </div>
 
