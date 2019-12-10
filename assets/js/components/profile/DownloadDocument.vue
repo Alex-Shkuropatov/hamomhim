@@ -50,8 +50,8 @@ padding: 0 20px 0 20px;
   .download{
     width: 216px;
     height: 53px;
-    background: linear-gradient(90deg, #2871D7 0%, #3269B6 100%);
-    border-radius: 50px;
+    background: linear-gradient(90deg, #2871D7 0%, #2F80ED 100%);
+    border-radius: 5px;
     font-size: 18px;
     padding: 0px;
     font-weight: bold;

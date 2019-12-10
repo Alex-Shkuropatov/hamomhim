@@ -1,7 +1,7 @@
 <template>
   <div id="wrapper">
-    <header-default v-if="isDefaultHeader"/>
-    <header-worker-profile v-else />
+    <header-default  />
+
 
     <transition name="cool"  mode="out-in">
       <router-view :class="{'margin' : isDefaultHeader, 'index': true}" />

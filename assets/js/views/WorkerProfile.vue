@@ -10,120 +10,101 @@
     />
 
     <div class="profile-about" id="resume">
+     <div class="image-wrapper">
+       <img :src="user.avatar===null? '/static/images/profile/defaultAvatar.png' : $env.API_URL+user.avatar"  alt="">
+     </div>
 
-      <img class="bg-resume" :src="user.bio_image === null ? '/static/images/profile/resume-bg.png': $env.API_URL+user.bio_image " alt="">
+      <div class="user-info">
+      <div class="main-block">
+        <div class="title">
+          <span class="title-element">{{user.name}}</span>
+          <favourite-icon
+            v-bind="favourite"
+            v-if="getData.role==='architect'"
+          />
+          <span
+            v-if="getData.role==='architect'"
+            class="fav-msg">םיפדעומל ףסוה</span>
+        </div>
 
-      <div class="resume-wrapper" >
-        <div class="profile-resume" >
-          <div class="block-wrapper">
-            <div class="block-wrapper-element">
-              <div class="main-row">
-                <div class="content-image">
-                  <img :src="user.avatar===null? '/static/images/profile/defaultAvatar.png' : $env.API_URL+user.avatar"  alt="">
-                </div>
-                <div class="element-padd">
-                  <div class="title"> <span>{{user.name}}</span> <favourite-icon v-bind="favourite" v-if="getData.role==='architect'"  /> </div>
-                  <div class="stats-block">
-                    <div class="stats">
-                      <div class="stats-element">
-                        <svg width="30" height="27" viewBox="0 0 30 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <rect x="0.285156" y="24.0635" width="29.1299" height="2.53303" fill="#FFB000"/>
-                          <rect x="25.6143" width="3.79955" height="22.7973" fill="#FFB000"/>
-                          <rect x="20.5508" y="5.06641" width="3.79955" height="17.7312" fill="#FFB000"/>
-                          <rect x="15.4844" y="10.1318" width="3.79955" height="12.6652" fill="#FFB000"/>
-                          <rect x="10.418" y="16.4648" width="3.79955" height="6.33258" fill="#FFB000"/>
-                          <rect x="4.08594" y="18.998" width="3.79955" height="3.79955" fill="#FFB000"/>
-                        </svg>
-                        ציון :  <span>{{Math.round(user.average_rating)}}</span>
-                      </div>
+      <div class="socials-element">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M35.4706 18.4775C35.4706 8.81313 27.6361 0.977539 17.9706 0.977539C8.30521 0.977539 0.470703 8.81313 0.470703 18.4775C0.470703 28.1429 8.30509 35.9774 17.9706 35.9774C27.6361 35.9774 35.4706 28.143 35.4706 18.4775ZM22.3552 13.0247H20.0999C19.4928 13.0247 19.0663 13.5388 19.0663 14.1798V15.1849H22.2873L21.7657 18.4475H19.0652V27.193H15.7686V18.4475H13.5812V15.1849H15.7686V13.5213H15.7752C15.8333 11.6247 16.4916 9.81894 19.704 9.70517V9.69315H22.3552V13.0247Z" fill="#2F80ED"/>
+        </svg>
 
-                      <div class="stats-element">
-                        <svg width="34" height="27" viewBox="0 0 34 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M12.1815 8.09061C11.3853 7.29185 10.3035 6.84348 9.1757 6.84473C6.82755 6.8441 4.92348 8.7471 4.92285 11.0953C4.92223 13.4434 6.82522 15.3475 9.17338 15.3481C11.5215 15.3487 13.4256 13.4457 13.4262 11.0976C13.4265 9.96987 12.9788 8.8882 12.1815 8.09061Z" fill="#FFB000"/>
-                          <path d="M9.40164 16.7373H8.94827C4.17993 16.7491 0.317445 20.6117 0.305664 25.3799V25.9904C0.305664 26.3256 0.57733 26.5972 0.912539 26.5972H17.4338C17.769 26.5972 18.0407 26.3256 18.0407 25.9904V25.3799C18.0269 20.6138 14.1678 16.753 9.40164 16.7373Z" fill="#FFB000"/>
-                          <path d="M30.7091 2.06125C28.7425 0.684006 26.3911 -0.0368368 23.9906 0.00144989C21.59 -0.0368368 19.2387 0.684006 17.2721 2.06125C15.4872 3.37496 14.3877 5.20272 14.3877 7.23754C14.3906 8.1582 14.6159 9.0645 15.0445 9.87923C15.4276 10.6047 15.9337 11.2582 16.5403 11.8105L15.016 14.977C14.8701 15.2766 14.9947 15.6377 15.2943 15.7835C15.4819 15.8749 15.7034 15.8628 15.8799 15.7516L19.3855 13.5883C20.0522 13.8605 20.7431 14.0697 21.4489 14.213C22.2853 14.3843 23.1369 14.4704 23.9906 14.4701C26.3911 14.5083 28.7425 13.7875 30.7091 12.4103C32.494 11.0965 33.5935 9.26878 33.5935 7.23397C33.5935 5.19915 32.4904 3.37496 30.7091 2.06125ZM28.5432 6.2619C28.5429 6.26341 28.5425 6.26502 28.5422 6.26654C28.5184 6.3723 28.4667 6.46975 28.3922 6.54856L26.8358 8.33348L27.0428 10.7289C27.072 11.0627 26.8251 11.3571 26.4911 11.3863C26.3744 11.3965 26.2574 11.3728 26.1539 11.3179L23.9906 10.4076L21.7773 11.3464C21.4712 11.478 21.1163 11.3365 20.9848 11.0304C20.945 10.9377 20.929 10.8365 20.9384 10.736L21.1454 8.34062L19.5711 6.51643C19.3531 6.26181 19.3828 5.87876 19.6374 5.66073C19.7109 5.59782 19.7983 5.55337 19.8924 5.53115L22.2307 4.98853L23.4694 2.94658C23.6411 2.65876 24.0136 2.5646 24.3014 2.73622C24.3879 2.78781 24.4602 2.8601 24.5118 2.94658L25.7434 4.99567L28.0816 5.53829C28.4089 5.61067 28.6156 5.93463 28.5432 6.2619Z" fill="#FFB000"/>
-                        </svg>
-                        דירוג :  <span>{{user.comments_count}}</span>
-                      </div>
-                      <div class="location">
-                        <svg width="16" height="22" viewBox="0 0 16 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M8 0C3.58878 0 0 3.57423 0 7.96753C0 13.4198 7.15922 21.4239 7.46403 21.762C7.75033 22.0796 8.25019 22.079 8.53597 21.762C8.84078 21.4239 16 13.4198 16 7.96753C15.9999 3.57423 12.4112 0 8 0ZM8 11.9762C5.7806 11.9762 3.97504 10.1779 3.97504 7.96753C3.97504 5.75713 5.78065 3.95889 8 3.95889C10.2194 3.95889 12.0249 5.75717 12.0249 7.96758C12.0249 10.178 10.2194 11.9762 8 11.9762Z" fill="url(#paint0_linear)"/>
-                          <defs>
-                            <linearGradient id="paint0_linear" x1="-1.19209e-07" y1="11" x2="16" y2="11" gradientUnits="userSpaceOnUse">
-                              <stop stop-color="#2871D7"/>
-                              <stop offset="1" stop-color="#3269B6"/>
-                            </linearGradient>
-                          </defs>
-                        </svg>
+        <svg width="47" height="33" viewBox="0 0 47 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M37.2701 0.155273H10.3352C5.0506 0.155273 0.766602 4.44499 0.766602 9.73665V23.2193C0.766602 28.5109 5.0506 32.8006 10.3352 32.8006H37.2701C42.5547 32.8006 46.8387 28.5109 46.8387 23.2193V9.73665C46.8387 4.44499 42.5547 0.155273 37.2701 0.155273ZM30.7989 17.1339L18.2006 23.1506C17.8649 23.3109 17.4771 23.0658 17.4771 22.6935V10.284C17.4771 9.90637 17.8751 9.66159 18.2115 9.83232L30.8098 16.2251C31.1844 16.4151 31.1779 16.953 30.7989 17.1339Z" fill="#2F80ED"/>
+        </svg>
 
-                        <span class="bold">אזור עבודה:</span>
-                        <span>{{user.working_area}}</span>
+        <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.5232 0.0673828H17.5145C7.9299 0.0673828 0.135742 7.86371 0.135742 17.4505C0.135742 21.2531 1.36125 24.7775 3.44505 27.6392L1.27868 34.097L7.96032 31.961C10.709 33.7819 13.9879 34.8336 17.5232 34.8336C27.1078 34.8336 34.902 27.0351 34.902 17.4505C34.902 7.86588 27.1078 0.0673828 17.5232 0.0673828Z" fill="#2F80ED"/>
+        </svg>
+      </div>
 
-                      </div>
-                    </div>
-                    <div class="description">
-                      {{user.bio === 'null' ? '': user.bio}}
-                    </div>
-                  </div>
-                  <hr class="h mobile">
-                </div>
-              </div>
-              <hr class="h desktop">
-              <div class="contacts">
 
-                <div class="contacts-element mail">
+      </div>
+        <div class="icons-block">
+          <div class="stats-element">
+            <svg width="41" height="35" viewBox="0 0 41 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0.225586" y="30.9092" width="40.4946" height="3.24945" fill="#2F80ED"/>
+              <rect x="35.4365" y="0.0400391" width="5.2819" height="29.2451" fill="#2F80ED"/>
+              <rect x="28.3975" y="6.53906" width="5.2819" height="22.7462" fill="#2F80ED"/>
+              <rect x="21.3555" y="13.0371" width="5.2819" height="16.2473" fill="#2F80ED"/>
+              <rect x="14.3115" y="21.1611" width="5.2819" height="8.12363" fill="#2F80ED"/>
+              <rect x="5.50977" y="24.4111" width="5.2819" height="4.87418" fill="#2F80ED"/>
+            </svg>
 
-                  <svg width="34" height="24" viewBox="0 0 34 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M16.7995 16.7995L12.6427 13.1611L0.757812 23.3492C1.18981 23.75 1.77302 23.9996 2.41622 23.9996H31.1827C31.8235 23.9996 32.4043 23.75 32.8339 23.3492L20.9563 13.1611L16.7995 16.7995Z" fill="url(#paint0_linear)"/>
-                    <path d="M32.8412 0.650402C32.4092 0.247201 31.8284 0 31.1828 0H2.4163C1.7755 0 1.1947 0.249601 0.762695 0.655203L16.7996 14.4001L32.8412 0.650402Z" fill="url(#paint1_linear)"/>
-                    <path d="M-0.000976562 2.10742V22.0467L11.5983 12.1899L-0.000976562 2.10742Z" fill="url(#paint2_linear)"/>
-                    <path d="M22 12.1902L33.5992 22.0471V2.10059L22 12.1902Z" fill="url(#paint3_linear)"/>
-                    <defs>
-                      <linearGradient id="paint0_linear" x1="0.757812" y1="18.5804" x2="32.8339" y2="18.5804" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#2871D7"/>
-                        <stop offset="1" stop-color="#3269B6"/>
-                      </linearGradient>
-                      <linearGradient id="paint1_linear" x1="0.762695" y1="7.20003" x2="32.8412" y2="7.20003" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#2871D7"/>
-                        <stop offset="1" stop-color="#3269B6"/>
-                      </linearGradient>
-                      <linearGradient id="paint2_linear" x1="-0.000976649" y1="12.0771" x2="11.5983" y2="12.0771" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#2871D7"/>
-                        <stop offset="1" stop-color="#3269B6"/>
-                      </linearGradient>
-                      <linearGradient id="paint3_linear" x1="22" y1="12.0738" x2="33.5992" y2="12.0738" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#2871D7"/>
-                        <stop offset="1" stop-color="#3269B6"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
+            ציון :  <span>{{Math.round(user.average_rating)}}</span>
+          </div>
 
-                  <span>{{user.email}} </span>
-                </div>
-                <div class="contacts-element phone">
+          <div class="stats-element">
+            <svg width="48" height="41" viewBox="0 0 48 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.3376 12.2527C16.2307 11.0482 14.7269 10.3721 13.1591 10.374C9.89486 10.3731 7.24794 13.2426 7.24707 16.7834C7.2462 20.3242 9.89163 23.1953 13.1559 23.1963C16.4202 23.1972 19.0671 20.3277 19.068 16.7869C19.0683 15.0864 18.4459 13.4554 17.3376 12.2527Z" fill="#2F80ED"/>
+              <path d="M13.4718 25.29H12.8416C6.21292 25.3078 0.843525 31.1322 0.827148 38.3222V39.2427C0.827148 39.7482 1.2048 40.1578 1.67079 40.1578H24.6376C25.1036 40.1578 25.4813 39.7482 25.4813 39.2427V38.3222C25.4622 31.1354 20.0974 25.3137 13.4718 25.29Z" fill="#2F80ED"/>
+              <path d="M43.0923 3.16089C40.3585 1.08414 37.0898 -0.00281168 33.7527 0.0549207C30.4156 -0.00281168 27.1469 1.08414 24.4131 3.16089C21.9318 5.14183 20.4033 7.89791 20.4033 10.9662C20.4073 12.3545 20.7206 13.7211 21.3164 14.9496C21.8489 16.0436 22.5525 17.0289 23.3958 17.8618L21.2767 22.6365C21.0739 23.0882 21.2471 23.6327 21.6636 23.8526C21.9244 23.9904 22.2323 23.9723 22.4777 23.8046L27.3509 20.5425C28.2778 20.953 29.2382 21.2684 30.2193 21.4845C31.3821 21.7428 32.5659 21.8726 33.7527 21.8721C37.0898 21.9298 40.3585 20.8429 43.0923 18.7661C45.5736 16.7852 47.102 14.0291 47.102 10.9608C47.102 7.89252 45.5686 5.14183 43.0923 3.16089ZM40.0815 9.49503C40.081 9.49732 40.0805 9.49974 40.08 9.50203C40.047 9.6615 39.975 9.80846 39.8716 9.92729L37.7079 12.6188L37.9957 16.2307C38.0363 16.7342 37.693 17.178 37.2287 17.2222C37.0666 17.2375 36.9038 17.2017 36.76 17.1189L33.7527 15.7463L30.6759 17.162C30.2503 17.3604 29.7571 17.1471 29.5742 16.6855C29.5188 16.5456 29.4966 16.393 29.5097 16.2415L29.7975 12.6295L27.609 9.87884C27.3059 9.4949 27.3472 8.91731 27.7012 8.58854C27.8033 8.49367 27.9249 8.42665 28.0556 8.39314L31.3061 7.57493L33.0281 4.49587C33.2668 4.06187 33.7847 3.91989 34.1848 4.17868C34.305 4.25646 34.4055 4.36547 34.4772 4.49587L36.1893 7.58569L39.4398 8.40391C39.8948 8.51305 40.1821 9.00155 40.0815 9.49503Z" fill="#2F80ED"/>
+            </svg>
 
-                  <svg width="28" height="26" viewBox="0 0 28 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0.996429 20.519C0.941299 20.9414 1.07001 21.3086 1.38202 21.6207L5.04515 25.2562C5.21041 25.4398 5.42611 25.596 5.69235 25.7244C5.9586 25.853 6.2202 25.9356 6.47717 25.9723C6.49553 25.9723 6.55075 25.977 6.64261 25.9862C6.73428 25.9953 6.85363 26 7.00052 26C7.34948 26 7.91414 25.9403 8.69451 25.8209C9.47488 25.7015 10.4296 25.4077 11.5588 24.9396C12.6882 24.4714 13.9689 23.7689 15.401 22.8326C16.8332 21.8963 18.3572 20.6109 19.973 18.9767C21.2584 17.7097 22.3233 16.4979 23.168 15.3411C24.0126 14.1843 24.692 13.1147 25.2061 12.1324C25.7203 11.1501 26.1059 10.2595 26.3629 9.46079C26.62 8.66206 26.7944 7.9735 26.8862 7.39511C26.978 6.81672 27.0147 6.36228 26.9964 6.03177C26.978 5.70126 26.9688 5.51765 26.9688 5.48092C26.9321 5.22386 26.8495 4.96221 26.721 4.69597C26.5924 4.42972 26.4364 4.21398 26.2527 4.04872L22.5896 0.385593C22.3326 0.128531 22.0388 0 21.7083 0C21.4696 0 21.2584 0.0688558 21.0748 0.206567C20.8912 0.344279 20.7351 0.514123 20.6066 0.7161L17.6595 6.30719C17.4943 6.60098 17.4484 6.9223 17.5218 7.27117C17.5953 7.62004 17.7513 7.91383 17.99 8.15253L19.3396 9.5021C19.3763 9.53883 19.4085 9.5985 19.436 9.68113C19.4636 9.76375 19.4773 9.83261 19.4773 9.88769C19.4039 10.2733 19.2386 10.714 18.9816 11.2097C18.7612 11.6504 18.4215 12.1875 17.9625 12.821C17.5035 13.4544 16.8516 14.1843 16.007 15.0105C15.1807 15.8552 14.4463 16.5116 13.8036 16.9799C13.1611 17.4479 12.6238 17.7923 12.1923 18.0127C11.7608 18.233 11.4303 18.3661 11.2009 18.4119L10.8567 18.4808C10.82 18.4808 10.7601 18.467 10.6776 18.4395C10.595 18.4119 10.5353 18.3798 10.4985 18.3431L8.92867 16.7456C8.59798 16.4519 8.21256 16.305 7.77184 16.305C7.4596 16.305 7.21186 16.36 7.02824 16.4702H7.00075L1.68512 19.61C1.2994 19.8489 1.06992 20.1518 0.996429 20.519Z" fill="url(#paint0_linear)"/>
-                    <defs>
-                      <linearGradient id="paint0_linear" x1="27.001" y1="13" x2="0.984028" y2="13" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#2871D7"/>
-                        <stop offset="1" stop-color="#3269B6"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <span>{{user.phone}}</span>
-                </div>
-              </div>
-              <button class="th-btn th-btn-blue th-btn-sm resume-b" @click="showPhone"><span>{{phoneFlag === false ? 'צור קשר' : this.user.phone}}</span></button>
-            </div>
+            דירוג :  <span>{{user.comments_count}}</span>
+          </div>
+          <div class="location">
+            <svg width="28" height="35" viewBox="0 0 28 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13.7782 0.863281C6.46193 0.863281 0.509766 6.33372 0.509766 13.0578C0.509766 21.4025 12.3837 33.6531 12.8892 34.1705C13.3641 34.6566 14.1931 34.6557 14.6671 34.1705C15.1726 33.6531 27.0466 21.4025 27.0466 13.0578C27.0464 6.33372 21.0943 0.863281 13.7782 0.863281ZM13.7782 19.1931C10.0972 19.1931 7.10257 16.4408 7.10257 13.0578C7.10257 9.6747 10.0973 6.92244 13.7782 6.92244C17.4591 6.92244 20.4537 9.67476 20.4537 13.0578C20.4537 16.4409 17.4591 19.1931 13.7782 19.1931Z" fill="#2F80ED"/>
+            </svg>
+
+
+          אזור עבודה:
+            <span class="bold">{{user.working_area}}</span>
 
           </div>
-        </div>
       </div>
+      <div class="description-block">
+        {{user.bio === 'null' ? '': user.bio}}
+      </div>
+      <div class="buttons-block">
+        <div class="email-block">
+          <svg width="32" height="23" viewBox="0 0 32 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.7256 15.9573L11.9151 12.6221L1.02051 21.9613C1.41652 22.3287 1.95113 22.5575 2.54074 22.5575H28.9105C29.4979 22.5575 30.0303 22.3287 30.4241 21.9613L19.5361 12.6221L15.7256 15.9573Z" fill="#2F80ED"/>
+            <path d="M30.4303 1.15383C30.0342 0.784222 29.5018 0.557617 28.91 0.557617H2.54025C1.95283 0.557617 1.42042 0.786422 1.02441 1.15823L15.7251 13.7579L30.4303 1.15383Z" fill="#2F80ED"/>
+            <path d="M0.324219 2.49023V20.7682L10.957 11.7326L0.324219 2.49023Z" fill="#2F80ED"/>
+            <path d="M20.4922 11.7324L31.125 20.768V2.4834L20.4922 11.7324Z" fill="#2F80ED"/>
+          </svg>
+
+          <span>{{user.email}} </span>
+        </div>
+        <button
+          class="th-btn th-btn-blue th-btn-lg  phone-b"
+                @click="showPhone"
+        >
+          <span>{{phoneFlag === false ? 'צור קשר' : this.user.phone}}</span>
+        </button>
+      </div>
+      </div>
+
     </div>
+
     <div class="all-works" v-if="posts.length!==0">
       <div class="last-projects-wrapper">
-        <hr class="line">
+
         <div class="last-projects">
           פרויקטים אחרונים
         </div>
@@ -253,215 +234,238 @@ export default {
     flex-wrap: wrap;
   }
 }
-.profile-wrapper{
+.profile-wrapper {
   width: 100%;
   .profile-about{
-    margin: 70px auto;
-    padding: 70px 10px 0 10px;
-    height: auto;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    @media screen and (max-width: 1235px) {
-      margin-top: 20px;
-      padding-top: 0;
-    }
-    .bg-resume{
-      z-index:0;
-      top: 0;
-      position: absolute;
-      width: 74%;
-      max-height: 694px;
-      object-fit: cover;
-      @media screen and (max-width: 1235px) {
-        width: 90%;
-        top: 62px;
-      }
-      @media screen and (max-width: 480px){
-        display: none;
-      }
-    }
-    .profile-resume{
-      background: rgba(255,255,255,0.85);
-      position: relative;
-      z-index: 3;
 
-      width: 1056px;
+    background: #FAFAFA;
+    opacity: 0.85;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin: 50px auto;
+    width: 1230px;
+    height: 330px;
+    display: flex;
+    border-bottom: 6px solid #2F80ED;
+    @media screen and (max-width:1650px){
+      width: 1010px;
+      height: 339px;
+    }
+    @media screen and (max-width: 1440px){
+      width: 963px;
       height: auto;
-      padding: 30px 30px 30px 50px;
-      @media (max-width: 1235px){
-
-      }
     }
-  }
-}
-.resume-wrapper{
-  display: flex;
-  flex-direction: row;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
-  margin-top: 115px;
-  @media screen and (max-width:1235px){
-    margin-top: 80px;
-    width: 90%;
-  }
-}
-.block-wrapper{
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  .block-wrapper-element{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    @media screen and (max-width: 1235px){
-      align-items: center;
-      margin-right: 5px;
+    @media screen and (max-width: 1035px){
+      width: 670px;
+      flex-direction: column;
     }
-    .title{
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      font-weight: bold;
-      font-size: 32px;
-      line-height: 30px;
-      color: #333333;
-      @media screen and (max-width:767px){
-        display: flex;
-        text-align: center;
-        justify-content: center;
-      }
-      @media screen and (max-width: 480px) {
-        font-size: 26px;
-      }
-      &::v-deep svg{
-        height: 24px;
-      }
-
-    }
-  }
-
-}
-.content-image{
-  width: 191px;
-  height: 191px;
-  margin-left: 20px;
-  @media screen and (max-width:767px) {
-    width: 120px;
-    height: 120px;
-    margin-right: auto;
-    margin-left: auto;
-  }
-  img{
-    width: 191px;
-    height: 191px;
-    border-radius: 50%;
-    @media screen and (max-width:767px) {
-      width: 120px;
-      height: 120px;
-    }
-  }
-}
-.stats {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  @media screen and (max-width: 767px){
-    flex-direction: column;
-  }
-  .stats-element{
-    display: flex;
-    align-items: center;
-    padding: 8px;
-    font-size: 24px;
-    line-height: 30px;
-    color: #4F4F4F;
     @media screen and (max-width: 767px){
+      width: 470px;
+     }
+    @media screen and (max-width: 480px){
+      width: 305px;
+    }
+    .image-wrapper{
+      padding-right: 20px;
       display: flex;
       align-items: center;
-      justify-content: center;
+      img{
+        width: 255px;
+        height: 255px;
+        @media screen and (max-width: 1440px){
+          width: 180px;
+          height: 180px;
+        }
+      }
+      @media screen and (max-width: 1035px){
+        justify-content: center;
+        padding-right: 0;
+        padding-top: 10px;
+      }
+
     }
-    span {
-      font-weight: bold;
+    .user-info{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .main-block{
+        margin-top: 50px;
+        padding: 0 30px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        @media screen and (max-width:1440px){
+          margin-top: 20px;
+        }
+        @media screen and (max-width:1035px){
+          flex-direction: column-reverse;
+          align-items: center;
+        }
+        .title{
+          display: flex;
+          align-items: center;
+          @media screen and (max-width: 480px){
+            align-items: unset;
+          }
+          .title-element{
+            font-weight: bold;
+            font-size: 46px;
+            @media screen and (max-width:1650px){
+              font-size: 34px;
+            }
+            @media screen and (max-width: 480px){
+              font-size: 20px;
+            }
+          }
+          .fav-msg{
+            font-size: 24px;
+            color: #BDBDBD;
+            @media screen and (max-width:1650px){
+              font-size: 20px;
+            }
+            @media screen and (max-width: 480px){
+              display: none;
+            }
+          }
+        }
+        .socials-element{
+          width: 150px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          svg{
+            @media screen and (max-width: 767px){
+              width: 28px;
+              height: 28px;
+            }
+          }
+        }
+      }
+      .icons-block{
+        border-right: 3px solid #2F80ED;
+        padding: 3px 10px;
+        margin-right: 20px;
+        display: flex;
+        align-items: center;
+        @media screen and (max-width: 1440px){
+          margin: 5px 20px;
+        }
+        @media screen and (max-width: 1035px){
+          justify-content: center;
+          border-right: none;
+        }
+        @media screen and (max-width: 480px){
+          flex-direction: column;
+        }
+      .stats-element{
+        display: flex;
+        margin: 0 5px;
+        font-size: 22px;
+        color: #4F4F4F;
+        @media screen and (max-width:1650px){
+          font-size: 20px;
+        }
+        span{
+          font-weight: bold;
+        }
+        svg{
+          width: 35px;
+          height: 35px;
+          @media screen and (max-width:1440px){
+            width: 28px;
+            height: 28px;
+          }
+        }
+      }
+        .location{
+          display: flex;
+          font-size: 22px;
+          color: #4F4F4F;
+          margin: 0 5px;
+          @media screen and (max-width:1650px){
+            font-size: 20px;
+          }
+          span{
+            font-weight: bold;
+          }
+          svg{
+            width: 35px;
+            height: 35px;
+            @media screen and (max-width:1440px){
+              width: 28px;
+              height: 28px;
+            }
+          }
+        }
+      }
+      .description-block{
+        border-right: 3px solid #2F80ED;
+        padding: 3px 10px;
+        margin-right: 20px;
+        min-height: 50px;
+        max-height: 100px;
+        font-size: 20px;
+        @media screen and (max-width:1650px){
+          font-size: 18px;
+        }
+        @media screen and (max-width: 1440px){
+          margin: 5px 20px;
+          max-height: 300px;
+        }
+        @media screen and (max-width:1035px){
+          margin-top: 0;
+          border-right: none;
+          text-align: center;
+        }
+      }
+      .buttons-block{
+        display: flex;
+        justify-content: flex-end;
+        @media screen and (max-width: 767px){
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+        }
+        .phone-b{
+          width: 350px;
+          height: 56px;
+          background: #2F80ED;
+          border-radius: 5px;
+          border: 2px solid #2F80ED;
+          border-bottom-left-radius: unset;
+          border-bottom-right-radius: unset;
+          text-align: center;
+          display: inline-block;
+          @media screen and (max-width:1650px){
+            width: 290px;
+          }
+          @media screen and (max-width: 1440px){
+            width: 200px;
+          }
+          @media screen and (max-width: 767px){
+            height: 35px;
+          }
+        }
+        .email-block{
+          display: flex;
+          align-items: center;
+          span{
+            margin: 0 25px;
+            @media screen and (max-width: 480px){
+              margin: 0 5px;
+            }
+          }
+        }
+      }
     }
   }
-  svg{
-    margin-left: 7px;
-  }
+
+
 }
 
-.location{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  @media screen and (max-width:767px){
-    justify-content: center;
-  }
-  .bold{
-    font-weight: bold;
-    color: #333333;
-    margin-left: 8px;
-  }
-  span{
-    font-size: 24px;
-    line-height: 30px;
-    display: flex;
-    align-items: center;
-    text-align: right;
-    color: #828282;
-  }
-  svg{
-    margin-left: 8px;
-  }
-}
-.stats-block{
-  .description{
-    margin-top: 5px;
-  }
-}
-.contacts{
-  display: flex;
-  @media screen and (max-width: 1235px){
-    margin-top: 15px;
-    width: 100%;
-    justify-content: center;
-  }
-  .contacts-element{
-  }
-  .phone{
-    svg{
-      margin: 0 5px 0 5px;
-    }
-  }
-  .mail{
-    svg{
-      margin: 0 5px 0 5px;
-    }
-    margin-left: 20px;
-  }
-}
-.resume-b{
-  margin-top: 30px;
-  font-weight: bold;
-  font-size: 26px;
-  text-align: center;
-  display: inline-block;
-  width: 225px;
-  height: 45px;
-  @media screen and (max-width: 1235px) {
-    margin-bottom: 20px;
-  }
-  @media screen and (max-width: 480px){
-    font-size: 25px;
-    width: 176.06px;
-    height: 47.18px;
-  }
-}
 .slide-inner-post {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
   line-height: 1.16;
