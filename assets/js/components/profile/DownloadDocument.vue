@@ -34,6 +34,7 @@
 
 <style lang="scss" scoped>
 .document-wrapper{
+  background-color: white;
 padding: 0 20px 0 20px;
  margin-top: 10px;
   min-height: 104px;
