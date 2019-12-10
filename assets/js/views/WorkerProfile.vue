@@ -454,7 +454,8 @@ export default {
           span{
             margin: 0 25px;
             @media screen and (max-width: 480px){
-              margin: 0 5px;
+              margin: 0 10px;
+              margin-bottom: 8px;
             }
           }
         }

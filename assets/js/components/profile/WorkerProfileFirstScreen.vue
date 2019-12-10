@@ -1,8 +1,8 @@
 <template>
   <div class="header-info header-n">
 
-    <div class="info-wrapper h-container" v-bind:class="{marginT : getData.role!=='architect'}" >
-      <ul class="worker-profile-nav">
+    <div class="info-wrapper h-container" v-bind:class="{marginT : getData.role!=='architect'}" :style="checkRoute? '' :'padding-top:200px!important' " >
+      <ul v-if="checkRoute" class="worker-profile-nav">
         <li><a href="#gallery-l" >פרוייקטים אחרונים</a ></li>
         <li><a href="#feedback-l">חוות דעת אחרונות</a></li>
         <li><a href="#download-l">מסמכים</a></li>
@@ -51,10 +51,20 @@
     computed: {
       getData() {
         return this.$store.getters['user/data'];
-      }
+      },
+      checkRoute(){
+        if (this.$router.currentRoute.name === 'profile-edit'){
+          return false;
+        } else {
+          return true;
+        }
+      },
     },
     components: {
       FavouriteIcon
+    },
+    mounted(){
+      console.log();
     },
     methods: {
         back(){
