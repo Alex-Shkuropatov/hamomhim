@@ -115,9 +115,11 @@ export default {
   margin-bottom: 10px;
 }
 .section-wrap{
+
   margin-bottom: 40px;
 }
 .section-inner{
+  background-color: white;
   display: flex;
   padding: 30px 30px 40px 40px;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);

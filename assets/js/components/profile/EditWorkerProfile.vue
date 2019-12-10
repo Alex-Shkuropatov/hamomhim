@@ -142,5 +142,9 @@ export default {
 }
 .submit-line{
   margin: 30px auto;
+  padding-bottom: 30px;
 }
+  .profie-page-wrapper{
+    background: #FAFAFA;
+  }
 </style>
