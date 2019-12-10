@@ -3,7 +3,6 @@
 
 <div class="feedback-body">
   <div class="title">
-    <hr>
     <span>מסמכים</span>
   </div>
   <div class="head-wrapper">

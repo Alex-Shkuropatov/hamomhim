@@ -3,11 +3,10 @@
 
     <div class="info-wrapper h-container" v-bind:class="{marginT : getData.role!=='architect'}" >
       <ul class="worker-profile-nav">
-        <li><router-link >דף בית</router-link></li>
-        <li><router-link>אודות</router-link></li>
-        <li><router-link>בלוג</router-link></li>
-        <li><router-link>איך זה עובד</router-link></li>
-        <li><router-link>צור קשר</router-link></li>
+        <li><a href="#gallery-l" >פרוייקטים אחרונים</a ></li>
+        <li><a href="#feedback-l">חוות דעת אחרונות</a></li>
+        <li><a href="#download-l">מסמכים</a></li>
+
       </ul>
       <div class="title" v-bind:class="{marginL : getData.role==='architect'}"  > {{user.name_of_business}}
         <favourite-icon
@@ -74,6 +73,7 @@
   <style lang="scss" scoped>
   .worker-profile-nav{
     display: flex;
+    width: 100%;
     li{
       margin: 0 15px;
     }
@@ -82,9 +82,13 @@
       font-weight: bold;
       color: #fff;
     }
+    @media screen and (max-width:1035px ) {
+      align-items: center;
+      justify-content: center;
+    }
     @media screen and (max-width: 767px ) {
       flex-direction: column;
-      align-items: center;
+
     }
   }
   .info-wrapper{
@@ -146,10 +150,10 @@
   margin-top: 20px ;
   font-weight: bold;
   font-size: 24px;
-  width: 257.89px;
-  height: 76.37px ;
-  background: #30588E;
-  border: 2px solid #30588E;
+  width: 180.89px;
+  height: 52.37px ;
+  background: #2F80ED;
+  border: 2px solid #2F80ED;
   border-radius: 50px;
   padding: 0px;
   display: inline-block;

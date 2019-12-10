@@ -1,7 +1,6 @@
 <template>
   <div class="download-files">
  <div class="title">
-   <hr>
    <div class="spn">מסמכים</div>
  </div>
     <download-document
@@ -71,11 +70,12 @@ import DownloadDocument from './DownloadDocument'
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
-    width: 400px;
-    margin-right: 80px;
-    @media screen and (max-width: 1600px) {
+    width: 155px;
+
+    @media screen and (max-width: 1440px) {
       width: 100%;
       justify-content: center;
+
     }
     @media screen and (max-width: 767px) {
       width: unset;
