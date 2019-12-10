@@ -23,8 +23,7 @@
           >, {{subcategory.name}}</span>.</span>
         </div>
         <button class="th-btn th-btn-blue th-btn-lg contact-b" @click="phoneFlag=!phoneFlag"><span>{{phoneFlag ? user.phone : 'צור קשר '  }}</span></button>
-      <button class="back-b" @click="back"><i class="fas fa-chevron-right"></i>  חזור</button>
-      </div>
+       </div>
 
     </div>
   </template>
@@ -74,6 +73,7 @@
   .worker-profile-nav{
     display: flex;
     width: 100%;
+    margin-bottom: 80px;
     li{
       margin: 0 15px;
     }
@@ -85,15 +85,16 @@
     @media screen and (max-width:1035px ) {
       align-items: center;
       justify-content: center;
+
     }
     @media screen and (max-width: 767px ) {
       flex-direction: column;
-
+      margin-bottom: 20px;
     }
   }
   .info-wrapper{
     margin: 0 auto;
-    padding-top: 130px;
+    padding-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -183,10 +184,10 @@
     background-size: cover;
     background-position: center;
     @media screen and (max-width: 767px) {
-      height: 680px;
+      height: 550px;
     }
     @media screen and (max-width: 600px) {
-      height: 600px;
+      height: 550px;
     }
   }
   </style>

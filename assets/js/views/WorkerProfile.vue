@@ -236,10 +236,8 @@ export default {
 }
 .profile-wrapper {
   width: 100%;
+  background: #FAFAFA;
   .profile-about{
-
-    background: #FAFAFA;
-    opacity: 0.85;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     margin: 50px auto;
@@ -252,7 +250,7 @@ export default {
       height: 339px;
     }
     @media screen and (max-width: 1440px){
-      width: 963px;
+      width: 900px;
       height: auto;
     }
     @media screen and (max-width: 1035px){
@@ -312,6 +310,7 @@ export default {
           .title-element{
             font-weight: bold;
             font-size: 46px;
+            color: #4F4F4F;
             @media screen and (max-width:1650px){
               font-size: 34px;
             }

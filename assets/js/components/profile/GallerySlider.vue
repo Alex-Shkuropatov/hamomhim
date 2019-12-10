@@ -86,6 +86,16 @@ export default {
   margin-top: ceil($scale1 * 40px);
   margin-bottom: ceil($scale1 * 40px);
 }
+.footer{
+  .arrows{
+    button{
+      @media screen and (max-width: 600px) {
+        width: 70px;
+        height: 40px;
+      }
+    }
+  }
+}
 .s-container{
   margin: 0 auto;
   width: 1230px;
