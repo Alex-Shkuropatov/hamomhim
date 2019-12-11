@@ -108,4 +108,9 @@ export default {
       align-items: flex-end!important;
     }
   }
+  .about-info{
+    @media screen and (max-width:600px){
+      flex-direction: column-reverse;
+    }
+  }
 </style>

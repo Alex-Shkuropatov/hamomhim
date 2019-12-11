@@ -74,12 +74,11 @@ export default {
     @media screen and (max-width:1605px ){
       margin: 0 auto;
     }
-  }
   .about-info{
     margin-bottom: -36px;
     @media screen and (max-width: 600px){
       margin-bottom: 0;
     }
   }
-
+  }
 </style>
