@@ -351,7 +351,7 @@ export default {
           }
         }
         .socials-element{
-          width: 150px;
+          width: 0;  //150px
           display: flex;
           flex-direction: row;
           justify-content: space-around;
@@ -385,7 +385,10 @@ export default {
         font-size: 22px;
         color: #4F4F4F;
         @media screen and (max-width:1650px){
-          font-size: 20px;
+        font-size: 20px;
+      }
+        @media screen and (max-width:767px){
+          justify-content: center;
         }
         span{
           font-weight: bold;
