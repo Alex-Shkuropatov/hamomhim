@@ -5,14 +5,20 @@
   <div class="title">
     <span>מסמכים</span>
   </div>
+
   <div class="head-wrapper">
+
   <div class="feedback-head"></div>
   <feedback-element
     class="post-item"
-    v-for="post in posts" :key="post.id"
+    v-for="post in userFlag ? posts : fewUsers" :key="post.id"
     v-bind="post">
   </feedback-element>
+
   </div>
+  <button class="show-b th-btn th-btn-blue th-btn-md"  @click="getAll"><span>ראה תגובות נוספות</span></button>
+
+
 </div>
   </div>
 </template>
@@ -22,7 +28,7 @@ import FeedbackElement from './FeedbackElement'
   export default {
      data(){
        return {
-
+         userFlag : false,
        };
      },
     props: {
@@ -33,8 +39,15 @@ import FeedbackElement from './FeedbackElement'
     components: {
       FeedbackElement,
     },
+    computed:{
+       fewUsers(){
+         return this.posts.slice(0,3);
+       }
+    },
     methods: {
-
+      getAll(){
+        this.userFlag = true;
+      }
     }
   }
 </script>
@@ -42,10 +55,7 @@ import FeedbackElement from './FeedbackElement'
 <style lang="scss" scoped>
 .feedback-wrapper{
   margin: 0 auto;
-  width: 1449px;
-  @media screen and (max-width: 1650px) {
-    width: 1266px;
-  }
+  width: 1230px;
   @media screen and (max-width:1440px ) {
     width: 900px;
   }
@@ -55,10 +65,9 @@ import FeedbackElement from './FeedbackElement'
   .title{
     color: #333333;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     align-items: center;
-    margin-right: 80px;
-    @media screen and (max-width: 1600px) {
+    @media screen and (max-width: 1440px) {
       width: 100%;
       justify-content: center;
     }
@@ -114,8 +123,18 @@ import FeedbackElement from './FeedbackElement'
   }
 
 }
+.show-b{
+  margin-top: 20px;
+  width: 100%;
+  height: 53px;
+  display: inline-block;
+  text-align: center;
+  background: linear-gradient(90deg, #2871D7 0%, #2F80ED 100%);
+  border-radius: 5px;
 
+}
 .feedback-body{
+  margin-bottom: 30px;
   @media screen and (max-width: 1035px){
     display: flex;
     flex-direction: column;

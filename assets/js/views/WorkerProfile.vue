@@ -236,7 +236,7 @@ export default {
 }
 .profile-wrapper {
   width: 100%;
-  background: #FAFAFA;
+  background: rgb(250,250,250);
   .profile-about{
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
@@ -390,8 +390,8 @@ export default {
             font-weight: bold;
           }
           svg{
-            width: 35px;
-            height: 35px;
+            width: 30px;
+            height: 30px;
             @media screen and (max-width:1440px){
               width: 28px;
               height: 28px;
@@ -504,7 +504,7 @@ export default {
   }
 }
 .all-works{
-  width: 1315px;
+  width: 1230px;
   margin: 0 auto;
   display: flex;
   flex-direction: row-reverse;

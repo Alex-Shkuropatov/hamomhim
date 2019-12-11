@@ -45,7 +45,6 @@ import DownloadDocument from './DownloadDocument'
 
 <style lang="scss" scoped>
 .download-files{
-  background: #FAFAFA;
   margin:  0 auto;
   margin-bottom: 35px;
   width: 1230px;

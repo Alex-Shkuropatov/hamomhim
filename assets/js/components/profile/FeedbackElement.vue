@@ -112,6 +112,7 @@ import ShowMore from './../../components/profile/ShowMore'
       right: unset;
       margin-bottom: 16px;
       margin-left: 131px;
+      margin-right: 10px;
     }
     img{
       width: 141px;
@@ -125,7 +126,7 @@ import ShowMore from './../../components/profile/ShowMore'
       padding-right: 46px;
     }
     @media screen and (max-width:480px) {
-      padding-right: 10px;
+      padding-right: 20px;
     }
   }
   .openBlock{

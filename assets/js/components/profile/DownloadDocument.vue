@@ -85,6 +85,8 @@ padding: 0 20px 0 20px;
   white-space: nowrap;
   @media screen and (max-width: 480px){
     width: 100%;
+    font-size: 16px;
+    margin-top: 6px;
   }
 }
 </style>
