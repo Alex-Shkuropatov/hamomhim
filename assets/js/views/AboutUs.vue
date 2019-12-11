@@ -353,7 +353,7 @@
           margin-left: 120px;
           width: 880px;
           height: 477px;
-          text-align: center;
+          text-align: right;
           @media screen and (max-width: 1820px) {
             text-align: center;
             margin: 0 6px 0 6px;
@@ -394,12 +394,11 @@
           }
           hr {
             margin-left: auto;
-            margin-right: auto;
+            margin-right: 0;
             margin-bottom: 10px;
             margin-top: 7px;
             height: 0;
             border: 3px solid #FFFFFF;
-            transform: rotate(180deg);
             width: 490px;
             background-color: white;
 
