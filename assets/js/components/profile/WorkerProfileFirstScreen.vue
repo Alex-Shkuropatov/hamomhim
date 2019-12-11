@@ -22,7 +22,7 @@
           :key="subcategory.id"
           >, {{subcategory.name}}</span>.</span>
         </div>
-        <button class="th-btn th-btn-blue th-btn-lg contact-b" @click="phoneFlag=!phoneFlag"><span>{{phoneFlag ? user.phone : 'צור קשר '  }}</span></button>
+        <button class="th-btn th-btn-blue th-btn-lg contact-b" @click="showPhone"><span>{{phoneFlag ? user.phone : 'צור קשר '  }}</span></button>
        </div>
 
     </div>
@@ -70,6 +70,11 @@
         back(){
           this.$router.go(-1);
         },
+      showPhone(){
+        if(this.$store.getters['user/isLogged']){
+          this.phoneFlag=!this.phoneFlag;
+        }
+      },
       getBlock(str){
         this.$emit('anchor', str);
       },

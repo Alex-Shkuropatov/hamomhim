@@ -19,7 +19,8 @@
               <div class="description">{{work.description}}</div>
             </div>
           </div>
-          <div class="th-btn th-btn-blue th-btn-md"  @click="$store.commit('modals/addWorkerWork/open', work)">ערוך גלריה</div>
+          <div class="th-btn th-btn-blue th-btn-md"
+               @click="$store.commit('modals/addWorkerWork/open', work)">ערוך גלריה</div>
         </div>
       </div>
     </div>

@@ -4,7 +4,11 @@
     <div class="section-inner">
       <div class="inputs-col">
         <div class="form-group">
-          <theme-textarea placeholder="Tell about yourself" :value="bio" @input="$emit('update:bio', arguments[0])"></theme-textarea>
+          <theme-textarea
+            placeholder="Tell about yourself"
+            :value="bio === 'null' || null ? '' : bio"
+            @input="$emit('update:bio', arguments[0])"
+          ></theme-textarea>
         </div>
         <div class="d-flex">
           <div class="geo-icon"></div>

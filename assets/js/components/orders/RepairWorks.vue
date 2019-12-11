@@ -55,6 +55,7 @@
                   @change="previewFiles"
                   multiple
                   accept="image/*,
+                  video/*,
                   application/msword
                   application/vnd.ms-powerpoint,
                   text/plain,

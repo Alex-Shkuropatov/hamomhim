@@ -252,7 +252,8 @@
       font-style: normal;
       font-weight: bold;
       font-size: 24px;
-      line-height: 65px;
+      line-height: 30px;
+      resize: none;
       @media screen and (max-width: 1605px){
         font-size: 20px;
       }
