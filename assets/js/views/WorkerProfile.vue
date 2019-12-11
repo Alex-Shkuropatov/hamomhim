@@ -24,7 +24,7 @@
           />
           <span
             v-if="getData.role==='architect'"
-            class="fav-msg">םיפדעומל ףסוה</span>
+            class="fav-msg">הסוף למועדפים</span>
         </div>
 
       <div class="socials-element">
