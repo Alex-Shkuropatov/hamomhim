@@ -27,7 +27,7 @@
               <label class="add-new-file">
                 <div class="image w-100"  :style="[ flag===false ? {border: '2px solid red'} : ''  ]" ></div>
                 <div class="th-btn th-btn-blue w-100">העלאת תמונה</div>
-                <input type="file" multiple @change="onFileUpload($event.target.files)">
+                <input type="file" accept="image/*" multiple @change="onFileUpload($event.target.files)">
               </label>
               <div class="item" v-for="file in files" :key="">
                 <div class="image" :style="getBackgoroundImage(file)"></div>
