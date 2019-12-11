@@ -5,7 +5,7 @@
     :user="user"
     :subcategories="subcategories"
     :favourite="favourite"
-
+    @anchor="onScroll"
     @update:is_favourite="onUpdateIsFavourite"
     />
 
@@ -111,11 +111,11 @@
       </div>
     </div>
 
-    <gallery-slider id="gallery-l" v-if="posts.length!==0" v-bind="{posts:posts}" />
+    <gallery-slider ref="gallery" id="gallery-l" v-if="posts.length!==0" v-bind="{posts:posts}" />
 
-    <feedback id="feedback-l"  v-bind="feed" v-if="feed.posts.length!==0" />
+    <feedback ref="feedback" id="feedback-l"  v-bind="feed" v-if="feed.posts.length!==0" />
 
-    <download id="download-l" v-bind="feed" v-if="feed.files.length!==0"/>
+    <download ref="download" id="download-l" v-bind="feed" v-if="feed.files.length!==0"/>
 
   </div>
 
@@ -185,6 +185,28 @@ export default {
     onUpdateIsFavourite(){
       console.log('updated value');
       this.favourite.is_favourite=!this.favourite.is_favourite;
+    },
+    onScroll(data){
+        let gallery = document.getElementById('gallery-l');
+      let download = document.getElementById('download-l');
+      let feedback = document.getElementById('feedback-l');
+     switch (data) {
+       case 'download':
+         this.$nextTick(() => {
+           download.scrollIntoView({block: "center", behavior: "smooth"});
+         });
+         break;
+       case 'gallery':
+         this.$nextTick(() => {
+           gallery.scrollIntoView({block: "center", behavior: "smooth"});
+         });
+         break;
+       case 'feedback' :
+         this.$nextTick(() => {
+           feedback.scrollIntoView({block: "center", behavior: "smooth"});
+         });
+         break;
+     }
     },
     showPhone(){
       if(this.$store.getters['user/isLogged']){
@@ -347,7 +369,7 @@ export default {
         padding: 3px 10px;
         margin-right: 20px;
         display: flex;
-        align-items: center;
+
         @media screen and (max-width: 1440px){
           margin: 5px 20px;
         }

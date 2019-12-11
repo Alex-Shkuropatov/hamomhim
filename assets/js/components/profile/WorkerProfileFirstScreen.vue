@@ -3,9 +3,9 @@
 
     <div class="info-wrapper h-container" v-bind:class="{marginT : getData.role!=='architect'}" :style="checkRoute? '' :'padding-top:200px!important' " >
       <ul v-if="checkRoute" class="worker-profile-nav">
-        <li><a href="#gallery-l" >פרוייקטים אחרונים</a ></li>
-        <li><a href="#feedback-l">חוות דעת אחרונות</a></li>
-        <li><a href="#download-l">מסמכים</a></li>
+        <li><button @click="getBlock('gallery')"  >פרוייקטים אחרונים</button ></li>
+        <li><button @click="getBlock('feedback')" >חוות דעת אחרונות</button></li>
+        <li><button @click="getBlock('download')" >מסמכים</button></li>
 
       </ul>
       <div class="title" v-bind:class="{marginL : getData.role==='architect'}"  > {{user.name_of_business}}
@@ -69,7 +69,10 @@
     methods: {
         back(){
           this.$router.go(-1);
-        }
+        },
+      getBlock(str){
+        this.$emit('anchor', str);
+      },
     },
     data(){
       return{
@@ -87,7 +90,7 @@
     li{
       margin: 0 15px;
     }
-    a{
+    button{
       font-size: 24px;
       font-weight: bold;
       color: #fff;
