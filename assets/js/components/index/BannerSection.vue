@@ -59,6 +59,9 @@ img{
   pointer-events: none;
   width: 100%;
   height: 100px;
+  @media screen and (max-width:480px){
+    height: 40px;
+  }
 }
 
 @media(max-width: $breakpoint2){

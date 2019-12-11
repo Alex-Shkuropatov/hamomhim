@@ -7,7 +7,25 @@
         <div class="popup-form-row">
           <div class="col1-1 inp-group">
             <div class="label">תיאור</div>
-            <theme-textarea   v-model="description" placeholder="תיאור"></theme-textarea>
+            <theme-textarea
+              :class="{ 'error': $v.description.$error, 'inputName': true }"
+              @input="$v.description.$touch()"
+              v-model.trim="description"
+              placeholder="תיאור"
+            ></theme-textarea>
+
+            <div class="error-wrapper" v-if="$v.description.$dirty">
+              <p class="error-message" v-if="!$v.description.required">
+                נא הזן תיאור פרויקט
+              </p>
+              <p class="error-message" v-else-if="!$v.description.minLength">
+                התיאור חייב להכיל לפחות 6 מילים
+              </p>
+              <p class="error-message" v-else-if="!$v.description.maxLength">
+                התיאור חייב להכיל פחות מ 150 מילים
+              </p>
+            </div>
+
           </div>
         </div>
         <div class="popup-form-row">
@@ -31,11 +49,15 @@ import DropDown from '../../common/DropDown.vue'
 import ThemeInput from '../../common/ThemeInput.vue'
 import ThemeTextarea from '../../common/ThemeTextarea.vue'
 import FileUploadMultiple from '../../common/FileUploadMultiple.vue'
+import { required, minLength, maxLength } from "vuelidate/lib/validators";
+
 
 export default {
-  methods: {
-    close() {
-      this.$store.commit('modals/responseForm/close');
+  validations: {
+    description:{
+      required,
+      minLength: minLength(6),
+      maxLength: maxLength(150),
     },
   },
   components: {
@@ -53,24 +75,27 @@ export default {
   },
   methods: {
     addResponse(){
-      var formData = new FormData();
-      formData.append('order_id', this.$store.getters['modals/responseForm/getOrderId']);
-      formData.append('author_id', this.$store.getters['user/getField']('id'));
-      formData.append('description', this.description);
-      for(let i = 0; i < this.files.length; i++){
-        formData.append('files[]', this.files[i].file);
-      }
+      this.$v.description.$touch();
 
-      axios.post('api/addResponse', formData)
-        .then(response => {
-          if(response.data.success){
-            this.$emit('request:delete', this.$store.getters['modals/responseForm/getOrderId']);
-            this.close();
-          }
-          else{
-            alert(response.data.message);
-          }
-        });
+      if(!this.$v.$invalid) {
+        var formData = new FormData();
+        formData.append('order_id', this.$store.getters['modals/responseForm/getOrderId']);
+        formData.append('author_id', this.$store.getters['user/getField']('id'));
+        formData.append('description', this.description);
+        for (let i = 0; i < this.files.length; i++) {
+          formData.append('files[]', this.files[i].file);
+        }
+
+        axios.post('api/addResponse', formData)
+          .then(response => {
+            if (response.data.success) {
+              this.$emit('request:delete', this.$store.getters['modals/responseForm/getOrderId']);
+              this.close();
+            } else {
+              alert(response.data.message);
+            }
+          });
+      }
     },
     close() {
       this.description = '';

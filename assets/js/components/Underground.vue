@@ -4,7 +4,7 @@
 
       <div class="logo-col">
         <div class="logo-wrap">
-          <img src="/static/images/logo/logo-blue.png" alt="">
+          <router-link :to="{ name: 'index'}"> <img src="/static/images/logo/logo-blue.png" alt=""> </router-link>
         </div>
         <div class="copyright1">כל הזכויות שמורות לקבוצת המומחים 2019</div>
         <div class="copyright2"><router-link class="hover-link" :to="{ name: 'terms-and-conditions'}">תקנון האתר</router-link>   <router-link  class="hover-link" :to="{ name: 'privacy-policy'}">תנאי השימוש</router-link></div>
@@ -65,7 +65,7 @@
       <div class="footer-col contact-col">
         <p class="col-caption">צור קשר</p>
         <div class="contact-item">
-          <a href="tel:0587000873">0723902704</a>
+          <a href="tel:0723902704">0723902704</a>
           <span class="caption">טלפון המשרד</span>
         </div>
         <div class="contact-item">
