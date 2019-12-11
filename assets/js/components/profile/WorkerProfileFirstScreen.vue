@@ -25,7 +25,7 @@
         <button
         v-if="$store.getters['user/isLogged']"
         class="th-btn th-btn-blue th-btn-lg contact-b"
-        @click="phoneFlag=!phoneFlag">
+        @click="showPhone">
           <span>{{phoneFlag ? user.phone : 'צור קשר '  }}</span>
         </button>
        </div>
@@ -75,6 +75,11 @@
         back(){
           this.$router.go(-1);
         },
+      showPhone(){
+        if(this.$store.getters['user/isLogged']){
+          this.phoneFlag=!this.phoneFlag;
+        }
+      },
       getBlock(str){
         this.$emit('anchor', str);
       },

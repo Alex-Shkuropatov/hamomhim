@@ -212,7 +212,6 @@ export default {
       if(this.$store.getters['user/isLogged']){
         this.phoneFlag=!this.phoneFlag;
       }
-
     }
   },
   mounted() {
