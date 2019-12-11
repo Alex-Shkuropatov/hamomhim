@@ -80,8 +80,16 @@ export default {
   mounted() {
     axios.post('/api/getLatestOrders')
         .then((response)=>{
-         this.projects =  response.data.value;
-         console.log(this.projects);
+          let projects = response.data.value;
+          console.log('RESPONSE.DATA.VALUE', projects);
+          projects = projects.map(project => {
+            if(project.thumbnail){
+              project.thumbnail = project.thumbnail.replace('http://hamonhim.barelservice.co.il/wp-content', '');
+            }
+            return project;
+         });
+         this.projects =  projects;
+         console.log('LOG PROJECTS', this.projects);
         }).catch((error)=>{
           console.log(error);
     })

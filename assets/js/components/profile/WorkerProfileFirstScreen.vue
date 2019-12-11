@@ -22,7 +22,12 @@
           :key="subcategory.id"
           >, {{subcategory.name}}</span>.</span>
         </div>
-        <button class="th-btn th-btn-blue th-btn-lg contact-b" @click="showPhone"><span>{{phoneFlag ? user.phone : 'צור קשר '  }}</span></button>
+        <button
+        v-if="$store.getters['user/isLogged']"
+        class="th-btn th-btn-blue th-btn-lg contact-b"
+        @click="showPhone">
+          <span>{{phoneFlag ? user.phone : 'צור קשר '  }}</span>
+        </button>
        </div>
 
     </div>
