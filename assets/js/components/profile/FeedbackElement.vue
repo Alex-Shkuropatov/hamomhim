@@ -239,5 +239,8 @@ overflow-y: hidden;
 .show-more-b{
   top: 104px;
   left: 33px;
+  @media screen and (max-width: 1026px){
+    left: 23px;
+  }
 }
 </style>
