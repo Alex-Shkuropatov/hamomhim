@@ -24,8 +24,11 @@
     },
     computed:{
       getRoute(){
-        return this.$router.currentRoute.name === 'view-profile' || this.$router.currentRoute.name === 'edit-profile' || this.$router.currentRoute.name === 'leave-feedback' ;
+        return this.$router.currentRoute.name === 'view-profile'
+          || this.$router.currentRoute.name === 'profile-edit'
+          || this.$router.currentRoute.name === 'leave-feedback' ;
       }
+
     },
     mounted() {
       console.log( this.getRoute);
