@@ -192,11 +192,12 @@ import { required, minLength } from "vuelidate/lib/validators";
       width: 60px;
     }
     ::v-deep {
-
-        .rate-number {
+        .rate-default {
+          width: 41px!important;
+          left: 17px!important;
           @media screen and (max-width: 1024px) {
             font-size: 30px;
-            left: 12px;
+            left: 3px!important;
             top: 6px;
           }
         }
