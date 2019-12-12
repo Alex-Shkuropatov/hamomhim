@@ -67,6 +67,33 @@
             @input="$emit('update:phone', arguments[0])"
             class="th-input less-rounded-corners" />
           </div>
+          <div class="form-group col1-2">
+            <div class="caption">Facebook</div>
+            <theme-input
+              placeholder="facebook"
+              type="text"
+              :value="facebook"
+              @input="$emit('update:facebook', arguments[0])"
+              class="th-input less-rounded-corners" />
+          </div>
+          <div class="form-group col1-2">
+            <div class="caption">Youtube</div>
+            <theme-input
+              placeholder="youtube"
+              type="text"
+              :value="youtube"
+              @input="$emit('update:youtube', arguments[0])"
+              class="th-input less-rounded-corners" />
+          </div>
+          <div class="form-group col1-2">
+            <div class="caption">Whatsapp</div>
+            <theme-input
+              placeholder="whatsapp"
+              type="text"
+              :value="whatsapp"
+              @input="$emit('update:whatsapp', arguments[0])"
+              class="th-input less-rounded-corners" />
+          </div>
         </div>
 
         <div class="show-changepass-form" @click="$store.commit('modals/changePassword/open')">שינוי סיסמה</div>
@@ -142,6 +169,15 @@ export default {
     },
     avatar: {
       default: null,
+    },
+    facebook:{
+      default: '',
+    },
+    youtube:{
+      default: '',
+    },
+    whatsapp:{
+      default: '',
     },
   },
   computed: {
