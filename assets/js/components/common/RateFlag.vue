@@ -24,7 +24,7 @@
     },
     computed:{
       getRoute(){
-        return this.$router.currentRoute.name === 'view-profile' || this.$router.currentRoute.name === 'edit-profile' ;
+        return this.$router.currentRoute.name === 'view-profile' || this.$router.currentRoute.name === 'edit-profile' || this.$router.currentRoute.name === 'leave-feedback' ;
       }
     },
     mounted() {
@@ -96,16 +96,16 @@
     position: absolute;
     z-index: 4;
     top: 14px;
-    width: 41px;
-    left: 25px;
+    width: 41px!important;
+    left: 4px!important;
     font-weight: bold;
     font-size: 40px;
     line-height: 30px;
     text-align: center;
     color: #FFFFFF;
     @media screen and (max-width:1024px){
-      width: 25px;
-      left: 25px;
+      width: 25px!important;
+      left: 11px!important;
       font-size: 30px;
     }
   }
