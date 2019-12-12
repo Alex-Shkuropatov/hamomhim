@@ -182,6 +182,32 @@
     margin: 0;
     .menu-item{
       margin-left: ceil($scale1 * 37px);
+      position: relative;
+      padding-bottom: 2px;
+      &:after{
+        content: '';
+        display: block;
+        position: absolute;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transform: scaleX(0);
+        transform-origin: 100% 50%;
+        transition: transform .3s ease-out;
+        background: $clr-blue;
+      }
+      a{
+        transition: transform .3s ease-out;
+      }
+      &:hover{
+        a{
+          color: $clr-blue;
+        }
+        &:after{
+          transform: scaleX(1);
+        }
+      }
       &:last-child{
         margin-left: 0;
       }
