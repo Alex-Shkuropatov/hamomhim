@@ -96,6 +96,11 @@ export default {
       data.append('email', this.user.email);
       data.append('phone', this.user.phone);
       data.append('bio', this.user.bio);
+
+      data.append('facebook', this.user.facebook);
+      data.append('youtube', this.user.youtube);
+      data.append('whatsapp', this.user.whatsapp);
+      
       if(this.user.bio_image instanceof File){
         data.append('bio_image', this.user.bio_image);
       }

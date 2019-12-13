@@ -60,15 +60,22 @@ import PostClose from '../common/PostClose'
       overflow: hidden;
       width: 75%;
       white-space: nowrap;
+      @media screen and (max-width: 480px) {
+        margin-right: 15px;
+        margin-left: 35px;
+      }
     }
     .svg-icon{
     }
     .close{
-      top: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 39px;
+      width: 39px;
       @media screen and (max-width: 480px) {
-        top:0;
         left: 1px;
         width: 30px;
+        height: 30px;
       }
     }
   }

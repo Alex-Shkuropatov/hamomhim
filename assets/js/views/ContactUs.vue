@@ -237,6 +237,9 @@
       }
       @media screen and (max-width: 600px){
         background: rgba( 71,74,81, 0.4);
+        padding-top: 10px;
+        padding-bottom: 10px;
+        width: 100% !important;
       }
     }
 
@@ -256,6 +259,11 @@
       resize: none;
       @media screen and (max-width: 1605px){
         font-size: 20px;
+      }
+      @media screen and (max-width: 600px){
+        border-radius: 30px;
+        border: none;
+        padding: 10px 20px;
       }
       &:focus {
         opacity: 1;
@@ -304,6 +312,14 @@
         width: 300px;
         height: 63px;
         padding-right: 86px;
+      }
+      @media (max-width: 600px){
+        height: 50px;
+        padding-right: 0;
+        height: 50px;
+        justify-content: center;
+        font-size: 18px;
+        width: 100%;
       }
 
       &:hover {
@@ -420,6 +436,9 @@ button::-moz-focus-inner {
   }
   .input-wrapper{
     position: relative;
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
   }
   #title-input{
     width: 1006px!important;
