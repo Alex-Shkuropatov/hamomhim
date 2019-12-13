@@ -8,7 +8,7 @@
             <div class="title clr-blue">{{pack.title}}</div>
           </div>
           <div class="content-wrap">
-            <div class="desc">{{pack.description}}</div>
+            <div class="desc" v-html="pack.description"></div>
             <div class="img-wrap">
               <img :src="pack.icon" alt="">
             </div>
@@ -24,9 +24,9 @@ export default {
   data(){
     return {
       packages: [
-        { title: 'דף נחיתה', description: 'עבור רישום באתר ובניה של דף נחיתה לקבלן מחיר חד פעמי 057₪ פלוס מעמ', price: 750, icon: '/static/images/packages/package1.svg'},
-        { title: 'דף נחיתה', description: 'עבור רישום באתר ובניה של דף נחיתה לקבלן מחיר חד פעמי 057₪ פלוס מעמ', price: 750, icon: '/static/images/packages/package2.svg'},
-        { title: 'דף נחיתה', description: 'עבור רישום באתר ובניה של דף נחיתה לקבלן מחיר חד פעמי 057₪ פלוס מעמ', price: 750, icon: '/static/images/packages/package3.svg'},
+        { title: 'דף נחיתה', description: 'עבור רישום באתר בנייה של דף נחיתה לקבלן מחיר חד פעמי <span class="clr-blue">750₪</span> פלוס מעמ', price: 750, icon: '/static/images/packages/package1.svg'},
+        { title: 'דף נחיתה', description: 'עבור רישום באתר בנייה של דף נחיתה לקבלן מחיר חד פעמי <span class="clr-blue">750₪</span> פלוס מעמ', price: 750, icon: '/static/images/packages/package2.svg'},
+        { title: 'דף נחיתה', description: 'עבור רישום באתר בנייה של דף נחיתה לקבלן מחיר חד פעמי <span class="clr-blue">750₪</span> פלוס מעמ', price: 750, icon: '/static/images/packages/package3.svg'},
       ]
     };
   }
@@ -79,6 +79,9 @@ export default {
     font-size: ceil($scale1 * 24px);
     font-weight: 500;
     line-height: 1.3;
+    &::v-deep .clr-blue{
+      font-weight: 600;
+    }
   }
   svg, img{
     width: auto;
