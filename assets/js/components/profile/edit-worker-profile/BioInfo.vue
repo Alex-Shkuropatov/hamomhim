@@ -1,6 +1,6 @@
 <template>
   <div class="section-wrap">
-    <div class="th-heading">ציון שאולוב</div>
+    <div class="th-heading">אודות הקבלן </div>
     <div class="section-inner">
       <div class="inputs-col">
         <div class="form-group">

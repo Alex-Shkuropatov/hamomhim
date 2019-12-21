@@ -22,7 +22,7 @@
         <template v-else>
           <div class="row">
             <router-link :to="{name: 'responses-closed', }" class="link" >בקשות להצעות מחיר</router-link>
-            <router-link :to="{name: 'requests', }" class="link" >הצעות מחיר שניתנ</router-link>
+            <router-link :to="{name: 'requests', }" class="link" >הצעות מחיר שניתנו</router-link>
             <router-link :to="{name: 'responses-open', }" class="link" >פרויקטים שנסגרו בהצלחה</router-link>
             <router-link :to="{name: 'profile-edit', }" class="link">ערוך פרופיל</router-link>
             <router-link :to="{name: 'packages', }" class="link">רכישת מנוי באתר</router-link>

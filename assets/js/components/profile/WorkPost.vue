@@ -10,7 +10,7 @@
     <div class="description">
       <span>{{description}}</span>
     </div>
-    <button class="more-b" @click="openImgs" > לצפייה בפרוייקט > </button>
+    <button class="more-b" @click="openImgs" >  גלריית תמונות </button>
   </div>
 
   </div>
