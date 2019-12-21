@@ -4,8 +4,8 @@
 
       <swiper :options="sliderOptions" class="categories-slider" ref="categoriesSlider">
         <swiper-slide class="slide-outer" v-for="slide in slides" :key="slide.id">
-            <a href="http://google.com/" class="cat-img">
-              <img src="/static/images/main-page/banner.png" alt="">
+            <a :href="slide.link" class="cat-img">
+              <img :src="$env.API_URL+ slide.image" alt="">
             </a>
         </swiper-slide>
       </swiper>
@@ -32,8 +32,16 @@ export default {
         preventClicks: true,
         disableOnInteraction: true,
       },
-      slides:[{id:1},{id:2},{id:3}]
+      slides:[]
     }
+  },
+  mounted(){
+    axios.post('api/getAllBanners')
+        .then(response => {
+          if(response.data.success){
+            this.slides = response.data.value;
+          }
+        });
   }
 }
 </script>
