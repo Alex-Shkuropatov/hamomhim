@@ -4,7 +4,7 @@
     <div class="info-wrapper h-container" v-bind:class="{marginT : getData.role!=='architect'}" :style="checkRoute? '' :'padding-top:200px!important' " >
       <ul v-if="checkRoute" class="worker-profile-nav">
         <li><button @click="getBlock('gallery')"  >פרוייקטים אחרונים</button ></li>
-        <li><button @click="getBlock('feedback')" >חוות דעת אחרונות</button></li>
+        <li><button @click="getBlock('feedback')" > חוות דעת</button></li>
         <li><button @click="getBlock('download')" >מסמכים</button></li>
 
       </ul>

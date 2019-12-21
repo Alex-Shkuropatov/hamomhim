@@ -2,7 +2,7 @@
   <transition name="slide-fade">
     <modal v-if="$store.getters['modals/showGallery/isOpened']" @close="close">
 
-      <h3>Works Gallery</h3>
+      <h3> גלריית עבודה </h3>
       <div class="content" v-if="getPost!==''">
         <div class="img-wrapper">
           <transition name="fade">

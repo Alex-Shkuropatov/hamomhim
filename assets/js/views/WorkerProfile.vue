@@ -94,7 +94,7 @@
             <path d="M20.4922 11.7324L31.125 20.768V2.4834L20.4922 11.7324Z" fill="#2F80ED"/>
           </svg>
 
-          <span>{{user.email}} </span>
+          <span><a :href="'mailto:'+user.email" target="_blank" >{{user.email}}  </a></span>
         </div>
         <button
           class="th-btn th-btn-blue th-btn-lg  phone-b"
@@ -111,7 +111,7 @@
       <div class="last-projects-wrapper">
 
         <div class="last-projects">
-          פרויקטים אחרונים
+          פרוייקטים לביצוע
         </div>
       </div>
     </div>
@@ -489,6 +489,9 @@ export default {
           align-items: center;
           span{
             margin: 0 25px;
+            a{
+              color: #4F4F4F;
+            }
             @media screen and (max-width: 480px){
               margin: 0 10px;
               margin-bottom: 8px;
