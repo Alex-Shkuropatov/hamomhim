@@ -66,7 +66,11 @@ export default {
   },
   methods: {
     onClickCategory(category){
-      this.$emit('category:select', category);
+      // this.$emit('category:select', category);
+       let string = JSON.stringify(category.subcategories);
+      // console.log(category);
+      this.$router.push({name: 'search', params: { categoryId:category.id , subcategories: string }});
+
     }
   },
   mounted(){
