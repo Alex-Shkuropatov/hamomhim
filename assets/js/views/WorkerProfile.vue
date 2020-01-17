@@ -303,7 +303,7 @@ export default {
       img{
         width: 255px;
         height: 255px;
-        object-fit: cover;
+        object-fit: contain;
         @media screen and (max-width: 1440px){
           width: 180px;
           height: 180px;
