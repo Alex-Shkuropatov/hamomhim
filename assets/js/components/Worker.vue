@@ -268,6 +268,7 @@
           width: 123px;
           height: 123px;
           border-radius: 50%;
+          object-fit: contain;
           @media screen and (max-width: 1024px){
             width: 110px;
             height: 110px;

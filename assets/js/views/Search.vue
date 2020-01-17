@@ -46,7 +46,7 @@
             :key="worker.id"
             v-bind="worker"/>
           </template>
-        </Worker>
+        </worker>
       </div>
     </div>
   </div>

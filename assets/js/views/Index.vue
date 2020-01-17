@@ -43,8 +43,9 @@ export default {
   },
   methods: {
     searchWorkersByCategory(category){
-      this.$store.commit('modals/showSubcategories/saveData',category.id);
-      this.$store.commit('modals/showSubcategories/open');
+      // this.$store.commit('modals/showSubcategories/saveData',category.id);
+      // this.$store.commit('modals/showSubcategories/open');
+      this.$router.push({name: 'search', params: { categoryId:category.id , subcategories: JSON.stringify([]) }});
     }
   },
 }
