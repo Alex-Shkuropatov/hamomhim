@@ -1,5 +1,5 @@
 window.env = {
-  API_URL: 'http://api.hamomhim.coelix.online',
+  API_URL: 'https://api.hamomhim.coelix.online',
 
   MOBILE: (typeof window.orientation !== 'undefined') || (navigator.userAgent.indexOf('IEMobile') !== -1),
 
