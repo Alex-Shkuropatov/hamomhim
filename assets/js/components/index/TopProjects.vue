@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import showOrderLatest from './../modals/showOrderLatest.vue'
+import showOrderLatest from './../modals/ShowOrderLatest.vue'
 export default {
   data(){
     return {
