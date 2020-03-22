@@ -12,15 +12,20 @@ let mix = require('laravel-mix');
  */
 
 if(mix.inProduction()) {
- mix.options({
-	 terser: {
-		 terserOptions: {
-			 compress: {
-				 drop_console: true
-			 }
-		 }
-	 }
+ 	mix.options({
+		terser: {
+			terserOptions: {
+				compress: {
+					drop_console: true
+				}
+			}
+		}
  });
+} else {
+	mix.browserSync({
+		proxy: 'hamomhim.test',
+		files: ["static/css/app.css", "static/js/*.js"],
+	});
 }
 
 mix
@@ -33,9 +38,3 @@ mix
 		}
   })
 	.sass('assets/css/app.scss', 'static/css');
-
-
-mix.browserSync({
-	proxy: 'hamomhim.test',
-	files: ["static/css/app.css", "static/js/*.js"],
-});
