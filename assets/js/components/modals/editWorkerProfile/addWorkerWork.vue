@@ -2,7 +2,7 @@
     <modal @close="close">
       <div class="content-wrapper">
         <h2 class="title clr-blue">הוסף גלריה \ פרויקט חדש </h2>
-
+ 
         <div class="popup-form-row">
           <div class="col1-1 inp-group">
             <div class="label">שם הפרויקט </div>

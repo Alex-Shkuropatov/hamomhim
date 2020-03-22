@@ -30,14 +30,14 @@
       <add-worker-work
       v-if="$store.getters['modals/addWorkerWork/isOpened']"
       @update:work="onUpdateWork"
-      @add:work="onAddWork"
+      @add:work="onAddWork" 
       />
     </transition>
   </div>
 </template>
 
 <script>
-import addWorkerWork from '../../modals/editWorkerProfile/AddWorkerWork.vue';
+import addWorkerWork from '../../modals/editWorkerProfile/addWorkerWork';
 
 export default {
   data(){
